@@ -11,12 +11,12 @@ class BeneficiarioController extends Controller
         return view('beneficiario.crear-beneficiario');
     }
 
-    public function getEditar()
+    public function getEditar($id)
     {
         return view('beneficiario.editar-beneficiario');
     }
 
-    public function getPerfil()
+    public function getPerfil($id)
     {
         return view('beneficiario.perfil-beneficiario');
     }
