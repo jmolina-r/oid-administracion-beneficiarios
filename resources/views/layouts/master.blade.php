@@ -4,22 +4,11 @@
         <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
-        <!-- / jquery [required] -->
-        <script src="assets/javascripts/jquery/jquery.min.js" type="text/javascript"></script>
-        <!-- / jquery mobile (for touch events) -->
-        <script src="assets/javascripts/jquery/jquery.mobile.custom.min.js" type="text/javascript"></script>
-        <!-- / jquery ui -->
-        <script src="assets/javascripts/jquery/jquery-ui.min.js" type="text/javascript"></script>
-        <!-- / jQuery UI Touch Punch -->
-        <script src="assets/javascripts/jquery/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
-        <!-- / bootstrap [required] -->
-        <script src="assets/javascripts/bootstrap/bootstrap.js" type="text/javascript"></script>
-        <!-- / modernizr -->
-        <script src="assets/javascripts/plugins/modernizr/modernizr.min.js" type="text/javascript"></script>
-        <!-- / retina -->
-        <script src="assets/javascripts/plugins/retina/retina.js" type="text/javascript"></script>
+        <link href="/assets/stylesheets/bootstrap/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
         <!-- / theme file [required] -->
-        <script src="assets/javascripts/theme.js" type="text/javascript"></script>
+        <link href="/assets/stylesheets/light-theme.css" rel="stylesheet" type="text/css" media="all" id="color-settings-body-color" />
+        <!-- / coloring file [optional] (if you are going to use custom contrast color) -->
+        <link href="/assets/stylesheets/theme-colors.css" rel="stylesheet" type="text/css" media="all" />
 
         <!-- meta tributo title -->
         <title>@yield('title')</title>
@@ -32,6 +21,7 @@
         @yield('content')
 
         <!-- Con este yield se inyectan los scripts -->
+        
         @yield('scripts')
     </body>
 </html>
