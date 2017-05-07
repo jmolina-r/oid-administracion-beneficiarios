@@ -15,3 +15,11 @@ Route::get('/', [
     'uses' => 'UserController@getLogin',
     'as' => 'user.login'
 ]);
+
+// Beneficiarios Routes
+Route::group(['prefix' => 'beneficiario'], function () {
+    Route::get('/registrar', [
+        'uses' => 'BeneficiarioController@getRegistrar',
+        'as' => 'beneficiario.crear-beneficiario'
+    ]);
+});
