@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<!--
+  Name: Flatty - Flat Administration Template
+  Website: https://wrapbootstrap.com/theme/flatty-flat-administration-template-WB0P6NR1N?ref=metheus
+  Version: 2.4.1
+-->
+<html lang='en'>
+  <head>
+    <title>Closed navigation | Flatty - Flat Administration Template</title>
+    <meta content='admin template, administration template, bootstrap icons, bootstrap template, dashboard, flat design, flat template, bootstrap flat' name='keywords'>
+    <meta content='Flat administration template for Twitter Bootstrap. Twitter Bootstrap 3 template with Ruby on Rails support.' name='description'>
+    <meta content='BublinaStudio.com' name='author'>
+    <meta content='all' name='robots'>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!--[if IE]> <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'> <![endif]-->
+    <link href='assets/images/meta_icons/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+    <link href='assets/images/meta_icons/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'>
+    <!-- / START - page related stylesheets [optional] -->
+    
+    <!-- / END - page related stylesheets [optional] -->
+    <!-- / bootstrap [required] -->
+    <link href="assets/stylesheets/bootstrap/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- / theme file [required] -->
+    <link href="assets/stylesheets/light-theme.css" rel="stylesheet" type="text/css" media="all" id="color-settings-body-color" />
+    <!-- / coloring file [optional] (if you are going to use custom contrast color) -->
+    <link href="assets/stylesheets/theme-colors.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+  <body class='contrast-red main-nav-closed'>
+    <header>
+      <nav class='navbar navbar-default'>
+        <a class='navbar-brand' href='index.html'>
+          <img width="81" height="21" class="logo" alt="Flatty" src="assets/images/logo.svg" />
+          <img width="21" height="21" class="logo-xs" alt="Flatty" src="assets/images/logo_xs.svg" />
+        </a>
+        <a class='toggle-nav btn pull-left' href='#'>
+          <i class='fa fa-bars'></i>
+        </a>
+        <ul class='nav'>
+          <li class='dropdown medium only-icon widget'>
+            <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+              <i class='fa fa-rss'></i>
+              <div class='label'>5</div>
+            </a>
+            <ul class='dropdown-menu'>
+              <li>
+                <a href='#'>
+                  <div class='widget-body'>
+                    <div class='pull-left icon'>
+                      <i class='fa fa-user text-success'></i>
+                    </div>
+                    <div class='pull-left text'>
+                      John Doe signed up
+                      <small class='text-muted'>just now</small>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class='divider'></li>
+              <li>
+                <a href='#'>
+                  <div class='widget-body'>
+                    <div class='pull-left icon'>
+                      <i class='fa fa-inbox text-error'></i>
+                    </div>
+                    <div class='pull-left text'>
+                      New Order #002
+                      <small class='text-muted'>3 minutes ago</small>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class='divider'></li>
+              <li>
+                <a href='#'>
+                  <div class='widget-body'>
+                    <div class='pull-left icon'>
+                      <i class='fa fa-comment text-warning'></i>
+                    </div>
+                    <div class='pull-left text'>
+                      America Leannon commented Flatty with veeery long text.
+                      <small class='text-muted'>1 hour ago</small>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class='divider'></li>
+              <li>
+                <a href='#'>
+                  <div class='widget-body'>
+                    <div class='pull-left icon'>
+                      <i class='fa fa-user text-success'></i>
+                    </div>
+                    <div class='pull-left text'>
+                      Jane Doe signed up
+                      <small class='text-muted'>last week</small>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class='divider'></li>
+              <li>
+                <a href='#'>
+                  <div class='widget-body'>
+                    <div class='pull-left icon'>
+                      <i class='fa fa-inbox text-error'></i>
+                    </div>
+                    <div class='pull-left text'>
+                      New Order #001
+                      <small class='text-muted'>1 year ago</small>
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class='widget-footer'>
+                <a href='#'>All notifications</a>
+              </li>
+            </ul>
+          </li>
+          <li class='dropdown dark user-menu'>
+            <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+              <img width="23" height="23" alt="Mila Kunis" src="assets/images/avatar.jpg" />
+              <span class='user-name'>Mila Kunis</span>
+              <b class='caret'></b>
+            </a>
+            <ul class='dropdown-menu'>
+              <li>
+                <a href='user_profile.html'>
+                  <i class='fa fa-user'></i>
+                  Profile
+                </a>
+              </li>
+              <li>
+                <a href='user_profile.html'>
+                  <i class='fa fa-cog'></i>
+                  Settings
+                </a>
+              </li>
+              <li class='divider'></li>
+              <li>
+                <a href='sign_in.html'>
+                  <i class='fa fa-sign-out'></i>
+                  Sign out
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <form action='search_results.html' class='navbar-form navbar-right hidden-xs' method='get'>
+          <button class='btn btn-link fa fa-search' name='button' type='submit'></button>
+          <div class='form-group'>
+            <input type="text" name="q" value="" class="form-control" placeholder="Search..." autocomplete="off" id="q_header" />
+          </div>
+        </form>
+      </nav>
+    </header>
+    <div id='wrapper'>
+      <div id='main-nav-bg'></div>
+      <nav id='main-nav'>
+        <div class='navigation'>
+          <div class='search'>
+            <form action='search_results.html' method='get'>
+              <div class='search-wrapper'>
+                <input type="text" name="q" value="" class="search-query form-control" placeholder="Search..." autocomplete="off" />
+                <button class='btn btn-link fa fa-search' name='button' type='submit'></button>
+              </div>
+            </form>
+          </div>
+          <ul class='nav nav-stacked'>
+            <li class=''>
+              <a href='index.html'>
+                <i class='fa fa-tachometer'></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li class=''>
+              <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
+              <span>Forms</span>
+              <i class='fa fa-angle-down angle-down'></i>
+              </a>
+              <ul class='nav nav-stacked'>
+                <li class=''>
+                  <a href='form_styles.html'>
+                    <div class='icon'>
+                      <i class='fa fa-caret-right'></i>
+                    </div>
+                    <span>Form styles and features</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='form_components.html'>
+                    <div class='icon'>
+                      <i class='fa fa-caret-right'></i>
+                    </div>
+                    <span>Form components</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='validations.html'>
+                    <div class='icon'>
+                      <i class='fa fa-caret-right'></i>
+                    </div>
+                    <span>Validations</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='wizard.html'>
+                    <div class='icon'>
+                      <i class='fa fa-caret-right'></i>
+                    </div>
+                    <span>Wizard</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a class='dropdown-collapse ' href='#'>
+                <i class='fa fa-tint'></i>
+                <span>UI Elements & Widgets</span>
+                <i class='fa fa-angle-down angle-down'></i>
+              </a>
+              <ul class='nav nav-stacked'>
+                <li class=''>
+                  <a href='ui_elements.html'>
+                    <div class='icon'>
+                      <i class='fa fa-caret-right'></i>
+                    </div>
+                    <span>UI Elements</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='widgets.html'>
+                    <div class='icon'>
+                      <i class='fa fa-caret-right'></i>
+                    </div>
+                    <span>Widgets</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class=''>
+              <a href='buttons_and_icons.html'>
+                <i class='fa fa-star'></i>
+                <span>Buttons & Icons</span>
+              </a>
+            </li>
+            <li>
+              <a class='dropdown-collapse ' href='#'>
+                <i class='fa fa-cogs'></i>
+                <span>Components</span>
+                <i class='fa fa-angle-down angle-down'></i>
+              </a>
+              <ul class='nav nav-stacked'>
+                <li class=''>
+                  <a href='charts.html'>
+                    <div class='icon'>
+                      <i class='fa fa-bar-chart-o'></i>
+                    </div>
+                    <span>Charts</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='address_book.html'>
+                    <div class='icon'>
+                      <i class='fa fa-envelope'></i>
+                    </div>
+                    <span>Address book</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='chats.html'>
+                    <div class='icon'>
+                      <i class='fa fa-comments'></i>
+                    </div>
+                    <span>Chats</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='filetrees.html'>
+                    <div class='icon'>
+                      <i class='fa fa-list-ul'></i>
+                    </div>
+                    <span>File trees</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='fileupload.html'>
+                    <div class='icon'>
+                      <i class='fa fa-file'></i>
+                    </div>
+                    <span>Fileupload</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='todo.html'>
+                    <div class='icon'>
+                      <i class='fa fa-list-alt'></i>
+                    </div>
+                    <span>Todo list</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='wysiwyg.html'>
+                    <div class='icon'>
+                      <i class='fa fa-clipboard'></i>
+                    </div>
+                    <span>WYSIWYG</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class=''>
+              <a href='tables.html'>
+                <i class='fa fa-table'></i>
+                <span>Tables</span>
+              </a>
+            </li>
+            <li class=''>
+              <a href='grid.html'>
+                <i class='fa fa-th'></i>
+                <span>Grid</span>
+              </a>
+            </li>
+            <li class=''>
+              <a href='type.html'>
+                <i class='fa fa-font'></i>
+                <span>Typography</span>
+              </a>
+            </li>
+            <li class=''>
+              <a href='calendar.html'>
+                <i class='fa fa-calendar'></i>
+                <span>Calendar</span>
+              </a>
+            </li>
+            <li>
+              <a class='dropdown-collapse ' href='#'>
+                <i class='fa fa-book'></i>
+                <span>Example pages</span>
+                <i class='fa fa-angle-down angle-down'></i>
+              </a>
+              <ul class='nav nav-stacked'>
+                <li class=''>
+                  <a href='invoice.html'>
+                    <div class='icon'>
+                      <i class='fa fa-money'></i>
+                    </div>
+                    <span>Invoice</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='gallery.html'>
+                    <div class='icon'>
+                      <i class='fa fa-picture-o'></i>
+                    </div>
+                    <span>Gallery</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='timeline.html'>
+                    <div class='icon'>
+                      <i class='fa fa-clock-o'></i>
+                    </div>
+                    <span>Timeline</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='pricing_tables.html'>
+                    <div class='icon'>
+                      <i class='fa fa-table'></i>
+                    </div>
+                    <span>Pricing tables</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='user_profile.html'>
+                    <div class='icon'>
+                      <i class='fa fa-user'></i>
+                    </div>
+                    <span>User profile</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='err404.html' target='_blank'>
+                    <div class='icon'>
+                      <i class='fa fa-question-circle'></i>
+                    </div>
+                    <span>404 Error</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='err500.html' target='_blank'>
+                    <div class='icon'>
+                      <i class='fa fa-cogs'></i>
+                    </div>
+                    <span>500 Error</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='sign_in.html' target='_blank'>
+                    <div class='icon'>
+                      <i class='fa fa-sign-in'></i>
+                    </div>
+                    <span>Sign in</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='faq.html'>
+                    <div class='icon'>
+                      <i class='fa fa-bullhorn'></i>
+                    </div>
+                    <span>FAQ</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='orders.html'>
+                    <div class='icon'>
+                      <i class='fa fa-inbox'></i>
+                    </div>
+                    <span>Orders</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='search_results.html'>
+                    <div class='icon'>
+                      <i class='fa fa-search'></i>
+                    </div>
+                    <span>Search results</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='blank.html'>
+                    <div class='icon'>
+                      <i class='fa fa-circle-o'></i>
+                    </div>
+                    <span>Blank page</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a class='dropdown-collapse in' href='#'>
+                <i class='fa fa-cog'></i>
+                <span>Layouts</span>
+                <i class='fa fa-angle-down angle-down'></i>
+              </a>
+              <ul class='in nav nav-stacked'>
+                <li class='active'>
+                  <a href='closed_navigation.html'>
+                    <div class='icon'>
+                      <i class='fa fa-caret-right'></i>
+                    </div>
+                    <span>Closed navigation</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='fixed_header.html'>
+                    <div class='icon'>
+                      <i class='fa fa-caret-right'></i>
+                    </div>
+                    <span>Fixed header</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='fixed_navigation.html'>
+                    <div class='icon'>
+                      <i class='fa fa-caret-right'></i>
+                    </div>
+                    <span>Fixed navigation</span>
+                  </a>
+                </li>
+                <li class=''>
+                  <a href='fixed_navigation_and_header.html'>
+                    <div class='icon'>
+                      <i class='fa fa-caret-right'></i>
+                    </div>
+                    <span>Fixed navigation & header</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class=''>
+              <a href='email_templates.html'>
+                <i class='fa fa-mail-reply'></i>
+                <span>Email templates</span>
+              </a>
+            </li>
+            <li>
+              <a class='dropdown-collapse' href='#'>
+                <i class='fa fa-folder-open-o'></i>
+                <span>Four level dropdown</span>
+                <i class='fa fa-angle-down angle-down'></i>
+              </a>
+              <ul class='nav nav-stacked'>
+                <li>
+                  <a class='dropdown-collapse' href='#'>
+                    <div class='icon'>
+                      <i class='fa fa-caret-right'></i>
+                    </div>
+                    <span>Second level</span>
+                    <i class='fa fa-angle-down angle-down'></i>
+                  </a>
+                  <ul class='nav nav-stacked'>
+                    <li>
+                      <a class='dropdown-collapse' href='#'>
+                        <div class='icon'>
+                          <i class='fa fa-caret-right'></i>
+                        </div>
+                        <span>Third level</span>
+                        <i class='fa fa-angle-down angle-down'></i>
+                      </a>
+                      <ul class='nav nav-stacked'>
+                        <li>
+                          <a href='#'>
+                            <div class='icon'>
+                              <i class='fa fa-caret-right'></i>
+                            </div>
+                            <span>Fourth level</span>
+                          </a>
+                        </li>
+                        <li>
+                          <a href='#'>
+                            <div class='icon'>
+                              <i class='fa fa-caret-right'></i>
+                            </div>
+                            <span>Another fourth level</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <section id='content'>
+        <div class='container'>
+          <div class='row' id='content-wrapper'>
+            <div class='col-xs-12'>
+              <div class='row'>
+                <div class='col-sm-12'>
+                  <div class='page-header'>
+                    <h1 class='pull-left'>
+                      <i class='fa fa-cog'></i>
+                      <span>Closed navigation</span>
+                    </h1>
+                    <div class='pull-right'>
+                      <ul class='breadcrumb'>
+                        <li>
+                          <a href='index.html'>
+                            <i class='fa fa-bar-chart-o'></i>
+                          </a>
+                        </li>
+                        <li class='separator'>
+                          <i class='fa fa-angle-right'></i>
+                        </li>
+                        <li>Layouts</li>
+                        <li class='separator'>
+                          <i class='fa fa-angle-right'></i>
+                        </li>
+                        <li class='active'>Closed navigation</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='alert alert-info alert-dismissable'>
+                <a class='close' data-dismiss='alert' href='#'>&times;</a>
+                <strong>Hey there!</strong>
+                If you are using some touch device right now, you can try slide from left to right on navigation to open it. Sliding from right to left will close it.
+              </div>
+              Perspiciatis laborum eum expedita iusto et nobis voluptatum consequatur aut aut dolorem aut consequatur voluptatem. beatae ut aut illo blanditiis expedita aut molestiae ea ea vel libero et enim dolorum. minus veritatis ut ipsum beatae itaque fugit asperiores beatae officiis. iure expedita repellendus soluta omnis corrupti ut non tempora adipisci cum. repellat molestiae perferendis velit earum voluptas est nostrum dolor totam. repellat id quis molestiae atque id quis rerum dolorem voluptas mollitia sint pariatur inventore
+              <br>
+              <br>
+              Quas porro ut nihil est autem quo sapiente officiis et est quod dolorem asperiores quibusdam. rerum eius consequuntur nam ipsum ut quam voluptatem. minima omnis in perferendis distinctio dolore qui deleniti cum. sed deserunt aut ipsa laboriosam sunt. fugiat nihil quo consequuntur. ad rem ut officia consectetur iste ad vero delectus voluptas est ullam
+              <br>
+              <br>
+              Enim sit reprehenderit qui non aut ducimus rerum iusto hic ducimus. aut nesciunt unde qui est. in labore sed laudantium est nihil. at iusto voluptatum qui iure et autem consectetur sed eum veniam. nesciunt praesentium minus aut corporis et nulla et ut error veniam architecto in totam qui
+              <br>
+              <br>
+              Dolorum autem qui et et soluta ea quidem cupiditate. rerum rerum dolor ad culpa eum aut aut inventore explicabo tenetur aliquam voluptas ut. illum omnis in delectus. et est assumenda possimus sunt temporibus quia quibusdam temporibus iusto voluptates
+              <br>
+              <br>
+              Unde officiis earum commodi repellat dolores reiciendis et. repudiandae et aspernatur alias fugit ipsam odio accusamus itaque maxime qui est soluta quam. vitae officia necessitatibus nesciunt qui odit eligendi commodi incidunt. qui voluptas laudantium rerum est non distinctio explicabo ullam laudantium libero quis aperiam minus omnis. qui inventore perspiciatis consequuntur ullam saepe doloribus quis accusantium sapiente in voluptatibus nostrum. est nostrum a et perspiciatis quis sit earum delectus autem laborum. fugit nemo nihil assumenda ea animi dicta
+              <br>
+              <br>
+              Soluta commodi earum omnis iusto. accusantium sapiente voluptatibus consequuntur ipsa commodi rerum et inventore quo labore. sit natus ut sapiente aperiam facilis minima repudiandae fuga officiis dolorem quod tenetur dolorem. veritatis sed accusantium nihil qui ut ut velit et. est ullam minima quibusdam id a nostrum mollitia ea et qui
+              <br>
+              <br>
+              Non qui quibusdam exercitationem delectus vel pariatur quo. aut et debitis et aliquam ut sunt placeat dolores voluptas illo tempore sit. distinctio consectetur possimus et qui rerum quidem earum molestiae nobis sint. nulla nobis magni voluptatem ut doloremque eum magni quam excepturi. consequatur facere reprehenderit repellendus odit voluptas ut omnis in ipsum. rerum eos est exercitationem veniam qui quibusdam dignissimos voluptatem in nihil libero dolore eum. reiciendis harum voluptate voluptatem vitae fugiat veniam rerum nam tempora molestiae dolores est
+              <br>
+              <br>
+              Voluptas unde autem est rem nemo amet dolorem harum fuga. impedit ipsa tenetur labore esse et aut dicta possimus vel optio. eius iure qui ducimus enim hic repudiandae. et ipsam saepe ea mollitia autem sint dolor provident aliquam et est molestiae necessitatibus. voluptatem et id eum qui velit qui quo qui qui voluptatem voluptas aperiam ducimus impedit. ratione et nobis ea laborum rerum tenetur qui ea autem officiis
+              <br>
+              <br>
+              Omnis distinctio eaque aut modi est excepturi illo distinctio sequi molestias laborum. tempore repellendus ipsam similique dolorem. dolorem ipsam vero tempore ad molestiae assumenda autem est accusamus quasi ea
+              <br>
+              <br>
+              Voluptatem quidem molestiae iusto. aspernatur exercitationem aliquam et sint dolorem. deserunt cupiditate aperiam maiores repudiandae facilis inventore sit ut consequatur quod autem ut. velit modi tenetur quia
+              <br>
+              <br>
+              Illum aut quam ut ullam est beatae eligendi id. debitis autem ut culpa nostrum rem est molestias voluptas fugiat. et ullam in dignissimos quia suscipit dolores aut necessitatibus voluptatem aliquam sunt nam labore eligendi. repudiandae explicabo voluptatem sapiente qui aut. necessitatibus fuga non consequuntur omnis odio quis possimus nulla
+              <br>
+              <br>
+              Nam saepe earum omnis aut. non omnis ratione sunt amet et aut saepe quia occaecati voluptas. eum debitis iste esse quos quidem voluptas voluptatem et ullam doloremque officia. quia itaque ex inventore est qui eos earum eos repellat voluptas sint quisquam dolorem. impedit ut qui repellendus molestiae. aperiam error harum molestiae fugiat facilis est
+              <br>
+              <br>
+              In quis earum ipsum vitae. aperiam soluta iusto qui quis quibusdam nisi. est distinctio veritatis expedita aut dolorem quos nobis aspernatur quam est occaecati. nemo est quia modi dolorem id est voluptates qui accusantium neque voluptas quia aut ipsum
+              <br>
+              <br>
+              Id aliquam eius eaque numquam rerum praesentium. sit sit occaecati ipsam praesentium sequi et enim soluta sunt non esse rem. fuga nesciunt accusamus laboriosam pariatur libero consequuntur ipsam ut et rerum consequatur
+              <br>
+              <br>
+              Soluta harum dolorem in et eos debitis sunt voluptate laborum sequi voluptas fuga aut et. ut autem est necessitatibus aliquid ducimus quia. ducimus harum laboriosam quam ipsam reiciendis voluptatem ut iste quia odio deserunt et quae ipsa. rerum ab quia cum veniam molestiae esse. eos assumenda laudantium voluptatibus voluptatum nostrum. mollitia molestiae et voluptatem voluptatem fuga. sunt autem quidem nostrum praesentium incidunt earum
+              <br>
+              <br>
+              Aliquid aspernatur molestiae ipsa consequatur est hic nobis provident et qui quia dolorum harum iure. porro labore atque dolorum est sit omnis saepe omnis sit quo quod est vero omnis. dicta et perferendis distinctio et neque
+              <br>
+              <br>
+              Aliquid reiciendis animi aut nemo non id voluptatem atque perspiciatis qui rerum. est incidunt itaque qui enim dolores nostrum qui. voluptatem rerum dolores dignissimos accusantium eos. magni aliquam dolores aspernatur nostrum quo nulla enim deleniti ducimus
+              <br>
+              <br>
+              Et dignissimos enim magni. eveniet amet ipsum dolores optio aut consequuntur velit sit eos velit suscipit eius. et quae vel dolor consequuntur hic quis unde laborum commodi incidunt
+              <br>
+              <br>
+              Ut odit qui eaque doloremque qui saepe ut occaecati at. consequuntur facere laborum est debitis omnis. dolor aperiam ut reiciendis consequatur sint tenetur ducimus ad. qui sapiente eos odio debitis. tempore rerum alias quia labore provident laboriosam deleniti autem adipisci. cumque nam voluptatem veritatis commodi in
+              <br>
+              <br>
+              Atque ipsa officiis porro sint ipsam tenetur molestiae dolores vel odio. sit soluta voluptatem corporis ipsa. est asperiores quos blanditiis quia perferendis consectetur ut minima ipsam ut sunt iure est. rerum mollitia recusandae nostrum quae. reiciendis eaque et sapiente cum in vero qui iste. voluptatem nesciunt molestiae eum maxime qui ratione distinctio quidem iure nulla facilis velit quibusdam et. impedit eum adipisci consequatur enim accusantium est
+              <br>
+              <br>
+              Maiores eveniet ea amet qui maxime. quis ex corporis consequatur amet amet voluptatibus tempora aspernatur ratione quis qui hic et. sit quas est a. accusantium vitae facilis fuga quia et numquam adipisci porro et laudantium eos est. voluptas blanditiis aut et molestias ipsum nihil consequuntur inventore et molestiae quo odio adipisci. quibusdam sint animi consequatur illo est iure minima inventore rerum et
+              <br>
+              <br>
+              Rerum sit cumque molestiae voluptatem molestias explicabo eveniet. voluptatem minima cupiditate nesciunt et rerum non nobis sunt ut inventore ut magni voluptatem. cumque vero quia inventore aliquid natus dignissimos omnis rem alias unde illum modi placeat consectetur. omnis qui et ipsa quos dolor voluptatem consectetur necessitatibus harum nam vitae cumque ut quis. libero porro aut omnis dolorem corrupti labore iure veniam ratione quisquam perspiciatis doloremque delectus recusandae. officia ratione expedita assumenda voluptatem
+              <br>
+              <br>
+              Est aperiam nostrum dolorem excepturi quae saepe molestias. deserunt voluptas ea mollitia. autem id aut itaque autem aut velit rerum. in ullam sed omnis velit similique suscipit voluptatem delectus qui natus rerum est ut dolor
+              <br>
+              <br>
+              Omnis praesentium fuga aliquid perspiciatis provident ea laboriosam et non voluptates cumque dicta ex omnis. et reiciendis architecto non itaque maxime at neque dolores inventore necessitatibus. fuga sunt aut ipsam et eaque dolore ut cupiditate iste eius qui. accusamus sit non quo voluptatem velit autem voluptatem id saepe facere perspiciatis rerum quis totam
+              <br>
+              <br>
+              Facere nesciunt magnam perspiciatis adipisci ab quo dolore saepe. rem nostrum consequatur voluptatem enim iste repellendus non sit. voluptas quis velit quibusdam et quae aut nulla sapiente distinctio omnis deserunt debitis eos. rerum veritatis at enim blanditiis. et animi et nihil quae beatae eum nihil commodi sunt et qui quis maiores eligendi
+              <br>
+              <br>
+              Soluta delectus nulla nobis totam. eligendi aperiam sunt quos odio eos recusandae amet qui maiores sint. eos vel temporibus error. iure omnis et voluptatem veniam quia. voluptatum vel ipsum autem possimus aut et quia laudantium maxime ipsa rerum
+              <br>
+              <br>
+              Perferendis qui quae tenetur consequatur dicta laboriosam sint et aut iusto. qui laboriosam architecto earum. voluptatem ut dolorem ut odio fugiat
+              <br>
+              <br>
+              Labore libero necessitatibus fugiat enim in. ratione nemo omnis officia rem. iusto magnam animi qui voluptatem error laborum animi aliquam ut. aliquam tenetur laboriosam adipisci eos ipsa omnis vel enim iure. dolorem aut numquam qui. reprehenderit pariatur nemo iusto minima. libero sunt beatae quaerat voluptas occaecati molestias enim corrupti reiciendis explicabo velit hic
+              <br>
+              <br>
+              Qui fuga molestias quis veritatis aut. consequuntur commodi nobis sed fugit. ut voluptatem tempore omnis et temporibus et et vero doloremque qui excepturi nisi ut
+              <br>
+              <br>
+              Quia sit et et consequatur laudantium ut. quo rem exercitationem sunt eligendi velit possimus ut doloribus minus nihil. facilis deserunt excepturi et dignissimos nobis deserunt. fugiat maxime omnis dolores consequatur aliquid sed rerum cum occaecati ipsa quo delectus illo qui
+              <br>
+              <br>
+              Facere velit asperiores voluptates et sit. quia voluptatum explicabo ipsum eveniet quaerat delectus ad reiciendis atque. earum et et vel aspernatur ut beatae perspiciatis rem consectetur quam veritatis. reprehenderit est id in veritatis voluptas non rerum molestiae
+              <br>
+              <br>
+              Repudiandae pariatur molestiae laboriosam sed blanditiis quis et deleniti optio impedit ea quia reiciendis. nesciunt alias quia quidem impedit facilis sint placeat consectetur dolores hic sapiente harum quidem. vel ullam qui unde harum ea minima. harum et consequatur recusandae. quod provident neque doloribus eius repudiandae cum. atque molestiae aliquid reprehenderit qui voluptas illo officiis nihil quidem ut. dolorum quae quibusdam laborum necessitatibus fuga perferendis doloremque est illo modi rerum voluptas
+              <br>
+              <br>
+              Eveniet in temporibus illum sapiente reprehenderit fugit sed est sed magni ut. harum quidem vitae ea aliquam deleniti rerum dolorum totam. a et optio eveniet eos non assumenda ducimus. enim voluptas corrupti sequi dolores et tenetur non delectus voluptas. sed ex distinctio non rerum impedit perferendis soluta velit qui consequuntur sequi. qui nihil et totam minima omnis blanditiis. nobis iure nam perspiciatis quia sapiente qui aperiam impedit
+              <br>
+              <br>
+              Vel doloribus qui eum maxime quia possimus qui animi. facilis in quis quas sequi ea aut. in quo soluta cupiditate delectus quo dolor sed earum voluptate consequatur. voluptatem id et vel dolores quia laboriosam incidunt rem et qui fuga. consequatur nisi commodi aut sit quaerat laudantium ut voluptate. et quod et et
+              <br>
+              <br>
+              Voluptatem et omnis cumque officiis quo saepe et eius at laboriosam quibusdam. quis beatae non omnis doloribus. inventore quae quia ut et et esse dolor
+              <br>
+              <br>
+              Libero inventore vero placeat et qui placeat totam. similique fugit ipsum esse. debitis quod ut atque minima. laudantium nisi aperiam explicabo et ut. accusantium laboriosam assumenda qui ut
+              <br>
+              <br>
+              Magnam quaerat sit asperiores minus corrupti iste tempore nam reprehenderit eos quis veniam voluptatem. nesciunt et omnis ut. sunt omnis dolorem natus. dignissimos repellat consequatur vitae fugit facere autem sunt autem. quo totam accusantium provident itaque qui facilis. quos excepturi quibusdam temporibus veritatis autem
+              <br>
+              <br>
+              Rerum voluptatem voluptatem qui alias accusantium est vero dolor placeat. dicta eum dolores et optio ea cum voluptates illum rerum quia magni consectetur. et molestiae ex sit. praesentium inventore minus eos veniam enim aut non et consequuntur deleniti at impedit sunt. inventore accusamus ea omnis aut fuga sequi provident rerum. quos voluptatem est illo molestiae ut accusantium. quia consequatur vel et velit labore aut est itaque
+              <br>
+              <br>
+              Pariatur voluptatibus ut repudiandae adipisci deleniti laudantium dolor eaque et enim rerum nulla est. architecto recusandae id rem est praesentium magnam voluptatem. aut error nostrum est quo voluptas quis iusto illo dignissimos eum tenetur quia eum. deserunt consequatur voluptatem quo dolorem. sed impedit ut qui ad facere cumque quod reprehenderit et vero aspernatur quaerat voluptatem consequatur
+              <br>
+              <br>
+              Est quaerat molestiae veritatis officia nemo consequuntur architecto harum. rem quibusdam doloremque tempore sed unde necessitatibus ipsa aut. vel aut fugit modi iste. adipisci quos quam consequatur ducimus voluptatibus aut ipsa molestias officiis officia. assumenda qui nemo qui nemo temporibus nam. explicabo ullam et architecto sit voluptatem tempora ipsa dolores tempora tempore a voluptate sit. rerum qui aut in explicabo nulla dicta eveniet voluptates
+              <br>
+              <br>
+            </div>
+          </div>
+          <footer id='footer'>
+            <div class='footer-wrapper'>
+              <div class='row'>
+                <div class='col-sm-6 text'>
+                  Copyright © 2016 Your Project Name
+                </div>
+                <div class='col-sm-6 buttons'>
+                  <a class="btn btn-link" href="http://flatty-v2-4-1.bublinastudio.com/">Preview</a>
+                  <a class="btn btn-link" href="https://wrapbootstrap.com/theme/flatty-flat-administration-template-WB0P6NR1N?ref=metheus">Purchase</a>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </div>
+    <!-- / jquery [required] -->
+    <script src="assets/javascripts/jquery/jquery.min.js" type="text/javascript"></script>
+    <!-- / jquery mobile (for touch events) -->
+    <script src="assets/javascripts/jquery/jquery.mobile.custom.min.js" type="text/javascript"></script>
+    <!-- / jquery ui -->
+    <script src="assets/javascripts/jquery/jquery-ui.min.js" type="text/javascript"></script>
+    <!-- / jQuery UI Touch Punch -->
+    <script src="assets/javascripts/jquery/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+    <!-- / bootstrap [required] -->
+    <script src="assets/javascripts/bootstrap/bootstrap.js" type="text/javascript"></script>
+    <!-- / modernizr -->
+    <script src="assets/javascripts/plugins/modernizr/modernizr.min.js" type="text/javascript"></script>
+    <!-- / retina -->
+    <script src="assets/javascripts/plugins/retina/retina.js" type="text/javascript"></script>
+    <!-- / theme file [required] -->
+    <script src="assets/javascripts/theme.js" type="text/javascript"></script>
+    <!-- / START - page related files and scripts [optional] -->
+    
+    <!-- / END - page related files and scripts [optional] -->
+  </body>
+</html>

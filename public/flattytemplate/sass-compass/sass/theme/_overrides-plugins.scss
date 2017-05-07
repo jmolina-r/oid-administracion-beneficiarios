@@ -1,0 +1,149 @@
+ul.fancytree-container {
+  border: none;
+}
+
+
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  background-image: none !important;
+  background-color: $light;
+}
+
+.ui-slider {
+  background-color: transparent;
+  border: 1px solid $light
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  background-color: $light;
+}
+
+.ui-slider .ui-slider-range {
+  background-color: $dark;
+}
+
+.daterangepicker {
+  .ranges li.active, .ranges li:hover {
+    color: $white;
+    background: $contrast;
+    border-color: transparent;
+  }
+
+  .ranges li {
+    color: $darkest;
+  }
+
+  td.active, td.active:hover {
+    background: $contrast;
+
+    &.off {
+      color: rgba($white, .5);
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+}
+
+.datepicker td span.active:hover, .datepicker td span.active:hover:hover, .datepicker td span.active.disabled:hover, .datepicker td span.active.disabled:hover:hover, .datepicker td span.active:active, .datepicker td span.active:hover:active, .datepicker td span.active.disabled:active, .datepicker td span.active.disabled:hover:active, .datepicker td span.active.active, .datepicker td span.active:hover.active, .datepicker td span.active.disabled.active, .datepicker td span.active.disabled:hover.active, .datepicker td span.active.disabled, .datepicker td span.active:hover.disabled, .datepicker td span.active.disabled.disabled, .datepicker td span.active.disabled:hover.disabled, .datepicker td span.active[disabled], .datepicker td span.active:hover[disabled], .datepicker td span.active.disabled[disabled], .datepicker td span.active.disabled:hover[disabled], .datepicker td.active:hover, .datepicker td.active:hover:hover, .datepicker td.active.disabled:hover, .datepicker td.active.disabled:hover:hover, .datepicker td.active:active, .datepicker td.active:hover:active, .datepicker td.active.disabled:active, .datepicker td.active.disabled:hover:active, .datepicker td.active.active, .datepicker td.active:hover.active, .datepicker td.active.disabled.active, .datepicker td.active.disabled:hover.active, .datepicker td.active.disabled, .datepicker td.active:hover.disabled, .datepicker td.active.disabled.disabled, .datepicker td.active.disabled:hover.disabled, .datepicker td.active[disabled], .datepicker td.active:hover[disabled], .datepicker td.active.disabled[disabled], .datepicker td.active.disabled:hover[disabled] {
+  background: $contrast;
+}
+
+.daterangepicker .calendar-date, .daterangepicker .ranges li, .daterangepicker td, .daterangepicker th, .datepicker td span, .datepicker td, .datepicker th {
+  @include border-radius(0);
+}
+
+.bootstrap-datetimepicker-widget {
+  .timepicker {
+    padding-top: 5px;
+  }
+}
+
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-primary, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-primary {
+  background-color: $blue;
+
+  &:hover {
+    background-color: darken($blue, 10%);
+  }
+}
+
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-danger, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-danger {
+  background-color: $red;
+
+  &:hover {
+    background-color: darken($red, 10%);
+  }
+}
+
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-warning, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-warning {
+  background-color: $orange;
+
+  &:hover {
+    background-color: darken($orange, 10%);
+  }
+}
+
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-info, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-info {
+  background-color: $purple;
+
+  &:hover {
+    background-color: darken($purple, 10%);
+  }
+}
+
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success, .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success {
+  background-color: $green;
+
+  &:hover {
+    background-color: darken($green, 10%);
+  }
+}
+
+.bootstrap-switch.bootstrap-switch-focused {
+  border-color: #d0d0d0;
+  @include box-shadow(0 0 8px #dce1e5);
+}
+
+.bootstrap-switch, .bootstrap-switch .bootstrap-switch-handle-on, .bootstrap-switch .bootstrap-switch-handle-off {
+  border-radius: 0;
+}
+
+.slimScrollBar {
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+
+.slider-content ul ul li a:hover { background:$lightest; }
+
+.slider-content .title { background: $light; color: $dark;}
+.slider .slider-nav { background: $light;}
+.slider .slider-nav li a { color: $dark }
+.slider .slide-up, .slider .slide-down {background: $light;}
+
+.jqstooltip{
+  @include box-sizing(content-box);
+}
+
+#swipebox-bottom-bar, #swipebox-top-bar, #swipebox-overlay {
+  background: rgba(#000, 0.92);
+}
+
+.select2-container--bootstrap .select2-selection {
+  border-color: $inputBorder;
+}
+
+.select2-container--bootstrap.select2-container--focus .select2-selection, .select2-container--bootstrap.select2-container--open .select2-selection {
+  border-color: $inputFocusBorderColor;
+}
+
+.select2-container--bootstrap .select2-selection--multiple .select2-search--inline .select2-search__field {
+  box-shadow: none !important;
+}
+
+.select2-container--bootstrap .select2-selection--multiple .select2-selection__choice {
+  border-color: $inputBorder;
+  border-radius: 0;
+  background-color: lighten($inputBorder, 40%);
+}

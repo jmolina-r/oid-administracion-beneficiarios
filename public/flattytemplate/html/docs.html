@@ -1,0 +1,2443 @@
+<!DOCTYPE html>
+<!--
+  Name: Flatty - Flat Administration Template
+  Website: https://wrapbootstrap.com/theme/flatty-flat-administration-template-WB0P6NR1N?ref=metheus
+  Version: 2.4.1
+-->
+<html lang='en'>
+  <head>
+    <title>Documentation | Flatty - Flat Administration Template</title>
+    <meta content='admin template, administration template, bootstrap icons, bootstrap template, dashboard, flat design, flat template, bootstrap flat' name='keywords'>
+    <meta content='Flat administration template for Twitter Bootstrap. Twitter Bootstrap 3 template with Ruby on Rails support.' name='description'>
+    <meta content='BublinaStudio.com' name='author'>
+    <meta content='all' name='robots'>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!--[if IE]> <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'> <![endif]-->
+    <link href='assets/images/meta_icons/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+    <link href='assets/images/meta_icons/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'>
+    <!-- / START - page related stylesheets [optional] -->
+    
+    <!-- / END - page related stylesheets [optional] -->
+    <!-- / bootstrap [required] -->
+    <link href="assets/stylesheets/bootstrap/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- / theme file [required] -->
+    <link href="assets/stylesheets/light-theme.css" rel="stylesheet" type="text/css" media="all" id="color-settings-body-color" />
+    <!-- / coloring file [optional] (if you are going to use custom contrast color) -->
+    <link href="assets/stylesheets/theme-colors.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- / documentation stylesheets [not required!] -->
+    <link href="assets/stylesheets/docs.css" rel="stylesheet" type="text/css" media="all" />
+  </head>
+  <body class='documentation'>
+    <div id='wrapper'>
+      <div class='container'>
+        <div class='row'>
+          <nav id='doc-navigation'>
+            <a href="#introduction"><h5 class='doc-title'>Introduction</h5>
+            </a>
+            <a href="#getting-started"><h5 class='doc-title'>Getting started</h5>
+            </a>
+            <ul class='list-unstyled'>
+              <li><a href="#files">Files</a></li>
+              <li>
+                <a href="#html-templates">HTML Templates</a>
+                <ul>
+                  <li><a href="#html-template">Main HTML template</a></li>
+                  <li><a href="#body-structure">Body</a></li>
+                  <li><a href="#header-structure">Header</a></li>
+                  <li><a href="#navigation-structure">Navigation</a></li>
+                  <li>
+                    <a href="#content-structure">Content</a>
+                    <ul class='list-unstyled'>
+                      <li><a href="#title-and-breadcrumb">Title and breadcrumb</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <a href="#sass"><h5 class='doc-title'>Sass & Compass</h5>
+            </a>
+            <a href="#ror"><h5 class='doc-title'>Ruby on Rails</h5>
+            </a>
+            <a href="#forms"><h5 class='doc-title'>Forms</h5>
+            </a>
+            <ul class='list-unstyled'>
+              <li>
+                <a href="#form-styles">Styles</a>
+                <ul class='list-unstyled'>
+                  <li><a href="#example-form">Example form</a></li>
+                  <li><a href="#striped-form">Striped form</a></li>
+                  <li><a href="#vertical-form">Vertical form</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#components">Components</a>
+                <ul class='list-unstyled'>
+                  <li><a href="#select2">Select 2</a></li>
+                  <li><a href="#color-picker">Color picker</a></li>
+                  <li><a href="#daterange-picker">Daterange picker</a></li>
+                  <li><a href="#date-picker">Date picker</a></li>
+                  <li><a href="#time-picker">Time picker</a></li>
+                  <li><a href="#datetime-picker">Datetime picker</a></li>
+                  <li><a href="#masked-inputs">Masked inputs</a></li>
+                  <li><a href="#autosize-textarea">Autosize textarea</a></li>
+                  <li><a href="#char-counter">Char counter</a></li>
+                  <li><a href="#max-length">Max length</a></li>
+                  <li><a href="#switch-buttons">Switch buttons</a></li>
+                  <li><a href="#password-strength">Password strenght</a></li>
+                  <li><a href="#custom-file-input">Custom file input</a></li>
+                  <li><a href="#mention">Mention</a></li>
+                  <li><a href="#wysiwyg">WYSIWYG</a></li>
+                  <li><a href="#ckeditor">CKEditor</a></li>
+                </ul>
+              </li>
+              <li><a href="#validations">Validations</a></li>
+              <li><a href="#wizard">Wizard</a></li>
+            </ul>
+            <a href="#ui-features-and-widgets"><h5 class='doc-title'>UI Features & Widgets</h5>
+            </a>
+            <ul class='list-unstyled'>
+              <li>
+                <a href="#ui-features">UI Features</a>
+                <ul class='list-unstyled'>
+                  <li><a href="#colored-accordions">Colored accordions</a></li>
+                  <li><a href="#responsive-tabs">Responsive tabs</a></li>
+                  <li><a href="#centered-tabs">Centered tabs</a></li>
+                  <li><a href="#simple-tabs">Simple tabs</a></li>
+                  <li><a href="#custom-alerts-prompts">Custom alerts, prompts</a></li>
+                  <li><a href="#tooltips">Tooltips</a></li>
+                  <li><a href="#popovers">Popovers</a></li>
+                  <li><a href="#notifications">Notifications</a></li>
+                  <li><a href="#timeago">Timeago</a></li>
+                  <li><a href="#dragdrop-nestable-list">Drag & Drop nestable list</a></li>
+                  <li><a href="#hover-dropdown">Hover dropdown</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#widgets">Widgets</a>
+                <ul class='list-unstyled'>
+                  <li><a href="#quick-navigation">Quick navigation/link</a></li>
+                  <li><a href="#statistics">Statistics</a></li>
+                  <li><a href="#boxes">Boxes</a></li>
+                </ul>
+              </li>
+            </ul>
+            <a href="#components"><h5 class='doc-title'>Components</h5>
+            </a>
+            <ul class='list-unstyled'>
+              <li><a href="#address-book">Address book</a></li>
+              <li><a href="#chat">Chat</a></li>
+              <li><a href="#filetrees">Filetrees</a></li>
+              <li><a href="#fileupload">Fileupload</a></li>
+              <li><a href="#todolist">Todo list</a></li>
+              <li>
+                <a href="#tables">Tables</a>
+                <ul class='list-unstyled'>
+                  <li><a href="#tables-basic">Basic table</a></li>
+                  <li><a href="#tables-responsive">Responsive table</a></li>
+                  <li><a href="#tables-dynamic">Dynamic data table</a></li>
+                  <li><a href="#tables-dynamic-filter">Dynamic data table with filter</a></li>
+                </ul>
+              </li>
+              <li><a href="#calendar">Calendar</a></li>
+            </ul>
+            <a href="#layouts"><h5 class='doc-title'>Layouts</h5>
+            </a>
+            <ul class='list-unstyled'>
+              <li><a href="#closed-navigation">Closed navigation</a></li>
+              <li><a href="#fixed-header">Fixed header</a></li>
+              <li><a href="#fixed-navigation">Fixed navigation</a></li>
+              <li><a href="#fixed-header-and-navigation">Fixed header and navigation</a></li>
+            </ul>
+            <a href="#colors-and-themes"><h5 class='doc-title'>Colors & Themes</h5>
+            </a>
+            <ul class='list-unstyled'>
+              <li><a href="#content-theme">Content theme</a></li>
+              <li><a href="#contrast-color">Contrast color</a></li>
+            </ul>
+            <a href="#utilities"><h5 class='doc-title'>Utilities</h5>
+            </a>
+          </nav>
+          <div id='main-content'>
+            <section id='introduction'>
+              <h1 class='doc-title'>Flatty documentation</h1>
+              <div class='lead lead-md'>
+                Thank you for purchasing our theme. If you have any questions that are beyond the scope of this help file, please feel free to
+                <a class="text-contrast" href="https://wrapbootstrap.com/user/metheus">contact us</a>
+                <i class='fa fa-envelope-o'></i>.
+              </div>
+              <hr class='hr-normal'>
+              <h3>What do you need to know?</h3>
+              <p>Flatty is built on Twitter Bootstrap framework. If you are not familiar with Twitter Bootstrap, you should check it out because this documentation expects a basic knowledge of this framework.</p>
+              <p>
+                This documentation will not teach you HTML & CSS, it's just showcase of custom elements used in template. Elements from Bootstrap aren't described (documentation for these elements can be found
+                <a target="_blank" class="text-contrast" href="http://getbootstrap.com">here</a>).
+              </p>
+            </section>
+            <section id='getting-started'>
+              <h2 class='doc-title'>Getting started</h2>
+              <section id='files'>
+                <h4 class='doc-title'>Files</h4>
+                <div class='alert alert-info'>
+                  Loading other, than required files (plugins, jQuery UI, etc) is based on your needs.
+                </div>
+                <h4 class='doc-title'>What files do I need to load to get it working?</h4>
+                <p class='doc-help'>
+                  <strong>Stylesheets:</strong>
+                  <br>
+                  <ul>
+                    <li><a class="text-contrast" href="http://getbootstrap.com/">bootstrap/bootstrap.min.css</a></li>
+                    <li>[your-color]-theme.css</li>
+                    <li>theme-colors.css</li>
+                  </ul>
+                </p>
+                <p class='doc-help'>
+                  <strong>JavaScripts:</strong>
+                  <br>
+                  <ul>
+                    <li><a class="text-contrast" href="http://jquery.com/">jquery/jquery.min.js</a></li>
+                    <li><a class="text-contrast" href="http://getbootstrap.com/">bootstrap/bootstrap.min.js</a></li>
+                    <li>theme.js</li>
+                  </ul>
+                </p>
+                <h4 class='doc-title'>How to get plugin ABC get working?</h4>
+                <p class='doc-help'>
+                  If you want plugin
+                  <code>ABC</code>
+                  to get working, you must include all dependent files - check all folders
+                  <code>stylesheets/plugins/ABC/</code>,
+                  <code>javascripts/plugins/ABC/</code>,
+                  <code>images/plugins/ABC/</code>.
+                </p>
+              </section>
+              <section id='html-templates'>
+                <h3 class='doc-title'>HTML templates</h3>
+                <section id='html-template'>
+                  <h4 class='doc-title'>Main HTML template</h4>
+                  <script class='brush: html' type='syntaxhighlighter'>
+                    <!DOCTYPE html>
+                    <html>
+                      <head>
+                        <!-- this enables responsive features in browser -->
+                        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+                    
+                        <!-- your & Flatty stylesheets -->
+                    
+                        <!-- if you are going to support IE8 you must include these files -->
+                        <!--[if lt IE 9]>
+                          <script src='assets/javascripts/ie/html5shiv.js' type='text/javascript'></script>
+                          <script src='assets/javascripts/ie/respond.min.js' type='text/javascript'></script>
+                        <![endif]-->
+                      </head>
+                      <body>
+                        <!-- your content goes here -->
+                    
+                        <!-- your & Flatty javascripts -->
+                      </body>
+                    </html>
+                  </script>
+                </section>
+                <section id='body-structure'>
+                  <h4 class='doc-title'>Body</h4>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <body>
+                      <header>...</header>
+                      <div id="wrapper">
+                        <div id="main-nav-bg"></div>
+                        <nav id="main-nav">...</nav>
+                        <section id="content">...</section>
+                      </div>
+                    </body>
+                  </script>
+                </section>
+                <section id='header-structure'>
+                  <h4 class='doc-title'>Header</h4>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <header>
+                      <nav class="navbar navbar-default">
+                    
+                        <!-- application logo -->
+                        <a class="navbar-brand" href="index.html">
+                          <!-- application logo visible on large screens -->
+                          <img width="81" height="21" class="logo" alt="Flatty" src="/assets/images/logo.svg">
+                          <!-- application logo visible on small screens -->
+                          <img width="21" height="21" class="logo-xs" alt="Flatty" src="/assets/images/logo_xs.svg">
+                        </a>
+                    
+                        <!-- main nav toggler (show/hide) -->
+                        <a class="toggle-nav btn pull-left" href="#">
+                          <i class="fa fa-bars"></i>
+                        </a>
+                    
+                        <!-- dropdowns -->
+                        <ul class="nav">
+                    
+                          <!-- light dropdown -->
+                          <li class="dropdown light only-icon">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                              <!-- ... -->
+                            </a>
+                            <!-- ... -->
+                          </li>
+                    
+                          <!-- medium dropdown & widget -->
+                          <li class="dropdown medium only-icon widget">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                              <!-- ... -->
+                            </a>
+                            <!-- ... -->
+                          </li>
+                    
+                          <!-- dark dropdown & user menu -->
+                          <li class="dropdown dark user-menu">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                              <img width="23" height="23" alt="Mila Kunis" src="/assets/images/avatar.jpg">
+                              <span class="user-name">Mila Kunis</span>
+                              <b class="caret"></b>
+                            </a>
+                            <!-- ... -->
+                          </li>
+                        </ul>
+                    
+                        <!-- search form - hidden on phone -->
+                        <form action="search_results.html" class="navbar-form navbar-right hidden-xs" method="get">
+                          <button class="btn btn-link fa fa-search" name="button" type="submit"></button>
+                          <div class="form-group">
+                            <input value="" class="form-control" placeholder="Search..." autocomplete="off" id="q_header" name="q" type="text">
+                          </div>
+                        </form>
+                      </nav>
+                    </header>
+                  </script>
+                </section>
+                <section id='navigation-structure'>
+                  <h4 class='doc-title'>Navigation</h4>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <nav id="main-nav">
+                      <div class="navigation">
+                    
+                        <!-- search form visible on phone -->
+                        <div class="search">
+                          <form action="search_results.html" method="get">
+                            <div class="search-wrapper">
+                              <input value="" class="search-query form-control" placeholder="Search..." autocomplete="off" name="q" type="text">
+                              <button class="btn btn-link fa fa-search" name="button" type="submit"></button>
+                            </div>
+                          </form>
+                        </div>
+                    
+                        <!-- navigation items -->
+                        <ul class="nav nav-stacked">
+                    
+                          <!-- single navigation item -->
+                          <li class="active">
+                            <a href="index.html">
+                              <div class="icon"><i class="fa fa-tachometer"></i></div>
+                              <span>Dashboard</span>
+                            </a>
+                          </li>
+                    
+                          <!-- four level dropdown -->
+                          <li>
+                            <a class="dropdown-collapse" href="#">
+                              <div class="icon"><i class="fa fa-folder-open-o"></i></div>
+                              <span>Four level dropdown</span>
+                              <i class="icon-angle-down angle-down"></i>
+                            </a>
+                            <ul class="nav nav-stacked">
+                              <li>
+                                <a class="dropdown-collapse" href="#">
+                                  <div class="icon"><i class="fa fa-caret-right"></i></div>
+                                  <span>Second level</span>
+                                  <i class="fa fa-angle-down angle-down"></i>
+                                </a>
+                              </li>
+                              <li>
+                                <a class="dropdown-collapse" href="#">
+                                  <div class="icon"><i class="fa fa-caret-right"></i></div>
+                                  <span>Second level</span>
+                                  <i class="fa fa-angle-down angle-down"></i>
+                                </a>
+                                <ul class="nav nav-stacked">
+                                  <li>
+                                    <a class="dropdown-collapse" href="#">
+                                      <div class="icon"><i class="fa fa-caret-right"></i></div>
+                                      <span>Third level</span>
+                                      <i class="fa fa-angle-down angle-down"></i>
+                                    </a>
+                                    <ul class="nav nav-stacked">
+                                      <li>
+                                        <a href="#">
+                                          <div class="icon"><i class="fa fa-caret-right"></i></div>
+                                          <span>Fourth level</span>
+                                        </a>
+                                      </li>
+                                      <li>
+                                        <a href="#">
+                                          <div class="icon"><i class="fa fa-caret-right"></i></div>
+                                          <span>Another fourth level</span>
+                                        </a>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </nav>
+                  </script>
+                </section>
+                <section id='content-structure'>
+                  <h4 class='doc-title'>Content</h4>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <section id="content">
+                      <div class="container">
+                        <div class="row" id="content-wrapper">
+                          <div class="col-xs-12">
+                            <!-- content of pages goes here -->
+                          </div>
+                        </div>
+                    
+                        <!-- optional footer -->
+                        <footer id="footer">
+                          <div class="footer-wrapper">
+                            <div class="row">
+                              <div class="col-sm-6 text">
+                                Copyright © 2016 Your Project Name
+                              </div>
+                              <div class="col-sm-6 buttons">
+                                <a class="btn btn-link" href="http://www.bublinastudio.com/flatty">Preview</a>
+                                <a class="btn btn-link" href="https://wrapbootstrap.com/theme/flatty-flat-administration-template-WB0P6NR1N">Purchase</a>
+                              </div>
+                            </div>
+                          </div>
+                        </footer>
+                    
+                      </div>
+                    </section>
+                  </script>
+                  <section id='title-and-breadcrumb'>
+                    <h5 class='doc-title'>Title & breadcrumb</h5>
+                    <script class='brush: xml' type='syntaxhighlighter'>
+                      <section id="content">
+                        <div class="container">
+                          <div class="row" id="content-wrapper">
+                            <div class="col-xs-12">
+                      
+                              <!-- page header container -->
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <div class="page-header">
+                      
+                                    <!-- page title -->
+                                    <h1 class="pull-left">
+                                      <i class="fa fa-th"></i>
+                                      <span>Grid</span>
+                                    </h1>
+                      
+                                    <!-- breadcrumbs -->
+                                    <div class="pull-right">
+                                      <ul class="breadcrumb">
+                                        <li>
+                                          <a href="index.html">
+                                            <i class="fa fa-bar-chart-o"></i>
+                                          </a>
+                                        </li>
+                                        <li class="separator">
+                                          <i class="fa fa-angle-right"></i>
+                                        </li>
+                                        <li class="active">Grid</li>
+                                      </ul>
+                                    </div>
+                      
+                                  </div>
+                                </div>
+                      
+                                <!-- content of page -->
+                      
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    </script>
+                  </section>
+                </section>
+              </section>
+            </section>
+            <section id='sass'>
+              <h2 class='doc-title'>Sass & Compass</h2>
+              <p class='doc-help'>
+                If you are not familiar with Compass or SASS, check these sites:
+              </p>
+              <div class='row'>
+                <div class='col-sm-6'>
+                  <a href="http://compass-style.org/"><div class='well well-sm text-center'>
+                    compass-style.org
+                  </div>
+                  </a>
+                </div>
+                <div class='col-sm-6'>
+                  <a href="http://sass-lang.com/"><div class='well well-sm text-center'>
+                    sass-lang.com
+                  </div>
+                  </a>
+                </div>
+              </div>
+              <h3 class='doc-title'>How can I benefit from Compass & SASS?</h3>
+              <p class='doc-help'>
+                Flatty is built using SASS, which is an CSS extension with variables, mixins, selector inheritance, etc.
+                Most of custom work in template can be overriden by usage of variables. All assets in stylesheets are linked with
+                usage of url/path helpers from Compass, so they can be changed very easily.
+                <div class='alert alert-info'>We recommends compiling stylesheets with Compass - it's easy and awesome!</div>
+              </p>
+              <h3 class='doc-title'>How to install Compass?</h3>
+              <p class='doc-help'>
+                <strong>Open your terminal and type:</strong>
+                <script class='brush: js' type='syntaxhighlighter'>
+                  gem install compass
+                </script>
+                <div class='alert alert-info'>
+                  Compass depends on RubyGems, so you'll need to have Ruby on your machine. If you're on Windows, you can run the
+                  <a class="alert-link" href="http://rubyinstaller.org/">Ruby Installer</a>.
+                  On Linux,
+                  <a class="alert-link" href="https://github.com/joshfng/railsready">Rails Ready</a>,
+                  on OS X you can use
+                  <a class="alert-link" href="https://rvm.io/">RVM</a>.
+                </div>
+              </p>
+              <h3 class='doc-title'>How to create my custom build?</h3>
+              <p class='doc-help'>
+                Create file, for example
+                <code>my_build_name.scss</code>
+                in
+                <code>sass-compass/sass</code>
+                folder.
+                <br>
+                <br>
+                You'll have to decide what parts of Flatty template are you going to use, for example:
+                <br>
+                <br>
+                <strong>Flatty + Bootstrap (required files only)</strong>
+                <script class='brush: js' type='syntaxhighlighter'>
+                  @import "theme-colors";
+                  @import "bootstrap/bootstrap";
+                  @import "light-theme";
+                </script>
+                <br>
+                <br>
+                <strong>Flatty + Bootstrap + some plugins + jQuery UI</strong>
+                <script class='brush: js' type='syntaxhighlighter'>
+                  @import "theme-colors";
+                  @import "bootstrap/bootstrap";
+                  @import "plugins/bootstrap_colorpicker/bootstrap-colorpicker";
+                  @import "plugins/select2/select2";
+                  @import "jquery/jquery_ui";
+                  @import "light-theme";
+                </script>
+                <br>
+                <br>
+                <strong>All Flatty stylesheets with custom contrast color</strong>
+                <script class='brush: js' type='syntaxhighlighter'>
+                  $contrast: violet;
+                  @import "theme-colors";
+                  @import "bootstrap/bootstrap";
+                  @import "plugins/plugins";
+                  @import "jquery/jquery_ui";
+                  @import "light-theme";
+                </script>
+              </p>
+              <h3 class='doc-title'>How to compile my custom build?</h3>
+              <p class='doc-help'>
+                It's pretty simple - just open your terminal and go to
+                <code>sass-compass</code>
+                folder and then type this command:
+              </p>
+              <script class='brush: js' type='syntaxhighlighter'>
+                compass compile sass/my_build_name.scss
+              </script>
+              <br>
+              Compass will compile
+              <code>my_build_name.scss</code>
+              into CSS file -
+              <code>sass-compass/stylesheets/my_build_name.css</code>
+              .
+              <h3 class='doc-title'>How to change assets paths?</h3>
+              <p class='doc-help'>
+                There is a configuration file
+                <code>sass-compass/config.rb</code>
+                which contains basic settings. Complete list of Compass settings can be found
+                <a href="http://compass-style.org/help/tutorials/configuration-reference/">here</a>.
+              </p>
+              <p class='doc-help'>
+                This
+                <code>config.rb</code>
+                will compile paths to this:
+                <code>url(../assets/images/example.png)</code>
+              </p>
+              <script class='brush: js' type='syntaxhighlighter'>
+                images_dir = 'assets/images'
+                fonts_dir = 'assets/fonts'
+                relative_assets = true
+              </script>
+              <br>
+              <p class='doc-help'>
+                This
+                <code>config.rb</code>
+                will compile paths to this:
+                <code>url(/assets/images/example.png);</code>
+              </p>
+              <script class='brush: js' type='syntaxhighlighter'>
+                images_dir = 'assets/images'
+                fonts_dir = 'assets/fonts'
+                relative_assets = false
+              </script>
+              <br>
+              <p class='doc-help'>
+                This
+                <code>config.rb</code>
+                will compile paths to this:
+                <code>url(../awesome_compass_setting/assets/images/example.png);</code>
+              </p>
+              <script class='brush: js' type='syntaxhighlighter'>
+                images_dir = 'awesome_compass_setting/assets/images'
+                fonts_dir = 'awesome_compass_setting/assets/fonts'
+                relative_assets = true
+              </script>
+              <h3 class='doc-title'>How to change Flatty variables?</h3>
+              <p class='doc-help'>
+                All variables can be found in
+                <code>theme/_variables.scss</code>
+                file.
+              </p>
+              <p class='doc-help'>
+                In your custom file
+                <code>my_build_name.scss</code>
+                override some variables.
+              </p>
+              <script class='brush: js' type='syntaxhighlighter'>
+                $contrast: pink;
+                $navBackground: black;
+                @import "light-theme";
+              </script>
+              <br>
+              Contrast color will change to pink and nav background will be black.
+            </section>
+            <section id='ror'>
+              <h2 class='doc-title'>Ruby on Rails</h2>
+              <p class='doc-help'>Flatty is Ruby on Rails ready! So implementation couldn't be easier :-)</p>
+              <h3 class='doc-title'>How to install Flatty to my RoR application?</h3>
+              <ol class='list-padded'>
+                <li>
+                  Just go to
+                  <code>ruby_on_rails</code>
+                  folder and copy
+                  <code>assets</code>
+                  folder to
+                  <code>your_rails_app/app</code>
+                </li>
+                <li>
+                  Copy
+                  <code>application.js</code>
+                  from
+                  <code>ruby_on_rails/pipeline</code>
+                  to
+                  <code>your_rails_app/app/assets/javascripts</code>
+                </li>
+                <li>
+                  Copy
+                  <code>application.scss</code>
+                  from
+                  <code>ruby_on_rails/pipeline</code>
+                  to
+                  <code>your_rails_app/app/assets/stylesheets</code>
+                </li>
+                <li>
+                  Add
+                  <code>compass-rails</code>
+                  gem to your Gemfile.
+                  <code>gem "compass-rails", "~> 3.0.2"</code>
+                </li>
+                <li>You're done!</li>
+              </ol>
+              <h3 class='doc-title'>Custom application.js & application.scss</h3>
+              <p class='doc-help'>
+                Flatty is delivered with
+                <code>application.js</code>
+                &
+                <code>application.scss</code>
+                files. These files are loading all Flatty files (these asset pipeline files are just examples). So you can create your own build as described above in
+                <a href="#sass">Sass & Compass section</a>.
+              </p>
+              <p class='doc-help'>
+                But you probably know that stuff :-)
+              </p>
+            </section>
+            <section id='forms'>
+              <h2 class='doc-title'>Forms</h2>
+              <section id='form-styles'>
+                <h3 class='doc-title'>Form styles</h3>
+                <section id='example-form'>
+                  <h4 class='doc-title'>Example form</h4>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <form class="form">
+                      <!-- first part -->
+                      <fieldset>
+                        <div class="col-sm-4">
+                          <div class="box">
+                            <div class="lead">
+                              <!-- form part title -->
+                            </div>
+                            <small class="text-muted">
+                              <!-- form part description -->
+                            </small>
+                          </div>
+                        </div>
+                        <div class="col-sm-7 col-sm-offset-1">
+                          <div class="form-group">
+                            <!-- form part controls (inputs, selects...) -->
+                          </div>
+                        </div>
+                      </fieldset>
+                    
+                      <!-- parts divider -->
+                      <hr class="hr-normal">
+                    
+                      <!-- second part -->
+                      <fieldset>
+                        <!-- content -->
+                      </fieldset>
+                    
+                      <div class="form-actions">
+                        <div class="row">
+                          <div class="col-sm-7 col-sm-offset-5">
+                            <!-- form actions (submit, destroy...) -->
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </script>
+                </section>
+                <section id='striped-form'>
+                  <h4 class='doc-title'>Striped form</h4>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <form class="form form-horizontal form-striped">
+                      <div class="form-group">
+                        <label class="col-md-3 control-label">
+                          <!-- label -->
+                        </label>
+                        <div class="col-md-9">
+                          <!-- form controls (inputs, selects...) -->
+                        </div>
+                      </div>
+                    
+                      <div class="form-actions">
+                        <div class="row">
+                          <div class="col-md-9 col-md-offset-3">
+                            <!-- form actions -->
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </script>
+                </section>
+                <section id='vertical-form'>
+                  <h4 class='doc-title'>Vertical form</h4>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <form class="form">
+                      <div class="form-group">
+                        <label><!-- label --></label>
+                        <!-- form controls (inputs, selects...) -->
+                      </div>
+                      <div class="form-actions form-actions-padding">
+                        <!-- form actions -->
+                      </div>
+                    </form>
+                  </script>
+                </section>
+              </section>
+              <section id='form-components'>
+                <h3 class='doc-title'>Components</h3>
+                <section id='select2'>
+                  <h4 class='doc-title'>
+                    Select 2 (Simple and multiple)
+                    <small><a class="text-contrast" href="http://ivaynberg.github.io/select2/">Documentation</a></small>
+                  </h4>
+                  <p>
+                    Select2 plugin transforms classic selects to more user friendly. Just add
+                    <code>.select2</code>
+                    class to select (simple or multiple).
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <select class="select2"></select>
+                  </script>
+                  <p>You can easily add placeholder to multiple select.</p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <select class="select2" multiple="" placeholder="Try typing some USA country name"></select>
+                  </script>
+                </section>
+                <section id='color-picker'>
+                  <h4 class='doc-title'>
+                    Color picker (RGB)
+                    <small><a class="text-contrast" href="http://www.eyecon.ro/bootstrap-colorpicker/">Documentation</a></small>
+                  </h4>
+                  <p>
+                    Just add
+                    <code>.colorpicker-rgb</code>
+                    class to text input. Color picker will return color in RGB.
+                  </p>
+                  <p>
+                    You can also use
+                    <code>.colorpicker-rgb-horizontal</code>
+                    class to make picker horizontal.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <input class='colorpicker-rgb' type='text'>
+                  </script>
+                  <h4 class='doc-title'>
+                    Color picker (HEX)
+                    <small><a class="text-contrast" href="http://www.eyecon.ro/bootstrap-colorpicker/">Documentation</a></small>
+                  </h4>
+                  <p>
+                    Just add
+                    <code>.colorpicker-hex</code>
+                    class to text input. Color picker will return color in HEX.
+                  </p>
+                  <p>
+                    You can also use
+                    <code>.colorpicker-hex-horizontal</code>
+                    class to make picker horizontal.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <input class='colorpicker-hex' type='text'>
+                  </script>
+                  <h4 class='doc-title'>
+                    Palette color picker
+                    <small><a class="text-contrast" href="http://www.eyecon.ro/bootstrap-colorpicker/">Documentation</a></small>
+                  </h4>
+                  <div class='alert alert-info'>This feature needs your JavaScript initialization.</div>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <input class="form-control" id="demo-palette-colorpicker" placeholder="Pick a color" type="text">
+                  </script>
+                  <br>
+                  <script class='brush: js' type='syntaxhighlighter'>
+                    $('#demo-palette-colorpicker').colorpicker({
+                      colorSelectors: {
+                        '#777777': '#777777',
+                        '#337ab7': '#337ab7',
+                        '#5cb85c': '#5cb85c',
+                        '#5bc0de': '#5bc0de',
+                        '#f0ad4e': '#f0ad4e',
+                        '#d9534f': '#d9534f'
+                      }
+                    });
+                  </script>
+                </section>
+                <section id='daterange-picker'>
+                  <h4 class='doc-title'>
+                    Daterange picker
+                    <small><a class="text-contrast" href="https://github.com/dangrossman/bootstrap-daterangepicker">Documentation</a></small>
+                  </h4>
+                  <div class='alert alert-info'>This feature needs your JavaScript initialization.</div>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class="input-group">
+                      <input class="form-control daterange" placeholder="select daterange" type="text">
+                      <span class="input-group-addon" id="daterange2">
+                        <i class="fa fa-calendar"></i>
+                      </span>
+                    </div>
+                  </script>
+                  <br>
+                  <script class='brush: js' type='syntaxhighlighter'>
+                    $("#daterange2").daterangepicker({
+                      format: "MM/DD/YYYY"
+                    }, function(start, end) {
+                      return $("#daterange2").parent().find("input").first().val(start.format("MMMM D, YYYY") + " - " + end.format("MMMM D, YYYY"));
+                    });
+                  </script>
+                </section>
+                <section id='date-picker'>
+                  <h4 class='doc-title'>
+                    Date picker
+                    <small><a class="text-contrast" href="http://eonasdan.github.io/bootstrap-datetimepicker/">Documentation</a></small>
+                  </h4>
+                  <p>
+                    Just add
+                    <code>.datepicker</code>
+                    class. You can modify the date format using
+                    <code>data-format</code>
+                    attribute.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class='datepicker-input input-group' id='datepicker'>
+                      <input class='form-control' data-format='YYYY-MM-DD' placeholder='Select datepicker' type='text'>
+                      <span class='input-group-addon'>
+                        <span class='fa fa-calendar'></span>
+                      </span>
+                    </div>
+                  </script>
+                </section>
+                <section id='time-picker'>
+                  <h4 class='doc-title'>
+                    Time picker
+                    <small><a class="text-contrast" href="http://eonasdan.github.io/bootstrap-datetimepicker/">Documentation</a></small>
+                  </h4>
+                  <p>
+                    Just add
+                    <code>.timepicker</code>
+                    class. You can modify the date format using
+                    <code>data-format</code>
+                    attribute.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class='timepicker-input input-group' id='timepicker'>
+                      <input class='form-control' data-format='HH:mm' placeholder='Select timepicker' type='text'>
+                      <span class='input-group-addon'>
+                        <span class='fa fa-clock-o'></span>
+                      </span>
+                    </div>
+                  </script>
+                </section>
+                <section id='datetime-picker'>
+                  <h4 class='doc-title'>
+                    Datetime picker
+                    <small><a class="text-contrast" href="http://eonasdan.github.io/bootstrap-datetimepicker/">Documentation</a></small>
+                  </h4>
+                  <p>
+                    Just add
+                    <code>.datetimepicker</code>
+                    class. You can modify the date format using
+                    <code>data-format</code>
+                    attribute.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class='datetimepicker-input input-group' id='datetimepicker'>
+                      <input class='form-control' data-format='YYYY-MM-DD HH:mm' placeholder='Select datetimepicker' type='text'>
+                      <span class='input-group-addon'>
+                        <span class='fa fa-calendar'></span>
+                      </span>
+                    </div>
+                  </script>
+                </section>
+                <section id='masked-inputs'>
+                  <h4 class='doc-title'>
+                    Masked inputs
+                    <small><a class="text-contrast" href="http://digitalbush.com/projects/masked-input-plugin/">Documentation</a></small>
+                  </h4>
+                  <p>
+                    Masked inputs are working via
+                    <code>data</code>
+                    attributes on inputs. Character
+                    <code>a</code>
+                    can be any alpha char. Number
+                    <code>9</code>
+                    can be any numeric char.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <input data-mask="a*-999-a999" placeholder="a*-999-a999" type="text">
+                  </script>
+                </section>
+                <section id='autosize-textarea'>
+                  <h4 class='doc-title'>
+                    Autosize textarea
+                    <small><a class="text-contrast" href="http://www.jacklmoore.com/autosize/">Documentation</a></small>
+                  </h4>
+                  <p>
+                    Just add
+                    <code>.autosize</code>
+                    class to textarea.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <textarea class="autosize"></textarea>
+                  </script>
+                </section>
+                <section id='char-counter'>
+                  <h4 class='doc-title'>
+                    Char counter
+                    <small><a class="text-contrast" href="http://cssglobe.com/jquery-plugin-simplest-twitterlike-dynamic-character-count-for-textareas/">Documentation</a></small>
+                  </h4>
+                  <p>
+                    Just add
+                    <code>.char-counter</code>
+                    class to textarea. Allowed an warning values are passed via
+                    <code>data</code>
+                    attributes.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <textarea class='char-counter' data-char-allowed='20' data-char-warning='10'></textarea>
+                  </script>
+                </section>
+                <section id='max-length'>
+                  <h4 class='doc-title'>
+                    Max length
+                    <small><a class="text-contrast" href="http://mimo84.github.io/bootstrap-maxlength/">Documentation</a></small>
+                  </h4>
+                  <p>
+                    Just add
+                    <code>.char-max-length</code>
+                    class to textarea. Lenght limit is passed via
+                    <code>maxlength</code>
+                    attribute.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <textarea class='char-max-length' maxlength='5'></textarea>
+                  </script>
+                </section>
+                <section id='switch-buttons'>
+                  <h4 class='doc-title'>
+                    Switch buttons
+                    <small><a class="text-contrast" href="http://www.bootstrap-switch.org/options.html">Documentation</a></small>
+                  </h4>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <input class='make-switch' data-off-color='danger' data-off-text='<i class="fa fa-circle-o"></i>' data-on-color='success' data-on-text='<i class="fa fa-check"></i>' type='checkbox'>
+                  </script>
+                </section>
+                <section id='password-strength'>
+                  <h4 class='doc-title'>
+                    Password strength
+                    <small><a class="text-contrast" href="https://cdn.rawgit.com/ablanco/jquery.pwstrength.bootstrap/master/examples/index.html">Documentation</a></small>
+                  </h4>
+                  <p>
+                    Just add
+                    <code>.pwstrength</code>
+                    class to password field. And create
+                    <code>div</code>
+                    element where you want to display password strength progress bar.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <input class='pwstrength form-control' placeholder='Your top secret password' type='password'>
+                    <div class='pwstrength-viewport-progress'></div>
+                  </script>
+                </section>
+                <section id='custom-file-input'>
+                  <h4 class='doc-title'>
+                    Custom file input
+                    <small><a class="text-contrast" href="http://plugins.krajee.com/file-input">Documentation</a></small>
+                  </h4>
+                  <p>
+                    Just add
+                    <code>data-file-input</code>
+                    attribute to your file input tag and it will be converted to user friendly button.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <input type='file' data-file-input data-show-preview="false">
+                  </script>
+                </section>
+                <section id='mention'>
+                  <h4 class='doc-title'>
+                    Mention
+                    <small><a class="text-contrast" href="http://jakiestfu.github.io/Mention.js/">Documentation</a></small>
+                  </h4>
+                  <div class='alert alert-info'>This feature needs your JavaScript initialization.</div>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <input class="mention" type="text">
+                  </script>
+                  <br>
+                  <script class='brush: js' type='syntaxhighlighter'>
+                    $(".mention").mention({
+                      users: [
+                        {
+                            name: "Lindsay Made",
+                            username: "LindsayM",
+                            image: "http://placekitten.com/25/25"
+                        }, {
+                            name: "Loud Mouth Burrito",
+                            username: "Loudmouthfoods",
+                            image: "http://placekitten.com/21/20"
+                        }
+                      ]
+                    });
+                  </script>
+                </section>
+                <section id='wysiwyg'>
+                  <h4 class='doc-title'>
+                    WYSIWYG
+                    <small><a class="text-contrast" href="http://wysihtml.com/">Documentation</a></small>
+                  </h4>
+                  <div class='alert alert-info'>This feature needs your JavaScript initialization. Don't forget to take a look at plugin documentation because it's hight customisable.</div>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div id='wysiwyg2-toolbar' style='display: none;'>
+                      <div class='row form-group'>
+                        <div class='col-sm-12'>
+                          <div class='btn-group'>
+                            <a class='btn' data-wysihtml-command='bold'>
+                              <i class='fa fa-bold'></i>
+                            </a>
+                            <a class='btn' data-wysihtml-command='italic'>
+                              <i class='fa fa-italic'></i>
+                            </a>
+                          </div>
+                          <div class='btn-group'>
+                            <a class='btn' data-wysihtml-command-value='red' data-wysihtml-command='foreColor'>
+                              <i class='fa fa-square' style='color: red;'></i>
+                            </a>
+                            <a class='btn' data-wysihtml-command-value='green' data-wysihtml-command='foreColor'>
+                              <i class='fa fa-square' style='color: green;'></i>
+                            </a>
+                            <a class='btn' data-wysihtml-command-value='blue' data-wysihtml-command='foreColor'>
+                              <i class='fa fa-square' style='color: blue;'></i>
+                            </a>
+                          </div>
+                          <span style='position:relative;'>
+                            <a class='btn' data-wysihtml-command='createLink'>
+                              <i class='fa fa-link'></i>
+                              Link
+                            </a>
+                            <div data-wysihtml-dialog='createLink' style='display: none; position: absolute; left: 0px; top: 30px; width: 300px;'>
+                              <div class='box'>
+                                <div class='box-content'>
+                                  <div class='input-group'>
+                                    <input class='form-control' data-wysihtml-dialog-field='href' value='http://'>
+                                    <div class='input-group-btn'>
+                                      <a class='btn btn-success' data-wysihtml-dialog-action='save'>OK</a>
+                                      <a class='btn btn-link' data-wysihtml-dialog-action='cancel'>Cancel</a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </script>
+                  <br>
+                  <script class='brush: js' type='syntaxhighlighter'>
+                    var editor = new wysihtml.Editor("wysiwyg2", { // id of textarea element
+                      toolbar:      "wysiwyg2-toolbar", // id of toolbar element
+                      parserRules:  wysihtmlParserRules // defined in parser rules set
+                    });
+                  </script>
+                </section>
+                <section id='ckeditor'>
+                  <h4 class='doc-title'>
+                    CKEditor
+                    <small><a class="text-contrast" href="http://ckeditor.com/">Documentation</a></small>
+                  </h4>
+                  <p>
+                    Just add
+                    <code>.ckeditor</code>
+                    class to textarea.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <textarea class="ckeditor" rows="10"><h1>Hello from Flatty</h1></textarea>
+                  </script>
+                </section>
+              </section>
+              <section id='validations'>
+                <h3 class='doc-title'>
+                  Validations
+                  <small><a class="text-contrast" href="https://github.com/jzaefferer/jquery-validation">Documentation</a></small>
+                </h3>
+                <p>
+                  Just add
+                  <code>.validate-form</code>
+                  to form tag. Validations are working via
+                  <code>data</code>
+                  attributes.
+                </p>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <form class="form validate-form" novalidate="novalidate"></form>
+                </script>
+                <h5 class='doc-title'>Min length and presence validator</h5>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <input data-rule-minlength='2' data-rule-required='true' type='text'>
+                </script>
+                <h5 class='doc-title'>Email an presence validator</h5>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <input data-rule-email='true' data-rule-required='true' type='text'>
+                </script>
+              </section>
+              <section id='wizard'>
+                <h3 class='doc-title'>
+                  Wizard
+                  <small><a class="text-contrast" href="http://exacttarget.github.io/fuelux/#wizard">Documentation</a></small>
+                </h3>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  
+                   <div class='wizard' data-initialize='wizard' id='myWizard'>
+                      <div class='steps-container'>
+                         <ul class='steps'>
+                            <!-- wizard step -->
+                            <li class='active' data-step='1'>
+                               <span class='step'>1</span>
+                            </li>
+                         </ul>
+                      </div>
+                      <div class='actions'>
+                         <!-- wizard actions (prev, next) -->
+                         <button class='btn btn-xs btn-prev'>
+                           <i class='fa fa-arrow-left'></i>
+                           Prev
+                         </button>
+                         <button class='btn btn-xs btn-success btn-next' data-last='Finish'>
+                           Next
+                           <i class='fa fa-arrow-right'></i>
+                         </button>
+                      </div>
+                      <hr class='hr-normal'>
+                      <form class="form" method="post" action="#" accept-charset="UTF-8">
+                         <div class='step-content'>
+                            <!-- wizard step1 content -->
+                            <div class='step-pane active' data-step='1'>
+                              <!-- form controls (inputs, selects...) -->
+                               <div class='form-group'>
+                                  <label class='control-label' for='inputText'>Text field</label>
+                                  <div class='controls'>
+                                     <input class='form-control' id='inputText' placeholder='Text field' type='text'>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </form>
+                   </div>
+                </script>
+              </section>
+            </section>
+            <section id='ui-features-and-widgets'>
+              <h2 class='doc-title'>UI Features & Widgets</h2>
+              <section id='ui-features'>
+                <h3 class='doc-title'>UI Features</h3>
+                <section id='colored-accordions'>
+                  <h4 class='doc-title'>
+                    Colored accordions
+                  </h4>
+                  <p>
+                    Just add
+                    <code>.accorion-blue (or any other defined color)</code>
+                    to accordion.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class="accordion accordion-blue panel-group" id="accordion1" style="margin-bottom:0;">
+                      <!-- accordion body -->
+                    </div>
+                  </script>
+                </section>
+                <section id='responsive-tabs'>
+                  <h4 class='doc-title'>
+                    Responsive tabs
+                    <small><a class="text-contrast" href="http://www.eyecon.ro/bootstrap-tabdrop/">Documentation</a></small>
+                  </h4>
+                  <p>
+                    Just add
+                    <code>.nav-responsive</code>
+                    class to
+                    <code>.nav-tabs</code>.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class='tabbable'>
+                    
+                      <!-- responsive tabs definition -->
+                      <ul class='nav nav-responsive nav-tabs'>
+                    
+                        <!-- tab element -->
+                        <li class='active'>
+                          <a data-toggle='tab' href='#retab1'>
+                            Section 1
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </script>
+                </section>
+                <section id='centered-tabs'>
+                  <h4 class='doc-title'>
+                    Centered tabs
+                  </h4>
+                  <p>
+                    Just add
+                    <code>.nav-tabs-centered</code>
+                    class to
+                    <code>.nav-tabs</code>.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class='tabbable'>
+                    
+                      <ul class='nav nav-tabs nav-tabs-centered'>
+                    
+                        <!-- tab element -->
+                        <li class='active'>
+                          <a data-toggle='tab' href='#retab1'>
+                            Section 1
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </script>
+                </section>
+                <section id='simple-tabs'>
+                  <h4 class='doc-title'>
+                    Simple tabs
+                  </h4>
+                  <p>
+                    Just add
+                    <code>.nav-tabs-simple</code>
+                    class to
+                    <code>.nav-tabs</code>.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class='tabbable'>
+                    
+                      <ul class='nav nav-tabs nav-tabs-simple'>
+                    
+                        <!-- tab element -->
+                        <li class='active'>
+                    
+                          <!-- color of border can be customized via theme classes like green-border, orange-border...-->
+                          <a class='green-border' data-toggle='tab' href='#tabsimple1'>
+                            Section 1
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </script>
+                </section>
+                <section id='custom-alerts-prompts'>
+                  <h4 class='doc-title'>
+                    Custom alerts, prompts...
+                    <small><a class="text-contrast" href="http://bootboxjs.com/">Documentation</a></small>
+                  </h4>
+                  <p>
+                    <div class='alert alert-info'>This feature needs your JavaScript initialization.</div>
+                  </p>
+                  <h5 class='doc-title'>Alert</h5>
+                  <script class='brush: js' type='syntaxhighlighter'>
+                    bootbox.alert({
+                      message: "I am alert!",
+                    });
+                  </script>
+                  <h5 class='doc-title'>Confirm</h5>
+                  <script class='brush: js' type='syntaxhighlighter'>
+                    bootbox.confirm("Are you sure?", function(result) {
+                      console.log("Confirm result: "+result);
+                    });
+                  </script>
+                  <h5 class='doc-title'>Prompt</h5>
+                  <script class='brush: js' type='syntaxhighlighter'>
+                    bootbox.prompt("What is your name?", function(result) {
+                      if (result === null) {
+                        console.log("Prompt dismissed");
+                      } else {
+                        console.log(result);
+                      }
+                    });
+                  </script>
+                </section>
+                <section id='tooltips'>
+                  <h4 class='doc-title'>
+                    Tooltips
+                  </h4>
+                  <p>
+                    Just add
+                    <code>.has-tooltip</code>
+                    class to some element. Position of tooltip can be customized via
+                    <code>data-placement</code>
+                    attribute. Content of tooltip goes to
+                    <code>title</code>
+                    attribute.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class='has-tooltip' data-placement='top' title='Top'>Top</div>
+                    <div class='has-tooltip' data-placement='right' title='Right'>Right</div>
+                    <div class='has-tooltip' data-placement='bottom' title='Bottom'>Bottom</div>
+                    <div class='has-tooltip' data-placement='left' title='Left'>Left</div>
+                  </script>
+                </section>
+                <section id='popovers'>
+                  <h4 class='doc-title'>
+                    Popovers
+                  </h4>
+                  <p>
+                    Just add
+                    <code>.has-popover</code>
+                    class to some element. Position of popover can be customized via
+                    <code>data-placement</code>
+                    attribute. Content of popover goes to
+                    <code>data-content</code>
+                    attribute and header of popover goes to
+                    <code>title</code>
+                    attribute.
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class='has-popover' data-content='Qui quia voluptatem dolore earum provident dolores cumque velit nostrum impedit.' data-placement='top' data-title='Top'>Top</div>
+                    <div class='has-popover' data-content='Harum dolorem molestias nisi rem est maiores delectus qui aliquid voluptas.' data-placement='right' data-title='Right'>Right</div>
+                    <div class='has-popover' data-content='Ut suscipit id ut eos voluptatem culpa sint nam sed assumenda accusamus fugiat vel ea.' data-placement='bottom' data-title='Bottom'>Bottom</div>
+                    <div class='has-popover' data-content='Quae minus voluptate modi id sunt velit ipsam et saepe vero odit voluptatem et.' data-placement='left' data-title='left'>Left</div>
+                  </script>
+                </section>
+                <section id='notifications'>
+                  <h4 class='doc-title'>
+                    Notifications
+                    <small><a class="text-contrast" href="http://bootstrap-notify.remabledesigns.com/">Documentation</a></small>
+                  </h4>
+                  <p>
+                    <div class='alert alert-info'>This feature needs your JavaScript initialization.</div>
+                  </p>
+                  <script class='brush: js' type='syntaxhighlighter'>
+                    $("#notification1").on("click", function(e) {
+                      $.notify({
+                        icon: 'fa fa-exclamation-circle',
+                      	message: 'This message will dissapear after a while...'
+                      },{
+                      	type: 'danger'
+                      });
+                      return false;
+                    });
+                  </script>
+                  <h5 class='doc-title'>Waits for close</h5>
+                  <script class='brush: js' type='syntaxhighlighter'>
+                    $("#notification2").on("click", function(e) {
+                      $.notify({
+                        icon: 'fa fa-info-circle',
+                        message: 'You can use various classes to style messages!'
+                      },{
+                        type: 'info',
+                        delay: 0
+                      });
+                      return false;
+                    });
+                  </script>
+                </section>
+                <section id='timeago'>
+                  <h4 class='doc-title'>
+                    Timeago
+                    <small><a class="text-contrast" href="http://timeago.yarp.com/">Documentation</a></small>
+                  </h4>
+                  <p>
+                    Just add
+                    <code>.timeago</code>
+                    class to element like this:
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <span class='timeago has-tooltip' data-placement='top' title='May 16, 2013 21:35'>May 16, 2013 21:35</span>
+                  </script>
+                </section>
+                <section id='dragdrop-nestable-list'>
+                  <h4 class='doc-title'>
+                    Drag & Drop nestable list
+                    <small><a class="text-contrast" href="https://github.com/dbushell/Nestable">Documentation</a></small>
+                  </h4>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class='dd'>
+                      <ol class='dd-list'>
+                    
+                        <!-- item -->
+                        <li class='dd-item' data-id='1'>
+                          <div class='dd-handle'>
+                            <!-- item content -->
+                          </div>
+                        </li>
+                    
+                        <li class='dd-item' data-id='2'>
+                          <div class='dd-handle'>
+                            <!-- item content-->
+                          </div>
+                    
+                          <!-- second nested level -->
+                          <ol class='dd-list'>
+                            <li class='dd-item' data-id='3'>
+                              <div class='dd-handle'>
+                                <!-- item content -->
+                              </div>
+                    
+                              <!-- third nested level -->
+                              <ol class='dd-list'>
+                                <li class='dd-item' data-id='4'>
+                                  <div class='dd-handle'>
+                                    <!-- item content -->
+                                  </div>
+                                </li>
+                              </ol>
+                            </li>
+                          </ol>
+                        </li>
+                      </ol>
+                    </div>
+                  </script>
+                </section>
+                <section id='hover-dropdown'>
+                  <h4 class='doc-title'>
+                    Hover dropdown
+                    <small><a class="text-contrast" href="https://github.com/CWSpear/bootstrap-hover-dropdown">Documentation</a></small>
+                  </h4>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class='btn-group'>
+                        <button class='btn dropdown-toggle' data-delay='100' data-hover='dropdown' data-toggle='dropdown'>
+                            Opens on hover
+                            <span class='caret'></span>
+                        </button>
+                        <ul class='dropdown-menu'>
+                            <li>
+                                <a href='#'>Action</a>
+                            </li>
+                        </ul>
+                    </div>
+                  </script>
+                </section>
+              </section>
+              <section id='widgets'>
+                <h3 class='doc-title'>Widgets</h3>
+                <section id='quick-navigation'>
+                  <h4 class='doc-title'>
+                    Quick navigation/link
+                  </h4>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <!-- background of quick link can be customized by red-background, orange-background... -->
+                        <div class="box-quick-link blue-background">
+                          <a href="#">
+                            <!-- header of quick link -->
+                            <div class="header">
+                              <!-- quick link header content -->
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </script>
+                  <h5 class='doc-title'>With content</h5>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <!-- width can be controlled by grid classes -->
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <div class="box-quick-link blue-background">
+                          <a href="#">
+                            <!-- header of quick link -->
+                            <div class="header">
+                              <!-- quick link header content -->
+                            </div>
+                            <div class="content">
+                              <!-- quick link content -->
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </script>
+                </section>
+                <section id='statistics'>
+                  <h4 class='doc-title'>
+                    Statistics
+                  </h4>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="box-content box-statistic">
+                          <h3 class="title text-error">
+                            <!-- title content -->
+                          </h3>
+                    
+                          <!-- body content -->
+                          <small>New</small>
+                          <div class="text-error icon-inbox align-right"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </script>
+                  <h5 class='doc-title'>Contrast background</h5>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="box-content box-statistic red-background">
+                          <h3 class="title text-error">
+                            <!-- title content -->
+                          </h3>
+                    
+                          <!-- body content -->
+                          <small>New</small>
+                          <div class="text-error icon-inbox align-right"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </script>
+                  <h5 class='doc-title'>Right aligned text</h5>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="box-content box-statistic red-background text-right">
+                          <h3 class="title text-error">
+                            <!-- title content -->
+                          </h3>
+                    
+                          <!-- body content -->
+                          <small>New</small>
+                          <div class="text-error icon-inbox align-right"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </script>
+                </section>
+                <section id='boxes'>
+                  <h4 class='doc-title'>
+                    Boxes
+                  </h4>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class="col-sm-4">
+                      <div class="box">
+                        <div class="box-header">
+                          <div class="title">
+                            <!-- box header -->
+                          </div>
+                          <div class="actions">
+                            <!-- right aligned box actions -->
+                          </div>
+                        </div>
+                        <div class="box-content">
+                          <!-- box content -->
+                        </div>
+                      </div>
+                    </div>
+                  </script>
+                  <h5 class='doc-title'>Colored box</h5>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class="col-sm-4">
+                      <div class="box">
+                        <div class="box-header red-background">
+                          <!-- same as above -->
+                        </div>
+                        <!-- same as above -->
+                      </div>
+                    </div>
+                  </script>
+                  <h5 class='doc-title'>Bordered box</h5>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class="col-sm-4">
+                      <div class="box box-bordered">
+                        <div class="box-header red-background">
+                          <!-- same as above -->
+                        </div>
+                        <!-- same as above -->
+                      </div>
+                    </div>
+                  </script>
+                  <h5 class='doc-title'>Collapsed box</h5>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class="col-sm-4">
+                      <div class="box box-bordered box-collapsed">
+                        <div class="box-header red-background">
+                          <!-- same as above -->
+                        </div>
+                        <!-- same as above -->
+                      </div>
+                    </div>
+                  </script>
+                  <h5 class='doc-title'>Scrollable box</h5>
+                  <p>
+                    Class
+                    <code>.scrollable</code>
+                    will transform box content to scrollable area. You can customize it with handy
+                    <code>data</code>
+                    attributes.
+                    <code>data-height</code>
+                    is height of scrollable area and
+                    <code>data-scrollable-start</code>
+                    is place where the scroll will start (top or bottom).
+                  </p>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class="col-sm-4">
+                      <div class="box">
+                        <div class="box-header purple-background">
+                          <!-- same as above -->
+                        </div>
+                        <div class="box-content">
+                          <div class='scrollable' data-scrollable-height='78' data-scrollable-start='top'>
+                            <!-- content -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </script>
+                </section>
+                <h5 class='doc-title'>Transparent box</h5>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <div class="col-sm-4">
+                    <div class="box box-transparent">
+                      <div class="box-header">
+                        <!-- same as above -->
+                      </div>
+                      <!-- same as above -->
+                    </div>
+                  </div>
+                </script>
+                <h5 class='doc-title'>Padded box</h5>
+                <p>
+                  There is
+                  <code>.box-padding</code>
+                  for medium padding and
+                  <code>.box-double-padding</code>
+                  for big padding on box content.
+                </p>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <div class="col-sm-4">
+                    <div class="box box-padding">
+                      <div class="box-header">
+                        <!-- same as above -->
+                      </div>
+                      <!-- same as above -->
+                    </div>
+                  </div>
+                </script>
+                <h5 class='doc-title'>Small header</h5>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <div class="col-sm-4">
+                    <div class="box">
+                      <div class="box-header box-header-small">
+                        <!-- same as above -->
+                      </div>
+                      <!-- same as above -->
+                    </div>
+                  </div>
+                </script>
+                <h5 class='doc-title'>Box actions</h5>
+                <p>Each box has two actions in top right corner. One action will remove box and second will collapse box content.</p>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <div class="col-sm-4">
+                    <div class="box">
+                      <div class="box-header">
+                        <div class="actions">
+                          <!-- basic actions for removing and collapsing box -->
+                          <a href="#" class="btn box-remove btn-mini btn-link"><i class="icon-remove"></i></a>
+                          <a href="#" class="btn box-collapse btn-mini btn-link"><i></i></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </script>
+                <h5 class='doc-title'>Box toolbox</h5>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <div class="col-sm-4">
+                    <div class="box">
+                      <div class="box-header box-header-small">
+                         <!-- same as above -->
+                      </div>
+                      <div class="box-content">
+                        <div class="box-toolbox box-toolbox-top">
+                          <!-- toolbox content -->
+                        </div>
+                        <!-- same as above -->
+                      </div>
+                    </div>
+                  </div>
+                </script>
+              </section>
+            </section>
+            <section id='components'>
+              <h2 class='doc-title'>Components</h2>
+              <section id='address-book'>
+                <h3 class='doc-title'>Address book</h3>
+                <div class='alert alert-info'>This feature needs your JavaScript initialization.</div>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <div class='clearfix' id='slider'>
+                    <div class='slider-content'>
+                      <ul>
+                        <li id='a'>
+                          <a class='title' name='a'>A</a>
+                          <ul>
+                  
+                            <!-- address book item -->
+                            <li>
+                              <a href='#'>Ashley</a>
+                            </li>
+                          </ul>
+                        </li>
+                        <li id='b'>
+                          <a class='title' name='b'>B</a>
+                          <ul>
+                  
+                            <!-- address book item -->
+                            <li>
+                              <a href='#'>Barry</a>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </script>
+                <br>
+                <script class='brush: js' type='syntaxhighlighter'>
+                  $('#slider').sliderNav();
+                </script>
+              </section>
+              <section id='chat'>
+                <h3 class='doc-title'>Chat</h3>
+                <div class='alert alert-info'>This feature needs your JavaScript initialization.</div>
+                <p>For demo functionality see page source code.</p>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <!-- chat placed in box -->
+                  <div class="row">
+                    <div class='chat'>
+                      <div class="col-sm-12">
+                        <div class='box'>
+                          <div class='box-header'>
+                  
+                            <!-- chat title -->
+                            <div class='title'>
+                              <i class='fa fa-comments-o'></i>
+                              Chat
+                            </div>
+                  
+                            <!-- chat actions (same as box) -->
+                            <div class='actions'>
+                              <a href="#" class="btn box-remove btn-mini btn-link"><i class='fa fa-remove'></i>
+                              </a>
+                              <a href="#" class="btn box-collapse btn-mini btn-link"><i></i>
+                              </a>
+                            </div>
+                          </div>
+                  
+                          <div class='box-content box-no-padding'>
+                  
+                            <!-- scrollable area for messages -->
+                            <div class='scrollable' data-scrollable-height='300' data-scrollable-start='bottom'>
+                  
+                              <!-- messages -->
+                              <ul class='list-unstyled list-hover list-striped'>
+                  
+                                <!-- single message -->
+                                <li class='message'>
+                  
+                                  <!-- user avatar (23x23px) -->
+                                  <div class='avatar'>
+                                    <img alt='Avatar' height='23' src='assets/images/avatar.jpg' width='23'>
+                                  </div>
+                  
+                                  <!-- user name and time -->
+                                  <div class='name-and-time'>
+                                    <div class='name pull-left'>
+                                      <small>
+                                        <a href="#" class="text-contrast">
+                                          <!-- username -->
+                                        </a>
+                                      </small>
+                                    </div>
+                  
+                                    <div class='time pull-right'>
+                                      <small class='date pull-right muted'>
+                                        <!-- dynamic timeago -->
+                                        <span class='timeago fade has-tooltip' data-placement='top' title='2013-05-30 15:10:40 +0200'>May 30, 2013 - 15:10</span>
+                                        <i class='fa fa-clock-o'></i>
+                                      </small>
+                                    </div>
+                                  </div>
+                  
+                                  <div class='body'>
+                                    <!-- message text -->
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                  
+                            <!-- form for sending messages -->
+                            <form class="new-message">
+                              <input class="form-control" id="message_body" name="message[body]" placeholder="Type your message here..." type="text">
+                              <button class="btn btn-success" type="submit">
+                                <i class="fa fa-plus"></i>
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </script>
+                <h5 class='doc-title'>Fixed chat</h5>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <div class="row">
+                    <div class='chat chat-fixed'>
+                      <div class="col-sm-12">
+                        <div class='box box-collapsed'>
+                          <div class='box-header box-header-small contrast-background'>
+                            <!-- box header content -->
+                          </div>
+                          <!-- same as above -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </script>
+              </section>
+              <section id='filetrees'>
+                <h3 class='doc-title'>
+                  Filetrees
+                  <small><a class="text-contrast" href="https://github.com/mar10/fancytree/wiki">Documentation</a></small>
+                </h3>
+                <div class='alert alert-info'>This feature needs your JavaScript initialization.</div>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <div id="tree1">
+                    <ul id='tree1-treeData'>
+                      <li id='tree1id1' title='Look, a tool tip!'>
+                        item1 with key and tooltip
+                      </li>
+                      <li id='tree1id2'>
+                        item2
+                      </li>
+                      <li class='folder' id='tree1id3'>
+                        Folder with some children
+                        <ul>
+                          <li id='tree1id2.1'>
+                            Sub-item 3.1
+                            <ul>
+                              <li id='tree1id3.1.1'>
+                                Sub-item 3.1.1
+                              </li>
+                              <li id='tree1id3.1.2'>
+                                Sub-item 3.1.2
+                              </li>
+                            </ul>
+                          </li>
+                          <li id='tree1id3.2'>
+                            Sub-item 3.2
+                            <ul>
+                              <li id='tree1id3.2.1'>
+                                Sub-item 3.2.1
+                              </li>
+                              <li id='tree1id3.2.2'>
+                                Sub-item 3.2.2
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class='expanded' id='tree1id4'>
+                        Document with some children (expanded on init)
+                        <ul>
+                          <li id='tree1id4.1'>
+                            Sub-item 4.1 (active and focus on init)
+                            <ul>
+                              <li id='tree1id4.1.1'>
+                                Sub-item 4.1.1
+                              </li>
+                              <li id='tree1id4.1.2'>
+                                Sub-item 4.1.2
+                              </li>
+                            </ul>
+                          </li>
+                          <li id='tree1id4.2'>
+                            Sub-item 4.2
+                            <ul>
+                              <li id='tree1id4.2.1'>
+                                Sub-item 4.2.1
+                              </li>
+                              <li id='tree1id4.2.2'>
+                                Sub-item 4.2.2
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </script>
+                <br>
+                <script class='brush: js' type='syntaxhighlighter'>
+                  $("#tree1").fancytree();
+                </script>
+              </section>
+              <section id='fileupload'>
+                <h3 class='doc-title'>
+                  Fileupload
+                  <small><a class="text-contrast" href="http://blueimp.github.io/jQuery-File-Upload/">Documentation</a></small>
+                </h3>
+                <div class='alert alert-info'>This feature needs your JavaScript initialization.</div>
+                <p>See plugin documentation for more information and server side settings.</p>
+              </section>
+              <section id='todolist'>
+                <h3 class='doc-title'>
+                  Todo list
+                </h3>
+                <div class='alert alert-info'>This feature needs your JavaScript initialization.</div>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <div class="row">
+                    <div class="todo-list">
+                      <div class="col-sm-12">
+                        <div class="box">
+                          <div class="box-content box-no-padding">
+                  
+                            <!-- container for sorting through multiple lists -->
+                            <div class="sortable-container">
+                  
+                              <!-- form for new todos -->
+                              <form class="new-todo">
+                                <input class="form-control" id="todo_name" name="todo[name]" placeholder="Type your new todo here..." type="text">
+                                <button class="btn btn-success" type="submit">
+                                  <i class="fa fa-plus"></i>
+                                </button>
+                              </form>
+                  
+                              <!-- grouping todos by date -->
+                              <div class="date text-contrast">Today</div>
+                  
+                              <!-- sortable list -->
+                              <ul class="list-unstyled sortable" data-sortable-axis="y" data-sortable-connect=".sortable">
+                  
+                                <!-- todo marked as important -->
+                                <li class="important item">
+                                  <label class="check pull-left todo">
+                                    <input type="checkbox">
+                                    <!-- todo content -->
+                                  </label>
+                  
+                                  <!-- todo actions -->
+                                  <div class="actions pull-right">
+                                    <a class="btn btn-link edit has-tooltip" data-placement="top" href="#" title="Edit todo">
+                                      <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a class="btn btn-link remove has-tooltip" data-placement="top" href="#" title="Remove todo">
+                                      <i class="fa fa-remove"></i>
+                                    </a>
+                                    <a class="btn btn-link important has-tooltip" data-placement="top" href="#" title="Mark as important">
+                                      <i class="fa fa-bookmark-empty"></i>
+                                    </a>
+                                  </div>
+                  
+                                </li>
+                  
+                                <!-- normal item -->
+                                <li class="item">
+                                  <!-- same as above -->
+                                </li>
+                  
+                                <!-- todo marked as done -->
+                                <li class="done item">
+                                  <!-- same as above -->
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </script>
+              </section>
+              <section id='tables'>
+                <h3 class='doc-title'>
+                  Tables
+                </h3>
+                <section id='tables-basic'>
+                  <h4 class='doc-title'>Basic table</h4>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <table class="table">
+                      <!-- table content -->
+                    </table>
+                  </script>
+                </section>
+                <section id='tables-responsive'>
+                  <h4 class='doc-title'>Responsive table</h4>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <div class="responsive-table">
+                      <div class="scrollable-area">
+                        <table class="table">
+                          <!-- table content -->
+                        </table>
+                      </div>
+                    </div>
+                  </script>
+                </section>
+                <section id='tables-dynamic'>
+                  <h4 class='doc-title'>
+                    Dynamic data table
+                    <small><a class="text-contrast" href="http://www.datatables.net/">Documentation</a></small>
+                  </h4>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <table class='data-table table table-bordered table-striped''>
+                      <!-- we need thead because of ordering controls -->
+                      <thead>
+                        <tr>
+                          <th>
+                            <!-- thead content -->
+                          </th>
+                        </tr>
+                      </thead>
+                      <!-- table content -->
+                    </table>
+                  </script>
+                </section>
+                <section id='tables-dynamic-filter'>
+                  <h4 class='doc-title'>
+                    Dynamic data table with filter
+                    <small><a class="text-contrast" href="http://www.datatables.net/">Documentation</a></small>
+                  </h4>
+                  <script class='brush: xml' type='syntaxhighlighter'>
+                    <table class='data-table-column-filter table table-bordered table-striped'>
+                      <!-- we need thead because of ordering controls -->
+                      <thead>
+                        <tr>
+                          <th>
+                            <!-- thead content -->
+                          </th>
+                        </tr>
+                      </thead>
+                    
+                      <!-- table content -->
+                    
+                      <!-- we need tfoot because of filtration -->
+                      <tfoot>
+                        <tr>
+                          <th>
+                            <!-- tfoot content -->
+                          </th>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </script>
+                </section>
+              </section>
+              <section id='calendar'>
+                <h3 class='doc-title'>
+                  Calendar
+                  <small><a class="text-contrast" href="http://fullcalendar.io/">Documentation</a></small>
+                </h3>
+                <div class='alert alert-info'>This feature needs your JavaScript initialization.</div>
+                <h4 class='doc-title'>Calendar in box</h4>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <div class='box box-bordered purple-border'>
+                    <div class='box-header purple-background'>
+                      <div class='title'>
+                        <i class='fa fa-calendar'></i>
+                        Calendar
+                      </div>
+                    </div>
+                    <div class='box-content'>
+                      <!-- calendar definition -->
+                      <div class='full-calendar-demo'></div>
+                    </div>
+                  </div>
+                </script>
+                <h4 class='doc-title'>Used Javascript</h4>
+                <script class='brush: js' type='syntaxhighlighter'>
+                  (function() {
+                    var cal, calendarDate, d, m, y;
+                  
+                    this.setDraggableEvents = function() {
+                      return $("#events .external-event").each(function() {
+                        var eventObject;
+                        eventObject = {
+                          title: $.trim($(this).text())
+                        };
+                        $(this).data("eventObject", eventObject);
+                        return $(this).draggable({
+                          zIndex: 999,
+                          revert: true,
+                          revertDuration: 0
+                        });
+                      });
+                    };
+                  
+                    setDraggableEvents();
+                  
+                    calendarDate = new Date();
+                  
+                    d = calendarDate.getDate();
+                  
+                    m = calendarDate.getMonth();
+                  
+                    y = calendarDate.getFullYear();
+                  
+                    cal = $(".full-calendar-demo").fullCalendar({
+                      header: {
+                        center: "title",
+                        left: "month,agendaWeek,agendaDay,listWeek",
+                        right: "prev,today,next"
+                      },
+                      buttonIcons: {
+                        prev: "fa-chevron-left",
+                        next: "fa-chevron-right"
+                      },
+                      buttonText: {
+                        today: "Today",
+                        agendaDay: "Day",
+                        agendaWeek: "Week",
+                        month: "Month",
+                        listWeek: "List"
+                      },
+                      droppable: true,
+                      editable: true,
+                      selectable: true,
+                      select: function(start, end, allDay) {
+                        return bootbox.prompt("Event title", function(title) {
+                          if (title !== null) {
+                            cal.fullCalendar("renderEvent", {
+                              title: title,
+                              start: start,
+                              end: end,
+                              allDay: allDay
+                            }, true);
+                            return cal.fullCalendar('unselect');
+                          }
+                        });
+                      },
+                      eventClick: function(calEvent, jsEvent, view) {
+                        return bootbox.dialog({
+                          message: $("<form class='form'><label>Change event name</label></form><input id='new-event-title' class='form-control' type='text' value='" + calEvent.title + "' /> "),
+                          buttons: {
+                            "delete": {
+                              label: "<i class='fa fa-trash-o'></i> Delete Event",
+                              className: "pull-left",
+                              callback: function() {
+                                return cal.fullCalendar("removeEvents", function(ev) {
+                                  return ev._id === calEvent._id;
+                                });
+                              }
+                            },
+                            success: {
+                              label: "<i class='fa fa-floppy-o'></i> Save",
+                              className: "btn-success",
+                              callback: function() {
+                                calEvent.title = $("#new-event-title").val();
+                                return cal.fullCalendar('updateEvent', calEvent);
+                              }
+                            }
+                          }
+                        });
+                      },
+                      drop: function(date, allDay) {
+                        var copiedEventObject, eventClass, originalEventObject;
+                        originalEventObject = $(this).data("eventObject");
+                        originalEventObject.id = Math.floor(Math.random() * 99999);
+                        eventClass = $(this).attr('data-event-class');
+                        console.log(originalEventObject);
+                        copiedEventObject = $.extend({}, originalEventObject);
+                        copiedEventObject.start = date;
+                        copiedEventObject.allDay = allDay;
+                        if (eventClass) {
+                          copiedEventObject["className"] = [eventClass];
+                        }
+                        $(".full-calendar-demo").fullCalendar("renderEvent", copiedEventObject, true);
+                        if ($("#calendar-remove-after-drop").is(":checked")) {
+                          return $(this).remove();
+                        }
+                      },
+                      events: [
+                        {
+                          id: "event1",
+                          title: "All Day Event",
+                          start: moment().startOf('month').format('YYYY-MM-DD'),
+                          className: 'event-orange'
+                        }, {
+                          id: "event2",
+                          title: "Long Event",
+                          start: moment().subtract(5, 'day').format('YYYY-MM-DD'),
+                          end: moment().subtract(1, 'day').format('YYYY-MM-DD'),
+                          className: "event-red"
+                        }, {
+                          id: 999,
+                          id: "event3",
+                          title: "Repeating Event",
+                          start: moment().subtract(3, 'day').format('YYYY-MM-DD HH:mm'),
+                          allDay: false,
+                          className: "event-blue"
+                        }, {
+                          id: 999,
+                          id: "event3",
+                          title: "Repeating Event",
+                          start: moment().add(4, 'day').format('YYYY-MM-DD HH:mm'),
+                          allDay: false,
+                          className: "event-green"
+                        }, {
+                          id: "event4",
+                          title: "Meeting",
+                          start: moment().startOf('day').add(10, 'hours').add(30, 'minute').format('YYYY-MM-DD HH:mm'),
+                          allDay: false,
+                          className: "event-orange"
+                        }, {
+                          id: "event5",
+                          title: "Lunch",
+                          start: moment().startOf('day').add(12, 'hours').add(0, 'minute').format('YYYY-MM-DD HH:mm'),
+                          end: moment().startOf('day').add(14, 'hours').add(0, 'minute').format('YYYY-MM-DD HH:mm'),
+                          allDay: false,
+                          className: "event-red"
+                        }, {
+                          id: "event6",
+                          title: "Birthday Party",
+                          start: moment().startOf('day').add(1, 'day').add(19, 'hours').add(0, 'minute').format('YYYY-MM-DD HH:mm'),
+                          end: moment().startOf('day').add(1, 'day').add(22, 'hours').add(30, 'minute').format('YYYY-MM-DD HH:mm'),
+                          allDay: false,
+                          className: "event-purple"
+                        }
+                      ]
+                    });
+                  
+                  })();
+                </script>
+              </section>
+            </section>
+            <section id='layouts'>
+              <h2 class='doc-title'>Layouts</h2>
+              <section id='closed-navigation'>
+                <h3 class='doc-title'>Closed navigation</h3>
+                <p>
+                  Just add
+                  <code>.main-nav-closed</code>
+                  class to
+                  <code>body</code>
+                  tag.
+                </p>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <body class="main-nav-closed">
+                    <!-- body content-->
+                  </body>
+                </script>
+              </section>
+              <section id='fixed-header'>
+                <h3 class='doc-title'>Fixed header</h3>
+                <p>
+                  Just add
+                  <code>.fixed-header</code>
+                  class to
+                  <code>body</code>
+                  tag and
+                  <code>.navbar-fixed-top</code>
+                  to
+                  <code>header .navbar</code>.
+                </p>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <body class="fixed-header">
+                    <header>
+                      <div class="navbar navbar-fixed-top">
+                        <!-- header content-->
+                      </div>
+                    </header>
+                    <!-- body content-->
+                  </body>
+                </script>
+              </section>
+              <section id='fixed-navigation'>
+                <h3 class='doc-title'>Fixed navigation</h3>
+                <p>
+                  Just add
+                  <code>.fixed-navigation</code>
+                  class to
+                  <code>body</code>
+                  tag and
+                  <code>.main-nav-fixed</code>
+                  to
+                  <code>nav#main-nav</code>.
+                </p>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <body class="fixed-navigation">
+                    <div id="wrapper">
+                      <nav class="main-nav-fixed" id="main-nav">
+                        <!-- nav content-->
+                      </nav>
+                    </div>
+                    <!-- body content-->
+                  </body>
+                </script>
+              </section>
+              <section id='fixed-header-and-navigation'>
+                <h3 class='doc-title'>Fixed header and navigation</h3>
+                <p>This is combination of fixed header and fixed navigation.</p>
+              </section>
+            </section>
+            <section id='colors-and-themes'>
+              <h2 class='doc-title'>Colors & Themes</h2>
+              <p class='lead'>Flatty comes with 43 color combinations! There are 3 main colors for content (light, dark and dark blue) and 14 contrast colors.</p>
+              <section id='content-theme'>
+                <h3 class='doc-title'>Content theme</h3>
+                <p>If you want to change content color/theme you must include theme stylesheet.</p>
+                <h4 class='doc-title'>Light theme</h4>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <link href="assets/stylesheets/light-theme.css" media="all" rel="stylesheet" type="text/css" />
+                </script>
+                <h4 class='doc-title'>Dark theme</h4>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <link href="assets/stylesheets/dark-theme.css" media="all" rel="stylesheet" type="text/css" />
+                </script>
+                <h4 class='doc-title'>Dark blue theme</h4>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <link href="assets/stylesheets/dark-blue-theme.css" media="all" rel="stylesheet" type="text/css" />
+                </script>
+              </section>
+              <section id='contrast-color'>
+                <h3 class='doc-title'>Contrast color</h3>
+                <p>
+                  You can choose contrast color from:
+                  <code>contrast-red</code>
+                  <code>contrast-blue</code>
+                  <code>contrast-orange</code>
+                  <code>contrast-purple</code>
+                  <code>contrast-green</code>
+                  <code>contrast-muted</code>
+                  <code>contrast-fb</code>
+                  <code>contrast-dark</code>
+                  <code>contrast-pink</code>
+                  <code>contrast-grass-green</code>
+                  <code>contrast-sea-blue</code>
+                  <code>contrast-banana</code>
+                  <code>contrast-dark-orange</code>
+                  <code>contrast-brown</code>
+                </p>
+                <br>
+                <p>To change contrast color just add class to body tag.</p>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <body class="contrast-red"></body>
+                </script>
+              </section>
+            </section>
+            <section id='utilities'>
+              <h2 class='doc-title'>Utilities</h2>
+              <section id='coloring'>
+                <h3 class='doc-title'>Coloring</h3>
+                <p>
+                  You can use these classes to color your code.
+                </p>
+                <p>
+                  <code>.text-contrast</code>
+                  <code>.text-red</code>
+                  <code>...</code>
+                  (sets color of element)
+                  <br>
+                  <code>.contrast-background</code>
+                  <code>.red-background</code>
+                  <code>...</code>
+                  (sets background-color of element)
+                  <br>
+                  <code>.contrast-border</code>
+                  <code>.red-border</code>
+                  <code>...</code>
+                  (sets border-color of element)
+                </p>
+              </section>
+              <section id='hover-and-striped-lists'>
+                <h3 class='doc-title'>Hovered and striped lists</h3>
+                <script class='brush: xml' type='syntaxhighlighter'>
+                  <ul class="list-striped list-hover">
+                    <li>...</li>
+                    <li>...</li>
+                    <li>...</li>
+                  </ul>
+                </script>
+              </section>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- / jquery [required] -->
+    <script src="assets/javascripts/jquery/jquery.min.js" type="text/javascript"></script>
+    <!-- / jquery mobile (for touch events) -->
+    <script src="assets/javascripts/jquery/jquery.mobile.custom.min.js" type="text/javascript"></script>
+    <!-- / jquery ui -->
+    <script src="assets/javascripts/jquery/jquery-ui.min.js" type="text/javascript"></script>
+    <!-- / jQuery UI Touch Punch -->
+    <script src="assets/javascripts/jquery/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+    <!-- / bootstrap [required] -->
+    <script src="assets/javascripts/bootstrap/bootstrap.js" type="text/javascript"></script>
+    <!-- / modernizr -->
+    <script src="assets/javascripts/plugins/modernizr/modernizr.min.js" type="text/javascript"></script>
+    <!-- / retina -->
+    <script src="assets/javascripts/plugins/retina/retina.js" type="text/javascript"></script>
+    <!-- / theme file [required] -->
+    <script src="assets/javascripts/theme.js" type="text/javascript"></script>
+    <!-- / START - page related files and scripts [optional] -->
+    
+    <!-- / END - page related files and scripts [optional] -->
+    <!-- / documentation javascripts [not required!] -->
+    <script src="assets/javascripts/docs.js" type="text/javascript"></script>
+  </body>
+</html>
