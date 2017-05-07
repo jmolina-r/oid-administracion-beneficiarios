@@ -18,8 +18,23 @@ Route::get('/', [
 
 // Beneficiarios Routes
 Route::group(['prefix' => 'beneficiario'], function () {
-    Route::get('/registrar', [
+    Route::get('/', [
         'uses' => 'BeneficiarioController@getRegistrar',
+        'as' => 'beneficiario.crear-beneficiario'
+    ]);
+
+    Route::get('/editar/{id}', [
+        'uses' => 'BeneficiarioController@getEditar',
+        'as' => 'beneficiario.editar-beneficiario'
+    ]);
+
+    Route::get('/informacion/{id}', [
+        'uses' => 'BeneficiarioController@getPerfil',
+        'as' => 'beneficiario.crear-beneficiario'
+    ]);
+
+    Route::get('/buscar', [
+        'uses' => 'BeneficiarioController@getBuscar',
         'as' => 'beneficiario.crear-beneficiario'
     ]);
 });

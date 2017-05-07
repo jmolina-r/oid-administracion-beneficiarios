@@ -10,4 +10,19 @@ class BeneficiarioController extends Controller
     {
         return view('beneficiario.crear-beneficiario');
     }
+
+    public function getEditar()
+    {
+        return view('beneficiario.editar-beneficiario');
+    }
+
+    public function getPerfil()
+    {
+        return view('beneficiario.perfil-beneficiario');
+    }
+
+    public function getBuscar()
+    {
+        return view('beneficiario.obtener-beneficiario');
+    }
 }
