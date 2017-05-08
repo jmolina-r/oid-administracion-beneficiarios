@@ -40,3 +40,12 @@ $factory->define(App\Beneficiario::class, function (Faker\Generator $faker) {
         'pais_id' => $faker->numberBetween($min = 1, $max = 70)
     ];
 });
+
+$factory->define(App\Telefono::class, function (Faker\Generator $faker) {
+
+    return [
+        'numero' => $faker->regexify('[0-9]{8}'),
+        'tipo' => $faker->regexify('(movil|fijo)'),
+        'beneficiario_id' => $faker->numberBetween($min = 1, $max = 150)
+    ];
+});
