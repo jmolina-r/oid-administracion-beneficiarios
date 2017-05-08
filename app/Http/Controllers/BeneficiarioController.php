@@ -24,7 +24,11 @@ class BeneficiarioController extends Controller
      */
     public function create()
     {
-        //Colecciones vacias de prueba
+        /**
+         * Estas son las clecciones vacias de prueba
+         * Son las que se deben enviar al fronend a partir de los datos
+         * almacenados en la BD
+         */
 
         //Lista de Paises
         $paises = collect();
@@ -41,13 +45,17 @@ class BeneficiarioController extends Controller
         //Niveles de educacion, basico, universitario, etc...
         $niveles_educacion = collect();
 
+        //Dependencias del paciente
+        $dependencias = collect();
+
 
         return view('beneficiario.crear-beneficiario')
         ->with(compact('paises'))
         ->with(compact('estados_civiles'))
         ->with(compact('previsiones'))
         ->with(compact('situaciones'))
-        ->with(compact('niveles_educacion'));
+        ->with(compact('niveles_educacion'))
+        ->with(compact('dependencias'));
     }
 
     /**

@@ -460,7 +460,7 @@ class='contrast-red'
                     <span class='input-group-addon'>
                       Física
                     </span>
-                    <input class='form-control input-lg text-right' id='appendedPrependedInput' type='text' value='0'>
+                    <input name="discapacidad_visual_porcentaje" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true" value="0">
                     <span class='input-group-addon'>%</span>
                   </div>
                 </div>
@@ -470,7 +470,7 @@ class='contrast-red'
                     <span class='input-group-addon'>
                       Cognitiva
                     </span>
-                    <input class='form-control input-lg text-right' id='appendedPrependedInput' type='text' value='0'>
+                    <input name="discapacidad_cognitiva_porcentaje" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true" value="0">
                     <span class='input-group-addon'>%</span>
                   </div>
                 </div>
@@ -480,7 +480,7 @@ class='contrast-red'
                     <span class='input-group-addon'>
                       Psíquica
                     </span>
-                    <input class='form-control input-lg text-right' id='appendedPrependedInput' type='text' value='0'>
+                    <input name="discapacidad_psiquica_porcentaje" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true" value="0">
                     <span class='input-group-addon'>%</span>
                   </div>
                 </div>
@@ -490,7 +490,7 @@ class='contrast-red'
                     <span class='input-group-addon'>
                       Sensorial Visual
                     </span>
-                    <input class='form-control input-lg text-right' id='appendedPrependedInput' type='text' value='0'>
+                    <input name="discapacidad_sens_visual_porcentaje" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true" value="0">
                     <span class='input-group-addon'>%</span>
                   </div>
                 </div>
@@ -500,7 +500,7 @@ class='contrast-red'
                     <span class='input-group-addon'>
                       Sensorial Auditiva
                     </span>
-                    <input class='form-control input-lg text-right' id='appendedPrependedInput' type='text' value='0'>
+                    <input name="discapacidad_sens_auditiva_porcentaje" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true" value="0">
                     <span class='input-group-addon'>%</span>
                   </div>
                 </div>
@@ -510,7 +510,7 @@ class='contrast-red'
                     <span class='input-group-addon'>
                       Social y de la Comunicación
                     </span>
-                    <input class='form-control input-lg text-right' id='appendedPrependedInput' type='text' value='0'>
+                    <input name="discapacidad_social_porcentaje" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true" value="0">
                     <span class='input-group-addon'>%</span>
                   </div>
                 </div>
@@ -520,12 +520,12 @@ class='contrast-red'
               <div class='col-md-12 form-group'>
                <label class='control-label' for='inputText'>Diagnóstico Médico</label>
                <div class='col-md-12 controls'>
-                 <input class='form-control' id='inputText' placeholder='Si no aplica, dejar en blanco.' type='text'>
+                 <input name="diagnostico" class='form-control' id='inputText' placeholder='Si no aplica, dejar en blanco.' type='text'>
                </div>
              </div>
 
              <div class='col-md-12 form-group'>
-               <label class='control-label' for='inputText'>Otras enfermedades o conficiones médicas</label>
+               <label class='control-label' for='inputText'>Otras enfermedades o condiciones médicas</label>
                <div class='col-md-12 controls'>
                  <input class='form-control' id='inputText' placeholder='Si no aplica, dejar en blanco.' type='text'>
                </div>
@@ -535,10 +535,10 @@ class='contrast-red'
               <label class='control-label' for='inputText'>Dependencia</label>
               <div class='col-md-12 form-group'>
                 <div class='col-md-12'>
-                 <select class='form-control' id='inputSelect'>
-                   <option>Permanente</option>
-                   <option>Intermitente</option> 
-                   <option>Ocasional</option>                       
+                 <select name="tipo_dependencia_id" class='form-control' id='inputSelect'>
+                   @foreach($dependencias as $dependencia)
+                      <option value="{{$dependencia->id_tipo_dependencia}}">{{$dependencia->nombre}}</option>
+                   @endforeach                 
                  </select>
                </div>
              </div>                                
