@@ -19,22 +19,22 @@ Route::get('/', [
 // Beneficiarios Routes
 Route::group(['prefix' => 'beneficiario'], function () {
     Route::get('/', [
-        'uses' => 'BeneficiarioController@getRegistrar',
+        'uses' => 'BeneficiarioController@create',
         'as' => 'beneficiario.crear-beneficiario'
     ]);
 
     Route::get('/editar/{id}', [
-        'uses' => 'BeneficiarioController@getEditar',
+        'uses' => 'BeneficiarioController@edit',
         'as' => 'beneficiario.editar-beneficiario'
     ]);
 
     Route::get('/informacion/{id}', [
-        'uses' => 'BeneficiarioController@getPerfil',
+        'uses' => 'BeneficiarioController@show',
         'as' => 'beneficiario.crear-beneficiario'
     ]);
 
     Route::get('/buscar', [
-        'uses' => 'BeneficiarioController@getBuscar',
+        'uses' => 'BeneficiarioController@find',
         'as' => 'beneficiario.crear-beneficiario'
     ]);
 });
