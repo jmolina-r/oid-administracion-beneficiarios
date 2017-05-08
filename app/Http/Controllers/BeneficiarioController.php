@@ -8,7 +8,13 @@ class BeneficiarioController extends Controller
 {
     public function getRegistrar()
     {
-        return view('beneficiario.crear-beneficiario');
+        //Colecciones vacias de prueba
+        $paises = collect();
+        $estados_civiles = collect();
+
+        return view('beneficiario.crear-beneficiario')
+        ->with(compact('paises'))
+        ->with(compact('estados_civiles'));
     }
 
     public function getEditar($id)
