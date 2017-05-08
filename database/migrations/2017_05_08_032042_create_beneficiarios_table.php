@@ -16,6 +16,10 @@ class CreateBeneficiariosTable extends Migration
         Schema::create('beneficiarios', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('nombre');
+            $table->string('apellido');
+            $table->string('rut');
+            $table->string('sexo');
         });
     }
 
