@@ -398,7 +398,7 @@ class='contrast-red'
                         <div class='col-md-12 form-group'>
                           <div class='col-md-12'>
                            <select name='prevision' class='form-control' id='inputSelect'>
-                             @foreach($previsiones as $prevision)
+                              @foreach($previsiones as $prevision)
                                 <option value="{{$prevision->id_prevision}}">{{$prevision->descripcion}}</option>
                               @endforeach                           
                            </select>
@@ -410,38 +410,41 @@ class='contrast-red'
                     <label class='control-label' for='inputText'>Nivel Educacional</label>
                     <div class='col-md-12 form-group'>
                       <div class='col-md-12'>
-                       <select class='form-control' id='inputSelect'>
-                         <option>Ninguno</option>
-                         <option>Pre-Básico</option>
-                         <option>Básico Incompleto</option>
-                         <option>Básico Completo</option>                               
+                       <select name='nivel_educacion' class='form-control' id='inputSelect'>
+                         @foreach($niveles_educacion as $nivel_educacion)
+                            <option value="{{$prevision->id_prevision}}">{{$prevision->descripcion}}</option>
+                         @endforeach                               
                        </select>
                      </div>
                    </div>
                  </div>
 
                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                  <label class='control-label' for='inputText'>Situación Actual</label>
-                  <div class='col-md-12 form-group'>
-                    <div class='col-md-12'>
-                     <select class='form-control' id='inputSelect'>
-                       <option>Trabajador</option>
-                       <option>Estudiante</option>
-                       <option>Dueña(o) de Casa</option>
-                       <option>Pensionado</option>   
-                       <option>Cesante</option>                            
-                     </select>
-                   </div>
-                 </div>                                
-               </div>
+                    <label class='control-label' for='inputText'>Situación Actual</label>
+                    <div class='col-md-12 form-group'>
+                      <div class='col-md-12'>
+                       <select class='form-control' id='inputSelect'>
+                          @foreach($situaciones as $situacion)
+                              <option value="{{$situacion->id_situacion}}">{{$situacion->descripcion}}</option>
+                          @endforeach                             
+                       </select>
+                     </div>
+                   </div>                                
+                 </div>
 
-               <div class='col-md-12 form-group'>
+                 <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
+                   <label class='control-label' for='inputText'>Sistema de protección</label>
+                   <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 controls'>
+                     <input name='sistema_proteccion' class='form-control' id='inputText' placeholder='¿Cuál? Caso contrario, dejar en blanco' type='text'>
+                   </div>
+                 </div>
+
+               <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                  <label class='control-label' for='inputText'>Participación en Organizaciones Sociales</label>
-                 <div class='col-md-12 controls'>
-                   <input class='form-control' id='inputText' placeholder='¿Cuál? Caso contrario, dejar en blanco' type='text'>
+                 <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 controls'>
+                   <input name='organizacion_social' class='form-control' id='inputText' placeholder='¿Cuál? Caso contrario, dejar en blanco' type='text'>
                  </div>
                </div>
-
 
              </div>
 

@@ -25,15 +25,29 @@ class BeneficiarioController extends Controller
     public function create()
     {
         //Colecciones vacias de prueba
+
+        //Lista de Paises
         $paises = collect();
+
+        //Lista de Estados Civiles
         $estados_civiles = collect();
+
+        //Previsiones, especificamente AFP
         $previsiones = collect();
+
+        //Situacin actual, cesante, estudiante, etc...
+        $situaciones = collect();
+
+        //Niveles de educacion, basico, universitario, etc...
+        $niveles_educacion = collect();
 
 
         return view('beneficiario.crear-beneficiario')
         ->with(compact('paises'))
         ->with(compact('estados_civiles'))
-        ->with(compact('previsiones'));
+        ->with(compact('previsiones'))
+        ->with(compact('situaciones'))
+        ->with(compact('niveles_educacion'));
     }
 
     /**
