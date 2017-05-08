@@ -49,3 +49,26 @@ $factory->define(App\Telefono::class, function (Faker\Generator $faker) {
         'beneficiario_id' => $faker->numberBetween($min = 1, $max = 150)
     ];
 });
+
+$factory->define(App\Beneficiario::class, function (Faker\Generator $faker) {
+
+    return [
+        'diagnostico' => $faker -> word,
+        'motivo_consulta' => $faker -> sentence,
+        'situacion_laboral' => $faker -> jobTitle,
+        'situacion_familiar' => $faker -> word,
+        'asiste_centro_rhb' => $faker -> boolean,
+        'id_antecedentes_morbidos' => $faker -> numberBetween($min = 1, $max = 2),
+        'id_val_motora' => $faker -> numberBetween($min = 1, $max = 2),
+        'id_val_deambulacion' => $faker -> numberBetween($min = 1, $max = 2),
+        'id_val_movilidad' => $faker -> numberBetween($min = 1, $max = 2),
+        'id_val_social' => $faker -> numberBetween($min = 1, $max = 2),
+        'id_val_autocuidado' => $faker -> numberBetween($min = 1, $max = 2),
+        'id_val_sensorial' => $faker -> numberBetween($min = 1, $max = 2),
+        'id_val_com_cog' => $faker -> numberBetween($min = 1, $max = 2),
+        'id_val_evaluacion' => $faker -> numberBetween($min = 1, $max = 2),
+        'id_val_control_esfinter' => $faker -> numberBetween($min = 1, $max = 2),
+        'id_kinesiologo' => $faker -> numberBetween($min = 1, $max = 5),
+        'id_beneficiario' => $faker -> numberBetween($min = 1, $max = 150),
+    ];
+});
