@@ -11,13 +11,6 @@ class BeneficiarioTableSeeder extends Seeder
      */
     public function run()
     {
-        $beneficiario = new \App\Beneficiario([
-            'nombre' => 'juan',
-            'apellido' => 'juanes',
-            'rut' => '666-6',
-            'sexo' => 'masculino'
-        ]);
-        $beneficiario->save();
-
+        factory(App\Beneficiario::class, 150)->create();
     }
 }

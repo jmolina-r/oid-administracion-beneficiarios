@@ -23,3 +23,20 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 */
+$factory->define(App\Pais::class, function (Faker\Generator $faker) {
+
+    return [
+        'nombre' => $faker->country
+    ];
+});
+
+$factory->define(App\Beneficiario::class, function (Faker\Generator $faker) {
+
+    return [
+        'nombre' => $faker->firstName,
+        'apellido' => $faker->lastName,
+        'sexo' => $faker->regexify('(masculino|femenino)'),
+        'rut' => $faker->regexify('\[1-9]{8,9}\-(k|[0-9])'),
+        'pais_id' => $faker->numberBetween($min = 1, $max = 70)
+    ];
+});
