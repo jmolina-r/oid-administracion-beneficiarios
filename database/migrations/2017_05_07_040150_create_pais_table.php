@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBeneficiariosTable extends Migration
+class CreatePaisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,10 @@ class CreateBeneficiariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('beneficiarios', function (Blueprint $table) {
+        Schema::create('pais', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->string('nombre');
-            $table->string('apellido');
-            $table->string('rut');
-            $table->string('sexo');
-
-
-            $table->integer('pais_id')->unsigned();
-
-
-        });
-
-        Schema::table('beneficiarios', function($table) {
-            $table->foreign('pais_id')->references('id')->on('pais');
         });
     }
 
@@ -39,6 +27,6 @@ class CreateBeneficiariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('beneficiarios');
+        Schema::dropIfExists('pais');
     }
 }
