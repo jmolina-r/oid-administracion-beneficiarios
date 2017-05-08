@@ -16,6 +16,8 @@ class CreateValEvaluacionsTable extends Migration
         Schema::create('val_evaluacions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('conexion_medio');
+            $table->string('nivel_cognitivo_apar');
         });
     }
 

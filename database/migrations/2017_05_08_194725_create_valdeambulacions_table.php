@@ -16,6 +16,10 @@ class CreateValdeambulacionsTable extends Migration
         Schema::create('valdeambulacions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('puntaje_desp_caminando');
+            $table->string('coment_desp_caminando');
+            $table->string('puntae_escaleras');
+            $table->string('coment_escaleras');
         });
     }
 

@@ -16,6 +16,10 @@ class CreateValComCogsTable extends Migration
         Schema::create('val_com_cogs', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('puntae_expresion');
+            $table->string('coment_expresion');
+            $table->string('puntaje_comprension');
+            $table->string('coment_comprension');
         });
     }
 
