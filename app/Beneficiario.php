@@ -12,4 +12,9 @@ class Beneficiario extends Model
     {
         return $this->belongsTo(Pais::class);
     }
+
+    public function telefonos()
+    {
+        return $this->hasMany(Telefono::class);
+    }
 }
