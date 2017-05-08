@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Beneficiario extends Model
 {
-    //
+    protected $fillable = ['nombre', 'apellido', 'rut', 'sexo'];
 }
