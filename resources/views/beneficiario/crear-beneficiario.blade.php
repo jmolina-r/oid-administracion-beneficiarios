@@ -361,38 +361,50 @@ class='contrast-red'
                      <!-- STEP 2 -->
                      <div class='step-pane' data-step='2'>
 
-                      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
                         <label class='control-label' for='inputText'>Sistema de Salud</label>
-                        <div class='col-md-12 form-group'>
-                          <div class='col-md-12'>
-                           <select class='form-control' id='inputSelect'>
-                             <option>No aplica</option>
-                             <option>Fonasa Tramo A</option>
-                             <option>Fonasa Tramo B</option>
-                             <option>Fonasa Tramo C</option>
-                             <option>Fonasa Tramo D</option>
-                             <option>Cruz Blanca</option>
-                             <option>Colmena</option>
-                             <option>Consalud</option>
-                             <option>Mas Vida</option>                                   
-                           </select>
-                         </div>
-                       </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group">
+                            <label class='control-label'>Seleccionar sistema</label>
+                            <div class='col-md-12'>
+                              <label style="margin-top: 0px;" class='radio radio-inline'>
+                                <input name='sistema' type='radio' value='f'>
+                                Fonasa
+                              </label>
+                              <label class='radio radio-inline'>
+                                <input name='sistema' type='radio' value='i'>
+                                Isapre
+                              </label>
+                            </div>                          
+                          </div>
+
+                          <div class='col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group'>
+                            <div class='col-md-6'>
+                             <select name='sistema_salud' class='form-control' id='inputSelect'>
+                                <option value=''>Seleccionar sistema...</option>
+                               <!-- Este select se debe llenar con ajax dependiendo del boton anteriorr seleccionado-->
+                             </select>
+                            </div>
+                          </div>
+
+                        </div>
                      </div>
 
                      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                      <label class='control-label' for='inputText'>Previsión</label>
-                      <div class='col-md-12 form-group'>
-                        <div class='col-md-12'>
-                         <select class='form-control' id='inputSelect'>
-                           <option>No aplica</option>
-                           <option>Bansander</option>
-                           <option>Cuprum</option>
-                           <option>Habitad</option>                               
-                         </select>
-                       </div>
-                     </div>                                
-                   </div>
+                        <label class='control-label' for='inputText'>Previsión</label>
+                        <div class='col-md-12 form-group'>
+                          <div class='col-md-12'>
+                           <select name='prevision' class='form-control' id='inputSelect'>
+                             @foreach($previsiones as $prevision)
+                                <option value="{{$prevision->id_prevision}}">{{$prevision->descripcion}}</option>
+                              @endforeach                           
+                           </select>
+                          </div>
+                        </div>                                
+                     </div>
 
                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                     <label class='control-label' for='inputText'>Nivel Educacional</label>

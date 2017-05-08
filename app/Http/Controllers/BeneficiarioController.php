@@ -27,10 +27,13 @@ class BeneficiarioController extends Controller
         //Colecciones vacias de prueba
         $paises = collect();
         $estados_civiles = collect();
+        $previsiones = collect();
+
 
         return view('beneficiario.crear-beneficiario')
         ->with(compact('paises'))
-        ->with(compact('estados_civiles'));
+        ->with(compact('estados_civiles'))
+        ->with(compact('previsiones'));
     }
 
     /**
