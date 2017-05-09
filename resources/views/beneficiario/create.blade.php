@@ -8,13 +8,13 @@ Registro de Beneficiario - OID
 
 <!-- inyeccion de estilos -->
 @section('styles_before')
-<link href="assets/stylesheets/plugins/fuelux/wizard.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/stylesheets/plugins/fuelux/wizard.css" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
 @section('styles')
-<link href="assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css" rel="stylesheet" type="text/css" media="all" />
-<link href="assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" media="all" />
-<link href='assets/images/meta_icons/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'>
+<link href="/assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" media="all" />
+<link href='/assets/images/meta_icons/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'>
 @endsection
 
 <!-- Atributos del body -->
@@ -27,35 +27,35 @@ class='contrast-red'
    -->
    @section('scripts')
    <!-- / jquery [required] -->
-    <script src="assets/javascripts/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/javascripts/jquery/jquery.min.js" type="text/javascript"></script>
     <!-- / jquery mobile (for touch events) -->
-    <script src="assets/javascripts/jquery/jquery.mobile.custom.min.js" type="text/javascript"></script>
+    <script src="/assets/javascripts/jquery/jquery.mobile.custom.min.js" type="text/javascript"></script>
     <!-- / jquery ui -->
-    <script src="assets/javascripts/jquery/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="/assets/javascripts/jquery/jquery-ui.min.js" type="text/javascript"></script>
     <!-- / jQuery UI Touch Punch -->
-    <script src="assets/javascripts/jquery/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+    <script src="/assets/javascripts/jquery/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
     <!-- / bootstrap [required] -->
-    <script src="assets/javascripts/bootstrap/bootstrap.js" type="text/javascript"></script>
+    <script src="/assets/javascripts/bootstrap/bootstrap.js" type="text/javascript"></script>
     <!-- / modernizr -->
-    <script src="assets/javascripts/plugins/modernizr/modernizr.min.js" type="text/javascript"></script>
+    <script src="/assets/javascripts/plugins/modernizr/modernizr.min.js" type="text/javascript"></script>
     <!-- / retina -->
-    <script src="assets/javascripts/plugins/retina/retina.js" type="text/javascript"></script>
+    <script src="/assets/javascripts/plugins/retina/retina.js" type="text/javascript"></script>
     <!-- / theme file [required] -->
-    <script src="assets/javascripts/theme.js" type="text/javascript"></script>
+    <script src="/assets/javascripts/theme.js" type="text/javascript"></script>
     <!-- / START - page related files and scripts [optional] -->
-    <script src="assets/javascripts/plugins/fuelux/wizard.js" type="text/javascript"></script>
+    <script src="/assets/javascripts/plugins/fuelux/wizard.js" type="text/javascript"></script>
     <!-- / END - page related files and scripts [optional] -->
 
 
    <!-- / START - moments-->
-   <script src="assets/javascripts/plugins/common/moment.min.js" type="text/javascript"></script>
+   <script src="/assets/javascripts/plugins/common/moment.min.js" type="text/javascript"></script>
    <!-- / END - moments-->
    <!-- / START - datepicker-->
-   <script src="assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js" type="text/javascript"></script>
+   <script src="/assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js" type="text/javascript"></script>
    <!-- / END - datepicker-->
    <!-- / START - Validaciones-->
-   <script src="assets/javascripts/plugins/validate/jquery.validate.min.js" type="text/javascript"></script>
-   <script src="assets/javascripts/plugins/validate/additional-methods.js" type="text/javascript"></script>
+   <script src="/assets/javascripts/plugins/validate/jquery.validate.min.js" type="text/javascript"></script>
+   <script src="/assets/javascripts/plugins/validate/additional-methods.js" type="text/javascript"></script>
    <script>
     $.validator.addMethod("buga", (function(value) {
       return value === "buga";
@@ -217,7 +217,7 @@ class='contrast-red'
                                 <option value="{{$pais->id_pais}}">{{$pais->nombre}}</option>
                               @endforeach
                             </select>
-                          </div>                                  
+                          </div>
                         </div>
 
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group">
@@ -241,7 +241,7 @@ class='contrast-red'
                               <input name='sexo' type='radio' value='f'>
                               Femenino
                             </label>
-                          </div>                          
+                          </div>
                         </div>
 
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group">
@@ -254,11 +254,11 @@ class='contrast-red'
                            </select>
                          </div>
                         </div>
-                         
+
 
                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                          <label class='control-label' for='inputText'>Domicilio</label>
-                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">   
+                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                            <div class='col-xs-12 col-sm-12 col-md-3'>
                              <div class='controls'>
                                <input name='domicilio_calle' class='form-control' id='inputText' placeholder='Calle' type='text'>
@@ -287,7 +287,7 @@ class='contrast-red'
 
                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                          <label class='control-label' for='inputText'>Contacto</label>
-                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">  
+                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                            <div class='col-md-4 controls'>
                              <input name='tel_fijo' class='form-control' id='inputText' placeholder='Fono' type='text'>
                            </div>
@@ -337,7 +337,7 @@ class='contrast-red'
                            <div class='col-md-6 controls'>
                              <input name='registro_social_porcentaje' class='form-control' id='inputText' placeholder='Porcentaje' type='text'>
                            </div>
-                         </div>                        
+                         </div>
                       </div>
 
                       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -382,7 +382,7 @@ class='contrast-red'
                                 <input name='sistema' type='radio' value='i'>
                                 Isapre
                               </label>
-                            </div>                          
+                            </div>
                           </div>
 
                           <div class='col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group'>
@@ -404,10 +404,10 @@ class='contrast-red'
                            <select name='prevision' class='form-control' id='inputSelect'>
                               @foreach($previsiones as $prevision)
                                 <option value="{{$prevision->id_prevision}}">{{$prevision->descripcion}}</option>
-                              @endforeach                           
+                              @endforeach
                            </select>
                           </div>
-                        </div>                                
+                        </div>
                      </div>
 
                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -417,7 +417,7 @@ class='contrast-red'
                        <select name='nivel_educacion' class='form-control' id='inputSelect'>
                          @foreach($niveles_educacion as $nivel_educacion)
                             <option value="{{$prevision->id_prevision}}">{{$prevision->descripcion}}</option>
-                         @endforeach                               
+                         @endforeach
                        </select>
                      </div>
                    </div>
@@ -430,10 +430,10 @@ class='contrast-red'
                        <select class='form-control' id='inputSelect'>
                           @foreach($situaciones as $situacion)
                               <option value="{{$situacion->id_situacion}}">{{$situacion->descripcion}}</option>
-                          @endforeach                             
+                          @endforeach
                        </select>
                      </div>
-                   </div>                                
+                   </div>
                  </div>
 
                  <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
@@ -542,10 +542,10 @@ class='contrast-red'
                  <select name="tipo_dependencia_id" class='form-control' id='inputSelect'>
                    @foreach($dependencias as $dependencia)
                       <option value="{{$dependencia->id_tipo_dependencia}}">{{$dependencia->nombre}}</option>
-                   @endforeach                 
+                   @endforeach
                  </select>
                </div>
-             </div>                                
+             </div>
            </div>
 
 
@@ -562,7 +562,7 @@ class='contrast-red'
                  No
                </label>
              </div>
-           </div>                                
+           </div>
          </div>
 
          <div class='col-xs-5 col-sm-5 col-md-5 col-lg-5 form-group'>

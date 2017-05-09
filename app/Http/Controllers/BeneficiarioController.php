@@ -49,7 +49,7 @@ class BeneficiarioController extends Controller
         $dependencias = collect();
 
 
-        return view('beneficiario.crear-beneficiario')
+        return view('beneficiario.create')
         ->with(compact('paises'))
         ->with(compact('estados_civiles'))
         ->with(compact('previsiones'))
@@ -75,7 +75,7 @@ class BeneficiarioController extends Controller
     */
     public function find()
     {
-        return view('beneficiario.obtener-beneficiario');
+        return view('beneficiario.find');
     }
 
     /**
@@ -86,7 +86,7 @@ class BeneficiarioController extends Controller
      */
     public function show($id)
     {
-        return view('beneficiario.perfil-beneficiario');
+        return view('beneficiario.show');
     }
 
     /**
@@ -97,7 +97,7 @@ class BeneficiarioController extends Controller
      */
     public function edit($id)
     {
-        return view('beneficiario.editar-beneficiario');
+        return view('beneficiario.edit');
     }
 
     /**
