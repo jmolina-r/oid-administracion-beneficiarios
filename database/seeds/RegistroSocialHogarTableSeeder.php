@@ -33,5 +33,6 @@ class RegistroSocialHogarTableSeeder extends Seeder
             $registroSocialHogar->save();
 
         }
+        $faker->unique($reset=true);
     }
 }

@@ -55,10 +55,16 @@ $factory->define(App\Telefono::class, function (Faker\Generator $faker) {
 
 
 $factory->define(App\Tutor::class, function (Faker\Generator $faker) {
-    $faker->unique($reset=true);
     return [
         'nombres' => $faker->firstName,
         'apellidos' => $faker->lastName,
+        'beneficiario_id' => $faker->unique()->numberBetween($min = 1, $max = 150)
+    ];
+});
+
+$factory->define(App\CredencialDiscapacidad::class, function (Faker\Generator $faker) {
+    return [
+        'fecha_vencimiento' => $faker->dateTimeBetween($startDate = 'now', $endDate = '+5 years', $timezone = date_default_timezone_get()),
         'beneficiario_id' => $faker->unique()->numberBetween($min = 1, $max = 150)
     ];
 });
