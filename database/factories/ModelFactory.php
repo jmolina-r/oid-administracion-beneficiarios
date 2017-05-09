@@ -61,3 +61,23 @@ $factory->define(App\Tutor::class, function (Faker\Generator $faker) {
         'beneficiario_id' => $faker->unique()->numberBetween($min = 1, $max = 150)
     ];
 });
+
+/*
+
+$factory->define(App\RegistroSocialHogar::class, function (Faker\Generator $faker) {
+
+    $enTramite = $faker->boolean;
+
+    if($enTramite == true) {
+        $porcentaje = 0;
+    } else {
+        $porcentaje = $faker->numberBetween($min = 1, $max = 100);
+    }
+    return [
+        'porcentaje' => $porcentaje,
+        'en_tramite' => $enTramite,
+        'beneficiario_id' => $faker->unique()->regexify('[1-60]')
+    ];
+});
+
+*/

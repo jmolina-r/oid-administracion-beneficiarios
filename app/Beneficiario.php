@@ -35,6 +35,11 @@ class Beneficiario extends Model
 
     public function tutor()
     {
-        return $this->has(Tutor::class);
+        return $this->hasOne(Tutor::class);
+    }
+
+    public function registro_social_hogar()
+    {
+        return $this->hasOne(RegistroSocialHogar::class);
     }
 }
