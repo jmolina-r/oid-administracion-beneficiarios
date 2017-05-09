@@ -42,4 +42,8 @@ class Beneficiario extends Model
     {
         return $this->hasOne(RegistroSocialHogar::class);
     }
+    public function credencial_discapacidad()
+    {
+        return $this->hasOne(CredencialDiscapacidad::class);
+    }
 }
