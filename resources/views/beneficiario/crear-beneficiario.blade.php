@@ -7,10 +7,13 @@ Registro de Beneficiario - OID
 @endsection
 
 <!-- inyeccion de estilos -->
+@section('styles_before')
+<link href="assets/stylesheets/plugins/fuelux/wizard.css" rel="stylesheet" type="text/css" media="all" />
+@endsection
+
 @section('styles')
 <link href="assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css" rel="stylesheet" type="text/css" media="all" />
 <link href="assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" media="all" />
-<link href="assets/stylesheets/plugins/fuelux/wizard.css" rel="stylesheet" type="text/css" media="all" />
 <link href='assets/images/meta_icons/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'>
 @endsection
 
@@ -24,24 +27,26 @@ class='contrast-red'
    -->
    @section('scripts')
    <!-- / jquery [required] -->
-   <script src="assets/javascripts/jquery/jquery.min.js" type="text/javascript"></script>
-   <!-- / jquery mobile (for touch events) -->
-   <script src="assets/javascripts/jquery/jquery.mobile.custom.min.js" type="text/javascript"></script>
-   <!-- / jquery ui -->
-   <script src="assets/javascripts/jquery/jquery-ui.min.js" type="text/javascript"></script>
-   <!-- / jQuery UI Touch Punch -->
-   <script src="assets/javascripts/jquery/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
-   <!-- / bootstrap [required] -->
-   <script src="assets/javascripts/bootstrap/bootstrap.js" type="text/javascript"></script>
-   <!-- / modernizr -->
-   <script src="assets/javascripts/plugins/modernizr/modernizr.min.js" type="text/javascript"></script>
-   <!-- / retina -->
-   <script src="assets/javascripts/plugins/retina/retina.js" type="text/javascript"></script>
-   <!-- / theme file [required] -->
-   <script src="assets/javascripts/theme.js" type="text/javascript"></script>
-   <!-- / START - page related files and scripts [optional] -->
-   <script src="assets/javascripts/plugins/fuelux/wizard.js" type="text/javascript"></script>
-   <!-- / END - page related files and scripts [optional] -->
+    <script src="assets/javascripts/jquery/jquery.min.js" type="text/javascript"></script>
+    <!-- / jquery mobile (for touch events) -->
+    <script src="assets/javascripts/jquery/jquery.mobile.custom.min.js" type="text/javascript"></script>
+    <!-- / jquery ui -->
+    <script src="assets/javascripts/jquery/jquery-ui.min.js" type="text/javascript"></script>
+    <!-- / jQuery UI Touch Punch -->
+    <script src="assets/javascripts/jquery/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+    <!-- / bootstrap [required] -->
+    <script src="assets/javascripts/bootstrap/bootstrap.js" type="text/javascript"></script>
+    <!-- / modernizr -->
+    <script src="assets/javascripts/plugins/modernizr/modernizr.min.js" type="text/javascript"></script>
+    <!-- / retina -->
+    <script src="assets/javascripts/plugins/retina/retina.js" type="text/javascript"></script>
+    <!-- / theme file [required] -->
+    <script src="assets/javascripts/theme.js" type="text/javascript"></script>
+    <!-- / START - page related files and scripts [optional] -->
+    <script src="assets/javascripts/plugins/fuelux/wizard.js" type="text/javascript"></script>
+    <!-- / END - page related files and scripts [optional] -->
+
+
    <!-- / START - moments-->
    <script src="assets/javascripts/plugins/common/moment.min.js" type="text/javascript"></script>
    <!-- / END - moments-->
@@ -368,7 +373,6 @@ class='contrast-red'
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group">
-                            <label class='control-label'>Seleccionar sistema</label>
                             <div class='col-md-12'>
                               <label style="margin-top: 0px;" class='radio radio-inline'>
                                 <input name='sistema' type='radio' value='f'>

@@ -3,7 +3,7 @@
     <head>
         <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-
+        @yield('styles_before')
         <link href="assets/stylesheets/bootstrap/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
         <!-- / theme file [required] -->
         <link href="assets/stylesheets/light-theme.css" rel="stylesheet" type="text/css" media="all" id="color-settings-body-color" />
