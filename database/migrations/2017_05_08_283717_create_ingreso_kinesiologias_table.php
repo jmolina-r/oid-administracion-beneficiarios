@@ -22,18 +22,18 @@ class CreateIngresoKinesiologiasTable extends Migration
             $table->string('situacion_familiar');
             $table->string('asiste_centro_rhb');
 
-            $table->integer('id_antecedentes_morbidos')->unsigned();
-            $table->integer('id_val_motora')->unsigned();
-            $table->integer('id_val_deambulacion')->unsigned();
-            $table->integer('id_val_movilidad')->unsigned();
-            $table->integer('id_val_social')->unsigned();
-            $table->integer('id_val_autocuidado')->unsigned();
-            $table->integer('id_val_sensorial')->unsigned();
-            $table->integer('id_val_com_cog')->unsigned();
-            $table->integer('id_val_evaluacion')->unsigned();
-            $table->integer('id_val_control_esfinter')->unsigned();
-            $table->integer('id_kinesiologo')->unsigned();
-            $table->integer('id_beneficiario')->unsigned();
+            $table->integer('antecedentes_morbidos_id')->unsigned();
+            $table->integer('val_motora_id')->unsigned();
+            $table->integer('val_deambulacion_id')->unsigned();
+            $table->integer('val_movilidad_id')->unsigned();
+            $table->integer('val_social_id')->unsigned();
+            $table->integer('val_autocuidado_id')->unsigned();
+            $table->integer('val_sensorial_id')->unsigned();
+            $table->integer('val_com_cog_id')->unsigned();
+            $table->integer('val_evaluacion_id')->unsigned();
+            $table->integer('val_control_esfinter_id')->unsigned();
+            $table->integer('kinesiologo_id')->unsigned();
+            $table->integer('beneficiario_id')->unsigned();
         });
 
         Schema::table('ingreso_kinesiologias', function($table) {

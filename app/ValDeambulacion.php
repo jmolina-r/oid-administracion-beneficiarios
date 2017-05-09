@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ValComCog extends Model
+class ValDeambulacion extends Model
 {
-    protected $fillable = ['puntae_expresion', 'coment_expresion', 'puntaje_comprension', 'coment_comprension'];
+    protected $fillable = ['puntaje_desp_caminando', 'coment_desp_caminando', 'puntae_escaleras', 'coment_escaleras'];
 
     public function ingresoKinesiologia()
     {

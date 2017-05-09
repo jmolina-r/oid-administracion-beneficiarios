@@ -13,7 +13,7 @@ class CreateValdeambulacionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('valdeambulacions', function (Blueprint $table) {
+        Schema::create('val_deambulacions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->string('puntaje_desp_caminando');
@@ -30,6 +30,6 @@ class CreateValdeambulacionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('valdeambulacions');
+        Schema::dropIfExists('val_deambulacions');
     }
 }
