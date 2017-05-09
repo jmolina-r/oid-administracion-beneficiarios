@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIngresoKinesiologiasTable extends Migration
+class CreateFichaKinesiologiasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateIngresoKinesiologiasTable extends Migration
      */
     public function up()
     {
-        Schema::create('ingreso_kinesiologias', function (Blueprint $table) {
+        Schema::create('ficha_kinesiologias', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->string('diagnostico');
@@ -36,51 +36,51 @@ class CreateIngresoKinesiologiasTable extends Migration
             $table->integer('beneficiario_id')->unsigned();
         });
 
-        Schema::table('ingreso_kinesiologias', function($table) {
+        Schema::table('ficha_kinesiologias', function($table) {
             $table->foreign('antecedentes_morbidos_id')->references('id')->on('antecedentes_morbidos');
         });
 
-        Schema::table('ingreso_kinesiologias', function($table) {
+        Schema::table('ficha_kinesiologias', function($table) {
             $table->foreign('val_motora_id')->references('id')->on('val_motoras');
         });
 
-        Schema::table('ingreso_kinesiologias', function($table) {
+        Schema::table('ficha_kinesiologias', function($table) {
             $table->foreign('val_deambulacion_id')->references('id')->on('val_deambulacions');
         });
 
-        Schema::table('ingreso_kinesiologias', function($table) {
+        Schema::table('ficha_kinesiologias', function($table) {
             $table->foreign('val_movilidad_id')->references('id')->on('val_movilidads');
         });
 
-        Schema::table('ingreso_kinesiologias', function($table) {
+        Schema::table('ficha_kinesiologias', function($table) {
             $table->foreign('val_social_id')->references('id')->on('val_socials');
         });
 
-        Schema::table('ingreso_kinesiologias', function($table) {
+        Schema::table('ficha_kinesiologias', function($table) {
             $table->foreign('val_autocuidado_id')->references('id')->on('val_autocuidados');
         });
 
-        Schema::table('ingreso_kinesiologias', function($table) {
+        Schema::table('ficha_kinesiologias', function($table) {
             $table->foreign('val_sensorial_id')->references('id')->on('val_sensorials');
         });
 
-        Schema::table('ingreso_kinesiologias', function($table) {
+        Schema::table('ficha_kinesiologias', function($table) {
             $table->foreign('val_com_cog_id')->references('id')->on('val_com_cogs');
         });
 
-        Schema::table('ingreso_kinesiologias', function($table) {
+        Schema::table('ficha_kinesiologias', function($table) {
             $table->foreign('val_evaluacion_id')->references('id')->on('val_evaluacions');
         });
 
-        Schema::table('ingreso_kinesiologias', function($table) {
+        Schema::table('ficha_kinesiologias', function($table) {
             $table->foreign('val_control_esfinter_id')->references('id')->on('val_control_esfinters');
         });
 
-        Schema::table('ingreso_kinesiologias', function($table) {
+        Schema::table('ficha_kinesiologias', function($table) {
             $table->foreign('kinesiologo_id')->references('id')->on('kinesiologos');
         });
 
-        Schema::table('ingreso_kinesiologias', function($table) {
+        Schema::table('ficha_kinesiologias', function($table) {
             $table->foreign('beneficiario_id')->references('id')->on('beneficiarios');
         });
     }
@@ -92,6 +92,6 @@ class CreateIngresoKinesiologiasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingreso_kinesiologias');
+        Schema::dropIfExists('ficha_kinesiologias');
     }
 }
