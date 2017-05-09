@@ -53,12 +53,9 @@ $factory->define(App\Telefono::class, function (Faker\Generator $faker) {
     ];
 });
 
-<<<<<<< HEAD
-=======
 
->>>>>>> g_jov
 $factory->define(App\Tutor::class, function (Faker\Generator $faker) {
-
+    $faker->unique($reset=true);
     return [
         'nombres' => $faker->firstName,
         'apellidos' => $faker->lastName,
@@ -85,8 +82,6 @@ $factory->define(App\RegistroSocialHogar::class, function (Faker\Generator $fake
 });
 
 */
-<<<<<<< HEAD
-=======
 
 
 $factory->define(App\IngresoKinesiologia::class, function (Faker\Generator $faker) {
@@ -241,4 +236,3 @@ $factory->define(App\ValSocial::class, function (Faker\Generator $faker) {
         'coment_memoria' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
     ];
 });
->>>>>>> g_jov
