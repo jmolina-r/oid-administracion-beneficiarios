@@ -32,4 +32,9 @@ class Beneficiario extends Model
     {
         return $this->belongsTo(Ocupacion::class);
     }
+
+    public function tutor()
+    {
+        return $this->has(Tutor::class);
+    }
 }
