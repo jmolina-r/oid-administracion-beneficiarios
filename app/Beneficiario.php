@@ -27,4 +27,9 @@ class Beneficiario extends Model
     {
         return $this->belongsTo(Educacion::class);
     }
+
+    public function ocupacion()
+    {
+        return $this->belongsTo(Ocupacion::class);
+    }
 }
