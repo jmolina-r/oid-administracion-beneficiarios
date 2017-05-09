@@ -16,7 +16,7 @@ class CreateKinesiologosTable extends Migration
         Schema::create('kinesiologos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('rut');
+            $table->string('rut');
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('telefono');

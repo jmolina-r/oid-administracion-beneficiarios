@@ -18,7 +18,7 @@ class CreateValAutocuidadosTable extends Migration
             $table->timestamps();
             $table->string('puntaje_alimentacion');
             $table->string('coment_alimentacion');
-            $table->string('puntae_arreglo_pers');
+            $table->string('puntaje_arreglo_pers');
             $table->string('coment_arreglo_pers');
             $table->string('puntaje_bano');
             $table->string('coment_bano');

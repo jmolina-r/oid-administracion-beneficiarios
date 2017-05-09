@@ -11,6 +11,6 @@ class KinesiologoTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Kinesiologo::class, 3)->create();
     }
 }

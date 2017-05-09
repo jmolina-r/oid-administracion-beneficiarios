@@ -37,51 +37,51 @@ class CreateIngresoKinesiologiasTable extends Migration
         });
 
         Schema::table('ingreso_kinesiologias', function($table) {
-            $table->foreign('id_antecedentes_morbidos')->references('id')->on('antecedentes_morbidos');
+            $table->foreign('antecedentes_morbidos_id')->references('id')->on('antecedentes_morbidos');
         });
 
         Schema::table('ingreso_kinesiologias', function($table) {
-            $table->foreign('id_val_motora')->references('id')->on('val_motora');
+            $table->foreign('val_motora_id')->references('id')->on('val_motoras');
         });
 
         Schema::table('ingreso_kinesiologias', function($table) {
-            $table->foreign('id_val_deambulacion')->references('id')->on('val_deambulacion');
+            $table->foreign('val_deambulacion_id')->references('id')->on('val_deambulacions');
         });
 
         Schema::table('ingreso_kinesiologias', function($table) {
-            $table->foreign('id_val_movilidad')->references('id')->on('val_movilidad');
+            $table->foreign('val_movilidad_id')->references('id')->on('val_movilidads');
         });
 
         Schema::table('ingreso_kinesiologias', function($table) {
-            $table->foreign('id_val_social')->references('id')->on('val_social');
+            $table->foreign('val_social_id')->references('id')->on('val_socials');
         });
 
         Schema::table('ingreso_kinesiologias', function($table) {
-            $table->foreign('id_val_autocuidado')->references('id')->on('val_autocuidado');
+            $table->foreign('val_autocuidado_id')->references('id')->on('val_autocuidados');
         });
 
         Schema::table('ingreso_kinesiologias', function($table) {
-            $table->foreign('id_val_sensorial')->references('id')->on('val_sensorial');
+            $table->foreign('val_sensorial_id')->references('id')->on('val_sensorials');
         });
 
         Schema::table('ingreso_kinesiologias', function($table) {
-            $table->foreign('id_val_com_cog')->references('id')->on('val_com_cog');
+            $table->foreign('val_com_cog_id')->references('id')->on('val_com_cogs');
         });
 
         Schema::table('ingreso_kinesiologias', function($table) {
-            $table->foreign('id_val_evaluacion')->references('id')->on('val_evaluacion');
+            $table->foreign('val_evaluacion_id')->references('id')->on('val_evaluacions');
         });
 
         Schema::table('ingreso_kinesiologias', function($table) {
-            $table->foreign('id_val_control_esfinter')->references('id')->on('val_control_esfinter');
+            $table->foreign('val_control_esfinter_id')->references('id')->on('val_control_esfinters');
         });
 
         Schema::table('ingreso_kinesiologias', function($table) {
-            $table->foreign('id_kinesiologo')->references('id')->on('kinesiologo');
+            $table->foreign('kinesiologo_id')->references('id')->on('kinesiologos');
         });
 
         Schema::table('ingreso_kinesiologias', function($table) {
-            $table->foreign('id_beneficiario')->references('id')->on('beneficiario');
+            $table->foreign('beneficiario_id')->references('id')->on('beneficiarios');
         });
     }
 
