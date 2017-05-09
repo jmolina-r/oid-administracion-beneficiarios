@@ -39,7 +39,8 @@ $factory->define(App\Beneficiario::class, function (Faker\Generator $faker) {
         'rut' => $faker->regexify('\[1-9]{8,9}\-(k|[0-9])'),
         'pais_id' => $faker->numberBetween($min = 1, $max = 70),
         'estado_civil_id' => $faker->numberBetween($min = 1, $max = 5),
-        'educacion_id' => $faker->numberBetween($min = 1, $max = 9)
+        'educacion_id' => $faker->numberBetween($min = 1, $max = 9),
+        'ocupacion_id' => $faker->numberBetween($min = 1, $max = 5)
     ];
 });
 
