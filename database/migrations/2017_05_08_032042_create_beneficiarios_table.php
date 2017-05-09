@@ -23,12 +23,17 @@ class CreateBeneficiariosTable extends Migration
 
 
             $table->integer('pais_id')->unsigned();
+            $table->integer('estado_civil_id')->unsigned();
+
 
 
         });
-
         Schema::table('beneficiarios', function($table) {
             $table->foreign('pais_id')->references('id')->on('pais');
+        });
+
+        Schema::table('beneficiarios', function($table) {
+            $table->foreign('estado_civil_id')->references('id')->on('estado_civils');
         });
     }
 

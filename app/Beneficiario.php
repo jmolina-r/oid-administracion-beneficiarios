@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Beneficiario extends Model
 {
-    protected $fillable = ['nombre', 'apellido', 'rut', 'sexo', 'pais_id'];
+    protected $fillable = ['nombre', 'apellido', 'rut', 'sexo', 'pais_id', 'estado_civil_id'];
 
     public function pais()
     {
@@ -16,5 +16,10 @@ class Beneficiario extends Model
     public function telefonos()
     {
         return $this->hasMany(Telefono::class);
+    }
+
+    public function estado_civil()
+    {
+        return $this->belongsTo(EstadoCivil::class);
     }
 }
