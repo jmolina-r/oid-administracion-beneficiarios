@@ -184,7 +184,7 @@ class='contrast-red'
                         </button>
                       </div>
                       <hr class='hr-normal'>
-                      <form action="#" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post"><div class='step-content'>
+                      <form action="jghhjg.php" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get"><div class='step-content'>
                         <!-- STEP 1 -->
                         <div class='step-pane active' data-step='1'>
 
