@@ -3,21 +3,14 @@
     <head>
         <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-<<<<<<< HEAD
+
         @yield('styles_before')
         <link href="{{ asset('/assets/stylesheets/bootstrap/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
         <!-- / theme file [required] -->
         <link href="{{ asset('/assets/stylesheets/light-theme.css') }}" rel="stylesheet" type="text/css" media="all" id="color-settings-body-color" />
         <!-- / coloring file [optional] (if you are going to use custom contrast color) -->
         <link href="{{ asset('/assets/stylesheets/theme-colors.css') }}" rel="stylesheet" type="text/css" media="all" />
-=======
 
-        <link href="/assets/stylesheets/bootstrap/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-        <!-- / theme file [required] -->
-        <link href="/assets/stylesheets/light-theme.css" rel="stylesheet" type="text/css" media="all" id="color-settings-body-color" />
-        <!-- / coloring file [optional] (if you are going to use custom contrast color) -->
-        <link href="/assets/stylesheets/theme-colors.css" rel="stylesheet" type="text/css" media="all" />
->>>>>>> g_jov
 
         <!-- meta tributo title -->
         <title>@yield('title')</title>
@@ -33,7 +26,7 @@
 <<<<<<< HEAD
 
 =======
-        
+
 >>>>>>> g_jov
         @yield('scripts')
     </body>
