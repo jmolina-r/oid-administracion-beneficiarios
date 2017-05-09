@@ -24,6 +24,7 @@ class CreateBeneficiariosTable extends Migration
 
             $table->integer('pais_id')->unsigned();
             $table->integer('estado_civil_id')->unsigned();
+            $table->integer('educacion_id')->unsigned();
 
 
 
@@ -34,6 +35,10 @@ class CreateBeneficiariosTable extends Migration
 
         Schema::table('beneficiarios', function($table) {
             $table->foreign('estado_civil_id')->references('id')->on('estado_civils');
+        });
+
+        Schema::table('beneficiarios', function($table) {
+            $table->foreign('educacion_id')->references('id')->on('educacions');
         });
     }
 
