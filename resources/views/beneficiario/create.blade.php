@@ -8,13 +8,13 @@ Registro de Beneficiario - OID
 
 <!-- inyeccion de estilos -->
 @section('styles_before')
-<link href="/assets/stylesheets/plugins/fuelux/wizard.css" rel="stylesheet" type="text/css" media="all" />
+<link href="{{ asset('/assets/stylesheets/plugins/fuelux/wizard.css') }}" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
 @section('styles')
-<link href="/assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css" rel="stylesheet" type="text/css" media="all" />
-<link href="/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" media="all" />
-<link href='/assets/images/meta_icons/apple-touch-icon-precomposed.png' rel='apple-touch-icon-precomposed'>
+<link href="{{ asset('/assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css') }}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{ asset('/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css" media="all" />
+<link href='{{ asset('/assets/images/meta_icons/apple-touch-icon-precomposed.png') }}' rel='apple-touch-icon-precomposed'>
 @endsection
 
 <!-- Atributos del body -->
@@ -27,44 +27,38 @@ class='contrast-red'
    -->
    @section('scripts')
    <!-- / jquery [required] -->
-    <script src="/assets/javascripts/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="{{ asset('/assets/javascripts/jquery/jquery.min.js') }}" type="text/javascript"></script>
     <!-- / jquery mobile (for touch events) -->
-    <script src="/assets/javascripts/jquery/jquery.mobile.custom.min.js" type="text/javascript"></script>
+    <script src="{{ asset('/assets/javascripts/jquery/jquery.mobile.custom.min.js') }}" type="text/javascript"></script>
     <!-- / jquery ui -->
-    <script src="/assets/javascripts/jquery/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="{{ asset('/assets/javascripts/jquery/jquery-ui.min.js') }}" type="text/javascript"></script>
     <!-- / jQuery UI Touch Punch -->
-    <script src="/assets/javascripts/jquery/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+    <script src="{{ asset('/assets/javascripts/jquery/jquery.ui.touch-punch.min.js') }}" type="text/javascript"></script>
     <!-- / bootstrap [required] -->
-    <script src="/assets/javascripts/bootstrap/bootstrap.js" type="text/javascript"></script>
+    <script src="{{ asset('/assets/javascripts/bootstrap/bootstrap.js') }}" type="text/javascript"></script>
     <!-- / modernizr -->
-    <script src="/assets/javascripts/plugins/modernizr/modernizr.min.js" type="text/javascript"></script>
+    <script src="{{ asset('/assets/javascripts/plugins/modernizr/modernizr.min.js') }}" type="text/javascript"></script>
     <!-- / retina -->
-    <script src="/assets/javascripts/plugins/retina/retina.js" type="text/javascript"></script>
+    <script src="{{ asset('/assets/javascripts/plugins/retina/retina.js') }}" type="text/javascript"></script>
     <!-- / theme file [required] -->
-    <script src="/assets/javascripts/theme.js" type="text/javascript"></script>
+    <script src="{{ asset('/assets/javascripts/theme.js') }}" type="text/javascript"></script>
     <!-- / START - page related files and scripts [optional] -->
-    <script src="/assets/javascripts/plugins/fuelux/wizard.js" type="text/javascript"></script>
+    <script src="{{ asset('/assets/javascripts/plugins/fuelux/wizard.js') }}" type="text/javascript"></script>
     <!-- / END - page related files and scripts [optional] -->
 
 
    <!-- / START - moments-->
-   <script src="/assets/javascripts/plugins/common/moment.min.js" type="text/javascript"></script>
+   <script src="{{ asset('/assets/javascripts/plugins/common/moment.min.js') }}" type="text/javascript"></script>
    <!-- / END - moments-->
    <!-- / START - datepicker-->
-   <script src="/assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js" type="text/javascript"></script>
+   <script src="{{ asset('/assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
    <!-- / END - datepicker-->
    <!-- / START - Validaciones-->
-   <script src="/assets/javascripts/plugins/validate/jquery.validate.min.js" type="text/javascript"></script>
-   <script src="/assets/javascripts/plugins/validate/additional-methods.js" type="text/javascript"></script>
-   <script>
-    $.validator.addMethod("buga", (function(value) {
-      return value === "buga";
-    }), "Please enter \"buga\"!");
+   <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
+   <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
 
-    $.validator.methods.equal = function(value, element, param) {
-      return value === param;
-    };
-  </script>
+   <script src="{{ asset('/js/beneficiario/RegistroBeneficiario.js') }}" type="text/javascript"></script>
+
   <!-- / END - validaciones-->
   @endsection
 
@@ -174,7 +168,7 @@ class='contrast-red'
                         </ul>
                       </div>
                       <div class='actions'>
-                        <button class='pull-right btn btn-md btn-success btn-next' data-last='Finalizar'>
+                        <button type='submit' class='pull-right btn btn-md btn-success btn-next' data-last='Finalizar'>
                           Continuar
                           <i class='fa fa-arrow-right'></i>
                         </button>
@@ -184,7 +178,7 @@ class='contrast-red'
                         </button>
                       </div>
                       <hr class='hr-normal'>
-                      <form action="jghhjg.php" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get"><div class='step-content'>
+                      <form id="formulario-registro" action="jghhjg.php" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get"><div class='step-content'>
                         <!-- STEP 1 -->
                         <div class='step-pane active' data-step='1'>
 
