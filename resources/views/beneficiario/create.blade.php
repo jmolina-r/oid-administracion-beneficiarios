@@ -374,11 +374,11 @@ class='contrast-red'
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                             <div class='col-md-12'>
                               <label style="margin-top: 0px;" class='radio radio-inline'>
-                                <input name='sistema' type='radio' value='f'>
+                                <input name='sistema' type='radio' value='f' required>
                                 Fonasa
                               </label>
                               <label class='radio radio-inline'>
-                                <input name='sistema' type='radio' value='i'>
+                                <input name='sistema' type='radio' value='i' required>
                                 Isapre
                               </label>
                             </div>
@@ -398,15 +398,15 @@ class='contrast-red'
                         <label class='control-label' for='inputText'>Previsión</label>
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                           <label style="margin-top: 0px;" class='radio radio-inline'>
-                            <input name='prevision_radio' type='radio' value='f'>
+                            <input name='prevision_radio' type='radio' value='afp' required>
                             AFP
                           </label>
                           <label class='radio radio-inline'>
-                            <input name='prevision_radio' type='radio' value='i'>
+                            <input name='prevision_radio' type='radio' value='ips' required>
                             IPS
                           </label>
                           <label class='radio radio-inline'>
-                            <input name='prevision_radio' type='radio' value='i'>
+                            <input name='prevision_radio' type='radio' value='no' required>
                             No tiene
                           </label>
                         </div>
@@ -443,7 +443,7 @@ class='contrast-red'
                           @endforeach
                        </select>
                      </div>
-                   </div>
+                    </div>
                  </div>
 
                  <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
@@ -564,11 +564,11 @@ class='contrast-red'
             <div class='col-md-12 form-group'>
               <div class='col-md-12'>
                <label style="margin-top: 0px;" class='radio radio-inline'>
-                 <input name='cuidados' type='radio' value='1'>
+                 <input name='cuidados' type='radio' value='1' required>
                  Si
                </label>
                <label class='radio radio-inline'>
-                 <input name='cuidados' type='radio' value='0'>
+                 <input name='cuidados' type='radio' value='0' required>
                  No
                </label>
              </div>
