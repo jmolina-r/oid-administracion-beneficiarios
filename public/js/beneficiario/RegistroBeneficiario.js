@@ -2,7 +2,6 @@
  * Created by Alfredo Viccenzo on 09-05-2017.
  */
 
-//var validator = $('#formulario-registro').validator();
 $('#formulario-registro').validator();
 
 $('#myWizard').wizard().on('actionclicked.fu.wizard', function (e, data) {

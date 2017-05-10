@@ -232,20 +232,22 @@ class='contrast-red'
                           <label class='control-label'>Sexo</label>
                           <div class='col-md-12'>
                             <label style="margin-top: 0px;" class='radio radio-inline'>
-                              <input name='sexo' type='radio' value='m'>
+                              <input name='sexo' type='radio' value='m' required>
                               Masculino
                             </label>
                             <label class='radio radio-inline'>
-                              <input name='sexo' type='radio' value='f'>
+                              <input name='sexo' type='radio' value='f' required>
                               Femenino
                             </label>
                           </div>
+                            <div class="help-block with-errors"></div>
                         </div>
 
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group">
                           <label class='control-label' for='inputSelect'>Situación Civil</label>
                          <div class='col-md-12'>
                            <select name='estado_civil_id' class='form-control' id='inputSelect'>
+                               <option value="">Seleccionar...</option>
                               @foreach($estados_civiles as $estado_civil)
                                 <option value="{{$estado_civil->id_estado_civil}}">{{$estado_civil->descripcion}}</option>
                               @endforeach
@@ -321,11 +323,11 @@ class='contrast-red'
 
                       <!-- Falta aqui manejar la subida de archivo para agregar la credencial -->
 
-                      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group">
+                      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                          <label class='control-label' for='inputSelect'>Registro social de hogares</label>
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                           <div class='col-md-6'>
-                             <select name='registro_social_hogares' class='form-control' id='inputSelect'>
+                           <div class='col-md-6 form-group'>
+                             <select name='registro_social_hogares' class='form-control' id='inputSelect' required>
                                <option value=''>Seleccionar...</option>
                                <option value='si'>Si</option>
                                <option value='no'>No</option>
@@ -365,45 +367,54 @@ class='contrast-red'
                      <!-- STEP 2 -->
                      <div class='step-pane' data-step='2'>
 
-                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 
                         <label class='control-label' for='inputText'>Sistema de Salud</label>
 
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-                          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group">
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                             <div class='col-md-12'>
                               <label style="margin-top: 0px;" class='radio radio-inline'>
-                                <input name='sistema' type='radio' value='f'>
+                                <input name='sistema' type='radio' value='f' required>
                                 Fonasa
                               </label>
                               <label class='radio radio-inline'>
-                                <input name='sistema' type='radio' value='i'>
+                                <input name='sistema' type='radio' value='i' required>
                                 Isapre
                               </label>
                             </div>
                           </div>
 
-                          <div class='col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group'>
-                            <div class='col-md-6'>
+                          <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
+                            <div class='col-md-12'>
                              <select name='sistema_salud' class='form-control' id='inputSelect'>
                                 <option value=''>Seleccionar sistema...</option>
                                <!-- Este select se debe llenar con ajax dependiendo del boton anteriorr seleccionado-->
                              </select>
                             </div>
                           </div>
-
-                        </div>
                      </div>
 
                      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <label class='control-label' for='inputText'>Previsión</label>
+                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
+                          <label style="margin-top: 0px;" class='radio radio-inline'>
+                            <input name='prevision_radio' type='radio' value='afp' required>
+                            AFP
+                          </label>
+                          <label class='radio radio-inline'>
+                            <input name='prevision_radio' type='radio' value='ips' required>
+                            IPS
+                          </label>
+                          <label class='radio radio-inline'>
+                            <input name='prevision_radio' type='radio' value='no' required>
+                            No tiene
+                          </label>
+                        </div>
                         <div class='col-md-12 form-group'>
                           <div class='col-md-12'>
                            <select name='prevision' class='form-control' id='inputSelect'>
-                              @foreach($previsiones as $prevision)
-                                <option value="{{$prevision->id_prevision}}">{{$prevision->descripcion}}</option>
-                              @endforeach
+                              <option value=''>Seleccionar sistema...</option>
+                              <!-- Este select se debe llenar con ajax dependiendo del boton anteriorr seleccionado-->
                            </select>
                           </div>
                         </div>
@@ -432,7 +443,7 @@ class='contrast-red'
                           @endforeach
                        </select>
                      </div>
-                   </div>
+                    </div>
                  </div>
 
                  <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
@@ -553,11 +564,11 @@ class='contrast-red'
             <div class='col-md-12 form-group'>
               <div class='col-md-12'>
                <label style="margin-top: 0px;" class='radio radio-inline'>
-                 <input name='cuidados' type='radio' value='1'>
+                 <input name='cuidados' type='radio' value='1' required>
                  Si
                </label>
                <label class='radio radio-inline'>
-                 <input name='cuidados' type='radio' value='0'>
+                 <input name='cuidados' type='radio' value='0' required>
                  No
                </label>
              </div>

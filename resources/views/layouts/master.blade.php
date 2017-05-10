@@ -23,11 +23,6 @@
         @yield('content')
 
         <!-- Con este yield se inyectan los scripts -->
-<<<<<<< HEAD
-
-=======
-
->>>>>>> g_jov
         @yield('scripts')
     </body>
 </html>
