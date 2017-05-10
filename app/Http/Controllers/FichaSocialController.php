@@ -17,9 +17,9 @@ class FichaSocialController extends Controller
         return view('social.asistenteSocialMenu', compact('beneficiario'));
     }
 
-    public function show($rut){
+    public function index2(){
 
-    	return view('social.asistenteSocialVisitaDomiciliaria', compact('rut'));
+        return view('social.asistenteSocialVisitaDomiciliaria');
     }
 
 

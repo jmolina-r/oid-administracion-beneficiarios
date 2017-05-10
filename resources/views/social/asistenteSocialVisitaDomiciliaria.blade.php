@@ -89,31 +89,21 @@
                       <div class='box-content box-padding'>
                         <div class="row">
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <h2>Beneficiario</h2>
-                            <h4>{{$beneficiario->nombre}} {{$beneficiario->apellido}}</h4>
-                            Rut
-                            <h4>{{$beneficiario->rut}}</h4>
+                            
+                            <h2>Visita Domiciliaria</h2>
+                                                  
                           </div>
-                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 areaSocialMenu">
-                            <a href="{{route('social.asistenteSocialVisitaDomiciliaria')}}" title="">
-                              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-                                <i class='fa fa-home text-contrast '></i>
-                                <h1>Visita domiciliaria</h1>
-                              </div>
-                            </a>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-                              <i class='fa fa-users text-contrast'></i>
-                              <h1>Orientación</h1>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-                              <i class='fa fa-user text-contrast'></i>
-                              <h1>Ayuda técnica</h1>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-                              <i class='fa fa-wheelchair text-contrast'></i>
-                              <h1>Prestaciones</h1>
-                            </div>                            
-                          </div>
+                          <div class='col-md-12 form-group'>
+                             <label class='control-label' for='inputText'>Motivo de la visita domiciliaria</label>
+                               <div class='controls'>
+                                  <select class='form-control' id='inputSelect'>
+                                   <option>Verificación de Domicilio</option>
+                                   <option>Elaboración de informe social</option>
+                                   <option>Entrega de ayuda técnica</option>
+                                   <option>Entrega de ayuda social</option>
+                                   </select>
+                               </div>
+                           </div>
                         </div>
                       </div>
                     </div>

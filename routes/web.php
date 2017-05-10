@@ -28,8 +28,8 @@ Route::group(['prefix' => 'areasocial'], function(){
     'as' => 'social.asistenteSocialBeneficiario'
     ]);
 
-    Route::post('/asistentesocial/menu/visita', [
-    'uses' => 'FichaSocialController@show',
+    Route::get('/asistentesocial/menu/visita', [
+    'uses' => 'FichaSocialController@index2',
     'as' => 'social.asistenteSocialVisitaDomiciliaria'
     ]);
 });
