@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\AntecedentesMorbidos;
+use App\ValAutocuidado;
+use App\ValComCog;
+use App\ValControlEsfinter;
+use App\ValEvaluacion;
+use App\ValSocial;
 use App\FichaKinesiologia;
 use App\Kinesiologo;
 use App\ValDeambulacion;
@@ -10,6 +15,7 @@ use App\ValMotora;
 use App\ValMovilidad;
 use App\ValSensorial;
 use App\Beneficiario;
+
 use Illuminate\Http\Request;
 
 class FichaKinesiologiaController extends Controller
@@ -38,7 +44,7 @@ class FichaKinesiologiaController extends Controller
         ]);
 
         //Obtener el beneficiario segun el rut
-        $beneficiario = Beneficiario::where('rut', $request->input('rutBeneficiario'));
+        $beneficiario = Beneficiario::where('rut', $request->input('rut'));
 
         //obtener el kinesiologo por su sesion
         /*
@@ -147,7 +153,8 @@ class FichaKinesiologiaController extends Controller
         $valSocial->save();
 
         $fichaKinesiologia = new FichaKinesiologia([
-            'diagnostico' => $beneficiario->diagnostico,
+            //'diagnostico' => $beneficiario->diagnostico,
+            'diagnostico' => 'diagnostico', //provisional, diagnostico no esta implementado en beneficiario
             'motivo_consulta' => $request->input('motivo_consulta'),
             'situacion_laboral' => $request->input('situacion_laboral'),
             'situacion_familiar' => $request->input('situacion_familiar'),
@@ -163,7 +170,7 @@ class FichaKinesiologiaController extends Controller
             'val_evaluacion_id' => $valEvaluacion->id,
             'val_control_esfinter_id' => $valControlEsfinter->id,
             //'kinesiologo_id' => $kinesiologo->id,
-            'kinesiologo_id' => '1',
+            'kinesiologo_id' => '1', //provisional, kinesiologo no esta implementado
             'beneficiario_id' => $beneficiario->id,
         ]);
         $fichaKinesiologia->save();
