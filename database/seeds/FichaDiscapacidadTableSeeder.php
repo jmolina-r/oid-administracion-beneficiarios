@@ -16,7 +16,8 @@ class FichaDiscapacidadTableSeeder extends Seeder
                 'requiere_cuidado' => $faker->boolean,
                 'diagnostico' => $faker->optional()->text,
                 'otras_enfermedades' => $faker->optional()->text,
-                'ficha_beneficiario_id' => $i
+                'ficha_beneficiario_id' => $i,
+                'tipo_dependencia_id' => $faker->numberBetween($min = 1, $max = 3)
             ]);
             $fichaDiscapacidad->save();
         }
