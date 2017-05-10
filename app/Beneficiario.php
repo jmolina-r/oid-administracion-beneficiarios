@@ -32,4 +32,18 @@ class Beneficiario extends Model
     {
         return $this->belongsTo(Ocupacion::class);
     }
+
+    public function tutor()
+    {
+        return $this->hasOne(Tutor::class);
+    }
+
+    public function registro_social_hogar()
+    {
+        return $this->hasOne(RegistroSocialHogar::class);
+    }
+    public function credencial_discapacidad()
+    {
+        return $this->hasOne(CredencialDiscapacidad::class);
+    }
 }

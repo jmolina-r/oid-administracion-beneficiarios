@@ -36,7 +36,7 @@ $factory->define(App\Beneficiario::class, function (Faker\Generator $faker) {
         'nombre' => $faker->firstName,
         'apellido' => $faker->lastName,
         'sexo' => $faker->regexify('(masculino|femenino)'),
-        'rut' => $faker->regexify('\[1-9]{8,9}\-(k|[0-9])'),
+        'rut' => $faker->unique()->regexify('\[1-9]{8,9}\-(k|[0-9])'),
         'pais_id' => $faker->numberBetween($min = 1, $max = 70),
         'estado_civil_id' => $faker->numberBetween($min = 1, $max = 5),
         'educacion_id' => $faker->numberBetween($min = 1, $max = 9),
@@ -47,11 +47,48 @@ $factory->define(App\Beneficiario::class, function (Faker\Generator $faker) {
 $factory->define(App\Telefono::class, function (Faker\Generator $faker) {
 
     return [
-        'numero' => $faker->regexify('[0-9]{8}'),
+        'numero' => $faker->unique()->regexify('[0-9]{8}'),
         'tipo' => $faker->regexify('(movil|fijo)'),
         'beneficiario_id' => $faker->numberBetween($min = 1, $max = 150)
     ];
 });
+
+$factory->define(App\Tutor::class, function (Faker\Generator $faker) {
+
+    return [
+        'nombres' => $faker->firstName,
+        'apellidos' => $faker->lastName,
+        'beneficiario_id' => $faker->unique()->numberBetween($min = 1, $max = 150)
+    ];
+});
+
+$factory->define(App\CredencialDiscapacidad::class, function (Faker\Generator $faker) {
+    return [
+        'fecha_vencimiento' => $faker->dateTimeBetween($startDate = 'now', $endDate = '+5 years', $timezone = date_default_timezone_get()),
+        'beneficiario_id' => $faker->unique()->numberBetween($min = 1, $max = 150)
+    ];
+});
+
+
+/*
+
+$factory->define(App\RegistroSocialHogar::class, function (Faker\Generator $faker) {
+
+    $enTramite = $faker->boolean;
+
+    if($enTramite == true) {
+        $porcentaje = 0;
+    } else {
+        $porcentaje = $faker->numberBetween($min = 1, $max = 100);
+    }
+    return [
+        'porcentaje' => $porcentaje,
+        'en_tramite' => $enTramite,
+        'beneficiario_id' => $faker->unique()->regexify('[1-60]')
+    ];
+});
+
+*/
 
 $factory->define(App\FichaKinesiologia::class, function (Faker\Generator $faker) {
 
