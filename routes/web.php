@@ -23,12 +23,12 @@ Route::group(['prefix' => '/medica'], function (){
         Route::group(['prefix' => '/kinesiologia'], function (){
 
             Route::get('/ingresar', [
-                'uses' => 'IngresoKinesiologiaController@getIngresar',
+                'uses' => 'FichaKinesiologiaController@getIngresar',
                 'as' => 'medica.ficha-evaluacion-inicial.kinesiologia.ingresar'
             ]);
 
             Route::post('/ingreso-kinesiologia', [
-                'uses' => 'IngresoKinesiologiaController@postIngresar',
+                'uses' => 'FichaKinesiologiaController@postIngresar',
                 'as' => 'medica.ficha-evaluacion-inicial.kinesiologia.ingresar'
             ]);
         });
