@@ -8,19 +8,28 @@ use Illuminate\Foundation\Testing\AssertTrait;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\Beneficiario;
+
 
 class ingresarEvaluacionInicialTest extends TestCase
 {
     use DatabaseMigrations;
     /**
-     * Prueba si se puede crear un Beneficiario.
+     * Prueba si se puede crear ingresar una evaluación inicial de kinesiologia.
      * @test
      * @return void
      */
     public function ingresarEvaluacionInicial()
     {
+        $benefs = App\Beneficiario::all();
+        foreach ($benefs as $benef) {
+            echo $benef->rut;
+            break;
+        }
+
+        $this->artisan("db:Seed");
         $this->visit('/medica/ficha-evaluacion-inicial/kinesiologia/ingresar')
-            ->type('19.034.687-0','rut')
+            ->type('','rut')
             ->type('plop','pat_concom')
             ->type('chocolate','alergias')
             ->type('paracetamol','medicamentos')
@@ -83,8 +92,8 @@ class ingresarEvaluacionInicialTest extends TestCase
             ->type('21','hab_motrices')
             ->type('21','coordinacion')
             ->type('21','equilibrio')
-            ->press('Finalizar');
-        /*$this->seeInDatabase();*/
+            ->press('Finalizar')
+            ->seeInDatabase('val_motoras',['rom'=>'21']);
 
 
     }
