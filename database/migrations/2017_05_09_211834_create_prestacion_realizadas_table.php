@@ -22,7 +22,7 @@ class CreatePrestacionRealizadasTable extends Migration
             $table->integer('beneficiario_id')->unsigned();
         });
         Schema::table('prestacion_realizadas', function ($table){
-         $table->foreign('beneficiario_id')->references('id')->on('beneficiarios')->onDelete('cascade');
+            $table->foreign('beneficiario_id')->references('id')->on('beneficiarios')->onDelete('cascade');
         });
     }
 

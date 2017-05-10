@@ -44,6 +44,7 @@ $factory->define(App\Beneficiario::class, function (Faker\Generator $faker) {
     ];
 });
 
+
 $factory->define(App\Telefono::class, function (Faker\Generator $faker) {
 
     return [
@@ -52,6 +53,7 @@ $factory->define(App\Telefono::class, function (Faker\Generator $faker) {
         'beneficiario_id' => $faker->numberBetween($min = 1, $max = 150)
     ];
 });
+
 $factory->define(App\PrestacionRealizada::class, function (Faker\Generator $faker) {
 
     return [
@@ -61,6 +63,7 @@ $factory->define(App\PrestacionRealizada::class, function (Faker\Generator $fake
         'beneficiario_id' => $faker->numberBetween($min = 1, $max = 150)
     ];
 });
+
 $factory->define(App\FichaAtencionSocial::class, function (Faker\Generator $faker) {
 
     return [
