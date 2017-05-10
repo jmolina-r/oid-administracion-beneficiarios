@@ -22,9 +22,9 @@ Route::group(['prefix' => 'areasocial'], function(){
     'as' => 'social.asistenteSocial'
     ]);
     
-    Route::get('/asistentesocial/beneficiario/{id}', [
-    'uses' => 'FichaSocialController@findBeneficiario',
-    'as' => 'social.asistenteSocial'
+    Route::post('/asistentesocial/beneficiario', [
+    'uses' => 'FichaSocialController@store',
+    'as' => 'social.asistenteSocialBeneficiario'
     ]);
 });
 
