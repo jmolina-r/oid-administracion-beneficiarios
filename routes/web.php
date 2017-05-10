@@ -31,6 +31,11 @@ Route::group(['prefix' => '/medica'], function (){
                 'uses' => 'FichaKinesiologiaController@postIngresar',
                 'as' => 'medica.ficha-evaluacion-inicial.kinesiologia.ingresar'
             ]);
+
+            Route::get('/mostrar-lista', [
+                'uses' => 'FichaKinesiologiaController@getMostrarLista',
+                'as' => 'medica.ficha-evaluacion-inicial.kinesiologia.mostrar-lista'
+            ]);
         });
     });
 });
