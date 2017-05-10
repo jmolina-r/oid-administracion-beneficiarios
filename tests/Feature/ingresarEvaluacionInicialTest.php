@@ -45,7 +45,7 @@ class ingresarEvaluacionInicialTest extends TestCase
             ->type('no','asiste_centro_rhb')
             ->type('solo','motivo_consulta')
             ->type('12','puntaje_alimentacion')
-            ->type('ninguno','coment_aimentacion')
+            ->type('ninguno','coment_alimentacion')
             ->type('23','puntaje_arreglo_pers')
             ->type('ninguno','coment_arreglo_pers')
             ->type('12','puntaje_bano')
