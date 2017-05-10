@@ -16,12 +16,12 @@ class CreateValSocialsTable extends Migration
         Schema::create('val_socials', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('puntaje_int_social');
-            $table->string('coment_int_social');
-            $table->string('puntaje_sol_problemas');
-            $table->string('coment_sol_problemas');
-            $table->string('puntaje_memoria');
-            $table->string('coment_memoria');
+            $table->string('puntaje_int_social')->nullable();
+            $table->string('coment_int_social')->nullable();
+            $table->string('puntaje_sol_problemas')->nullable();
+            $table->string('coment_sol_problemas')->nullable();
+            $table->string('puntaje_memoria')->nullable();
+            $table->string('coment_memoria')->nullable();
         });
     }
 

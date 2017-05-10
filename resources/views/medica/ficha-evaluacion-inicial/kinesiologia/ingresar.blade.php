@@ -141,25 +141,26 @@
                                 </div>
                             </div>
                         </div>
+                        @if(count($errors) > 0)
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                    <p>{{ $error }}</p>
+                                @endforeach
+                            </div>
+                        @endif
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="box">
-                                    <form action="" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post">
+                                    <form action="{{route('medica.ficha-evaluacion-inicial.kinesiologia.ingresar')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post">
                                         <!-- STEP 1 -->
                                         <div class="col-md-12">
                                             <h3>Seleccionar Paciente</h3>
                                             <hr/>
                                         </div>
                                         <div class="col-md-12 form-group">
-                                            <label class="control-label" for="nombreBeneficiario">Nombre de usuario</label>
+                                            <label class="control-label" for="rut">Rut</label>
                                             <div class="controls">
-                                                <input class="form-control" id="nombreBeneficiario" name="nombreBeneficiario" placeholder="Nombre de usuario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="control-label" for="rutBeneficiario">Rut</label>
-                                            <div class="controls">
-                                                <input class="form-control" id="rutBeneficiario" name="rutBeneficiario" placeholder="RUT" type="text">
+                                                <input class="form-control" id="rut" name="rut" placeholder="RUT" type="text">
                                             </div>
                                         </div>
                                         <!-- STEP 2 -->
@@ -534,6 +535,7 @@
                                             </div>
                                         </div>
                                         <button type="submit">Finalizar</button>
+                                        {{ csrf_field() }}
                                     </form>
                                     <button >Volver</button>
                                 </div>

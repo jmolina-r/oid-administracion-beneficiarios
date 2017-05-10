@@ -16,13 +16,13 @@ class CreateValMotorasTable extends Migration
         Schema::create('val_motoras', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('rom');
-            $table->string('fm');
-            $table->string('tono');
-            $table->string('dolor');
-            $table->string('hab_motrices');
-            $table->string('equilibrio');
-            $table->string('coordinacion');
+            $table->string('rom')->nullable();
+            $table->string('fm')->nullable();
+            $table->string('tono')->nullable();
+            $table->string('dolor')->nullable();
+            $table->string('hab_motrices')->nullable();
+            $table->string('equilibrio')->nullable();
+            $table->string('coordinacion')->nullable();
         });
     }
 

@@ -27,7 +27,7 @@ Route::group(['prefix' => '/medica'], function (){
                 'as' => 'medica.ficha-evaluacion-inicial.kinesiologia.ingresar'
             ]);
 
-            Route::post('/ingreso-kinesiologia', [
+            Route::post('/ingresar', [
                 'uses' => 'FichaKinesiologiaController@postIngresar',
                 'as' => 'medica.ficha-evaluacion-inicial.kinesiologia.ingresar'
             ]);
