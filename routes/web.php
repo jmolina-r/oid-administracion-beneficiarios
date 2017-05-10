@@ -16,6 +16,24 @@ Route::get('/', [
     'as' => 'user.login'
 ]);
 
+
+Route::group(['prefix' => 'areasocial'], function(){
+    Route::get('/asistentesocial', [
+    'uses' => 'FichaSocialController@index',
+    'as' => 'social.asistenteSocial'
+    ]);
+    
+    Route::post('/asistentesocial/beneficiario', [
+    'uses' => 'FichaSocialController@store',
+    'as' => 'social.asistenteSocialBeneficiario'
+    ]);
+
+    Route::get('/asistentesocial/menu/visita', [
+    'uses' => 'FichaSocialController@index2',
+    'as' => 'social.asistenteSocialVisitaDomiciliaria'
+    ]);
+});
+
 Route::group(['prefix' => '/medica'], function (){
 
     Route::group(['prefix' => '/ficha-evaluacion-inicial'], function (){
@@ -63,3 +81,4 @@ Route::group(['prefix' => 'beneficiario'], function () {
         'as' => 'beneficiario.store'
     ]);
 });
+

@@ -53,6 +53,56 @@ $factory->define(App\Telefono::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\PrestacionRealizada::class, function (Faker\Generator $faker) {
+
+    return [
+        'numero' => $faker->regexify('[0-9]{8}'),
+        'fecha' => $faker->date('y-m-d','now'),
+
+        'beneficiario_id' => $faker->numberBetween($min = 1, $max = 150)
+    ];
+});
+$factory->define(App\FichaAtencionSocial::class, function (Faker\Generator $faker) {
+
+    return [
+        'numero' => $faker->regexify('[0-9]{8}'),
+        'descripcion' => $faker->regexify('(Atencion social)'),
+
+        'prestacion_realizadas_id' => $faker->numberBetween($min = 1, $max = 100)
+    ];
+});
+
+$factory->define(App\MotivoAtencionSocial::class, function (Faker\Generator $faker) {
+
+    return [
+        'nombre' => $faker->regexify('[0-9]{8}'),
+        'descripcion' => $faker->regexify('(Atencion social)'),
+
+        'ficha_atencion_social_id' => $faker->numberBetween($min = 1, $max = 100),
+    ];
+});
+
+$factory->define(App\AyudaTecnicoSocial::class, function (Faker\Generator $faker) {
+
+    return [
+        'nombre' => $faker->regexify('(Tecnico|Social)'),
+        'tipo' => $faker->regexify('(Canasta|Silla|Burro|Cama)'),
+        'descripcion' => $faker->regexify('(Atencion social)'),
+
+        'motivo_atencion_social_id' => $faker->numberBetween($min = 1, $max = 100)
+    ];
+});
+$factory->define(App\SubMotivoAtencionSocial::class, function (Faker\Generator $faker) {
+
+    return [
+        'nombre' => $faker->regexify('[1-5]{1}'),
+        'fecha' => $faker->date('y-m-d','now'),
+        'descripcion' => $faker->regexify('(Atencion social)'),
+
+        'motivo_atencion_social_id' => $faker->numberBetween($min = 1, $max = 100)
+    ];
+});
+
 $factory->define(App\Tutor::class, function (Faker\Generator $faker) {
     return [
         'nombres' => $faker->firstName,
@@ -246,5 +296,6 @@ $factory->define(App\ValSocial::class, function (Faker\Generator $faker) {
         'coment_sol_problemas' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
         'puntaje_memoria' => $faker -> numberBetween($min = 1, $max = 10),
         'coment_memoria' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
+
     ];
 });
