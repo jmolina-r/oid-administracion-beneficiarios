@@ -2,6 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Beneficiario;
+use App\FichaDiscapacidad;
+use App\Fonasa;
+use App\Isapre;
+use App\Pais;
+use App\Educacion;
+use App\EstadoCivil;
+use App\Ocupacion;
+use App\OrganizacionSocial;
+use App\RegistroSocialHogar;
+use App\SistemaProteccion;
+use App\Telefono;
+use App\Tutor;
+use App\FichaBenefeciario;
+use App\TipoDependencia;
+
+
 
 use Illuminate\Http\Request;
 
@@ -32,28 +49,35 @@ class BeneficiarioController extends Controller
          */
 
         //Lista de Paises
-        $paises = collect();
+        $paises = Pais::get();
 
         //Lista de Estados Civiles
-        $estados_civiles = collect();
+        $estados_civiles = EstadoCivil::get();
 
         //Situacin actual, cesante, estudiante, etc...
-        $situaciones = collect();
+        $situaciones = Ocupacion::get();
 
         //Niveles de educacion, basico, universitario, etc...
-        $niveles_educacion = collect();
+        $niveles_educacion = Educacion::get();
 
         //Dependencias del paciente
-        $dependencias = collect();
+        $dependencias = TipoDependencia::get();
+
+        $fonasa = Fonasa::get();
+
+        $isapre = Isapre::get();
 
 
         return view('beneficiario.create')
-        ->with(compact('paises'))
-        ->with(compact('estados_civiles'))
-        ->with(compact('previsiones'))
-        ->with(compact('situaciones'))
-        ->with(compact('niveles_educacion'))
-        ->with(compact('dependencias'));
+            ->with(compact('paises'))
+            ->with(compact('estados_civiles'))
+            ->with(compact('previsiones'))
+            ->with(compact('situaciones'))
+            ->with(compact('niveles_educacion'))
+            ->with(compact('dependencias'))
+            ->with(compact('fonasa'))
+            ->with(compact('isapre'));
+
     }
 
     /**
