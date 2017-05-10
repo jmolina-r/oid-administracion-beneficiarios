@@ -42,6 +42,4 @@ Route::group(['prefix' => 'beneficiario'], function () {
         'uses' => 'BeneficiarioController@store',
         'as' => 'beneficiario.store'
     ]);
-
-
 });
