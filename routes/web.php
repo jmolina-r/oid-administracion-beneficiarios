@@ -15,3 +15,18 @@ Route::get('/', [
     'uses' => 'UserController@getLogin',
     'as' => 'user.login'
 ]);
+
+Route::group(['prefix' => 'areasocial'], function(){
+    Route::get('/asistentesocial', [
+    'uses' => 'FichaSocialController@index',
+    'as' => 'social.asistenteSocial'
+    ]);
+    
+    Route::get('/asistentesocial/beneficiario/{id}', [
+    'uses' => 'FichaSocialController@findBeneficiario',
+    'as' => 'social.asistenteSocial'
+    ]);
+});
+
+
+
