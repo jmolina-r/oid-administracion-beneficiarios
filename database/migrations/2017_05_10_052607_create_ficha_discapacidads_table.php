@@ -21,10 +21,16 @@ class CreateFichaDiscapacidadsTable extends Migration
             $table->longText('otras_enfermedades')->nullable();
 
             $table->integer('ficha_beneficiario_id')->unsigned();
+            $table->integer('tipo_dependencia_id')->unsigned();
+
         });
 
         Schema::table('ficha_discapacidads', function($table) {
             $table->foreign('ficha_beneficiario_id')->references('id')->on('ficha_beneficiarios')->onDelete('cascade');
+        });
+
+        Schema::table('ficha_discapacidads', function($table) {
+            $table->foreign('tipo_dependencia_id')->references('id')->on('tipo_dependencias');
         });
     }
 
