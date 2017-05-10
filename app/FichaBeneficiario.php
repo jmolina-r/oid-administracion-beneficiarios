@@ -18,4 +18,9 @@ class FichaBeneficiario extends Model
         return $this->hasOne(DatoSocial::class);
     }
 
+    public function ficha_discapacidad()
+    {
+        return $this->hasOne(FichaDiscapacidad::class);
+    }
+
 }
