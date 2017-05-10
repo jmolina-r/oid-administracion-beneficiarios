@@ -64,7 +64,7 @@
               <div class='container'>
                 <div class='row'>
                   <div class='col-sm-4 col-sm-offset-4'>
-                    <h1 class='text-center title'>Sistema de Registro OID</h1>
+                    <h1 class='text-center title'>Sistema de Administración OID</h1>
                     <form action='' class='validate-form' method='get'>
                       <div class='form-group'>
                         <div class='controls with-icon-over-input'>
