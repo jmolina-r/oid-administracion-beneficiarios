@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
         $this->call(PaisTableSeeder::class);
         $this->call(EstadoCivilTableSeeder::class);
         $this->call(EducacionTableSeeder::class);
@@ -19,8 +20,19 @@ class DatabaseSeeder extends Seeder
         $this->call(TelefonoTableSeeder::class);
         $this->call(TutorTableSeeder::class);
         $this->call(RegistroSocialHogarTableSeeder::class);
+        $this->call(TelefonoTableSeeder::class);
         $this->call(CredencialDiscapacidadTableSeeder::class);
         $this->call(FichaBeneficiarioTableSeeder::class);
+        $this->call(IsapreTableSeeder::class);
+        $this->call(FonasaTableSeeder::class);
+        $this->call(OrganizacionSocialTableSeeder::class);
+        $this->call(SistemaProteccionTableSeeder::class);
+        $this->call(BeneficioTableSeeder::class);
+        $this->call(TipoDependenciaTableSeeder::class);
+        $this->call(FichaDiscapacidadTableSeeder::class);
+        $this->call(TipoDiscapacidadTableSeeder::class);
+        $this->call(DatoSocialTableSeeder::class);
+
 
         $this->call(KinesiologoTableSeeder::class);
         $this->call(AntecedentesMorbidosTableSeeder::class);
@@ -34,5 +46,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ValSensorialTableSeeder::class);
         $this->call(ValSocialTableSeeder::class);
         $this->call(FichaKinesiologiaTableSeeder::class);
+
     }
 }

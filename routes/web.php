@@ -39,3 +39,32 @@ Route::group(['prefix' => '/medica'], function (){
         });
     });
 });
+
+
+
+Route::group(['prefix' => 'beneficiario'], function () {
+    Route::get('/registrar', [
+        'uses' => 'BeneficiarioController@create',
+        'as' => 'beneficiario.create'
+    ]);
+
+    Route::get('/editar/{id}', [
+        'uses' => 'BeneficiarioController@edit',
+        'as' => 'beneficiario.edit'
+    ]);
+
+    Route::get('/informacion/{id}', [
+        'uses' => 'BeneficiarioController@show',
+        'as' => 'beneficiario.show'
+    ]);
+
+    Route::get('/buscar', [
+        'uses' => 'BeneficiarioController@find',
+        'as' => 'beneficiario.find'
+    ]);
+
+    Route::post('/registrar', [
+        'uses' => 'BeneficiarioController@store',
+        'as' => 'beneficiario.store'
+    ]);
+});
