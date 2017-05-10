@@ -26,4 +26,14 @@ class DatoSocial extends Model
     {
         return $this->belongsTo(OrganizacionSocial::class);
     }
+
+    public function sistema_proteccion()
+    {
+        return $this->belongsTo(SistemaProteccion::class);
+    }
+
+    public function beneficios()
+    {
+        return $this->belongsToMany(Beneficio::class);
+    }
 }
