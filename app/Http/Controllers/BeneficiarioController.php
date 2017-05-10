@@ -155,7 +155,8 @@ class BeneficiarioController extends Controller
      */
     public function show($id)
     {
-        return view('beneficiario.show');
+        $beneficiario = Beneficiario::where('id',$id)->first();
+        return view('beneficiario.show',compact('beneficiario'));
     }
 
     /**
