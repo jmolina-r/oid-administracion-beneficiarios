@@ -156,7 +156,10 @@ class BeneficiarioController extends Controller
     public function show($id)
     {
         $beneficiario = Beneficiario::where('id',$id)->first();
-        return view('beneficiario.show',compact('beneficiario'));
+        $pais = $beneficiario->pais;
+
+        return view('beneficiario.show',compact('beneficiario'))
+            ->with(compact('pais'));
     }
 
     /**
