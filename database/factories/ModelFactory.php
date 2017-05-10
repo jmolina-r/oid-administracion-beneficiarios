@@ -69,6 +69,7 @@ $factory->define(App\CredencialDiscapacidad::class, function (Faker\Generator $f
     ];
 });
 
+
 /*
 
 $factory->define(App\RegistroSocialHogar::class, function (Faker\Generator $faker) {
