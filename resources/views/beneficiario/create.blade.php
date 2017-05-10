@@ -336,6 +336,7 @@ class='contrast-red'
                                 Isapre
                               </label>
                             </div>
+                            <div class="help-block with-errors"></div>
                           </div>
 
                           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
@@ -349,12 +350,13 @@ class='contrast-red'
                      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <label class='control-label' for='inputText'>Previsión</label>
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
+
                           <label style="margin-top: 0px;" class='radio radio-inline'>
                             <input name='prevision_radio' type='radio' value='afp' required>
                             AFP
                           </label>
                           <label class='radio radio-inline'>
-                            <input name='prevision_radio' type='radio' value='ips' required><
+                            <input name='prevision_radio' type='radio' value='ips' required>
                             IPS
                           </label>
                           <label class='radio radio-inline'>
@@ -363,6 +365,7 @@ class='contrast-red'
                           </label>
                             <div class="help-block with-errors"></div>
                         </div>
+                        
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                            <select name='prevision' class='form-control' id='inputSelect'>
                               <option value=''>Seleccionar sistema...</option>
@@ -543,19 +546,7 @@ class='contrast-red'
 </div>
 </div>
 </div>
-<footer id='footer'>
-  <div class='footer-wrapper'>
-    <div class='row'>
-      <div class='col-sm-6 text'>
-        Copyright © 2016 Your Project Name
-      </div>
-      <div class='col-sm-6 buttons'>
-        <a class="btn btn-link" href="http://flatty-v2-4-1.bublinastudio.com/">Preview</a>
-        <a class="btn btn-link" href="https://wrapbootstrap.com/theme/flatty-flat-administration-template-WB0P6NR1N?ref=metheus">Purchase</a>
-      </div>
-    </div>
-  </div>
-</footer>
+@include('partials.footer')
 </div>
 </section>
 </div>
