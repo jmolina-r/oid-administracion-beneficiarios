@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateValEvaluacionsTable extends Migration
+class CreateTipoDiscapacidadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateValEvaluacionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('val_evaluacions', function (Blueprint $table) {
+        Schema::create('tipo_discapacidads', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('conexion_medio')->nullable();
-            $table->string('nivel_cognitivo_apar')->nullable();
+            $table->string('nombre');
         });
     }
 
@@ -28,6 +27,6 @@ class CreateValEvaluacionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('val_evaluacions');
+        Schema::dropIfExists('tipo_discapacidads');
     }
 }

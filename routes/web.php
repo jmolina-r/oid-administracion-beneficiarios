@@ -16,7 +16,27 @@ Route::get('/', [
     'as' => 'user.login'
 ]);
 
-// Beneficiarios Routes
+Route::group(['prefix' => '/medica'], function (){
+
+    Route::group(['prefix' => '/ficha-evaluacion-inicial'], function (){
+
+        Route::group(['prefix' => '/kinesiologia'], function (){
+
+            Route::get('/ingresar', [
+                'uses' => 'FichaKinesiologiaController@getIngresar',
+                'as' => 'medica.ficha-evaluacion-inicial.kinesiologia.ingresar'
+            ]);
+
+            Route::post('/ingresar', [
+                'uses' => 'FichaKinesiologiaController@postIngresar',
+                'as' => 'medica.ficha-evaluacion-inicial.kinesiologia.ingresar'
+            ]);
+        });
+    });
+});
+
+
+
 Route::group(['prefix' => 'beneficiario'], function () {
     Route::get('/registrar', [
         'uses' => 'BeneficiarioController@create',

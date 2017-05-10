@@ -10,6 +10,6 @@ class ValEvaluacion extends Model
 
     public function ingresoKinesiologia()
     {
-        return $this->hasOne(IngresoKinesiologia::class);
+        return $this->hasOne(FichaKinesiologia::class);
     }
 }
