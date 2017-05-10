@@ -20,11 +20,18 @@ class DatoSocialTableSeeder extends Seeder
                 $isapre = $faker->numberBetween($min = 1, $max = 10);
                 $fonasa = null;
             }
+            $hasOrganizacionSoc = $faker->boolean;
+            if($hasOrganizacionSoc == true) {
+                $organizacionSocial = $faker->numberBetween($min = 1, $max = 3);
+            } else {
+                $organizacionSocial = null;
+            }
             $datoSocial = new \App\DatoSocial([
                 'observacion' => $faker->text,
                 'ficha_beneficiario_id' => $i,
                 'isapre_id' => $isapre,
-                'fonasa_id' => $fonasa
+                'fonasa_id' => $fonasa,
+                'organizacion_social_id' => $organizacionSocial
             ]);
             $datoSocial->save();
         }

@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FichaBeneficiarioTableSeeder::class);
         $this->call(IsapreTableSeeder::class);
         $this->call(FonasaTableSeeder::class);
+        $this->call(OrganizacionSocialTableSeeder::class);
         $this->call(DatoSocialTableSeeder::class);
 
 
