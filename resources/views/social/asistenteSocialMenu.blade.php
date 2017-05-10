@@ -89,21 +89,30 @@
                       <div class='box-content box-padding'>
                         <div class="row">
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <form action="{{route('social.asistenteSocialBeneficiario')}}" method="post" accept-charset="utf-8">
-                              {!!csrf_field()!!}
-                              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-                                <label for="inputRut">Ingresar rut beneficiario</label>
-                                <input type="text" name="rut" id="inputRut" class="form-control" value="" required pattern="\d{3,8}-[\d|kK]{1}" placeholder="Ingrese rut...">
-                              </div>  
-                              <div class="form-group pull-right">
-                                <div class="col-sm-10 col-offset-2">
-                                  <button type="submit" class="btn btn-success">Buscar beneficiario</button>
-                                </div>
-                              </div>                          
-                            </form>
-                            @if(isset($beneficiario))
-                            {{$beneficiario->nombre}}
-                            @endif
+                            <h2>Beneficiario</h2>
+                            <h4>{{$beneficiario->nombre}} {{$beneficiario->apellido}}</h4>
+                            Rut
+                            <h4>{{$beneficiario->rut}}</h4>
+                          </div>
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 areaSocialMenu">
+                            <a href="{{route('social.asistenteSocialMenu')}}" title="">
+                              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+                                <i class='fa fa-home text-contrast '></i>
+                                <h1>Visita domiciliaria</h1>
+                              </div>
+                            </a>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+                              <i class='fa fa-users text-contrast'></i>
+                              <h1>Orientación</h1>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+                              <i class='fa fa-user text-contrast'></i>
+                              <h1>Ayuda técnica</h1>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+                              <i class='fa fa-wheelchair text-contrast'></i>
+                              <h1>Prestaciones</h1>
+                            </div>                            
                           </div>
                         </div>
                       </div>

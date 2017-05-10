@@ -14,7 +14,7 @@ class FichaSocialController extends Controller
     public function store(Request $request){
         $rut = $request -> input('rut');
         $beneficiario = Beneficiario::where('rut',$rut)->first();
-        return view('social.asistenteSocial', compact('beneficiario'));
+        return view('social.asistenteSocialMenu', compact('beneficiario'));
     }
 
 
