@@ -46,49 +46,131 @@
 
 <!-- Contenido del body -->
 @section('content')
-      <div class='middle-container'>
-        <div class='middle-row'>
-          <div class='middle-wrapper'>
-            <div class='login-container-header'>
-              <div class='container'>
+      @include('partials.header')
+      <div id='wrapper'>
+        <div id='main-nav-bg'></div>
+        @include('partials.nav')
+        <section id='content'>
+          <div class='container'>
+            <div class='row' id='content-wrapper'>
+              <div class='col-xs-12'>
                 <div class='row'>
                   <div class='col-sm-12'>
-                    <div class='text-center'>
-                        <h1 style="color:white"> <3 OID Antofagasta </h1>
+                    <div class='page-header'>
+                      <h1 class='pull-left'>
+                        <i class='fa fa-pencil-square-o'></i>
+                        <span>Wizard</span>
+                      </h1>
+                      <div class='pull-right'>
+                        <ul class='breadcrumb'>
+                          <li>
+                            <a href='index.html'>
+                              <i class='fa fa-bar-chart-o'></i>
+                            </a>
+                          </li>
+                          <li class='separator'>
+                            <i class='fa fa-angle-right'></i>
+                          </li>
+                          <li>
+                            Forms
+                          </li>
+                          <li class='separator'>
+                            <i class='fa fa-angle-right'></i>
+                          </li>
+                          <li class='active'>Wizard</li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class='login-container'>
-              <div class='container'>
                 <div class='row'>
-                  <div class='col-sm-4 col-sm-offset-4'>
-                    <h1 class='text-center title'>Ingreso al mejor sistema de la vida</h1>
-                    <form action='' class='validate-form' method='get'>
-                      <div class='form-group'>
-                        <div class='controls with-icon-over-input'>
-                          <input type="email" value="" placeholder="E-mail" class="form-control" data-rule-required="true" />
-                          <i class='fa fa-user text-muted'></i>
-                        </div>
+                  <div class='col-sm-12'>
+                    <div class='box'>
+                      <div class='box-content box-padding'>
+                        <div class='fuelux'><div class='wizard' data-initialize='wizard' id='myWizard'>
+                            <div class='steps-container'>
+                              <ul class='steps'>
+                                <li class='active' data-step='1'>
+                                  <span class='step'>1</span>
+                                </li>
+                                <li data-step='2'>
+                                  <span class='step'>2</span>
+                                </li>
+                                <li data-step='3'>
+                                  <span class='step'>3</span>
+                                </li>
+                                <li data-step='4'>
+                                  <span class='step'>4</span>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class='actions'>
+                              <button class='btn btn-xs btn-prev'>
+                                <i class='fa fa-arrow-left'></i>
+                                Prev
+                              </button>
+                              <button class='btn btn-xs btn-success btn-next' data-last='Finish'>
+                                Next
+                                <i class='fa fa-arrow-right'></i>
+                              </button>
+                            </div>
+                            <hr class='hr-normal'>
+                            <form action="#" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post"><div class='step-content'>
+                              <div class='step-pane active' data-step='1'>
+                                <div class='form-group'>
+                                  <label class='control-label' for='inputText'>Text field</label>
+                                  <div class='controls'>
+                                    <input class='form-control' id='inputText' placeholder='Text field' type='text'>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class='step-pane' data-step='2'>
+                                <div class='form-group'>
+                                  <label class='control-label' for='inputPassword'>Password field</label>
+                                  <div class='controls'>
+                                    <input class='form-control' id='inputPassword' placeholder='Password field' type='password'>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class='step-pane' data-step='3'>
+                                <div class='form-group'>
+                                  <label class='control-label' for='inputTextArea'>Textarea</label>
+                                  <div class='controls'>
+                                    <textarea class='form-control' id='inputTextArea' placeholder='Textarea' rows='3'></textarea>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class='step-pane' data-step='4'>
+                                <div class='form-group'>
+                                  <div class='controls'>
+                                    <label class='checkbox-inline'>
+                                      <input id='inlineCheckbox1' type='checkbox' value='option1'>
+                                      Inline 1
+                                    </label>
+                                    <label class='checkbox-inline'>
+                                      <input id='inlineCheckbox2' type='checkbox' value='option2'>
+                                      Inline 2
+                                    </label>
+                                    <label class='checkbox-inline'>
+                                      <input id='inlineCheckbox3' type='checkbox' value='option3'>
+                                      Inline 3
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            </form>
+                          </div></div>
                       </div>
-                      <div class='form-group'>
-                        <div class='controls with-icon-over-input'>
-                          <input type="password" value="" placeholder="Contraseña" class="form-control" data-rule-required="true" />
-                          <i class='fa fa-lock text-muted'></i>
-                        </div>
-                      </div>
-                      <button class='btn btn-block'>Ingresar!</button>
-                    </form>
-                    <div class='text-center'>
-                      <hr class='hr-normal'>
-                      <a href='forgot_password.html'>¿Olvidaste tu contraseña?</a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            @include('partials.footer')
           </div>
-        </div>
+        </section>
+
       </div>
+
 @endsection
