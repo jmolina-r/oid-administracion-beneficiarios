@@ -183,10 +183,18 @@ class FichaKinesiologiaController extends Controller
             //procedimiento en caso de reportar errores
 
         }
-
-
-
-
         return redirect()->route('medica.ficha-evaluacion-inicial.kinesiologia.ingresar');
+    }
+
+    /**
+     * Mostrar formulario de ingreso de evaluacion inicial.
+     *
+     * @return view
+     */
+    public function getMostrarLista()
+    {
+        $fichas = FichaKinesiologia::all();
+
+        return view('medica.ficha-evaluacion-inicial.kinesiologia.mostrar-lista', [ 'fichas' => $fichas ]);
     }
 }

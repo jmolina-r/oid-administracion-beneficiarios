@@ -13,4 +13,14 @@ class FichaBeneficiario extends Model
         return $this->belongsTo(Beneficiario::class);
     }
 
+    public function dato_social()
+    {
+        return $this->hasOne(DatoSocial::class);
+    }
+
+    public function ficha_discapacidad()
+    {
+        return $this->hasOne(FichaDiscapacidad::class);
+    }
+
 }
