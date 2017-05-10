@@ -36,9 +36,6 @@ class BeneficiarioController extends Controller
         //Lista de Estados Civiles
         $estados_civiles = collect();
 
-        //Previsiones, especificamente AFP
-        $previsiones = collect();
-
         //Situacin actual, cesante, estudiante, etc...
         $situaciones = collect();
 
