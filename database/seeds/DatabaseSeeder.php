@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TelefonoTableSeeder::class);
         $this->call(CredencialDiscapacidadTableSeeder::class);
         $this->call(FichaBeneficiarioTableSeeder::class);
+        $this->call(DatoSocialTableSeeder::class);
 
 
         $this->call(KinesiologoTableSeeder::class);

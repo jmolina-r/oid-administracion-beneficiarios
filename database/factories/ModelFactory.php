@@ -69,6 +69,13 @@ $factory->define(App\CredencialDiscapacidad::class, function (Faker\Generator $f
     ];
 });
 
+$factory->define(App\DatoSocial::class, function (Faker\Generator $faker) {
+    return [
+        'observacion' => $faker->text,
+        'beneficiario_id' => $faker->unique()->numberBetween($min = 1, $max = 150)
+    ];
+});
+
 
 /*
 
