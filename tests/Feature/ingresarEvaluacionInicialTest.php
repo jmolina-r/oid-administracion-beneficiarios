@@ -27,9 +27,11 @@ class ingresarEvaluacionInicialTest extends TestCase
             break;
         }*/
 
+        $beneficiarios = Beneficiario::all();
+
         $this->artisan("db:Seed");
         $this->visit('/medica/ficha-evaluacion-inicial/kinesiologia/ingresar')
-            ->type('','rut')
+            ->type($beneficiarios->last()->rut,'rut')
             ->type('plop','pat_concom')
             ->type('chocolate','alergias')
             ->type('paracetamol','medicamentos')
