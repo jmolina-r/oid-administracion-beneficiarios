@@ -54,7 +54,6 @@ $factory->define(App\Telefono::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Tutor::class, function (Faker\Generator $faker) {
-
     return [
         'nombres' => $faker->firstName,
         'apellidos' => $faker->lastName,

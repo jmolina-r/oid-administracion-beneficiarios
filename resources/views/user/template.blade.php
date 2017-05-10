@@ -9,7 +9,7 @@
 
 <!-- inyeccion de estilos -->
 @section('styles')
-  <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+
 @endsection
 
 <!-- Atributos del body -->
@@ -54,7 +54,7 @@
                 <div class='row'>
                   <div class='col-sm-12'>
                     <div class='text-center'>
-                        <img class="logo-img-login" src="{{ asset('/images/logo.png') }}" alt="">
+                        <h1 style="color:white"> <3 OID Antofagasta </h1>
                     </div>
                   </div>
                 </div>
@@ -64,7 +64,7 @@
               <div class='container'>
                 <div class='row'>
                   <div class='col-sm-4 col-sm-offset-4'>
-                    <h1 class='text-center title'>Sistema de Administración OID</h1>
+                    <h1 class='text-center title'>Ingreso al mejor sistema de la vida</h1>
                     <form action='' class='validate-form' method='get'>
                       <div class='form-group'>
                         <div class='controls with-icon-over-input'>
