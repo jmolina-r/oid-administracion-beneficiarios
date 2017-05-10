@@ -193,8 +193,8 @@ class FichaKinesiologiaController extends Controller
      */
     public function getMostrarLista()
     {
-        &fichas = FichaKinesiologia::
+        $fichas = FichaKinesiologia::all();
 
-        return view('medica.ficha-evaluacion-inicial.kinesiologia.mostrar-lista', );
+        return view('medica.ficha-evaluacion-inicial.kinesiologia.mostrar-lista', [ 'fichas' => $fichas ]);
     }
 }
