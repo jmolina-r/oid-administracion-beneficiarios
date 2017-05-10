@@ -10,7 +10,7 @@
         </div>
         <ul class='nav nav-stacked'>
             <li class='active'>
-                <a href='/principal'>
+                <a href='·'>
                     <i class='fa fa-tachometer'></i>
                     <span>Servicio Administrativo OID</span>
                 </a>
@@ -22,7 +22,24 @@
                 </a>
                 <ul class='nav nav-stacked'>
                     <li class=''>
-                        <a href=''>
+                        <a href='{{route('beneficiario.create')}}'>
+                            <div class='icon'>
+                                <i class='fa fa-caret-right'></i>
+                            </div>
+                            <span>Registro Beneficiario</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class=''>
+                <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
+                    <span>Kinesiología</span>
+                    <i class='fa fa-angle-down angle-down'></i>
+                </a>
+                <ul class='nav nav-stacked'>
+                    <li class=''>
+                        <a href='{{route('medica.ficha-evaluacion-inicial.kinesiologia.ingresar')}}'>
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>
                             </div>
