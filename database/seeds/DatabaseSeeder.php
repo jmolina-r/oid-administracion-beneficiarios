@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
         $this->call(IsapreTableSeeder::class);
         $this->call(FonasaTableSeeder::class);
         $this->call(OrganizacionSocialTableSeeder::class);
+        $this->call(SistemaProteccionTableSeeder::class);
+        $this->call(BeneficioTableSeeder::class);
         $this->call(DatoSocialTableSeeder::class);
 
         $this->call(KinesiologoTableSeeder::class);
