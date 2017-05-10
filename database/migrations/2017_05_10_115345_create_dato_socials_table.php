@@ -19,10 +19,21 @@ class CreateDatoSocialsTable extends Migration
             $table->longText('observacion');
 
             $table->integer('ficha_beneficiario_id')->unsigned();
+            $table->integer('isapre_id')->unsigned()->nullable();
+            $table->integer('fonasa_id')->unsigned()->nullable();
         });
 
         Schema::table('dato_socials', function($table) {
             $table->foreign('ficha_beneficiario_id')->references('id')->on('ficha_beneficiarios')->onDelete('cascade');
+        });
+        Schema::table('dato_socials', function($table) {
+            echo('hola');
+            $table->foreign('isapre_id')->references('id')->on('isapres');
+            echo('hola2');
+
+        });
+        Schema::table('dato_socials', function($table) {
+            $table->foreign('fonasa_id')->references('id')->on('fonasas');
         });
     }
 
