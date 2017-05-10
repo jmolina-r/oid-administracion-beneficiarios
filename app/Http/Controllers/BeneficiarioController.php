@@ -121,7 +121,7 @@ class BeneficiarioController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show()
+    public function show($rut)
     {
         return view('beneficiario.show');
     }
