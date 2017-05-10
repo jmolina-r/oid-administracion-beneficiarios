@@ -20,8 +20,7 @@ class ingresarEvaluacionInicialTest extends TestCase
     public function ingresarEvaluacionInicial()
     {
         $this->visit('/medica/ficha-evaluacion-inicial/kinesiologia/ingresar')
-            ->type('Juan Perez','nombreBeneficiario')
-            ->type('19.034.687-0','rutBeneficiario')
+            ->type('19.034.687-0','rut')
             ->type('plop','pat_concom')
             ->type('chocolate','alergias')
             ->type('paracetamol','medicamentos')
