@@ -162,7 +162,13 @@
                           </form>
                         </div>
                         @if(isset($beneficiario))
-                        <h1>{{$beneficiario->nombre}}</h1>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                          <h3>El usuario se encuentra en el sistema:</h3>
+                          Nombre
+                          <h4>{{$beneficiario->nombre}} {{$beneficiario->apellido}}</h3>
+                          Rut
+                          <h4>{{$beneficiario->rut}}</h3>
+                        </div>
                         @endif
                         <footer id='footer'>
                           <div class='footer-wrapper'>
