@@ -60,7 +60,7 @@ class BeneficiarioController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store($response, $request)
     {
         //
     }

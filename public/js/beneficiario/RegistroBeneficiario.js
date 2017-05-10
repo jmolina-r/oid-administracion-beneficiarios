@@ -14,7 +14,11 @@ $('#myWizard').wizard().on('actionclicked.fu.wizard', function (e, data) {
     if(hasErrors) e.preventDefault();
 
 }).on('finished.fu.wizard', function(e) {
-    alert('salir');
+    var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
+    if(hasErrors) e.preventDefault();
+    if(hasErrors==0){
+        $('#formulario-registro').submit();
+    }
 });
 
 
