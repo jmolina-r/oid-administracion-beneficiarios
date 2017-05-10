@@ -28,7 +28,7 @@ Route::group(['prefix' => 'beneficiario'], function () {
         'as' => 'beneficiario.edit'
     ]);
 
-    Route::get('/informacion/{id}', [
+    Route::get('/informacion', [
         'uses' => 'BeneficiarioController@show',
         'as' => 'beneficiario.show'
     ]);
