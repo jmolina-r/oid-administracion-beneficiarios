@@ -22,9 +22,9 @@ class CreateBeneficiariosTable extends Migration
             $table->string('sexo');
 
             $table->integer('pais_id')->unsigned();
-            $table->integer('estado_civil_id')->unsigned();
+            $table->integer('estado_civil_id')->unsigned()->nullable();
             $table->integer('educacion_id')->unsigned();
-            $table->integer('ocupacion_id')->unsigned();
+            $table->integer('ocupacion_id')->unsigned()->nullable();
 
         });
         Schema::table('beneficiarios', function($table) {

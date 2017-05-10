@@ -85,15 +85,21 @@ class BeneficiarioController extends Controller
      *
      * @return Response
      */
-    public function store($response, $request)
+    public function store(Request $request)
     {
-        $nombre = $request->input('nombres');
-        $apellido = $request->input('apellidos');
-        $rut = $request->input('rut');
-        $idPais = $request->input('id_pais');
-        $fechaNacimiento = $request->input('fecha_nacimiento');
-        $sexo = $request->input('sexo');
-        $estadoCivil = $request->input('estado_civil_id');
+        $beneficiario = new Beneficiario([
+            'nombre' => $request->input('nombres'),
+            'apellido' => $request->input('apellidos'),
+            'rut' => $request->input('rut'),
+            'sexo' => $request->input('sexo'),
+            'pais_id' => $request->input('id_pais'),
+
+            'educacion_id' => $request->input('nivel_educacion'),
+            
+        ]);
+        $beneficiario->save();
+
+
         $domicilioCalle = $request->input('domicilio_calle');
         $domicilioNumero = $request->input('domicilio_numero');
         $domicilioDepto = $request->input('domicilio_depto');
@@ -113,7 +119,7 @@ class BeneficiarioController extends Controller
         $sistemaSalud = $request->input('sistema_salud');
         $tipoPrevision = $request->input('prevision_radio');
         $prevision = $request->input('prevision');
-        $nivelEducacion = $request->input('nivel_educacion');
+
         $sistemaProteccion = $request->input('sistema_proteccion');
         $organizacionSocial = $request->input('organizacion_social');
 
@@ -127,6 +133,8 @@ class BeneficiarioController extends Controller
         $tipoDependenciaId = $request->input('tipo_dependencia_id');
         $cuidados = $request->input('cuidados');
         $planDeRehabilitacionTratamientoControl= $request->input('p_reha_trat_ctrl');
+
+        return view('beneficiario.show')->with('id', '1');
     }
 
     /**
@@ -145,7 +153,7 @@ class BeneficiarioController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($rut)
+    public function show($id)
     {
         return view('beneficiario.show');
     }

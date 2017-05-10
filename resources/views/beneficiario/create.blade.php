@@ -132,7 +132,7 @@ class='contrast-red'
                         </button>
                       </div>
                       <hr class='hr-normal'>
-                      <form role="form" id="formulario-registro" action="/registrar" accept-charset="UTF-8" style="margin-bottom: 0;" method="get"><div class='step-content'>
+                      <form role="form" id="formulario-registro" action="{{route('beneficiario.store')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post"><div class='step-content'>
                         <!-- STEP 1 -->
                         <div class='step-pane active' data-step='1'>
 
@@ -543,6 +543,7 @@ class='contrast-red'
          </div>
        </div>
      </div>
+     {{ csrf_field() }}
    </form>
  </div>
 </div>

@@ -43,6 +43,11 @@ Route::group(['prefix' => 'beneficiario'], function () {
         'as' => 'beneficiario.create'
     ]);
 
+    Route::post('/registrar', [
+        'uses' => 'BeneficiarioController@store',
+        'as' => 'beneficiario.store'
+    ]);
+
     Route::get('/editar/{id}', [
         'uses' => 'BeneficiarioController@edit',
         'as' => 'beneficiario.edit'
