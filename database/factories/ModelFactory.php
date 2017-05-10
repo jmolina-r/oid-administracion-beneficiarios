@@ -53,7 +53,6 @@ $factory->define(App\Telefono::class, function (Faker\Generator $faker) {
     ];
 });
 
-
 $factory->define(App\Tutor::class, function (Faker\Generator $faker) {
 
     return [
@@ -98,8 +97,7 @@ $factory->define(App\RegistroSocialHogar::class, function (Faker\Generator $fake
 
 */
 
-
-$factory->define(App\IngresoKinesiologia::class, function (Faker\Generator $faker) {
+$factory->define(App\FichaKinesiologia::class, function (Faker\Generator $faker) {
 
     return [
         'diagnostico' => $faker -> regexify('(SE DESCONOCE EL DIAGNOSTICO|DERRAME CEREBRAL|RETRASO MENTAL SEVERO|DISTROFIA MUSCULAR|DIABETES)'),

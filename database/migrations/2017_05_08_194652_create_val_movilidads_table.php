@@ -16,12 +16,12 @@ class CreateValMovilidadsTable extends Migration
         Schema::create('val_movilidads', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('puntaje_trans_cama_silla');
-            $table->string('coment_trans_cama_silla');
-            $table->string('puntaje_traslado_bano');
-            $table->string('coment_traslado_bano');
-            $table->string('puntaje_traslado_ducha');
-            $table->string('coment_traslado_ducha');
+            $table->string('puntaje_trans_cama_silla')->nullable();
+            $table->string('coment_trans_cama_silla')->nullable();
+            $table->string('puntaje_traslado_bano')->nullable();
+            $table->string('coment_traslado_bano')->nullable();
+            $table->string('puntaje_traslado_ducha')->nullable();
+            $table->string('coment_traslado_ducha')->nullable();
         });
     }
 

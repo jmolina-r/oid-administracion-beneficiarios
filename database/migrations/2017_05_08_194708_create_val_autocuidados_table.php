@@ -16,18 +16,18 @@ class CreateValAutocuidadosTable extends Migration
         Schema::create('val_autocuidados', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('puntaje_alimentacion');
-            $table->string('coment_alimentacion');
-            $table->string('puntaje_arreglo_pers');
-            $table->string('coment_arreglo_pers');
-            $table->string('puntaje_bano');
-            $table->string('coment_bano');
-            $table->string('puntaje_vest_sup');
-            $table->string('coment_vest_sup');
-            $table->string('puntaje_vest_inf');
-            $table->string('coment_vest_inf');
-            $table->string('puntaje_aseo_pers');
-            $table->string('coment_aseo_pers');
+            $table->string('puntaje_alimentacion')->nullable();
+            $table->string('coment_alimentacion')->nullable();
+            $table->string('puntaje_arreglo_pers')->nullable();
+            $table->string('coment_arreglo_pers')->nullable();
+            $table->string('puntaje_bano')->nullable();
+            $table->string('coment_bano')->nullable();
+            $table->string('puntaje_vest_sup')->nullable();
+            $table->string('coment_vest_sup')->nullable();
+            $table->string('puntaje_vest_inf')->nullable();
+            $table->string('coment_vest_inf')->nullable();
+            $table->string('puntaje_aseo_pers')->nullable();
+            $table->string('coment_aseo_pers')->nullable();
         });
     }
 
