@@ -37,4 +37,9 @@ Route::group(['prefix' => 'beneficiario'], function () {
         'uses' => 'BeneficiarioController@find',
         'as' => 'beneficiario.find'
     ]);
+
+    Route::post('/registrar', [
+        'uses' => 'BeneficiarioController@store',
+        'as' => 'beneficiario.store'
+    ]);
 });

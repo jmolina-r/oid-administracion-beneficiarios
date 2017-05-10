@@ -15,6 +15,7 @@ Registro de Beneficiario - OID
 <link href="{{ asset('/assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css') }}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{ asset('/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css" media="all" />
 <link href='{{ asset('/assets/images/meta_icons/apple-touch-icon-precomposed.png') }}' rel='apple-touch-icon-precomposed'>
+<link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
 <!-- Atributos del body -->
@@ -65,58 +66,10 @@ class='contrast-red'
 
   <!-- Contenido del body -->
   @section('content')
-  <header>
-    <nav class='navbar navbar-default'>
-      <a class='navbar-brand' href='/principal'>
-        <3 OID
-      </a>
-      <a class='toggle-nav btn pull-left' href='#'>
-        <i class='fa fa-bars'></i>
-      </a>
-
-    </nav>
-  </header>
+  @include('partials.header')
   <div id='wrapper'>
     <div id='main-nav-bg'></div>
-    <nav id='main-nav'>
-      <div class='navigation'>
-        <div class='search'>
-          <form action='search_results.html' method='get'>
-            <div class='search-wrapper'>
-              <input type="text" name="q" value="" class="search-query form-control" placeholder="Search..." autocomplete="off" />
-              <button class='btn btn-link fa fa-search' name='button' type='submit'></button>
-            </div>
-          </form>
-        </div>
-        <ul class='nav nav-stacked'>
-          <li class='active'>
-            <a href='/principal'>
-              <i class='fa fa-tachometer'></i>
-              <span>Servicio Administrativo OID</span>
-            </a>
-          </li>
-          <li class=''>
-            <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
-              <span>Beneficiarios</span>
-              <i class='fa fa-angle-down angle-down'></i>
-            </a>
-            <ul class='nav nav-stacked'>
-              <li class=''>
-                <a href=''>
-                  <div class='icon'>
-                    <i class='fa fa-caret-right'></i>
-                  </div>
-                  <span>Registro Beneficiario</span>
-                </a>
-              </li>
-
-            </ul>
-          </li>
-
-        </ul>
-      </div>
-    </nav>
-    <!-- AQUI VA EL NAVBAR  -->
+    @include('partials.nav')
     <section id='content'>
       <div class='container'>
         <div class='row' id='content-wrapper'>
@@ -179,7 +132,7 @@ class='contrast-red'
                         </button>
                       </div>
                       <hr class='hr-normal'>                  
-                      <form role="form" id="formulario-registro" action="jghhjg.php" accept-charset="UTF-8" style="margin-bottom: 0;" method="get"><div class='step-content'>
+                      <form role="form" id="formulario-registro" action="/registrar" accept-charset="UTF-8" style="margin-bottom: 0;" method="get"><div class='step-content'>
                         <!-- STEP 1 -->
                         <div class='step-pane active' data-step='1'>
 
@@ -221,11 +174,12 @@ class='contrast-red'
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group">
                           <label class='control-label' for='inputSelect'>Fecha de Nacimiento</label>
                           <div class='datepicker-input input-group' id='datepicker'>
-                            <input name='fecha_nacimiento' class='form-control' data-format='DD-MM-YYYY' placeholder='Fecha de Nacimiento' type='text'>
+                            <input name='fecha_nacimiento' class='form-control' data-format='DD/MM/YYYY' placeholder='Fecha de Nacimiento' type='text' pattern="^(?:(?:0?[1-9]|1\d|2[0-8])(\/|-)(?:0?[1-9]|1[0-2]))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(?:(?:31(\/|-)(?:0?[13578]|1[02]))|(?:(?:29|30)(\/|-)(?:0?[1,3-9]|1[0-2])))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(29(\/|-)0?2)(\/|-)(?:(?:0[48]00|[13579][26]00|[2468][048]00)|(?:\d\d)?(?:0[48]|[2468][048]|[13579][26]))$">
                             <span class='input-group-addon'>
                               <span class='fa fa-calendar'></span>
                             </span>
                           </div>
+                            <div class="help-block with-errors"></div>
                         </div>
 
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group">
@@ -385,12 +339,10 @@ class='contrast-red'
                           </div>
 
                           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                            <div class='col-md-12'>
                              <select name='sistema_salud' class='form-control' id='inputSelect'>
                                 <option value=''>Seleccionar sistema...</option>
                                <!-- Este select se debe llenar con ajax dependiendo del boton anteriorr seleccionado-->
                              </select>
-                            </div>
                           </div>
                      </div>
 
@@ -402,21 +354,20 @@ class='contrast-red'
                             AFP
                           </label>
                           <label class='radio radio-inline'>
-                            <input name='prevision_radio' type='radio' value='ips' required>
+                            <input name='prevision_radio' type='radio' value='ips' required><
                             IPS
                           </label>
                           <label class='radio radio-inline'>
                             <input name='prevision_radio' type='radio' value='no' required>
                             No tiene
                           </label>
+                            <div class="help-block with-errors"></div>
                         </div>
-                        <div class='col-md-12 form-group'>
-                          <div class='col-md-12'>
+                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                            <select name='prevision' class='form-control' id='inputSelect'>
                               <option value=''>Seleccionar sistema...</option>
                               <!-- Este select se debe llenar con ajax dependiendo del boton anteriorr seleccionado-->
                            </select>
-                          </div>
                         </div>
                      </div>
 
