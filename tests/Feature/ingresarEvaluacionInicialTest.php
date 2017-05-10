@@ -21,13 +21,12 @@ class ingresarEvaluacionInicialTest extends TestCase
      */
     public function ingresarEvaluacionInicial()
     {
-        /*$benefs = App\Beneficiario::all();
-        foreach ($benefs as $benef) {
-            echo $benef->rut;
-            break;
-        }*/
 
-        $this->artisan("db:Seed");
+
+
+        $beneficiarios = Beneficiario::all();
+
+        $this->artisan("db:seed");
         $this->visit('/medica/ficha-evaluacion-inicial/kinesiologia/ingresar')
             ->type('','rut')
             ->type('plop','pat_concom')
