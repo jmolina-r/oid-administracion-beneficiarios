@@ -16,10 +16,10 @@ class CreateValControlEsfintersTable extends Migration
         Schema::create('val_control_esfinters', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('puntaje_control_vejiga');
-            $table->string('coment_control_vejiga');
-            $table->string('puntaje_control_intestino');
-            $table->string('coment_control_intestino');
+            $table->string('puntaje_control_vejiga')->nullable();
+            $table->string('coment_control_vejiga')->nullable();
+            $table->string('puntaje_control_intestino')->nullable();
+            $table->string('coment_control_intestino')->nullable();
         });
     }
 
