@@ -21,11 +21,11 @@ class ingresarEvaluacionInicialTest extends TestCase
      */
     public function ingresarEvaluacionInicial()
     {
-        $benefs = App\Beneficiario::all();
+        /*$benefs = App\Beneficiario::all();
         foreach ($benefs as $benef) {
             echo $benef->rut;
             break;
-        }
+        }*/
 
         $this->artisan("db:Seed");
         $this->visit('/medica/ficha-evaluacion-inicial/kinesiologia/ingresar')
