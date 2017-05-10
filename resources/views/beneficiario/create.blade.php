@@ -56,6 +56,7 @@ class='contrast-red'
    <!-- / START - Validaciones-->
    <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
    <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>
 
    <script src="{{ asset('/js/beneficiario/RegistroBeneficiario.js') }}" type="text/javascript"></script>
 
@@ -168,7 +169,7 @@ class='contrast-red'
                         </ul>
                       </div>
                       <div class='actions'>
-                        <button type='submit' class='pull-right btn btn-md btn-success btn-next' data-last='Finalizar'>
+                        <button id="continuar_btn" type='submit' class='pull-right btn btn-md btn-success btn-next' data-last='Finalizar'>
                           Continuar
                           <i class='fa fa-arrow-right'></i>
                         </button>
@@ -177,29 +178,32 @@ class='contrast-red'
                           Volver
                         </button>
                       </div>
-                      <hr class='hr-normal'>
-                      <form id="formulario-registro" action="jghhjg.php" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get"><div class='step-content'>
+                      <hr class='hr-normal'>                  
+                      <form role="form" id="formulario-registro" action="jghhjg.php" accept-charset="UTF-8" style="margin-bottom: 0;" method="get"><div class='step-content'>
                         <!-- STEP 1 -->
                         <div class='step-pane active' data-step='1'>
 
                           <div class='col-md-12 form-group'>
                             <label class='control-label' for='inputText'>Nombres</label>
                             <div class='controls'>
-                              <input name='nombres' class='form-control' id='inputText' placeholder='Nombres' type='text'>
+                              <input name='nombres' class='form-control' id='inputText' placeholder='Nombres' type='text' required autofocus>
                             </div>
+                            <div class="help-block with-errors"></div>
                           </div>
 
                           <div class='col-md-12 form-group'>
                             <label class='control-label' for='inputText'>Apellidos</label>
                             <div class='controls'>
-                              <input name='apellidos' class='form-control' id='inputText' placeholder='Apellidos' type='text'>
+                              <input name='apellidos' class='form-control' id='inputText' placeholder='Apellidos' type='text' required> 
+                              <div class="help-block with-errors"></div>
                             </div>
                           </div>
 
                           <div class='col-md-12 form-group'>
                            <label class='control-label' for='inputText'>Cédula de identidad</label>
                            <div class='controls'>
-                            <input name="rut" class='form-control' id='inputText' placeholder='Cédula de identidad' type='text'>
+                            <input name="rut" class='form-control' id='inputText' placeholder='Cédula de identidad' type='text' required pattern="\d{3,8}-[\d|kK]{1}">
+                            <div class="help-block with-errors"></div>
                           </div>
                         </div>
 
@@ -279,28 +283,29 @@ class='contrast-red'
                          </div>
                        </div>
 
-                       <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
+                       <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
                          <label class='control-label' for='inputText'>Contacto</label>
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                           <div class='col-md-4 controls'>
+                           <div class='col-md-4 controls form-group'>
                              <input name='tel_fijo' class='form-control' id='inputText' placeholder='Fono' type='text'>
                            </div>
 
-                           <div class='col-md-4 controls'>
+                           <div class='col-md-4 controls form-group'>
                              <input name='tel_movil' class='form-control' id='inputText' placeholder='Celular' type='text'>
                            </div>
 
-                           <div class='col-sm-4 controls'>
-                             <input name='email' class='form-control' data-rule-email='true' data-rule-required='true' id='validation_email' name='validation_email' placeholder='E-mail' type='text'>
+                           <div class='col-sm-4 controls form-group'>
+                             <input name='email' class='form-control' placeholder='E-mail' type='email'>
+                             <div class="help-block with-errors"></div>
                            </div>
                          </div>
                        </div>
 
-                      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group">
+                      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <label class='control-label' for='inputSelect'>Credencial de discapacidad</label>
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                           <div class='col-md-6'>
-                             <select name='credencial_discapacidad' class='form-control' id='inputSelect'>
+                           <div class='col-md-6 form-group'>
+                             <select name='credencial_discapacidad' class='form-control' id='inputSelect' required>
                                <option value=''>Seleccionar...</option>
                                <option value='si'>Si</option>
                                <option value='no'>No</option>
@@ -308,8 +313,8 @@ class='contrast-red'
                              </select>
                            </div>
 
-                           <div class='col-md-6 controls'>
-                             <input name='credencial_vencimiento' class='form-control' id='inputText' placeholder='Vencimiento' type='text' required>
+                           <div class='col-md-6 controls form-group'>
+                             <input name='credencial_vencimiento' class='form-control' id='inputText' placeholder='Vencimiento' type='text'>
                            </div>
                          </div>
                       </div>
