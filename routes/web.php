@@ -27,6 +27,11 @@ Route::group(['prefix' => 'areasocial'], function(){
     'uses' => 'FichaSocialController@store',
     'as' => 'social.asistenteSocialBeneficiario'
     ]);
+
+    Route::post('/asistentesocial/menu/visita', [
+    'uses' => 'FichaSocialController@show',
+    'as' => 'social.asistenteSocialVisitaDomiciliaria'
+    ]);
 });
 
 Route::group(['prefix' => '/medica'], function (){

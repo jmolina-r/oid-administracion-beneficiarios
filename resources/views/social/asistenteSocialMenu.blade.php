@@ -95,7 +95,7 @@
                             <h4>{{$beneficiario->rut}}</h4>
                           </div>
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 areaSocialMenu">
-                            <a href="{{route('social.asistenteSocialMenu')}}" title="">
+                            <a href="{{route('social.asistenteSocialVisitaDomiciliaria')}}?rut={{$beneficiario->rut}}" title="">
                               <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
                                 <i class='fa fa-home text-contrast '></i>
                                 <h1>Visita domiciliaria</h1>
