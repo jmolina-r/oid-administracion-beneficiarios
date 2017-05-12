@@ -60,8 +60,10 @@ class='contrast-red'
    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>
 
    <script src="{{ asset('/js/beneficiario/RegistroBeneficiario.js') }}" type="text/javascript"></script>
-
   <!-- / END - validaciones-->
+   <!-- / START Vista para llenado de select dinamicos -->
+   @include('vendor.dropdown')
+   <!-- / END  -->
   @endsection
 
   <!-- Contenido del body -->
@@ -336,7 +338,7 @@ class='contrast-red'
                         <label class='control-label' for='inputText'>Sistema de Salud</label>
 
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-                            <div id="sistemaSaludSelec" class='col-md-12'>
+                            <div class='col-md-12'>
                               <label style="margin-top: 0px;" class='radio radio-inline'>
                                 <input name='sistema' type='radio' value='f' required>
                                 Fonasa
@@ -350,14 +352,8 @@ class='contrast-red'
                           </div>
 
                           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                             <select name='sistema_salud' class='form-control' id='inputSelect'>
-                                <div id="fonasaSelect">
-                                    @foreach($fonasa as $fona)
-                                      <option value="{{$fona->id}}">{{$fona->tramo}}</option>
-                                    @endforeach
-                                </div>
-
-
+                             <select id="sistemaSaludSelec" name='sistema_salud' class='form-control'>
+                                 <option value="">Seleccionar...</option>
                                <!-- Este select se debe llenar con ajax dependiendo del boton anteriorr seleccionado-->
                              </select>
                           </div>
