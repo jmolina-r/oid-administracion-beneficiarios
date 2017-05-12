@@ -186,11 +186,11 @@ class='contrast-red'
                           <label class='control-label'>Sexo</label>
                           <div class='col-md-12'>
                             <label style="margin-top: 0px;" class='radio radio-inline'>
-                              <input name='sexo' type='radio' value='m' required>
+                              <input name='sexo' type='radio' value='masculino' required checked>
                               Masculino
                             </label>
                             <label class='radio radio-inline'>
-                              <input name='sexo' type='radio' value='f' required>
+                              <input name='sexo' type='radio' value='femenino' required>
                               Femenino
                             </label>
                           </div>
