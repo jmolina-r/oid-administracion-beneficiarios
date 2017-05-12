@@ -101,8 +101,8 @@ class BeneficiarioController extends Controller
             'nombres' => 'required',
             'apellidos' => 'required',
             'rut' => 'required|unique:beneficiarios',
-            'fecha_nacimiento' => 'required|date',
-            'tutor_nombre' => 'required'
+            'fecha_nacimiento' => 'required',
+            $fechaNacimiento => 'date',
         ], $messages);
 
         $beneficiario = new Beneficiario([
