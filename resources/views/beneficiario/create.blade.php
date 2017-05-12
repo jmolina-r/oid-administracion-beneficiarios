@@ -199,7 +199,7 @@ class='contrast-red'
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
                            <label class='control-label' for='inputSelect'>Situación Civil</label>
-                           <select name='estado_civil_id' class='form-control' id='inputSelect'>
+                           <select name='estado_civil' class='form-control' id='inputSelect'>
                                <option value="">Seleccionar...</option>
                               @foreach($estados_civiles as $estado_civil)
                                 <option value="{{$estado_civil->id}}">{{$estado_civil->nombre}}</option>
@@ -395,10 +395,10 @@ class='contrast-red'
                  </div>
 
                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                    <label class='control-label' for='inputText'>Situación Actual</label>
+                    <label class='control-label' for='inputText'>Ocupación Actual</label>
                     <div class='col-md-12 form-group'>
                       <div class='col-md-12'>
-                       <select class='form-control capitalize' id='inputSelect'>
+                       <select name='ocupacion' class='form-control capitalize' id='inputSelect'>
                           @foreach($situaciones as $situacion)
                               <option value="{{$situacion->id}}">{{$situacion->nombre}}</option>
                           @endforeach

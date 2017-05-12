@@ -91,16 +91,20 @@ class BeneficiarioController extends Controller
      */
     public function store(Request $request)
     {
-        echo($request->input('nombres'));
+        echo $request->input('ocupacion');
+        $date = $request->input('fecha_nacimiento');
+        $date = str_replace('/', '-', $date);
+        $date = date('Y-m-d', strtotime($date));
         $beneficiario = new Beneficiario([
             'nombre' => $request->input('nombres'),
             'apellido' => $request->input('apellidos'),
-            'rut' => $request->input('rut'),
+            'fecha_nacimiento' => $date,
             'sexo' => $request->input('sexo'),
+            'rut' => $request->input('rut'),
             'pais_id' => $request->input('id_pais'),
-
+            'estado_civil_id' => $request->input('nivel_educacion'),
             'educacion_id' => $request->input('nivel_educacion'),
-
+            'ocupacion_id' => $request->input('ocupacion')
         ]);
         $beneficiario->save();
 
