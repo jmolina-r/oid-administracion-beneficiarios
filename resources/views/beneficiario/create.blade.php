@@ -162,18 +162,16 @@ class='contrast-red'
                           </div>
                         </div>
 
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
                           <label class='control-label' for='inputSelect'>Nacionalidad</label>
-                          <div class='col-md-12'>
-                            <select name='id_pais' class='form-control' id='inputSelect'>
-                              @foreach($paises as $pais)
-                                <option value="{{$pais->id}}">{{$pais->nombre}}</option>
-                              @endforeach
-                            </select>
-                          </div>
+                          <select name='id_pais' class='form-control' id='inputSelect'>
+                            @foreach($paises as $pais)
+                              <option value="{{$pais->id}}">{{$pais->nombre}}</option>
+                            @endforeach
+                          </select>
                         </div>
 
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
                           <label class='control-label' for='inputSelect'>Fecha de Nacimiento</label>
                           <div class='datepicker-input input-group' id='datepicker'>
                             <input name='fecha_nacimiento' class='form-control' data-format='DD/MM/YYYY' placeholder='Fecha de Nacimiento' type='text' pattern="^(?:(?:0?[1-9]|1\d|2[0-8])(\/|-)(?:0?[1-9]|1[0-2]))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(?:(?:31(\/|-)(?:0?[13578]|1[02]))|(?:(?:29|30)(\/|-)(?:0?[1,3-9]|1[0-2])))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(29(\/|-)0?2)(\/|-)(?:(?:0[48]00|[13579][26]00|[2468][048]00)|(?:\d\d)?(?:0[48]|[2468][048]|[13579][26]))$">
@@ -184,7 +182,7 @@ class='contrast-red'
                             <div class="help-block with-errors"></div>
                         </div>
 
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
                           <label class='control-label'>Sexo</label>
                           <div class='col-md-12'>
                             <label style="margin-top: 0px;" class='radio radio-inline'>
@@ -199,41 +197,39 @@ class='contrast-red'
                             <div class="help-block with-errors"></div>
                         </div>
 
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group">
-                          <label class='control-label' for='inputSelect'>Situación Civil</label>
-                         <div class='col-md-12'>
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
+                           <label class='control-label' for='inputSelect'>Situación Civil</label>
                            <select name='estado_civil_id' class='form-control' id='inputSelect'>
                                <option value="">Seleccionar...</option>
                               @foreach($estados_civiles as $estado_civil)
                                 <option value="{{$estado_civil->id}}">{{$estado_civil->nombre}}</option>
                               @endforeach
                            </select>
-                         </div>
                         </div>
 
 
                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                         <label class='control-label' for='inputText'>Domicilio</label>
+                        <label class='control-label' for='inputText'>Domicilio</label>
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                           <div class='col-xs-12 col-sm-12 col-md-3'>
+                           <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
                              <div class='controls'>
                                <input name='domicilio_calle' class='form-control' id='inputText' placeholder='Calle' type='text'>
                              </div>
                            </div>
 
-                           <div class='col-xs-12 col-sm-12 col-md-3'>
+                           <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
                              <div class='controls'>
                                <input name='domicilio_numero' class='form-control' id='inputText' placeholder='Numero' type='text'>
                              </div>
                            </div>
 
-                           <div class='col-xs-12 col-sm-12 col-md-3'>
+                           <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
                              <div class='controls'>
                                <input name='domicilio_dpto' class='form-control' id='inputText' placeholder='Dpto' type='text'>
                              </div>
                            </div>
 
-                           <div class='col-xs-12 col-sm-12 col-md-3'>
+                           <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
                              <div class='controls'>
                                <input name='domicilio_poblacion' class='form-control' id='inputText' placeholder='Poblacion / Villa' type='text'>
                              </div>
@@ -259,15 +255,12 @@ class='contrast-red'
                          </div>
                        </div>
 
-                      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                           <label class='control-label' for='inputSelect'>Credencial de discapacidad</label>
                         </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                          <label class='control-label' for='inputSelect'>Vencimiento Credencial</label>
-                        </div>                        
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                           <div class='col-md-6 form-group'>
+                           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                              <select name='credencial_discapacidad' class='form-control' id='inputSelect' required>
                                <option value=''>Seleccionar...</option>
                                <option value='si'>Si</option>
@@ -275,9 +268,9 @@ class='contrast-red'
                                <option value='tramite'>En trámite</option>
                              </select>
                            </div>
-                           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 form-group">                            
+                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">                            
                             <div class='datepicker-input input-group' id='datepicker'>
-                              <input name='credencial_vencimiento' class='form-control' data-format='DD/MM/YYYY' placeholder='Fecha de Nacimiento' type='text' pattern="^(?:(?:0?[1-9]|1\d|2[0-8])(\/|-)(?:0?[1-9]|1[0-2]))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(?:(?:31(\/|-)(?:0?[13578]|1[02]))|(?:(?:29|30)(\/|-)(?:0?[1,3-9]|1[0-2])))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(29(\/|-)0?2)(\/|-)(?:(?:0[48]00|[13579][26]00|[2468][048]00)|(?:\d\d)?(?:0[48]|[2468][048]|[13579][26]))$">
+                              <input name='credencial_vencimiento' class='form-control' data-format='DD/MM/YYYY' placeholder='Vencimiento' type='text' pattern="^(?:(?:0?[1-9]|1\d|2[0-8])(\/|-)(?:0?[1-9]|1[0-2]))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(?:(?:31(\/|-)(?:0?[13578]|1[02]))|(?:(?:29|30)(\/|-)(?:0?[1,3-9]|1[0-2])))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(29(\/|-)0?2)(\/|-)(?:(?:0[48]00|[13579][26]00|[2468][048]00)|(?:\d\d)?(?:0[48]|[2468][048]|[13579][26]))$">
                               <span class='input-group-addon'>
                                 <span class='fa fa-calendar'></span>
                               </span>
@@ -289,10 +282,14 @@ class='contrast-red'
 
                       <!-- Falta aqui manejar la subida de archivo para agregar la credencial -->
 
-                      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                         <label class='control-label' for='inputSelect'>Registro social de hogares</label>
-                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                           <div class='col-md-6 form-group'>
+                      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                          <label class='control-label' for='inputSelect'>Registro social de hogares</label>
+                        </div>                    
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                               
+                              
+                           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                              <select name='registro_social_hogares' class='form-control' id='inputSelect' required>
                                <option value=''>Seleccionar...</option>
                                <option value='si'>Si</option>
@@ -301,29 +298,29 @@ class='contrast-red'
                              </select>
                            </div>
 
-                           <div class='col-md-6 controls'>
+                           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                              <input name='registro_social_porcentaje' class='form-control' id='inputText' placeholder='Porcentaje' type='text'>
                            </div>
-                         </div>
+                        </div> 
                       </div>
 
-                      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                         <label class='control-label' for='inputText'>Acompañante o tutor</label>
-                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                           <div class='col-md-6 controls'>
-                             <input name='tutor_nombre' class='form-control' id='inputText' placeholder='Nombre' type='text'>
-                           </div>
-                           <div class='col-md-6 controls'>
-                             <input name='tutor_apellido' class='form-control' id='inputText' placeholder='Apellido' type='text'>
-                           </div>
-                         </div>
-                      </div>
-
-                      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <label class='control-label' for='inputText'>Teléfono acompañante o tutor</label>
-                         <div class='col-md-12 controls'>
-                           <input name='tutor_fono' class='form-control' id='inputText' placeholder='Telefono' type='text'>
-                         </div>
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                          <label class='control-label' for='inputSelect'>Acompañante o tutor</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                          <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group'>
+                            <input name='nombre_tutor' class='form-control' id='inputText' placeholder='Nombre' type='text'>
+                          </div>
+                          <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group'>
+                            <input name='apellido_tutor' class='form-control' id='inputText' placeholder='Apellidos' type='text'>
+                          </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                          <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
+                            <input name='telefono_tutor' class='form-control' id='inputText' placeholder='Teléfono de contacto' type='text'>
+                          </div>
+                        </div>
                       </div>
 
                      </div>
