@@ -13,3 +13,7 @@ i.fontawesomesize{
 .edit-btn{
 	margin-top: 10px;
 }
+
+.capitalize {
+	text-transform: capitalize;
+}

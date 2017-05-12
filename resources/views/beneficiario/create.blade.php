@@ -439,65 +439,17 @@ class='contrast-red'
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <label class='col-md-12 control-label' for='inputText'>Tipo de Discapacidad</label>
 
-                <div class='form-group col-md-6'>
-                  <div class='input-group'>
-                    <span class='input-group-addon'>
-                      Física
-                    </span>
-                    <input name="discapacidad_visual_porcentaje" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true" value="0">
-                    <span class='input-group-addon'>%</span>
-                  </div>
-                </div>
-
-                <div class='form-group col-md-6'>
-                  <div class='input-group'>
-                    <span class='input-group-addon'>
-                      Cognitiva
-                    </span>
-                    <input name="discapacidad_cognitiva_porcentaje" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true" value="0">
-                    <span class='input-group-addon'>%</span>
-                  </div>
-                </div>
-
-                <div class='form-group col-md-6'>
-                  <div class='input-group'>
-                    <span class='input-group-addon'>
-                      Psíquica
-                    </span>
-                    <input name="discapacidad_psiquica_porcentaje" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true" value="0">
-                    <span class='input-group-addon'>%</span>
-                  </div>
-                </div>
-
-                <div class='form-group col-md-6'>
-                  <div class='input-group'>
-                    <span class='input-group-addon'>
-                      Sensorial Visual
-                    </span>
-                    <input name="discapacidad_sens_visual_porcentaje" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true" value="0">
-                    <span class='input-group-addon'>%</span>
-                  </div>
-                </div>
-
-                <div class='form-group col-md-6'>
-                  <div class='input-group'>
-                    <span class='input-group-addon'>
-                      Sensorial Auditiva
-                    </span>
-                    <input name="discapacidad_sens_auditiva_porcentaje" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true" value="0">
-                    <span class='input-group-addon'>%</span>
-                  </div>
-                </div>
-
-                <div class='form-group col-md-6'>
-                  <div class='input-group'>
-                    <span class='input-group-addon'>
-                      Social y de la Comunicación
-                    </span>
-                    <input name="discapacidad_social_porcentaje" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true" value="0">
-                    <span class='input-group-addon'>%</span>
-                  </div>
-                </div>
+                @foreach ($tipo_discapacidades as $tipo_discapacidad)
+                    <div class='form-group col-md-6'>
+                      <div class='input-group'>
+                        <span class='capitalize input-group-addon'>
+                          {{$tipo_discapacidad->nombre}}
+                        </span>
+                        <input name="discapacidad_visual_porcentaje" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true" value="0">
+                        <span class='input-group-addon'>%</span>
+                      </div>
+                    </div>
+                @endforeach
 
               </div>
 

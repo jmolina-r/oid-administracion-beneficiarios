@@ -17,6 +17,7 @@ use App\Telefono;
 use App\Tutor;
 use App\FichaBenefeciario;
 use App\TipoDependencia;
+use App\TipoDiscapacidad;
 
 
 
@@ -67,6 +68,8 @@ class BeneficiarioController extends Controller
 
         $isapre = Isapre::get();
 
+        $tipo_discapacidades = TipoDiscapacidad::get();
+
 
         return view('beneficiario.create')
             ->with(compact('paises'))
@@ -76,6 +79,7 @@ class BeneficiarioController extends Controller
             ->with(compact('niveles_educacion'))
             ->with(compact('dependencias'))
             ->with(compact('fonasa'))
+            ->with(compact('tipo_discapacidades'))
             ->with(compact('isapre'));
 
     }
@@ -95,7 +99,7 @@ class BeneficiarioController extends Controller
             'pais_id' => $request->input('id_pais'),
 
             'educacion_id' => $request->input('nivel_educacion'),
-            
+
         ]);
         $beneficiario->save();
 
