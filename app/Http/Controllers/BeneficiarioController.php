@@ -91,14 +91,24 @@ class BeneficiarioController extends Controller
      */
     public function store(Request $request)
     {
-        echo $request->input('ocupacion');
-        $date = $request->input('fecha_nacimiento');
-        $date = str_replace('/', '-', $date);
-        $date = date('Y-m-d', strtotime($date));
+        $fechaNacimiento = date('Y-m-d', strtotime(str_replace('/', '-', $request->input('fecha_nacimiento'))));
+
+        $messages = [
+            'required' => 'El campo :attribute es requerido.',
+        ];
+
+        $this->validate($request, [
+            'nombres' => 'required',
+            'apellidos' => 'required',
+            'rut' => 'required|unique:beneficiarios',
+            'fecha_nacimiento' => 'required|date',
+            'tutor_nombre' => 'required'
+        ], $messages);
+
         $beneficiario = new Beneficiario([
             'nombre' => $request->input('nombres'),
             'apellido' => $request->input('apellidos'),
-            'fecha_nacimiento' => $date,
+            'fecha_nacimiento' => $fechaNacimiento,
             'sexo' => $request->input('sexo'),
             'rut' => $request->input('rut'),
             'pais_id' => $request->input('id_pais'),

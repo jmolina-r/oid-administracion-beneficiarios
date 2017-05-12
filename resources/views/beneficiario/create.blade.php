@@ -86,20 +86,6 @@ class='contrast-red'
                   <div class='pull-right'>
                     <ul class='breadcrumb'>
                       <li>
-                        <a href='index.html'>
-                          <i class='fa fa-bar-chart-o'></i>
-                        </a>
-                      </li>
-                      <li class='separator'>
-                        <i class='fa fa-angle-right'></i>
-                      </li>
-                      <li>
-                        Forms
-                      </li>
-                      <li class='separator'>
-                        <i class='fa fa-angle-right'></i>
-                      </li>
-                      <li class='active'>Wizard</li>
                     </ul>
                   </div>
                 </div>
@@ -133,6 +119,15 @@ class='contrast-red'
                           Volver
                         </button>
                       </div>
+                      @if(count($errors) > 0)
+                          <hr class='hr-normal'>
+
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                    <p>{{ $error }}</p>
+                                @endforeach
+                            </div>
+                        @endif
                       <hr class='hr-normal'>
                       <form role="form" id="formulario-registro" action="{{route('beneficiario.store')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post"><div class='step-content'>
                         <!-- STEP 1 -->
@@ -141,7 +136,7 @@ class='contrast-red'
                           <div class='col-md-12 form-group'>
                             <label class='control-label' for='inputText'>Nombres</label>
                             <div class='controls'>
-                              <input name='nombres' class='form-control' id='inputText' placeholder='Nombres' type='text' required autofocus>
+                              <input name='nombres' class='form-control' id='inputText' value="{{ old('nombres') }}" placeholder='Nombres' type='text' required autofocus>
                             </div>
                             <div class="help-block with-errors"></div>
                           </div>
@@ -149,7 +144,7 @@ class='contrast-red'
                           <div class='col-md-12 form-group'>
                             <label class='control-label' for='inputText'>Apellidos</label>
                             <div class='controls'>
-                              <input name='apellidos' class='form-control' id='inputText' placeholder='Apellidos' type='text' required>
+                              <input name='apellidos' value="{{ old('apellidos') }}" class='form-control' id='inputText' placeholder='Apellidos' type='text' required>
                               <div class="help-block with-errors"></div>
                             </div>
                           </div>
@@ -157,7 +152,7 @@ class='contrast-red'
                           <div class='col-md-12 form-group'>
                            <label class='control-label' for='inputText'>Cédula de identidad</label>
                            <div class='controls'>
-                            <input name="rut" class='form-control' id='inputText' placeholder='Cédula de identidad' type='text' required pattern="\d{3,8}-[\d|kK]{1}">
+                            <input name="rut" value="{{ old('rut') }}" class='form-control' id='inputText' placeholder='Cédula de identidad' type='text' required pattern="\d{3,8}-[\d|kK]{1}">
                             <div class="help-block with-errors"></div>
                           </div>
                         </div>
@@ -174,7 +169,7 @@ class='contrast-red'
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
                           <label class='control-label' for='inputSelect'>Fecha de Nacimiento</label>
                           <div class='datepicker-input input-group' id='datepicker'>
-                            <input name='fecha_nacimiento' class='form-control' data-format='DD/MM/YYYY' placeholder='Fecha de Nacimiento' type='text' pattern="^(?:(?:0?[1-9]|1\d|2[0-8])(\/|-)(?:0?[1-9]|1[0-2]))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(?:(?:31(\/|-)(?:0?[13578]|1[02]))|(?:(?:29|30)(\/|-)(?:0?[1,3-9]|1[0-2])))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(29(\/|-)0?2)(\/|-)(?:(?:0[48]00|[13579][26]00|[2468][048]00)|(?:\d\d)?(?:0[48]|[2468][048]|[13579][26]))$">
+                            <input value="{{ old('fecha_nacimiento') }}" name='fecha_nacimiento' class='form-control' data-format='DD/MM/YYYY' placeholder='Fecha de Nacimiento' type='text' required  pattern="^(?:(?:0?[1-9]|1\d|2[0-8])(\/|-)(?:0?[1-9]|1[0-2]))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(?:(?:31(\/|-)(?:0?[13578]|1[02]))|(?:(?:29|30)(\/|-)(?:0?[1,3-9]|1[0-2])))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(29(\/|-)0?2)(\/|-)(?:(?:0[48]00|[13579][26]00|[2468][048]00)|(?:\d\d)?(?:0[48]|[2468][048]|[13579][26]))$">
                             <span class='input-group-addon'>
                               <span class='fa fa-calendar'></span>
                             </span>
@@ -199,8 +194,7 @@ class='contrast-red'
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
                            <label class='control-label' for='inputSelect'>Situación Civil</label>
-                           <select name='estado_civil' class='form-control' id='inputSelect'>
-                               <option value="">Seleccionar...</option>
+                           <select name='estado_civil' class='form-control capitalize' id='inputSelect'>
                               @foreach($estados_civiles as $estado_civil)
                                 <option value="{{$estado_civil->id}}">{{$estado_civil->nombre}}</option>
                               @endforeach
@@ -213,25 +207,25 @@ class='contrast-red'
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                            <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
                              <div class='controls'>
-                               <input name='domicilio_calle' class='form-control' id='inputText' placeholder='Calle' type='text'>
+                               <input value="{{ old('domicilio_calle') }}" name='domicilio_calle' class='form-control' id='inputText' placeholder='Calle' type='text'>
                              </div>
                            </div>
 
                            <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
                              <div class='controls'>
-                               <input name='domicilio_numero' class='form-control' id='inputText' placeholder='Numero' type='text'>
+                               <input name='domicilio_numero' value="{{ old('domicilio_numero') }}" class='form-control' id='inputText' placeholder='Numero' type='text'>
                              </div>
                            </div>
 
                            <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
                              <div class='controls'>
-                               <input name='domicilio_dpto' class='form-control' id='inputText' placeholder='Dpto' type='text'>
+                               <input name='domicilio_dpto' value="{{ old('domicilio_dpto') }}" class='form-control' id='inputText' placeholder='Dpto' type='text'>
                              </div>
                            </div>
 
                            <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
                              <div class='controls'>
-                               <input name='domicilio_poblacion' class='form-control' id='inputText' placeholder='Poblacion / Villa' type='text'>
+                               <input name='domicilio_poblacion' value="{{ old('domicilio_poblacion') }}" class='form-control' id='inputText' placeholder='Poblacion / Villa' type='text'>
                              </div>
                            </div>
                          </div>
