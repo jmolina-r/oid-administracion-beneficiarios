@@ -91,6 +91,7 @@ class BeneficiarioController extends Controller
      */
     public function store(Request $request)
     {
+        echo($request->input('nombres'));
         $beneficiario = new Beneficiario([
             'nombre' => $request->input('nombres'),
             'apellido' => $request->input('apellidos'),
@@ -138,7 +139,7 @@ class BeneficiarioController extends Controller
         $cuidados = $request->input('cuidados');
         $planDeRehabilitacionTratamientoControl= $request->input('p_reha_trat_ctrl');
 
-        return view('beneficiario.show')->with('id', '1');
+        //return view('beneficiario.show')->with('id', '1');
     }
 
     /**

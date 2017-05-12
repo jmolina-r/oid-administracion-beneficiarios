@@ -62,7 +62,7 @@ class='contrast-red'
    <script src="{{ asset('/js/beneficiario/RegistroBeneficiario.js') }}" type="text/javascript"></script>
   <!-- / END - validaciones-->
    <!-- / START Vista para llenado de select dinamicos -->
-   @include('vendor.dropdown')
+   @include('partials.dropdown')
    <!-- / END  -->
   @endsection
 
@@ -262,13 +262,12 @@ class='contrast-red'
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                              <select name='credencial_discapacidad' class='form-control' id='inputSelect' required>
-                               <option value=''>Seleccionar...</option>
-                               <option value='si'>Si</option>
                                <option value='no'>No</option>
                                <option value='tramite'>En trámite</option>
+                               <option value='si'>Si</option>
                              </select>
                            </div>
-                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">                            
+                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                             <div class='datepicker-input input-group' id='datepicker'>
                               <input name='credencial_vencimiento' class='form-control' data-format='DD/MM/YYYY' placeholder='Vencimiento' type='text' pattern="^(?:(?:0?[1-9]|1\d|2[0-8])(\/|-)(?:0?[1-9]|1[0-2]))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(?:(?:31(\/|-)(?:0?[13578]|1[02]))|(?:(?:29|30)(\/|-)(?:0?[1,3-9]|1[0-2])))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(29(\/|-)0?2)(\/|-)(?:(?:0[48]00|[13579][26]00|[2468][048]00)|(?:\d\d)?(?:0[48]|[2468][048]|[13579][26]))$">
                               <span class='input-group-addon'>
@@ -285,23 +284,22 @@ class='contrast-red'
                       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                           <label class='control-label' for='inputSelect'>Registro social de hogares</label>
-                        </div>                    
+                        </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                               
-                              
+
+
                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                              <select name='registro_social_hogares' class='form-control' id='inputSelect' required>
-                               <option value=''>Seleccionar...</option>
-                               <option value='si'>Si</option>
                                <option value='no'>No</option>
                                <option value='tramite'>En trámite</option>
+                               <option value='si'>Si</option>
                              </select>
                            </div>
 
                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                              <input name='registro_social_porcentaje' class='form-control' id='inputText' placeholder='Porcentaje' type='text'>
                            </div>
-                        </div> 
+                        </div>
                       </div>
 
                       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -349,7 +347,7 @@ class='contrast-red'
                           </div>
 
                           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                             <select id="sistemaSaludSelec" name='sistema_salud' class='form-control'>
+                             <select id="sistemaSaludSelec" name='sistema_salud' class='form-control capitalize'>
                                  <option value="">Seleccionar...</option>
                                <!-- Este select se debe llenar con ajax dependiendo del boton anteriorr seleccionado-->
                              </select>
@@ -387,7 +385,7 @@ class='contrast-red'
                     <label class='control-label' for='inputText'>Nivel Educacional</label>
                     <div class='col-md-12 form-group'>
                       <div class='col-md-12'>
-                       <select name='nivel_educacion' class='form-control' id='inputSelect'>
+                       <select name='nivel_educacion' class='form-control capitalize' id='inputSelect'>
                          @foreach($niveles_educacion as $nivel_educacion)
                             <option value="{{$nivel_educacion->id}}">{{$nivel_educacion->nombre}}</option>
                          @endforeach
@@ -400,7 +398,7 @@ class='contrast-red'
                     <label class='control-label' for='inputText'>Situación Actual</label>
                     <div class='col-md-12 form-group'>
                       <div class='col-md-12'>
-                       <select class='form-control' id='inputSelect'>
+                       <select class='form-control capitalize' id='inputSelect'>
                           @foreach($situaciones as $situacion)
                               <option value="{{$situacion->id}}">{{$situacion->nombre}}</option>
                           @endforeach
@@ -464,7 +462,7 @@ class='contrast-red'
               <label class='control-label' for='inputText'>Dependencia</label>
               <div class='col-md-12 form-group'>
                 <div class='col-md-12'>
-                 <select name="tipo_dependencia_id" class='form-control' id='inputSelect'>
+                 <select name="tipo_dependencia_id" class='form-control permanente capitalize' id='inputSelect'>
                    @foreach($dependencias as $dependencia)
                       <option value="{{$dependencia->id}}">{{$dependencia->nombre}}</option>
                    @endforeach
