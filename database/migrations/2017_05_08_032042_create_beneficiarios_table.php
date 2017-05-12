@@ -18,8 +18,9 @@ class CreateBeneficiariosTable extends Migration
             $table->timestamps();
             $table->string('nombre');
             $table->string('apellido');
-            $table->string('rut');
+            $table->date('fecha_nacimiento');
             $table->string('sexo');
+            $table->string('rut');
 
             $table->integer('pais_id')->unsigned();
             $table->integer('estado_civil_id')->unsigned()->nullable();
