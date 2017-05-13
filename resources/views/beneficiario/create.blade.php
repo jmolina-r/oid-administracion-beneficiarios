@@ -334,20 +334,22 @@ class='contrast-red'
 
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                               <label style="margin-top: 0px;" class='radio radio-inline'>
-                                <input name='sistema' type='radio' value='f' required>
+                                <input name='sistema' type='radio' value='f' checked>
                                 Fonasa
                               </label>
                               <label class='radio radio-inline'>
-                                <input name='sistema' type='radio' value='i' required>
+                                <input name='sistema' type='radio' value='i'>
                                 Isapre
                               </label>
                             <div class="help-block with-errors"></div>
                           </div>
 
                           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                             <select id="sistemaSaludSelec" name='sistema_salud' class='form-control capitalize'>
+                             <select id="sistemaSaludSelec" name='sistema_salud' class='form-control capitalize' required>
                                  <option value="">Seleccionar...</option>
-                               <!-- Este select se debe llenar con ajax dependiendo del boton anteriorr seleccionado-->
+                                 @foreach($fonasa as $fona)
+                                 <option value="{{$fona->id}}">{{$fona->tramo}}</option>
+                                 @endforeach
                              </select>
                           </div>
                      </div>
