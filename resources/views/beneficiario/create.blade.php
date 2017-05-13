@@ -235,11 +235,17 @@ class='contrast-red'
                          <label class='control-label' for='inputText'>Contacto</label>
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                            <div class='col-md-4 controls form-group'>
-                             <input name='tel_fijo' value="{{ old('tel_fijo') }}" class='form-control' id='inputText' placeholder='Fono' type='text'>
+                              <div class='input-group'>
+                                <span class='capitalize input-group-addon'>+56 55</span> 
+                                <input name='tel_fijo' value="{{ old('tel_fijo') }}" class='form-control onlynumbers' id='inputText' placeholder='Fono' type='text' maxlength="7">
+                              </div>
                            </div>
 
                            <div class='col-md-4 controls form-group'>
-                             <input name='tel_movil' value="{{ old('tel_movil') }}" class='form-control' id='inputText' placeholder='Celular' type='text'>
+                              <div class='input-group'>
+                                <span class='capitalize input-group-addon'>+56 9</span>                              
+                                <input name='tel_movil' value="{{ old('tel_movil') }}" class='form-control onlynumbers' id='inputText' placeholder='Celular' type='text' maxlength="8">
+                             </div>
                            </div>
 
                            <div class='col-sm-4 controls form-group'>
