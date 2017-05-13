@@ -308,15 +308,17 @@ class='contrast-red'
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                           <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group'>
-                            <input name='nombre_tutor' value="{{ old('nombre_tutor') }}" class='form-control' id='inputText' placeholder='Nombre' type='text'>
+                            <input name='nombre_tutor' value="{{ old('nombre_tutor') }}" class='form-control onlyletters' id='inputText' placeholder='Nombre' type='text' required maxlength="200">
+                            <div class="help-block with-errors"></div>
                           </div>
                           <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group'>
-                            <input name='apellido_tutor' value="{{ old('apellido_tutor') }}" class='form-control' id='inputText' placeholder='Apellidos' type='text'>
+                            <input name='apellido_tutor' value="{{ old('apellido_tutor') }}" class='form-control onlyletters' id='inputText' placeholder='Apellidos' type='text' required maxlength="200">
+                            <div class="help-block with-errors"></div>
                           </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                            <input name='telefono_tutor' value="{{ old('telefono_tutor') }}" class='form-control' id='inputText' placeholder='Teléfono de contacto' type='text'>
+                            <input name='telefono_tutor' value="{{ old('telefono_tutor') }}" class='form-control onlynumbers' id='inputText' placeholder='Teléfono de contacto' type='text'>
                           </div>
                         </div>
                       </div>
