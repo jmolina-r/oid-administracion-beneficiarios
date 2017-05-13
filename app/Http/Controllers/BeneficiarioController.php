@@ -93,17 +93,14 @@ class BeneficiarioController extends Controller
     {
         $fechaNacimiento = date('Y-m-d', strtotime(str_replace('/', '-', $request->input('fecha_nacimiento'))));
 
-        $messages = [
-            'required' => 'El campo :attribute es requerido.',
-        ];
-
         $this->validate($request, [
             'nombres' => 'required',
             'apellidos' => 'required',
             'rut' => 'required|unique:beneficiarios',
             'fecha_nacimiento' => 'required',
             $fechaNacimiento => 'date',
-        ], $messages);
+            'nombre_tutor' => 'required'
+        ]);
 
         $beneficiario = new Beneficiario([
             'nombre' => $request->input('nombres'),
