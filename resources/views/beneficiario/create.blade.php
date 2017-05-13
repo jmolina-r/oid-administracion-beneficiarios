@@ -289,7 +289,7 @@ class='contrast-red'
 
 
                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                             <select name='registro_social_hogares' class='form-control' id='inputSelect' required>
+                             <select name='registro_social_hogares' class='form-control' required id="registro_social_hogares">
                                <option value='0'>No</option>
                                <option value='2'>En trámite</option>
                                <option value='1'>Si</option>
@@ -298,7 +298,7 @@ class='contrast-red'
 
                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                               <div class="input-group">
-                                <input name='registro_social_porcentaje' class='form-control' id='inputText' placeholder='Porcentaje' type='number' min="0" max="100">
+                                <input name='registro_social_porcentaje' class='form-control' placeholder='Porcentaje' type='number' min="0" max="100" id="registro_social_porcentaje">
                                 <span class='input-group-addon'>%</span>
                              </div>
                              <div class="help-block with-errors"></div>

@@ -39,6 +39,26 @@ $( "#credencial_discapacidad").change(function() {
 
   //Actualizar el validador del formulario
   $("#formulario-registro").validator('update');
+
+});
+
+/**
+ * Registro Social de Hogares, si es si, activa porcentaje y lo pone requerido,
+ * si no, lo bloquea.
+ */
+$( "#registro_social_hogares").change(function() {
+  //Si se ha seleccionado si
+  if (this.value==1) {
+    $( "#registro_social_porcentaje").prop('required',true);
+  }
+
+  //Si se ha seleccionado en tramite o no
+  if (this.value==0 || this.value==2){
+    $('#registro_social_porcentaje').removeAttr('required');
+  }
+
+  //Actualizar el validador del formulario
+  $("#formulario-registro").validator('update');
   
 });
 
