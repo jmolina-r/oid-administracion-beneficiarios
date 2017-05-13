@@ -99,7 +99,9 @@ class BeneficiarioController extends Controller
             'rut' => 'required|unique:beneficiarios',
             'fecha_nacimiento' => 'required',
             $fechaNacimiento => 'date',
-            'nombre_tutor' => 'nullable',
+            'nombre_tutor' => 'required_with:apellido_tutor',
+            'apellido_tutor' => 'required_with:nombre_tutor',
+            'telefono_tutor' => 'required_with:nombre_tutor',
             'ocupacion' => 'required|exists:ocupacions,id',
             'educacion' => 'required|exists:educacions,id',
         ]);
@@ -124,7 +126,7 @@ class BeneficiarioController extends Controller
         $domicilioDepto = $request->input('domicilio_depto');
         $domicilioPoblacion = $request->input('domicilio_poblacion');
         */
-        
+
         $telefonoFijo = $request->input('tel_fijo');
         $telefonoMovil = $request->input('tel_movil');
         $email = $request->input('email');
