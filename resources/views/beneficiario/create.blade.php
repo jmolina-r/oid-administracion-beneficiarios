@@ -58,8 +58,8 @@ class='contrast-red'
    <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
    <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>
-
    <script src="{{ asset('/js/beneficiario/RegistroBeneficiario.js') }}" type="text/javascript"></script>
+   <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
   <!-- / END - validaciones-->
    <!-- / START Vista para llenado de select dinamicos -->
    @include('partials.dropdown')
@@ -136,7 +136,7 @@ class='contrast-red'
                           <div class='col-md-12 form-group'>
                             <label class='control-label' for='inputText'>Nombres</label>
                             <div class='controls'>
-                              <input name='nombres' class='form-control' id='inputText' value="{{ old('nombres') }}" placeholder='Nombres' type='text' required autofocus>
+                              <input name='nombres' class='form-control onlyletters' value="{{ old('nombres') }}" placeholder='Nombres' type='text' maxlength="200" required>
                             </div>
                             <div class="help-block with-errors"></div>
                           </div>
@@ -144,7 +144,7 @@ class='contrast-red'
                           <div class='col-md-12 form-group'>
                             <label class='control-label' for='inputText'>Apellidos</label>
                             <div class='controls'>
-                              <input name='apellidos' value="{{ old('apellidos') }}" class='form-control' id='inputText' placeholder='Apellidos' type='text' required>
+                              <input name='apellidos' value="{{ old('apellidos') }}" class='form-control onlyletters' id='inputText' placeholder='Apellidos' type='text' required>
                               <div class="help-block with-errors"></div>
                             </div>
                           </div>
