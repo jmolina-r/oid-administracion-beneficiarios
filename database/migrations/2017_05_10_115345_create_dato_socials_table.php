@@ -24,6 +24,9 @@ class CreateDatoSocialsTable extends Migration
             $table->integer('organizacion_social_id')->unsigned()->nullable();
             $table->integer('sistema_proteccion_id')->unsigned()->nullable();
 
+            $table->integer('prevision_id')->unsigned()->nullable();
+
+
         });
 
         Schema::table('dato_socials', function($table) {
@@ -40,6 +43,9 @@ class CreateDatoSocialsTable extends Migration
         });
         Schema::table('dato_socials', function($table) {
             $table->foreign('sistema_proteccion_id')->references('id')->on('sistema_proteccions');
+        });
+        Schema::table('dato_socials', function($table) {
+            $table->foreign('prevision_id')->references('id')->on('previsions');
         });
     }
 

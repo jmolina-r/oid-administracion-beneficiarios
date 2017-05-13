@@ -99,8 +99,11 @@ class BeneficiarioController extends Controller
             'rut' => 'required|unique:beneficiarios',
             'fecha_nacimiento' => 'required',
             $fechaNacimiento => 'date',
-            'nombre_tutor' => 'required'
+            'nombre_tutor' => 'nullable',
+            'ocupacion' => 'required|exists:ocupacions,id',
+            'educacion' => 'required|exists:educacions,id',
         ]);
+
 
         $beneficiario = new Beneficiario([
             'nombre' => $request->input('nombres'),
@@ -109,17 +112,19 @@ class BeneficiarioController extends Controller
             'sexo' => $request->input('sexo'),
             'rut' => $request->input('rut'),
             'pais_id' => $request->input('id_pais'),
-            'estado_civil_id' => $request->input('nivel_educacion'),
-            'educacion_id' => $request->input('nivel_educacion'),
+            'estado_civil_id' => $request->input('estado_civil'),
+            'educacion_id' => $request->input('educacion'),
             'ocupacion_id' => $request->input('ocupacion')
         ]);
         $beneficiario->save();
 
-
+        /* Falta tabla Domicilio
         $domicilioCalle = $request->input('domicilio_calle');
         $domicilioNumero = $request->input('domicilio_numero');
         $domicilioDepto = $request->input('domicilio_depto');
         $domicilioPoblacion = $request->input('domicilio_poblacion');
+        */
+        
         $telefonoFijo = $request->input('tel_fijo');
         $telefonoMovil = $request->input('tel_movil');
         $email = $request->input('email');

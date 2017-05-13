@@ -377,7 +377,7 @@ class='contrast-red'
                     <label class='control-label' for='inputText'>Nivel Educacional</label>
                     <div class='col-md-12 form-group'>
                       <div class='col-md-12'>
-                       <select name='nivel_educacion' class='form-control capitalize' id='inputSelect'>
+                       <select name='educacion' class='form-control capitalize' id='inputSelect'>
                          @foreach($niveles_educacion as $nivel_educacion)
                             <option value="{{$nivel_educacion->id}}">{{$nivel_educacion->nombre}}</option>
                          @endforeach

@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TipoDependenciaTableSeeder::class);
         $this->call(FichaDiscapacidadTableSeeder::class);
         $this->call(TipoDiscapacidadTableSeeder::class);
+        $this->call(PrevisionTableSeeder::class);
         $this->call(DatoSocialTableSeeder::class);
 
 

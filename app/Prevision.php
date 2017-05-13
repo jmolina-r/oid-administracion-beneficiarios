@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SistemaProteccion extends Model
+class Prevision extends Model
 {
     protected $fillable = ['nombre'];
 
@@ -12,5 +12,4 @@ class SistemaProteccion extends Model
     {
         return $this->hasMany(DatoSocial::class);
     }
-
 }
