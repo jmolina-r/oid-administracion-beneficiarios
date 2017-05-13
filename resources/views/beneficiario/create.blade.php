@@ -322,12 +322,11 @@ class='contrast-red'
                      <!-- STEP 2 -->
                      <div class='step-pane' data-step='2'>
 
-                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
                         <label class='control-label' for='inputText'>Sistema de Salud</label>
 
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-                            <div class='col-md-12'>
                               <label style="margin-top: 0px;" class='radio radio-inline'>
                                 <input name='sistema' type='radio' value='f' required>
                                 Fonasa
@@ -336,7 +335,6 @@ class='contrast-red'
                                 <input name='sistema' type='radio' value='i' required>
                                 Isapre
                               </label>
-                            </div>
                             <div class="help-block with-errors"></div>
                           </div>
 
@@ -348,7 +346,7 @@ class='contrast-red'
                           </div>
                      </div>
 
-                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <label class='control-label' for='inputText'>Previsión</label>
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
 
