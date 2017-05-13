@@ -235,15 +235,15 @@ class='contrast-red'
                          <label class='control-label' for='inputText'>Contacto</label>
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                            <div class='col-md-4 controls form-group'>
-                             <input name='tel_fijo' class='form-control' id='inputText' placeholder='Fono' type='text'>
+                             <input name='tel_fijo' value="{{ old('tel_fijo') }}" class='form-control' id='inputText' placeholder='Fono' type='text'>
                            </div>
 
                            <div class='col-md-4 controls form-group'>
-                             <input name='tel_movil' class='form-control' id='inputText' placeholder='Celular' type='text'>
+                             <input name='tel_movil' value="{{ old('tel_movil') }}" class='form-control' id='inputText' placeholder='Celular' type='text'>
                            </div>
 
                            <div class='col-sm-4 controls form-group'>
-                             <input name='email' class='form-control' placeholder='E-mail' type='email'>
+                             <input name='email'  value="{{ old('email') }}" class='form-control' placeholder='E-mail' type='email'>
                              <div class="help-block with-errors"></div>
                            </div>
                          </div>
@@ -256,9 +256,9 @@ class='contrast-red'
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                              <select name='credencial_discapacidad' class='form-control' id='inputSelect' required>
-                               <option value='no'>No</option>
-                               <option value='tramite'>En trámite</option>
-                               <option value='si'>Si</option>
+                               <option value='0'>No</option>
+                               <option value='2'>En trámite</option>
+                               <option value='1'>Si</option>
                              </select>
                            </div>
                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
@@ -284,9 +284,9 @@ class='contrast-red'
 
                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                              <select name='registro_social_hogares' class='form-control' id='inputSelect' required>
-                               <option value='no'>No</option>
-                               <option value='tramite'>En trámite</option>
-                               <option value='si'>Si</option>
+                               <option value='0'>No</option>
+                               <option value='2'>En trámite</option>
+                               <option value='1'>Si</option>
                              </select>
                            </div>
 

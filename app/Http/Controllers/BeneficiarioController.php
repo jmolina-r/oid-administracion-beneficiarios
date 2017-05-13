@@ -92,18 +92,24 @@ class BeneficiarioController extends Controller
     public function store(Request $request)
     {
         $fechaNacimiento = date('Y-m-d', strtotime(str_replace('/', '-', $request->input('fecha_nacimiento'))));
-
+        // 0, 1, or 2. 0 inexistence, 1 exists, 2 waiting.
         $this->validate($request, [
             'nombres' => 'required',
             'apellidos' => 'required',
             'rut' => 'required|unique:beneficiarios',
-            'fecha_nacimiento' => 'required',
-            $fechaNacimiento => 'date',
+            'fecha_nacimiento' => 'required|date_format:"d/m/Y"|before:"today"',
             'nombre_tutor' => 'required_with:apellido_tutor',
             'apellido_tutor' => 'required_with:nombre_tutor',
             'telefono_tutor' => 'required_with:nombre_tutor',
             'ocupacion' => 'required|exists:ocupacions,id',
             'educacion' => 'required|exists:educacions,id',
+            'tel_fijo' => 'nullable|numeric',
+            'tel_movil' => 'nullable|numeric',
+            'email' => 'nullable|email',
+            'credencial_discapacidad' => 'required|numeric|between:0,2',
+            'credencial_vencimiento' => 'required_if:credencial_discapacidad,1',
+            'registro_social_hogares' => 'required|numeric|between:0,2',
+            'registro_social_porcentaje' => 'required_if:registro_social_hogares,1'
         ]);
 
 

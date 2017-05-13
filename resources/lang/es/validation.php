@@ -146,4 +146,11 @@ return [
         'message'               => 'mensaje',
     ],
 
+    'time_periods' => [
+        'yesterday' => 'ayer',
+        'now'       => 'ahora',
+        'today'     => 'hoy día',
+        'tomorrow'  => 'mañana',
+    ],
+
 ];
