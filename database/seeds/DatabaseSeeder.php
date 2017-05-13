@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TipoDiscapacidadTableSeeder::class);
         $this->call(PrevisionTableSeeder::class);
         $this->call(DatoSocialTableSeeder::class);
+        $this->call(DomicilioTableSeeder::class);
 
 
         $this->call(KinesiologoTableSeeder::class);

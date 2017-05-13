@@ -18,6 +18,11 @@ class Beneficiario extends Model
         return $this->hasMany(Telefono::class);
     }
 
+    public function domicilio()
+    {
+        return $this->hasOne(Domicilio::class);
+    }
+
     public function estado_civil()
     {
         return $this->belongsTo(EstadoCivil::class);

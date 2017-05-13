@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Telefono extends Model
+class Domicilio extends Model
 {
-    protected $fillable = ['numero', 'tipo', 'beneficiario_id'];
+    protected $fillable = ['pobl_vill', 'calle', 'numero', 'bloque', 'numero_depto', 'beneficiario_id'];
 
     public function beneficiario()
     {
