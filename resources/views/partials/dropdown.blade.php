@@ -19,6 +19,17 @@
         ]
     };
 
+    // {{-- var prevision = {
+    //   "afp": [
+    //       @foreach($previsiones as $prevision)
+    //         {"id":"{{$prevision->id}}","tramo":"{{$prevision->tramo}}"},
+    //       @endforeach
+    //   ],
+    //   "ips": [
+    //       //Falta definir IPS
+    //   ]
+    // } --}}
+
     //Se define la variable select a rellanar
     var select = $("#sistemaSaludSelec");
 
@@ -39,12 +50,18 @@
             sistemaEscogido = sistemas.isapre;
         }
 
-        //Se recorre el sistema y se llena el select
-        $.each(sistemaEscogido, function(i) {
+        llenarSelect(sistemaEscogido, select);
+        
+    });
+
+    function llenarSelect(sistema, select){
+
+      //Se recorre el sistema y se llena el select
+        $.each(sistema, function(i) {
             select.append($('<option>', {
-                value: sistemaEscogido[i].id,
-                text : sistemaEscogido[i].tramo
+                value: sistema[i].id,
+                text : sistema[i].tramo
             }));
         });
-    });
+    }
 </script>
