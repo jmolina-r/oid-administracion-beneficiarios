@@ -13,3 +13,9 @@ $('.onlynumbers').bind('keyup blur',function(){
     var node = $(this);
     node.val(node.val().replace(/[^0-9 ]/g,'') ); }
 );
+
+//Input que contiene solo numeros
+$('.onlyrut').bind('keyup blur',function(){
+    var node = $(this);
+    node.val(node.val().replace(/[A-Za-jl-z‚´≠”“÷¬∞¢¿·ºª"~!@#$%^&*\(\)_+=`{}\[\]\|\\:;'<>,.\/?"]/g,'') ); }
+);
