@@ -213,13 +213,13 @@ class='contrast-red'
 
                            <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
                              <div class='controls'>
-                               <input name='domicilio_numero' value="{{ old('domicilio_numero') }}" class='form-control onlynumbers' id='inputText' placeholder='Numero' type='text'>
+                               <input name='domicilio_numero' value="{{ old('domicilio_numero') }}" class='form-control onlynumbers' id='inputText' placeholder='Número' type='text'>
                              </div>
                            </div>
 
                            <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
                              <div class='controls'>
-                               <input name='domicilio_dpto' value="{{ old('domicilio_dpto') }}" class='form-control' id='inputText' placeholder='Dpto' type='text'>
+                               <input name='domicilio_numero_dpto' value="{{ old('domicilio_dpto') }}" class='form-control' id='inputText' placeholder='Número Departamento' type='text'>
                              </div>
                            </div>
 
@@ -237,13 +237,13 @@ class='contrast-red'
                            <div class='col-md-4 controls form-group'>
                               <div class='input-group'>
                                 <span class='capitalize input-group-addon'>+56</span>
-                                <input name='tel_fijo' value="{{ old('tel_fijo') }}" class='form-control onlynumbers' id='inputText' placeholder='Fono' type='text' maxlength="7">
+                                <input name='tel_fijo' value="{{ old('tel_fijo') }}" class='form-control onlynumbers' id='inputText' placeholder='Telefono Fijo' type='text' maxlength="7">
                               </div>
                            </div>
 
                            <div class='col-md-4 controls form-group'>
                               <div class='input-group'>
-                                <span class='capitalize input-group-addon'>+56</span>                              
+                                <span class='capitalize input-group-addon'>+56</span>
                                 <input name='tel_movil' value="{{ old('tel_movil') }}" class='form-control onlynumbers' id='inputText' placeholder='Celular' type='text' maxlength="8">
                              </div>
                            </div>

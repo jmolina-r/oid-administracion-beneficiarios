@@ -109,7 +109,10 @@ class BeneficiarioController extends Controller
             'credencial_discapacidad' => 'required|numeric|between:0,2',
             'credencial_vencimiento' => 'required_if:credencial_discapacidad,1',
             'registro_social_hogares' => 'required|numeric|between:0,2',
-            'registro_social_porcentaje' => 'required_if:registro_social_hogares,1'
+            'registro_social_porcentaje' => 'required_if:registro_social_hogares,1',
+            'domicilio_calle' => 'nullable|max:200',
+            'domicilio_numero' => 'required_with:domicilio_calle|numeric',
+            'domicilio_numero_dpto' => 'nullable'
         ]);
 
 
@@ -126,12 +129,10 @@ class BeneficiarioController extends Controller
         ]);
         $beneficiario->save();
 
-        /* Falta tabla Domicilio
         $domicilioCalle = $request->input('domicilio_calle');
         $domicilioNumero = $request->input('domicilio_numero');
         $domicilioDepto = $request->input('domicilio_depto');
         $domicilioPoblacion = $request->input('domicilio_poblacion');
-        */
 
         $telefonoFijo = $request->input('tel_fijo');
         $telefonoMovil = $request->input('tel_movil');
