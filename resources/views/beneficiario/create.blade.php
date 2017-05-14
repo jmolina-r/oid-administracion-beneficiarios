@@ -350,7 +350,6 @@ class='contrast-red'
 
                           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                              <select id="sistemaSaludSelec" name='sistema_salud' class='form-control capitalize' required>
-                                 <option value="">Seleccionar...</option>
                                  @foreach($fonasa as $fona)
                                  <option value="{{$fona->id}}">{{$fona->tramo}}</option>
                                  @endforeach
