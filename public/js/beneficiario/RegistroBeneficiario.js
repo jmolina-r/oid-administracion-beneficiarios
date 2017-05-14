@@ -11,6 +11,7 @@ $('#formulario-registro').validator();
 
 $('#myWizard').wizard().on('actionclicked.fu.wizard', function (e, data) {
     var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
+    alert(hasErrors);
     if(hasErrors) e.preventDefault();
 
 }).on('finished.fu.wizard', function(e) {
@@ -38,7 +39,8 @@ $( "#credencial_discapacidad").change(function() {
   }
 
   //Actualizar el validador del formulario
-  $("#formulario-registro").validator('update');
+  $('#formulario-registro').validator("destroy");
+  $('#formulario-registro').validator();
 
 });
 
@@ -58,7 +60,8 @@ $( "#registro_social_hogares").change(function() {
   }
 
   //Actualizar el validador del formulario
-  $("#formulario-registro").validator('update');
+  $('#formulario-registro').validator("destroy");
+  $('#formulario-registro').validator();
   
 });
 
