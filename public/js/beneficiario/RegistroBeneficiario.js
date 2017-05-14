@@ -11,7 +11,6 @@ $('#formulario-registro').validator();
 
 $('#myWizard').wizard().on('actionclicked.fu.wizard', function (e, data) {
     var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
-    alert(hasErrors);
     if(hasErrors) e.preventDefault();
 
 }).on('finished.fu.wizard', function(e) {
