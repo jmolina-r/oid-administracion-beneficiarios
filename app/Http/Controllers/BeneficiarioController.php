@@ -23,6 +23,8 @@ use App\Prevision;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
 
 class BeneficiarioController extends Controller
 {
@@ -96,6 +98,7 @@ class BeneficiarioController extends Controller
      */
     public function store(Request $request)
     {
+        Log::critical($request->input('domicilio_calle'));
         $fechaNacimiento = date('Y-m-d', strtotime(str_replace('/', '-', $request->input('fecha_nacimiento'))));
         // 0, 1, or 2. 0 inexistence, 1 exists, 2 waiting.
         $this->validate($request, [
