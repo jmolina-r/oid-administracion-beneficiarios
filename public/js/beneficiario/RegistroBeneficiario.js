@@ -40,9 +40,7 @@ $( "#credencial_discapacidad").change(function() {
     $( "#credencial_vencimiento").prop('disabled',true);
   }
 
-  //Actualizar el validador del formulario
-  $('#formulario-registro').validator("destroy");
-  $('#formulario-registro').validator();
+  actualizarValidador();
 
 });
 
@@ -63,10 +61,28 @@ $( "#registro_social_hogares").change(function() {
     $('#registro_social_porcentaje').val("");
     $( "#registro_social_porcentaje").prop('disabled',true);
   }
-
-  //Actualizar el validador del formulario
-  $('#formulario-registro').validator("destroy");
-  $('#formulario-registro').validator();
+  actualizarValidador();
   
 });
 
+/**
+ * Requerir el numero de la direccion si se escribio una calle
+ */
+$('#domicilio_calle').keyup(function(){
+    var largo = $('#domicilio_calle').val().length;
+    if(largo > 0){
+      $("#domicilio_numero").prop('required',true);
+    }else{
+      $('#domicilio_numero').removeAttr('required');
+    }
+    actualizarValidador();
+});
+
+/**
+ * Funcion que permite actualizar el validador y requiera los campos necesarios
+ */
+function actualizarValidador(){
+  //Actualizar el validador del formulario
+  $('#formulario-registro').validator("destroy");
+  $('#formulario-registro').validator();
+}

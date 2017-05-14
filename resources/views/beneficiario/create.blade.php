@@ -207,14 +207,13 @@ class='contrast-red'
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                            <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
                              <div class='controls'>
-                               <input value="{{ old('domicilio_calle') }}" name='domicilio_calle' class='form-control' id='inputText' placeholder='Calle' type='text' maxlength="200">
+                               <input value="{{ old('domicilio_calle') }}" name='domicilio_calle' class='form-control' id='domicilio_calle' placeholder='Calle' type='text' maxlength="200">
                              </div>
                            </div>
 
                            <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
-                             <div class='controls'>
-                               <input name='domicilio_numero' value="{{ old('domicilio_numero') }}" class='form-control onlynumbers' id='inputText' placeholder='Número' type='text'>
-                             </div>
+                              <input name='domicilio_numero' value="{{ old('domicilio_numero') }}" class='form-control onlynumbers' id='domicilio_numero' placeholder='Número' type='text'>
+                             <div class="help-block with-errors"></div>
                            </div>
 
                            <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
