@@ -120,8 +120,8 @@ class BeneficiarioController extends Controller
             'domicilio_numero_dpto' => 'nullable',
             'sexo' => 'required|in:masculino,femenino',
             'sistema_salud' => 'required|in:fonasa,isapre',
-            'fonasa' => 'required_if:sistema_salud,fonasa',
-            'isapre' => 'required_if:sistema_salud,isapre'
+            'fonasa' => 'required_if:sistema_salud,fonasa|exists:fonasas,id',
+            'isapre' => 'required_if:sistema_salud,isapre|exists:isapres,id'
         ]);
 
 
