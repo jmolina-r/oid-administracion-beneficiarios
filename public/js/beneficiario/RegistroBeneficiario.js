@@ -30,11 +30,14 @@ $( "#credencial_discapacidad").change(function() {
   //Si se ha seleccionado si
   if (this.value==1) {
     $( "#credencial_vencimiento").prop('required',true);
+    $('#credencial_vencimiento').removeAttr('disabled');
   }
 
   //Si se ha seleccionado en tramite o no
   if (this.value==0 || this.value==2){
     $('#credencial_vencimiento').removeAttr('required');
+    $('#credencial_vencimiento').val("");
+    $( "#credencial_vencimiento").prop('disabled',true);
   }
 
   //Actualizar el validador del formulario
@@ -51,11 +54,14 @@ $( "#registro_social_hogares").change(function() {
   //Si se ha seleccionado si
   if (this.value==1) {
     $( "#registro_social_porcentaje").prop('required',true);
+    $('#registro_social_porcentaje').removeAttr('disabled');
   }
 
   //Si se ha seleccionado en tramite o no
   if (this.value==0 || this.value==2){
     $('#registro_social_porcentaje').removeAttr('required');
+    $('#registro_social_porcentaje').val("");
+    $( "#registro_social_porcentaje").prop('disabled',true);
   }
 
   //Actualizar el validador del formulario
