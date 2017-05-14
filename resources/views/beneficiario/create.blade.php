@@ -236,14 +236,14 @@ class='contrast-red'
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                            <div class='col-md-4 controls form-group'>
                               <div class='input-group'>
-                                <span class='capitalize input-group-addon'>+56 55</span> 
+                                <span class='capitalize input-group-addon'>+56</span>
                                 <input name='tel_fijo' value="{{ old('tel_fijo') }}" class='form-control onlynumbers' id='inputText' placeholder='Fono' type='text' maxlength="7">
                               </div>
                            </div>
 
                            <div class='col-md-4 controls form-group'>
                               <div class='input-group'>
-                                <span class='capitalize input-group-addon'>+56 9</span>                              
+                                <span class='capitalize input-group-addon'>+56</span>                              
                                 <input name='tel_movil' value="{{ old('tel_movil') }}" class='form-control onlynumbers' id='inputText' placeholder='Celular' type='text' maxlength="8">
                              </div>
                            </div>
