@@ -18,6 +18,7 @@ use App\Tutor;
 use App\FichaBenefeciario;
 use App\TipoDependencia;
 use App\TipoDiscapacidad;
+use App\Prevision;
 
 
 
@@ -70,6 +71,8 @@ class BeneficiarioController extends Controller
 
         $tipo_discapacidades = TipoDiscapacidad::get();
 
+        $previsiones = Prevision::get();
+
 
         return view('beneficiario.create')
             ->with(compact('paises'))
@@ -80,7 +83,9 @@ class BeneficiarioController extends Controller
             ->with(compact('dependencias'))
             ->with(compact('fonasa'))
             ->with(compact('tipo_discapacidades'))
-            ->with(compact('isapre'));
+            ->with(compact('isapre'))
+            ->with(compact('previsiones'))
+            ;
 
     }
 
@@ -113,7 +118,10 @@ class BeneficiarioController extends Controller
             'domicilio_calle' => 'nullable|max:200',
             'domicilio_numero' => 'required_with:domicilio_calle|numeric',
             'domicilio_numero_dpto' => 'nullable',
-            'sexo' => 'required|in:masculino,femenino'
+            'sexo' => 'required|in:masculino,femenino',
+            'sistema_salud' => 'required|in:fonasa,isapre',
+            'fonasa' => 'required_if:sistema_salud,fonasa|exists:fonasas,id',
+            'isapre' => 'required_if:sistema_salud,isapre|exists:isapres,id'
         ]);
 
 
@@ -146,8 +154,6 @@ class BeneficiarioController extends Controller
         $tutorApellido = $request->input('tutor_apellido');
         $tutorFono = $request->input('tutor_fono');
 
-        $sistema = $request->input('sistema');
-        $sistemaSalud = $request->input('sistema_salud');
         $tipoPrevision = $request->input('prevision_radio');
         $prevision = $request->input('prevision');
 

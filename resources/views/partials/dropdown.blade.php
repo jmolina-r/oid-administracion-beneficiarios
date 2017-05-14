@@ -34,24 +34,26 @@
     var select = $("#sistemaSaludSelec");
 
     //El radio button correspondiente gatilla esta funcion
-    $("input[name='sistema']").change(function(){
+    $("input[name='sistema_salud']").change(function(){
 
         //Tipo de sistema seleccionado en el radio button
-        var tipoSistema = $('input[name=sistema]:checked').val();
+        var tipoSistema = $('input[name=sistema_salud]:checked').val();
 
         //Se vacia el select
         select.empty();
 
         //Se define el sistema escogido para rellenar el select
         var sistemaEscogido;
-        if(tipoSistema=='f'){
+        if(tipoSistema=='fonasa'){
             sistemaEscogido = sistemas.fonasa;
+            $('#sistemaSaludSelec').attr('name', 'fonasa')
         }else{
             sistemaEscogido = sistemas.isapre;
+            $('#sistemaSaludSelec').attr('name', 'isapre')
         }
 
         llenarSelect(sistemaEscogido, select);
-        
+
     });
 
     function llenarSelect(sistema, select){

@@ -337,18 +337,18 @@ class='contrast-red'
 
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                               <label style="margin-top: 0px;" class='radio radio-inline'>
-                                <input name='sistema' type='radio' value='f' checked>
+                                <input name='sistema_salud' type='radio' value='fonasa' checked>
                                 Fonasa
                               </label>
                               <label class='radio radio-inline'>
-                                <input name='sistema' type='radio' value='i'>
+                                <input name='sistema_salud' type='radio' value='isapre'>
                                 Isapre
                               </label>
                             <div class="help-block with-errors"></div>
                           </div>
 
                           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                             <select id="sistemaSaludSelec" name='sistema_salud' class='form-control capitalize' required>
+                             <select id="sistemaSaludSelec" name='fonasa' class='form-control capitalize' required>
                                  @foreach($fonasa as $fona)
                                  <option value="{{$fona->id}}">{{$fona->tramo}}</option>
                                  @endforeach
@@ -358,27 +358,13 @@ class='contrast-red'
 
                      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                         <label class='control-label' for='inputText'>Previsión</label>
-                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-
-                          <label style="margin-top: 0px;" class='radio radio-inline'>
-                            <input name='prevision_radio' type='radio' value='afp' required>
-                            AFP
-                          </label>
-                          <label class='radio radio-inline'>
-                            <input name='prevision_radio' type='radio' value='ips' required>
-                            IPS
-                          </label>
-                          <label class='radio radio-inline'>
-                            <input name='prevision_radio' type='radio' value='no' required>
-                            No tiene
-                          </label>
-                            <div class="help-block with-errors"></div>
-                        </div>
 
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                           <select name='prevision' class='form-control' id='inputSelect'>
-                              <option value=''>Seleccionar sistema...</option>
-                              <!-- Este select se debe llenar con ajax dependiendo del boton anteriorr seleccionado-->
+                           <select name='prevision' class='form-control capitalize' id='inputSelect'>
+                              <option value=''>No tiene</option>
+                              @foreach($previsiones as $prevision)
+                                  <option value="{{$prevision->id}}">{{$prevision->nombre}}</option>
+                              @endforeach
                            </select>
                         </div>
                      </div>
