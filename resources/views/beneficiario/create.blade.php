@@ -57,9 +57,9 @@ class='contrast-red'
    <!-- / START - Validaciones-->
    <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
    <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>
-
+   <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
    <script src="{{ asset('/js/beneficiario/RegistroBeneficiario.js') }}" type="text/javascript"></script>
+   <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
   <!-- / END - validaciones-->
    <!-- / START Vista para llenado de select dinamicos -->
    @include('partials.dropdown')
@@ -136,7 +136,7 @@ class='contrast-red'
                           <div class='col-md-12 form-group'>
                             <label class='control-label' for='inputText'>Nombres</label>
                             <div class='controls'>
-                              <input name='nombres' class='form-control' id='inputText' value="{{ old('nombres') }}" placeholder='Nombres' type='text' required autofocus>
+                              <input name='nombres' class='form-control onlyletters' value="{{ old('nombres') }}" placeholder='Nombres' type='text' maxlength="200" required>
                             </div>
                             <div class="help-block with-errors"></div>
                           </div>
@@ -144,15 +144,15 @@ class='contrast-red'
                           <div class='col-md-12 form-group'>
                             <label class='control-label' for='inputText'>Apellidos</label>
                             <div class='controls'>
-                              <input name='apellidos' value="{{ old('apellidos') }}" class='form-control' id='inputText' placeholder='Apellidos' type='text' required>
+                              <input name='apellidos' value="{{ old('apellidos') }}" class='form-control onlyletters' id='inputText' placeholder='Apellidos' type='text' required>
                               <div class="help-block with-errors"></div>
                             </div>
                           </div>
 
                           <div class='col-md-12 form-group'>
-                           <label class='control-label' for='inputText'>Cédula de identidad</label>
+                           <label class='control-label' for='inputText'>Cédula de identidad (Sin puntos con guión)</label>
                            <div class='controls'>
-                            <input name="rut" value="{{ old('rut') }}" class='form-control' id='inputText' placeholder='Cédula de identidad' type='text' required pattern="\d{3,8}-[\d|kK]{1}">
+                            <input name="rut" value="{{ old('rut') }}" class='form-control' id='inputText' placeholder='Ej. 12345678-8' type='text' required pattern="\d{3,8}-[\d|kK]{1}" maxlength="200">
                             <div class="help-block with-errors"></div>
                           </div>
                         </div>
@@ -207,13 +207,13 @@ class='contrast-red'
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                            <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
                              <div class='controls'>
-                               <input value="{{ old('domicilio_calle') }}" name='domicilio_calle' class='form-control' id='inputText' placeholder='Calle' type='text'>
+                               <input value="{{ old('domicilio_calle') }}" name='domicilio_calle' class='form-control' id='inputText' placeholder='Calle' type='text' maxlength="200">
                              </div>
                            </div>
 
                            <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
                              <div class='controls'>
-                               <input name='domicilio_numero' value="{{ old('domicilio_numero') }}" class='form-control' id='inputText' placeholder='Numero' type='text'>
+                               <input name='domicilio_numero' value="{{ old('domicilio_numero') }}" class='form-control onlynumbers' id='inputText' placeholder='Numero' type='text'>
                              </div>
                            </div>
 
@@ -235,11 +235,17 @@ class='contrast-red'
                          <label class='control-label' for='inputText'>Contacto</label>
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                            <div class='col-md-4 controls form-group'>
-                             <input name='tel_fijo' value="{{ old('tel_fijo') }}" class='form-control' id='inputText' placeholder='Fono' type='text'>
+                              <div class='input-group'>
+                                <span class='capitalize input-group-addon'>+56 55</span> 
+                                <input name='tel_fijo' value="{{ old('tel_fijo') }}" class='form-control onlynumbers' id='inputText' placeholder='Fono' type='text' maxlength="7">
+                              </div>
                            </div>
 
                            <div class='col-md-4 controls form-group'>
-                             <input name='tel_movil' value="{{ old('tel_movil') }}" class='form-control' id='inputText' placeholder='Celular' type='text'>
+                              <div class='input-group'>
+                                <span class='capitalize input-group-addon'>+56 9</span>                              
+                                <input name='tel_movil' value="{{ old('tel_movil') }}" class='form-control onlynumbers' id='inputText' placeholder='Celular' type='text' maxlength="8">
+                             </div>
                            </div>
 
                            <div class='col-sm-4 controls form-group'>
@@ -255,7 +261,7 @@ class='contrast-red'
                         </div>
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                             <select name='credencial_discapacidad' class='form-control' id='inputSelect' required>
+                             <select name='credencial_discapacidad' class='form-control' id='credencial_discapacidad' required>
                                <option value='0'>No</option>
                                <option value='2'>En trámite</option>
                                <option value='1'>Si</option>
@@ -263,7 +269,7 @@ class='contrast-red'
                            </div>
                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                             <div class='datepicker-input input-group' id='datepicker'>
-                              <input name='credencial_vencimiento' class='form-control' data-format='DD/MM/YYYY' placeholder='Vencimiento' type='text' pattern="^(?:(?:0?[1-9]|1\d|2[0-8])(\/|-)(?:0?[1-9]|1[0-2]))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(?:(?:31(\/|-)(?:0?[13578]|1[02]))|(?:(?:29|30)(\/|-)(?:0?[1,3-9]|1[0-2])))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(29(\/|-)0?2)(\/|-)(?:(?:0[48]00|[13579][26]00|[2468][048]00)|(?:\d\d)?(?:0[48]|[2468][048]|[13579][26]))$">
+                              <input name='credencial_vencimiento' class='form-control' data-format='DD/MM/YYYY' placeholder='Vencimiento' type='text' pattern="^(?:(?:0?[1-9]|1\d|2[0-8])(\/|-)(?:0?[1-9]|1[0-2]))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(?:(?:31(\/|-)(?:0?[13578]|1[02]))|(?:(?:29|30)(\/|-)(?:0?[1,3-9]|1[0-2])))(\/|-)(?:[1-9]\d\d\d|\d[1-9]\d\d|\d\d[1-9]\d|\d\d\d[1-9])$|^(29(\/|-)0?2)(\/|-)(?:(?:0[48]00|[13579][26]00|[2468][048]00)|(?:\d\d)?(?:0[48]|[2468][048]|[13579][26]))$" id="credencial_vencimiento">
                               <span class='input-group-addon'>
                                 <span class='fa fa-calendar'></span>
                               </span>
@@ -283,7 +289,7 @@ class='contrast-red'
 
 
                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                             <select name='registro_social_hogares' class='form-control' id='inputSelect' required>
+                             <select name='registro_social_hogares' class='form-control' required id="registro_social_hogares">
                                <option value='0'>No</option>
                                <option value='2'>En trámite</option>
                                <option value='1'>Si</option>
@@ -291,7 +297,11 @@ class='contrast-red'
                            </div>
 
                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                             <input name='registro_social_porcentaje' class='form-control' id='inputText' placeholder='Porcentaje' type='text'>
+                              <div class="input-group">
+                                <input name='registro_social_porcentaje' class='form-control' placeholder='Porcentaje' type='number' min="0" max="100" id="registro_social_porcentaje">
+                                <span class='input-group-addon'>%</span>
+                             </div>
+                             <div class="help-block with-errors"></div>
                            </div>
                         </div>
                       </div>
@@ -302,22 +312,22 @@ class='contrast-red'
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                           <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group'>
-                            <input name='nombre_tutor' value="{{ old('nombre_tutor') }}" class='form-control' id='inputText' placeholder='Nombre' type='text'>
+                            <input name='nombre_tutor' value="{{ old('nombre_tutor') }}" class='form-control onlyletters' id='inputText' placeholder='Nombre' type='text' required maxlength="200">
+                            <div class="help-block with-errors"></div>
                           </div>
                           <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group'>
-                            <input name='apellido_tutor' value="{{ old('apellido_tutor') }}" class='form-control' id='inputText' placeholder='Apellidos' type='text'>
+                            <input name='apellido_tutor' value="{{ old('apellido_tutor') }}" class='form-control onlyletters' id='inputText' placeholder='Apellidos' type='text' required maxlength="200">
+                            <div class="help-block with-errors"></div>
                           </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                            <input name='telefono_tutor' value="{{ old('telefono_tutor') }}" class='form-control' id='inputText' placeholder='Teléfono de contacto' type='text'>
+                            <input name='telefono_tutor' value="{{ old('telefono_tutor') }}" class='form-control onlynumbers' id='inputText' placeholder='Teléfono de contacto' type='text'>
                           </div>
                         </div>
                       </div>
 
                      </div>
-
-
 
                      <!-- STEP 2 -->
                      <div class='step-pane' data-step='2'>
@@ -328,20 +338,22 @@ class='contrast-red'
 
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                               <label style="margin-top: 0px;" class='radio radio-inline'>
-                                <input name='sistema' type='radio' value='f' required>
+                                <input name='sistema' type='radio' value='f' checked>
                                 Fonasa
                               </label>
                               <label class='radio radio-inline'>
-                                <input name='sistema' type='radio' value='i' required>
+                                <input name='sistema' type='radio' value='i'>
                                 Isapre
                               </label>
                             <div class="help-block with-errors"></div>
                           </div>
 
                           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                             <select id="sistemaSaludSelec" name='sistema_salud' class='form-control capitalize'>
+                             <select id="sistemaSaludSelec" name='sistema_salud' class='form-control capitalize' required>
                                  <option value="">Seleccionar...</option>
-                               <!-- Este select se debe llenar con ajax dependiendo del boton anteriorr seleccionado-->
+                                 @foreach($fonasa as $fona)
+                                 <option value="{{$fona->id}}">{{$fona->tramo}}</option>
+                                 @endforeach
                              </select>
                           </div>
                      </div>
