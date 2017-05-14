@@ -1,7 +1,3 @@
-/**
- * Created by Alfredo Viccenzo on 09-05-2017.
- */
-
 
 /**
  * Acciones al cambiar al step siguiente o al anterior
@@ -62,7 +58,7 @@ $( "#registro_social_hogares").change(function() {
     $( "#registro_social_porcentaje").prop('disabled',true);
   }
   actualizarValidador();
-  
+
 });
 
 /**
