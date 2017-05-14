@@ -237,14 +237,14 @@ class='contrast-red'
                            <div class='col-md-4 controls form-group'>
                               <div class='input-group'>
                                 <span class='capitalize input-group-addon'>+56</span>
-                                <input name='tel_fijo' value="{{ old('tel_fijo') }}" class='form-control onlynumbers' id='inputText' placeholder='Telefono Fijo' type='text' maxlength="7">
+                                <input name='tel_fijo' value="{{ old('tel_fijo') }}" class='form-control onlynumbers' id='inputText' placeholder='Telefono Fijo' type='text' maxlength="9">
                               </div>
                            </div>
 
                            <div class='col-md-4 controls form-group'>
                               <div class='input-group'>
                                 <span class='capitalize input-group-addon'>+56</span>
-                                <input name='tel_movil' value="{{ old('tel_movil') }}" class='form-control onlynumbers' id='inputText' placeholder='Celular' type='text' maxlength="8">
+                                <input name='tel_movil' value="{{ old('tel_movil') }}" class='form-control onlynumbers' id='inputText' placeholder='Celular' type='text' maxlength="9">
                              </div>
                            </div>
 
