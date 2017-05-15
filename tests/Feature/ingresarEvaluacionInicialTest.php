@@ -22,10 +22,10 @@ class ingresarEvaluacionInicialTest extends TestCase
     public function ingresarEvaluacionInicial()
     {
 
-
+        $this->artisan("db:seed");
         $beneficiarios = Beneficiario::all();
 
-        $this->artisan("db:seed");
+
         $this->visit('/medica/ficha-evaluacion-inicial/kinesiologia/ingresar')
             ->type($beneficiarios->last()->rut,'rut')
             ->type('plop','pat_concom')
@@ -91,7 +91,7 @@ class ingresarEvaluacionInicialTest extends TestCase
             ->type('21','coordinacion')
             ->type('21','equilibrio')
             ->press('Finalizar')
-            ->seeInDatabase('val_motoras',['rom'=>'21']);
+            ->seeInDatabase('ficha_kinesiologias',['id'=>'6']);
 
 
     }
