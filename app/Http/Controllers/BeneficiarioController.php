@@ -98,34 +98,18 @@ class BeneficiarioController extends Controller
      */
     public function store(Request $request)
     {
-        Log::critical($request->input('domicilio_calle'));
+        //Log::critical($request->input('tipo_discapacidad.1'));
+        // Log::critical('La descapacidad'.$request->input('tipo_discapacidad')['2']);
         $fechaNacimiento = date('Y-m-d', strtotime(str_replace('/', '-', $request->input('fecha_nacimiento'))));
         // 0, 1, or 2. 0 inexistence, 1 exists, 2 waiting.
-        $this->validate($request, [
-            'nombres' => 'required|max:200',
-            'apellidos' => 'required|max:200',
-            'rut' => 'required|unique:beneficiarios',
-            'fecha_nacimiento' => 'required|date_format:"d/m/Y"|before:"today"',
-            'nombre_tutor' => 'required',
-            'apellido_tutor' => 'required',
-            'telefono_tutor' => 'required_with:nombre_tutor',
-            'ocupacion' => 'required|exists:ocupacions,id',
-            'educacion' => 'required|exists:educacions,id',
-            'tel_fijo' => 'nullable|numeric',
-            'tel_movil' => 'nullable|numeric',
-            'email' => 'nullable|email',
-            'credencial_discapacidad' => 'required|numeric|between:0,2',
-            'credencial_vencimiento' => 'required_if:credencial_discapacidad,1',
-            'registro_social_hogares' => 'required|numeric|between:0,2',
-            'registro_social_porcentaje' => 'required_if:registro_social_hogares,1',
-            'domicilio_calle' => 'nullable|max:200',
-            'domicilio_numero' => 'required_with:domicilio_calle|numeric',
-            'domicilio_numero_dpto' => 'nullable',
-            'sexo' => 'required|in:masculino,femenino',
-            'sistema_salud' => 'required|in:fonasa,isapre',
-            'fonasa' => 'required_if:sistema_salud,fonasa|exists:fonasas,id',
-            'isapre' => 'required_if:sistema_salud,isapre|exists:isapres,id'
-        ]);
+
+        // Validate Fields
+        $this->validate($request, $this->rules($request), $this->messages($request));
+
+        // $this->validate($request, );
+
+
+
 
 
         $beneficiario = new Beneficiario([
@@ -234,4 +218,49 @@ class BeneficiarioController extends Controller
     {
         //
     }
+
+    private function rules(Request $request) {
+
+        $rules = [
+            'nombres' => 'required|max:200',
+            'apellidos' => 'required|max:200',
+            'rut' => 'required|unique:beneficiarios',
+            'fecha_nacimiento' => 'required|date_format:"d/m/Y"|before:"today"',
+            'nombre_tutor' => 'required',
+            'apellido_tutor' => 'required',
+            'telefono_tutor' => 'required_with:nombre_tutor',
+            'ocupacion' => 'required|exists:ocupacions,id',
+            'educacion' => 'required|exists:educacions,id',
+            'tel_fijo' => 'nullable|numeric',
+            'tel_movil' => 'nullable|numeric',
+            'email' => 'nullable|email',
+            'credencial_discapacidad' => 'required|numeric|between:0,2',
+            //TODO: Validar que sea fecha
+            'credencial_vencimiento' => 'required_if:credencial_discapacidad,1',
+            'registro_social_hogares' => 'required|numeric|between:0,2',
+            'registro_social_porcentaje' => 'required_if:registro_social_hogares,1',
+            'domicilio_calle' => 'nullable|max:200',
+            'domicilio_numero' => 'nullable|required_with:domicilio_calle|numeric',
+            'domicilio_numero_dpto' => 'nullable',
+            'sexo' => 'required|in:masculino,femenino',
+            'sistema_salud' => 'required|in:fonasa,isapre',
+            'fonasa' => 'required_if:sistema_salud,fonasa|exists:fonasas,id',
+            'isapre' => 'required_if:sistema_salud,isapre|exists:isapres,id',
+        ];
+
+        foreach($request->input('tipo_discapacidad') as $key => $val)
+        {
+            $rules['tipo_discapacidad.'.$key] = 'required|numeric|between:0,100';
+        }
+        return $rules;
+    }
+
+    private function messages(Request $request)
+    {
+        foreach($request->input('tipo_discapacidad') as $key => $val) {
+            $messages['tipo_discapacidad.'.$key.'.between'] = 'Discapacidad '.$key.' debe tener un porcentaje menor a :min y mayor que :max.';
+        }
+        return $messages;
+    }
+
 }

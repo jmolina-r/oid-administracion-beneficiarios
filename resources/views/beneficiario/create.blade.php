@@ -181,11 +181,11 @@ class='contrast-red'
                           <label class='control-label'>Sexo</label>
                           <div class='col-md-12'>
                             <label style="margin-top: 0px;" class='radio radio-inline'>
-                              <input name='sexo' type='radio' value='masculino' required checked>
+                              <input name='sexo' @if(old('sexo') != 'femenino') checked @endif type='radio' value='masculino' required>
                               Masculino
                             </label>
                             <label class='radio radio-inline'>
-                              <input name='sexo' type='radio' value='femenino' required>
+                              <input name='sexo' @if(old('sexo') === 'femenino') checked @endif type='radio' value='femenino' required>
                               Femenino
                             </label>
                           </div>
@@ -260,7 +260,7 @@ class='contrast-red'
                         </div>
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                             <select name='credencial_discapacidad' class='form-control' id='credencial_discapacidad' required>
+                             <select name='credencial_discapacidad' value="{{ old('credencial_discapacidad') }}" class='form-control' id='credencial_discapacidad' required>
                                <option value='0'>No</option>
                                <option value='2'>En trámite</option>
                                <option value='1'>Si</option>
@@ -424,8 +424,8 @@ class='contrast-red'
                         <span class='capitalize input-group-addon'>
                           {{$tipo_discapacidad->nombre}}
                         </span>
-                        <input name="discapacidad_visual_porcentaje" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true" value="0">
-                        <span class='input-group-addon'>%</span>
+                        <input name="tipo_discapacidad[{{$tipo_discapacidad->nombre}}]" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true" value="0">
+                        <span class="input-group-addon">%</span>
                       </div>
                     </div>
                 @endforeach
