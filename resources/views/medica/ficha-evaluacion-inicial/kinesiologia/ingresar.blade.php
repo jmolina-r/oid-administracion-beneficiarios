@@ -222,7 +222,7 @@
                                                 <input class="form-control" id="puntaje_alimentacion" name="puntaje_alimentacion" placeholder="Puntuación" type="text">
                                             </div>
                                             <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_aimentacion" name="coment_aimentacion" placeholder="Comentario" type="text">
+                                                <input class="form-control" id="coment_alimentacion" name="coment_alimentacion" placeholder="Comentario" type="text">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
