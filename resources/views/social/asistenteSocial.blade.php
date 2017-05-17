@@ -93,7 +93,7 @@
                               {!!csrf_field()!!}
                               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                                 <label for="inputRut">Ingresar rut beneficiario</label>
-                                <input type="text" name="rut" id="inputRut" class="form-control" value="" required pattern="\d{3,8}-[\d|kK]{1}" placeholder="Ingrese rut...">
+                                <input type="text" name="rut" id="inputRut" class="form-control" value="" required pattern="\d{3,8}-[\d|kK]{1}" placeholder="Ingrese rut 12345678-9">
                               </div>  
                               <div class="form-group pull-right">
                                 <div class="col-sm-10 col-offset-2">
