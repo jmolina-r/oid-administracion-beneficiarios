@@ -173,10 +173,28 @@ class BeneficiarioController extends Controller
             } else if($request->input('credencial_discapacidad') == 1) {
                 $credeDic = new CredencialDiscapacidad([
                     'fecha_vencimiento' => date('Y-m-d', strtotime(str_replace('/', '-', $request->input('credencial_vencimiento')))),
-                    'en_tramite' => true,
+                    'en_tramite' => false,
                     'beneficiario_id' => $beneficiario->id
                 ]);
                 $credeDic->save();
+            }
+        }
+
+        if($request->input('registro_social_hogares') != 0) {
+            if($request->input('registro_social_hogares') == 2) {
+                $regSocHog = new RegistroSocialHogar([
+                    'porcentaje' => null,
+                    'en_tramite' => true,
+                    'beneficiario_id' => $beneficiario->id
+                ]);
+                $regSocHog->save();
+            } else if($request->input('registro_social_hogares') == 1) {
+                $regSocHog = new RegistroSocialHogar([
+                    'porcentaje' => $request->input('registro_social_porcentaje'),
+                    'en_tramite' => false,
+                    'beneficiario_id' => $beneficiario->id
+                ]);
+                $regSocHog->save();
             }
         }
 
@@ -297,7 +315,7 @@ class BeneficiarioController extends Controller
             //TODO: Validar que sea fecha
             'credencial_vencimiento' => 'required_if:credencial_discapacidad,1',
             'registro_social_hogares' => 'required|numeric|between:0,2',
-            'registro_social_porcentaje' => 'required_if:registro_social_hogares,1',
+            'registro_social_porcentaje' => 'required_if:registro_social_hogares,1|numeric|between:0,100',
             'domicilio_calle' => 'nullable|max:200',
             'domicilio_numero' => 'nullable|required_with:domicilio_calle|numeric',
             'domicilio_numero_dpto' => 'nullable',

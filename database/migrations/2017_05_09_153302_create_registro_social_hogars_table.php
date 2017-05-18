@@ -17,7 +17,7 @@ class CreateRegistroSocialHogarsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->boolean('en_tramite');
-            $table->integer('porcentaje');
+            $table->integer('porcentaje')->nullable();
             $table->integer('beneficiario_id')->unsigned();
         });
 
