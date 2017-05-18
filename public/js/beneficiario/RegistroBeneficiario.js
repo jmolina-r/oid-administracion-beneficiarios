@@ -100,5 +100,19 @@ $(document).ready(function() {
     $("#beneficios-tag").select2({
       tags: true
     });
+
+    $(function () {
+        $('#fecha_nacimiento').datetimepicker({
+            maxDate:"now",
+            format: "L",
+            icons: {
+                time: "fa fa-clock-o",
+                date: "fa fa-calendar",
+                up: "fa fa-arrow-up",
+                down: "fa fa-arrow-down"
+            },
+            viewMode: 'years'
+        });
+    });
 });
 
