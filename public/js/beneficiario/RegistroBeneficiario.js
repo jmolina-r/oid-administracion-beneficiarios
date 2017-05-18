@@ -81,3 +81,10 @@ function actualizarValidador() {
     $('#formulario-registro').validator("destroy");
     $('#formulario-registro').validator();
 }
+
+/**
+ * Beneficios tipo tags
+ */
+$("#select2-tags").select2({
+  tags: true
+});

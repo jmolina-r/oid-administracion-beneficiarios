@@ -16,6 +16,7 @@ Registro de Beneficiario - OID
 <link href="{{ asset('/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css" media="all" />
 <link href='{{ asset('/assets/images/meta_icons/apple-touch-icon-precomposed.png') }}' rel='apple-touch-icon-precomposed'>
 <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{ asset('/assets/stylesheets/plugins/select2/select2.css') }}" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
 <!-- Atributos del body -->
@@ -46,8 +47,8 @@ class='contrast-red'
     <!-- / START - page related files and scripts [optional] -->
     <script src="{{ asset('/assets/javascripts/plugins/fuelux/wizard.js') }}" type="text/javascript"></script>
     <!-- / END - page related files and scripts [optional] -->
-
-
+    <!-- / Beneficiario select tag -->
+   <script src="{{ asset('assets/javascripts/plugins/select2/select2.js') }}" type="text/javascript"></script>
    <!-- / START - moments-->
    <script src="{{ asset('/assets/javascripts/plugins/common/moment.min.js') }}" type="text/javascript"></script>
    <!-- / END - moments-->
@@ -58,8 +59,8 @@ class='contrast-red'
    <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
    <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
    <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
-   <script src="{{ asset('/js/beneficiario/RegistroBeneficiario.js') }}" type="text/javascript"></script>
    <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
+   <script src="{{ asset('/js/beneficiario/RegistroBeneficiario.js') }}" type="text/javascript"></script>
   <!-- / END - validaciones-->
    <!-- / START Vista para llenado de select dinamicos -->
    @include('partials.dropdown')
@@ -391,14 +392,14 @@ class='contrast-red'
                     </div>
                  </div>
 
-                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group">
+                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
                     <label class='control-label' for='inputText'>Beneficios</label>
-                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 controls'>
-                     <select name='beneficios' class='form-control capitalize' id='inputSelect'>
+                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+                      <select style="width: 100%;" class='select2 form-control' data-placeholder='Selecciona los beneficios asociados...' id='select2-tags' multiple='multiple'>
                         @foreach($beneficios as $beneficio)
-                            <option value="{{$beneficio->id}}">{{$beneficio->nombre}}</option>
+                          <option value="{{$beneficio->id}}">{{$beneficio->nombre}}</option>
                         @endforeach
-                     </select>
+                      </select>
                     </div>
                  </div>
 
