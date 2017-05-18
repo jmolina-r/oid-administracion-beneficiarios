@@ -18,8 +18,9 @@ class FichaSocialController extends Controller
             return view('social.asistenteSocialMenu', compact('beneficiario'));
         }else{
             echo "Usuario invalido";
+            return view('social.asistenteSocial');
         }
-        
+
     }
 
     public function index2(){
@@ -29,6 +30,16 @@ class FichaSocialController extends Controller
     public function index5(){
 
         return view('social.asistenteSocialAyudaTecnica');
+    }
+
+    public function index3(){
+
+        return view('social.asistenteSocialBeca');
+    }
+
+    public function index4(){
+
+        return view('social.asistenteSocialOrientacion');
     }
 
 
