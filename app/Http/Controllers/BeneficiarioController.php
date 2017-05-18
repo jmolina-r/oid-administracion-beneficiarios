@@ -75,6 +75,7 @@ class BeneficiarioController extends Controller
 
         $previsiones = Prevision::get();
 
+        $datos_sociales = SistemaProteccion::get();
 
         return view('beneficiario.create')
             ->with(compact('paises'))
@@ -87,6 +88,7 @@ class BeneficiarioController extends Controller
             ->with(compact('tipo_discapacidades'))
             ->with(compact('isapre'))
             ->with(compact('previsiones'))
+            ->with(compact('datos_sociales'))
             ;
 
     }
