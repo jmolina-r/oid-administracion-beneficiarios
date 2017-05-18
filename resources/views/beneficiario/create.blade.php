@@ -395,7 +395,7 @@ class='contrast-red'
                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
                     <label class='control-label' for='inputText'>Beneficios</label>
                     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-                      <select style="width: 100%;" class='select2 form-control' data-placeholder='Selecciona los beneficios asociados...' id='select2-tags' multiple='multiple'>
+                      <select style="width: 100%;" class='form-control' data-placeholder='Selecciona los beneficios asociados...' id='select2-tags' multiple='multiple'>
                         @foreach($beneficios as $beneficio)
                           <option value="{{$beneficio->id}}">{{$beneficio->nombre}}</option>
                         @endforeach

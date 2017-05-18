@@ -82,9 +82,11 @@ function actualizarValidador() {
     $('#formulario-registro').validator();
 }
 
+$(document).ready(function() {
+    $("#select2-tags").select2({
+      tags: true
+    });
+})
 /**
  * Beneficios tipo tags
  */
-$("#select2-tags").select2({
-  tags: true
-});
