@@ -27,10 +27,6 @@ class FichaSocialController extends Controller
 
         return view('social.asistenteSocialVisitaDomiciliaria');
     }
-    public function index5(){
-
-        return view('social.asistenteSocialAyudaTecnica');
-    }
 
     public function index3(){
 
@@ -42,5 +38,9 @@ class FichaSocialController extends Controller
         return view('social.asistenteSocialOrientacion');
     }
 
+    public function index5(){
+
+        return view('social.asistenteSocialAyudaTecnica');
+    }
 
 }
