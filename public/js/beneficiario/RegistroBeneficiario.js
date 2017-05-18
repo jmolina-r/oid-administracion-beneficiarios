@@ -11,7 +11,7 @@ $(document).ready(function() {
 
     }).on('finished.fu.wizard', function(e) {
         var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
-        //if (hasErrors) e.preventDefault();
+        if (hasErrors) e.preventDefault();
         if (hasErrors == 0) {
             $('#formulario-registro').submit();
         }
@@ -88,5 +88,17 @@ $(document).ready(function() {
     $("#select2-tags").select2({
       tags: true
     });
+
+    $("#sistema-proteccion-tags").select2({
+      tags: true
+    });
+
+    $("#participacion-organizaciones-tag").select2({
+      tags: true
+    });  
+
+    $("#beneficios-tag").select2({
+      tags: true
+    });      
 })
 
