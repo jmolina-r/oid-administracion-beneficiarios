@@ -3,24 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Beneficiario;
+use App\Beneficio;
+use App\CredencialDiscapacidad;
+use App\Domicilio;
+use App\Educacion;
+use App\EstadoCivil;
+use App\FichaBenefeciario;
 use App\FichaDiscapacidad;
 use App\Fonasa;
 use App\Isapre;
-use App\Pais;
-use App\Educacion;
-use App\EstadoCivil;
 use App\Ocupacion;
 use App\OrganizacionSocial;
+use App\Pais;
+use App\Prevision;
 use App\RegistroSocialHogar;
 use App\SistemaProteccion;
 use App\Telefono;
-use App\Tutor;
-use App\FichaBenefeciario;
 use App\TipoDependencia;
 use App\TipoDiscapacidad;
-use App\Prevision;
-use App\Beneficio;
-use App\CredencialDiscapacidad;
+use App\Tutor;
 
 
 
@@ -155,12 +156,6 @@ class BeneficiarioController extends Controller
             $telefonoMovil->save();
         }
 
-        $tutor = new Tutor([
-            'nombres' => $request->input('nombre_tutor'),
-            'apellidos' => $request->input('apellido_tutor'),
-            'beneficiario_id' => $beneficiario->id
-        ]);
-        $tutor->save();
 
         if($request->input('credencial_discapacidad') != 0) {
             if($request->input('credencial_discapacidad') == 2) {
@@ -199,6 +194,25 @@ class BeneficiarioController extends Controller
         }
 
 
+        if($request->input('domicilio_calle')) {
+            $domicilio = new Domicilio([
+                'pobl_vill' => $request->input('domicilio_poblacion'),
+                'calle' => $request->input('domicilio_calle'),
+                'numero' => $request->input('domicilio_numero'),
+                'bloque' => $request->input('domicilio_block'),
+                'numero_depto' => $request->input('domicilio_numero_dpto'),
+                'beneficiario_id' => $beneficiario->id,
+            ]);
+            $domicilio->save();
+        }
+
+
+        $tutor = new Tutor([
+            'nombres' => $request->input('nombre_tutor'),
+            'apellidos' => $request->input('apellido_tutor'),
+            'beneficiario_id' => $beneficiario->id
+        ]);
+        $tutor->save();
 
 
 
@@ -319,6 +333,8 @@ class BeneficiarioController extends Controller
             'domicilio_calle' => 'nullable|max:200',
             'domicilio_numero' => 'nullable|required_with:domicilio_calle|numeric',
             'domicilio_numero_dpto' => 'nullable',
+            'domicilio_block' => 'nullable',
+            'domicilio_poblacion' => 'nullable',
             'sexo' => 'required|in:masculino,femenino',
             'sistema_salud' => 'required|in:fonasa,isapre',
             'fonasa' => 'required_if:sistema_salud,fonasa|exists:fonasas,id',
