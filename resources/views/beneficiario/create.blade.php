@@ -52,6 +52,9 @@ class='contrast-red'
    <!-- / START - moments-->
    <script src="{{ asset('/assets/javascripts/plugins/common/moment.min.js') }}" type="text/javascript"></script>
    <!-- / END - moments-->
+   <!-- / START - Input mask-->
+   <script src="{{ asset('/assets/javascripts/plugins/input_mask/bootstrap-inputmask.min.js') }}" type="text/javascript"></script>
+   <!-- / END - Input mask-->
    <!-- / START - datepicker-->
    <script src="{{ asset('/assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
    <!-- / END - datepicker-->
@@ -153,7 +156,7 @@ class='contrast-red'
                           <div class='col-md-12 form-group'>
                            <label class='control-label' for='inputText'>Cédula de identidad (Sin puntos con guión)</label>
                            <div class='controls'>
-                            <input name="rut" value="{{ old('rut') }}" class='onlyrut form-control' id='inputText' placeholder='Ej. 12345678-8' type='text' required pattern="\d{3,8}-[\d|kK]{1}" maxlength="200">
+                            <input name="rut" value="{{ old('rut') }}" class='onlyrut form-control' id='inputText' data-mask='99999999-9' placeholder='Ej. 12345678-8' type='text' required maxlength="200">
                             <div class="help-block with-errors"></div>
                           </div>
                         </div>
@@ -212,12 +215,17 @@ class='contrast-red'
                              </div>
                            </div>
 
-                           <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
+                           <div class='col-xs-12 col-sm-12 col-md-2 form-group'>
                               <input name='domicilio_numero' value="{{ old('domicilio_numero') }}" class='form-control onlynumbers' id='domicilio_numero' placeholder='Número' type='text'>
                              <div class="help-block with-errors"></div>
                            </div>
 
-                           <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
+                           <div class='col-xs-12 col-sm-12 col-md-2 form-group'>
+                              <input name='domicilio_block' value="{{ old('domicilio_block') }}" class='form-control' id='domicilio_block' placeholder='Block' type='text'>
+                             <div class="help-block with-errors"></div>
+                           </div>
+
+                           <div class='col-xs-12 col-sm-12 col-md-2 form-group'>
                              <div class='controls'>
                                <input name='domicilio_numero_dpto' value="{{ old('domicilio_dpto') }}" class='form-control' id='inputText' placeholder='Número Departamento' type='text'>
                              </div>
