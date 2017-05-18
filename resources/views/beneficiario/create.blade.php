@@ -392,10 +392,10 @@ class='contrast-red'
                     </div>
                  </div>
 
-                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group">
                     <label class='control-label' for='inputText'>Beneficios</label>
                     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-                      <select style="width: 100%;" class='form-control' data-placeholder='Selecciona los beneficios asociados...' id='select2-tags' multiple='multiple'>
+                      <select style="width: 100%;" class='form-control' data-placeholder='Selecciona los beneficios asociados...' id='beneficios-tag' multiple='multiple'>
                         @foreach($beneficios as $beneficio)
                           <option value="{{$beneficio->id}}">{{$beneficio->nombre}}</option>
                         @endforeach
@@ -406,7 +406,7 @@ class='contrast-red'
                  <div class='col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group'>
                    <label class='control-label' for='inputText'>Sistema de protección</label>
                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 controls'>
-                      <select name='sistema_proteccion' class='form-control capitalize' id='inputSelect'>
+                      <select style="width: 100%;" name='sistema_proteccion' class='form-control capitalize' id='sistema-proteccion-tags' multiple='multiple' data-placeholder='Seleccione o agregue sistemas de proteccion'>
                           @foreach($datos_sociales as $dato_social)
                               <option value="{{$dato_social->id}}">{{$dato_social->nombre}}</option>
                           @endforeach
@@ -417,7 +417,7 @@ class='contrast-red'
                <div class='col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group'>
                  <label class='control-label' for='inputText'>Participación en Organizaciones Sociales</label>
                  <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 controls'>
-                    <select name='organizaciones_sociales' class='form-control capitalize' id='inputSelect'>
+                    <select style="width: 100%;" name='organizaciones_sociales' class='form-control capitalize' id='participacion-organizaciones-tag' multiple='multiple' data-placeholder='Seleccione o agregue participacion en organizaciones'>
                       @foreach($organizaciones_sociales as $organizacion_social)
                         <option value="{{$organizacion_social->id}}">{{$organizacion_social->nombre}}</option>
                       @endforeach
