@@ -356,7 +356,7 @@ class='contrast-red'
                           </div>
                      </div>
 
-                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
                         <label class='control-label' for='inputText'>Previsión</label>
 
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
@@ -369,46 +369,40 @@ class='contrast-red'
                         </div>
                      </div>
 
-                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group">
                     <label class='control-label' for='inputText'>Nivel Educacional</label>
-                    <div class='col-md-12 form-group'>
-                      <div class='col-md-12'>
+                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
                        <select name='educacion' class='form-control capitalize' id='inputSelect'>
                          @foreach($niveles_educacion as $nivel_educacion)
                             <option value="{{$nivel_educacion->id}}">{{$nivel_educacion->nombre}}</option>
                          @endforeach
                        </select>
-                     </div>
-                   </div>
+                    </div>
                  </div>
 
-                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group">
                     <label class='control-label' for='inputText'>Ocupación Actual</label>
-                    <div class='col-md-12 form-group'>
-                      <div class='col-md-12'>
+                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 controls'>
                        <select name='ocupacion' class='form-control capitalize' id='inputSelect'>
                           @foreach($situaciones as $situacion)
                               <option value="{{$situacion->id}}">{{$situacion->nombre}}</option>
                           @endforeach
                        </select>
-                     </div>
                     </div>
                  </div>
 
-                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group">
                     <label class='control-label' for='inputText'>Beneficios</label>
-                    <div class='col-md-12 form-group'>
-                      <div class='col-md-12'>
-                       <select name='beneficios' class='form-control capitalize' id='inputSelect'>
-                          @foreach($beneficios as $beneficio)
-                              <option value="{{$beneficio->id}}">{{$beneficio->nombre}}</option>
-                          @endforeach
-                       </select>
-                     </div>
+                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 controls'>
+                     <select name='beneficios' class='form-control capitalize' id='inputSelect'>
+                        @foreach($beneficios as $beneficio)
+                            <option value="{{$beneficio->id}}">{{$beneficio->nombre}}</option>
+                        @endforeach
+                     </select>
                     </div>
                  </div>
 
-                 <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
+                 <div class='col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group'>
                    <label class='control-label' for='inputText'>Sistema de protección</label>
                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 controls'>
                       <select name='sistema_proteccion' class='form-control capitalize' id='inputSelect'>
@@ -419,7 +413,7 @@ class='contrast-red'
                    </div>
                  </div>
 
-               <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
+               <div class='col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group'>
                  <label class='control-label' for='inputText'>Participación en Organizaciones Sociales</label>
                  <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 controls'>
                     <select name='organizaciones_sociales' class='form-control capitalize' id='inputSelect'>

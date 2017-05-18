@@ -2,11 +2,11 @@
  * Acciones al cambiar al step siguiente o al anterior
  */
 
-$('#formulario-registro').validator();
+//$('#formulario-registro').validator();
 
 $('#myWizard').wizard().on('actionclicked.fu.wizard', function(e, data) {
     var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
-    if (hasErrors) e.preventDefault();
+    //if (hasErrors) e.preventDefault();
 
 }).on('finished.fu.wizard', function(e) {
     var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
