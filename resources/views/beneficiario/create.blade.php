@@ -321,7 +321,8 @@ class='contrast-red'
                           </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                          <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
+                          <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group input-group'>
+                            <span class='capitalize input-group-addon'>+56</span>
                             <input name='telefono_tutor' value="{{ old('telefono_tutor') }}" class='form-control onlynumbers' id='inputText' placeholder='Teléfono de contacto' type='text'>
                           </div>
                         </div>
