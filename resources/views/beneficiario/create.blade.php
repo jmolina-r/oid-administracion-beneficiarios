@@ -486,7 +486,7 @@ class='contrast-red'
                  Si
                </label>
                <label class='radio radio-inline'>
-                 <input name='cuidados' type='radio' value='0' required>
+                 <input name='cuidados' type='radio' value='0' required checked>
                  No
                </label>
              </div>
