@@ -153,6 +153,15 @@ class BeneficiarioController extends Controller
             $telefonoMovil->save();
         }
 
+        $tutor = new Tutor([
+            'nombre' => $request->input('nombre_tutor'),
+            'apellido' => $request->input('apellido_tutor'),
+            'beneficiario_id' => $beneficiario->id
+        ]);
+        $tutor->save();
+
+
+
         $domicilioCalle = $request->input('domicilio_calle');
         $domicilioNumero = $request->input('domicilio_numero');
         $domicilioDepto = $request->input('domicilio_depto');
