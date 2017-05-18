@@ -112,5 +112,16 @@ $(document).ready(function() {
             viewMode: 'years'
         });
     });
+
+    $(function () {
+        $('#credencial_venc').datetimepicker({
+            minDate:"now",
+            format: "L",
+            icons: {
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right'
+            }
+        });
+    });
 });
 
