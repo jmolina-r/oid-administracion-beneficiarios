@@ -52,9 +52,6 @@ class='contrast-red'
    <!-- / START - moments-->
    <script src="{{ asset('/assets/javascripts/plugins/common/moment.min.js') }}" type="text/javascript"></script>
    <!-- / END - moments-->
-   <!-- / START - Input mask-->
-   <script src="{{ asset('/assets/javascripts/plugins/input_mask/bootstrap-inputmask.min.js') }}" type="text/javascript"></script>
-   <!-- / END - Input mask-->
    <!-- / START - datepicker-->
    <script src="{{ asset('/assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
    <!-- / END - datepicker-->
@@ -156,7 +153,7 @@ class='contrast-red'
                           <div class='col-md-12 form-group'>
                            <label class='control-label' for='inputText'>Cédula de identidad (Sin puntos con guión)</label>
                            <div class='controls'>
-                            <input name="rut" value="{{ old('rut') }}" class='onlyrut form-control' id='inputText' data-mask='99999999-9' placeholder='Ej. 12345678-8' type='text' required maxlength="200">
+                            <input name="rut" value="{{ old('rut') }}" class='onlyrut form-control' id='inputText' placeholder='Ej. 12345678-8' type='text' required pattern="\d{3,8}-[\d|kK]{1}" maxlength="200">
                             <div class="help-block with-errors"></div>
                           </div>
                         </div>

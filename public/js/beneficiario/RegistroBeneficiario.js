@@ -99,6 +99,6 @@ $(document).ready(function() {
 
     $("#beneficios-tag").select2({
       tags: true
-    });      
-})
+    });
+});
 
