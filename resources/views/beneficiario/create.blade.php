@@ -409,7 +409,11 @@ class='contrast-red'
                <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                  <label class='control-label' for='inputText'>Participación en Organizaciones Sociales</label>
                  <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 controls'>
-                   <input name='organizacion_social' class='form-control' id='inputText' placeholder='¿Cuál? Caso contrario, dejar en blanco' type='text'>
+                    <select name='organizaciones_sociales' class='form-control capitalize' id='inputSelect'>
+                      @foreach($organizaciones_sociales as $organizacion_social)
+                        <option value="{{$organizacion_social->id}}">{{$organizacion_social->nombre}}</option>
+                      @endforeach
+                    </select>
                  </div>
                </div>
 
