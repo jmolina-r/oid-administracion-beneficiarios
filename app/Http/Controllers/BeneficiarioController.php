@@ -95,8 +95,7 @@ class BeneficiarioController extends Controller
             ->with(compact('previsiones'))
             ->with(compact('datos_sociales'))
             ->with(compact('organizaciones_sociales'))
-            ->with(compact('beneficios'))
-            ;
+            ->with(compact('beneficios'));
 
     }
 
@@ -107,7 +106,7 @@ class BeneficiarioController extends Controller
      */
     public function store(Request $request)
     {
-        //Log::critical($request->input('tipo_discapacidad.1'));
+        //Log::critical($request->input('beneficios'));
         // Log::critical('La descapacidad'.$request->input('tipo_discapacidad')['2']);
         $fechaNacimiento = date('Y-m-d', strtotime(str_replace('/', '-', $request->input('fecha_nacimiento'))));
         // 0, 1, or 2. 0 inexistence, 1 exists, 2 waiting.
@@ -120,7 +119,7 @@ class BeneficiarioController extends Controller
 
 
 
-
+        // Beneficiario Create
         $beneficiario = new Beneficiario([
             'nombre' => $request->input('nombres'),
             'apellido' => $request->input('apellidos'),
@@ -133,6 +132,26 @@ class BeneficiarioController extends Controller
             'ocupacion_id' => $request->input('ocupacion')
         ]);
         $beneficiario->save();
+
+        Log::critical("ID del beneficiario ".$beneficiario->id);
+
+        if($request->input('tel_fijo')) {
+            $telefonoFijo = new Telefono([
+                'numero' => $request->input('tel_fijo'),
+                'tipo' => 'fijo',
+                'beneficiario_id' => $beneficiario->id
+            ]);
+            $telefonoFijo->save();
+        }
+
+        if($request->input('tel_movil')) {
+            $telefonoMovil = new Telefono([
+                'numero' => $request->input('tel_movil'),
+                'tipo' => 'movil',
+                'beneficiario_id' => $beneficiario->id
+            ]);
+            $telefonoMovil->save();
+        }
 
         $domicilioCalle = $request->input('domicilio_calle');
         $domicilioNumero = $request->input('domicilio_numero');
