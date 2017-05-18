@@ -19,6 +19,7 @@ use App\FichaBenefeciario;
 use App\TipoDependencia;
 use App\TipoDiscapacidad;
 use App\Prevision;
+use App\Beneficio;
 
 
 
@@ -79,6 +80,8 @@ class BeneficiarioController extends Controller
 
         $organizaciones_sociales = OrganizacionSocial::get();
 
+        $beneficios = Beneficio::get();
+
         return view('beneficiario.create')
             ->with(compact('paises'))
             ->with(compact('estados_civiles'))
@@ -92,6 +95,7 @@ class BeneficiarioController extends Controller
             ->with(compact('previsiones'))
             ->with(compact('datos_sociales'))
             ->with(compact('organizaciones_sociales'))
+            ->with(compact('beneficios'))
             ;
 
     }

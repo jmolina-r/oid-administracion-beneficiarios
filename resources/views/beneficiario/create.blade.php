@@ -395,6 +395,19 @@ class='contrast-red'
                     </div>
                  </div>
 
+                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <label class='control-label' for='inputText'>Beneficios</label>
+                    <div class='col-md-12 form-group'>
+                      <div class='col-md-12'>
+                       <select name='beneficios' class='form-control capitalize' id='inputSelect'>
+                          @foreach($beneficios as $beneficio)
+                              <option value="{{$beneficio->id}}">{{$beneficio->nombre}}</option>
+                          @endforeach
+                       </select>
+                     </div>
+                    </div>
+                 </div>
+
                  <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                    <label class='control-label' for='inputText'>Sistema de protección</label>
                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 controls'>
