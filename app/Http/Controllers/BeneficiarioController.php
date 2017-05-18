@@ -20,6 +20,8 @@ use App\TipoDependencia;
 use App\TipoDiscapacidad;
 use App\Prevision;
 use App\Beneficio;
+use App\CredencialDiscapacidad;
+
 
 
 
@@ -154,11 +156,31 @@ class BeneficiarioController extends Controller
         }
 
         $tutor = new Tutor([
-            'nombre' => $request->input('nombre_tutor'),
-            'apellido' => $request->input('apellido_tutor'),
+            'nombres' => $request->input('nombre_tutor'),
+            'apellidos' => $request->input('apellido_tutor'),
             'beneficiario_id' => $beneficiario->id
         ]);
         $tutor->save();
+
+        if($request->input('credencial_discapacidad') != 0) {
+            if($request->input('credencial_discapacidad') == 2) {
+                $credeDic = new CredencialDiscapacidad([
+                    'fecha_vencimiento' => null,
+                    'en_tramite' => true,
+                    'beneficiario_id' => $beneficiario->id
+                ]);
+                $credeDic->save();
+            } else if($request->input('credencial_discapacidad') == 1) {
+                $credeDic = new CredencialDiscapacidad([
+                    'fecha_vencimiento' => date('Y-m-d', strtotime(str_replace('/', '-', $request->input('credencial_vencimiento')))),
+                    'en_tramite' => true,
+                    'beneficiario_id' => $beneficiario->id
+                ]);
+                $credeDic->save();
+            }
+        }
+
+
 
 
 
