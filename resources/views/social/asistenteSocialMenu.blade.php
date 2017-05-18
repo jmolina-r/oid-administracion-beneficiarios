@@ -101,18 +101,24 @@
                                 <h1>Visita domiciliaria</h1>
                               </div>
                             </a>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-                              <i class='fa fa-users text-contrast'></i>
-                              <h1>Orientación</h1>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-                              <i class='fa fa-user text-contrast'></i>
-                              <h1>Ayuda técnica</h1>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-                              <i class='fa fa-wheelchair text-contrast'></i>
-                              <h1>Prestaciones</h1>
-                            </div>                            
+                              <a href="{{route('social.asistenteSocialOrientacion')}}" title="">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+                                  <i class='fa fa-users text-contrast'></i>
+                                  <h1>Orientación</h1>
+                                </div>
+                              </a>
+                              <a href="{{route('social.asistenteSocialAyuda')}}" title="">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+                                  <i class='fa fa-user text-contrast'></i>
+                                  <h1>Ayuda técnica</h1>
+                                </div>
+                              </a>
+                              <a href="{{route('social.asistenteSocialPrestacion')}}" title="">
+                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
+                                  <i class='fa fa-wheelchair text-contrast'></i>
+                                  <h1>Prestaciones</h1>
+                                </div>
+                              </a>
                           </div>
                         </div>
                       </div>
