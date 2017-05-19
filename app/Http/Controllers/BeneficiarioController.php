@@ -224,22 +224,8 @@ class BeneficiarioController extends Controller
 
 
 
-
-        $domicilioCalle = $request->input('domicilio_calle');
-        $domicilioNumero = $request->input('domicilio_numero');
-        $domicilioDepto = $request->input('domicilio_depto');
-        $domicilioPoblacion = $request->input('domicilio_poblacion');
-
-        $telefonoFijo = $request->input('tel_fijo');
-        $telefonoMovil = $request->input('tel_movil');
         $email = $request->input('email');
-        $credencialDiscapacidad = $request->input('credencial_discapacidad');
-        $credencialVencimiento = $request->input('credencial_vencimiento');
-        $registroSocialHogares = $request->input('registro_social_hogares');
-        $registroSocialPorcentaje = $request->input('registro_social_porcentaje');
-        $tutorNombre = $request->input('tutor_nombre');
-        $tutorApellido = $request->input('tutor_apellido');
-        $tutorFono = $request->input('tutor_fono');
+
 
         $tipoPrevision = $request->input('prevision_radio');
         $prevision = $request->input('prevision');
