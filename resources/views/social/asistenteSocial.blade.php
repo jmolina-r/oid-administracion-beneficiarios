@@ -72,12 +72,12 @@
                             <i class='fa fa-angle-right'></i>
                           </li>
                           <li>
-                            Forms
+                            Área social
                           </li>
                           <li class='separator'>
                             <i class='fa fa-angle-right'></i>
                           </li>
-                          <li class='active'>Wizard</li>
+                          <li class='active'>Ingreso de usuario</li>
                         </ul>
                       </div>
                     </div>
