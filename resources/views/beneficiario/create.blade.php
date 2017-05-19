@@ -206,29 +206,29 @@ class='contrast-red'
                        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                         <label class='control-label' for='inputText'>Domicilio</label>
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                           <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
+                           <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group'>
                              <div class='controls'>
                                <input value="{{ old('domicilio_calle') }}" name='domicilio_calle' class='form-control' id='domicilio_calle' placeholder='Calle' type='text' maxlength="200">
                              </div>
                            </div>
 
-                           <div class='col-xs-12 col-sm-12 col-md-2 form-group'>
+                           <div class='col-xs-12 col-sm-12 col-md-3 col-lg-3 form-group'>
                               <input name='domicilio_numero' value="{{ old('domicilio_numero') }}" class='form-control onlynumbers' id='domicilio_numero' placeholder='Número' type='text'>
                              <div class="help-block with-errors"></div>
                            </div>
 
-                           <div class='col-xs-12 col-sm-12 col-md-2 form-group'>
+                           <div class='col-xs-12 col-sm-12 col-md-3 col-lg-3 form-group'>
                               <input name='domicilio_block' value="{{ old('domicilio_block') }}" class='form-control' id='domicilio_block' placeholder='Block' type='text'>
                              <div class="help-block with-errors"></div>
                            </div>
 
-                           <div class='col-xs-12 col-sm-12 col-md-2 form-group'>
+                           <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group'>
                              <div class='controls'>
-                               <input name='domicilio_numero_dpto' value="{{ old('domicilio_dpto') }}" class='form-control' id='inputText' placeholder='Número Departamento' type='text'>
+                               <input name='domicilio_numero_dpto' value="{{ old('domicilio_dpto') }}" class='form-control' id='inputText' placeholder='N° Departamento' type='text'>
                              </div>
                            </div>
 
-                           <div class='col-xs-12 col-sm-12 col-md-3 form-group'>
+                           <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 form-group'>
                              <div class='controls'>
                                <input name='domicilio_poblacion' value="{{ old('domicilio_poblacion') }}" class='form-control' id='inputText' placeholder='Poblacion / Villa' type='text'>
                              </div>
@@ -254,7 +254,7 @@ class='contrast-red'
                            </div>
 
                            <div class='col-sm-4 controls form-group'>
-                             <input name='email'  value="{{ old('email') }}" class='form-control' placeholder='E-mail' type='email'>
+                             <input name='email'  value="{{ old('email') }}" class='form-control' placeholder='E-mail' type='email' pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                              <div class="help-block with-errors"></div>
                            </div>
                          </div>
