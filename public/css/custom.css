@@ -17,3 +17,7 @@ i.fontawesomesize{
 .capitalize {
 	text-transform: capitalize;
 }
+
+textarea{
+	resize:none;
+}

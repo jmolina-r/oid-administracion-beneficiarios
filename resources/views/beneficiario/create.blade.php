@@ -128,7 +128,7 @@ class='contrast-red'
                                     <p>{{ $error }}</p>
                                 @endforeach
                             </div>
-                        @endif
+                      @endif
                       <hr class='hr-normal'>
                       <form role="form" id="formulario-registro" action="{{route('beneficiario.store')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post"><div class='step-content'>
                         <!-- STEP 1 -->
@@ -328,7 +328,7 @@ class='contrast-red'
                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group input-group'>
                             <span class='capitalize input-group-addon'>+56</span>
-                            <input name='telefono_tutor' value="{{ old('telefono_tutor') }}" class='form-control onlynumbers' id='inputText' placeholder='Teléfono de contacto' type='text'>
+                            <input name='telefono_tutor' value="{{ old('telefono_tutor') }}" class='form-control onlynumbers' id='inputText' placeholder='Teléfono de contacto' type='text' maxlength="9">
                           </div>
                         </div>
                       </div>
@@ -457,7 +457,8 @@ class='contrast-red'
               <div class='col-md-12 form-group'>
                <label class='control-label' for='inputText'>Diagnóstico Médico</label>
                <div class='col-md-12 controls'>
-                 <input name="diagnostico" class='form-control' id='inputText' placeholder='Si no aplica, dejar en blanco.' type='text'>
+                 <textarea name="diagnostico" id="inputDiagnostico" class="form-control" rows="3"
+                 placeholder='Si no aplica, dejar en blanco.'></textarea>
                </div>
              </div>
 
