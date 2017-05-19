@@ -15,7 +15,7 @@ class Beneficiario extends Model
 
     public function telefonos()
     {
-        return $this->hasMany(Telefono::class);
+        return $this->hasMany(TelefonoBeneficiario::class);
     }
 
     public function domicilio()

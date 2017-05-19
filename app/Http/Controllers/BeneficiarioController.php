@@ -18,7 +18,8 @@ use App\Pais;
 use App\Prevision;
 use App\RegistroSocialHogar;
 use App\SistemaProteccion;
-use App\Telefono;
+use App\TelefonoBeneficiario;
+use App\TelefonoTutor;
 use App\TipoDependencia;
 use App\TipoDiscapacidad;
 use App\Tutor;
@@ -139,7 +140,7 @@ class BeneficiarioController extends Controller
         Log::critical("ID del beneficiario ".$beneficiario->id);
 
         if($request->input('tel_fijo')) {
-            $telefonoFijo = new Telefono([
+            $telefonoFijo = new TelefonoBeneficiario([
                 'numero' => $request->input('tel_fijo'),
                 'tipo' => 'fijo',
                 'beneficiario_id' => $beneficiario->id
@@ -148,7 +149,7 @@ class BeneficiarioController extends Controller
         }
 
         if($request->input('tel_movil')) {
-            $telefonoMovil = new Telefono([
+            $telefonoMovil = new TelefonoBeneficiario([
                 'numero' => $request->input('tel_movil'),
                 'tipo' => 'movil',
                 'beneficiario_id' => $beneficiario->id
@@ -213,6 +214,14 @@ class BeneficiarioController extends Controller
             'beneficiario_id' => $beneficiario->id
         ]);
         $tutor->save();
+
+        $telefonoTutor = new TelefonoTutor([
+            'numero' => $request->input('telefono_tutor'),
+            'tutor_id' => $tutor->id
+        ]);
+        $telefonoTutor->save();
+
+
 
 
 
@@ -319,7 +328,7 @@ class BeneficiarioController extends Controller
             'fecha_nacimiento' => 'required|date_format:"d/m/Y"|before:"today"',
             'nombre_tutor' => 'required',
             'apellido_tutor' => 'required',
-            'telefono_tutor' => 'required_with:nombre_tutor',
+            'telefono_tutor' => 'required_with:nombre_tutor|numeric',
             'ocupacion' => 'required|exists:ocupacions,id',
             'educacion' => 'required|exists:educacions,id',
             'tel_fijo' => 'nullable|numeric',

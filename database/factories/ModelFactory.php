@@ -45,7 +45,7 @@ $factory->define(App\Beneficiario::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Telefono::class, function (Faker\Generator $faker) {
+$factory->define(App\TelefonoBeneficiario::class, function (Faker\Generator $faker) {
 
     return [
         'numero' => $faker->unique()->regexify('[0-9]{8}'),
@@ -61,6 +61,7 @@ $factory->define(App\Tutor::class, function (Faker\Generator $faker) {
         'beneficiario_id' => $faker->unique()->numberBetween($min = 1, $max = 150)
     ];
 });
+
 
 $factory->define(App\CredencialDiscapacidad::class, function (Faker\Generator $faker) {
     return [

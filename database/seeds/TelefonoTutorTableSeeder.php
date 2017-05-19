@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TelefonoTableSeeder extends Seeder
+class TelefonoTutorTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,5 @@ class TelefonoTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Telefono::class, 200)->create();
     }
 }

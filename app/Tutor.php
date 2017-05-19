@@ -13,4 +13,9 @@ class Tutor extends Model
         return $this->belongsTo(Beneficiario::class);
     }
 
+    public function telefonos()
+    {
+        return $this->hasMany(TelefonoTutor::class);
+    }
+
 }
