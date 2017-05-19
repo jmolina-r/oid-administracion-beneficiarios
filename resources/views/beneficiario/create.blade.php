@@ -451,14 +451,14 @@ class='contrast-red'
                       </div>
                     </div>
                 @endforeach
-
+                
               </div>
 
               <div class='col-md-12 form-group'>
                <label class='control-label' for='inputText'>Diagnóstico Médico</label>
                <div class='col-md-12 controls'>
                  <textarea name="diagnostico" id="inputDiagnostico" class="form-control" rows="3"
-                 placeholder='Si no aplica, dejar en blanco.'></textarea>
+                 placeholder='Si no aplica, dejar en blanco.'<<<<<<<<<<<></textarea>
                </div>
              </div>
 
