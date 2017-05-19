@@ -351,4 +351,8 @@ class BeneficiarioController extends Controller
         return $messages;
     }
 
+    public function findLikeNombreApellidoRutJson($q) {
+        return [1, 2, 3];
+    }
+
 }
