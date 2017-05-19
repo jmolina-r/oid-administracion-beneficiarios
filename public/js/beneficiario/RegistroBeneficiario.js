@@ -104,7 +104,7 @@ $(document).ready(function() {
     $(function () {
         $('#fecha_nacimiento').datetimepicker({
             maxDate:"now",
-            format: "L",
+            format: "DD/MM/YYYY",
             icons: {
                 previous: 'fa fa-chevron-left',
                 next: 'fa fa-chevron-right'
@@ -116,7 +116,7 @@ $(document).ready(function() {
     $(function () {
         $('#credencial_venc').datetimepicker({
             minDate:"now",
-            format: "L",
+            format: "DD/MM/YYYY",
             icons: {
                 previous: 'fa fa-chevron-left',
                 next: 'fa fa-chevron-right'
