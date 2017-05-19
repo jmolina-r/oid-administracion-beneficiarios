@@ -128,7 +128,7 @@ class='contrast-red'
                                     <p>{{ $error }}</p>
                                 @endforeach
                             </div>
-                        @endif
+                      @endif
                       <hr class='hr-normal'>
                       <form role="form" id="formulario-registro" action="{{route('beneficiario.store')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post"><div class='step-content'>
                         <!-- STEP 1 -->
@@ -457,7 +457,8 @@ class='contrast-red'
               <div class='col-md-12 form-group'>
                <label class='control-label' for='inputText'>Diagnóstico Médico</label>
                <div class='col-md-12 controls'>
-                 <input name="diagnostico" class='form-control' id='inputText' placeholder='Si no aplica, dejar en blanco.' type='text'>
+                 <textarea name="diagnostico" id="inputDiagnostico" class="form-control" rows="3"
+                 placeholder='Si no aplica, dejar en blanco.'></textarea>
                </div>
              </div>
 
