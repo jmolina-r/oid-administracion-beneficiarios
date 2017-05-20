@@ -21,7 +21,7 @@ $(document).ready(function() {
 		    $('#progress').removeClass('hidden');
 		  },
 		  success:function(res){
-		    addBeneficiarioToCard(res.alumnos)
+		    addBeneficiarioToCard(res.beneficiario)
 		  },
 		  complete:function(){
 		    $('#progress').addClass('hidden');
@@ -29,58 +29,31 @@ $(document).ready(function() {
 		});
 	}
 
-	function addBeneficiarioToCard(alumnos) {
+	function addBeneficiarioToCard(beneficiarios) {
 
-		if(alumnos) {
+		if(beneficiarios) {
 		  	$("#listaBeneficiario").empty();
 		  	alumnos.forEach(function(element) {
-
-			    var cardData = '  <!-- Card -->'+
-			      '<div style="display:none" class="col-lg-3 col-sm-6 ">' +
-			        '<div class="card">' +
-
-			          '<!-- Card header -->' +
-			          '<div class="card-header">' +
-			            '<div class="card-photo">' +
-			              '<img class="img-circle avatar" src="/images/man-3.jpg" alt="John Smith" title="John Smith">' +
-			            '</div>' +
-			            '<div class="card-short-description">' +
-			              '<h5><span class="user-name"><a href="#/">'+element.nombreCompleto+'</a></span></h5>' +
-			              '<p><span class="badge badge-primary">Agent</span></p>' +
-			            '</div>' +
-			          '</div>' +
-			          '<!-- /card header -->' +
-
-			          '<!-- Card content -->' +
-			          '<div class="card-content">' +
-			            '<p>Estudiante de la UCN.</p>' +
-			            '<p>Un tipo normal.</p>' +
-			            '<p>Insolente incomodo.</p>' +
-			          '</div>' +
-			          '<!-- /card content -->' +
-
-			          '<!-- Card footer -->' +
-			          '<div class="card-footer clearfix">' +
-			            '<ul class="list-inline">' +
-			              '<li><a href="#/"><i class="icon-pencil"></i></a></li>' +
-			              '<li><a href="#/"><i class="icon-trash"></i></a></li>' +
-			              '<li class="pull-right dropup">' +
-			                '<a href="#/" data-toggle="dropdown"><i class="icon-dot-3 icon-more"></i></a>' +
-			                '<ul class="dropdown-menu dropdown-menu-right">' +
-			                  '<li><a href="">Change Setting</a></li>' +
-			                  '<li><a href="">View Profile</a></li>' +
-			                  '<li><a href="">Send Message</a></li>' +
-			                '</ul>' +
-			              '</li>' +
-			            '</ul>' +
-			          '</div>' +
-			          '<!-- /card footer -->' +
-
-			        '</div>' +
-
-			      '</div>' +
-			      '<!-- /card -->';
-			    $(cardData).appendTo('#listaBeneficiario').fadeIn('normal');
+	  		var cardData = '<div class="card col-xs-12 col-md-6 col-lg-4">' +
+  							  '<img class="card-img-top" src="http://placehold.it/230x230&text=Photo" alt="Card image cap">' +
+	                          '<div class="card-block">' +
+	                            '<h4 class="card-title">' + element.nombreCompleto + '</h4>' +
+	                            '<p class="card-text">' + element.rut +'</p>' +
+	                            '<button class="btn btn-primary btn-xs" style="margin-bottom:5px">' +
+	                              '<i class="fa fa-ambulance"></i>' +
+	                              'Médica' +
+	                            '</button>' +
+	                            '<button class="btn btn-success btn-xs" style="margin-bottom:5px">' +
+	                              '<i class="fa fa-users"></i>' +
+	                              Social
+	                            '</button>' +
+	                            '<button class="btn btn-danger btn-xs" style="margin-bottom:5px">' +
+	                              '<i class="fa fa-user"></i>' +
+	                              'Perfil' +
+	                            '</button>' +
+	                          '</div>' +
+	                        '</div>';		              
+		    				$(cardData).appendTo('#listaBeneficiario').fadeIn('normal');
 			});
 		}
 	}
