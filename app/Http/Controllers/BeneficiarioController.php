@@ -8,7 +8,7 @@ use App\CredencialDiscapacidad;
 use App\Domicilio;
 use App\Educacion;
 use App\EstadoCivil;
-use App\FichaBenefeciario;
+use App\FichaBeneficiario;
 use App\FichaDiscapacidad;
 use App\Fonasa;
 use App\Isapre;
@@ -96,7 +96,6 @@ class BeneficiarioController extends Controller
             ->with(compact('fonasa'))
             ->with(compact('tipo_discapacidades'))
             ->with(compact('isapre'))
-            ->with(compact('previsiones'))
             ->with(compact('datos_sociales'))
             ->with(compact('organizaciones_sociales'))
             ->with(compact('beneficios'));
@@ -221,6 +220,26 @@ class BeneficiarioController extends Controller
         ]);
         $telefonoTutor->save();
 
+        $fichaBeneficiario = new FichaBeneficiario([
+            'fecha_ingreso' => date('Y-m-d'),
+            'beneficiario_id' => $beneficiario->id
+        ]);
+        $fichaBeneficiario->save();
+
+        // Dato social
+        $arrDatoSocial['ficha_beneficiario_id'] = $fichaBeneficiario->id;
+
+        if($request->input('sistema_salud') && $request->input('sistema_salud') == 'fonasa') {
+            $arrDatoSocial['fonasa_id'] = $request->input('fonasa');
+
+        } else if($request->input('sistema_salud') && $request->input('sistema_salud') == 'isapre') {
+            $arrDatoSocial['isapre_id'] = $request->input('isapre');
+        }
+
+        if($request->input('prevision') && $request->input('prevision') != '') {
+            $arrDatoSocial['prevision_id'] = $request->input('prevision');
+        }
+
 
 
 
@@ -334,6 +353,7 @@ class BeneficiarioController extends Controller
             'sistema_salud' => 'required|in:fonasa,isapre',
             'fonasa' => 'required_if:sistema_salud,fonasa|exists:fonasas,id',
             'isapre' => 'required_if:sistema_salud,isapre|exists:isapres,id',
+            'prevision' => 'nullable|exists:previsions,id'
         ];
 
         foreach($request->input('tipo_discapacidad') as $key => $val)
@@ -345,7 +365,8 @@ class BeneficiarioController extends Controller
 
     private function messages(Request $request)
     {
-        foreach($request->input('tipo_discapacidad') as $key => $val) {
+        foreach($request->input('tipo_discapacidad') as $key => $val)
+        {
             $messages['tipo_discapacidad.'.$key.'.between'] = 'Discapacidad '.$key.' debe tener un porcentaje menor a :min y mayor que :max.';
         }
         return $messages;

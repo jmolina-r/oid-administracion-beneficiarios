@@ -163,7 +163,8 @@ return [
         'sexo'                      => 'genero',
         'sistema_salud'             => 'sistema de salud',
         'fonasa'                    => 'Fonasa',
-        'isapre'                    => 'Isapre'
+        'isapre'                    => 'Isapre',
+        'prevision'                 => 'previsión'
 
     ],
 

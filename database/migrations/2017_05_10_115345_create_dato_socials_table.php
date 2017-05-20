@@ -16,7 +16,7 @@ class CreateDatoSocialsTable extends Migration
         Schema::create('dato_socials', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->longText('observacion');
+            $table->longText('observacion')->nullable();
 
             $table->integer('ficha_beneficiario_id')->unsigned();
             $table->integer('isapre_id')->unsigned()->nullable();
