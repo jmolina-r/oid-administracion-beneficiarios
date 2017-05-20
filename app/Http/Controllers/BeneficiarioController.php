@@ -244,6 +244,7 @@ class BeneficiarioController extends Controller
         $datoSocial = new DatoSocial($arrDatoSocial);
         $datoSocial->save();
 
+        // Beneficios
         if($request->input('beneficios')) {
             foreach($request->input('beneficios') as $key => $val)
             {
@@ -261,6 +262,26 @@ class BeneficiarioController extends Controller
                 }
             }
         }
+
+        // Organizaciones sociales
+        if($request->input('organizaciones_sociales')) {
+            foreach($request->input('organizaciones_sociales') as $key => $val)
+            {
+                if(is_numeric($val)) {
+                    $organizacionSocial = OrganizacionSocial::find($val);
+                    if($organizacionSocial) {
+                        $datoSocial->organizaciones_sociales()->save($organizacionSocial);
+                    }
+                } else {
+                    $organizacionSocial = new OrganizacionSocial([
+                        'nombre' => strtolower($val)
+                    ]);
+                    $organizacionSocial->save();
+                    $datoSocial->organizaciones_sociales()->save($organizacionSocial);
+                }
+            }
+        }
+
 
 
 
