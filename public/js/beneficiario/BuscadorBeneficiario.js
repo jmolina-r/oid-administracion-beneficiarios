@@ -5,15 +5,16 @@ $(document).ready(function() {
 	      $("#listaBeneficiario").empty();
 	      return;
 	    }
-	    getAlumnoslikeNombre($(this).val());
-    }):
+	    getBeneficiariosLikeNombre($(this).val());
+    });
 
-	function getAlumnoslikeNombre(nombre) {
+
+	function getBeneficiariosLikeNombre(query) {
 		$.ajax({
-		  type: 'POST',
-		  url: 'beneficiario.findLikeNombreApellidoRutJson',
+		  type: 'GET',
+		  url: '/beneficiario/buscar/',
 		  data: {
-		    nombre: nombre,
+		    q: query
 		  },
 		  timeout: 10000,
 		  beforeSend:function(){

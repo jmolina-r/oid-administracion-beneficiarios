@@ -53,7 +53,8 @@ class='contrast-red'
    <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
    <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
   <!-- / END - validaciones-->
-   <!-- / START Vista para llenado de select dinamicos -->
+   <!-- / START AJAX para busqueda -->
+   <script src="{{ asset('/js/beneficiario/BuscadorBeneficiario.js') }}" type="text/javascript"></script>
    <!-- / END  -->
   @endsection
 
