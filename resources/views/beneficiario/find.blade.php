@@ -91,6 +91,9 @@ class='contrast-red'
                       <div class='col-md-12 form-group'>
                        <label class='control-label' for='inputBuscador'>Ingrese beneficiario</label>
                        <div class='controls'>
+                        {!! Form::open() !!}
+                        {!! Form::text('input-name',null,array('class'=>'form-control search-input','data-url'=> URL::route("beneficiario/buscar-json") ))!!}
+                        {!! Form::close() !!}
                         <input class='form-control' id='inputBuscador' placeholder='Ingrese nombre, apellido o rut' type='text' maxlength="200">
                        </div>
                       </div>

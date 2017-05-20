@@ -41,6 +41,19 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+'providers' => [
+    // ...
+    Collective\Html\HtmlServiceProvider::class,
+    // ...
+ ],
+
+'aliases' => [
+    // ...
+      'Form' => Collective\Html\FormFacade::class,
+      'Html' => Collective\Html\HtmlFacade::class,
+    // ...
+ ],
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application
