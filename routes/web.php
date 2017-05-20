@@ -63,7 +63,7 @@ Route::group(['prefix' => 'beneficiario'], function () {
         'as' => 'beneficiario.find'
     ]);
 
-    Route::get('/buscar/{q}', [
+    Route::get('/buscar-json', [
         'uses' => 'BeneficiarioController@findLikeNombreApellidoRutJson',
         'as' => 'beneficiario.findLikeNombreApellidoRutJson'
     ]);

@@ -351,10 +351,10 @@ class BeneficiarioController extends Controller
         return $messages;
     }
 
-    public function findLikeNombreApellidoRutJson($q) {
-        return Beneficiario::where('rut', $q)
-            ->orWhere('nombre', $q)
-            ->orWhere('apellido', $q)
+    public function findLikeNombreApellidoRutJson(Request $request) {
+        return Beneficiario::where('rut', $request->input('query'))
+            ->orWhere('nombre', $request->input('query'))
+            ->orWhere('apellido', $request->input('query'))
             ->get()
             ->toJson();
     }

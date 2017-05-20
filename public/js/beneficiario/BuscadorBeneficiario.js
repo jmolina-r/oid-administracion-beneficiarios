@@ -12,29 +12,33 @@ $(document).ready(function() {
 	function getBeneficiariosLikeNombre(query) {
 		$.ajax({
 		  type: 'GET',
-		  url: '/beneficiario/buscar/',
+		  url: '/beneficiario/buscar-json/',
 		  data: {
-		    q: query
+		    query: query
 		  },
-		  timeout: 10000,
-		  beforeSend:function(){
+		  beforeSend: function(){
 		    // this is where we append a loading image
 		    $('#progress').removeClass('hidden');
 		  },
-		  success:function(res){
+		  success: function(res){
+			  console.log(res)
 		    addBeneficiarioToCard(res.beneficiario)
 		  },
-		  complete:function(){
+		  complete: function(){
 		    $('#progress').addClass('hidden');
 		  },
+		  error: function(err) {
+			  console.log(err);
+		  }
 		});
 	}
 
 	function addBeneficiarioToCard(beneficiarios) {
+		alert('Añadiendo')
 
 		if(beneficiarios) {
 		  	$("#listaBeneficiario").empty();
-		  	alumnos.forEach(function(element) {
+		  	beneficiarios.forEach(function(element) {
 	  		var cardData = '<div class="card col-xs-12 col-md-6 col-lg-4">' +
   							  '<img class="card-img-top" src="http://placehold.it/230x230&text=Photo" alt="Card image cap">' +
 	                          '<div class="card-block">' +
@@ -53,7 +57,7 @@ $(document).ready(function() {
 	                              'Perfil' +
 	                            '</button>' +
 	                          '</div>' +
-	                        '</div>';		              
+	                        '</div>';
 		    				$(cardData).appendTo('#listaBeneficiario').fadeIn('normal');
 			});
 		}
