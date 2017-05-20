@@ -37,6 +37,24 @@ Route::group(['prefix' => '/medica'], function (){
                 'as' => 'medica.ficha-evaluacion-inicial.kinesiologia.mostrar-lista'
             ]);
         });
+
+        Route::group(['prefix' => '/fonoaudiologia'], function (){
+
+            Route::get('/ingresar', [
+                'uses' => 'FichaFonoaudiologiaController@getIngresar',
+                'as' => 'medica.ficha-evaluacion-inicial.fonoaudiologia.ingresar'
+            ]);
+
+            Route::post('/ingresar', [
+                'uses' => 'FichaFonoaudiologiaController@postIngresar',
+                'as' => 'medica.ficha-evaluacion-inicial.fonoaudiologia.ingresar'
+            ]);
+
+            Route::get('/mostrar-lista', [
+                'uses' => 'FichaFonoaudiologiaController@getMostrarLista',
+                'as' => 'medica.ficha-evaluacion-inicial.fonoaudiologia.mostrar-lista'
+            ]);
+        });
     });
 });
 

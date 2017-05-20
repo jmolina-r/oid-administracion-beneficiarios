@@ -71,7 +71,7 @@
                                 <div class="page-header">
                                     <h1 class="pull-left">
                                         <i class="fa fa-pencil-square-o"></i>
-                                        <span>Evaluación Inicial Kinesiología</span>
+                                        <span>Evaluación Inicial Fonoaudiología</span>
                                     </h1>
                                     <div class="pull-right">
                                         <ul class="breadcrumb">
