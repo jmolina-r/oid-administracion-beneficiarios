@@ -51,4 +51,9 @@ class Beneficiario extends Model
     {
         return $this->hasOne(CredencialDiscapacidad::class);
     }
+
+    public function ficha_beneficiario()
+    {
+        return $this->hasOne(FichaBeneficiario::class);
+    }
 }
