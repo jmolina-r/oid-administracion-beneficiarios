@@ -352,7 +352,11 @@ class BeneficiarioController extends Controller
     }
 
     public function findLikeNombreApellidoRutJson($q) {
-        return [1, 2, 3];
+        return Beneficiario::where('rut', $q)
+            ->orWhere('nombre', $q)
+            ->orWhere('apellido', $q)
+            ->get()
+            ->toJson();
     }
 
 }
