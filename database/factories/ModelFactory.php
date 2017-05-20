@@ -26,15 +26,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Pais::class, function (Faker\Generator $faker) {
 
     return [
-        'nombre' => $faker->country
+        'nombre' => strtolower($faker->country)
     ];
 });
 
 $factory->define(App\Beneficiario::class, function (Faker\Generator $faker) {
 
     return [
-        'nombre' => $faker->firstName,
-        'apellido' => $faker->lastName,
+        'nombre' => strtolower($faker->firstName),
+        'apellido' => strtolower($faker->lastName),
         'fecha_nacimiento' => $faker->dateTimeBetween($startDate = '-60 years', $endDate = '-4 years', $timezone = date_default_timezone_get()),
         'sexo' => $faker->regexify('(masculino|femenino)'),
         'rut' => $faker->unique()->regexify('\[1-9]{8,9}\-(k|[0-9])'),

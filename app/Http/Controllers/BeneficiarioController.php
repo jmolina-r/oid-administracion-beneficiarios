@@ -352,11 +352,14 @@ class BeneficiarioController extends Controller
     }
 
     public function findLikeNombreApellidoRutJson(Request $request) {
-        return Beneficiario::where('rut', $request->input('query'))
-            ->orWhere('nombre', $request->input('query'))
-            ->orWhere('apellido', $request->input('query'))
+        $queryLike = $request->input('query').'%';
+        $beneficiarios = Beneficiario::where('rut', 'like', $queryLike)
+            ->orWhere('nombre', 'like', $queryLike)
+            ->orWhere('apellido', 'like', '%'.$queryLike)
+            ->orWhereRaw("concat(nombre, ' ', apellido) like ?", [$queryLike])
             ->get()
-            ->toJson();
+            ->toArray();
+        return response()->json(['beneficiarios' => $beneficiarios]);
     }
 
 }
