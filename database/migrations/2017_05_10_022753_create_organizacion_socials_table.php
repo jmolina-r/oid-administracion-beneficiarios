@@ -17,7 +17,7 @@ class CreateOrganizacionSocialsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('nombre');
-            $table->longText('descripcion');
+            $table->longText('descripcion')->nullable();
         });
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Beneficiario;
 use App\Beneficio;
 use App\CredencialDiscapacidad;
+use App\DatoSocial;
 use App\Domicilio;
 use App\Educacion;
 use App\EstadoCivil;
@@ -124,10 +125,10 @@ class BeneficiarioController extends Controller
 
         // Beneficiario Create
         $beneficiario = new Beneficiario([
-            'nombre' => $request->input('nombres'),
-            'apellido' => $request->input('apellidos'),
+            'nombre' => strtolower($request->input('nombres')),
+            'apellido' => strtolower($request->input('apellidos')),
             'fecha_nacimiento' => $fechaNacimiento,
-            'sexo' => $request->input('sexo'),
+            'sexo' => strtolower($request->input('sexo')),
             'rut' => $request->input('rut'),
             'pais_id' => $request->input('id_pais'),
             'estado_civil_id' => $request->input('estado_civil'),
@@ -239,6 +240,30 @@ class BeneficiarioController extends Controller
         if($request->input('prevision') && $request->input('prevision') != '') {
             $arrDatoSocial['prevision_id'] = $request->input('prevision');
         }
+
+        $datoSocial = new DatoSocial($arrDatoSocial);
+        $datoSocial->save();
+
+        if($request->input('beneficios')) {
+            foreach($request->input('beneficios') as $key => $val)
+            {
+                if(is_numeric($val)) {
+                    $beneficio = Beneficio::find($val);
+                    if($beneficio) {
+                        $datoSocial->beneficios()->save($beneficio);
+                    }
+                } else {
+                    $beneficio = new Beneficio([
+                        'nombre' => strtolower($val)
+                    ]);
+                    $beneficio->save();
+                    $datoSocial->beneficios()->save($beneficio);
+                }
+            }
+        }
+
+
+
 
 
 
@@ -353,7 +378,7 @@ class BeneficiarioController extends Controller
             'sistema_salud' => 'required|in:fonasa,isapre',
             'fonasa' => 'required_if:sistema_salud,fonasa|exists:fonasas,id',
             'isapre' => 'required_if:sistema_salud,isapre|exists:isapres,id',
-            'prevision' => 'nullable|exists:previsions,id'
+            'prevision' => 'nullable|exists:previsions,id',
         ];
 
         foreach($request->input('tipo_discapacidad') as $key => $val)

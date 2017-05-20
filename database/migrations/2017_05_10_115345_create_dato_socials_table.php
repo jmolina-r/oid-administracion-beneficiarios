@@ -21,7 +21,6 @@ class CreateDatoSocialsTable extends Migration
             $table->integer('ficha_beneficiario_id')->unsigned();
             $table->integer('isapre_id')->unsigned()->nullable();
             $table->integer('fonasa_id')->unsigned()->nullable();
-            $table->integer('organizacion_social_id')->unsigned()->nullable();
             $table->integer('sistema_proteccion_id')->unsigned()->nullable();
 
             $table->integer('prevision_id')->unsigned()->nullable();
@@ -37,9 +36,6 @@ class CreateDatoSocialsTable extends Migration
         });
         Schema::table('dato_socials', function($table) {
             $table->foreign('fonasa_id')->references('id')->on('fonasas');
-        });
-        Schema::table('dato_socials', function($table) {
-            $table->foreign('organizacion_social_id')->references('id')->on('organizacion_socials');
         });
         Schema::table('dato_socials', function($table) {
             $table->foreign('sistema_proteccion_id')->references('id')->on('sistema_proteccions');

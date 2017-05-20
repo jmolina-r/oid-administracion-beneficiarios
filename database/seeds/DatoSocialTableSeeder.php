@@ -21,11 +21,6 @@ class DatoSocialTableSeeder extends Seeder
                 $fonasa = null;
             }
             if($faker->boolean == true) {
-                $organizacionSocial = $faker->numberBetween($min = 1, $max = 3);
-            } else {
-                $organizacionSocial = null;
-            }
-            if($faker->boolean == true) {
                 $sistemaProteccion = $faker->numberBetween($min = 1, $max = 3);
             } else {
                 $sistemaProteccion = null;
@@ -41,7 +36,6 @@ class DatoSocialTableSeeder extends Seeder
                 'ficha_beneficiario_id' => $i,
                 'isapre_id' => $isapre,
                 'fonasa_id' => $fonasa,
-                'organizacion_social_id' => $organizacionSocial,
                 'sistema_proteccion_id' => $sistemaProteccion,
                 'prevision_id' => $prevision
             ]);
