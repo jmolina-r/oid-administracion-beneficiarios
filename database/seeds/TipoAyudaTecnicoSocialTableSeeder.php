@@ -11,6 +11,11 @@ class TipoAyudaTecnicoSocialTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
+            'tipo'=> 'tecnico',
+            'nombre' => 'silla electrica'
+        ]);
+        $tipoAyudaTecnicoSocial->save();
+
     }
 }

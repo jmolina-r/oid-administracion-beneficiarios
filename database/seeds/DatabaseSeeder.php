@@ -54,6 +54,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ValSensorialTableSeeder::class);
         $this->call(ValSocialTableSeeder::class);
         $this->call(FichaKinesiologiaTableSeeder::class);
+        $this->call(TipoAyudaTecnicoSocialTableSeeder::class);
 
 
     }

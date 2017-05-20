@@ -16,6 +16,8 @@ class CreateTipoAyudaTecnicoSocialsTable extends Migration
         Schema::create('tipo_ayuda_tecnico_socials', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('tipo');
+            $table->string('nombre');
         });
     }
 
