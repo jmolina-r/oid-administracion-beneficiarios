@@ -97,7 +97,7 @@ $factory->define(App\SubMotivoAtencionSocial::class, function (Faker\Generator $
     return [
         'nombre' => $faker->regexify('[1-5]{1}'),
         'fecha' => $faker->date('y-m-d','now'),
-        'descripcion' => $faker->regexify('(Atencion social)'),
+        'observacion' => $faker->regexify('(Atencion social)'),
 
         'motivo_atencion_social_id' => $faker->numberBetween($min = 1, $max = 100)
     ];

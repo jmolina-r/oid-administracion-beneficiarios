@@ -18,7 +18,7 @@ class CreateSubMotivoAtencionSocialsTable extends Migration
             $table->timestamps();
             $table->string('nombre');
             $table->date('fecha');
-            $table->string('descripcion');
+            $table->string('observacion');
 
 
             $table->integer('motivo_atencion_social_id')->unsigned();
