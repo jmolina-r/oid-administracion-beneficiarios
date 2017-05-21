@@ -48,5 +48,6 @@ class FichaSocialController extends Controller
         return view('social.asistenteSocialAyudaTecnica')
             ->with(compact('tipoAyudaTecnicoSocial'));
 
+
     }
 }

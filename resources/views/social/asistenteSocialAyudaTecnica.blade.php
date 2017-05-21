@@ -96,7 +96,7 @@
                                                                                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                                                                 <h2>Ayudas Técnicas - Sociales</h2>
                                                                                         </div>
-                                                                                        <form>
+                                                                                        <form accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post">
                                                                                         <div class='col-md-12 form-group'>
 
                                                                                                 <fieldset id="tecnico">
@@ -104,7 +104,7 @@
                                                                                                         @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
                                                                                                                 @if ($tipoAyuda->tipo=='tecnico')
                                                                                                                         <div class='controls'>
-                                                                                                                        <input type="radio" id="{{$tipoAyuda->id}}"> {{$tipoAyuda->nombre}}
+                                                                                                                                <label class="radio-inline"> <input type="radio" name="tipoAyudaTecnica" id="{{$tipoAyuda->id}}">{{$tipoAyuda->nombre}}</label>
                                                                                                                         </div>
                                                                                                                 @endif
                                                                                                         @endforeach
@@ -114,14 +114,15 @@
                                                                                                         @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
                                                                                                                 @if ($tipoAyuda->tipo=='social')
                                                                                                                         <div class='controls'>
-                                                                                                                                <input type="radio" id="{{$tipoAyuda->id}}"> {{$tipoAyuda->nombre}}
+                                                                                                                                <label class="radio-inline"> <input type="radio" name="tipoAyudaSocial" id="{{$tipoAyuda->id}}"> {{$tipoAyuda->nombre}}</label>
+
                                                                                                                         </div>
                                                                                                                 @endif
                                                                                                         @endforeach
                                                                                                 <div class='controls' id="contentVD">
                                                                                                         <div style="display: inline;">
                                                                                                                 <label for="inputText">Observación</label>
-                                                                                                                <textarea name="observacion" id="observacion" cols="40" rows="4"></textarea>
+                                                                                                                <textarea name="observacion" id="observacion" name="observacion" cols="40" rows="4"></textarea>
                                                                                                         </div>
                                                                                                 </div>
                                                                                                 <div class="form-group pull-right">
