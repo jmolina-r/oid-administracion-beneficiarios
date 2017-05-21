@@ -97,42 +97,42 @@
                                                                                                 <h2>Ayudas Técnicas - Sociales</h2>
                                                                                         </div>
                                                                                         <form accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post">
-                                                                                        <div class='col-md-12 form-group'>
+                                                                                                <div class='col-md-12 form-group'>
 
-                                                                                                <fieldset id="tecnico">
-                                                                                                        <label class='control-label' for='inputText'>Ayuda Técnica</label>
-                                                                                                        @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
-                                                                                                                @if ($tipoAyuda->tipo=='tecnico')
-                                                                                                                        <div class='controls'>
-                                                                                                                                <label class="radio-inline"> <input type="radio" name="tipoAyudaTecnica" id="{{$tipoAyuda->id}}">{{$tipoAyuda->nombre}}</label>
-                                                                                                                        </div>
-                                                                                                                @endif
-                                                                                                        @endforeach
-                                                                                                </fieldset>
-                                                                                                <fieldset id="social">
-                                                                                                        <label class='control-label' for='inputText'>Ayuda Social</label>
-                                                                                                        @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
-                                                                                                                @if ($tipoAyuda->tipo=='social')
-                                                                                                                        <div class='controls'>
-                                                                                                                                <label class="radio-inline"> <input type="radio" name="tipoAyudaSocial" id="{{$tipoAyuda->id}}"> {{$tipoAyuda->nombre}}</label>
+                                                                                                        <fieldset id="tecnico">
+                                                                                                                <label class='control-label' for='inputText'>Ayuda Técnica</label>
+                                                                                                                @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
+                                                                                                                        @if ($tipoAyuda->tipo=='tecnico')
+                                                                                                                                <div class='controls'>
+                                                                                                                                        <label class="radio-inline"> <input type="radio" name="tipoAyudaTecnica" id="{{$tipoAyuda->id}}">{{$tipoAyuda->nombre}}</label>
+                                                                                                                                </div>
+                                                                                                                        @endif
+                                                                                                                @endforeach
+                                                                                                        </fieldset>
+                                                                                                        <fieldset id="social">
+                                                                                                                <label class='control-label' for='inputText'>Ayuda Social</label>
+                                                                                                                @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
+                                                                                                                        @if ($tipoAyuda->tipo=='social')
+                                                                                                                                <div class='controls'>
+                                                                                                                                        <label class="radio-inline"> <input type="radio" name="tipoAyudaSocial" id="{{$tipoAyuda->id}}"> {{$tipoAyuda->nombre}}</label>
 
-                                                                                                                        </div>
-                                                                                                                @endif
-                                                                                                        @endforeach
-                                                                                                <div class='controls' id="contentVD">
-                                                                                                        <div style="display: inline;">
-                                                                                                                <label for="inputText">Observación</label>
-                                                                                                                <textarea name="observacion" id="observacion" name="observacion" cols="40" rows="4"></textarea>
+                                                                                                                                </div>
+                                                                                                                        @endif
+                                                                                                                @endforeach
+                                                                                                        <div class='controls' id="contentVD">
+                                                                                                                <div style="display: inline;">
+                                                                                                                        <label for="inputText">Observación</label>
+                                                                                                                        <textarea name="observacion" id="observacion" name="observacion" cols="40" rows="4"></textarea>
+                                                                                                                </div>
                                                                                                         </div>
-                                                                                                </div>
-                                                                                                <div class="form-group pull-right">
-                                                                                                        <div class="col-sm-12 col-offset-2">
-                                                                                                                <button type="submit" class="btn btn-success">Aceptar</button>
-                                                                                                                <button type="submit" class="btn btn-prev">Volver</button>
+                                                                                                        <div class="form-group pull-right">
+                                                                                                                <div class="col-sm-12 col-offset-2">
+                                                                                                                        <button type="submit" class="btn btn-success">Aceptar</button>
+                                                                                                                        <button type="submit" class="btn btn-prev">Volver</button>
+                                                                                                                </div>
                                                                                                         </div>
+                                                                                                        </fieldset>
                                                                                                 </div>
-                                                                                                </fieldset>
-                                                                                        </div>
                                                                                         </form>
                                                                                 </div>
                                                                         </div>

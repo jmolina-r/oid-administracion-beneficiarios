@@ -11,7 +11,7 @@ class SubMotivoAtencionSocialTableSeed extends Seeder
      */
     public function run()
     {
-        factory(App\SubMotivoAtencionSocial::class,100)->create();
+        //factory(App\SubMotivoAtencionSocial::class,100)->create();
 
     }
 }

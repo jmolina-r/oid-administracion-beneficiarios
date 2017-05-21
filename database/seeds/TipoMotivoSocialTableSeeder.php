@@ -20,5 +20,10 @@ class TipoMotivoSocialTableSeeder extends Seeder
             'nombre' => 'visita domiciliaria'
         ]);
         $tipoMotivoSocial->save();
+
+        $tipoMotivoSocial = new \App\TipoMotivoSocial([
+            'nombre' => 'becas'
+        ]);
+        $tipoMotivoSocial->save();
     }
 }

@@ -71,7 +71,7 @@ $factory->define(App\FichaAtencionSocial::class, function (Faker\Generator $fake
         'prestacion_realizadas_id' => $faker->numberBetween($min = 1, $max = 100)
     ];
 });
-
+/*
 $factory->define(App\TipoSubmotivoSocial::class, function (Faker\Generator $faker) {
 
     return [
@@ -90,7 +90,7 @@ $factory->define(App\MotivoAtencionSocial::class, function (Faker\Generator $fak
         'ficha_atencion_social_id' => $faker->numberBetween($min = 1, $max = 100),
     ];
 });
-
+*/
 $factory->define(App\AyudaTecnicoSocial::class, function (Faker\Generator $faker) {
 
     return [
@@ -101,6 +101,7 @@ $factory->define(App\AyudaTecnicoSocial::class, function (Faker\Generator $faker
         'motivo_atencion_social_id' => $faker->numberBetween($min = 1, $max = 100)
     ];
 });
+/*
 $factory->define(App\SubMotivoAtencionSocial::class, function (Faker\Generator $faker) {
 
     return [
@@ -111,7 +112,7 @@ $factory->define(App\SubMotivoAtencionSocial::class, function (Faker\Generator $
         'motivo_atencion_social_id' => $faker->numberBetween($min = 1, $max = 100)
     ];
 });
-
+*/
 $factory->define(App\Tutor::class, function (Faker\Generator $faker) {
     return [
         'nombres' => $faker->firstName,

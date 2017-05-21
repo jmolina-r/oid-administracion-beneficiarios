@@ -17,6 +17,7 @@ class CreateTipoMotivoSocialsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('nombre');
+            
         });
     }
 

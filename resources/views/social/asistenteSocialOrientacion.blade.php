@@ -50,11 +50,6 @@
     <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
     <!-- / END - page related files and scripts [optional] -->
-    <script type="text/javascript">
-        function showContent() {
-
-        }
-    </script>
 @endsection
 
 <!-- Contenido del body -->
@@ -105,40 +100,22 @@
                                                 <form action="{{route('social.asistenteSocialBeneficiario')}}" method="post" accept-charset="utf-8">
                                                     {!!csrf_field()!!}
                                                     <div class='col-md-12 form-group'>
-                                                        <label class='control-label' for='inputText'>Motivo de orientación</label>
-                                                        <div class='controls'>
-                                                            <input type="checkbox" id="verificarDomicilio" onchange="javascript:showContent()"> Verificación de domicilio
-                                                        </div>
-                                                        <div class='controls' id="contentVD" style="display: none;">
-                                                            <div style="display: inline;">
-                                                                <label for="inputText">Observación</label>
-                                                                <textarea name="" id="" cols="40" rows="4"></textarea>
+                                                        <fieldset id="social">
+                                                            <label class='control-label' for='inputText'>Motivo de orientación</label>
+                                                            @foreach($tipoSubmotivoSocial as $tipoSubmotivo)
+
+                                                                <div class='controls'>
+                                                                    <input type="checkbox" name="$tipoSubmotivo" id="{{$tipoSubmotivo->id}}">{{$tipoSubmotivo->nombre}}</label>
+                                                                </div>
+
+                                                            @endforeach
+                                                            <div class="form-group pull-right">
+                                                                <div class="col-sm-12 col-offset-2">
+                                                                    <button type="submit" class="btn btn-success">Aceptar</button>
+                                                                    <button type="submit" class="btn btn-prev">Volver</button>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class='controls'>
-                                                            <input type="checkbox" name="elabInformeSocial"> Credencial de discapacidad
-                                                        </div>
-                                                        <div class='controls'>
-                                                            <input type="checkbox" name="enAyudaTecnica"> Subsidios
-                                                        </div>
-                                                        <div class='controls'>
-                                                            <input type="checkbox" name="enAyudaSocial"> Beneficios sociales
-                                                        </div>
-                                                        <div class='controls'>
-                                                            <input type="checkbox" name="enAyudaSocial"> Tribunales de familia
-                                                        </div>
-                                                        <div class='controls'>
-                                                            <input type="checkbox" name="enAyudaSocial"> Activación de red
-                                                        </div>
-                                                        <div class='controls'>
-                                                            <input type="checkbox" name="enAyudaSocial"> Becas
-                                                        </div>
-                                                        <div class="form-group pull-right">
-                                                            <div class="col-sm-12 col-offset-2">
-                                                                <button type="submit" class="btn btn-success">Aceptar</button>
-                                                                <button type="submit" class="btn btn-prev">Volver</button>
-                                                            </div>
-                                                        </div>
+                                                        </fieldset>
                                                     </div>
                                                 </form>
                                             </div>

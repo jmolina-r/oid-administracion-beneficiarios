@@ -17,6 +17,12 @@ class CreateTipoSubmotivoSocialsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('nombre');
+
+            $table->integer('tipo_motivo_social_id')->unsigned();
+        });
+
+        Schema::table('tipo_submotivo_socials', function($table) {
+            $table->foreign('tipo_motivo_social_id')->references('id')->on('tipo_motivo_socials')->onDelete('cascade');
         });
     }
 

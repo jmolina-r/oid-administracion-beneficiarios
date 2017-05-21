@@ -20,11 +20,13 @@ class CreateSubMotivoAtencionSocialsTable extends Migration
             $table->date('fecha');
             $table->string('observacion');
 
-
             $table->integer('motivo_atencion_social_id')->unsigned();
+            $table->integer('tipo_submotivo_social_id')->unsigned();
+
         });
         Schema::table('sub_motivo_atencion_socials', function ($table){
             $table->foreign('motivo_atencion_social_id')->references('id')->on('motivo_atencion_socials')->onDelete('cascade');
+            $table->foreign('tipo_submotivo_social_id')->references('id')->on('tipo_submotivo_socials')->onDelete('cascade');
         });
     }
 
