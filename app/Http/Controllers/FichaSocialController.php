@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Beneficiario;
+use App\TipoAyudaTecnicoSocial;
 use Illuminate\Http\Request;
 
 class FichaSocialController extends Controller
@@ -40,7 +41,9 @@ class FichaSocialController extends Controller
 
     public function index5(){
 
-        return view('social.asistenteSocialAyudaTecnica');
-    }
+        $tipoAyudaTecnicoSocial = TipoAyudaTecnicoSocial::get();
+        return view('social.asistenteSocialAyudaTecnica')
+            ->with(compact('tipoAyudaTecnicoSocial'));
 
+    }
 }

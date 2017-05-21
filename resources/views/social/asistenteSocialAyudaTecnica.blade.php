@@ -98,87 +98,30 @@
                                                                                         </div>
                                                                                         <form>
                                                                                         <div class='col-md-12 form-group'>
+
                                                                                                 <fieldset id="tecnico">
-                                                                                                <label class='control-label' for='inputText'>Ayuda Técnica</label>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" id="sillaElectrica"> Silla Eléctrica
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="sillaEstandar"> Silla Estandar
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="sillaNeurologica"> Silla Neurológica
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="sillaActiva"> Silla Activa
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="baston"> Bastón
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="muleta"> Muleta
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="carroAndador"> Carro Andador
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="cojinAE"> Cojín AE
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="colchonAR"> Colchón AR
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="bañoPortatil"> Baño Portatil
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="sillaDucha"> Silla Ducha
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="banqueteTina"> Banquete de Tina
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="sitting"> Sitting
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="elemAlimento"> Elementos para Alimentación
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="elemVestuario"> Elementos para Vestuario
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="audifonos"> Audifonos
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="equipoComputacion"> Equipos Computacionales
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="otro"> Otros
-                                                                                                </div>
+                                                                                                        <label class='control-label' for='inputText'>Ayuda Técnica</label>
+                                                                                                        @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
+                                                                                                                @if ($tipoAyuda->tipo=='tecnico')
+                                                                                                                        <div class='controls'>
+                                                                                                                        <input type="radio" id="{{$tipoAyuda->id}}"> {{$tipoAyuda->nombre}}
+                                                                                                                        </div>
+                                                                                                                @endif
+                                                                                                        @endforeach
                                                                                                 </fieldset>
                                                                                                 <fieldset id="social">
-                                                                                                <label class='control-label' for='inputText'>Ayuda Social</label>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" id="pañal"> Pañales
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="medicamento"> Medicamentos
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="leche"> Leche
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="canasta"> Canasta de Alimentos
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="coaporte"> Coaportes
-                                                                                                </div>
-                                                                                                <div class='controls'>
-                                                                                                        <input type="radio" name="otras"> Otras
-                                                                                                </div>
-                                                                                                <div class='controls' id="contentVD" style="display: none;">
+                                                                                                        <label class='control-label' for='inputText'>Ayuda Social</label>
+                                                                                                        @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
+                                                                                                                @if ($tipoAyuda->tipo=='social')
+                                                                                                                        <div class='controls'>
+                                                                                                                                <input type="radio" id="{{$tipoAyuda->id}}"> {{$tipoAyuda->nombre}}
+                                                                                                                        </div>
+                                                                                                                @endif
+                                                                                                        @endforeach
+                                                                                                <div class='controls' id="contentVD">
                                                                                                         <div style="display: inline;">
                                                                                                                 <label for="inputText">Observación</label>
-                                                                                                                <textarea name="" id="" cols="40" rows="4"></textarea>
+                                                                                                                <textarea name="observacion" id="observacion" cols="40" rows="4"></textarea>
                                                                                                         </div>
                                                                                                 </div>
                                                                                                 <div class="form-group pull-right">
