@@ -457,15 +457,15 @@ class='contrast-red'
               <div class='col-md-12 form-group'>
                <label class='control-label' for='inputText'>Diagnóstico Médico</label>
                <div class='col-md-12 controls'>
-                 <textarea name="diagnostico" id="inputDiagnostico" class="form-control" rows="3"
-                 placeholder='Si no aplica, dejar en blanco.'<<<<<<<<<<<></textarea>
+                 <textarea name="diagnostico" value="{{ old('diagnostico') }}" id="inputDiagnostico" class="form-control" rows="3"
+                 placeholder='Si no aplica, dejar en blanco.'></textarea>
                </div>
              </div>
 
              <div class='col-md-12 form-group'>
                <label class='control-label' for='inputText'>Otras enfermedades o condiciones médicas</label>
                <div class='col-md-12 controls'>
-                 <input class='form-control' id='inputText' placeholder='Si no aplica, dejar en blanco.' type='text'>
+                 <input name="otras_enfermedades" value="{{ old('otras_enfermedades') }}" class='form-control' id='inputText' placeholder='Si no aplica, dejar en blanco.' type='text'>
                </div>
              </div>
 
@@ -473,7 +473,7 @@ class='contrast-red'
               <label class='control-label' for='inputText'>Dependencia</label>
               <div class='col-md-12 form-group'>
                 <div class='col-md-12'>
-                 <select name="tipo_dependencia_id" class='form-control permanente capitalize' id='inputSelect'>
+                 <select name="tipo_dependencia" class='form-control permanente capitalize' id='inputSelect'>
                    @foreach($dependencias as $dependencia)
                       <option value="{{$dependencia->id}}">{{$dependencia->nombre}}</option>
                    @endforeach

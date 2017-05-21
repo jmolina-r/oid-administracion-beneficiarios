@@ -112,7 +112,6 @@ class BeneficiarioController extends Controller
     {
         //Log::critical($request->input('beneficios'));
         // Log::critical('La descapacidad'.$request->input('tipo_discapacidad')['2']);
-        $fechaNacimiento = date('Y-m-d', strtotime(str_replace('/', '-', $request->input('fecha_nacimiento'))));
         // 0, 1, or 2. 0 inexistence, 1 exists, 2 waiting.
 
         // Validate Fields
@@ -127,7 +126,7 @@ class BeneficiarioController extends Controller
         $beneficiario = new Beneficiario([
             'nombre' => strtolower($request->input('nombres')),
             'apellido' => strtolower($request->input('apellidos')),
-            'fecha_nacimiento' => $fechaNacimiento,
+            'fecha_nacimiento' => date('Y-m-d', strtotime(str_replace('/', '-', $request->input('fecha_nacimiento')))),
             'sexo' => strtolower($request->input('sexo')),
             'rut' => $request->input('rut'),
             'pais_id' => $request->input('id_pais'),
@@ -136,8 +135,6 @@ class BeneficiarioController extends Controller
             'ocupacion_id' => $request->input('ocupacion')
         ]);
         $beneficiario->save();
-
-        Log::critical("ID del beneficiario ".$beneficiario->id);
 
         if($request->input('tel_fijo')) {
             $telefonoFijo = new TelefonoBeneficiario([
@@ -282,8 +279,14 @@ class BeneficiarioController extends Controller
             }
         }
 
-
-
+        $fichaDiscapacidad = new FichaDiscapacidad([
+            'requiere_cuidado' => $request->input('cuidados'),
+            'diagnostico' => $request->input('diagnostico'),
+            'otras_enfermedades' => $request->input('otras_enfermedades'),
+            'ficha_beneficiario_id' => $fichaBeneficiario->id,
+            'tipo_dependencia_id' => $request->input('tipo_dependencia')
+        ]);
+        $fichaDiscapacidad->save();
 
 
 
@@ -292,18 +295,7 @@ class BeneficiarioController extends Controller
         $email = $request->input('email');
 
 
-        $tipoPrevision = $request->input('prevision_radio');
-        $prevision = $request->input('prevision');
 
-        $sistemaProteccion = $request->input('sistema_proteccion');
-        $organizacionSocial = $request->input('organizacion_social');
-
-        $discapacidadVisualPorcentaje = $request->input('discapacidad_visual_porcentaje');
-        $discapacidadCogniticaPorcentaje = $request->input('discapacidad_cognitiva_porcentaje');
-        $discapacidadPsiquicaPorcentaje = $request->input('discapacidad_psiquica_porcentaje');
-        $discapacidadSensVisualPorcentaje = $request->input('discapacidad_sens_visual_porcentaje');
-        $discapacidadSensAuditivaPorcentaje = $request->input('discapacidad_sens_auditiva_porcentaje');
-        $diacapacidadSocialPorcentaje = $request->input('discapacidad_social_porcentaje');
         $diagnostico = $request->input('diagnostico');
         $tipoDependenciaId = $request->input('tipo_dependencia_id');
         $cuidados = $request->input('cuidados');
@@ -400,6 +392,9 @@ class BeneficiarioController extends Controller
             'fonasa' => 'required_if:sistema_salud,fonasa|exists:fonasas,id',
             'isapre' => 'required_if:sistema_salud,isapre|exists:isapres,id',
             'prevision' => 'nullable|exists:previsions,id',
+            'tipo_dependencia' => 'required|exists:tipo_dependencias,id',
+            'cuidados' => 'required|numeric|between:0,1',
+            'otras_enfermedades' => 'nullable'
         ];
 
         foreach($request->input('tipo_discapacidad') as $key => $val)
