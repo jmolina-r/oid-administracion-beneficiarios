@@ -50,6 +50,11 @@
     <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
     <!-- / END - page related files and scripts [optional] -->
+    <script type="text/javascript">
+        function showContent() {
+
+        }
+    </script>
 @endsection
 
 <!-- Contenido del body -->
