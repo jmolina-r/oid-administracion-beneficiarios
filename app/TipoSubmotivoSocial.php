@@ -10,6 +10,6 @@ class TipoSubmotivoSocial extends Model
 
     public function submotivo_atencion_social()
     {
-        return $this->hasMany(MotivoAtencionSocial::class);
+        return $this->hasMany(SubMotivoAtencionSocial::class);
     }
 }

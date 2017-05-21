@@ -11,7 +11,7 @@ class TipoSubmotivoSocialTableSeeder extends Seeder
      */
     public function run()
     {
-        $tipoSubmotivoSocial = new \App\TipoMotivoSocial([
+        $tipoSubmotivoSocial = new \App\TipoSubmotivoSocial([
             'nombre' => 'credencial discapacidad'
         ]);
         $tipoSubmotivoSocial->save();
