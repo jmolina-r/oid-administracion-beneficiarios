@@ -72,6 +72,15 @@ $factory->define(App\FichaAtencionSocial::class, function (Faker\Generator $fake
     ];
 });
 
+$factory->define(App\TipoSubmotivoSocial::class, function (Faker\Generator $faker) {
+
+    return [
+        'nombre' => $faker->regexify('[0-9]{8}'),
+
+        'ficha_atencion_social_id' => $faker->numberBetween($min = 1, $max = 10),
+    ];
+});
+
 $factory->define(App\MotivoAtencionSocial::class, function (Faker\Generator $faker) {
 
     return [
