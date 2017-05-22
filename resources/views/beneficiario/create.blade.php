@@ -413,7 +413,7 @@ class='contrast-red'
                  <div class='col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group'>
                    <label class='control-label' for='inputText'>Sistema de protección</label>
                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 controls'>
-                      <select style="width: 100%;" name='sistema_proteccion' class='form-control capitalize' id='sistema-proteccion-tags' multiple='multiple' data-placeholder='Seleccione o agregue sistemas de proteccion'>
+                      <select style="width: 100%;" name='sistema_proteccion' class='form-control capitalize' id='sistema-proteccion-tags' data-placeholder='Seleccione o agregue sistemas de proteccion'>
                           @foreach($datos_sociales as $dato_social)
                               <option value="{{$dato_social->id}}">{{$dato_social->nombre}}</option>
                           @endforeach
