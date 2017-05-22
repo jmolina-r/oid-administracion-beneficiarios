@@ -97,7 +97,7 @@
                                     <div class='box-content box-padding'>
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                <form action="{{route('social.asistenteSocialBeneficiario')}}" method="post" accept-charset="utf-8">
+                                                <form action="{{route('social.asistenteSocial')}}" method="post" accept-charset="utf-8">
                                                     {!!csrf_field()!!}
                                                     <div class='col-md-12 form-group'>
                                                         <fieldset id="social">
@@ -109,7 +109,7 @@
                                                             @endforeach
                                                             <div class="form-group pull-right">
                                                                 <div class="col-sm-12 col-offset-2">
-                                                                    <button type="submit" class="btn btn-success">Aceptar</button>
+                                                                    <button type="submit" class="btn btn-success" onclick = "confirm('¿Realmente desea registrar esta atención?')">Aceptar</button>
                                                                     <button type="submit" class="btn btn-prev">Volver</button>
                                                                 </div>
                                                             </div>

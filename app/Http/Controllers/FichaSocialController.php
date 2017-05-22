@@ -49,8 +49,6 @@ class FichaSocialController extends Controller
         $tipoAyudaTecnicoSocial = TipoAyudaTecnicoSocial::get();
         return view('social.asistenteSocialAyudaTecnica')
             ->with(compact('tipoAyudaTecnicoSocial'));
-
-
     }
 
     public function postMotivo(Request $request){
@@ -63,6 +61,7 @@ class FichaSocialController extends Controller
                 'ficha_atencion_social_id' => '1',
                 'tipo_motivo_social_id' => '1'
             ]);
+            $idMotivo = $motivoSocial->id;
             $motivoSocial->save();
 
             for($i=0;$i<count($subMotivos);$i++){
@@ -70,24 +69,16 @@ class FichaSocialController extends Controller
                 $submotivoSocial = new \App\SubMotivoAtencionSocial([
 
                     'tipo_motivo_social_id' => '1',
-                    'fecha' => '2017-05-22',
+                    'fecha' => '2017-05-23',
                     'observacion' => 'sin observación',
-                    'motivo_atencion_social_id' => '1',
+                    'motivo_atencion_social_id' => $motivoSocial->id,
                     'tipo_submotivo_social_id' => $subMotivos[$i]
 
                 ]);
                 $submotivoSocial->save();
 
             }
-        }
-        /*if(isset($beneficiario)){
-            return view('social.asistenteSocialMenu', compact('beneficiario'));
-        }else{
-            echo 'cantidad de submotivos: ' + count($subMotivos);
-
             return view('social.asistenteSocial');
-        }*/
-
-
+        }
     }
 }

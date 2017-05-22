@@ -50,7 +50,7 @@ Route::group(['prefix' => 'areasocial'], function(){
 
     Route::post('/asistentesocial/menu/orientacion', [
         'uses' => 'FichaSocialController@postMotivo',
-        'as' => 'social.asistenteSocialBeneficiario'
+        'as' => 'social.asistenteSocial'
     ]);
     
 });
