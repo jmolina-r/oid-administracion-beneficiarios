@@ -47,6 +47,11 @@ Route::group(['prefix' => 'areasocial'], function(){
         'uses' => 'FichaSocialController@index5',
         'as' => 'social.asistenteSocialAyudaTecnica'
     ]);
+
+    Route::post('/asistentesocial/menu/orientacion', [
+        'uses' => 'FichaSocialController@postMotivo',
+        'as' => 'social.asistenteSocialBeneficiario'
+    ]);
     
 });
 

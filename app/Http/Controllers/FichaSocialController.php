@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Beneficiario;
+use App\MotivoAtencionSocial;
+use App\SubMotivoAtencionSocial;
 use App\TipoAyudaTecnicoSocial;
 use App\TipoSubmotivoSocial;
 use Illuminate\Http\Request;
@@ -47,6 +49,44 @@ class FichaSocialController extends Controller
         $tipoAyudaTecnicoSocial = TipoAyudaTecnicoSocial::get();
         return view('social.asistenteSocialAyudaTecnica')
             ->with(compact('tipoAyudaTecnicoSocial'));
+
+
+    }
+
+    public function postMotivo(Request $request){
+
+        $subMotivos = $request -> input('inputSubMotivo');
+
+        if(isset($subMotivos)){
+
+            $motivoSocial = new \App\MotivoAtencionSocial([
+                'ficha_atencion_social_id' => '1',
+                'tipo_motivo_social_id' => '1'
+            ]);
+            $motivoSocial->save();
+
+            for($i=0;$i<count($subMotivos);$i++){
+
+                $submotivoSocial = new \App\SubMotivoAtencionSocial([
+
+                    'tipo_motivo_social_id' => '1',
+                    'fecha' => '2017-05-22',
+                    'observacion' => 'sin observación',
+                    'motivo_atencion_social_id' => '1',
+                    'tipo_submotivo_social_id' => $subMotivos[$i]
+
+                ]);
+                $submotivoSocial->save();
+
+            }
+        }
+        /*if(isset($beneficiario)){
+            return view('social.asistenteSocialMenu', compact('beneficiario'));
+        }else{
+            echo 'cantidad de submotivos: ' + count($subMotivos);
+
+            return view('social.asistenteSocial');
+        }*/
 
 
     }

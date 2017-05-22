@@ -16,7 +16,7 @@ class CreateSubMotivoAtencionSocialsTable extends Migration
         Schema::create('sub_motivo_atencion_socials', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('nombre');
+            //$table->string('nombre');
             $table->date('fecha');
             $table->string('observacion');
 

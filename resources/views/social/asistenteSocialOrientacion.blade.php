@@ -103,11 +103,9 @@
                                                         <fieldset id="social">
                                                             <label class='control-label' for='inputText'>Motivo de orientación</label>
                                                             @foreach($tipoSubmotivoSocial as $tipoSubmotivo)
-
                                                                 <div class='controls'>
-                                                                    <input type="checkbox" name="$tipoSubmotivo" id="{{$tipoSubmotivo->id}}">{{$tipoSubmotivo->nombre}}</label>
+                                                                    <input type="checkbox" name="inputSubMotivo[]" id="inputSubMotivo" value="{{$tipoSubmotivo->id}}">{{$tipoSubmotivo->nombre}}</label>
                                                                 </div>
-
                                                             @endforeach
                                                             <div class="form-group pull-right">
                                                                 <div class="col-sm-12 col-offset-2">

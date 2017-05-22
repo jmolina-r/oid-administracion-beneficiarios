@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SubMotivoAtencionSocial extends Model
 {
-    protected $fillable=['nombre','fecha','observacion','motivo_atencion_social_id','tipo_submotivo_social_id'];
+    protected $fillable=['fecha','observacion','motivo_atencion_social_id','tipo_submotivo_social_id'];
 
     public function motivo_atencion_social(){
 
