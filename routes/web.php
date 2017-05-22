@@ -40,7 +40,7 @@ Route::group(['prefix' => '/medica'], function (){
 
         Route::group(['prefix' => '/kinesiologia'], function (){
 
-            Route::get('/ingresar', [
+            Route::get('/ingresar/{id}', [
                 'uses' => 'FichaKinesiologiaController@getIngresar',
                 'as' => 'medica.ficha-evaluacion-inicial.kinesiologia.ingresar'
             ]);
@@ -48,11 +48,6 @@ Route::group(['prefix' => '/medica'], function (){
             Route::post('/ingresar', [
                 'uses' => 'FichaKinesiologiaController@postIngresar',
                 'as' => 'medica.ficha-evaluacion-inicial.kinesiologia.ingresar'
-            ]);
-
-            Route::get('/mostrar-lista', [
-                'uses' => 'FichaKinesiologiaController@getMostrarLista',
-                'as' => 'medica.ficha-evaluacion-inicial.kinesiologia.mostrar-lista'
             ]);
         });
     });

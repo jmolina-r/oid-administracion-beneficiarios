@@ -26,9 +26,10 @@ class FichaKinesiologiaController extends Controller
      *
      * @return view
      */
-    public function getIngresar()
+    public function getIngresar($id)
     {
-        return view('medica.ficha-evaluacion-inicial.kinesiologia.ingresar');
+        return view('medica.ficha-evaluacion-inicial.kinesiologia.ingresar')
+            ->with(compact('id'));
     }
 
     /**
@@ -39,13 +40,9 @@ class FichaKinesiologiaController extends Controller
     public function postIngresar(Request $request)
     {
         $this->validate($request, [
-            'rut' => 'required|exists:beneficiarios',
+            'id' => 'required|exists:beneficiarios',
 
         ]);
-
-
-        //Obtener el beneficiario segun el rut
-        $beneficiario = Beneficiario::where('rut', $request->input('rut'))->get();
 
         //obtener el kinesiologo por su sesion
         /*
@@ -173,7 +170,7 @@ class FichaKinesiologiaController extends Controller
                 'val_control_esfinter_id' => $valControlEsfinter->id,
                 //'kinesiologo_id' => $kinesiologo->id,
                 'kinesiologo_id' => '1', //provisional, kinesiologo no esta implementado
-                'beneficiario_id' => $beneficiario->last()->id,
+                'beneficiario_id' => $request->input('id'),
                 //'beneficiario_id' => '1',
             ]);
             $fichaKinesiologia->save();
@@ -183,7 +180,9 @@ class FichaKinesiologiaController extends Controller
             //procedimiento en caso de reportar errores
 
         }
-        return redirect()->route('medica.ficha-evaluacion-inicial.kinesiologia.ingresar');
+        $id = $request->input('id');
+        return view('medica.ficha-evaluacion-inicial.kinesiologia.ingresar')
+            ->with(compact('id'));
     }
 
     /**
