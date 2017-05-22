@@ -10,6 +10,6 @@ class Kinesiologo extends Model
 
     public function ingresoKinesiologia()
     {
-        return $this->hasOne(FichaKinesiologia::class);
+        return $this->hasMany(FichaKinesiologia::class);
     }
 }
