@@ -16,6 +16,10 @@ class CreateAntecedentesSaludsTable extends Migration
         Schema::create('antecedentes_saluds', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('tiempo_gestacional')->nullable();
+            $table->string('tipo_parto')->nullable();
+            $table->string('enfermedades_natal_sn')->nullable();
+            $table->string('observaciones_enfermedades')->nullable();
         });
     }
 

@@ -16,6 +16,12 @@ class CreateTerapeutaOcupacionalsTable extends Migration
         Schema::create('terapeuta_ocupacionals', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('rut');
+            $table->string('nombres');
+            $table->string('apellidos');
+            $table->string('telefono');
+            $table->date('fecha_nacimiento');
+            $table->string('direccion');
         });
     }
 

@@ -16,6 +16,16 @@ class CreateAntecedentesSocioFamiliaresTable extends Migration
         Schema::create('antecedentes_socio_familiares', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('nombre_madre')->nullable();
+            $table->string('edad_madre')->nullable();
+            $table->string('ocupacion_madre')->nullable();
+            $table->string('escolaridad_madre')->nullable();
+            $table->string('horario_trabajo_madre')->nullable();
+            $table->string('nombre_padre')->nullable();
+            $table->string('edad_padre')->nullable();
+            $table->string('ocupacion_padre')->nullable();
+            $table->string('escolaridad_padre')->nullable();
+            $table->string('horario_trabajo_padre')->nullable();
         });
     }
 
