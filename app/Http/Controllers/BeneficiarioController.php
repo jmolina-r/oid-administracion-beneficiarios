@@ -2,6 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Beneficiario;
+use App\FichaDiscapacidad;
+use App\Fonasa;
+use App\Isapre;
+use App\Pais;
+use App\Educacion;
+use App\EstadoCivil;
+use App\Ocupacion;
+use App\OrganizacionSocial;
+use App\RegistroSocialHogar;
+use App\SistemaProteccion;
+use App\Telefono;
+use App\Tutor;
+use App\FichaBenefeciario;
+use App\TipoDependencia;
+
+
 
 use Illuminate\Http\Request;
 
@@ -32,28 +49,35 @@ class BeneficiarioController extends Controller
          */
 
         //Lista de Paises
-        $paises = collect();
+        $paises = Pais::get();
 
         //Lista de Estados Civiles
-        $estados_civiles = collect();
+        $estados_civiles = EstadoCivil::get();
 
         //Situacin actual, cesante, estudiante, etc...
-        $situaciones = collect();
+        $situaciones = Ocupacion::get();
 
         //Niveles de educacion, basico, universitario, etc...
-        $niveles_educacion = collect();
+        $niveles_educacion = Educacion::get();
 
         //Dependencias del paciente
-        $dependencias = collect();
+        $dependencias = TipoDependencia::get();
+
+        $fonasa = Fonasa::get();
+
+        $isapre = Isapre::get();
 
 
         return view('beneficiario.create')
-        ->with(compact('paises'))
-        ->with(compact('estados_civiles'))
-        ->with(compact('previsiones'))
-        ->with(compact('situaciones'))
-        ->with(compact('niveles_educacion'))
-        ->with(compact('dependencias'));
+            ->with(compact('paises'))
+            ->with(compact('estados_civiles'))
+            ->with(compact('previsiones'))
+            ->with(compact('situaciones'))
+            ->with(compact('niveles_educacion'))
+            ->with(compact('dependencias'))
+            ->with(compact('fonasa'))
+            ->with(compact('isapre'));
+
     }
 
     /**
@@ -61,48 +85,56 @@ class BeneficiarioController extends Controller
      *
      * @return Response
      */
-    public function store($response, $request)
+    public function store(Request $request)
     {
-        $nombre = $request->nombres;
-        $apellido = $request->apellidos;
-        $rut = $request->rut;
-        $idPais = $request->id_pais;
-        $fechaNacimiento = $request->fecha_nacimiento;
-        $sexo = $request->sexo;
-        $estadoCivil = $request->estado_civil_id;
-        $domicilioCalle = $request->domicilio_calle;
-        $domicilioNumero = $request->domicilio_numero;
-        $domicilioDepto = $request->domicilio_depto;
-        $domicilioPoblacion = $request->domicilio_poblacion;
-        $telefonoFijo = $request->tel_fijo;
-        $telefonoMovil = $request->tel_movil;
-        $email = $request->email;
-        $credencialDiscapacidad = $request->credencial_discapacidad;
-        $credencialVencimiento = $request->credencial_vencimiento;
-        $registroSocialHogares = $request->registro_social_hogares;
-        $registroSocialPorcentaje = $request->registro_social_porcentaje;
-        $tutorNombre = $request->tutor_nombre;
-        $tutorApellido = $request->tutor_apellido;
-        $tutorFono = $request->tutor_fono;
+        $beneficiario = new Beneficiario([
+            'nombre' => $request->input('nombres'),
+            'apellido' => $request->input('apellidos'),
+            'rut' => $request->input('rut'),
+            'sexo' => $request->input('sexo'),
+            'pais_id' => $request->input('id_pais'),
 
-        $sistema = $request->sistema;
-        $sistemaSalud = $request->sistema_salud;
-        $tipoPrevision = $request->prevision_radio;
-        $prevision = $request->prevision;
-        $nivelEducacion = $request->nivel_educacion;
-        $sistemaProteccion = $request->sistema_proteccion;
-        $organizacionSocial = $request->organizacion_social;
+            'educacion_id' => $request->input('nivel_educacion'),
+            
+        ]);
+        $beneficiario->save();
 
-        $discapacidadVisualPorcentaje = $request->discapacidad_visual_porcentaje;
-        $discapacidadCogniticaPorcentaje = $request->discapacidad_cognitiva_porcentaje;
-        $discapacidadPsiquicaPorcentaje = $request->discapacidad_psiquica_porcentaje;
-        $discapacidadSensVisualPorcentaje = $request->discapacidad_sens_visual_porcentaje;
-        $discapacidadSensAuditivaPorcentaje = $request->discapacidad_sens_auditiva_porcentaje;
-        $diacapacidadSocialPorcentaje = $request->discapacidad_social_porcentaje;
-        $diagnostico = $request->diagnostico;
-        $tipoDependenciaId = $request->tipo_dependencia_id;
-        $cuidados = $request->cuidados;
-        $planDeRehabilitacionTratamientoControl= $request->p_reha_trat_ctrl;
+
+        $domicilioCalle = $request->input('domicilio_calle');
+        $domicilioNumero = $request->input('domicilio_numero');
+        $domicilioDepto = $request->input('domicilio_depto');
+        $domicilioPoblacion = $request->input('domicilio_poblacion');
+        $telefonoFijo = $request->input('tel_fijo');
+        $telefonoMovil = $request->input('tel_movil');
+        $email = $request->input('email');
+        $credencialDiscapacidad = $request->input('credencial_discapacidad');
+        $credencialVencimiento = $request->input('credencial_vencimiento');
+        $registroSocialHogares = $request->input('registro_social_hogares');
+        $registroSocialPorcentaje = $request->input('registro_social_porcentaje');
+        $tutorNombre = $request->input('tutor_nombre');
+        $tutorApellido = $request->input('tutor_apellido');
+        $tutorFono = $request->input('tutor_fono');
+
+        $sistema = $request->input('sistema');
+        $sistemaSalud = $request->input('sistema_salud');
+        $tipoPrevision = $request->input('prevision_radio');
+        $prevision = $request->input('prevision');
+
+        $sistemaProteccion = $request->input('sistema_proteccion');
+        $organizacionSocial = $request->input('organizacion_social');
+
+        $discapacidadVisualPorcentaje = $request->input('discapacidad_visual_porcentaje');
+        $discapacidadCogniticaPorcentaje = $request->input('discapacidad_cognitiva_porcentaje');
+        $discapacidadPsiquicaPorcentaje = $request->input('discapacidad_psiquica_porcentaje');
+        $discapacidadSensVisualPorcentaje = $request->input('discapacidad_sens_visual_porcentaje');
+        $discapacidadSensAuditivaPorcentaje = $request->input('discapacidad_sens_auditiva_porcentaje');
+        $diacapacidadSocialPorcentaje = $request->input('discapacidad_social_porcentaje');
+        $diagnostico = $request->input('diagnostico');
+        $tipoDependenciaId = $request->input('tipo_dependencia_id');
+        $cuidados = $request->input('cuidados');
+        $planDeRehabilitacionTratamientoControl= $request->input('p_reha_trat_ctrl');
+
+        return view('beneficiario.show')->with('id', '1');
     }
 
     /**

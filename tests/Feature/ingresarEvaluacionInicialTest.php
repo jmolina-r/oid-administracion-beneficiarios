@@ -13,7 +13,7 @@ use App\Beneficiario;
 
 class ingresarEvaluacionInicialTest extends TestCase
 {
-    use DatabaseMigrations;
+    //use DatabaseMigrations;
     /**
      * Prueba si se puede crear ingresar una evaluación inicial de kinesiologia.
      * @test
@@ -22,7 +22,7 @@ class ingresarEvaluacionInicialTest extends TestCase
     public function ingresarEvaluacionInicial()
     {
 
-        $this->artisan("db:seed");
+        //$this->artisan("db:seed");
         $beneficiarios = Beneficiario::all();
 
 
@@ -41,7 +41,7 @@ class ingresarEvaluacionInicialTest extends TestCase
             ->type('no','asiste_centro_rhb')
             ->type('solo','motivo_consulta')
             ->type('12','puntaje_alimentacion')
-            ->type('ninguno','coment_aimentacion')
+            ->type('ninguno','coment_alimentacion')
             ->type('23','puntaje_arreglo_pers')
             ->type('ninguno','coment_arreglo_pers')
             ->type('12','puntaje_bano')
@@ -91,7 +91,7 @@ class ingresarEvaluacionInicialTest extends TestCase
             ->type('21','coordinacion')
             ->type('21','equilibrio')
             ->press('Finalizar')
-            ->seeInDatabase('ficha_kinesiologias',['id'=>'6']);
+            ->seeInDatabase('ficha_kinesiologias',['id'=>'13']);
 
 
     }

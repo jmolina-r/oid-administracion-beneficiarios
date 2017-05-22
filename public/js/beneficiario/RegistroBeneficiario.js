@@ -1,6 +1,11 @@
 /**
  * Created by Alfredo Viccenzo on 09-05-2017.
  */
+ $("#sistemaSaludSelec input[type='radio']").change(function() {
+     if(this.value == 'f') {
+     } else if(this.value == 'i') {
+     }
+ });
 
 $('#formulario-registro').validator();
 
@@ -20,6 +25,7 @@ $('#myWizard').wizard().on('actionclicked.fu.wizard', function (e, data) {
         $('#formulario-registro').submit();
     }
 });
+
 
 
 

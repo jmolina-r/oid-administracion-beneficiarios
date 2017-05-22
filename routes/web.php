@@ -16,13 +16,31 @@ Route::get('/', [
     'as' => 'user.login'
 ]);
 
+
+Route::group(['prefix' => 'areasocial'], function(){
+    Route::get('/asistentesocial', [
+    'uses' => 'FichaSocialController@index',
+    'as' => 'social.asistenteSocial'
+    ]);
+    
+    Route::post('/asistentesocial/beneficiario', [
+    'uses' => 'FichaSocialController@store',
+    'as' => 'social.asistenteSocialBeneficiario'
+    ]);
+
+    Route::get('/asistentesocial/menu/visita', [
+    'uses' => 'FichaSocialController@index2',
+    'as' => 'social.asistenteSocialVisitaDomiciliaria'
+    ]);
+});
+
 Route::group(['prefix' => '/medica'], function (){
 
     Route::group(['prefix' => '/ficha-evaluacion-inicial'], function (){
 
         Route::group(['prefix' => '/kinesiologia'], function (){
 
-            Route::get('/ingresar', [
+            Route::get('/ingresar/{id}', [
                 'uses' => 'FichaKinesiologiaController@getIngresar',
                 'as' => 'medica.ficha-evaluacion-inicial.kinesiologia.ingresar'
             ]);
@@ -30,11 +48,6 @@ Route::group(['prefix' => '/medica'], function (){
             Route::post('/ingresar', [
                 'uses' => 'FichaKinesiologiaController@postIngresar',
                 'as' => 'medica.ficha-evaluacion-inicial.kinesiologia.ingresar'
-            ]);
-
-            Route::get('/mostrar-lista', [
-                'uses' => 'FichaKinesiologiaController@getMostrarLista',
-                'as' => 'medica.ficha-evaluacion-inicial.kinesiologia.mostrar-lista'
             ]);
         });
 
@@ -84,6 +97,11 @@ Route::group(['prefix' => 'beneficiario'], function () {
         'as' => 'beneficiario.create'
     ]);
 
+    Route::post('/registrar', [
+        'uses' => 'BeneficiarioController@store',
+        'as' => 'beneficiario.store'
+    ]);
+
     Route::get('/editar/{id}', [
         'uses' => 'BeneficiarioController@edit',
         'as' => 'beneficiario.edit'
@@ -104,3 +122,4 @@ Route::group(['prefix' => 'beneficiario'], function () {
         'as' => 'beneficiario.store'
     ]);
 });
+
