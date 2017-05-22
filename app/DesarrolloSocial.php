@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DesarrolloSocial extends Model
 {
-    protected $fillable = ['respeta_normas', 'comparte_juguetes', 'juega_otros', 'carinoso', 'berinches', 'frustra_facil',
+    protected $fillable = ['respeta_normas', 'comparte_juguetes', 'juega_otros', 'carinoso', 'berrinches', 'frustra_facil',
         'irritable', 'agresivo', 'peleador', 'intereses', 'observaciones'];
 
     public function ingresoFonoaudiologia()
