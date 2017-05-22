@@ -131,8 +131,8 @@ class='contrast-red'
                           Volver
                         </button>
                       </div>
-                      <hr class='hr-normal'>                  
-                      <form role="form" id="formulario-registro" action="/registrar" accept-charset="UTF-8" style="margin-bottom: 0;" method="get"><div class='step-content'>
+                      <hr class='hr-normal'>
+                      <form role="form" id="formulario-registro" action="{{route('beneficiario.store')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post"><div class='step-content'>
                         <!-- STEP 1 -->
                         <div class='step-pane active' data-step='1'>
 
@@ -147,7 +147,7 @@ class='contrast-red'
                           <div class='col-md-12 form-group'>
                             <label class='control-label' for='inputText'>Apellidos</label>
                             <div class='controls'>
-                              <input name='apellidos' class='form-control' id='inputText' placeholder='Apellidos' type='text' required> 
+                              <input name='apellidos' class='form-control' id='inputText' placeholder='Apellidos' type='text' required>
                               <div class="help-block with-errors"></div>
                             </div>
                           </div>
@@ -165,7 +165,7 @@ class='contrast-red'
                           <div class='col-md-12'>
                             <select name='id_pais' class='form-control' id='inputSelect'>
                               @foreach($paises as $pais)
-                                <option value="{{$pais->id_pais}}">{{$pais->nombre}}</option>
+                                <option value="{{$pais->id}}">{{$pais->nombre}}</option>
                               @endforeach
                             </select>
                           </div>
@@ -203,7 +203,7 @@ class='contrast-red'
                            <select name='estado_civil_id' class='form-control' id='inputSelect'>
                                <option value="">Seleccionar...</option>
                               @foreach($estados_civiles as $estado_civil)
-                                <option value="{{$estado_civil->id_estado_civil}}">{{$estado_civil->descripcion}}</option>
+                                <option value="{{$estado_civil->id}}">{{$estado_civil->nombre}}</option>
                               @endforeach
                            </select>
                          </div>
@@ -326,7 +326,7 @@ class='contrast-red'
                         <label class='control-label' for='inputText'>Sistema de Salud</label>
 
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-                            <div class='col-md-12'>
+                            <div id="sistemaSaludSelec" class='col-md-12'>
                               <label style="margin-top: 0px;" class='radio radio-inline'>
                                 <input name='sistema' type='radio' value='f' required>
                                 Fonasa
@@ -341,7 +341,13 @@ class='contrast-red'
 
                           <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                              <select name='sistema_salud' class='form-control' id='inputSelect'>
-                                <option value=''>Seleccionar sistema...</option>
+                                <div id="fonasaSelect">
+                                    @foreach($fonasa as $fona)
+                                      <option value="{{$fona->id}}">{{$fona->tramo}}</option>
+                                    @endforeach
+                                </div>
+
+
                                <!-- Este select se debe llenar con ajax dependiendo del boton anteriorr seleccionado-->
                              </select>
                           </div>
@@ -365,7 +371,7 @@ class='contrast-red'
                           </label>
                             <div class="help-block with-errors"></div>
                         </div>
-                        
+
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                            <select name='prevision' class='form-control' id='inputSelect'>
                               <option value=''>Seleccionar sistema...</option>
@@ -380,7 +386,7 @@ class='contrast-red'
                       <div class='col-md-12'>
                        <select name='nivel_educacion' class='form-control' id='inputSelect'>
                          @foreach($niveles_educacion as $nivel_educacion)
-                            <option value="{{$prevision->id_prevision}}">{{$prevision->descripcion}}</option>
+                            <option value="{{$nivel_educacion->id}}">{{$nivel_educacion->nombre}}</option>
                          @endforeach
                        </select>
                      </div>
@@ -393,7 +399,7 @@ class='contrast-red'
                       <div class='col-md-12'>
                        <select class='form-control' id='inputSelect'>
                           @foreach($situaciones as $situacion)
-                              <option value="{{$situacion->id_situacion}}">{{$situacion->descripcion}}</option>
+                              <option value="{{$situacion->id}}">{{$situacion->nombre}}</option>
                           @endforeach
                        </select>
                      </div>
@@ -505,7 +511,7 @@ class='contrast-red'
                 <div class='col-md-12'>
                  <select name="tipo_dependencia_id" class='form-control' id='inputSelect'>
                    @foreach($dependencias as $dependencia)
-                      <option value="{{$dependencia->id_tipo_dependencia}}">{{$dependencia->nombre}}</option>
+                      <option value="{{$dependencia->id}}">{{$dependencia->nombre}}</option>
                    @endforeach
                  </select>
                </div>
@@ -537,6 +543,7 @@ class='contrast-red'
          </div>
        </div>
      </div>
+     {{ csrf_field() }}
    </form>
  </div>
 </div>
