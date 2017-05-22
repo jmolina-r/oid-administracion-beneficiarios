@@ -25,7 +25,7 @@ class CreateFichaFonoaudiologiaTable extends Migration
             $table->integer('desarrollo_psicomotor_edades_id')->unsigned();
             $table->integer('desarrollo_social_fono_id')->unsigned();
             $table->integer('antecedentes_morbidos_sino_fono_id')->unsigned();
-            $table->integer('antecedentes_morbidos_familiares_si_no_fonos_id')->unsigned();
+            $table->integer('ant_morb_familiares_si_no_fonos_id')->unsigned();
             $table->integer('antecedentes_postnatales_fonos_id')->unsigned();
             $table->integer('desarrollo_lenguaje_edades_id')->unsigned();
             $table->integer('fonoaudiologos_id')->unsigned();
@@ -60,7 +60,7 @@ class CreateFichaFonoaudiologiaTable extends Migration
         });
 
         Schema::table('ficha_fonoaudiologia', function($table) {
-            $table->foreign('antecedentes_morbidos_familiares_si_no_fonos_id')->references('id')->on('antecedentes_morbidos_familiares_si_no_fonos');
+            $table->foreign('ant_morb_familiares_si_no_fonos_id')->references('id')->on('antecedentes_morbidos_familiares_si_no_fonos');
         });
 
         Schema::table('ficha_fonoaudiologia', function($table) {
