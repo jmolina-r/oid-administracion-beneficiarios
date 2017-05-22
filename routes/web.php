@@ -68,6 +68,24 @@ Route::group(['prefix' => '/medica'], function (){
                 'as' => 'medica.ficha-evaluacion-inicial.fonoaudiologia.mostrar-lista'
             ]);
         });
+
+        Route::group(['prefix' => '/terapia-ocupacional'], function (){
+
+            Route::get('/ingresar', [
+                'uses' => 'FichaTerapiaOcupacionalController@getIngresar',
+                'as' => 'medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
+            ]);
+
+            Route::post('/ingresar', [
+                'uses' => 'FichaTerapiaOcupacionalController@postIngresar',
+                'as' => 'medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
+            ]);
+
+            Route::get('/mostrar-lista', [
+                'uses' => 'FichaTerapiaOcupacionalController@getMostrarLista',
+                'as' => 'medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista'
+            ]);
+        });
     });
 });
 

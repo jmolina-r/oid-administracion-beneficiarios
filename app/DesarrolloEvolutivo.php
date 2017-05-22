@@ -1,14 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Claudio Gonzalez
- * Date: 21-05-2017
- * Time: 19:38
- */
 
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+
 class DesarrolloEvolutivo extends Model
 {
     //sn=si/no

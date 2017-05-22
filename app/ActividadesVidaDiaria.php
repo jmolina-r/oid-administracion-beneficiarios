@@ -1,14 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Claudio Gonzalez
- * Date: 21-05-2017
- * Time: 18:05
- */
 
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+
 class ActividadesVidaDiaria extends Model
 {
     //pueden tomar los valores P,E y D

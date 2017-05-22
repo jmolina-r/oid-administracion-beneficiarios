@@ -1,15 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Claudio Gonzalez
- * Date: 21-05-2017
- * Time: 15:36
- */
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 
-class FichaTerapiaOcupacional
+class FichaTerapiaOcupacional extends Model
 {
     protected $fillable = ['diagnostico_base','motivo_consulta','derivado_por','relacion_paciente', 'observaciones_generales', 'actividades_vida_diaria_id','antecedentes_salud_id','antecedentes_socio_familiares_id','desarrollo_evolutivo_id','habilidades_sociales_id' ,'historial_clinico_id' ,'terapeuta_ocupacional_id','beneficiario_id'];
 
@@ -52,5 +47,4 @@ class FichaTerapiaOcupacional
     {
         return $this->belongsTo(Beneficiario::class);
     }
-
 }
