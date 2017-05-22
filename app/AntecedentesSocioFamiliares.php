@@ -1,14 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Claudio Gonzalez
- * Date: 21-05-2017
- * Time: 17:49
- */
 
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+
 class AntecedentesSocioFamiliares extends Model
 {
     //FALTA GENOGRAMA
