@@ -61,6 +61,7 @@ class='contrast-red'
    <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
    <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
    <script src="{{ asset('/js/beneficiario/RegistroBeneficiario.js') }}" type="text/javascript"></script>
+   <script src="{{ asset('/assets/javascripts/plugins/charCount/charCount.js') }}" type="text/javascript"></script>
   <!-- / END - validaciones-->
    <!-- / START Vista para llenado de select dinamicos -->
    @include('partials.dropdown')
@@ -431,6 +432,14 @@ class='contrast-red'
                  </div>
                </div>
 
+              <div class='col-sm-12'>
+                <div class='box'>
+                  <label class='control-label' for='inputText'>Observación General</label>
+                  <div class='box-content'>
+                    <textarea name="observacion_general" class='char-counter form-control' data-char-allowed='200' data-char-warning='10' placeholder='Ingrese una observación general...' rows='3' style='margin-bottom:10px;' value="{{ old('observacion_general') }}" "></textarea>
+                  </div>
+                </div>
+              </div>
              </div>
 
 
@@ -441,7 +450,7 @@ class='contrast-red'
                 <label class='col-md-12 control-label' for='inputText'>Tipo de Discapacidad</label>
 
                 @foreach ($tipo_discapacidades as $tipo_discapacidad)
-                    <div class='form-group col-md-6'>
+                    <div class='form-group col-md-12 col-lg-6'>
                       <div class='input-group'>
                         <span class='capitalize input-group-addon'>
                           {{$tipo_discapacidad->nombre}}
@@ -454,36 +463,38 @@ class='contrast-red'
 
               </div>
 
-              <div class='col-md-12 form-group'>
-               <label class='control-label' for='inputText'>Diagnóstico Médico</label>
-               <div class='col-md-12 controls'>
-                 <textarea name="diagnostico" value="{{ old('diagnostico') }}" id="inputDiagnostico" class="form-control" rows="3"
-                 placeholder='Si no aplica, dejar en blanco.'></textarea>
-               </div>
-             </div>
+              <div class='col-md-12'>
+                <div class='box'>
+                  <label class='control-label' for='inputText'>Diagnóstico Médico</label>
+                  <div class='box-content'>
+                    <textarea name="diagnostico" class='char-counter form-control' data-char-allowed='200' data-char-warning='10' placeholder='Ingrese un diagnóstico médico...' rows='3' style='margin-bottom:10px;' value="{{ old('diagnostico') }}" id="inputDiagnostico"></textarea>
+                  </div>
+                </div>
+              </div>
 
-             <div class='col-md-12 form-group'>
-               <label class='control-label' for='inputText'>Otras enfermedades o condiciones médicas</label>
-               <div class='col-md-12 controls'>
-                 <input name="otras_enfermedades" value="{{ old('otras_enfermedades') }}" class='form-control' id='inputText' placeholder='Si no aplica, dejar en blanco.' type='text'>
-               </div>
-             </div>
+              <div class='col-md-12'>
+                <div class='box'>
+                  <label class='control-label' for='inputText'>Otras enfermedades o condiciones médicas</label>
+                  <div class='box-content'>
+                    <textarea name="otras_enfermedades" class='char-counter form-control' data-char-allowed='200' data-char-warning='10' placeholder='Ingrese otra enfermedad o condición...' rows='3' style='margin-bottom:10px;' value="{{ old('otras_enfermedades') }}" id="inputDiagnostico"></textarea>
+                  </div>
+                </div>
+              </div>
 
-             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+             <div class="col-md-12 col-lg-4">
               <label class='control-label' for='inputText'>Dependencia</label>
               <div class='col-md-12 form-group'>
-                <div class='col-md-12'>
                  <select name="tipo_dependencia" class='form-control permanente capitalize' id='inputSelect'>
                    @foreach($dependencias as $dependencia)
                       <option value="{{$dependencia->id}}">{{$dependencia->nombre}}</option>
                    @endforeach
                  </select>
-               </div>
              </div>
+
            </div>
 
 
-           <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+           <div class="col-md-12 col-lg-3">
             <label class='control-label' for='inputText'>Cuidado de Terceros</label>
             <div class='col-md-12 form-group'>
               <div class='col-md-12'>
@@ -499,7 +510,7 @@ class='contrast-red'
            </div>
          </div>
 
-         <div class='col-xs-5 col-sm-5 col-md-5 col-lg-5 form-group'>
+         <div class='col-md-12 col-lg-5 form-group'>
            <label class='control-label' for='inputText'>Plan de rehabilitación, tratamiento o control</label>
            <div class='col-md-12 controls'>
              <input name='p_reha_trat_ctrl' class='form-control' id='inputText' placeholder='¿Donde? Si no aplica, dejar en blanco.' type='text'>
