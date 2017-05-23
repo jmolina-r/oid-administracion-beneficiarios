@@ -226,6 +226,8 @@ class BeneficiarioController extends Controller
 
         // Dato social
         $arrDatoSocial['ficha_beneficiario_id'] = $fichaBeneficiario->id;
+        $arrDatoSocial['observacion'] = $request->input('observacion_general');
+
 
         if($request->input('sistema_salud') && $request->input('sistema_salud') == 'fonasa') {
             $arrDatoSocial['fonasa_id'] = $request->input('fonasa');
@@ -236,6 +238,10 @@ class BeneficiarioController extends Controller
 
         if($request->input('prevision') && $request->input('prevision') != '') {
             $arrDatoSocial['prevision_id'] = $request->input('prevision');
+        }
+
+        if($request->input('sistema_proteccion') && $request->input('sistema_proteccion') != '') {
+            $arrDatoSocial['sistema_proteccion_id'] = $request->input('sistema_proteccion');
         }
 
         $datoSocial = new DatoSocial($arrDatoSocial);
@@ -379,7 +385,7 @@ class BeneficiarioController extends Controller
             'email' => 'nullable|email',
             'credencial_discapacidad' => 'required|numeric|between:0,2',
             //TODO: Validar que sea fecha
-            'credencial_vencimiento' => 'required_if:credencial_discapacidad,1',
+            'credencial_vencimiento' => 'required_if:credencial_discapacidad,1|date_format:"d/m/Y"|after:"yesterday"',
             'registro_social_hogares' => 'required|numeric|between:0,2',
             'registro_social_porcentaje' => 'required_if:registro_social_hogares,1|numeric|between:0,100',
             'domicilio_calle' => 'nullable|max:200',
@@ -394,7 +400,9 @@ class BeneficiarioController extends Controller
             'prevision' => 'nullable|exists:previsions,id',
             'tipo_dependencia' => 'required|exists:tipo_dependencias,id',
             'cuidados' => 'required|numeric|between:0,1',
-            'otras_enfermedades' => 'nullable'
+            'otras_enfermedades' => 'nullable',
+            'sistema_proteccion' => 'nullable|exists:sistema_proteccions,id',
+            'observacion_general' => 'nullable'
         ];
 
         foreach($request->input('tipo_discapacidad') as $key => $val)
