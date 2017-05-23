@@ -34,20 +34,20 @@ Route::group(['prefix' => 'areasocial'], function(){
     ]);
 });
 
-Route::group(['prefix' => '/medica'], function (){
+Route::group(['prefix' => '/area-medica'], function (){
 
     Route::group(['prefix' => '/ficha-evaluacion-inicial'], function (){
 
         Route::group(['prefix' => '/kinesiologia'], function (){
 
-            Route::get('/ingresar/{id}', [
-                'uses' => 'FichaKinesiologiaController@getIngresar',
-                'as' => 'medica.ficha-evaluacion-inicial.kinesiologia.ingresar'
+            Route::get('/create/{id}', [
+                'uses' => 'FichaKinesiologiaController@create',
+                'as' => 'area-medica.ficha-evaluacion-inicial.kinesiologia.create'
             ]);
 
-            Route::post('/ingresar', [
-                'uses' => 'FichaKinesiologiaController@postIngresar',
-                'as' => 'medica.ficha-evaluacion-inicial.kinesiologia.ingresar'
+            Route::post('/store', [
+                'uses' => 'FichaKinesiologiaController@store',
+                'as' => 'area-medica.ficha-evaluacion-inicial.kinesiologia.store'
             ]);
         });
 
@@ -55,17 +55,17 @@ Route::group(['prefix' => '/medica'], function (){
 
             Route::get('/ingresar', [
                 'uses' => 'FichaFonoaudiologiaController@getIngresar',
-                'as' => 'medica.ficha-evaluacion-inicial.fonoaudiologia.ingresar'
+                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.ingresar'
             ]);
 
             Route::post('/ingresar', [
                 'uses' => 'FichaFonoaudiologiaController@postIngresar',
-                'as' => 'medica.ficha-evaluacion-inicial.fonoaudiologia.ingresar'
+                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.ingresar'
             ]);
 
             Route::get('/mostrar-lista', [
                 'uses' => 'FichaFonoaudiologiaController@getMostrarLista',
-                'as' => 'medica.ficha-evaluacion-inicial.fonoaudiologia.mostrar-lista'
+                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.mostrar-lista'
             ]);
         });
 

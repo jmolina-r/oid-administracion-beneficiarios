@@ -12,6 +12,7 @@
     <link href="{{ asset("/assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css") }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset("/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css") }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset("/assets/images/meta_icons/apple-touch-icon-precomposed.png") }}" rel="apple-touch-icon-precomposed">
+    <link href="{{ asset('/assets/stylesheets/plugins/select2/select2.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
@@ -55,7 +56,7 @@
     <script src="{{ asset("/assets/javascripts/plugins/validate/additional-methods.js") }}" type="text/javascript"></script>
 
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
-    <script src="{{ asset("/js/beneficiario/RegistroBeneficiario.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("/js/area-medica/IngresoFormulario.js") }}" type="text/javascript"></script>
     <!-- / END - validaciones-->
 @endsection
 
@@ -88,8 +89,8 @@
                             <div class="col-sm-12">
                                 <div class="box">
                                     <div class='box-content box-padding'>
-                                        <div class='fuelux'><div class='wizard' data-initialize='wizard' id='myWizard'>
-
+                                        <div class='fuelux'>
+                                            <div class='wizard' data-initialize='wizard' id='myWizard'>
                                                 <div class='steps-container'>
                                                     <ul class='steps'>
                                                         <li class='active' data-step='1'>
@@ -118,7 +119,6 @@
                                                 </div>
                                                 @if(count($errors) > 0)
                                                     <hr class='hr-normal'>
-
                                                     <div class="alert alert-danger">
                                                         @foreach($errors->all() as $error)
                                                             <p>{{ $error }}</p>
@@ -126,7 +126,8 @@
                                                     </div>
                                                 @endif
                                                 <hr class='hr-normal'>
-                                                <form role="form" id="formulario-registro" action="{{route('medica.ficha-evaluacion-inicial.kinesiologia.ingresar')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post"><div class='step-content'>
+                                                <form role="form" id="formulario-registro" action="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.store')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
+                                                    <div class='step-content'>
                                                     <!-- STEP 1 -->
                                                         <div class='step-pane active' data-step='1'>
                                                             <!--<div class="col-md-12">
@@ -200,25 +201,25 @@
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-4 control-label" for="situacion_familiar">1. Situación Familiar</label>
                                                                 <div class="col-md-8 controls">
-                                                                    <input class="form-control" id="situacion_familiar" name="situacion_familiar" placeholder="¿con quien?¿accesibilidad?" rows="3">
+                                                                    <input class="form-control" id="situacion_familiar" name="situacion_familiar" placeholder="¿con quien?¿accesibilidad?">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-4 control-label" for="situacion_laboral">2. Situación Laboral</label>
                                                                 <div class="col-md-8 controls">
-                                                                    <input class="form-control" id="situacion_laboral" name="situacion_laboral" placeholder="Situación Laboral" rows="3">
+                                                                    <input class="form-control" id="situacion_laboral" name="situacion_laboral" placeholder="Situación Laboral">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-4 control-label" for="asiste_centro_rhb">3. ¿Asiste algún centro de RHB?</label>
                                                                 <div class="col-md-8 controls">
-                                                                    <input class="form-control" id="asiste_centro_rhb" name="asiste_centro_rhb" placeholder="¿Asiste algún centro de RHB?" rows="3">
+                                                                    <input class="form-control" id="asiste_centro_rhb" name="asiste_centro_rhb" placeholder="¿Asiste algún centro de RHB?">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-4 control-label" for="motivo_consulta">4. Motivo de Consulta</label>
                                                                 <div class="col-md-8 controls">
-                                                                    <input class="form-control" id="motivo_consulta" name="motivo_consulta" placeholder="Motivo de Consulta" rows="3">
+                                                                    <input class="form-control" id="motivo_consulta" name="motivo_consulta" placeholder="Motivo de Consulta">
                                                                 </div>
                                                             </div>
                                                         </div>
