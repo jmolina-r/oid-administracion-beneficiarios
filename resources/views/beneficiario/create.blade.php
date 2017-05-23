@@ -421,7 +421,7 @@ class='contrast-red'
                    </div>
                  </div>
 
-               <div class='col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group'>
+               <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
                  <label class='control-label' for='inputText'>Participación en Organizaciones Sociales</label>
                  <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 controls'>
                     <select style="width:100%;" name='organizaciones_sociales[]' class='form-control capitalize select-tag' multiple='multiple' data-placeholder='Seleccione o agregue organizaciones...'>
@@ -484,7 +484,7 @@ class='contrast-red'
              <div class="col-md-12 col-lg-4">
               <label class='control-label' for='inputText'>Dependencia</label>
               <div class='col-md-12 form-group'>
-                 <select name="tipo_dependencia" class='form-control permanente capitalize' id='inputSelect'>
+                 <select name="tipo_dependencia" class='form-control permanente capitalize select-tag' id='inputSelect'>
                    @foreach($dependencias as $dependencia)
                       <option value="{{$dependencia->id}}">{{$dependencia->nombre}}</option>
                    @endforeach
