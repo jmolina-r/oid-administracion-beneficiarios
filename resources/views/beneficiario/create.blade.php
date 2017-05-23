@@ -339,11 +339,11 @@ class='contrast-red'
                      <!-- STEP 2 -->
                      <div class='step-pane' data-step='2'>
 
-                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
 
-                        <label class='control-label' for='inputText'>Sistema de Salud</label>
+                        <label class='control-label col-xs-12 col-sm-12 col-md-12 col-lg-12' for='inputText'>Sistema de Salud</label>
 
-                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                          <div class="col-sm-12 col-md-6 col-lg-6 form-group">
                               <label style="margin-top: 0px;" class='radio radio-inline'>
                                 <input name='sistema_salud' type='radio' value='fonasa' checked>
                                 Fonasa
@@ -355,7 +355,7 @@ class='contrast-red'
                             <div class="help-block with-errors"></div>
                           </div>
 
-                          <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
+                          <div class='col-sm-12 col-md-6 col-lg-6 form-group'>
                              <select id="sistemaSaludSelec" name='fonasa' class='form-control capitalize' required>
                                  @foreach($fonasa as $fona)
                                  <option value="{{$fona->id}}">{{$fona->tramo}}</option>
@@ -415,7 +415,7 @@ class='contrast-red'
                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 controls'>
                       <select style="width: 100%;" name='sistema_proteccion' class='form-control capitalize' id='sistema-proteccion-tags' data-placeholder='Seleccione o agregue sistemas de proteccion'>
                           @foreach($datos_sociales as $dato_social)
-                              <option value="{{$dato_social->id}}">{{$dato_social->nombre}}</option>
+                              <option class="capitalize" value="{{$dato_social->id}}">{{$dato_social->nombre}}</option>
                           @endforeach
                       </select>
                    </div>
