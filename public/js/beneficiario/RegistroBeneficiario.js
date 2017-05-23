@@ -89,6 +89,13 @@ $(document).ready(function() {
       tags: true
     });
 
+    /**
+     * Estilos para select del tema
+     */
+    $(".select2-selection").addClass("capitalize");
+    $(".select2-search").css("width","100%");
+    $(".select2-search__field").css("width","100%");
+
     $(function () {
         $('#fecha_nacimiento').datetimepicker({
             maxDate:"now",
