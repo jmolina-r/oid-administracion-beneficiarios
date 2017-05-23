@@ -10,6 +10,8 @@
 <!-- inyeccion de estilos -->
 @section('styles')
   <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+  <link href="{{ asset('/css/social/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+  <link href="{{ asset('/assets/stylesheets/plugins/bootstrap_switch/bootstrap-switch.css') }}" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
 <!-- Atributos del body -->
@@ -42,18 +44,10 @@
     <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
     <!-- / END - page related files and scripts [optional] -->
-    <script type="text/javascript">
-        function showContent() {
-            element = document.getElementById("contentVD");
-            check = document.getElementById("verificarDomicilio");
-            if (check.checked) {
-                element.style.display='block';
-            }
-            else {
-                element.style.display='none';
-            }
-        }
-    </script>
+    <script src="{{ asset('assets/javascripts/plugins/bootstrap_switch/bootstrapSwitch.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/social/showcontent.js') }}" type="text/javascript"></script>
+
+   
 @endsection
 
 <!-- Contenido del body -->
@@ -71,7 +65,7 @@
                     <div class='page-header'>
                       <h1 class='pull-left'>
                         <i class='fa fa-pencil-square-o'></i>
-                        <span>Asistente Social</span>
+                        <span>Asistente Social - Visita domiciliaria</span>
                       </h1>
                       <div class='pull-right'>
                         <ul class='breadcrumb'>
@@ -102,33 +96,26 @@
                         <div class="row">
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             
-                            <h2>Visita Domiciliaria</h2>
+                            <h4>Motivos de la visita domiciliaria</h4>
                                                   
                           </div>
                            <div class='col-md-12 form-group'>
-                             <label class='control-label' for='inputText'>Motivo de la visita domiciliaria</label>
                                <div class='controls'>
-                                 <input type="checkbox" id="verificarDomicilio" onchange="javascript:showContent()"> Verificación de domicilio
+                                 <input class='make-switch' id='i1' data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' onchange="javascript=showContent('d1','i1')" type='checkbox'> <h5 id='hverificacion'>Verificación de domicilio</h5>
                                </div>
-                               <div class='controls' id="contentVD" style="display: none;">
-                                  <div style="display: inline;">
-                                    <label for="inputText">Observación</label>
+                               <div class='controls' id="d1" style="display: none;">
+                                  <div  style="display: inline;">
+                                    <label for="inputText">Observación</label>                                    
+                                  </div>
+                                  <div class='controls'>
                                     <textarea name="" id="" cols="40" rows="4"></textarea>
                                   </div>
-                               </div>
-                               <div class='controls'>
-                                 <input type="checkbox" name="elabInformeSocial"> Elaboración de informe social
-                               </div>
-                               <div class='controls'>
-                                 <input type="checkbox" name="enAyudaTecnica"> Entrega de ayuda técnica
-                               </div>
-                               <div class='controls'>
-                                 <input type="checkbox" name="enAyudaSocial"> Entrega de ayuda social
-                               </div>
-                               <div class="form-group pull-right">
-                                <div class="col-sm-12 col-offset-2">
-                                  <button type="submit" class="btn btn-success">Aceptar</button>
-                                   <button type="submit" class="btn btn-prev">Volver</button>
+                               </div>                          
+                               
+                               <div class="col-sm-12 col-offset-2">
+                                 <button type="submit" class="pull-right btn btn-prev">Volver</button>
+                                 <button type="submit" class="pull-right btn btn-success">Aceptar</button>
+                                  
                                 </div>
                               </div>    
                            </div>

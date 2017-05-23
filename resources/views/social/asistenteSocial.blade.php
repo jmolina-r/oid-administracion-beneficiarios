@@ -88,8 +88,17 @@
                     <div class='box'>
                       <div class='box-content box-padding'>
                         <div class="row">
+                          @if(count($errors) > 0)
+                              <hr class='hr-normal'>
+
+                                <div class="alert alert-danger">
+                                    @foreach($errors->all() as $error)
+                                        <p>{{ $error }}</p>
+                                    @endforeach
+                                </div>
+                          @endif
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <form action="{{route('social.asistenteSocialBeneficiario')}}" method="post" accept-charset="utf-8">
+                            <form action="{{route('social.asistenteSocialBeneficiario')}}"method="get" accept-charset="utf-8">
                               {!!csrf_field()!!}
                               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                                 <label for="inputRut">Ingresar rut beneficiario</label>
@@ -101,9 +110,6 @@
                                 </div>
                               </div>                          
                             </form>
-                            @if(isset($beneficiario))
-                            {{$beneficiario->nombre}}
-                            @endif
                           </div>
                         </div>
                       </div>

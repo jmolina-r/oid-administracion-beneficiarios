@@ -15,16 +15,12 @@ class FichaSocialController extends Controller
         return view('social.asistenteSocial');
     }
 
-    public function store(Request $request){
-        $rut = $request -> input('rut');
-        $beneficiario = Beneficiario::where('rut',$rut)->first();
-        if(isset($beneficiario)){
-            return view('social.asistenteSocialMenu', compact('beneficiario'));
-        }else{
-            echo "Usuario invalido";
-            return view('social.asistenteSocial');
-        }
+    public function show(Request $request){
 
+        $this->validate($request, ['rut' => 'required|exists:beneficiarios,rut']);
+        $beneficiario = Beneficiario::where('rut',$request->input('rut'))->first();
+        return view('social.asistenteSocialMenu', compact('beneficiario'));
+        
     }
 
     public function index2(){
