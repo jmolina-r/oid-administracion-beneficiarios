@@ -15,8 +15,8 @@ Registro de Beneficiario - OID
 <link href="{{ asset('/assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css') }}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{ asset('/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css" media="all" />
 <link href='{{ asset('/assets/images/meta_icons/apple-touch-icon-precomposed.png') }}' rel='apple-touch-icon-precomposed'>
-<link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{ asset('/assets/stylesheets/plugins/select2/select2.css') }}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
 <!-- Atributos del body -->
@@ -161,7 +161,7 @@ class='contrast-red'
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
                           <label class='control-label' for='inputSelect'>Nacionalidad</label>
-                          <select name='id_pais' class='form-control' id='inputSelect'>
+                          <select style="width:100%;" name='id_pais' class='form-control select-tag' id='inputSelect'>
                             @foreach($paises as $pais)
                               <option value="{{$pais->id}}">{{$pais->nombre}}</option>
                             @endforeach
@@ -196,7 +196,7 @@ class='contrast-red'
 
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 form-group">
                            <label class='control-label' for='inputSelect'>Situación Civil</label>
-                           <select name='estado_civil' class='form-control capitalize' id='inputSelect'>
+                           <select style="width:100%;" name='estado_civil' class='form-control capitalize select-tag' id='inputSelect'>
                               @foreach($estados_civiles as $estado_civil)
                                 <option value="{{$estado_civil->id}}">{{$estado_civil->nombre}}</option>
                               @endforeach
@@ -267,7 +267,7 @@ class='contrast-red'
                         </div>
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                             <select name='credencial_discapacidad' value="{{ old('credencial_discapacidad') }}" class='form-control' id='credencial_discapacidad' required>
+                             <select style="width:100%;" name='credencial_discapacidad' value="{{ old('credencial_discapacidad') }}" class='form-control select-tag' id='credencial_discapacidad' required>
                                <option value='0'>No</option>
                                <option value='2'>En trámite</option>
                                <option value='1'>Si</option>
@@ -295,7 +295,7 @@ class='contrast-red'
 
 
                            <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                             <select name='registro_social_hogares' class='form-control' required id="registro_social_hogares">
+                             <select style="width:100%;" name='registro_social_hogares' class='form-control select-tag' required id="registro_social_hogares">
                                <option value='0'>No</option>
                                <option value='2'>En trámite</option>
                                <option value='1'>Si</option>
@@ -356,7 +356,7 @@ class='contrast-red'
                           </div>
 
                           <div class='col-sm-12 col-md-6 col-lg-6 form-group'>
-                             <select id="sistemaSaludSelec" name='fonasa' class='form-control capitalize' required>
+                             <select style="width:100%;" id="sistemaSaludSelec" name='fonasa' class='form-control capitalize select-tag' required>
                                  @foreach($fonasa as $fona)
                                  <option value="{{$fona->id}}">{{$fona->tramo}}</option>
                                  @endforeach
@@ -368,7 +368,7 @@ class='contrast-red'
                         <label class='control-label' for='inputText'>Previsión</label>
 
                         <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
-                           <select name='prevision' class='form-control capitalize' id='inputSelect'>
+                           <select style="width:100%;" name='prevision' class='form-control capitalize select-tag' id='inputSelect'>
                               <option value=''>No tiene</option>
                               @foreach($previsiones as $prevision)
                                   <option value="{{$prevision->id}}">{{$prevision->nombre}}</option>
@@ -380,7 +380,7 @@ class='contrast-red'
                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group">
                     <label class='control-label' for='inputText'>Nivel Educacional</label>
                     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-                       <select name='educacion' class='form-control capitalize' id='inputSelect'>
+                       <select style="width:100%;" name='educacion' class='form-control capitalize select-tag' id='inputSelect'>
                          @foreach($niveles_educacion as $nivel_educacion)
                             <option value="{{$nivel_educacion->id}}">{{$nivel_educacion->nombre}}</option>
                          @endforeach
@@ -391,7 +391,7 @@ class='contrast-red'
                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group">
                     <label class='control-label' for='inputText'>Ocupación Actual</label>
                     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 controls'>
-                       <select name='ocupacion' class='form-control capitalize' id='inputSelect'>
+                       <select style="width:100%;" name='ocupacion' class='form-control capitalize select-tag' id='inputSelect'>
                           @foreach($situaciones as $situacion)
                               <option value="{{$situacion->id}}">{{$situacion->nombre}}</option>
                           @endforeach
@@ -402,7 +402,7 @@ class='contrast-red'
                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group">
                     <label class='control-label' for='inputText'>Beneficios</label>
                     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-                      <select name="beneficios[]" style="width: 100%;" class='form-control' data-placeholder='Selecciona los beneficios asociados...' id='beneficios-tag' multiple='multiple'>
+                      <select style="width:100%;" name="beneficios[]" class='form-control select-tag' data-placeholder='Selecciona los beneficios asociados...' multiple='multiple'>
                         @foreach($beneficios as $beneficio)
                           <option value="{{$beneficio->id}}">{{$beneficio->nombre}}</option>
                         @endforeach
@@ -413,7 +413,7 @@ class='contrast-red'
                  <div class='col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group'>
                    <label class='control-label' for='inputText'>Sistema de protección</label>
                    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 controls'>
-                      <select style="width: 100%;" name='sistema_proteccion' class='form-control capitalize' id='sistema-proteccion-tags' data-placeholder='Seleccione o agregue sistemas de proteccion'>
+                      <select style="width:100%;" name='sistema_proteccion' class='form-control capitalize select-tag'data-placeholder='Seleccione o agregue sistemas de proteccion'>
                           @foreach($datos_sociales as $dato_social)
                               <option class="capitalize" value="{{$dato_social->id}}">{{$dato_social->nombre}}</option>
                           @endforeach
@@ -424,7 +424,7 @@ class='contrast-red'
                <div class='col-xs-12 col-sm-12 col-md-12 col-lg-6 form-group'>
                  <label class='control-label' for='inputText'>Participación en Organizaciones Sociales</label>
                  <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 controls'>
-                    <select style="width: 100%;" name='organizaciones_sociales[]' class='form-control capitalize' id='participacion-organizaciones-tag' multiple='multiple' data-placeholder='Seleccione o agregue participacion en organizaciones'>
+                    <select style="width:100%;" name='organizaciones_sociales[]' class='form-control capitalize select-tag' multiple='multiple' data-placeholder='Seleccione o agregue participacion en organizaciones'>
                       @foreach($organizaciones_sociales as $organizacion_social)
                         <option value="{{$organizacion_social->id}}">{{$organizacion_social->nombre}}</option>
                       @endforeach

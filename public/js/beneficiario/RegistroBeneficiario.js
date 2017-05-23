@@ -85,19 +85,7 @@ $(document).ready(function() {
     /**
      * Beneficios tipo tags
      */
-    $("#select2-tags").select2({
-      tags: true
-    });
-
-    $("#sistema-proteccion-tags").select2({
-      tags: true
-    });
-
-    $("#participacion-organizaciones-tag").select2({
-      tags: true
-    });  
-
-    $("#beneficios-tag").select2({
+    $(".select-tag").select2({
       tags: true
     });
 
