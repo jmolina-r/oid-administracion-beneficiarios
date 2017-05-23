@@ -8,7 +8,7 @@ class TipoDiscapacidad extends Model
 {
     protected $fillable = ['nombre'];
 
-    public function porcentaje_discapacidad_ficha_discapacidad()
+    public function fichas_discapacidad()
     {
         return $this->hasMany(FichaDiscTipoDisc::class);
     }

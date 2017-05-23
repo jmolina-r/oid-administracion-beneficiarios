@@ -11,6 +11,7 @@ use App\Educacion;
 use App\EstadoCivil;
 use App\FichaBeneficiario;
 use App\FichaDiscapacidad;
+use App\FichaDiscTipoDisc;
 use App\Fonasa;
 use App\Isapre;
 use App\Ocupacion;
@@ -24,7 +25,6 @@ use App\TelefonoTutor;
 use App\TipoDependencia;
 use App\TipoDiscapacidad;
 use App\Tutor;
-
 
 
 
@@ -294,17 +294,25 @@ class BeneficiarioController extends Controller
         ]);
         $fichaDiscapacidad->save();
 
+        if($request->input('tipo_discapacidad')) {
+            foreach($request->input('tipo_discapacidad') as $key => $val)
+            {
+                if($val > 0 && TipoDiscapacidad::find($key)) {
+                    $fichaDiscTipoDisc = new fichaDiscTipoDisc([
+                        'porcentaje' => $val,
+                        'ficha_discapacidad_id' => $fichaDiscapacidad->id,
+                        'tipo_discapacidad_id' => $key
+                    ]);
+                    $fichaDiscTipoDisc->save();
+                }
+            }
+        }
+
 
 
 
 
         $email = $request->input('email');
-
-
-
-        $diagnostico = $request->input('diagnostico');
-        $tipoDependenciaId = $request->input('tipo_dependencia_id');
-        $cuidados = $request->input('cuidados');
         $planDeRehabilitacionTratamientoControl= $request->input('p_reha_trat_ctrl');
 
         //return view('beneficiario.show')->with('id', '1');
