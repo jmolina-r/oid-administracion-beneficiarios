@@ -315,7 +315,7 @@ class BeneficiarioController extends Controller
         $email = $request->input('email');
         $planDeRehabilitacionTratamientoControl= $request->input('p_reha_trat_ctrl');
 
-        //return view('beneficiario.show')->with('id', '1');
+        return redirect()->route('beneficiario.show', ['id' => $beneficiario->id]);
     }
 
     /**
