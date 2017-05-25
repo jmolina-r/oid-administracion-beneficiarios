@@ -53,20 +53,16 @@ Route::group(['prefix' => '/area-medica'], function (){
 
         Route::group(['prefix' => '/fonoaudiologia'], function (){
 
-            Route::get('/ingresar', [
-                'uses' => 'FichaFonoaudiologiaController@getIngresar',
-                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.ingresar'
+            Route::get('/create/{id}', [
+                'uses' => 'FichaFonoaudiologiaController@create',
+                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.create'
             ]);
 
-            Route::post('/ingresar', [
+            Route::post('/store', [
                 'uses' => 'FichaFonoaudiologiaController@postIngresar',
-                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.ingresar'
+                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.store'
             ]);
 
-            Route::get('/mostrar-lista', [
-                'uses' => 'FichaFonoaudiologiaController@getMostrarLista',
-                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.mostrar-lista'
-            ]);
         });
 
         Route::group(['prefix' => '/terapia-ocupacional'], function (){

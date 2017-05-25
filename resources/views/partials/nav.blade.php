@@ -56,7 +56,7 @@
                 </a>
                 <ul class='nav nav-stacked'>
                     <li class=''>
-                        <a href='{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.ingresar'). '/'. 1}}'>
+                        <a href='{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.create',1)}}'>
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>
                             </div>
@@ -73,7 +73,7 @@
                 </a>
                 <ul class='nav nav-stacked'>
                     <li class=''>
-                        <a href='{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.ingresar'). '/'. 1}}'>
+                        <a href='{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.create', 1)}}'>
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>
                             </div>

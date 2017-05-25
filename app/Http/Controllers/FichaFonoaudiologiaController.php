@@ -12,9 +12,10 @@ class FichaFonoaudiologiaController extends Controller
      *
      * @return view
      */
-    public function getIngresar()
+    public function create($id)
     {
-        return view('medica.ficha-evaluacion-inicial.fonoaudiologia.ingresar');
+        return view('area-medica.ficha-evaluacion-inicial.fonoaudiologia.create')
+            ->with(compact('id'));
     }
 
 }
