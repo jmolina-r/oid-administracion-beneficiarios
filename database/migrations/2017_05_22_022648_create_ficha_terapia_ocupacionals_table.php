@@ -24,7 +24,7 @@ class CreateFichaTerapiaOcupacionalsTable extends Migration
 
             $table->integer('actividades_vida_diaria_id')->unsigned();
             $table->integer('antecedentes_salud_id')->unsigned();
-            $table->integer('antecedentes_socio_familiares_id')->unsigned();
+            $table->integer('antecedentes_so_fa_id')->unsigned();
             $table->integer('desarrollo_evolutivo_id')->unsigned();
             $table->integer('habilidades_sociales_id')->unsigned();
             $table->integer('historial_clinico_id')->unsigned();
@@ -41,7 +41,7 @@ class CreateFichaTerapiaOcupacionalsTable extends Migration
         });
 
         Schema::table('ficha_terapia_ocupacionals', function($table) {
-            $table->foreign('antecedentes_socio_familiares_id')->references('id')->on('antecedentes_socio_familiares');
+            $table->foreign('antecedentes_so_fa_id')->references('id')->on('antecedentes_socio_familiares');
         });
 
         Schema::table('ficha_terapia_ocupacionals', function($table) {
