@@ -16,6 +16,11 @@ class CreateFonoaudiologosTable extends Migration
         Schema::create('fonoaudiologos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('rut');
+            $table->string('nombre')->nullable();
+            $table->string('apellido')->nullable();
+            $table->string('fecha_nacimiento')->nullable();
+            $table->string('direccion')->nullable();
         });
     }
 

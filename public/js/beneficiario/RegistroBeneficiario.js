@@ -10,7 +10,7 @@
 $('#formulario-registro').validator();
 
 $('#myWizard').wizard().on('actionclicked.fu.wizard', function (e, data) {
-
+    alert('hola');
     if (data.direction === 'previous') {
         // Do nothing if you're going to the previous step
         return;

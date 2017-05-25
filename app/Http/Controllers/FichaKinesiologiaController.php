@@ -20,29 +20,39 @@ use Illuminate\Http\Request;
 
 class FichaKinesiologiaController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        //
+    }
 
     /**
      * Mostrar formulario de ingreso de evaluacion inicial.
      *
+     * @param $id
      * @return view
      */
-    public function getIngresar($id)
+    public function create($id)
     {
-        return view('medica.ficha-evaluacion-inicial.kinesiologia.ingresar')
+        return view('area-medica.ficha-evaluacion-inicial.kinesiologia.create')
             ->with(compact('id'));
     }
 
     /**
      * Guardar datos recibidos del formulario en bd.
      *
-     * @return redirect
+     * @param Request $request
+     * @return view
      */
-    public function postIngresar(Request $request)
+    public function store(Request $request)
     {
-        $this->validate($request, [
-            'id' => 'required|exists:beneficiarios',
 
-        ]);
+        // Validate Fields
+        $this->validate($request, $this->rules($request));
 
         //obtener el kinesiologo por su sesion
         /*
@@ -181,19 +191,129 @@ class FichaKinesiologiaController extends Controller
 
         }
         $id = $request->input('id');
-        return view('medica.ficha-evaluacion-inicial.kinesiologia.ingresar')
+        return view('area-medica.ficha-evaluacion-inicial.kinesiologia.create')
             ->with(compact('id'));
+    }
+
+    /**
+     * Show the form for finding a resourse
+     *
+     * @return Response
+     */
+    public function find()
+    {
+        //
     }
 
     /**
      * Mostrar formulario de ingreso de evaluacion inicial.
      *
-     * @return view
+     * @return Response
      */
-    public function getMostrarLista()
+    public function show()
     {
-        $fichas = FichaKinesiologia::all();
+        //
+    }
 
-        return view('medica.ficha-evaluacion-inicial.kinesiologia.mostrar-lista', [ 'fichas' => $fichas ]);
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
+    private function rules(Request $request) {
+        $rules = [
+            'id' => 'required|exists:beneficiarios',
+            'pat_concom' => 'required|max:200',
+            'alergias' => 'required|max:200',
+            'medicamentos' => 'required|max:200',
+            'ant_quir' => 'required|max:200',
+            'aparatos' => 'required|max:200',
+            'fuma_sn' => 'required|max:200',
+            'alcohol_sn' => 'required|max:200',
+            'act_fisica_sn' => 'required|max:200',
+            'puntaje_alimentacion' => 'required|numeric|between:0,10',
+            'coment_alimentacion' => 'nullable|max:200',
+            'puntaje_arreglo_pers' => 'required|numeric|between:0,10',
+            'coment_arreglo_pers' => 'nullable|max:200',
+            'puntaje_bano' => 'required|numeric|between:0,10',
+            'coment_bano' => 'nullable|max:200',
+            'puntaje_vest_sup' => 'required|numeric|between:0,10',
+            'coment_vest_sup' => 'nullable|max:200',
+            'puntaje_vest_inf' => 'required|numeric|between:0,10',
+            'coment_vest_inf' => 'nullable|max:200',
+            'puntaje_aseo_pers' => 'required|numeric|between:0,10',
+            'coment_aseo_pers' => 'nullable|max:200',
+            'puntae_expresion' => 'required|numeric|between:0,10',
+            'coment_expresion' => 'nullable|max:200',
+            'puntaje_comprension' => 'required|numeric|between:0,10',
+            'coment_comprension' => 'nullable|max:200',
+            'puntaje_control_vejiga' => 'required|numeric|between:0,10',
+            'coment_control_vejiga' => 'nullable|max:200',
+            'puntaje_control_intestino' => 'required|numeric|between:0,10',
+            'coment_control_intestino' => 'nullable|max:200',
+            'puntaje_desp_caminando' => 'required|numeric|between:0,10',
+            'coment_desp_caminando' => 'nullable|max:200',
+            'puntae_escaleras' => 'required|numeric|between:0,10',
+            'coment_escaleras' => 'nullable|max:200',
+            'conexion_medio' => 'required|max:200',
+            'nivel_cognitivo_apar' => 'required|max:200',
+            'rom' => 'required|max:200',
+            'fm' => 'required|max:200',
+            'tono' => 'required|max:200',
+            'dolor' => 'required|max:200',
+            'hab_motrices' => 'required|max:200',
+            'equilibrio' => 'required|max:200',
+            'coordinacion' => 'required|max:200',
+            'puntaje_trans_cama_silla' => 'required|numeric|between:0,10',
+            'coment_trans_cama_silla' => 'nullable|max:200',
+            'puntaje_traslado_bano' => 'required|numeric|between:0,10',
+            'coment_traslado_bano' => 'nullable|max:200',
+            'puntaje_traslado_ducha' => 'required|numeric|between:0,10',
+            'coment_traslado_ducha' => 'nullable|max:200',
+            'visual' => 'required|max:200',
+            'auditivo' => 'required|max:200',
+            'tactil' => 'required|max:200',
+            'propioceptivo' => 'required|max:200',
+            'vestibular' => 'required|max:200',
+            'puntaje_int_social' => 'required|numeric|between:0,10',
+            'coment_int_social' => 'nullable|max:200',
+            'puntaje_sol_problemas' => 'required|numeric|between:0,10',
+            'coment_sol_problemas' => 'nullable|max:200',
+            'puntaje_memoria' => 'required|numeric|between:0,10',
+            'coment_memoria' => 'nullable|max:200',
+            'motivo_consulta' => 'required|max:200',
+            'situacion_laboral' => 'required|max:200',
+            'situacion_familiar' => 'required|max:200',
+            'asiste_centro_rhb' => 'required|max:200',
+        ];
+        return $rules;
     }
 }
