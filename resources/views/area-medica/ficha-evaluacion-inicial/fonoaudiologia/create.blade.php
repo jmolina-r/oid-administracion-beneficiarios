@@ -41,7 +41,6 @@
     <script src="{{ asset("/assets/javascripts/plugins/fuelux/wizard.js") }}" type="text/javascript"></script>
     <!-- / END - page related files and scripts [optional] -->
 
-
     <!-- / START - moments-->
     <script src="{{ asset("/assets/javascripts/plugins/common/moment.min.js") }}" type="text/javascript"></script>
     <!-- / END - moments-->
@@ -58,6 +57,9 @@
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
     <script src="{{ asset("/js/area-medica/IngresoFormulario.js") }}" type="text/javascript"></script>
     <!-- / END - validaciones-->
+
+    <!-- / START - Handler agregar parientes-->
+    <script src="{{ asset("/js/area-medica/AgregarPariente.js") }}" type="text/javascript"></script>
 @endsection
 
 @section("content")
@@ -130,19 +132,9 @@
                                                     <div class='step-content'>
                                                         <!-- STEP 1 -->
                                                         <div class='step-pane active' data-step='1'>
-                                                            <!--<div class="col-md-12">
-                                                                <h3>Seleccionar Paciente</h3>
-                                                                <hr/>
-                                                            </div>-->
                                                             <input id="id" name="id" type="hidden" value="{{$id}}">
-                                                            <!--<div class="col-md-12 form-group">
-                                                                <label class="control-label" for="rut">Rut</label>
-                                                                <div class="controls">
-                                                                    <input class="form-control" id="rut" name="rut" placeholder="RUT" type="text">
-                                                                </div>
-                                                            </div>-->
                                                             <div class="col-md-12">
-                                                                <h3>Antecedentes Familiares (¿Con quién vive?)</h3>
+                                                                <h3>Antecedentes familiares (¿Con quién vive?)</h3>
                                                                 <hr/>
                                                             </div>
                                                             <div class="col-md-12 form-group">
@@ -175,14 +167,32 @@
                                                                     <input class="form-control" id="ocupacion" name="ocupacion" value="{{ old('ocupacion') }}"  placeholder="Ocupación" type="text">
                                                                 </div>
                                                             </div>
-                                                            <button type="button" class="btn btn-primary enabled">
+                                                            <button id="boton-agregar-pariente" type="button" class="btn btn-primary enabled">
                                                                 Agregar
                                                             </button>
+                                                            <table class="table table-striped">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Nombre</th>
+                                                                    <th>Parentesco</th>
+                                                                    <th>Edad</th>
+                                                                    <th>Escolaridad</th>
+                                                                    <th>Ocupación</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                </tbody>
+                                                            </table>
                                                         </div>
                                                         <!-- STEP 2 -->
                                                         <div class='step-pane active' data-step='2'>
+                                                            <div class="col-md-12">
+                                                                <h3>Antecedentes prenatales</h3>
+                                                                <hr/>
+                                                            </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-4 control-label" for="situacion_familiar">1. Situación Familiar</label>
+                                                                <label class="col-md-4 control-label" for="situacion_familiar">2. Antecedentes prenatales</label>
                                                                 <div class="col-md-8 controls">
                                                                     <input class="form-control" id="situacion_familiar" name="situacion_familiar" value="{{ old('situacion_familiar') }}"  placeholder="¿con quien?¿accesibilidad?">
                                                                 </div>
