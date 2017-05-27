@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FichaTerapiaOcupacional extends Model
 {
-    protected $fillable = ['diagnostico_base','motivo_consulta','derivado_por','relacion_paciente', 'observaciones_generales', 'actividades_vida_diaria_id','antecedentes_salud_id','antecedentes_socio_familiares_id','desarrollo_evolutivo_id','habilidades_sociales_id' ,'historial_clinico_id' ,'terapeuta_ocupacional_id','beneficiario_id'];
+    protected $fillable = ['diagnostico_base','motivo_consulta','derivado_por','relacion_paciente', 'observaciones_generales', 'actividades_vida_diaria_id','antecedentes_salud_id','antecedentes_so_fa_id','desarrollo_evolutivo_id','habilidades_sociales_id' ,'historial_clinico_id' ,'terapeuta_ocupacional_id','beneficiario_id'];
 
     public function actividades_vida_diaria()
     {
@@ -18,7 +18,7 @@ class FichaTerapiaOcupacional extends Model
         return $this->belongsTo(AntecedentesSalud::class);
     }
 
-    public function antecedentes_socio_familiares()
+    public function antecedentes_so_fa()
     {
         return $this->belongsTo(AntecedentesSocioFamiliares::class);
     }
