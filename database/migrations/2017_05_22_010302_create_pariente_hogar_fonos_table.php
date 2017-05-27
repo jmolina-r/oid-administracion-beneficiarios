@@ -21,6 +21,7 @@ class CreateParienteHogarFonosTable extends Migration
             $table->string('edad')->nullable();
             $table->string('escolaridad')->nullable();
             $table->string('ocupacion')->nullable();
+            $table->string('ficha_fonoaudiologia_id')->nullable();
         });
     }
 

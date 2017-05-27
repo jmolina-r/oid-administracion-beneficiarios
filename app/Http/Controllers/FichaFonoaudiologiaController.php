@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ParienteHogarFono;
 use Illuminate\Http\Request;
 
 class FichaFonoaudiologiaController extends Controller
@@ -18,6 +19,32 @@ class FichaFonoaudiologiaController extends Controller
             ->with(compact('id'));
     }
 
+    public function postAgregarPariente(Request $request)
+    {
+
+        $parienteHogarFono = new ParienteHogarFono([
+            'nombre' => $request->input('nombre'),
+            'parentesco' => $request->input('parentesco'),
+            'edad' => $request->input('edad'),
+            'escolaridad' => $request->input('escolaridad'),
+            'ocupacion' => $request->input('ocupacion'),
+        ]);
+
+        session_start();
+
+        $parientesObtenidos = $_SESSION['parientes'];
+
+        if(isset($parientesObtenidos)){
+            array_push($parientesObtenidos, $parienteHogarFono);
+            $_SESSION['parientes'] = $parientesObtenidos;
+            return;
+        }
+
+        $nuevoArrayParientes = array();
+        array_push($nuevoArrayParientes, $parienteHogarFono);
+        $_SESSION['parientes'] = $nuevoArrayParientes;
+
+    }
 
 
 }
