@@ -9,36 +9,28 @@ $(document).ready(function() {
     $('#formulario-registro').validator();
 
     $('#myWizard').wizard().on('actionclicked.fu.wizard', function(e, data) {
-        var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
+        alert('hola');
+        var hasErrors = $('#formulario_registro').validator('validate').has('.has-error').length;
         //if (hasErrors) e.preventDefault();
 
     }).on('finished.fu.wizard', function(e) {
-        var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
+        var hasErrors = $('#formulario_registro').validator('validate').has('.has-error').length;
         if (hasErrors) e.preventDefault();
         if (hasErrors == 0) {
-            $('#formulario-registro').submit();
+            $('#formulario_registro').submit();
         }
     });
 
 
     /**
-     * Credencial de discapacidad, si es si, activa vencimiento y lo pone requerido,
-     * si no, lo bloquea.
+     * Si hay puntuacion se activa comentario.
      */
-    $("#credencial_discapacidad").change(function() {
+    $("#puntaje").change(function() {
+        alert('hola');
         //Si se ha seleccionado si
         if (this.value == 1) {
-            $("#credencial_vencimiento").prop('required', true);
-            $('#credencial_vencimiento').removeAttr('disabled');
+            $('#comentario').removeAttr('disabled');
         }
-
-        //Si se ha seleccionado en tramite o no
-        if (this.value == 0 || this.value == 2) {
-            $('#credencial_vencimiento').removeAttr('required');
-            $('#credencial_vencimiento').val("");
-            $("#credencial_vencimiento").prop('disabled', true);
-        }
-
         actualizarValidador();
 
     });
