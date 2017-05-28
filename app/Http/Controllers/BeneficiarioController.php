@@ -32,7 +32,6 @@ use App\Tutor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-
 class BeneficiarioController extends Controller
 {
 
@@ -102,7 +101,6 @@ class BeneficiarioController extends Controller
             ->with(compact('datos_sociales'))
             ->with(compact('organizaciones_sociales'))
             ->with(compact('beneficios'));
-
     }
 
     /**
@@ -138,7 +136,7 @@ class BeneficiarioController extends Controller
         ]);
         $beneficiario->save();
 
-        if($request->input('tel_fijo')) {
+        if ($request->input('tel_fijo')) {
             $telefonoFijo = new TelefonoBeneficiario([
                 'numero' => $request->input('tel_fijo'),
                 'tipo' => 'fijo',
@@ -147,7 +145,7 @@ class BeneficiarioController extends Controller
             $telefonoFijo->save();
         }
 
-        if($request->input('tel_movil')) {
+        if ($request->input('tel_movil')) {
             $telefonoMovil = new TelefonoBeneficiario([
                 'numero' => $request->input('tel_movil'),
                 'tipo' => 'movil',
@@ -157,15 +155,15 @@ class BeneficiarioController extends Controller
         }
 
 
-        if($request->input('credencial_discapacidad') != 0) {
-            if($request->input('credencial_discapacidad') == 2) {
+        if ($request->input('credencial_discapacidad') != 0) {
+            if ($request->input('credencial_discapacidad') == 2) {
                 $credeDic = new CredencialDiscapacidad([
                     'fecha_vencimiento' => null,
                     'en_tramite' => true,
                     'beneficiario_id' => $beneficiario->id
                 ]);
                 $credeDic->save();
-            } else if($request->input('credencial_discapacidad') == 1) {
+            } elseif ($request->input('credencial_discapacidad') == 1) {
                 $credeDic = new CredencialDiscapacidad([
                     'fecha_vencimiento' => date('Y-m-d', strtotime(str_replace('/', '-', $request->input('credencial_vencimiento')))),
                     'en_tramite' => false,
@@ -175,15 +173,15 @@ class BeneficiarioController extends Controller
             }
         }
 
-        if($request->input('registro_social_hogares') != 0) {
-            if($request->input('registro_social_hogares') == 2) {
+        if ($request->input('registro_social_hogares') != 0) {
+            if ($request->input('registro_social_hogares') == 2) {
                 $regSocHog = new RegistroSocialHogar([
                     'porcentaje' => null,
                     'en_tramite' => true,
                     'beneficiario_id' => $beneficiario->id
                 ]);
                 $regSocHog->save();
-            } else if($request->input('registro_social_hogares') == 1) {
+            } elseif ($request->input('registro_social_hogares') == 1) {
                 $regSocHog = new RegistroSocialHogar([
                     'porcentaje' => $request->input('registro_social_porcentaje'),
                     'en_tramite' => false,
@@ -194,7 +192,7 @@ class BeneficiarioController extends Controller
         }
 
 
-        if($request->input('domicilio_calle')) {
+        if ($request->input('domicilio_calle')) {
             $domicilio = new Domicilio([
                 'pobl_vill' => $request->input('domicilio_poblacion'),
                 'calle' => $request->input('domicilio_calle'),
@@ -231,18 +229,17 @@ class BeneficiarioController extends Controller
         $arrDatoSocial['observacion'] = $request->input('observacion_general');
 
 
-        if($request->input('sistema_salud') && $request->input('sistema_salud') == 'fonasa') {
+        if ($request->input('sistema_salud') && $request->input('sistema_salud') == 'fonasa') {
             $arrDatoSocial['fonasa_id'] = $request->input('fonasa');
-
-        } else if($request->input('sistema_salud') && $request->input('sistema_salud') == 'isapre') {
+        } elseif ($request->input('sistema_salud') && $request->input('sistema_salud') == 'isapre') {
             $arrDatoSocial['isapre_id'] = $request->input('isapre');
         }
 
-        if($request->input('prevision') && $request->input('prevision') != '') {
+        if ($request->input('prevision') && $request->input('prevision') != '') {
             $arrDatoSocial['prevision_id'] = $request->input('prevision');
         }
 
-        if($request->input('sistema_proteccion') && $request->input('sistema_proteccion') != '') {
+        if ($request->input('sistema_proteccion') && $request->input('sistema_proteccion') != '') {
             $arrDatoSocial['sistema_proteccion_id'] = $request->input('sistema_proteccion');
         }
 
@@ -250,12 +247,11 @@ class BeneficiarioController extends Controller
         $datoSocial->save();
 
         // Beneficios
-        if($request->input('beneficios')) {
-            foreach($request->input('beneficios') as $key => $val)
-            {
-                if(is_numeric($val)) {
+        if ($request->input('beneficios')) {
+            foreach ($request->input('beneficios') as $key => $val) {
+                if (is_numeric($val)) {
                     $beneficio = Beneficio::find($val);
-                    if($beneficio) {
+                    if ($beneficio) {
                         $datoSocial->beneficios()->save($beneficio);
                     }
                 } else {
@@ -269,12 +265,11 @@ class BeneficiarioController extends Controller
         }
 
         // Organizaciones sociales
-        if($request->input('organizaciones_sociales')) {
-            foreach($request->input('organizaciones_sociales') as $key => $val)
-            {
-                if(is_numeric($val)) {
+        if ($request->input('organizaciones_sociales')) {
+            foreach ($request->input('organizaciones_sociales') as $key => $val) {
+                if (is_numeric($val)) {
                     $organizacionSocial = OrganizacionSocial::find($val);
-                    if($organizacionSocial) {
+                    if ($organizacionSocial) {
                         $datoSocial->organizaciones_sociales()->save($organizacionSocial);
                     }
                 } else {
@@ -296,10 +291,9 @@ class BeneficiarioController extends Controller
         ]);
         $fichaDiscapacidad->save();
 
-        if($request->input('tipo_discapacidad')) {
-            foreach($request->input('tipo_discapacidad') as $key => $val)
-            {
-                if($val > 0 && TipoDiscapacidad::find($key)) {
+        if ($request->input('tipo_discapacidad')) {
+            foreach ($request->input('tipo_discapacidad') as $key => $val) {
+                if ($val > 0 && TipoDiscapacidad::find($key)) {
                     $fichaDiscTipoDisc = new fichaDiscTipoDisc([
                         'porcentaje' => $val,
                         'ficha_discapacidad_id' => $fichaDiscapacidad->id,
@@ -338,10 +332,10 @@ class BeneficiarioController extends Controller
      */
     public function show($id)
     {
-        $beneficiario = Beneficiario::where('id',$id)->first();
+        $beneficiario = Beneficiario::where('id', $id)->first();
         $pais = $beneficiario->pais;
 
-        return view('beneficiario.show',compact('beneficiario'))
+        return view('beneficiario.show', compact('beneficiario'))
             ->with(compact('pais'));
     }
 
@@ -378,8 +372,8 @@ class BeneficiarioController extends Controller
         //
     }
 
-    private function rules(Request $request) {
-
+    private function rules(Request $request)
+    {
         $rules = [
             'nombres' => 'required|max:200',
             'apellidos' => 'required|max:200',
@@ -415,8 +409,7 @@ class BeneficiarioController extends Controller
             'observacion_general' => 'nullable'
         ];
 
-        foreach($request->input('tipo_discapacidad') as $key => $val)
-        {
+        foreach ($request->input('tipo_discapacidad') as $key => $val) {
             $rules['tipo_discapacidad.'.$key] = 'required|numeric|between:0,100';
         }
         return $rules;
@@ -424,14 +417,14 @@ class BeneficiarioController extends Controller
 
     private function messages(Request $request)
     {
-        foreach($request->input('tipo_discapacidad') as $key => $val)
-        {
+        foreach ($request->input('tipo_discapacidad') as $key => $val) {
             $messages['tipo_discapacidad.'.$key.'.between'] = 'Discapacidad '.$key.' debe tener un porcentaje menor a :min y mayor que :max.';
         }
         return $messages;
     }
 
-    public function findLikeNombreApellidoRutJson(Request $request) {
+    public function findLikeNombreApellidoRutJson(Request $request)
+    {
         $queryLike = $request->input('query').'%';
         $beneficiarios = Beneficiario::where('rut', 'like', $queryLike)
             ->orWhere('nombre', 'like', $queryLike)
@@ -441,5 +434,4 @@ class BeneficiarioController extends Controller
             ->toArray();
         return response()->json(['beneficiarios' => $beneficiarios]);
     }
-
 }
