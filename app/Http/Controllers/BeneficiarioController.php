@@ -28,6 +28,7 @@ use App\Tutor;
 
 
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -52,6 +53,7 @@ class BeneficiarioController extends Controller
      */
     public function create()
     {
+        \Debugbar::warning('Watch out…');
         /**
          * Estas son las clecciones vacias de prueba
          * Son las que se deben enviar al fronend a partir de los datos
