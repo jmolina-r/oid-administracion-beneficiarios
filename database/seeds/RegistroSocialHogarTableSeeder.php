@@ -21,7 +21,7 @@ class RegistroSocialHogarTableSeeder extends Seeder
             $enTramite = $faker->boolean;
 
             if($enTramite == true) {
-                $porcentaje = 0;
+                $porcentaje = null;
             } else {
                 $porcentaje = $faker->numberBetween($min = 1, $max = 100);
             }

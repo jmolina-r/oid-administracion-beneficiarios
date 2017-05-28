@@ -22,6 +22,15 @@
                 </a>
                 <ul class='nav nav-stacked'>
                     <li class=''>
+                        <a href='{{route('beneficiario.find')}}'>
+                            <div class='icon'>
+                                <i class='fa fa-caret-right'></i>
+                            </div>
+                            <span>Buscar Beneficiario</span>
+                        </a>
+                    </li>
+
+                    <li class=''>
                         <a href='{{route('beneficiario.create')}}'>
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>

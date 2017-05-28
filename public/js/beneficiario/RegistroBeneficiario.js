@@ -1,67 +1,121 @@
-/**
- * Created by Alfredo Viccenzo on 09-05-2017.
- */
- $("#sistemaSaludSelec input[type='radio']").change(function() {
-     if(this.value == 'f') {
-     } else if(this.value == 'i') {
-     }
- });
+$(document).ready(function() {
+    /**
+     * Acciones al cambiar al step siguiente o al anterior
+     */
 
-$('#formulario-registro').validator();
+    $('#formulario-registro').validator();
 
-$('#myWizard').wizard().on('actionclicked.fu.wizard', function (e, data) {
-    if (data.direction === 'previous') {
-        // Do nothing if you're going to the previous step
-        return;
+    $('#myWizard').wizard().on('actionclicked.fu.wizard', function(e, data) {
+        var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
+        //if (hasErrors) e.preventDefault();
+
+    }).on('finished.fu.wizard', function(e) {
+        var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
+        if (hasErrors) e.preventDefault();
+        if (hasErrors == 0) {
+            $('#formulario-registro').submit();
+        }
+    });
+
+
+    /**
+     * Credencial de discapacidad, si es si, activa vencimiento y lo pone requerido,
+     * si no, lo bloquea.
+     */
+    $("#credencial_discapacidad").change(function() {
+        //Si se ha seleccionado si
+        if (this.value == 1) {
+            $("#credencial_vencimiento").prop('required', true);
+            $('#credencial_vencimiento').removeAttr('disabled');
+        }
+
+        //Si se ha seleccionado en tramite o no
+        if (this.value == 0 || this.value == 2) {
+            $('#credencial_vencimiento').removeAttr('required');
+            $('#credencial_vencimiento').val("");
+            $("#credencial_vencimiento").prop('disabled', true);
+        }
+
+        actualizarValidador();
+
+    });
+
+    /**
+     * Registro Social de Hogares, si es si, activa porcentaje y lo pone requerido,
+     * si no, lo bloquea.
+     */
+    $("#registro_social_hogares").change(function() {
+        //Si se ha seleccionado si
+        if (this.value == 1) {
+            $("#registro_social_porcentaje").prop('required', true);
+            $('#registro_social_porcentaje').removeAttr('disabled');
+        }
+
+        //Si se ha seleccionado en tramite o no
+        if (this.value == 0 || this.value == 2) {
+            $('#registro_social_porcentaje').removeAttr('required');
+            $('#registro_social_porcentaje').val("");
+            $("#registro_social_porcentaje").prop('disabled', true);
+        }
+        actualizarValidador();
+
+    });
+
+    /**
+     * Requerir el numero de la direccion si se escribio una calle
+     */
+    $('#domicilio_calle').keyup(function() {
+        var largo = $('#domicilio_calle').val().length;
+        if (largo > 0) {
+            $("#domicilio_numero").prop('required', true);
+        } else {
+            $('#domicilio_numero').removeAttr('required');
+        }
+        actualizarValidador();
+    });
+
+    /**
+     * Funcion que permite actualizar el validador y requiera los campos necesarios
+     */
+    function actualizarValidador() {
+        //Actualizar el validador del formulario
+        $('#formulario-registro').validator("destroy");
+        $('#formulario-registro').validator();
     }
-    var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
-    if(hasErrors) e.preventDefault();
+    /**
+     * Beneficios tipo tags
+     */
+    $(".select-tag").select2({
+      tags: true
+    });
 
-}).on('finished.fu.wizard', function(e) {
-    var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
-    if(hasErrors) e.preventDefault();
-    if(hasErrors==0){
-        $('#formulario-registro').submit();
-    }
+    /**
+     * Estilos para select del tema
+     */
+    $(".select2-selection").addClass("capitalize");
+    $(".select2-search").css("width","100%");
+    $(".select2-search__field").css("width","100%");
+
+    $(function () {
+        $('#fecha_nacimiento').datetimepicker({
+            maxDate:"now",
+            format: "DD/MM/YYYY",
+            icons: {
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right'
+            },
+            viewMode: 'years'
+        });
+    });
+
+    $(function () {
+        $('#credencial_venc').datetimepicker({
+            minDate:"now",
+            format: "DD/MM/YYYY",
+            icons: {
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right'
+            }
+        });
+    });
 });
-
-
-
-
-
-// var validator = $("#formulario-registro").validate({
-//     rules: {
-//         nombres: {
-//             required: true,
-//             lettersonly: true
-//         },
-//         apellidos: {
-//             required: true,
-//             lettersonly: true
-//         },
-//         email: {
-//             required: true,
-//             email: true
-//         },
-//         rut: {
-//             required: true
-//         }
-//     },
-//     messages: {
-//         nombres: {
-//             required: 'Debe ingresar un nombre.',
-//             lettersonly: 'Solo debe ingresar letras.'
-//         },
-//         apellidos: {
-//             required: 'Debe ingresar ambos apellidos.',
-//             lettersonly: 'Solo debe ingresar letras.'
-//         },
-//         email: {
-//             required: 'Debe ingresar una dirección e-mail.',
-//             email: 'Por favor ingrese una dirección válida.'
-//         },
-//         rut: {
-//             required: 'Debe ingresar el rut.'
-//         }
-//     }
-// });

@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CredencialDiscapacidad extends Model
+class TelefonoBeneficiario extends Model
 {
-    protected $fillable = ['fecha_vencimiento', 'en_tramite', 'beneficiario_id'];
-
+    protected $fillable = ['numero', 'tipo', 'beneficiario_id'];
 
     public function beneficiario()
     {

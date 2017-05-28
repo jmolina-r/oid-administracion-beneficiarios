@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DatoSocial extends Model
 {
-    protected $fillable = ['observacion', 'ficha_beneficiario_id', 'isapre_id', 'fonasa_id', 'organizacion_social_id'];
+    protected $fillable = ['observacion', 'ficha_beneficiario_id', 'isapre_id', 'fonasa_id', 'sistema_proteccion_id', 'prevision_id'];
 
     public function ficha_beneficiario()
     {
@@ -22,9 +22,9 @@ class DatoSocial extends Model
         return $this->belongsTo(Fonasa::class);
     }
 
-    public function organizacion_social()
+    public function organizaciones_sociales()
     {
-        return $this->belongsTo(OrganizacionSocial::class);
+        return $this->belongsToMany(OrganizacionSocial::class);
     }
 
     public function sistema_proteccion()
@@ -35,5 +35,10 @@ class DatoSocial extends Model
     public function beneficios()
     {
         return $this->belongsToMany(Beneficio::class);
+    }
+
+    public function prevision()
+    {
+        return $this->belongsTo(Beneficio::class);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCredencialDiscapacidadsTable extends Migration
+class CreateDomiciliosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,19 @@ class CreateCredencialDiscapacidadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('credencial_discapacidads', function (Blueprint $table) {
+        Schema::create('domicilios', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->date('fecha_vencimiento')->nullable();
-            $table->boolean('en_tramite');
+            $table->string('pobl_vill')->nullable();
+            $table->string('calle');
+            $table->integer('numero');
+            $table->string('bloque')->nullable();
+            $table->integer('numero_depto')->nullable();
+
             $table->integer('beneficiario_id')->unsigned();
         });
 
-        Schema::table('credencial_discapacidads', function($table) {
+        Schema::table('domicilios', function($table) {
             $table->foreign('beneficiario_id')->references('id')->on('beneficiarios')->onDelete('cascade');
         });
     }
@@ -33,6 +37,6 @@ class CreateCredencialDiscapacidadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('credencial_discapacidads');
+        Schema::dropIfExists('domicilios');
     }
 }
