@@ -170,15 +170,15 @@
                                                             <button id="boton-agregar-pariente" type="button" class="btn btn-primary enabled">
                                                                 Agregar
                                                             </button>
-                                                            <table class="table table-striped">
+                                                            <table class="table table-striped" id="tabla-parientes">
                                                                 <thead>
                                                                 <tr>
-                                                                    <th>#</th>
                                                                     <th>Nombre</th>
                                                                     <th>Parentesco</th>
                                                                     <th>Edad</th>
                                                                     <th>Escolaridad</th>
                                                                     <th>Ocupación</th>
+                                                                    <th>Eliminar</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>

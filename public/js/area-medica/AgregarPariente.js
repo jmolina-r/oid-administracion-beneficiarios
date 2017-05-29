@@ -4,7 +4,10 @@
 
 $('#boton-agregar-pariente').click(function() {
 
-    $('#ocupacion').val("aaaa");
+    if(!$('#nombre').val() || !$('#parentesco').val()){
+        alert("Los campos 'Nombre' y 'Parentesco' son obligatorios");
+        return;
+    }
 
     $.ajax({
         headers: {
@@ -20,7 +23,21 @@ $('#boton-agregar-pariente').click(function() {
             ocupacion: $('#ocupacion').val()
         },
         success: function(data, textStatus, jqXHR) {
-            $('#ocupacion').val("bbbbbb");
+            var objetoAgregar = $.parseJSON(data);
+
+            $('#tabla-parientes > tbody:last-child').append('<tr><td>'+
+                objetoAgregar.nombre + '</td><td>' +
+                objetoAgregar.parentesco + '</td><td>' +
+                objetoAgregar.edad + '</td><td>' +
+                objetoAgregar.escolaridad + '</td><td>' +
+                objetoAgregar.ocupacion+'</td></tr>');
+
+            $('#nombre').val('')
+            $('#parentesco').val('')
+            $('#edad').val('')
+            $('#escolaridad').val('')
+            $('#ocupacion').val('')
+
         },
         error: function(jqXHR, textStatus, errorThrown) {
 
