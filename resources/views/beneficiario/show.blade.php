@@ -56,28 +56,18 @@
                     <div class='page-header'>
                       <h1 class='pull-left'>
                         <i class='fa fa-user'></i>
-                        <span>Perfil de Beneficiario</span>
+                        <span>Información de <span class="capitalize">{{$persona->nombre}} {{$persona->apellido}} <span></span>
                       </h1>
-                      <div class='pull-right'>
-                        <ul class='breadcrumb'>
-                          <li>
-                            <a href='index.html'>
-                              <i class='fa fa-bar-chart-o'></i>
-                            </a>
-                          </li>
-                          <li class='separator'>
-                            <i class='fa fa-angle-right'></i>
-                          </li>
-                          <li>Example pages</li>
-                          <li class='separator'>
-                            <i class='fa fa-angle-right'></i>
-                          </li>
-                          <li class='active'>User profile</li>
-                        </ul>
-                      </div>
                     </div>
                   </div>
                 </div>
+                <div class="col-md-4">
+                    @include('partials.profile.personal')
+                </div>
+                <div class="col-md-4">
+                    @include('partials.profile.contact')
+                </div>
+
                 <div class='row'>
                   <div class='col-sm-3 col-lg-2'>
                     <div class='box'>
@@ -97,27 +87,7 @@
                   <div class='col-sm-9 col-lg-10'>
                     <div class='box'>
                       <div class='box-content box-double-padding'>
-                        <fieldset>
-                          <div class='col-sm-4'>
-                            <div class='lead'>
-                              <i class='fa fa-address-card text-contrast fontawesomesize'></i>
-                              Identificación beneficiario
-                            </div>
-                            <small class='text-muted'>Toda la información registrada es confidencial y responsabilidad del equipo de administración de la OID.</small>
-                          </div>
-                          <div class='col-sm-7 col-sm-offset-1'>
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                              Nombre
-                              <h3>{{$beneficiario->nombre}} {{$beneficiario->apellido}}</h3>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                              Rut
-                              <h3>{{$beneficiario->rut}} </h3>
-                            </div>
-                            <hr class='hr-normal'>
-                          </div>
-                        </fieldset>
-                        <hr class='hr-normal'>
+
                         <fieldset>
                           <div class='col-sm-4'>
                             <div class='lead'>
@@ -128,11 +98,11 @@
                           <div class='col-sm-7 col-sm-offset-1'>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                               Nacionalidad
-                              <h5>{{$pais->nombre}}</h5>
+                              <h5>{{$persona->pais->nombre}}</h5>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                               Sexo
-                              <h5>{{$beneficiario->sexo}}</h5>
+                              <h5>{{$persona->sexo}}</h5>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                               Fecha de Nacimiento
@@ -150,11 +120,11 @@
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                               Fonos
                               <h5>2546939 - 63424158</h5>
-                            </div> 
+                            </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                               E-mail
                               <h5>ahenriquez@sodired.cl</h5>
-                            </div> 
+                            </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                               Credencial de discapacidad
                               <h5>Si - Válida hasta el 17/03/2017</h5>
@@ -166,11 +136,11 @@
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                               Acompañante o tutor
                               <h5>María Angélica Sandivari</h5>
-                            </div> 
+                            </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                               Contacto tutor
                               <h5>+56 9 123456789</h5>
-                            </div>                     
+                            </div>
                           </div>
                         </fieldset>
                         <hr class='hr-normal'>
@@ -190,7 +160,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                               Previsión
                               <h5>No tiene</h5>
-                            </div>                            
+                            </div>
                             <hr class='hr-normal'>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                               Nivel Educacional
@@ -243,7 +213,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                               Discapacidad social y de la comunicación
                               <h5>No posee</h5>
-                            </div>  
+                            </div>
                             <hr class='hr-normal'>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                               Diagnóstico Médico
@@ -253,7 +223,7 @@
                               consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
                               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
                               proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </h5>
-                            </div>  
+                            </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                               Otras enfermedades o condiciones médicas
                               <h5>No posee</h5>
@@ -269,7 +239,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                               Plan de rehabilitación, tratamiento o control
                               <h5>No posee</h5>
-                            </div>          
+                            </div>
                           </div>
                         </fieldset>
                         <hr class='hr-normal'>
