@@ -13,7 +13,7 @@ class FichaBeneficiarioTableSeeder extends Seeder
     {
         for ($i=1; $i <= 150; $i++) {
             $fichaBeneficiario = new \App\FichaBeneficiario([
-                'numero' => $i,
+                //'numero' => $i,
                 'fecha_ingreso' => $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now', $timezone = date_default_timezone_get()),
                 'beneficiario_id' => $i
             ]);

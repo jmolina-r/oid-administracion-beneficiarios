@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FichaDiscTipoDisc extends Model
 {
-    protected $fillable = ['porcentaje_discapacidad', 'ficha_discapacidad_id', 'tipo_discapacidad_id'];
+    protected $fillable = ['porcentaje', 'ficha_discapacidad_id', 'tipo_discapacidad_id'];
 
     public function ficha_discapacidad()
     {

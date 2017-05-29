@@ -21,22 +21,23 @@ class DatoSocialTableSeeder extends Seeder
                 $fonasa = null;
             }
             if($faker->boolean == true) {
-                $organizacionSocial = $faker->numberBetween($min = 1, $max = 3);
-            } else {
-                $organizacionSocial = null;
-            }
-            if($faker->boolean == true) {
                 $sistemaProteccion = $faker->numberBetween($min = 1, $max = 3);
             } else {
                 $sistemaProteccion = null;
+            }
+
+            if($faker->boolean == true) {
+                $prevision = $faker->numberBetween($min = 1, $max = 9);
+            } else {
+                $prevision = null;
             }
             $datoSocial = new \App\DatoSocial([
                 'observacion' => $faker->text,
                 'ficha_beneficiario_id' => $i,
                 'isapre_id' => $isapre,
                 'fonasa_id' => $fonasa,
-                'organizacion_social_id' => $organizacionSocial,
-                'sistema_proteccion_id' => $sistemaProteccion
+                'sistema_proteccion_id' => $sistemaProteccion,
+                'prevision_id' => $prevision
             ]);
             $datoSocial->save();
         }

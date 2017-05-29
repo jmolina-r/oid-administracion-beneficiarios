@@ -1,20 +1,27 @@
-.logo-img{
+.logo-img {
 	max-width: 100px;
 }
 
-.logo-img-login{
+.logo-img-login {
 	max-width: 300px;
 }
 
 
-.areaSocialMenu i{
+.areaSocialMenu i {
 	font-size: 150px;
 }
-i.fontawesomesize{
+i.fontawesomesize {
 	font-size: 30px;
 }
 
-.edit-btn{
+.edit-btn {
 	margin-top: 10px;
+}
 
+.capitalize {
+	text-transform: capitalize;
+}
+
+textarea {
+	resize:none;
 }

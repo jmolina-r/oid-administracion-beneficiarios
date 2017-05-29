@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FichaBeneficiario extends Model
 {
-    protected $fillable = ['numero', 'fecha_ingreso', 'beneficiario_id'];
+    protected $fillable = ['fecha_ingreso', 'beneficiario_id'];
 
     public function beneficiario()
     {

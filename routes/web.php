@@ -117,9 +117,9 @@ Route::group(['prefix' => 'beneficiario'], function () {
         'as' => 'beneficiario.find'
     ]);
 
-    Route::post('/registrar', [
-        'uses' => 'BeneficiarioController@store',
-        'as' => 'beneficiario.store'
+    Route::get('/buscar-json', [
+        'uses' => 'BeneficiarioController@findLikeNombreApellidoRutJson',
+        'as' => 'beneficiario.findLikeNombreApellidoRutJson'
     ]);
 });
 

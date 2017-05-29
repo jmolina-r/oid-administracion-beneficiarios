@@ -19,7 +19,7 @@ class FichaDiscapacidad extends Model
         return $this->belongsTo(TipoDependencia::class);
     }
 
-    public function porcentaje_discapacidad_ficha_discapacidad()
+    public function porcentaje_discapacidades()
     {
         return $this->hasMany(FichaDiscTipoDisc::class);
     }
