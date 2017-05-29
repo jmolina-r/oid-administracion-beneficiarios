@@ -21,7 +21,7 @@ class FichaFonoaudiologiaController extends Controller
 
     public function postAgregarPariente(Request $request)
     {
-
+        \Debugbar::warning('Watch out…');
         $parienteHogarFono = new ParienteHogarFono([
             'nombre' => $request->input('nombre'),
             'parentesco' => $request->input('parentesco'),
@@ -30,6 +30,7 @@ class FichaFonoaudiologiaController extends Controller
             'ocupacion' => $request->input('ocupacion'),
         ]);
 
+        /*
         print($request->all());
 
         session_start();
@@ -45,6 +46,7 @@ class FichaFonoaudiologiaController extends Controller
         $nuevoArrayParientes = array();
         array_push($nuevoArrayParientes, $parienteHogarFono);
         $_SESSION['parientes'] = $nuevoArrayParientes;
+        */
 
     }
 
