@@ -30,6 +30,8 @@ class FichaFonoaudiologiaController extends Controller
             'ocupacion' => $request->input('ocupacion'),
         ]);
 
+        print($request->all());
+
         session_start();
 
         $parientesObtenidos = $_SESSION['parientes'];

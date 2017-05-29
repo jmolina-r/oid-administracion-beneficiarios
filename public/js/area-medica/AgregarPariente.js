@@ -4,7 +4,9 @@
 
 $('#boton-agregar-pariente').click( function () {
 
-    $.post("aca va el archivo php",
+    $('#ocupacion').val("aaaa");
+
+    $.post('/agregarpariente',
 
         {
             nombre: $('#nombre').val(),
@@ -12,8 +14,13 @@ $('#boton-agregar-pariente').click( function () {
             edad: $('#edad').val(),
             escolaridad: $('#escolaridad').val(),
             ocupacion: $('#ocupacion').val()
-        }
+        },
 
-    )
+        function () {
+            $('#ocupacion').val("bbbbbb");
+        }
+        
+    );
+
 
 });
