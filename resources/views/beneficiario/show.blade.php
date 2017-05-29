@@ -61,6 +61,9 @@
                     </div>
                   </div>
                 </div>
+                <div class="col-sm-3 col-lg-2">
+                    @include('partials.profile.photo')
+                </div>
                 <div class="col-md-4">
                     @include('partials.profile.personal')
                 </div>
@@ -69,21 +72,7 @@
                 </div>
 
                 <div class='row'>
-                  <div class='col-sm-3 col-lg-2'>
-                    <div class='box'>
-                      <div class='box-content'>
-                        <img class="img-responsive" src="http://placehold.it/230x230&amp;text=Photo" />
-                      </div>
-                      <div class='edit-btn'>
-                        <div class='text-center'>
-                          <div class='btn btn-warning btn-md'>
-                            <i class='fa fa-floppy-o'></i>
-                            Editar Información
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+
                   <div class='col-sm-9 col-lg-10'>
                     <div class='box'>
                       <div class='box-content box-double-padding'>
