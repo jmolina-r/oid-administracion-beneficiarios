@@ -70,7 +70,17 @@
                 <div class="col-md-4">
                     @include('partials.profile.contact')
                 </div>
-
+                <div class="col-md-12">
+                    @include('partials.profile.location')
+                </div>
+                <div class="col-md-4">
+                    <h4>Datos Tutor</h4>
+                    @include('partials.profile.personal', ['persona' => $persona->tutor])
+                    @include('partials.profile.contact', ['persona' => $persona->tutor])
+                </div>
+                <div class="col-md-4">
+                    @include('partials.profile.social')
+                </div>
 
               </div>
             </div>

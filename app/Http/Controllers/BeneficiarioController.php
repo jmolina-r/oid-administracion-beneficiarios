@@ -206,8 +206,8 @@ class BeneficiarioController extends Controller
 
 
         $tutor = new Tutor([
-            'nombres' => $request->input('nombre_tutor'),
-            'apellidos' => $request->input('apellido_tutor'),
+            'nombre' => $request->input('nombre_tutor'),
+            'apellido' => $request->input('apellido_tutor'),
             'beneficiario_id' => $beneficiario->id
         ]);
         $tutor->save();
