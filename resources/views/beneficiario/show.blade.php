@@ -78,8 +78,11 @@
                     @include('partials.profile.personal', ['persona' => $persona->tutor])
                     @include('partials.profile.contact', ['persona' => $persona->tutor])
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-8">
                     @include('partials.profile.social')
+                </div>
+                <div class="col-md-4">
+                    @include('partials.profile.discapacidad')
                 </div>
 
               </div>
