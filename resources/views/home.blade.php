@@ -3,7 +3,7 @@
 
 <!-- meta atributo title -->
 @section('title')
-Registro de Beneficiario - OID
+Home - OID
 @endsection
 
 <!-- inyeccion de estilos -->
@@ -81,7 +81,7 @@ class='contrast-red'
               <div class='page-header'>
                 <h1 class='pull-left'>
                   <i class='fa fa-pencil-square-o'></i>
-                  <span>Registro de Usuario</span>
+                  <span>Home</span>
                 </h1>
                 <div class='pull-right'>
                   <ul class='breadcrumb'>
@@ -89,16 +89,8 @@ class='contrast-red'
                   </ul>
 
 
-                  <a href="{{ route('logout') }}"
-                      onclick="event.preventDefault();
-                               document.getElementById('logout-form').submit();">
-                      Logout
-                  </a>
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                      {{ csrf_field() }}
-                  </form>
 
-                  
+
                 </div>
               </div>
             </div>
