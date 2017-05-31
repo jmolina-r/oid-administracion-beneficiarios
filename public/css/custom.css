@@ -25,3 +25,7 @@ i.fontawesomesize {
 textarea {
 	resize:none;
 }
+
+#userOptions {
+	margin-top: 15px;
+}

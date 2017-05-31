@@ -11,18 +11,22 @@
 |
 */
 
-Route::get('/', [
-    'uses' => 'UserController@getLogin',
-    'as' => 'user.login'
-]);
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'areasocial'], function(){
     Route::get('/asistentesocial', [
     'uses' => 'FichaSocialController@index',
     'as' => 'social.asistenteSocial'
     ]);
-    
+
     Route::post('/asistentesocial/beneficiario', [
     'uses' => 'FichaSocialController@store',
     'as' => 'social.asistenteSocialBeneficiario'
@@ -122,4 +126,3 @@ Route::group(['prefix' => 'beneficiario'], function () {
         'as' => 'beneficiario.findLikeNombreApellidoRutJson'
     ]);
 });
-
