@@ -7,17 +7,20 @@
     Área Social - OID
 @endsection
 
+
 <!-- inyeccion de estilos -->
+
 @section('styles')
   <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
-  <link href="{{ asset('/css/social/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
   <link href="{{ asset('/assets/stylesheets/plugins/bootstrap_switch/bootstrap-switch.css') }}" rel="stylesheet" type="text/css" media="all" />
+  <link href="{{ asset('/css/social/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
 <!-- Atributos del body -->
 @section('body-attr')
-    class='contrast-red login contrast-background'
+    class='contrast-red'
 @endsection
+
 
 <!-- Inyeccion de scripts
      No importa que vayan antes del body, en el master layout se estan insertando alfinal.
@@ -65,7 +68,7 @@
                     <div class='page-header'>
                       <h1 class='pull-left'>
                         <i class='fa fa-pencil-square-o'></i>
-                        <span>Asistente Social - Visita domiciliaria</span>
+                        <span>Asistente Social</span>
                       </h1>
                       <div class='pull-right'>
                         <ul class='breadcrumb'>
@@ -94,31 +97,70 @@
                     <div class='box'>
                       <div class='box-content box-padding'>
                         <div class="row">
-                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             
                             <h4>Motivos de la visita domiciliaria</h4>
                                                   
                           </div>
-                           <div class='col-md-12 form-group'>
-                               <div class='controls'>
-                                 <input class='make-switch' id='i1' data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' onchange="javascript=showContent('d1','i1')" type='checkbox'> <h5 id='hverificacion'>Verificación de domicilio</h5>
-                               </div>
-                               <div class='controls' id="d1" style="display: none;">
-                                  <div  style="display: inline;">
-                                    <label for="inputText">Observación</label>                                    
-                                  </div>
-                                  <div class='controls'>
-                                    <textarea name="" id="" cols="40" rows="4"></textarea>
-                                  </div>
-                               </div>                          
-                               
-                               <div class="col-sm-12 col-offset-2">
-                                 <button type="submit" class="pull-right btn btn-prev">Volver</button>
-                                 <button type="submit" class="pull-right btn btn-success">Aceptar</button>
-                                  
+                           <form accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post">
+                            <div class='col-md-12 form-group'>
+                                <?php $i = 1; ?>                                                              
+                                 <div class="tabbable tabs-left">                                 
+                                      <ul class="nav nav-tabs">
+                                      @foreach($tipoMotivoSocial as $tMotivos)
+                                        @if($i == 1)
+                                           <li class="active"><a href=<?php echo "#".$tMotivos->id ?> data-toggle="tab">{{$tMotivos->nombre}}</a></li>
+                                           <?php $i = 2; ?>
+                                        @else
+                                            <li><a href=<?php echo "#".$tMotivos->id ?> data-toggle="tab">{{$tMotivos->nombre}}</a></li>
+                                        @endif
+                                      @endforeach 
+                                      </ul>
+                                      <div class="tab-content">
+                                         <?php $i = 1; ?>
+                                         @foreach($tipoMotivoSocial as $tMotivos)
+                                          
+                                          @if($i == 1)
+                                              <div class="tab-pane active" id=  "{{$tMotivos->id}}"  >
+                                                @foreach($tipoSubmotivoSocial as $sMotivo)
+                                                    @if($sMotivo->tipo_motivo_social_id == $tMotivos->id)
+                                                       <p> {{$sMotivo->nombre}} </p>
+                                                    @endif
+                                                @endforeach
+                                              </div>
+                                              <?php $i = 2; ?>
+                                           @else
+                                              <div class="tab-pane" id= "{{$tMotivos->id}}">
+                                                @foreach($tipoSubmotivoSocial as $sMotivo)
+                                                    @if($sMotivo->tipo_motivo_social_id == $tMotivos->id)
+                                                           @if($tMotivos->id == '3')
+                                                              <input class='make-switch' id="{{$sMotivo->id}}" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}')" ><p id="hverificacion"> {{$sMotivo->nombre}} </p>
+                                                              <div class='controls' id="{{$sMotivo->nombre}}" style="display:none;">
+                                                                  <div>
+                                                                    <label for="inputText">Observación</label>
+                                                                    <textarea name="" id="" cols="40" rows="4"></textarea>
+                                                                  </div>
+                                                              </div>
+                                                           @elseif($tMotivos->id == '2')
+                                                               <div class='controls'>
+                                                                    <input type="checkbox" id="inputSubMotivo" value="{{$sMotivo->id}}">{{$sMotivo->nombre}}</label>
+                                                               </div>
+                                                           @endif
+                                                    @endif
+                                                @endforeach
+                                              </div>
+                                           @endif
+                                          @endforeach  
+                                      </div>
                                 </div>
-                              </div>    
-                           </div>
+                  
+                                <div class="col-sm-12 col-offset-2">
+                                  <button type="submit" class="pull-right btn btn-prev">Volver</button>
+                                  <button type="submit" class="pull-right btn btn-success">Aceptar</button>
+                                </div>
+                            </div> 
+                           </form>   
+                        </div>
                         </div>
                       </div>
                     </div>

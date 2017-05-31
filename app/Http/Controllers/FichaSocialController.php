@@ -7,6 +7,7 @@ use App\MotivoAtencionSocial;
 use App\SubMotivoAtencionSocial;
 use App\TipoAyudaTecnicoSocial;
 use App\TipoSubmotivoSocial;
+use App\TipoMotivoSocial;
 use Illuminate\Http\Request;
 
 class FichaSocialController extends Controller
@@ -24,15 +25,15 @@ class FichaSocialController extends Controller
     }
 
     public function index2(){
-
-        return view('social.asistenteSocialVisitaDomiciliaria');
+        $tipoMotivoSocial = TipoMotivoSocial::get();
+        $tipoSubmotivoSocial = TipoSubmotivoSocial::get();
+        return view('social.asistenteSocialVisitaDomiciliaria', compact('tipoMotivoSocial','tipoSubmotivoSocial'));
     }
 
     public function index3(){
 
         return view('social.asistenteSocialBeca');
     }
-
     public function index4(){
 
         $tipoSubmotivoSocial = TipoSubmotivoSocial::get();

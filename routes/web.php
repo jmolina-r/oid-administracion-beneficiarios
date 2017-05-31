@@ -33,6 +33,7 @@ Route::group(['prefix' => 'areasocial'], function(){
     'as' => 'social.asistenteSocialVisitaDomiciliaria'
     ]);
 
+
     Route::get('/asistentesocial/menu/beca', [
         'uses' => 'FichaSocialController@index3',
         'as' => 'social.asistenteSocialBeca'

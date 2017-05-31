@@ -16,18 +16,22 @@ class CreateMotivoAtencionSocialsTable extends Migration
         Schema::create('motivo_atencion_socials', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            /*$table->string('descripcion');
-            $table->string('nombre');
-            */
+            $table->string('observación');
+            $table->date('fecha_visita');
+            
             $table->integer('ficha_atencion_social_id')->unsigned();
             $table->integer('tipo_motivo_social_id')->unsigned();
+        $table->integer('tipo_submotivo_id')->unsigned();
+        $table->integer('tipo_ayuda_id')->unsigned();
         });
         Schema::table('motivo_atencion_socials', function ($table){
             $table->foreign('ficha_atencion_social_id')->references('id')->on('ficha_atencion_socials')->onDelete('cascade');
             $table->foreign('tipo_motivo_social_id')->references('id')->on('tipo_motivo_socials')->onDelete('cascade');
+            $table->foreign('tipo_submotivo_id')->references('id')->on('tipo_submotivo_socials')->onDelete('cascade');
+            $table->foreign('tipo_ayuda_id')->references('id')->on('tipo_ayuda_tecnico_socials')->onDelete('cascade');
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

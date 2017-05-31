@@ -18,8 +18,14 @@ class CreateTipoAyudaTecnicoSocialsTable extends Migration
             $table->timestamps();
             $table->string('tipo');
             $table->string('nombre');
+        
+            $table->integer('tipo_motivo_social_id')->unsigned();
+        });
+        Schema::table('tipo_ayuda_tecnico_socials', function ($table){
+            $table->foreign('tipo_motivo_social_id')->references('id')->on('tipo_motivo_socials')->onDelete('cascade');
         });
     }
+    
 
     /**
      * Reverse the migrations.

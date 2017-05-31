@@ -91,16 +91,6 @@ $factory->define(App\MotivoAtencionSocial::class, function (Faker\Generator $fak
     ];
 });
 */
-$factory->define(App\AyudaTecnicoSocial::class, function (Faker\Generator $faker) {
-
-    return [
-        'nombre' => $faker->regexify('(Tecnico|Social)'),
-        'tipo' => $faker->regexify('(Canasta|Silla|Burro|Cama)'),
-        'descripcion' => $faker->regexify('(Atencion social)'),
-
-        'motivo_atencion_social_id' => $faker->numberBetween($min = 1, $max = 100)
-    ];
-});
 /*
 $factory->define(App\SubMotivoAtencionSocial::class, function (Faker\Generator $faker) {
 

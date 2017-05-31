@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class MotivoAtencionSocial extends Model
 {
-    protected $fillable=['ficha_atencion_social_id','tipo_motivo_social_id'];
+    protected $fillable=['ficha_atencion_social_id','tipo_motivo_social_id','tipo_submotivo_id',
+    'tipo_ayuda_id','fecha_visita', 'observación'];
 
     public function ficha_atencion_social()
     {
-        return $this->belongsTo(FichaAtencionSocial::class);
+        return $this->hasOne(FichaAtencionSocial::class);
     }
 
     public function tipo_motivo_social()
@@ -18,13 +19,13 @@ class MotivoAtencionSocial extends Model
         return $this->hasOne(TipoMotivoSocial::class);
     }
 
-    public function submotivo_atencion_social()
+    public function tipo_submotivo()
     {
-        return $this->hasMany(SubMotivoAtencionSocial::class);
+        return $this->belongTo(TipoSubMotivoSocial::class);
     }
 
-    public function ayuda_tecnico_social()
+    public function tipo_ayuda()
     {
-        return $this->hasMany(AyudaTecnicoSocial::class);
+        return $this->belongTo(TipoAyudaTecnicoSocial::class);
     }
 }

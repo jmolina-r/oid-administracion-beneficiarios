@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class SubMotivoAtencionSocialTableSeed extends Seeder
+class ValEvaluacionTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,6 @@ class SubMotivoAtencionSocialTableSeed extends Seeder
      */
     public function run()
     {
-        //factory(App\SubMotivoAtencionSocial::class,100)->create();
-
+        factory(App\ValEvaluacion::class, 2)->create();
     }
 }

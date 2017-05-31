@@ -22,11 +22,9 @@ class DatabaseSeeder extends Seeder
         $this->call(PrestacionRealizadaTableSeeder::class);
         $this->call(FichaAtencionSocialTableSeeder::class);
         $this->call(TipoMotivoSocialTableSeeder::class);
+        $this->call(TipoAyudaTecnicoSocialTableSeeder::Class);
         $this->call(TipoSubmotivoSocialTableSeeder::class);
-        $this->call(MotivoAtencionSocialTableSeeder::class);
-        $this->call(SubMotivoAtencionSocialTableSeed::class);
-        //$this->call(AyudaTecnicoSocialTableSeed::class);
-
+        $this->call(MotivoAtencionSocialTableSeeder::Class);
 
         $this->call(TutorTableSeeder::class);
         $this->call(RegistroSocialHogarTableSeeder::class);
