@@ -60,31 +60,47 @@
                       </h1>
                     </div>
                   </div>
-                </div>
-                <div class="col-sm-3 col-lg-2">
+                </div>                
+                <div class="col-lg-12">
+                  <div class="col-lg-3">
                     @include('partials.profile.photo')
+                  </div>
+                  <div class="col-md-3">
+                      <h4>Datos Personales</h4>
+                      @include('partials.profile.personal')
+                  </div>
+                  @isset($persona->domicilio)
+                  <div class="col-md-3">
+                      <h4>Ubicación</h4>
+                      @include('partials.profile.location')
+                  </div>
+                  @endisset
+                  @if((isset($persona->telefonos) && count($persona->telefonos) > 0) || isset($persona->email))
+                  <div class="col-md-3">
+                      <h4>Datos de Contacto</h4>
+                      @include('partials.profile.contact')
+                  </div>
+                  @endif                 
                 </div>
-                <div class="col-md-4">
-                    @include('partials.profile.personal')
+                <div class="col-lg-12">                  
+                  <div class="col-md-12">
+                    <h4>Datos sociales</h4>
+                    @include('partials.profile.social')
+                  </div>
+                  <div class="col-md-12">
+                      <h4>Datos de Discapacidad</h4>
+                      @include('partials.profile.discapacidad')
+                  </div>
                 </div>
-                <div class="col-md-4">
-                    @include('partials.profile.contact')
-                </div>
-                <div class="col-md-12">
-                    @include('partials.profile.location')
-                </div>
-                <div class="col-md-4">
+                @isset($persona->tutor)
+                <div class="col-lg-12">
+                  <div class="col-md-4">
                     <h4>Datos Tutor</h4>
                     @include('partials.profile.personal', ['persona' => $persona->tutor])
                     @include('partials.profile.contact', ['persona' => $persona->tutor])
+                  </div>
                 </div>
-                <div class="col-md-8">
-                    @include('partials.profile.social')
-                </div>
-                <div class="col-md-4">
-                    @include('partials.profile.discapacidad')
-                </div>
-
+                @endisset
               </div>
             </div>
             @include('partials.footer')
