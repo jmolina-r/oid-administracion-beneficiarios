@@ -77,12 +77,6 @@ $(document).ready(function() {
         $('#formulario-registro').validator("destroy");
         $('#formulario-registro').validator();
     }
-    /**
-     * Beneficios tipo tags
-     */
-    $(".select-tag").select2({
-        tags: true
-    });
 
     /**
      * Estilos para select del tema
