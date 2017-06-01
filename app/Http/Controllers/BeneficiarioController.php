@@ -26,15 +26,17 @@ use App\TipoDependencia;
 use App\TipoDiscapacidad;
 use App\Tutor;
 
-
-
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 
 class BeneficiarioController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.
