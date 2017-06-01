@@ -95,10 +95,10 @@ Route::group(['prefix' => '/area-medica'], function (){
 
 
 
-Route::group(['prefix' => 'beneficiario'], function () {
+Route::group(['prefix' => 'beneficiario', 'roles' => ['admin']], function () {
     Route::get('/registrar', [
         'uses' => 'BeneficiarioController@create',
-        'as' => 'beneficiario.create'
+        'as' => 'beneficiario.create',
     ]);
 
     Route::post('/registrar', [
