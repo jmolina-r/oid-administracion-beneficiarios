@@ -57,6 +57,11 @@ class DatabaseSeeder extends Seeder
         $this->call(ValSocialTableSeeder::class);
         $this->call(FichaKinesiologiaTableSeeder::class);
 
+        $this->call(RoleTableSeeder::class);
+        $this->call(UserTableSeeder::class);
+        $this->call(RoleUserTableSeeder::class);
+
+
 
     }
 }
