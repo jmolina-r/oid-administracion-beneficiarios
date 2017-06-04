@@ -33,12 +33,6 @@ use Illuminate\Support\Facades\Log;
 class BeneficiarioController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('roles:admin|secretaria');
-    }
-
     /**
      * Display a listing of the resource.
      *
