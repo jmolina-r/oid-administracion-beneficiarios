@@ -391,7 +391,6 @@ class BeneficiarioController extends Controller
             'tel_movil' => 'nullable|numeric',
             'email' => 'nullable|email',
             'credencial_discapacidad' => 'required|numeric|between:0,2',
-            //TODO: Validar que sea fecha
             'credencial_vencimiento' => 'required_if:credencial_discapacidad,1|date_format:"d/m/Y"|after:"yesterday"',
             'registro_social_hogares' => 'required|numeric|between:0,2',
             'registro_social_porcentaje' => 'required_if:registro_social_hogares,1|numeric|between:0,100',
