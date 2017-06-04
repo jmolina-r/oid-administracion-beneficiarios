@@ -16,12 +16,10 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-
-
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'areasocial'], function(){
+Route::group(['prefix' => 'areasocial', 'middleware' => 'auth'], function(){
     Route::get('/asistentesocial', [
     'uses' => 'FichaSocialController@index',
     'as' => 'social.asistenteSocial'
@@ -38,7 +36,7 @@ Route::group(['prefix' => 'areasocial'], function(){
     ]);
 });
 
-Route::group(['prefix' => '/area-medica'], function (){
+Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
 
     Route::group(['prefix' => '/ficha-evaluacion-inicial'], function (){
 
@@ -47,7 +45,7 @@ Route::group(['prefix' => '/area-medica'], function (){
             Route::get('/create/{id}', [
                 'uses' => 'FichaKinesiologiaController@create',
                 'as' => 'area-medica.ficha-evaluacion-inicial.kinesiologia.create'
-            ]);
+            ])->middleware('roles:secretaria');
 
             Route::post('/store', [
                 'uses' => 'FichaKinesiologiaController@store',
@@ -95,27 +93,28 @@ Route::group(['prefix' => '/area-medica'], function (){
 
 
 
-Route::group(['prefix' => 'beneficiario', 'roles' => ['admin']], function () {
+Route::group(['prefix' => 'beneficiario', 'middleware' => 'auth'], function () {
     Route::get('/registrar', [
         'uses' => 'BeneficiarioController@create',
         'as' => 'beneficiario.create',
-    ]);
+    ])->middleware('roles:admin|secretaria');
 
     Route::post('/registrar', [
         'uses' => 'BeneficiarioController@store',
         'as' => 'beneficiario.store'
-    ]);
+    ])->middleware('roles:admin|secretaria');
 
     Route::get('/editar/{id}', [
         'uses' => 'BeneficiarioController@edit',
         'as' => 'beneficiario.edit'
-    ]);
+    ])->middleware('roles:admin|secretaria');
 
     Route::get('/informacion/{id}', [
         'uses' => 'BeneficiarioController@show',
         'as' => 'beneficiario.show'
-    ]);
+    ])->middleware('roles:admin|secretaria');
 
+    // El buscador de beneficiarios no tiene restriccion de roles
     Route::get('/buscar', [
         'uses' => 'BeneficiarioController@find',
         'as' => 'beneficiario.find'
@@ -124,5 +123,5 @@ Route::group(['prefix' => 'beneficiario', 'roles' => ['admin']], function () {
     Route::get('/buscar-json', [
         'uses' => 'BeneficiarioController@findLikeNombreApellidoRutJson',
         'as' => 'beneficiario.findLikeNombreApellidoRutJson'
-    ]);
+    ])->middleware('roles:admin|secretaria');
 });

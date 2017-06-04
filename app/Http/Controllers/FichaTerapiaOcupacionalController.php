@@ -14,12 +14,6 @@ use Illuminate\Http\Request;
 class FichaTerapiaOcupacionalController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('roles');
-    }
-
     /**
      * Mostrar formulario de ingreso de evaluacion inicial.
      *
