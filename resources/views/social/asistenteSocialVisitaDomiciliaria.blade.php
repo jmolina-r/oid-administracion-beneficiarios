@@ -11,9 +11,10 @@
 <!-- inyeccion de estilos -->
 
 @section('styles')
-  <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
   <link href="{{ asset('/assets/stylesheets/plugins/bootstrap_switch/bootstrap-switch.css') }}" rel="stylesheet" type="text/css" media="all" />
   <link href="{{ asset('/css/social/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+  <link href="{{ asset('assets/stylesheets/plugins/fileinput/bootstrap-fileinput.css') }}" rel="stylesheet" type="text/css" media="all" />
+  <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
 <!-- Atributos del body -->
@@ -49,6 +50,8 @@
     <!-- / END - page related files and scripts [optional] -->
     <script src="{{ asset('assets/javascripts/plugins/bootstrap_switch/bootstrapSwitch.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/social/showcontent.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/javascripts/plugins/fileinput/bootstrap-fileinput.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/javascripts/plugins/fileinput/bootstrap-fileinput-fa.js') }}" type="text/javascript"></script>
 
    
 @endsection
@@ -99,10 +102,10 @@
                         <div class="row">
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             
-                            <h4>Motivos de la visita domiciliaria</h4>
+                            <h4>Menú Area Social</h4>
                                                   
                           </div>
-                           <form accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post">
+                           <form accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data">
                             <div class='col-md-12 form-group'>
                                 <?php $i = 1; ?>                                                              
                                  <div class="tabbable tabs-left">                                 
@@ -122,11 +125,33 @@
                                           
                                           @if($i == 1)
                                               <div class="tab-pane active" id=  "{{$tMotivos->id}}"  >
-                                                @foreach($tipoSubmotivoSocial as $sMotivo)
-                                                    @if($sMotivo->tipo_motivo_social_id == $tMotivos->id)
-                                                       <p> {{$sMotivo->nombre}} </p>
-                                                    @endif
-                                                @endforeach
+                                                
+                                                    <fieldset id="tecnico">
+                                                        <label class='control-label' for='inputText'>Ayuda Técnica</label>
+                                                            @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
+                                                               @if ($tipoAyuda->tipo=='tecnico')
+                                                                 <div class='controls'>
+                                                                      <label class="radio-inline"> <input type="radio" name="tipoAyudaTecnica" id="">{{$tipoAyuda->nombre}}</label>
+                                                                 </div>
+                                                               @endif
+                                                           @endforeach
+                                                    </fieldset>
+                                                    <fieldset id="social">
+                                                        <label class='control-label' for='inputText'>Ayuda Social</label>
+                                                        @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
+                                                                @if ($tipoAyuda->tipo=='social')
+                                                                        <div class='controls'>
+                                                                                <label class="radio-inline"> <input type="radio" name="tipoAyudaSocial" id=""> {{$tipoAyuda->nombre}}</label>
+                                                                        </div>
+                                                                @endif
+                                                        @endforeach
+                                                <div class='controls' id="contentVD">
+                                                        <div style="display: inline;">
+                                                                <label for="inputText">Observación</label>
+                                                                <textarea name="observacion" id="observacion" name="observacion" cols="40" rows="4"></textarea>
+                                                        </div>
+                                                </div>
+                                                </fieldset>                                             
                                               </div>
                                               <?php $i = 2; ?>
                                            @else
@@ -134,17 +159,25 @@
                                                 @foreach($tipoSubmotivoSocial as $sMotivo)
                                                     @if($sMotivo->tipo_motivo_social_id == $tMotivos->id)
                                                            @if($tMotivos->id == '3')
-                                                              <input class='make-switch' id="{{$sMotivo->id}}" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}')" ><p id="hverificacion"> {{$sMotivo->nombre}} </p>
-                                                              <div class='controls' id="{{$sMotivo->nombre}}" style="display:none;">
-                                                                  <div>
-                                                                    <label for="inputText">Observación</label>
-                                                                    <textarea name="" id="" cols="40" rows="4"></textarea>
-                                                                  </div>
+                                                              <div class="control" style="margin-top:10px;">
+                                                                <input class='make-switch' id="{{$sMotivo->id}}.sw" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}.sw')" ><p id="hverificacion"> {{$sMotivo->nombre}} </p>
                                                               </div>
+                                                              <div class='controls' id="{{$sMotivo->nombre}}" style="display:none">
+                                                                  <div>
+                                                                    <label for="inputText"style="display:block;">Observación</label>
+                                                                    <textarea name="" id="" cols="40" rows="4"></textarea>
+                                                                  </div> 
+                                                                  @if($sMotivo->id == '8')
+                                                                  
+                                                                      <input type="file" name="avatar"></input>
+                                                              
+                                                                  @endif                                                                 
+                                                              </div>
+                                                                                                                                                                                                                 
                                                            @elseif($tMotivos->id == '2')
-                                                               <div class='controls'>
-                                                                    <input type="checkbox" id="inputSubMotivo" value="{{$sMotivo->id}}">{{$sMotivo->nombre}}</label>
-                                                               </div>
+                                                               <div class='controls'style="margin-top:10px;">
+                                                                    <input class='make-switch' id="{{$sMotivo->nombre}}" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}')"  name="inputSubMotivo[]"><p id="hverificacion">{{$sMotivo->nombre}}</p>
+                                                              </div>
                                                            @endif
                                                     @endif
                                                 @endforeach

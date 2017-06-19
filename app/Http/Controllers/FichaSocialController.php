@@ -20,37 +20,18 @@ class FichaSocialController extends Controller
 
         $this->validate($request, ['rut' => 'required|exists:beneficiarios,rut']);
         $beneficiario = Beneficiario::where('rut',$request->input('rut'))->first();
-        return view('social.asistenteSocialMenu', compact('beneficiario'));
-        
-    }
-
-    public function index2(){
+                         
         $tipoMotivoSocial = TipoMotivoSocial::get();
         $tipoSubmotivoSocial = TipoSubmotivoSocial::get();
-        return view('social.asistenteSocialVisitaDomiciliaria', compact('tipoMotivoSocial','tipoSubmotivoSocial'));
-    }
-
-    public function index3(){
-
-        return view('social.asistenteSocialBeca');
-    }
-    public function index4(){
-
-        $tipoSubmotivoSocial = TipoSubmotivoSocial::get();
-        return view('social.asistenteSocialOrientacion')
-            ->with(compact('tipoSubmotivoSocial'));
-    }
-
-    public function index5(){
-
         $tipoAyudaTecnicoSocial = TipoAyudaTecnicoSocial::get();
-        return view('social.asistenteSocialAyudaTecnica')
-            ->with(compact('tipoAyudaTecnicoSocial'));
+        return view('social.asistenteSocialVisitaDomiciliaria', compact('tipoMotivoSocial','tipoSubmotivoSocial','tipoAyudaTecnicoSocial','beneficiario'));   
     }
 
-    public function postMotivo(Request $request){
-
-        $subMotivos = $request -> input('inputSubMotivo');
+ 
+    public function post(Request $request){
+        
+        return $request->all();
+        /* $subMotivos = $request -> input('inputSubMotivo');
 
         if(isset($subMotivos)){
 
@@ -76,6 +57,8 @@ class FichaSocialController extends Controller
 
             }
             return view('social.asistenteSocial');
-        }
+        }*/
+
     }
+
 }

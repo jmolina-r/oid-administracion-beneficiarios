@@ -23,37 +23,15 @@ Route::group(['prefix' => 'areasocial'], function(){
     'as' => 'social.asistenteSocial'
     ]);
     
-    Route::get('/asistentesocial/beneficiario', [
+    Route::get('/asistentesocial/menu', [
     'uses' => 'FichaSocialController@show',
-    'as' => 'social.asistenteSocialBeneficiario'
-    ]);
+    'as' => 'social.asistenteSocial'
+    ]);   
 
-    Route::get('/asistentesocial/visita', [
-    'uses' => 'FichaSocialController@index2',
-    'as' => 'social.asistenteSocialVisitaDomiciliaria'
+    Route::post('/asistentesocial/menu',[
+    'uses' => 'FichaSocialController@post',
+    'as' => 'social.asistentesocial'
     ]);
-
-
-    Route::get('/asistentesocial/menu/beca', [
-        'uses' => 'FichaSocialController@index3',
-        'as' => 'social.asistenteSocialBeca'
-    ]);
-
-    Route::get('/asistentesocial/menu/orientacion', [
-        'uses' => 'FichaSocialController@index4',
-        'as' => 'social.asistenteSocialOrientacion'
-    ]);
-
-    Route::get('/asistentesocial/menu/ayuda', [
-        'uses' => 'FichaSocialController@index5',
-        'as' => 'social.asistenteSocialAyudaTecnica'
-    ]);
-
-    Route::post('/asistentesocial/menu/orientacion', [
-        'uses' => 'FichaSocialController@postMotivo',
-        'as' => 'social.asistenteSocial'
-    ]);
-    
 });
 
 
