@@ -30,7 +30,9 @@ $('#boton-agregar-pariente').click(function() {
                 objetoAgregar.parentesco + '</td><td>' +
                 objetoAgregar.edad + '</td><td>' +
                 objetoAgregar.escolaridad + '</td><td>' +
-                objetoAgregar.ocupacion+'</td></tr>');
+                objetoAgregar.ocupacion + '</td><td>' +
+                '<button id = "eliminar-pariente" type="button" class="delbtn"' + '>Eliminar</button>' + '</td></tr>');
+
 
             $('#nombre').val('')
             $('#parentesco').val('')
@@ -38,13 +40,16 @@ $('#boton-agregar-pariente').click(function() {
             $('#escolaridad').val('')
             $('#ocupacion').val('')
 
+            $('button.delbtn').click(function(){
+                $(this).parent().parents("tr").remove()
+            });
         },
         error: function(jqXHR, textStatus, errorThrown) {
 
         }
     });
 
-
-
-
 });
+
+
+

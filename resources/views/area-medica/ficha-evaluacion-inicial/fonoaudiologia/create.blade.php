@@ -128,7 +128,7 @@
                                                     </div>
                                                 @endif
                                                 <hr class='hr-normal'>
-                                                <form role="form" id="formulario-registro" action="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.store')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
+                                                <form role="form" id="formulario-registro" action="{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.store')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
                                                     <div class='step-content'>
                                                         <!-- STEP 1 -->
                                                         <div class='step-pane active' data-step='1'>
@@ -167,23 +167,26 @@
                                                                     <input class="form-control" id="ocupacion" name="ocupacion" value="{{ old('ocupacion') }}"  placeholder="Ocupación" type="text">
                                                                 </div>
                                                             </div>
-                                                            <button id="boton-agregar-pariente" type="button" class="btn btn-primary enabled">
-                                                                Agregar
-                                                            </button>
-                                                            <table class="table table-striped" id="tabla-parientes">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th>Nombre</th>
-                                                                    <th>Parentesco</th>
-                                                                    <th>Edad</th>
-                                                                    <th>Escolaridad</th>
-                                                                    <th>Ocupación</th>
-                                                                    <th>Eliminar</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                </tbody>
-                                                            </table>
+                                                            <div class="col-md-12">
+                                                                <button id="boton-agregar-pariente" type="button" class="btn btn-primary enabled pull-right">
+                                                                    Agregar
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <table class="table table-striped" id="tabla-parientes">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>Nombre</th>
+                                                                        <th>Parentesco</th>
+                                                                        <th>Edad</th>
+                                                                        <th>Escolaridad</th>
+                                                                        <th>Ocupación</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
                                                         </div>
                                                         <!-- STEP 2 -->
                                                         <div class='step-pane active' data-step='2'>
