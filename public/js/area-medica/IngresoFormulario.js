@@ -9,7 +9,6 @@ $(document).ready(function() {
     $('#formulario-registro').validator();
 
     $('#myWizard').wizard().on('actionclicked.fu.wizard', function(e, data) {
-        alert('hola');
         var hasErrors = $('#formulario_registro').validator('validate').has('.has-error').length;
         //if (hasErrors) e.preventDefault();
 
