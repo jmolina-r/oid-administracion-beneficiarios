@@ -120,6 +120,12 @@
                                                         <li data-step='8'>
                                                             <span class='step'>8</span>
                                                         </li>
+                                                        <li data-step='9'>
+                                                            <span class='step'>9</span>
+                                                        </li>
+                                                        <li data-step='10'>
+                                                            <span class='step'>10</span>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                                 <div class='actions'>
@@ -680,6 +686,220 @@
                                                             <div class="col-md-4 form-group">
                                                                 <label for="obs_social">Observaciones:</label>
                                                                 <textarea class="form-control" rows="3" id="obs_social"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <!-- STEP 8 -->
+                                                        <div class="step-pane active" data-step="8">
+                                                            <div class="col-md-12">
+                                                                <h3>Hábitos</h3>
+                                                                <hr/>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">¿Usa mamadera?</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio31" id="mamadera_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio31" id="mamadera_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">¿Usa chupete?</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio32" id="chupete_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio32" id="chupete_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">¿Se chupa el dedo?</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio33" id="dedo_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio33" id="dedo_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">¿Come solo?</label>
+                                                                <div class="col-md-1">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio34" id="solo_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio34" id="solo_no">No</label>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <input class="form-control" id="tipo_comida" name="tipo_comida" value="{{ old('tipo_comida') }}"  placeholder="Tipo de comida">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">¿Se viste solo?</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio35" id="viste_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio35" id="viste_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">¿Permanece con la boca abierta de día?</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio36" id="dia_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio36" id="dia_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">¿Permanece con la boca abierta de noche?</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio37" id="noche_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio37" id="noche_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- STEP 9 -->
+                                                        <div class="step-pane active" data-step="9">
+                                                            <div class="col-md-12">
+                                                                <h3>Antecedentes mórbidos del niño (a)</h3>
+                                                                <hr/>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Alergias</label>
+                                                                <div class="col-md-1">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio41" id="morb_alergia_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio41" id="morb_alergia_no">No</label>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" id="des_trat1" name="des_trat1" value="{{ old('des_trat1') }}"  placeholder="Descripción y tratamiento">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Otitis</label>
+                                                                <div class="col-md-1">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio42" id="morb_oti_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio42" id="morb_oti_no">No</label>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" id="des_trat2" name="des_trat2" value="{{ old('des_trat2') }}"  placeholder="Descripción y tratamiento">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Obesidad</label>
+                                                                <div class="col-md-1">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio43" id="morb_obe_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio43" id="morb_obe_no">No</label>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" id="des_trat3" name="des_trat3" value="{{ old('des_trat3') }}"  placeholder="Descripción y tratamiento">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Diabetes</label>
+                                                                <div class="col-md-1">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio44" id="morb_dia_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio44" id="morb_dia_no">No</label>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" id="des_trat4" name="des_trat4" value="{{ old('des_trat4') }}"  placeholder="Descripción y tratamiento">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Cirugías</label>
+                                                                <div class="col-md-1">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio45" id="morb_cir_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio45" id="morb_cir_no">No</label>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" id="des_trat5" name="des_trat5" value="{{ old('des_trat5') }}"  placeholder="Descripción y tratamiento">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Traumatismos</label>
+                                                                <div class="col-md-1">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio46" id="morb_tra_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio46" id="morb_tra_no">No</label>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" id="des_trat6" name="des_trat6" value="{{ old('des_trat6') }}"  placeholder="Descripción y tratamiento">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Epilepsia</label>
+                                                                <div class="col-md-1">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio47" id="morb_epi_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio47" id="morb_epi_no">No</label>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" id="des_trat7" name="des_trat7" value="{{ old('des_trat7') }}"  placeholder="Descripción y tratamiento">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Déficit visual</label>
+                                                                <div class="col-md-1">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio48" id="morb_vis_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio48" id="morb_vis_no">No</label>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" id="des_trat8" name="des_trat8" value="{{ old('des_trat8') }}"  placeholder="Descripción y tratamiento">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Déficit auditivo</label>
+                                                                <div class="col-md-1">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio49" id="morb_aud_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio49" id="morb_aud_no">No</label>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" id="des_trat9" name="des_trat9" value="{{ old('des_trat9') }}"  placeholder="Descripción y tratamiento">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Parálisis cerebral</label>
+                                                                <div class="col-md-1">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio50" id="morb_par_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio50" id="morb_par_no">No</label>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" id="des_trat10" name="des_trat10" value="{{ old('des_trat10') }}"  placeholder="Descripción y tratamiento">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 form-group">
+                                                                <label for="obs_otros_morb">Otros:</label>
+                                                                <textarea class="form-control" rows="3" id="obs_otros_morb"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <!-- STEP 10-->
+                                                        <div class="step-pane active" data-step="10">
+                                                            <div class="col-md-12">
+                                                                <h3>Antecedentes mórbidos familiares</h3>
+                                                                <hr/>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label class="col-md-2">Enfermedades</label>
+                                                                <div class="col-md-2">
+                                                                    <div class="checkbox">
+                                                                        <label><input type="checkbox" value="" id="check_diabetes">Diabetes</label>
+                                                                    </div>
+                                                                    <div class="checkbox">
+                                                                        <label><input type="checkbox" value="" id="check_hiper">Hipertensión</label>
+                                                                    </div>
+                                                                    <div class="checkbox disabled">
+                                                                        <label><input type="checkbox" value="" id="check_epilepsia">Epilepsia</label>
+                                                                    </div>
+                                                                    <div class="checkbox">
+                                                                        <label><input type="checkbox" value="" id="check_def">Deficiencia mental</label>
+                                                                    </div>
+                                                                    <div class="checkbox disabled">
+                                                                        <label><input type="checkbox" value="" id="check_autismo">Autismo</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <div class="checkbox">
+                                                                        <label><input type="checkbox" value="" id="check_leng">Trastornos del lenguaje</label>
+                                                                    </div>
+                                                                    <div class="checkbox">
+                                                                        <label><input type="checkbox" value="" id="check_apr">Trastornos del aprendizaje</label>
+                                                                    </div>
+                                                                    <div class="checkbox disabled">
+                                                                        <label><input type="checkbox" value="" id="check_visuales">Trastornos visuales</label>
+                                                                    </div>
+                                                                    <div class="checkbox">
+                                                                        <label><input type="checkbox" value="" id="check_aud">Trastornos auditivos</label>
+                                                                    </div>
+                                                                    <div class="checkbox disabled">
+                                                                        <label><input type="checkbox" value="" id="check_autismo">Trastornos psiquiátricos</label>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
