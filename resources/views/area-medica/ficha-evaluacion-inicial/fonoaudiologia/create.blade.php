@@ -114,6 +114,12 @@
                                                         <li data-step='6'>
                                                             <span class='step'>6</span>
                                                         </li>
+                                                        <li data-step='7'>
+                                                            <span class='step'>7</span>
+                                                        </li>
+                                                        <li data-step='8'>
+                                                            <span class='step'>8</span>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                                 <div class='actions'>
@@ -497,10 +503,183 @@
                                                                 <hr/>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3" for="esfinter_nocturno">Control esfínter nocturno</label>
+                                                                <label class="col-md-3" for="balbuceo">Balbuceó</label>
                                                                 <div class="col-md-1">
-                                                                    <input class="form-control" id="esfinter_nocturno" name="esfinter_nocturno" value="{{ old('esfinter_nocturno') }}"  placeholder="">
+                                                                    <input class="form-control" id="balbuceo" name="balbuceo" value="{{ old('balbuceo') }}"  placeholder="">
                                                                 </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3" for="sonrio">Sonrió</label>
+                                                                <div class="col-md-1">
+                                                                    <input class="form-control" id="sonrio" name="sonrio" value="{{ old('sonrio') }}"  placeholder="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3" for="primeras_palabras">Dijo sus primeras palabras</label>
+                                                                <div class="col-md-1">
+                                                                    <input class="form-control" id="primeras_palabras" name="primeras_palabras" value="{{ old('primeras_palabras') }}"  placeholder="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3" for="dos_palabras">Dijo frases de 2 palabras</label>
+                                                                <div class="col-md-1">
+                                                                    <input class="form-control" id="dos_palabras" name="dos_palabras" value="{{ old('dos_palabras') }}"  placeholder="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3" for="dijo_oraciones">Dijo oraciones</label>
+                                                                <div class="col-md-1">
+                                                                    <input class="form-control" id="dijo_oraciones" name="dijo_oraciones" value="{{ old('dijo_oraciones') }}"  placeholder="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3" for="hablo_esp">Habló espontáneamente</label>
+                                                                <div class="col-md-1">
+                                                                    <input class="form-control" id="hablo_esp" name="hablo_esp" value="{{ old('hablo_esp') }}"  placeholder="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3" for="siguio_inst">Siguió instrucciones</label>
+                                                                <div class="col-md-1">
+                                                                    <input class="form-control" id="siguio_inst" name="siguio_inst" value="{{ old('siguio_inst') }}"  placeholder="">
+                                                                </div>
+                                                            </div>
+                                                            <br/>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">¿El niño (a) mira a los ojos cuando usted lo habla?</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio1" id="ojos_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio1" id="ojos_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">¿El niño (a) mira a los labios cuando habla?</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio2" id="labios_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio2" id="labios_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">¿Intenta comunicarse con palabras?</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio3" id="com_palabras_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio3" id="com_palabras_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">¿Se comunica con jerga?</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio4" id="jerga_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio4" id="jerga_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">¿Se comunica con palabras sueltas?</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio5" id="sueltas_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio5" id="sueltas_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">¿Se comunica a través de gestos?</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio6" id="gestos_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio6" id="gestos_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">¿Usted entiende lo que dice?</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio7" id="dice_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio7" id="dice_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">¿Las personas que no lo conocen entienden lo que dice?</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio8" id="conocen_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio8" id="conocen_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- STEP 7 -->
+                                                        <div class="step-pane active" data-step="7">
+                                                            <div class="col-md-12">
+                                                                <h3>Desarrollo social</h3>
+                                                                <hr/>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Respeta normas</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio21" id="normas_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio21" id="normas_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Comparte juguetes</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio22" id="juguetes_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio22" id="juguetes_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Juega con otros niños</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio23" id="otros_ninos_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio23" id="otros_ninos_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Cariñoso</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio24" id="carinoso_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio24" id="carinoso_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Hace berrinches</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio25" id="berrinche_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio25" id="berrinche_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Se frustra con facilidad</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio26" id="frustra_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio26" id="frustra_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Irritable</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio27" id="irritable_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio27" id="irritable_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Agresivo</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio28" id="agresivo_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio28" id="agresivo_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3">Peleador</label>
+                                                                <div class="col-md-3">
+                                                                    <label class="radio-inline"><input type="radio" name="optradio29" id="peleador_si">Sí</label>
+                                                                    <label class="radio-inline"><input type="radio" name="optradio29" id="peleador_no">No</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3" for="interes_social">Intereses</label>
+                                                                <div class="col-md-5">
+                                                                    <input class="form-control" id="interes_social" name="interes_social" value="{{ old('interes_social') }}"  placeholder="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 form-group">
+                                                                <label for="obs_social">Observaciones:</label>
+                                                                <textarea class="form-control" rows="3" id="obs_social"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
