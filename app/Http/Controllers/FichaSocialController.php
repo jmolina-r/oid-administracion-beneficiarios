@@ -30,6 +30,12 @@ class FichaSocialController extends Controller
  
     public function post(Request $request){
         
+        /*
+            Buscar que panel esta activo para poder rescatar los datos de este, depues se hace un switch por cada tab para generar 
+            el envio de datos a la base de datos por cada uno.
+         */
+
+
         return $request->all();
         /* $subMotivos = $request -> input('inputSubMotivo');
 

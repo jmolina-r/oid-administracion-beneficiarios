@@ -105,7 +105,7 @@
                             <h4>Menú Area Social</h4>
                                                   
                           </div>
-                           <form accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data">
+                           
                             <div class='col-md-12 form-group'>
                                 <?php $i = 1; ?>                                                              
                                  <div class="tabbable tabs-left">                                 
@@ -125,7 +125,7 @@
                                           
                                           @if($i == 1)
                                               <div class="tab-pane active" id=  "{{$tMotivos->id}}"  >
-                                                
+                                                <form accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data">
                                                     <fieldset id="tecnico">
                                                         <label class='control-label' for='inputText'>Ayuda Técnica</label>
                                                             @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
@@ -151,12 +151,19 @@
                                                                 <textarea name="observacion" id="observacion" name="observacion" cols="40" rows="4"></textarea>
                                                         </div>
                                                 </div>
-                                                </fieldset>                                             
+                                                </fieldset>
+                                                <div class="col-sm-12 col-offset-2">
+                                                   <button type="submit" class="pull-right btn btn-success">Aceptar</button>
+                                                </div>
+                                               </form>                                              
                                               </div>
                                               <?php $i = 2; ?>
                                            @else
                                               <div class="tab-pane" id= "{{$tMotivos->id}}">
+                                              <fieldset>
+                                                <form accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data">
                                                 @foreach($tipoSubmotivoSocial as $sMotivo)
+                                                
                                                     @if($sMotivo->tipo_motivo_social_id == $tMotivos->id)
                                                            @if($tMotivos->id == '3')
                                                               <div class="control" style="margin-top:10px;">
@@ -179,20 +186,23 @@
                                                                     <input class='make-switch' id="{{$sMotivo->nombre}}" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}')"  name="inputSubMotivo[]"><p id="hverificacion">{{$sMotivo->nombre}}</p>
                                                               </div>
                                                            @endif
-                                                    @endif
+                                                    @endif                                                      
                                                 @endforeach
+                                                <div class="col-sm-12 col-offset-2">
+                                                   <button type="submit" id="{{$sMotivo->nombre}}.btn" class="pull-right btn btn-success">Aceptar</button>
+                                                </div>
+                                               </form> 
+                                               </fieldset>
                                               </div>
                                            @endif
                                           @endforeach  
                                       </div>
                                 </div>
-                  
-                                <div class="col-sm-12 col-offset-2">
-                                  <button type="submit" class="pull-right btn btn-prev">Volver</button>
-                                  <button type="submit" class="pull-right btn btn-success">Aceptar</button>
-                                </div>
+
+                               
+                                
                             </div> 
-                           </form>   
+                             
                         </div>
                         </div>
                       </div>
