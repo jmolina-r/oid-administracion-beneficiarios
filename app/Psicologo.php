@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TerapeutaOcupacional extends Model
+class Psicologo extends Model
 {
     protected $fillable = ['rut', 'nombres', 'apellidos', 'telefono', 'fecha_nacimiento', 'direccion'];
 
-    public function ingresoTerapiaOcupacional()
+    public function ingresoPsicologia()
     {
-        return $this->hasOne(FichaTerapiaOcupacional::class);
+        return $this->hasOne(FichaPsicologia::class);
     }
 }
