@@ -9,7 +9,6 @@ $(document).ready(function() {
     $('#formulario-registro').validator();
 
     $('#myWizard').wizard().on('actionclicked.fu.wizard', function(e, data) {
-        alert('hola');
         var hasErrors = $('#formulario_registro').validator('validate').has('.has-error').length;
         //if (hasErrors) e.preventDefault();
 
@@ -26,7 +25,6 @@ $(document).ready(function() {
      * Si hay puntuacion se activa comentario.
      */
     $("#puntaje").change(function() {
-        alert('hola');
         //Si se ha seleccionado si
         if (this.value == 1) {
             $('#comentario').removeAttr('disabled');
