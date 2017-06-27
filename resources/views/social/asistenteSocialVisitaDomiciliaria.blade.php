@@ -43,7 +43,7 @@
     <script src="{{ asset('/assets/javascripts/plugins/retina/retina.js') }}" type="text/javascript"></script>
     <!-- / theme file [required] -->
     <script src="{{ asset('/assets/javascripts/theme.js') }}" type="text/javascript"></script>
-    
+
     <!-- / START - page related files and scripts [optional] -->
     <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
@@ -53,7 +53,7 @@
     <script src="{{ asset('assets/javascripts/plugins/fileinput/bootstrap-fileinput.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/javascripts/plugins/fileinput/bootstrap-fileinput-fa.js') }}" type="text/javascript"></script>
 
-   
+
 @endsection
 
 <!-- Contenido del body -->
@@ -101,14 +101,27 @@
                       <div class='box-content box-padding'>
                         <div class="row">
                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            
+
                             <h4>Menú Area Social</h4>
-                                                  
+
                           </div>
-                           
+                            @if(count($errors) > 0)
+                                <hr class='hr-normal controls'>
+
+                                <div class="alert alert-danger">
+                                    @foreach($errors->all() as $error)
+                                        <p>{{ $error }}</p>
+                                    @endforeach
+                                </div>
+                            @endif
+                            @if (session()->has('info'))
+                                <hr class='hr-normal controls'>
+                                <div class="alert alert-success">{{ session('info') }}</div>
+                            @endif
+
                             <div class='col-md-12 form-group'>
-                                <?php $i = 1; ?>                                                              
-                                 <div class="tabbable tabs-left">                                 
+                                <?php $i = 1; ?>
+                                 <div class="tabbable tabs-left">
                                       <ul class="nav nav-tabs">
                                       @foreach($tipoMotivoSocial as $tMotivos)
                                         @if($i == 1)
@@ -117,12 +130,12 @@
                                         @else
                                             <li><a href=<?php echo "#".$tMotivos->id ?> data-toggle="tab">{{$tMotivos->nombre}}</a></li>
                                         @endif
-                                      @endforeach 
+                                      @endforeach
                                       </ul>
                                       <div class="tab-content">
                                          <?php $i = 1; ?>
                                          @foreach($tipoMotivoSocial as $tMotivos)
-                                          
+
                                           @if($i == 1)
                                               <div class="tab-pane active" id=  "{{$tMotivos->id}}"  >
                                                 <form accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data">
@@ -132,7 +145,7 @@
                                                             @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
                                                                @if ($tipoAyuda->tipo=='tecnico')
                                                                  <div class='controls'>
-                                                                      <label class="radio-inline"> <input type="radio" name="tipoAyudaTecnica" id="">{{$tipoAyuda->nombre}}</label>
+                                                                     <label class="radio-inline"> <input type="radio" name="tipoAyudaTecnica[]" id="tipoAyudaTecnica" value="{{$tipoAyuda->id}}">{{$tipoAyuda->nombre}}</label>
                                                                  </div>
                                                                @endif
                                                            @endforeach
@@ -142,21 +155,21 @@
                                                         @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
                                                                 @if ($tipoAyuda->tipo=='social')
                                                                         <div class='controls'>
-                                                                                <label class="radio-inline"> <input type="radio" name="tipoAyudaSocial" id=""> {{$tipoAyuda->nombre}}</label>
+                                                                                <label class="radio-inline"> <input type="radio" name="tipoAyudaSocial[]" id="tipoAyudaSocial" value="{{$tipoAyuda->id}}"> {{$tipoAyuda->nombre}}</label>
                                                                         </div>
                                                                 @endif
                                                         @endforeach
                                                 <div class='controls' id="contentVD">
                                                         <div style="display: inline;">
                                                                 <label for="inputText">Observación</label>
-                                                                <textarea name="observacion" id="observacion" name="observacion" cols="40" rows="4"></textarea>
+                                                                <textarea name="observacionAyuda" id="observacionAyuda" cols="40" rows="4"></textarea>
                                                         </div>
                                                 </div>
                                                 </fieldset>
                                                 <div class="col-sm-12 col-offset-2">
-                                                   <button type="submit" class="pull-right btn btn-success">Aceptar</button>
+                                                   <button type="submit" name="{{$tMotivos->nombre}}.btn" class="pull-right btn btn-success">Aceptar</button>
                                                 </div>
-                                               </form>                                              
+                                               </form>
                                               </div>
                                               <?php $i = 2; ?>
                                            @else
@@ -165,46 +178,43 @@
                                                 <form accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data">
                                                  {!!csrf_field()!!}
                                                 @foreach($tipoSubmotivoSocial as $sMotivo)
-                                                
+
                                                     @if($sMotivo->tipo_motivo_social_id == $tMotivos->id)
                                                            @if($tMotivos->id == '3')
                                                               <div class="control" style="margin-top:10px;">
-                                                                <input class='make-switch' id="{{$sMotivo->id}}.sw" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}.sw')" ><p id="hverificacion"> {{$sMotivo->nombre}} </p>
+                                                                <input class='make-switch' value="{{$sMotivo->id}}" name="vd[]" id="{{$sMotivo->id}}.vd" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}.vd')" ><p id="hverificacion"> {{$sMotivo->nombre}} </p>
                                                               </div>
                                                               <div class='controls' id="{{$sMotivo->nombre}}" style="display:none">
                                                                   <div>
                                                                     <label for="inputText"style="display:block;">Observación</label>
-                                                                    <textarea name="" id="" cols="40" rows="4"></textarea>
-                                                                  </div> 
+                                                                    <textarea name="vdText[]" id="vdText" cols="40" rows="4"></textarea>
+                                                                  </div>
                                                                   @if($sMotivo->id == '8')
-                                                                  
+
                                                                       <input type="file" name="avatar"></input>
-                                                              
-                                                                  @endif                                                                 
+
+                                                                  @endif
                                                               </div>
-                                                                                                                                                                                                                 
+
                                                            @elseif($tMotivos->id == '2')
                                                                <div class='controls'style="margin-top:10px;">
-                                                                    <input class='make-switch' id="{{$sMotivo->nombre}}" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}')"  name="inputSubMotivo[]"><p id="hverificacion">{{$sMotivo->nombre}}</p>
+                                                                    <input class='make-switch' value="{{$sMotivo->id}}" id="inputSubMotivo" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}')"  name="inputSubMotivo[]"><p id="hverificacion">{{$sMotivo->nombre}}</p>
                                                               </div>
                                                            @endif
-                                                    @endif                                                      
+                                                    @endif
                                                 @endforeach
                                                 <div class="col-sm-12 col-offset-2">
-                                                   <button type="submit" name="{{$sMotivo->nombre}}.btn" class="pull-right btn btn-success">Aceptar</button>
+                                                   <button type="submit" name="{{$tMotivos->nombre}}.btn" class="pull-right btn btn-success">Aceptar</button>
                                                 </div>
-                                               </form> 
+                                               </form>
                                                </fieldset>
                                               </div>
                                            @endif
-                                          @endforeach  
+                                          @endforeach
                                       </div>
                                 </div>
+                            </div>
 
-                               
-                                
-                            </div> 
-                             
                         </div>
                         </div>
                       </div>

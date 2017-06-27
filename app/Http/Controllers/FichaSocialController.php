@@ -34,13 +34,102 @@ class FichaSocialController extends Controller
             Buscar que panel esta activo para poder rescatar los datos de este, depues se hace un switch por cada tab para generar 
             el envio de datos a la base de datos por cada uno.
          */
-        if (isset($_POST["t_senadis_btn"])) {
+        /*if (isset($_POST["t_senadis_btn"])) {
            Echo "Se ha pulsado el botón aceptar";
         } else {
            Echo "Se ha pulsado el botón cancelar";
+        }*/
+        $now = new \DateTime();
+        $obsIt = 'N/A';
+
+        if (isset($_POST["visita_domiciliaria_btn"])) {
+
+            $motivoVisita = $request -> input('vd');
+            $obsVisita = $request -> input('vdText');
+            $this->validate($request, [
+            'vd' => 'required',]);
+
+            for($i=0;$i<count($motivoVisita);$i++){
+
+                if($obsVisita[$i]!=''){
+                    $obsIt = $obsVisita[$i];
+                }
+                $motivoSocial = new \App\MotivoAtencionSocial([
+
+                    'observación' => $obsIt,
+                    'fecha_visita' => $now->format('Y-m-d H:i:s'),
+                    'ficha_atencion_social_id' => '1',
+                    'tipo_motivo_social_id' => '3',
+                    'tipo_submotivo_id' => $motivoVisita[$i],
+                    'tipo_ayuda_id' => '0'
+                ]);
+                $motivoSocial->save();
+            }
+            return back()->with('info','Se ha ingresado con éxito la visita');
+
+        } elseif(isset($_POST["ayudas_btn"])) {
+
+            $motivoAyudaTecnica = $request -> input('tipoAyudaTecnica');
+            $motivoAyudaSocial = $request -> input('tipoAyudaSocial');
+            if($request -> input('observacionAyuda') != ''){
+                $obsIt = $request -> input('observacionAyuda');
+            }
+
+            for($i=0;$i<count($motivoAyudaTecnica);$i++){
+
+                    $motivoSocial = new \App\MotivoAtencionSocial([
+
+                        'observación' => $obsIt,
+                        'fecha_visita' => $now->format('Y-m-d H:i:s'),
+                        'ficha_atencion_social_id' => '1',
+                        'tipo_motivo_social_id' => '1',
+                        'tipo_submotivo_id' => '0',
+                        'tipo_ayuda_id' => $motivoAyudaTecnica[0]
+                    ]);
+                    $motivoSocial->save();
+
+            }
+
+            for($i=0;$i<count($motivoAyudaSocial);$i++){
+
+                $motivoSocial = new \App\MotivoAtencionSocial([
+
+                    'observación' => $obsIt,
+                    'fecha_visita' => $now->format('Y-m-d H:i:s'),
+                    'ficha_atencion_social_id' => '1',
+                    'tipo_motivo_social_id' => '1',
+                    'tipo_submotivo_id' => '0',
+                    'tipo_ayuda_id' => $motivoAyudaSocial[0]
+                ]);
+                $motivoSocial->save();
+
+            }
+
+            return back()->with('info','Se ha ingresado con éxito la visita');
+
+        } elseif(isset($_POST["becas_btn"])){
+            echo "Esta sección aún no se encuentra habilitada";
+        } else{
+
+            //Orientacion
+            $subMotivos = $request -> input('inputSubMotivo');
+            for($i=0;$i<count($subMotivos);$i++){
+
+                $motivoSocial = new \App\MotivoAtencionSocial([
+
+                    'observación' => $obsIt,
+                    'fecha_visita' => $now->format('Y-m-d H:i:s'),
+                    'ficha_atencion_social_id' => '1',
+                    'tipo_motivo_social_id' => '2',
+                    'tipo_submotivo_id' => $subMotivos[$i],
+                    'tipo_ayuda_id' => '0'
+                ]);
+                $motivoSocial->save();
+            }
+            return back()->with('info','Se ha ingresado con éxito la visita');
         }
 
-        return $request->all();
+        //return $request->all();
         /* $subMotivos = $request -> input('inputSubMotivo');
 
         if(isset($subMotivos)){
