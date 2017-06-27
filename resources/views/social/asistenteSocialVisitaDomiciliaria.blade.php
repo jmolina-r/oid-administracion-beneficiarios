@@ -126,6 +126,7 @@
                                           @if($i == 1)
                                               <div class="tab-pane active" id=  "{{$tMotivos->id}}"  >
                                                 <form accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data">
+                                                    {!!csrf_field()!!}
                                                     <fieldset id="tecnico">
                                                         <label class='control-label' for='inputText'>Ayuda Técnica</label>
                                                             @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
@@ -162,6 +163,7 @@
                                               <div class="tab-pane" id= "{{$tMotivos->id}}">
                                               <fieldset>
                                                 <form accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data">
+                                                 {!!csrf_field()!!}
                                                 @foreach($tipoSubmotivoSocial as $sMotivo)
                                                 
                                                     @if($sMotivo->tipo_motivo_social_id == $tMotivos->id)
@@ -189,7 +191,7 @@
                                                     @endif                                                      
                                                 @endforeach
                                                 <div class="col-sm-12 col-offset-2">
-                                                   <button type="submit" id="{{$sMotivo->nombre}}.btn" class="pull-right btn btn-success">Aceptar</button>
+                                                   <button type="submit" name="{{$sMotivo->nombre}}.btn" class="pull-right btn btn-success">Aceptar</button>
                                                 </div>
                                                </form> 
                                                </fieldset>

@@ -34,7 +34,11 @@ class FichaSocialController extends Controller
             Buscar que panel esta activo para poder rescatar los datos de este, depues se hace un switch por cada tab para generar 
             el envio de datos a la base de datos por cada uno.
          */
-
+        if (isset($_POST["t_senadis_btn"])) {
+           Echo "Se ha pulsado el botón aceptar";
+        } else {
+           Echo "Se ha pulsado el botón cancelar";
+        }
 
         return $request->all();
         /* $subMotivos = $request -> input('inputSubMotivo');
