@@ -83,3 +83,15 @@ Route::group(['prefix' => 'beneficiario'], function () {
     ]);
 });
 
+Route::group(['prefix' => 'reportabilidad'], function(){
+    Route::get('/createFichaPaciente', [
+    'uses' => 'ReportabilidadController@show',
+    'as' => 'reportabilidad.createFichaPaciente'
+    ]);
+    
+    Route::get('/showEstadistica', [
+    'uses' => 'ReportabilidadController@showResults',
+    'as' => 'reportabilidad.showEstadistica'
+    ]);   
+});
+
