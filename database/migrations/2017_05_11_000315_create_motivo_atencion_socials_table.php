@@ -21,8 +21,8 @@ class CreateMotivoAtencionSocialsTable extends Migration
             
             $table->integer('ficha_atencion_social_id')->unsigned();
             $table->integer('tipo_motivo_social_id')->unsigned();
-        $table->integer('tipo_submotivo_id')->unsigned();
-        $table->integer('tipo_ayuda_id')->unsigned();
+            $table->integer('tipo_submotivo_id')->unsigned()->nullable();
+            $table->integer('tipo_ayuda_id')->unsigned()->nullable();
         });
         Schema::table('motivo_atencion_socials', function ($table){
             $table->foreign('ficha_atencion_social_id')->references('id')->on('ficha_atencion_socials')->onDelete('cascade');

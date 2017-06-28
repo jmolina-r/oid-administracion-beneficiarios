@@ -77,19 +77,19 @@
                         <ul class='breadcrumb'>
                           <li>
                             <a href='index.html'>
-                              <i class='fa fa-bar-chart-o'></i>
+                              <i class='fa fa-list-alt'></i>
                             </a>
                           </li>
                           <li class='separator'>
                             <i class='fa fa-angle-right'></i>
                           </li>
                           <li>
-                            Forms
+                            Área social
                           </li>
                           <li class='separator'>
                             <i class='fa fa-angle-right'></i>
                           </li>
-                          <li class='active'>Wizard</li>
+                          <li class='active'>Asistente Social</li>
                         </ul>
                       </div>
                     </div>
@@ -187,7 +187,7 @@
                                                               <div class='controls' id="{{$sMotivo->nombre}}" style="display:none">
                                                                   <div>
                                                                     <label for="inputText"style="display:block;">Observación</label>
-                                                                    <textarea name="vdText[]" id="vdText" cols="40" rows="4"></textarea>
+                                                                    <textarea name="vdText[]" id="{{$sMotivo->nombre}}.text" value="{{$sMotivo->id}}" cols="40" rows="4"></textarea>
                                                                   </div>
                                                                   @if($sMotivo->id == '8')
 

@@ -34,11 +34,6 @@ class FichaSocialController extends Controller
             Buscar que panel esta activo para poder rescatar los datos de este, depues se hace un switch por cada tab para generar 
             el envio de datos a la base de datos por cada uno.
          */
-        /*if (isset($_POST["t_senadis_btn"])) {
-           Echo "Se ha pulsado el botón aceptar";
-        } else {
-           Echo "Se ha pulsado el botón cancelar";
-        }*/
         $now = new \DateTime();
         $obsIt = 'N/A';
 
@@ -49,9 +44,10 @@ class FichaSocialController extends Controller
             $this->validate($request, [
             'vd' => 'required',]);
 
-            for($i=0;$i<count($motivoVisita);$i++){
+            for($i=0;$i<count($obsVisita);$i++){
 
-                if($obsVisita[$i]!=''){
+                echo "Observacion: ". $obsVisita[$i] . "<br>";
+                if($obsVisita[$i]!=NULL){
                     $obsIt = $obsVisita[$i];
                 }
                 $motivoSocial = new \App\MotivoAtencionSocial([
@@ -61,11 +57,11 @@ class FichaSocialController extends Controller
                     'ficha_atencion_social_id' => '1',
                     'tipo_motivo_social_id' => '3',
                     'tipo_submotivo_id' => $motivoVisita[$i],
-                    'tipo_ayuda_id' => '0'
+                    'tipo_ayuda_id' => NULL
                 ]);
                 $motivoSocial->save();
             }
-            return back()->with('info','Se ha ingresado con éxito la visita');
+            //return back()->with('info','Se ha ingresado con éxito la visita');
 
         } elseif(isset($_POST["ayudas_btn"])) {
 
@@ -83,7 +79,7 @@ class FichaSocialController extends Controller
                         'fecha_visita' => $now->format('Y-m-d H:i:s'),
                         'ficha_atencion_social_id' => '1',
                         'tipo_motivo_social_id' => '1',
-                        'tipo_submotivo_id' => '0',
+                        'tipo_submotivo_id' => NULL,
                         'tipo_ayuda_id' => $motivoAyudaTecnica[0]
                     ]);
                     $motivoSocial->save();
@@ -98,7 +94,7 @@ class FichaSocialController extends Controller
                     'fecha_visita' => $now->format('Y-m-d H:i:s'),
                     'ficha_atencion_social_id' => '1',
                     'tipo_motivo_social_id' => '1',
-                    'tipo_submotivo_id' => '0',
+                    'tipo_submotivo_id' => NULL,
                     'tipo_ayuda_id' => $motivoAyudaSocial[0]
                 ]);
                 $motivoSocial->save();
@@ -122,7 +118,7 @@ class FichaSocialController extends Controller
                     'ficha_atencion_social_id' => '1',
                     'tipo_motivo_social_id' => '2',
                     'tipo_submotivo_id' => $subMotivos[$i],
-                    'tipo_ayuda_id' => '0'
+                    'tipo_ayuda_id' => NULL
                 ]);
                 $motivoSocial->save();
             }
