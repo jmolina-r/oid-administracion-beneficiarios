@@ -53,11 +53,6 @@ class BeneficiarioController extends Controller
     public function create()
     {
         \Debugbar::warning('Watch out…');
-        /**
-         * Estas son las clecciones vacias de prueba
-         * Son las que se deben enviar al fronend a partir de los datos
-         * almacenados en la BD
-         */
 
         //Lista de Paises
         $paises = Pais::get();
