@@ -30,8 +30,31 @@ textarea {
 /***** Person Profile ******/
 /***************************/
 
-.tit {
-	color: gray;
+.profile h4 {
+	color: #FFF;
+	background-color: #183446;
+	padding: 10px 0 10px 10px;
+	font-size: 16px;
+	margin-bottom: 0px;
+}
+
+.profile .arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;  
+  border-top: 10px solid #183446;
+  margin-left: 10px;
+}
+
+.profile .tit {
+	color: #3C3C3C;
+	font-weight: bold;
+}
+
+.profile p{
+	color: #959595;
+	font-weight: bold;
 }
 
 /******************************/
