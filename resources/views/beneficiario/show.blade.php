@@ -70,20 +70,29 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                 @include('partials.profile.photo')
                             </div>
                             <div class="col-md-3">
-                                <h4>Datos Personales</h4>
+                                <h4>
+                                    <i class='fa fa-user'></i>
+                                    Datos Personales
+                                </h4>
                                 <div class="arrow-down"></div>
                                 @include('partials.profile.personal')
                             </div>
                             @isset($persona->domicilio)
                             <div class="col-md-3">
-                                <h4>Ubicación</h4>
+                                <h4>
+                                    <i class='fa fa-location-arrow'></i>
+                                    Ubicación
+                                </h4>
                                 <div class="arrow-down"></div>
                                 @include('partials.profile.location')
                             </div>
                             @endisset
                             @if((isset($persona->telefonos) && count($persona->telefonos) > 0) || isset($persona->email))
                             <div class="col-md-3">
-                                <h4>Datos de Contacto</h4>
+                                <h4>
+                                    <i class='fa fa-address-book'></i>
+                                    Datos de Contacto
+                                </h4>
                                 <div class="arrow-down"></div>
                                 @include('partials.profile.contact')
                             </div>
@@ -91,20 +100,29 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                         </div>
                         <div class="col-lg-12">                  
                             <div class="col-md-12">
-                                <h4>Datos sociales</h4>
-                                <div class="arrow-down"></div>
+                                <h4>
+                                    <i class='fa fa-envira'></i>
+                                    Datos sociales
+                                </h4>
+                                <div class="arrow-down v2"></div>
                                 @include('partials.profile.social')
                             </div>
                             <div class="col-md-12">
-                                <h4>Datos de Discapacidad</h4>
-                                <div class="arrow-down"></div>
+                                <h4>
+                                    <i class='fa fa-wheelchair'></i>
+                                    Datos de Discapacidad
+                                </h4>
+                                <div class="arrow-down v2"></div>
                                 @include('partials.profile.discapacidad')
                             </div>
                         </div>
                         @isset($persona->tutor)
                         <div class="col-lg-12">
                             <div class="col-md-12">
-                                <h4>Datos Tutor</h4>
+                                <h4>
+                                    <i class='fa fa-user'></i>
+                                    Datos Tutor
+                                </h4>
                                 <div class="arrow-down"></div>
                                 @include('partials.profile.personal', ['persona' => $persona->tutor])
                                 @include('partials.profile.contact', ['persona' => $persona->tutor])

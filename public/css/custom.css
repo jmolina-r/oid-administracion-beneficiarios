@@ -47,14 +47,19 @@ textarea {
   margin-left: 10px;
 }
 
+	.profile .v2{
+		margin-left: 25px;
+	}
+
 .profile .tit {
-	color: #3C3C3C;
+	color: #595959;
 	font-weight: bold;
 }
 
 .profile p{
-	color: #959595;
-	font-weight: bold;
+	color: #747474;
+	margin-top: 15px;
+	line-height: 22px;
 }
 
 /******************************/
