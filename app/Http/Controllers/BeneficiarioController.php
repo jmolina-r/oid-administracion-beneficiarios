@@ -110,19 +110,11 @@ class BeneficiarioController extends Controller
      */
     public function store(Request $request)
     {
-        //Log::critical($request->input('beneficios'));
-        // Log::critical('La descapacidad'.$request->input('tipo_discapacidad')['2']);
-        // 0, 1, or 2. 0 inexistence, 1 exists, 2 waiting.
 
         // Validate Fields
         $this->validate($request, $this->rules($request), $this->messages($request));
 
-        // $this->validate($request, );
-
-
-
-
-        // Beneficiario Create
+        // Beneficiario Save
         $beneficiario = new Beneficiario([
             'nombre' => strtolower($request->input('nombres')),
             'apellido' => strtolower($request->input('apellidos')),
@@ -136,6 +128,7 @@ class BeneficiarioController extends Controller
         ]);
         $beneficiario->save();
 
+        // TelefonoBeneficiario Save
         if ($request->input('tel_fijo')) {
             $telefonoFijo = new TelefonoBeneficiario([
                 'numero' => $request->input('tel_fijo'),
@@ -144,7 +137,7 @@ class BeneficiarioController extends Controller
             ]);
             $telefonoFijo->save();
         }
-
+         // TelefonoBeneficiario Save (Movil)
         if ($request->input('tel_movil')) {
             $telefonoMovil = new TelefonoBeneficiario([
                 'numero' => $request->input('tel_movil'),
@@ -154,7 +147,7 @@ class BeneficiarioController extends Controller
             $telefonoMovil->save();
         }
 
-
+        // CredencialDiscapacidad Save
         if ($request->input('credencial_discapacidad') != 0) {
             if ($request->input('credencial_discapacidad') == 2) {
                 $credeDic = new CredencialDiscapacidad([
@@ -173,6 +166,7 @@ class BeneficiarioController extends Controller
             }
         }
 
+        // RegistroSocialHogar Save
         if ($request->input('registro_social_hogares') != 0) {
             if ($request->input('registro_social_hogares') == 2) {
                 $regSocHog = new RegistroSocialHogar([
@@ -191,7 +185,7 @@ class BeneficiarioController extends Controller
             }
         }
 
-
+        // Domicilio Save
         if ($request->input('domicilio_calle')) {
             $domicilio = new Domicilio([
                 'pobl_vill' => $request->input('domicilio_poblacion'),
@@ -204,7 +198,7 @@ class BeneficiarioController extends Controller
             $domicilio->save();
         }
 
-
+        // Tutor Save
         $tutor = new Tutor([
             'nombre' => $request->input('nombre_tutor'),
             'apellido' => $request->input('apellido_tutor'),
@@ -212,22 +206,23 @@ class BeneficiarioController extends Controller
         ]);
         $tutor->save();
 
+        // TelefonoTutor Save
         $telefonoTutor = new TelefonoTutor([
             'numero' => $request->input('telefono_tutor'),
             'tutor_id' => $tutor->id
         ]);
         $telefonoTutor->save();
 
+        // FichaBeneficiario Save
         $fichaBeneficiario = new FichaBeneficiario([
             'fecha_ingreso' => date('Y-m-d'),
             'beneficiario_id' => $beneficiario->id
         ]);
         $fichaBeneficiario->save();
 
-        // Dato social
+        // DatoSocial Save
         $arrDatoSocial['ficha_beneficiario_id'] = $fichaBeneficiario->id;
         $arrDatoSocial['observacion'] = $request->input('observacion_general');
-
 
         if ($request->input('sistema_salud') && $request->input('sistema_salud') == 'fonasa') {
             $arrDatoSocial['fonasa_id'] = $request->input('fonasa');
@@ -246,7 +241,7 @@ class BeneficiarioController extends Controller
         $datoSocial = new DatoSocial($arrDatoSocial);
         $datoSocial->save();
 
-        // Beneficios
+        // Beneficio Save
         if ($request->input('beneficios')) {
             foreach ($request->input('beneficios') as $key => $val) {
                 if (is_numeric($val)) {
@@ -264,7 +259,7 @@ class BeneficiarioController extends Controller
             }
         }
 
-        // Organizaciones sociales
+        // OrganizacionSocial Save
         if ($request->input('organizaciones_sociales')) {
             foreach ($request->input('organizaciones_sociales') as $key => $val) {
                 if (is_numeric($val)) {
@@ -282,6 +277,7 @@ class BeneficiarioController extends Controller
             }
         }
 
+        // FichaDiscapacidad Save
         $fichaDiscapacidad = new FichaDiscapacidad([
             'requiere_cuidado' => $request->input('cuidados'),
             'diagnostico' => $request->input('diagnostico'),
@@ -291,6 +287,7 @@ class BeneficiarioController extends Controller
         ]);
         $fichaDiscapacidad->save();
 
+        // TipoDiscapacidad Save
         if ($request->input('tipo_discapacidad')) {
             foreach ($request->input('tipo_discapacidad') as $key => $val) {
                 if ($val > 0 && TipoDiscapacidad::find($key)) {
@@ -303,10 +300,6 @@ class BeneficiarioController extends Controller
                 }
             }
         }
-
-
-
-
 
         $email = $request->input('email');
         $planDeRehabilitacionTratamientoControl= $request->input('p_reha_trat_ctrl');
