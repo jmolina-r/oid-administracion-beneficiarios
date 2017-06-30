@@ -72,7 +72,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                             <div class="col-lg-3">
                                 @include('partials.profile.photo')
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-12 col-lg-3">
                                 <h4>
                                     <i class='fa fa-user'></i>
                                     Datos Personales
@@ -81,7 +81,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                 @include('partials.profile.personal')
                             </div>
                             @isset($persona->domicilio)
-                            <div class="col-md-3">
+                            <div class="col-md-12 col-lg-3">
                                 <h4>
                                     <i class='fa fa-location-arrow'></i>
                                     Ubicación
@@ -91,7 +91,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                             </div>
                             @endisset
                             @if((isset($persona->telefonos) && count($persona->telefonos) > 0) || isset($persona->email))
-                            <div class="col-md-3">
+                            <div class="col-md-12 col-lg-3">
                                 <h4>
                                     <i class='fa fa-address-book'></i>
                                     Datos de Contacto
