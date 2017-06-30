@@ -64,7 +64,11 @@ textarea {
 
 .profile .box-content{
 	margin: 0 auto;
-	width: 230px;
+	max-width: 400px;
+}
+
+.btn{
+	font-size: 16px;
 }
 
 /******************************/

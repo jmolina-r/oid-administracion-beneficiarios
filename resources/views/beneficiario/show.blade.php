@@ -60,12 +60,15 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                         Información de 
                                         <span class="capitalize">
                                         {{$persona->nombre}} {{$persona->apellido}} 
-                                        <span></span>
+                                        <div class='btn btn-default btn-md'>
+                                            <i class='fa fa-cog'></i>
+                                            Editar Perfil
+                                        </div>
                                     </h1>
                                 </div>
                             </div>
-                        </div>                
-                        <div class="col-lg-12">
+                        </div>
+                        <div class="col-lg-12">       
                             <div class="col-lg-3">
                                 @include('partials.profile.photo')
                             </div>
