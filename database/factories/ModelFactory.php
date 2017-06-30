@@ -107,8 +107,8 @@ $factory->define(App\SubMotivoAtencionSocial::class, function (Faker\Generator $
 
 $factory->define(App\Tutor::class, function (Faker\Generator $faker) {
     return [
-        'nombres' => $faker->firstName,
-        'apellidos' => $faker->lastName,
+        'nombre' => $faker->firstName,
+        'apellido' => $faker->lastName,
         'beneficiario_id' => $faker->unique()->numberBetween($min = 1, $max = 150)
     ];
 });

@@ -29,3 +29,14 @@ textarea {
 #userOptions {
 	margin-top: 15px;
 }
+
+/***************************/
+/***** Person Profile ******/
+/***************************/
+
+.tit {
+	color: gray;
+}
+
+/******************************/
+/***** End Person Profile *****/
