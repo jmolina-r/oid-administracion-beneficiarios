@@ -62,6 +62,11 @@ textarea {
 	line-height: 22px;
 }
 
+.profile .box-content{
+	margin: 0 auto;
+	width: 230px;
+}
+
 /******************************/
 /***** End Person Profile *****/
 /******************************/

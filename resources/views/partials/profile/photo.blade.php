@@ -5,8 +5,8 @@
     <div class='edit-btn'>
         <div class='text-center'>
             <div class='btn btn-warning btn-md'>
-                    <i class='fa fa-floppy-o'></i>
-                    Editar Información
+                <i class='fa fa-floppy-o'></i>
+                Editar Información
             </div>
         </div>
     </div>
