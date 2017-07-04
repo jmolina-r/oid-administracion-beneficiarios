@@ -34,11 +34,6 @@ class FichaSocialController extends Controller
             Buscar que panel esta activo para poder rescatar los datos de este, depues se hace un switch por cada tab para generar 
             el envio de datos a la base de datos por cada uno.
          */
-        /*if (isset($_POST["t_senadis_btn"])) {
-           Echo "Se ha pulsado el botón aceptar";
-        } else {
-           Echo "Se ha pulsado el botón cancelar";
-        }*/
         $now = new \DateTime();
         $obsIt = 'N/A';
      
@@ -46,11 +41,13 @@ class FichaSocialController extends Controller
 
             $motivoVisita = $request -> input('vd');
             $obsVisita = $request -> input('vdText');
+
             $this->validate($request, ['vd' => 'required',]);
 
             for($i=0;$i<count($obsVisita);$i++){
                
                 if($obsVisita[$i]!=null){
+           
                     $obsIt = $obsVisita[$i];
                 }
                 $motivoSocial = new \App\MotivoAtencionSocial([
@@ -64,7 +61,7 @@ class FichaSocialController extends Controller
                 ]);
                 $motivoSocial->save();
             }
-            return back()->with('info','Se ha ingresado con éxito la visita');
+            //return back()->with('info','Se ha ingresado con éxito la visita');
 
         } elseif(isset($_POST["ayudas_btn"])) {
 
