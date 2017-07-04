@@ -19,7 +19,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="form-group">
                 <div class='input-group' id='credencial_venc'>
-                    <input name='credencial_vencimiento' value="10/10/2010" class='form-control' data-format='DD/MM/YYYY' placeholder='Vencimiento' type='text' id="credencial_vencimiento" disabled>
+                    <input name='credencial_vencimiento' class='form-control' data-format='DD/MM/YYYY' placeholder='Vencimiento' type='text' id="credencial_vencimiento" disabled>
                     <span class='input-group-addon'>
                         <span class='fa fa-calendar'></span>
                     </span>
