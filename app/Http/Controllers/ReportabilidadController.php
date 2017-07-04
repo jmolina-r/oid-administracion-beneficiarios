@@ -61,23 +61,14 @@ class ReportabilidadController extends Controller
 
         //EDUCACION id 1-9
         $preBasico=Beneficiario::where('educacion_id','=',1)->count();
-        $porcentajePreBasico=$preBasico*100/$cant;
         $basicoIncompleto=Beneficiario::where('educacion_id','=',2)->count();
-        $porcentajeBasicoIncompleto=$basicoIncompleto*100/$cant;
         $basicoCompleto=Beneficiario::where('educacion_id','=',3)->count();
-        $porcentajeBasicoCompleto=$basicoCompleto*100/$cant;
         $medioIncompleto=Beneficiario::where('educacion_id','=',4)->count();
-        $porcentajeMedioIncompleto=$medioIncompleto*100/$cant;
         $medioCompleto=Beneficiario::where('educacion_id','=',5)->count();
-        $porcentajeMedioCompleto=$medioCompleto*100/$cant;
         $tecnicoIncompleto=Beneficiario::where('educacion_id','=',6)->count();
-        $porcentajeTecnicoIncompleto=$tecnicoIncompleto*100/$cant;
         $tecnicoCompleto=Beneficiario::where('educacion_id','=',7)->count();
-        $porcentajeTecnicoCompleto=$tecnicoCompleto*100/$cant;
         $universitarioIncompleto=Beneficiario::where('educacion_id','=',8)->count();
-        $porcentajeUniversitarioIncompleto=$universitarioIncompleto*100/$cant;
         $universitarioCompleto=Beneficiario::where('educacion_id','=',9)->count();
-        $porcentajeUniversitarioCompleto=$universitarioCompleto*100/$cant;
 
         //SITUACION LABORAL id 1-5
         $trabajador=Beneficiario::where('ocupacion_id','=',1)->count();
@@ -94,9 +85,9 @@ class ReportabilidadController extends Controller
 
 
         return view('reportabilidad.createFichaPaciente', compact('cant', 'porcentajeFemenino', 'porcentajeMasculino', 'ingresoAnual', 'ingresoMensual', 'porcentajeCredencial', 'atencionAnual' , 'atencionMensual','porcentajeAdulto', 'porcentajeJoven', 'porcentajeAdultoMayor', 'porcentajeFonasa',
-            'porcentajeFonasaTramoA','porcentajeFonasaTramoB', 'porcentajeFonasaTramoC','porcentajeFonasaTramoD', 'porcentajeIsapre', 'porcentajePreBasico','porcentajeBasicoIncompleto', 'porcentajeBasicoCompleto',
-            'porcentajeMedioIncompleto', 'porcentajeMedioCompleto', 'porcentajeTecnicoIncompleto', 'porcentajeTecnicoCompleto', 'porcentajeUniversitarioIncompleto' ,
-            'porcentajeUniversitarioCompleto', 'porcentajeTrabajador','porcentajeEstudiante','porcentajeDuenoCasa','porcentajePensionado','porcentajeCesante'.'porcentajeFonasaTramoA','porcentajeFonasaTramoB','porcentajeFonasaTramoC','porcentajeFonasaTramoD'));
+            'porcentajeFonasaTramoA','porcentajeFonasaTramoB', 'porcentajeFonasaTramoC','porcentajeFonasaTramoD', 'porcentajeIsapre', 'preBasico','basicoIncompleto', 'basicoCompleto',
+            'medioIncompleto', 'medioCompleto', 'tecnicoIncompleto', 'tecnicoCompleto', 'universitarioIncompleto' ,
+            'universitarioCompleto', 'trabajador','estudiante','duenoCasa','pensionado','cesante'));
 
     }
  

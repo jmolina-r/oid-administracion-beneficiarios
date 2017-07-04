@@ -52,18 +52,66 @@
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['TRAMO A',<?php echo $porcentajeFonasaTramoA ?>],
-          ['TRAMO B',<?php echo $porcentajeFonasaTramoB ?>],
-          ['TRAMO C',<?php echo $porcentajeFonasaTramoC ?>],
-          ['TRAMO D',<?php echo $porcentajeFonasaTramoD ?>]
+          ['Tramo A',<?php echo $porcentajeFonasaTramoA ?>],
+          ['Tramo B',<?php echo $porcentajeFonasaTramoB ?>],
+          ['Tramo C',<?php echo $porcentajeFonasaTramoC ?>],
+          ['Tramo D',<?php echo $porcentajeFonasaTramoD ?>]
         ]);
 
         var options = {
-          title: 'TRAMOS'
+          title: 'TRAMOS FONASA'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+       google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Prebasico',<?php echo $preBasico ?>],
+          ['Basico incompleto',<?php echo $basicoIncompleto ?>],
+          ['Basico completo',<?php echo $basicoCompleto ?>],
+          ['Medio incompleto',<?php echo $medioIncompleto ?>],
+          ['Medio completo',<?php echo $medioCompleto ?>],
+          ['Tecnico incompleto',<?php echo $tecnicoIncompleto ?>],
+          ['Tecnico completo', <?php echo $tecnicoCompleto ?>],
+          ['Universitario incompleto',<?php echo $universitarioIncompleto ?>],
+          ['Universitario completo',<?php echo $universitarioCompleto ?>]
+        ]);
+
+        var options = {
+          title: 'PORCENTAJE EDUCACIONAL',
+         
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
+    <script type="text/javascript">
+       google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Trabajador',<?php echo $trabajador ?>],
+          ['Estudiante',<?php echo $estudiante ?>],
+          ['Dueño casa',<?php echo $duenoCasa ?>],
+          ['Pensionado',<?php echo $pensionado ?>],
+          ['Cesante',<?php echo $cesante ?>]
+        ]);
+
+        var options = {
+          title: 'SITUACION LABORAL',
+         
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('chartthree'));
         chart.draw(data, options);
       }
     </script>
@@ -138,7 +186,7 @@
               <div class='row'>
                 <div class='col-sm-12'>
                   <div class='box bordered-box blue-border' style='margin-bottom:0;'>
-                    <div class='box-header blue-background'>
+                    <div class='box-header green-background'>
                       <div class='title'>Usuarios</div>
                       <div class='actions'>
                         <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
@@ -161,35 +209,52 @@
                           <div class='text-inverse fa fa-credit-card align-left'></div>
                      </div>
                      <div class='col-sm-6 sinpadding'>
-                       <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-error'><br></h3>
-                          <small>SALUD</small>
-                          <div class='text-error fa fa-ambulance align-left'></div>
+                        <div class='box-content box-statistic text-right'>
+                            <h3 class='title text-error'><br></h3>
+                            <small>SALUD</small>
+                            <div class='text-error fa fa-ambulance align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                              <h3 class='title text-error'><?php echo $porcentajeFonasa; echo '%'?></h3>
+                              <small>USUARIOS FONASA</small>
+                              <div class='text-error fa fa-ambulance align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                              <h3 class='title text-error'><?php echo $porcentajeIsapre; echo '%'?></h3>
+                              <small>USUARIOS ISAPRE</small>
+                              <div class='text-error fa fa-ambulance align-left'></div>
+                        </div>
                      </div>
-                     <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-error'><?php echo $porcentajeFonasa; echo '%'?></h3>
-                          <small>USUARIOS FONASA</small>
-                          <div class='text-error fa fa-ambulance align-left'></div>
-                     </div>
-                      <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-error'><?php echo $porcentajeIsapre; echo '%'?></h3>
-                          <small>USUARIOS ISAPRE</small>
-                          <div class='text-error fa fa-ambulance align-left'></div>
-                     </div>
-                     </div>
-                     <div class='box-content col-sm-6 sinpadding'>
+                     <div class='box-content box-statistic col-sm-6 sinpadding'>
                        <div  id="piechart" style="width: 100%; height: 100%;"></div>
                      </div>
+                       <div class='box-content box-statistic col-sm-12 text-right'>
+                              <h3 class='title text-error'><br></h3>
+                              <small>NIVEL EDUACIONAL</small>
+                              <div class='text-invisor fa fa-book align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic col-sm-12 sinpadding'>
+                       <div  id="donutchart" style="width: 100%; height: 100%;"></div>
+                     </div>
+                     <div class='box-content box-statistic col-sm-12 text-right'>
+                              <h3 class='title text-error'><br></h3>
+                              <small>SITUACION LABORAL</small>
+                              <div class='text-invisor fa fa-book align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic col-sm-12 sinpadding'>
+                       <div  id="chartthree" style="width: 100%; height: 100%;"></div>
+                     </div>
+                     </div>
                      
-                      
-                    
-                  </div>
+                
                 </div>
+                
               </div>
+               
                 <div class='row'>
                 <div class='col-sm-12'>
                   <div class='box bordered-box blue-border' style='margin-bottom:0;'>
-                    <div class='box-header green-background'>
+                    <div class='box-header blue-background'>
                       <div class='title'>Atenciones Global</div>
                       <div class='actions'>
                         <a class="btn box-remove btn-xs btn-link" href="#"><i class='fa fa-times'></i>
@@ -198,44 +263,22 @@
                         </a>
                       </div>
                     </div>
-                    <div class='box-content box-no-padding'>
-                      <div class='responsive-table'>
-                        <div class='scrollable-area'>
-                          <table class='table' style='margin-bottom:0;'>
-                            <thead>
-                              <tr>
-                                <th>
-                                  Nombre
-                                </th>
-                                <th>
-                                 valor
-                                </th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>Atenciones Mensuales</td>
-                                <td><?php echo $atencionMensual ?></td>
-                              </tr>
-                              <tr>
-                                <td>Atenciones Anuales</td>
-                                <td><?php echo $atencionAnual ?></td>
-                              </tr>
-                            </tbody>
-                          </table>
+                    <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-info'><?php echo $atencionMensual ?></h3>
+                          <small>ATENCIONES MENSUALES</small>
+                          <div class='text-info fa fa-file-text align-left'></div>
                         </div>
-                      </div>
-                    </div>
+                    <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-info'><?php echo $atencionAnual ?></h3>
+                          <small>ATENCIONES ANUALES</small>
+                          <div class='text-info fa fa-file-text align-left'></div>
+                        </div>
+                    
                   </div>
                 </div>
               </div>
-<
-                <div class='row'>
-                  <div class='col-sm-12'>
-                    <button> Salir </button>
-                  </div>
-                </div>
+
+                
               </div>
             </div>
             @include('partials.footer')
