@@ -334,7 +334,9 @@ class BeneficiarioController extends Controller
      */
     public function edit($id)
     {
-        return view('beneficiario.edit');
+        $persona = Beneficiario::find($id);
+        return view('beneficiario.edit')
+            ->with(compact('persona'));
     }
 
     /**
