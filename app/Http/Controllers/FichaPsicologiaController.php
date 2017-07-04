@@ -10,30 +10,38 @@ use Illuminate\Http\Request;
 class FichaPsicologiaController extends Controller
 {
     /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
      * Mostrar formulario de ingreso de evaluacion inicial.
      *
+     * @param $id
      * @return view
      */
-    public function getIngresar()
+    public function create($id)
     {
-        return view('medica.ficha-evaluacion-inicial.psicologia.ingresar');
+        return view('area-medica.ficha-evaluacion-inicial.psicologia.create')
+            ->with(compact('id'));
     }
 
     /**
      * Guardar datos recibidos del formulario en bd.
      *
-     * @return redirect
+     * @param Request $request
+     * @return view
      */
-    public function postIngresar(Request $request)
+    public function store(Request $request)
     {
-        $this->validate($request, [
-            'rut' => 'required|exists:beneficiarios',
 
-        ]);
-
-
-        //Obtener el beneficiario segun el rut
-        $beneficiario = Beneficiario::where('rut', $request->input('rut'))->get();
+        // Validate Fields
+        $this->validate($request, $this->rules($request));
 
         //obtener el psicologo por su sesion
         /*
@@ -77,14 +85,12 @@ class FichaPsicologiaController extends Controller
 
             $fichaPsicologia = new FichaPsicologia([
                 //'diagnostico' => $beneficiario->diagnostico,
-                'diagnostico_base' => 'diagnostico_base', //provisional, diagnostico no esta implementado en beneficiario
-                'motivo_consulta' => $request->input('motivo_consulta'),
+                'diagnostico_base' => 'diagnostico_provisional', //provisional, diagnostico no esta implementado en beneficiario
+                'image' => $request->input('image'),
                 'antecedentes_medicos_id' => $antecedentesMedicos->id,
                 'antecedentes_familiares_id' => $antecedentesFamiliares->id,
                 //'psicologo_id' => $psicologo->id,
                 'psicologo_id' => '1', //provisional, psicologo no esta implementado
-                'beneficiario_id' => $beneficiario->last()->id,
-                //'beneficiario_id' => '1',
             ]);
             $fichaPsicologia->save();
         }
@@ -93,6 +99,93 @@ class FichaPsicologiaController extends Controller
             //procedimiento en caso de reportar errores
 
         }
-        return redirect()->route('medica.ficha-evaluacion-inicial.psicologia.ingresar');
+        $id = $request->input('id');
+        return view('area-medica.ficha-evaluacion-inicial.psicologia.create')
+            ->with(compact('id'));
+    }
+
+    /**
+     * Show the form for finding a resourse
+     *
+     * @return Response
+     */
+    public function find()
+    {
+        //
+    }
+
+    /**
+     * Mostrar formulario de ingreso de evaluacion inicial.
+     *
+     * @return Response
+     */
+    public function show()
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
+    private function rules(Request $request) {
+        $rules = [
+            'id' => 'required|exists:beneficiarios',
+            'enfermedades_familiares' => 'required|max:200',
+            'tratamientos_psiquiatra' => 'required|max:200',
+            'tratamientos_fonoaudiologo' => 'required|max:200',
+            'tratamientos_ocupacional' => 'required|max:200',
+            'tratamientos_kinesiologo' => 'required|max:200',
+            'tratamientos_psicologo' => 'required|max:200',
+            'tratamientos_neurologo' => 'required|max:200',
+            'medicamentos' => 'required|max:200',
+            'nombre_madre' => 'required|max:200',
+            'edad_madre' => 'required|numeric|between:0,120',
+            'ocupacion_madre' => 'required|max:200',
+            'escolaridad_madre' => 'required|max:200',
+            'telefono_madre' => 'required|numeric',
+            'observaciones_madre' => 'max:200',
+            'fecha_nacimiento_madre' => 'required|date',
+            'rut_madre'=> 'required|max:200',
+            'nombre_padre' => 'required|max:200',
+            'edad_padre' => 'required|numeric|between:0,120',
+            'ocupacion_padre' => 'required|max:200',
+            'escolaridad_padre' => 'required|max:200',
+            'telefono_padre' => 'required|numeric',
+            'observaciones_padre' => 'max:200',
+            'fecha_nacimiento_padre' => 'required|date',
+            'rut_padre' => 'required|max:200',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ];
+        return $rules;
     }
 }

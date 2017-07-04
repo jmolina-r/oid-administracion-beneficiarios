@@ -163,7 +163,7 @@ class FichaKinesiologiaController extends Controller
 
             $fichaKinesiologia = new FichaKinesiologia([
                 //'diagnostico' => $beneficiario->diagnostico,
-                'diagnostico' => 'diagnostico', //provisional, diagnostico no esta implementado en beneficiario
+                'diagnostico' => 'diagnostico_provicional', //provisional, diagnostico no esta implementado en beneficiario
                 'motivo_consulta' => $request->input('motivo_consulta'),
                 'situacion_laboral' => $request->input('situacion_laboral'),
                 'situacion_familiar' => $request->input('situacion_familiar'),
@@ -181,7 +181,6 @@ class FichaKinesiologiaController extends Controller
                 //'kinesiologo_id' => $kinesiologo->id,
                 'kinesiologo_id' => '1', //provisional, kinesiologo no esta implementado
                 'beneficiario_id' => $request->input('id'),
-                //'beneficiario_id' => '1',
             ]);
             $fichaKinesiologia->save();
         }
