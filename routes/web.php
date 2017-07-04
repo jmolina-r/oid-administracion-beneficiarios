@@ -84,6 +84,19 @@ Route::group(['prefix' => '/area-medica'], function (){
                 'as' => 'medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista'
             ]);
         });
+
+        Route::group(['prefix' => '/psicologia'], function (){
+
+            Route::get('/create/{id}', [
+                'uses' => 'FichaPsicologiaController@create',
+                'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.create'
+            ]);
+
+            Route::post('/store', [
+                'uses' => 'FichapsicologiaController@store',
+                'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.store'
+            ]);
+        });
     });
 });
 

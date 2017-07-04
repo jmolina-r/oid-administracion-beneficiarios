@@ -163,7 +163,7 @@ class FichaKinesiologiaController extends Controller
 
             $fichaKinesiologia = new FichaKinesiologia([
                 //'diagnostico' => $beneficiario->diagnostico,
-                'diagnostico' => 'diagnostico', //provisional, diagnostico no esta implementado en beneficiario
+                'diagnostico' => 'diagnostico_provicional', //provisional, diagnostico no esta implementado en beneficiario
                 'motivo_consulta' => $request->input('motivo_consulta'),
                 'situacion_laboral' => $request->input('situacion_laboral'),
                 'situacion_familiar' => $request->input('situacion_familiar'),
@@ -181,7 +181,6 @@ class FichaKinesiologiaController extends Controller
                 //'kinesiologo_id' => $kinesiologo->id,
                 'kinesiologo_id' => '1', //provisional, kinesiologo no esta implementado
                 'beneficiario_id' => $request->input('id'),
-                //'beneficiario_id' => '1',
             ]);
             $fichaKinesiologia->save();
         }
@@ -271,7 +270,7 @@ class FichaKinesiologiaController extends Controller
             'coment_vest_inf' => 'nullable|max:200',
             'puntaje_aseo_pers' => 'required|numeric|between:0,10',
             'coment_aseo_pers' => 'nullable|max:200',
-            'puntae_expresion' => 'required|numeric|between:0,10',
+            'puntaje_expresion' => 'required|numeric|between:0,10',
             'coment_expresion' => 'nullable|max:200',
             'puntaje_comprension' => 'required|numeric|between:0,10',
             'coment_comprension' => 'nullable|max:200',
@@ -281,7 +280,7 @@ class FichaKinesiologiaController extends Controller
             'coment_control_intestino' => 'nullable|max:200',
             'puntaje_desp_caminando' => 'required|numeric|between:0,10',
             'coment_desp_caminando' => 'nullable|max:200',
-            'puntae_escaleras' => 'required|numeric|between:0,10',
+            'puntaje_escaleras' => 'required|numeric|between:0,10',
             'coment_escaleras' => 'nullable|max:200',
             'conexion_medio' => 'required|max:200',
             'nivel_cognitivo_apar' => 'required|max:200',

@@ -23,6 +23,7 @@ class CreateAntecedentesFamiliaresTable extends Migration
             $table->string('telefono_madre')->nullable();
             $table->string('observaciones_madre')->nullable();
             $table->string('fecha_nacimiento_madre')->nullable();
+            $table->string('rut_madre')->nullable();
             $table->string('nombre_padre')->nullable();
             $table->string('edad_padre')->nullable();
             $table->string('ocupacion_padre')->nullable();
@@ -30,6 +31,7 @@ class CreateAntecedentesFamiliaresTable extends Migration
             $table->string('telefono_padre')->nullable();
             $table->string('observaciones_padre')->nullable();
             $table->string('fecha_nacimiento_padre')->nullable();
+            $table->string('rut_padre')->nullable();
         });
     }
 

@@ -25,7 +25,6 @@ $(document).ready(function() {
      * Si hay puntuacion se activa comentario.
      */
     $("#puntaje").change(function() {
-        alert('hola');
         //Si se ha seleccionado si
         if (this.value == 1) {
             $('#comentario').removeAttr('disabled');
