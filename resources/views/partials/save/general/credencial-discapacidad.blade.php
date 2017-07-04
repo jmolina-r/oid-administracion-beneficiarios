@@ -8,7 +8,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class='form-group'>
-                <select style="width:100%;" name='credencial_discapacidad' value="{{ old('credencial_discapacidad') }}" class='form-control select-tag' id='credencial_discapacidad' required>
+                <select style="width:100%;" name='credencial_discapacidad' class='form-control select-tag' id='credencial_discapacidad' required>
                    <option value='0'>No</option>
                    <option value='2'>En trámite</option>
                    <option value='1'>Si</option>
