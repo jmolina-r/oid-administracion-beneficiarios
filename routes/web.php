@@ -59,8 +59,13 @@ Route::group(['prefix' => '/area-medica'], function (){
             ]);
 
             Route::post('/store', [
-                'uses' => 'FichaFonoaudiologiaController@postIngresar',
+                'uses' => 'FichaFonoaudiologiaController@store',
                 'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.store'
+            ]);
+
+            Route::post('/postfono', [
+                'uses' => 'FichaFonoaudiologiaController@postFono',
+                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.postfono'
             ]);
 
             Route::post('/agregarpariente', 'FichaFonoaudiologiaController@postAgregarPariente');
