@@ -119,7 +119,8 @@ class BeneficiarioController extends Controller
             'pais_id' => $request->input('id_pais'),
             'estado_civil_id' => $request->input('estado_civil'),
             'educacion_id' => $request->input('educacion'),
-            'ocupacion_id' => $request->input('ocupacion')
+            'ocupacion_id' => $request->input('ocupacion'),
+            'email' => $request->input('email'),
         ]);
         $beneficiario->save();
 

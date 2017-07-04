@@ -3,8 +3,8 @@
     <div class='controls'>
         <input name='nombres' class='form-control onlyletters' value=
             @if(old('nombres'))
-                "{{old('nombres')}}"
-            @elseif(isset($persona->nombre))
+                "{{ old('nombres') }}"
+            @elseif(isset($persona))
                 "{{ $persona->nombre }}"
             @else
                 ""

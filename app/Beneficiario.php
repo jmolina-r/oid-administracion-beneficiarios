@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Beneficiario extends Model
 {
-    protected $fillable = ['nombre', 'apellido', 'fecha_nacimiento', 'sexo', 'rut',  'pais_id', 'estado_civil_id', 'educacion_id', 'ocupacion_id'];
+    protected $fillable = ['nombre', 'apellido', 'fecha_nacimiento', 'sexo', 'rut',  'pais_id', 'estado_civil_id', 'educacion_id', 'ocupacion_id', 'email'];
 
     public function pais()
     {
