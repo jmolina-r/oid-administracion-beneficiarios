@@ -10,6 +10,7 @@
 <!-- inyeccion de estilos -->
 @section('styles')
   <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+  <link href="{{ asset('/css/social/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
 <!-- Atributos del body -->
@@ -42,6 +43,30 @@
     <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
     <!-- / END - page related files and scripts [optional] -->
+    <script src="{{ asset('/js/social/loader.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['TRAMO A',<?php echo $porcentajeFonasaTramoA ?>],
+          ['TRAMO B',<?php echo $porcentajeFonasaTramoB ?>],
+          ['TRAMO C',<?php echo $porcentajeFonasaTramoC ?>],
+          ['TRAMO D',<?php echo $porcentajeFonasaTramoD ?>]
+        ]);
+
+        var options = {
+          title: 'TRAMOS'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
 @endsection
 
 <!-- Contenido del body -->
@@ -89,160 +114,75 @@
                     <div class='box-header blue-background'>
                       <div class='title'>OID</div>
                       <div class='actions'>
-                        <a class="btn box-remove btn-xs btn-link" href="#"><i class='fa fa-times'></i>
-                        </a>
                         <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
                         </a>
                       </div>
                     </div>
-                    <div class='box-content box-no-padding'>
-                      <div class='responsive-table'>
-                        <div class='scrollable-area'>
-                          <table class='table' style='margin-bottom:0;'>
-                            <thead>
-                              <tr>
-                                <th>
-                                  Name
-                                </th>
-                                <th>
-                                  E-mail
-                                </th>
-                                <th>
-                                  Status
-                                </th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>Atenciones Mensuales</td>
-                                <td>[Cargar atenciones mensuales]</td>
-                                <td>
-                                  <span class='label label-warning'>Warning</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Atenciones Anuales</td>
-                                <td>[Cargar atenciones anuales]</td>
-                                <td>
-                                  <span class='label label-important'>Important</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+  
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-error'><?php echo $cant ?></h3>
+                          <small>CANTIDAD TOTAL DE USUARIOS</small>
+                          <div class='text-error fa fa-users align-left'></div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-warning'><?php echo $ingresoMensual ?></h3>
+                          <small>CANTIDAD INGRESOS MENSUALES</small>
+                          <div class='text-warning fa fa-book align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-primary'><?php echo $ingresoAnual ?></h3>
+                          <small>CANTIDAD INGRESOS ANUALES</small>
+                          <div class='text-primary fa fa-book align-left'></div>
+                        </div>
               </div>
-<div class='row'>
+              <div class='row'>
                 <div class='col-sm-12'>
                   <div class='box bordered-box blue-border' style='margin-bottom:0;'>
                     <div class='box-header blue-background'>
                       <div class='title'>Usuarios</div>
                       <div class='actions'>
-                        <a class="btn box-remove btn-xs btn-link" href="#"><i class='fa fa-times'></i>
-                        </a>
                         <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
                         </a>
                       </div>
                     </div>
-                    <div class='box-content box-no-padding'>
-                      <div class='responsive-table'>
-                        <div class='scrollable-area'>
-                          <table class='table' style='margin-bottom:0;'>
-                            <thead>
-                              <tr>
-                                <th>
-                                  Name
-                                </th>
-                                <th>
-                                  E-mail
-                                </th>
-                                <th>
-                                  Status
-                                </th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>Cantidad total de usuarios</td>
-                                <td>[Cargar total usuarios]</td>
-                                <td>
-                                  <span class='label label-warning'>Warning</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Cantidad de nuevos ingresos mensuales</td>
-                                <td>[Cargar cantidad ingresos mensuales]</td>
-                                <td>
-                                  <span class='label label-important'>Important</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Cantidad de nuevos ingresos anuales</td>
-                                <td>[Cargar cantidad ingresos anuales]</td>
-                                <td>
-                                  <span class='label label-important'>Important</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                    <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-info'><?php echo $porcentajeFemenino; echo '%'?></h3>
+                          <small>INSCRITOS FEMENINOS</small>
+                          <div class='text-info fa fa-venus align-left'></div>
                         </div>
-                      </div>
-                    </div>
+                    <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-muted'><?php echo $porcentajeMasculino; echo '%'?></h3>
+                          <small>INSCRITOS MASCULINOS</small>
+                          <div class='text-muted fa fa-mars align-left'></div>
+                     </div>
+                      <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-inverse'><?php echo $porcentajeCredencial; echo '%'?></h3>
+                          <small>CREDENCIAL DE DISCAPACIDAD ENTREGADAS</small>
+                          <div class='text-inverse fa fa-credit-card align-left'></div>
+                     </div>
+                     <div class='col-sm-6 sinpadding'>
+                       <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-error'><br></h3>
+                          <small>SALUD</small>
+                          <div class='text-error fa fa-ambulance align-left'></div>
+                     </div>
+                     <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-error'><?php echo $porcentajeFonasa; echo '%'?></h3>
+                          <small>USUARIOS FONASA</small>
+                          <div class='text-error fa fa-ambulance align-left'></div>
+                     </div>
+                      <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-error'><?php echo $porcentajeIsapre; echo '%'?></h3>
+                          <small>USUARIOS ISAPRE</small>
+                          <div class='text-error fa fa-ambulance align-left'></div>
+                     </div>
+                     </div>
+                     <div class='box-content col-sm-6 sinpadding'>
+                       <div  id="piechart" style="width: 100%; height: 100%;"></div>
+                     </div>
+                     
+                      
+                    
                   </div>
                 </div>
               </div>
@@ -250,7 +190,7 @@
                 <div class='col-sm-12'>
                   <div class='box bordered-box blue-border' style='margin-bottom:0;'>
                     <div class='box-header green-background'>
-                      <div class='title'>Perfiles de usuario</div>
+                      <div class='title'>Atenciones Global</div>
                       <div class='actions'>
                         <a class="btn box-remove btn-xs btn-link" href="#"><i class='fa fa-times'></i>
                         </a>
@@ -265,102 +205,22 @@
                             <thead>
                               <tr>
                                 <th>
-                                  Name
+                                  Nombre
                                 </th>
                                 <th>
-                                  E-mail
-                                </th>
-                                <th>
-                                  Status
+                                 valor
                                 </th>
                                 <th></th>
                               </tr>
                             </thead>
                             <tbody>
                               <tr>
-                                <td>Masculinos</td>
-                                <td>elouise@yahoo.com</td>
-                                <td>
-                                  <span class='label label-warning'>Warning</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
+                                <td>Atenciones Mensuales</td>
+                                <td><?php echo $atencionMensual ?></td>
                               </tr>
                               <tr>
-                                <td>Femeninos</td>
-                                <td>margie@hotmail.com</td>
-                                <td>
-                                  <span class='label label-important'>Important</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Cantidad de solicitud de credencial de discapacidad</td>
-                                <td>percy@hotmail.com</td>
-                                <td>
-                                  <span class='label label-important'>Important</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Cantidad del registro social de hogares</td>
-                                <td>marge@hotmail.com</td>
-                                <td>
-                                  <span class='label label-important'>Important</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Cantidad de prestaciones sociales</td>
-                                <td>cody@gmail.com</td>
-                                <td>
-                                  <span class='label label-success'>Success</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
+                                <td>Atenciones Anuales</td>
+                                <td><?php echo $atencionAnual ?></td>
                               </tr>
                             </tbody>
                           </table>
@@ -370,276 +230,7 @@
                   </div>
                 </div>
               </div>
-<div class='row'>
-                <div class='col-sm-12'>
-                  <div class='box bordered-box blue-border' style='margin-bottom:0;'>
-                    <div class='box-header green-background'>
-                      <div class='title'>Profesionales</div>
-                      <div class='actions'>
-                        <a class="btn box-remove btn-xs btn-link" href="#"><i class='fa fa-times'></i>
-                        </a>
-                        <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
-                        </a>
-                      </div>
-                    </div>
-                    <div class='box-content box-no-padding'>
-                      <div class='responsive-table'>
-                        <div class='scrollable-area'>
-                          <table class='table' style='margin-bottom:0;'>
-                            <thead>
-                              <tr>
-                                <th>
-                                  Name
-                                </th>
-                                <th>
-                                  E-mail
-                                </th>
-                                <th>
-                                  Status
-                                </th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>Cantidad de atenciones mensuales</td>
-                                <td>elouise@yahoo.com</td>
-                                <td>
-                                  <span class='label label-warning'>Warning</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Cantidad de atenciones anuales</td>
-                                <td>margie@hotmail.com</td>
-                                <td>
-                                  <span class='label label-important'>Important</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Ernestina Torp</td>
-                                <td>percy@hotmail.com</td>
-                                <td>
-                                  <span class='label label-important'>Important</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Katheryn Strosin</td>
-                                <td>marge@hotmail.com</td>
-                                <td>
-                                  <span class='label label-important'>Important</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Allison Parker</td>
-                                <td>cody@gmail.com</td>
-                                <td>
-                                  <span class='label label-success'>Success</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class='row'>
-                <div class='col-sm-12'>
-                  <div class='box bordered-box blue-border' style='margin-bottom:0;'>
-                    <div class='box-header green-background'>
-                      <div class='title'>Agrupaciones</div>
-                      <div class='actions'>
-                        <a class="btn box-remove btn-xs btn-link" href="#"><i class='fa fa-times'></i>
-                        </a>
-                        <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
-                        </a>
-                      </div>
-                    </div>
-                    <div class='box-content box-no-padding'>
-                      <div class='responsive-table'>
-                        <div class='scrollable-area'>
-                          <table class='table' style='margin-bottom:0;'>
-                            <thead>
-                              <tr>
-                                <th>
-                                  Name
-                                </th>
-                                <th>
-                                  E-mail
-                                </th>
-                                <th>
-                                  Status
-                                </th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>Cantidad de talleres recibidos</td>
-                                <td>elouise@yahoo.com</td>
-                                <td>
-                                  <span class='label label-warning'>Warning</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class='row'>
-                <div class='col-sm-12'>
-                  <div class='box bordered-box blue-border' style='margin-bottom:0;'>
-                    <div class='box-header green-background'>
-                      <div class='title'>Otros</div>
-                      <div class='actions'>
-                        <a class="btn box-remove btn-xs btn-link" href="#"><i class='fa fa-times'></i>
-                        </a>
-                        <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
-                        </a>
-                      </div>
-                    </div>
-                    <div class='box-content box-no-padding'>
-                      <div class='responsive-table'>
-                        <div class='scrollable-area'>
-                          <table class='table' style='margin-bottom:0;'>
-                            <thead>
-                              <tr>
-                                <th>
-                                  Name
-                                </th>
-                                <th>
-                                  E-mail
-                                </th>
-                                <th>
-                                  Status
-                                </th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>Ejecución de talleres</td>
-                                <td>elouise@yahoo.com</td>
-                                <td>
-                                  <span class='label label-warning'>Warning</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Asistencia</td>
-                                <td>margie@hotmail.com</td>
-                                <td>
-                                  <span class='label label-important'>Important</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>Promedio</td>
-                                <td>percy@hotmail.com</td>
-                                <td>
-                                  <span class='label label-important'>Important</span>
-                                </td>
-                                <td>
-                                  <div class='text-right'>
-                                    <a class='btn btn-success btn-xs' href='#'>
-                                      <i class='fa fa-check'></i>
-                                    </a>
-                                    <a class='btn btn-danger btn-xs' href='#'>
-                                      <i class='fa fa-times'></i>
-                                    </a>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+<
                 <div class='row'>
                   <div class='col-sm-12'>
                     <button> Salir </button>
