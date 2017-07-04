@@ -334,9 +334,53 @@ class BeneficiarioController extends Controller
      */
     public function edit($id)
     {
+        //Lista de Paises
+        $paises = Pais::get();
+
+        //Lista de Estados Civiles
+        $estados_civiles = EstadoCivil::get();
+
+        //Situacin actual, cesante, estudiante, etc...
+        $situaciones = Ocupacion::get();
+
+        //Niveles de educacion, basico, universitario, etc...
+        $niveles_educacion = Educacion::get();
+
+        //Dependencias del paciente
+        $dependencias = TipoDependencia::get();
+
+        $fonasa = Fonasa::get();
+
+        $isapre = Isapre::get();
+
+        $tipo_discapacidades = TipoDiscapacidad::get();
+
+        $previsiones = Prevision::get();
+
+        $datos_sociales = SistemaProteccion::get();
+
+        $organizaciones_sociales = OrganizacionSocial::get();
+
+        $beneficios = Beneficio::get();
+
         $persona = Beneficiario::find($id);
+
+
         return view('beneficiario.edit')
+            ->with(compact('paises'))
+            ->with(compact('estados_civiles'))
+            ->with(compact('previsiones'))
+            ->with(compact('situaciones'))
+            ->with(compact('niveles_educacion'))
+            ->with(compact('dependencias'))
+            ->with(compact('fonasa'))
+            ->with(compact('tipo_discapacidades'))
+            ->with(compact('isapre'))
+            ->with(compact('datos_sociales'))
+            ->with(compact('organizaciones_sociales'))
+            ->with(compact('beneficios'))
             ->with(compact('persona'));
+
     }
 
     /**
