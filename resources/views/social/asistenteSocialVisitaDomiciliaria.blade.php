@@ -200,11 +200,49 @@
                                                                <div class='controls'style="margin-top:10px;">
                                                                     <input class='make-switch' value="{{$sMotivo->id}}" id="inputSubMotivo" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}')"  name="inputSubMotivo[]"><p id="hverificacion">{{$sMotivo->nombre}}</p>
                                                               </div>
-                                                           @endif
+                                                            @elseif($tMotivos->id == '4')
+                                                                <div class='controls'>
+                                                                    <label class="radio-inline"> <input type="radio" name="inputSubMotivo[]" onClick="javascript:toggle(this)" id="{{$sMotivo->id}}" value="{{$sMotivo->id}}">{{$sMotivo->nombre}}</label>
+                                                                </div>
+                                                                @if($sMotivo->id == '12')
+                                                                    <div class='controls' id="uno" style="display:none">
+                                                                        <div>
+                                                                            <label for="inputText"style="display:block;">Anio postulación</label>
+                                                                            <input type="number" name="vdText[]" id="añoPostulacion.text" min="1990" max="2017"></input>
+                                                                        </div>
+                                                                        <div>
+                                                                            <label for="inputText"style="display:block;">Tipo ayuda</label>
+                                                                            <input name="vdText[]" id="tipoAyudaSenadis.text"></input>
+                                                                        </div>
+                                                                        <div>
+                                                                            <label for="inputText"style="display:block;">Resultado</label>
+                                                                            <select	id="resultado" name="resultado" onChange="javascript: mostrar(this.value);">
+                                                                                <option value=""></option>
+                                                                                <option value="1">Aprobado</option>
+                                                                                <option value="0">Reprobado</option>
+                                                                            </select>
+                                                                            <div class='controls' id="reprobado" style="display:none">
+                                                                                <div>
+                                                                                    <label for="inputText"style="display:block;">Admisibilidad regional</label>
+                                                                                    <input name="reprobado[]" id="admisibilidad"></input>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <label for="inputText"style="display:block;">Vida util</label>
+                                                                                    <input name="reprobado[]" id="vidaUtil"></input>
+                                                                                </div>
+                                                                                <div>
+                                                                                    <label for="inputText"style="display:block;">Falta de requisitos</label>
+                                                                                    <input name="reprobado[]" id="faltaReq"></input>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                @endif
+                                                            @endif
                                                     @endif
                                                 @endforeach
                                                 <div class="col-sm-12 col-offset-2">
-                                                   <button type="submit" name="{{$tMotivos->nombre}}.btn" class="pull-right btn btn-success">Aceptar</button>
+                                                   <button type="submit" name="{{$tMotivos->nombre}}.btn" class="pull-right btn btn-success" onclick="javascript:checkButton(this)">Aceptar</button>
                                                 </div>
                                                </form>
                                                </fieldset>
@@ -214,7 +252,6 @@
                                       </div>
                                 </div>
                             </div>
-
                         </div>
                         </div>
                       </div>
@@ -230,3 +267,4 @@
       </div>
 
 @endsection
+

@@ -44,7 +44,7 @@ class FichaSocialController extends Controller
             $this->validate($request, [
             'vd' => 'required',]);
 
-            for($i=0;$i<count($obsVisita);$i++){
+            for($i=0;$i<count($motivoVisita);$i++){
 
                 echo "Observacion: ". $obsVisita[$i] . "<br>";
                 if($obsVisita[$i]!=NULL){
