@@ -12,6 +12,7 @@
     <link href="{{ asset("/assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css") }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset("/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css") }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset("/assets/images/meta_icons/apple-touch-icon-precomposed.png") }}" rel="apple-touch-icon-precomposed">
+    <link href="{{ asset('/assets/stylesheets/plugins/select2/select2.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
@@ -44,24 +45,27 @@
     <!-- / START - moments-->
     <script src="{{ asset("/assets/javascripts/plugins/common/moment.min.js") }}" type="text/javascript"></script>
     <!-- / END - moments-->
+
     <!-- / START - datepicker-->
     <script src="{{ asset("/assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js") }}" type="text/javascript"></script>
     <!-- / END - datepicker-->
+
     <!-- / START - Validaciones-->
     <script src="{{ asset("/assets/javascripts/plugins/validate/jquery.validate.min.js") }}" type="text/javascript"></script>
+    <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
     <script src="{{ asset("/assets/javascripts/plugins/validate/additional-methods.js") }}" type="text/javascript"></script>
 
-    <script src="{{ asset("/js/beneficiario/RegistroBeneficiario.js") }}" type="text/javascript"></script>
-
+    <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/area-medica/IngresoFormulario.js') }}" type="text/javascript"></script>
     <!-- / END - validaciones-->
 @endsection
 
 @section("content")
     @include('partials.header')
     <div id='wrapper'>
-      <div id='main-nav-bg'></div>
-      @include('partials.nav')
-        <!-- AQUI VA EL NAVBAR  -->
+        <div id='main-nav-bg'></div>
+    @include('partials.nav')
+    <!-- AQUI VA EL NAVBAR  -->
         <section id="content">
             <div class="container">
                 <div class="row" id="content-wrapper">
@@ -76,436 +80,340 @@
                                     <div class="pull-right">
                                         <ul class="breadcrumb">
                                             <li>
-                                                <a href="index.html">
-                                                    <i class="fa fa-bar-chart-o"></i>
-                                                </a>
-                                            </li>
-                                            <li class="separator">
-                                                <i class="fa fa-angle-right"></i>
-                                            </li>
-                                            <li>
-                                                Forms
-                                            </li>
-                                            <li class="separator">
-                                                <i class="fa fa-angle-right"></i>
-                                            </li>
-                                            <li class="active">Wizard</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        @if(count($errors) > 0)
-                            <div class="alert alert-danger">
-                                @foreach($errors->all() as $error)
-                                    <p>{{ $error }}</p>
-                                @endforeach
-                            </div>
-                        @endif
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="box">
-                                    <form action="{{route('medica.ficha-evaluacion-inicial.kinesiologia.ingresar')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post">
-                                        <!-- STEP 1 -->
-                                        <div class="col-md-12">
-                                            <h3>Seleccionar Paciente</h3>
-                                            <hr/>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="control-label" for="rut">Rut</label>
-                                            <div class="controls">
-                                                <input class="form-control" id="rut" name="rut" placeholder="RUT" type="text">
-                                            </div>
-                                        </div>
-                                        <!-- STEP 2 -->
-                                        <div class="col-md-12">
-                                            <h3>Antecedentes Morbidos</h3>
-                                            <hr/>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-4 control-label" for="pat_concom">1. Patologías Concomitantes</label>
-                                            <div class="col-md-8 controls">
-                                                <input class="form-control" id="pat_concom" name="pat_concom" placeholder="Patologías Concomitantes" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-4 control-label" for="alergias">2. Alergias</label>
-                                            <div class="col-md-8 controls">
-                                                <input class="form-control" id="alergias" name="alergias" placeholder="Alergias" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-4 control-label" for="medicamentos">3. Medicamentos</label>
-                                            <div class="col-md-8 controls">
-                                                <input class="form-control" id="medicamentos" name="medicamentos" placeholder="Medicamentos" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-4 control-label" for="ant_quir">4. Antecedentes Quirúrgicos</label>
-                                            <div class="col-md-8 controls">
-                                                <input class="form-control" id="ant_quir" name="ant_quir" placeholder="Antecedentes Quirúrgicos" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-4 control-label" for="aparatos">5. Aparatos</label>
-                                            <div class="col-md-8 controls">
-                                                <input class="form-control" id="aparatos" name="aparatos" placeholder="Aparatos" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <div class="col-md-4">
-                                                <label class="col-md-5 control-label" for="fuma_sn">¿Fuma?</label>
-                                                <div class="col-md-7 controls">
-                                                    <input class="form-control" id="fuma_sn" name="fuma_sn" placeholder="¿Fuma?" type="text">
+                                    <div class='box-content box-padding'>
+                                        <div class='fuelux'>
+                                            <div class='wizard' data-initialize='wizard' id='myWizard'>
+                                                <div class='steps-container'>
+                                                    <ul class='steps'>
+                                                        <li class='active' data-step='1'>
+                                                            <span class='step'>1</span>
+                                                        </li>
+                                                        <li data-step='2'>
+                                                            <span class='step'>2</span>
+                                                        </li>
+                                                        <li data-step='3'>
+                                                            <span class='step'>3</span>
+                                                        </li>
+                                                        <li data-step='4'>
+                                                            <span class='step'>4</span>
+                                                        </li>
+                                                    </ul>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label class="col-md-5 control-label" for="alcohol_sn">¿Bebe OH?</label>
-                                                <div class="col-md-7 controls">
-                                                    <input class="form-control" id="alcohol_sn" name="alcohol_sn" placeholder="¿Bebe OH?" type="text">
+                                                <div class='actions'>
+                                                    <button id="continuar_btn" type='submit' class='pull-right btn btn-md btn-success btn-next' data-last='Finalizar'>
+                                                        Continuar
+                                                        <i class='fa fa-arrow-right'></i>
+                                                    </button>
+                                                    <button class='pull-right btn btn-md btn-prev'>
+                                                        <i class='fa fa-arrow-left'></i>
+                                                        Volver
+                                                    </button>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label class="col-md-5 control-label" for="act_fisica_sn">Act. física</label>
-                                                <div class="col-md-7 controls">
-                                                    <input class="form-control" id="act_fisica_sn" name="act_fisica_sn" placeholder="Act. fisica" type="text">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- STEP 3 -->
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-4 control-label" for="situacion_familiar">1. Situación Familiar</label>
-                                            <div class="col-md-8 controls">
-                                                <input class="form-control" id="situacion_familiar" name="situacion_familiar" placeholder="¿con quien?¿accesibilidad?" rows="3"></input>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-4 control-label" for="situacion_laboral">2. Situación Laboral</label>
-                                            <div class="col-md-8 controls">
-                                                <input class="form-control" id="situacion_laboral" name="situacion_laboral" placeholder="Situación Laboral" rows="3"></input>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-4 control-label" for="asiste_centro_rhb">3. ¿Asiste algún centro de RHB?</label>
-                                            <div class="col-md-8 controls">
-                                                <input class="form-control" id="asiste_centro_rhb" name="asiste_centro_rhb" placeholder="¿Asiste algún centro de RHB?" rows="3"></input>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-4 control-label" for="motivo_consulta">4. Motivo de Consulta</label>
-                                            <div class="col-md-8 controls">
-                                                <input class="form-control" id="motivo_consulta" name="motivo_consulta" placeholder="Motivo de Consulta" rows="3"></input>
-                                            </div>
-                                        </div>
-                                        <!-- STEP 4 -->
-                                        <div class="col-md-12">
-                                            <h3>Escala de Valoración Funcional</h3>
-                                            <hr/>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="col-md-4">
-                                                <h4>Categoría</h4>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <h4>Puntaje</h4>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <h4>Comentarios</h4>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <h5>Autocuidado</h5>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="col-md-4 control-label" for="puntaje_alimentacion">1. Alimentación</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_alimentacion" name="puntaje_alimentacion" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_aimentacion" name="coment_aimentacion" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="col-md-4 control-label" for="puntaje_arreglo_pers">2. Arreglo Personal</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_arreglo_pers" name="puntaje_arreglo_pers" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_arreglo_pers" name="coment_arreglo_pers" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="col-md-4 control-label" for="puntaje_bano">3. Baño</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_bano" name="puntaje_bano" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_bano" name="coment_bano" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="col-md-4 control-label" for="puntaje_vest_sup">4. Vestuario Superior</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_vest_sup" name="puntaje_vest_sup" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_vest_sup" name="coment_vest_sup" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="col-md-4 control-label" for="puntaje_vest_inf">5. Vestuario Inerior</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_vest_inf" name="puntaje_vest_inf" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_vest_inf" name="coment_vest_inf" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="col-md-4 control-label" for="puntaje_aseo_pers">6. Aseo Personal</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_aseo_pers" name="puntaje_aseo_pers" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_aseo_pers" name="coment_aseo_pers" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <h5>Control de Esfinteres</h5>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="col-md-4 control-label" for="puntaje_control_vejiga">1. Control de Vejiga</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_control_vejiga" name="puntaje_control_vejiga" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_control_vejiga" name="coment_contrl_vejiga" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="col-md-4 control-label" for="puntaje_control_intestino">2. Control de Instestino</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_control_intestino" name="puntaje_control_intestino" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_control_intestino" name="coment_control_intestino" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <h5>Movilidad</h5>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="col-md-4 control-label" for="puntaje_trans_cama_silla">1. Transferencia cama-silla</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_trans_cama_silla" name="puntaje_trans_cama_silla" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_trans_cama_silla" name="coment_trans_cama_silla" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="col-md-4 control-label" for="puntaje_traslado_bano">2. Traslado baño</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_traslado_bano" name="puntaje_traslado_bano" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_traslado_bano" name="coment_traslado_bano" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="col-md-4 control-label" for="puntaje_traslado_ducha">3. Traslado ducha</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_traslado_ducha" name="puntaje_traslado_ducha" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_traslado_ducha" name="coment_traslado_ducha" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <h5>Deambulación</h5>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="col-md-4 control-label" for="puntaje_desp_caminando">1. Desplazarse caminando/sr</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_desp_caminando" name="puntaje_desp_caminando" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_desp_caminando" name="coment_desp_caminando" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="col-md-4 control-label" for="puntaje_escaleras">2. Subir y bajar escaleras</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_escaleras" name="puntaje_escaleras" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_escaleras" name="coment_escaleras" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <h5>Comunicación/Cognitivo</h5>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="col-md-4 control-label" for="puntaje_expresion">1. Expresión</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_expresion" name="puntaje_expresion" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_expresion" name="coment_expresion" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="col-md-4 control-label" for="puntaje_comprension">2. Comprensión</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_comprension" name="puntaje_comprension" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_comprension" name="coment_comprension" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <h5>Social</h5>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="col-md-4 control-label" for="puntaje_int_social">1. Interacción social</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_int_social" name="puntaje_int_social" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_int_social" name="coment_int_social" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label class="col-md-4 control-label" for="puntaje_sol_problemas">2. Solución de problemas</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_sol_problemas" name="puntaje_sol_problemas" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_sol_problemas" name="coment_sol_problemas" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-4 control-label" for="puntaje_memoria">3. Memoria</label>
-                                            <div class="col-md-2 controls">
-                                                <input class="form-control" id="puntaje_memoria" name="puntaje_memoria" placeholder="Puntuación" type="text">
-                                            </div>
-                                            <div class="col-md-6 controls">
-                                                <input class="form-control" id="coment_memoria" name="coment_memoria" placeholder="Comentario" type="text">
-                                            </div>
-                                        </div>
-                                        <!-- STEP 5 -->
-                                        <div class="col-md-12">
-                                            <h3>Evaluación</h3>
-                                            <hr/>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-3 control-label" for="conexion_medio">1. Conexión con el medio</label>
-                                            <div class="col-md-9 controls">
-                                                <input class="form-control" id="conexion_medio" name="conexion_medio" placeholder="Conexión con el medio" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-3 control-label" for="nivel_cognitivo_apar">2. Nivel cognitivo aparente</label>
-                                            <div class="col-md-9 controls">
-                                                <input class="form-control" id="nivel_cognitivo_apar" name="nivel_cognitivo_apar" placeholder="Nivel cognitivo aparente" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <h4>Evaluación Sensorial</h4>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-3 control-label" for="visual">1. Visual</label>
-                                            <div class="col-md-9 controls">
-                                                <input class="form-control" id="visual" name="visual" placeholder="Visual" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-3 control-label" for="auditivo">2. Auditivo</label>
-                                            <div class="col-md-9 controls">
-                                                <input class="form-control" id="auditivo" name="auditivo" placeholder="Auditivo" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-3 control-label" for="tactil">3. Táctil</label>
-                                            <div class="col-md-9 controls">
-                                                <input class="form-control" id="tactil" name="tactil" placeholder="Táctil" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-3 control-label" for="propioceptivo">4. Propioceptivo</label>
-                                            <div class="col-md-9 controls">
-                                                <input class="form-control" id="propioceptivo" name="propioceptivo" placeholder="Propioceptivo" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-3 control-label" for="vestibular">5. Vestibular</label>
-                                            <div class="col-md-9 controls">
-                                                <input class="form-control" id="vestibular" name="vestibular" placeholder="Vestibular" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <h4>Evaluación Motora</h4>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-3 control-label" for="tono">6. Tono</label>
-                                            <div class="col-md-9 controls">
-                                                <input class="form-control" id="tono" name="tono" placeholder="Tono" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-3 control-label" for="rom">7. ROM</label>
-                                            <div class="col-md-9 controls">
-                                                <input class="form-control" id="rom" name="rom" placeholder="ROM" type="text">
+                                                @if(count($errors) > 0)
+                                                    <hr class='hr-normal'>
+                                                    <div class="alert alert-danger">
+                                                        @foreach($errors->all() as $error)
+                                                            <p>{{ $error }}</p>
+                                                        @endforeach
+                                                    </div>
+                                                @endif
+                                                <hr class='hr-normal'>
+                                                <form role="form" id="formulario_registro" action="{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.store')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
+                                                    <div class='step-content'>
+                                                        <!-- STEP 1 -->
+                                                        <div class='step-pane active' data-step='1'>
+                                                            <!--<div class="col-md-12">
+                                                                <h3>Seleccionar Paciente</h3>
+                                                                <hr/>
+                                                            </div>-->
+                                                            <input id="id" name="id" type="hidden" value="{{$id}}">
+                                                            <!--<div class="col-md-12 form-group">
+                                                                <label class="control-label" for="rut">Rut</label>
+                                                                <div class="controls">
+                                                                    <input class="form-control" id="rut" name="rut" placeholder="RUT" type="text">
+                                                                </div>
+                                                            </div>-->
+                                                            <div class="col-md-12">
+                                                                <h3>Antecedentes Socio-Familiares</h3>
+                                                                <hr/>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="nombre_madre">Nombre de la Madre</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="nombre_madre" name="nombre_madre" value="{{ old('nombre_madre') }}"  placeholder="Nombre de la Madre" type="text" required autofocus>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="edad_madre">Edad de la Madre</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="edad_madre" name="edad_madre" value="{{ old('edad_madre') }}"  placeholder="Edad de la Madre" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="ocupacion_madre">Ocupación de la Madre</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="ocupacion_madre" name="ocupacion_madre" value="{{ old('ocupacion_madre') }}"  placeholder="Ocupación de la Madre" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="escolaridad_madre">Escolaridad Madre</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="escolaridad_madre" name="escolaridad_madre" value="{{ old('escolaridad_madre') }}"  placeholder="Escolaridad Madre" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="horario_trabajo_madre">Horario Trabajo Madre</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="horario_trabajo_madre" name="horario_trabajo_madre" value="{{ old('horario_trabajo_madre') }}"  placeholder="Horario Trabajo Madre" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="nombre_padre">Nombre del Padre</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="nombre_padre" name="nombre_padre" value="{{ old('nombre_padre') }}"  placeholder="Nombre del Padre" type="text" required autofocus>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="edad_padre">Edad del Padre</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="edad_padre" name="edad_padre" value="{{ old('edad_padre') }}"  placeholder="Edad del Padre" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="ocupacion_padre">Ocupación del Padre</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="ocupacion_padre" name="ocupacion_padre" value="{{ old('ocupacion_padre') }}"  placeholder="Ocupación del Padre" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="escolaridad_padre">Escolaridad Padre</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="escolaridad_padre" name="escolaridad_padre" value="{{ old('escolaridad_padre') }}"  placeholder="Escolaridad Padre" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="horario_trabajo_padre">Horario Trabajo Padre</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="horario_trabajo_padre" name="horario_trabajo_padre" value="{{ old('horario_trabajo_padre') }}"  placeholder="Horario Trabajo Padre" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <!--FALTA GENOGRAMA-->
+                                                        </div>
+                                                        <!-- STEP 2 -->
+                                                        <div class='step-pane active' data-step='2'>
+                                                            <div class="col-md-12">
+                                                                <h3>Antecedentes de Salud</h3>
+                                                                <hr/>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="tiempo_gestacional">Tiempo de gestación</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="tiempo_gestacional" name="tiempo_gestacional" value="{{ old('tiempo_gestacional') }}"  placeholder="Tiempo de gestación">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="tipo_parto">Tipo de parto</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="tipo_parto" name="tipo_parto" value="{{ old('tipo_parto') }}"  placeholder="Normal,Inducido,Fórceps o cesárea">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="enfermedades_natal_sn">¿Presenta enfermedades pre o post natales?</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="enfermedades_natal_sn" name="enfermedades_natal_sn" value="{{ old('enfermedades_natal_sn') }}"  placeholder="Si/No">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="observaciones_enfermedades">Observaciones sobre enfermedades</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="observaciones_enfermedades" name="observaciones_enfermedades" value="{{ old('observaciones_enfermedades') }}"  placeholder="Especificar enfermedades">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- STEP 3 -->
+                                                        <div class='step-pane active' data-step='3'>
+                                                            <div class="col-md-12">
+                                                                <h3>Historial Clínico del Paciente</h3>
+                                                                <hr/>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="enfermedades_familiares">Enfermedades Familiares</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="enfermedades_familiares" name="enfermedades_familiares" value="{{ old('enfermedades_familiares') }}"  placeholder="Especificar enfermedades">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="evaluacion_psiquiatra">Evaluación del Neurólogo/Psiquiatra</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="evaluacion_psiquiatra" name="evaluacion_psiquiatra" value="{{ old('evaluacion_psiquiatra') }}"  placeholder="Especificar diagnóstico">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="evaluacion_fonoaudiologo">Evaluación del Fonoaudiólogo</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="evaluacion_fonoaudiologo" name="evaluacion_fonoaudiologo" value="{{ old('evaluacion_fonoaudiologo') }}"  placeholder="Especificar diagnóstico">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="evaluacion_ocupacional">Evaluación del Terapeuta Ocupacional</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="evaluacion_ocupacional" name="evaluacion_ocupacional" value="{{ old('evaluacion_ocupacional') }}"  placeholder="Especificar diagnóstico">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="evaluacion_kinesiologo">Evaluación del Kinesiólogo</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="evaluacion_kinesiologo" name="evaluacion_kinesiologo" value="{{ old('evaluacion_kinesiologo') }}"  placeholder="Especificar diagnóstico">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="otra_evaluacion">Alguna otra evaluación</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="otra_evaluacion" name="otra_evaluacion" value="{{ old('otra_evaluacion') }}"  placeholder="Especificar diagnóstico">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="tratamientos_recibidos">Tratamientos recibidos</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="tratamientos_recibidos" name="tratamientos_recibidos" value="{{ old('tratamientos_recibidos') }}"  placeholder="Especificar diagnóstico">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="medicamentos_sn">¿Medicamentos?</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="medicamentos_sn" name="medicamentos_sn" value="{{ old('medicamentos_sn') }}"  placeholder="Si/No">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="medicamentos">Nombres Medicamentos</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="medicamentos" name="medicamentos" value="{{ old('medicamentos') }}"  placeholder="Especificar nombres">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="efectos_medicamentos">Efectos Medicamentos</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="efectos_medicamentos" name="efectos_medicamentos" value="{{ old('efectos_medicamentos') }}"  placeholder="Especificar Efectos">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="diagnosticos_previos">Diagnósticos Previos</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="diagnosticos_previos" name="diagnosticos_previos" value="{{ old('diagnosticos_previos') }}"  placeholder="Especificar Detalles">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- STEP 4 -->
+                                                        <div class='step-pane active' data-step='4'>
+                                                            <div class="col-md-12">
+                                                                <h3>Desarrollo Evolutivo</h3>
+                                                                <hr/>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3 control-label" for="edad_sento">Edad a la que se sienta solo/a</label>
+                                                                <div class="col-md-9 controls">
+                                                                    <input class="form-control" id="edad_sento" name="edad_sento" value="{{ old('edad_sento') }}"  placeholder="Edad" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3 control-label" for="nivel_cognitivo_apar">2. Nivel cognitivo aparente</label>
+                                                                <div class="col-md-9 controls">
+                                                                    <input class="form-control" id="nivel_cognitivo_apar" name="nivel_cognitivo_apar" value="{{ old('nivel_cognitivo_apar') }}"  placeholder="Nivel cognitivo aparente" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3 control-label" for="visual">1. Visual</label>
+                                                                <div class="col-md-9 controls">
+                                                                    <input class="form-control" id="visual" name="visual" value="{{ old('visual') }}"  placeholder="Visual" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3 control-label" for="auditivo">2. Auditivo</label>
+                                                                <div class="col-md-9 controls">
+                                                                    <input class="form-control" id="auditivo" name="auditivo" value="{{ old('auditivo') }}"  placeholder="Auditivo" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3 control-label" for="tactil">3. Táctil</label>
+                                                                <div class="col-md-9 controls">
+                                                                    <input class="form-control" id="tactil" name="tactil" value="{{ old('tactil') }}"  placeholder="Táctil" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3 control-label" for="propioceptivo">4. Propioceptivo</label>
+                                                                <div class="col-md-9 controls">
+                                                                    <input class="form-control" id="propioceptivo" name="propioceptivo" value="{{ old('propioceptivo') }}"  placeholder="Propioceptivo" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3 control-label" for="vestibular">5. Vestibular</label>
+                                                                <div class="col-md-9 controls">
+                                                                    <input class="form-control" id="vestibular" name="vestibular" value="{{ old('vestibular') }}"  placeholder="Vestibular" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3 control-label" for="tono">6. Tono</label>
+                                                                <div class="col-md-9 controls">
+                                                                    <input class="form-control" id="tono" name="tono" value="{{ old('tono') }}"  placeholder="Tono" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3 control-label" for="rom">7. ROM</label>
+                                                                <div class="col-md-9 controls">
+                                                                    <input class="form-control" id="rom" name="rom" value="{{ old('rom') }}"  placeholder="ROM" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3 control-label" for="dolor">8. Dolor</label>
+                                                                <div class="col-md-9 controls">
+                                                                    <input class="form-control" id="dolor" name="dolor" value="{{ old('dolor') }}"  placeholder="Dolor" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3 control-label" for="fm">9. Fuerza Muscular</label>
+                                                                <div class="col-md-9 controls">
+                                                                    <input class="form-control" id="fm" name="fm" value="{{ old('fm') }}"  placeholder="Fuerza Muscular" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3 control-label" for="hab_motrices">10. Habilidades Motrices</label>
+                                                                <div class="col-md-9 controls">
+                                                                    <input class="form-control" id="hab_motrices" name="hab_motrices" value="{{ old('hab_motrices') }}"  placeholder="Habilidades Motrices" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3 control-label" for="coordinacion">11. Coordinación</label>
+                                                                <div class="col-md-9 controls">
+                                                                    <input class="form-control" id="coordinacion" name="coordinacion" value="{{ old('coordinacion') }}"  placeholder="Coordinacón" type="text">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3 control-label" for="equilibrio">12. Equilibrio</label>
+                                                                <div class="col-md-9 controls">
+                                                                    <input class="form-control" id="equilibrio" name="equilibrio" value="{{ old('equilibrio') }}"  placeholder="Equilibrio" type="text">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{ csrf_field() }}
+                                                </form>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-3 control-label" for="dolor">8. Dolor</label>
-                                            <div class="col-md-9 controls">
-                                                <input class="form-control" id="dolor" name="dolor" placeholder="Dolor" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-3 control-label" for="fm">9. Fuerza Muscular</label>
-                                            <div class="col-md-9 controls">
-                                                <input class="form-control" id="fm" name="fm" placeholder="Fuerza Muscular" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-3 control-label" for="hab_motrices">10. Habilidades Motrices</label>
-                                            <div class="col-md-9 controls">
-                                                <input class="form-control" id="hab_motrices" name="hab_motrices" placeholder="Habilidades Motrices" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-3 control-label" for="coordinacion">11. Coordinación</label>
-                                            <div class="col-md-9 controls">
-                                                <input class="form-control" id="coordinacion" name="coordinacion" placeholder="Coordinacón" type="text">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 form-group">
-                                            <label class="col-md-3 control-label" for="equilibrio">12. Equilibrio</label>
-                                            <div class="col-md-9 controls">
-                                                <input class="form-control" id="equilibrio" name="equilibrio" placeholder="Equilibrio" type="text">
-                                            </div>
-                                        </div>
-                                        <button type="submit">Finalizar</button>
-                                        {{ csrf_field() }}
-                                    </form>
-                                    <button >Volver</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <footer id="footer">
-                    <div class="footer-wrapper">
-                        <div class="row">
-                            <div class="col-sm-6 text">
-                                Copyright © 2016 Your Project Name
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                @include('partials.footer')
             </div>
         </section>
     </div>

@@ -205,7 +205,7 @@ class FichaTerapiaOcupacionalController extends Controller
             //procedimiento en caso de reportar errores
 
         }
-        return redirect()->route('medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar');
+        return redirect()->route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar');
     }
 
     /**
@@ -217,6 +217,6 @@ class FichaTerapiaOcupacionalController extends Controller
     {
         $fichas = FichaTerapiaOcupacional::all();
 
-        return view('medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista', [ 'fichas' => $fichas ]);
+        return view('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista', [ 'fichas' => $fichas ]);
     }
 }
