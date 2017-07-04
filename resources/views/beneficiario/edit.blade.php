@@ -75,7 +75,83 @@ class='contrast-red'
     <div id='main-nav-bg'></div>
     @include('partials.nav')
     <section id='content'>
-
+        <div class='container'>
+            <div class='row' id='content-wrapper'>
+                <div class='col-xs-12'>
+                    <div class='row'>
+                        <div class='col-sm-12'>
+                            <div class='page-header'>
+                                <h1 class='pull-left'>
+                                    <i class='fa fa-pencil-square-o'></i>
+                                    <span>Edición de Usuario</span>
+                                </h1>
+                                <div class='pull-right'>
+                                    <ul class='breadcrumb'>
+                                      <li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='col-sm-12'>
+                            <div class='box'>
+                                <div class='box-content box-padding'>
+                                    <div class='fuelux'>
+                                        <div class='wizard' data-initialize='wizard' id='myWizard'>
+                                            <div class='steps-container'>
+                                                <ul class='steps'>
+                                                    <li class='active' data-step='1'>
+                                                        <span class='step'>1</span>
+                                                    </li>
+                                                    <li data-step='2'>
+                                                        <span class='step'>2</span>
+                                                    </li>
+                                                    <li data-step='3'>
+                                                        <span class='step'>3</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class='actions'>
+                                                <button id="continuar_btn" type='submit' class='pull-right btn btn-md btn-success btn-next' data-last='Finalizar'>
+                                                    Continuar
+                                                    <i class='fa fa-arrow-right'></i>
+                                                </button>
+                                                <button class='pull-right btn btn-md btn-prev'>
+                                                    <i class='fa fa-arrow-left'></i>
+                                                    Volver
+                                                </button>
+                                            </div>
+                                            @if(count($errors) > 0)
+                                                <hr class='hr-normal'>
+                                                <div class="alert alert-danger">
+                                                    @foreach($errors->all() as $error)
+                                                        <p>{{ $error }}</p>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                            <hr class='hr-normal'>
+                                            <form role="form" id="formulario-registro" action="{{route('beneficiario.store')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
+                                                <div class='step-content'>
+                                                    <!-- STEP 1 -->
+                                                    @include('partials.save.step1')
+                                                    <!-- STEP 2 -->
+                                                    @include('partials.save.step2')
+                                                    <!-- STEP 3 -->
+                                                    @include('partials.save.step3')
+                                                </div>
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @include('partials.footer')
+        </div>        
     </section>
 </div>
 @endsection
