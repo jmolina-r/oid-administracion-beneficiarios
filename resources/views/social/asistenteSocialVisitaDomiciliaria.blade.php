@@ -140,32 +140,35 @@
                                               <div class="tab-pane active" id=  "{{$tMotivos->id}}"  >
                                                 <form accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data">
                                                     {!!csrf_field()!!}
-                                                    <fieldset id="tecnico">
+                                                    <fieldset>
+                                                      <fieldset id="tecnico">
                                                         <label class='control-label' for='inputText'>Ayuda Técnica</label>
-                                                            @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
-                                                               @if ($tipoAyuda->tipo=='tecnico')
-                                                                 <div class='controls'>
-                                                                     <label class="radio-inline"> <input type="radio" name="tipoAyudaTecnica[]" id="tipoAyudaTecnica" value="{{$tipoAyuda->id}}">{{$tipoAyuda->nombre}}</label>
-                                                                 </div>
-                                                               @endif
-                                                           @endforeach
-                                                    </fieldset>
-                                                    <fieldset id="social">
-                                                        <label class='control-label' for='inputText'>Ayuda Social</label>
-                                                        @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
-                                                                @if ($tipoAyuda->tipo=='social')
-                                                                        <div class='controls'>
-                                                                                <label class="radio-inline"> <input type="radio" name="tipoAyudaSocial[]" id="tipoAyudaSocial" value="{{$tipoAyuda->id}}"> {{$tipoAyuda->nombre}}</label>
-                                                                        </div>
+                                                              @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
+                                                                @if ($tipoAyuda->tipo=='tecnico')
+                                                                  <div class='controls'>
+                                                                      <label class="radio-inline"> <input type="radio" name="tipoAyudaTecnica[]" id="tipoAyudaTecnica" value="{{$tipoAyuda->id}}">{{$tipoAyuda->nombre}}</label>
+                                                                  </div>
                                                                 @endif
-                                                        @endforeach
-                                                <div class='controls' id="contentVD">
-                                                        <div style="display: inline;">
-                                                                <label for="inputText">Observación</label>
-                                                                <textarea name="observacionAyuda" id="observacionAyuda" cols="40" rows="4"></textarea>
-                                                        </div>
-                                                </div>
+                                                            @endforeach
+                                                      </fieldset>
+                                                      <fieldset id="social">
+                                                          <label class='control-label' for='inputText'>Ayuda Social</label>
+                                                          @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
+                                                                  @if ($tipoAyuda->tipo=='social')
+                                                                          <div class='controls'>
+                                                                                  <label class="radio-inline"> <input type="radio" name="tipoAyudaSocial[]" id="tipoAyudaSocial" value="{{$tipoAyuda->id}}"> {{$tipoAyuda->nombre}}</label>
+                                                                          </div>
+                                                                  @endif
+                                                          @endforeach
+                                                  <div class='controls' id="contentVD">
+                                                          <div style="display: inline;">
+                                                                  <label for="inputText">Observación</label>
+                                                                  <textarea name="observacionAyuda" id="observacionAyuda" cols="40" rows="4"></textarea>
+                                                          </div>
+                                                  </div>
                                                 </fieldset>
+                                                    </fieldset>
+                                                    
                                                 <div class="col-sm-12 col-offset-2">
                                                    <button type="submit" name="{{$tMotivos->nombre}}.btn" class="pull-right btn btn-success">Aceptar</button>
                                                 </div>
@@ -187,7 +190,8 @@
                                                               <div class='controls' id="{{$sMotivo->nombre}}" style="display:none">
                                                                   <div>
                                                                     <label for="inputText"style="display:block;">Observación</label>
-                                                                    <textarea name="vdText[]" id="{{$sMotivo->nombre}}.text" value="{{$sMotivo->id}}" cols="40" rows="4"></textarea>
+                                                                    <textarea name="vdText[]" id="{{$sMotivo->id}}.text" cols="40" rows="4"></textarea>
+
                                                                   </div>
                                                                   @if($sMotivo->id == '8')
 

@@ -36,20 +36,28 @@ class FichaSocialController extends Controller
          */
         $now = new \DateTime();
         $obsIt = 'N/A';
-
+     
         if (isset($_POST["visita_domiciliaria_btn"])) {
 
             $motivoVisita = $request -> input('vd');
             $obsVisita = $request -> input('vdText');
-            $this->validate($request, [
-            'vd' => 'required',]);
 
+<<<<<<< HEAD
             for($i=0;$i<count($motivoVisita);$i++){
 
                 $textPos = $motivoVisita[$i]-7;
                 // "Observacion: ". $obsVisita[$textPos] . "<br>";
                 if($obsVisita[$textPos]!=NULL){
                     $obsIt = $obsVisita[$textPos];
+=======
+            $this->validate($request, ['vd' => 'required',]);
+
+            for($i=0;$i<count($obsVisita);$i++){
+               
+                if($obsVisita[$i]!=null){
+           
+                    $obsIt = $obsVisita[$i];
+>>>>>>> d6bc37e480eaa3a46974f29ce2c6b37f1cbe4c98
                 }
                 $motivoSocial = new \App\MotivoAtencionSocial([
 
