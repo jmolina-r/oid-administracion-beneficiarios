@@ -46,9 +46,10 @@ class FichaSocialController extends Controller
 
             for($i=0;$i<count($motivoVisita);$i++){
 
-                echo "Observacion: ". $obsVisita[$i] . "<br>";
-                if($obsVisita[$i]!=NULL){
-                    $obsIt = $obsVisita[$i];
+                $textPos = $motivoVisita[$i]-7;
+                // "Observacion: ". $obsVisita[$textPos] . "<br>";
+                if($obsVisita[$textPos]!=NULL){
+                    $obsIt = $obsVisita[$textPos];
                 }
                 $motivoSocial = new \App\MotivoAtencionSocial([
 
@@ -60,8 +61,9 @@ class FichaSocialController extends Controller
                     'tipo_ayuda_id' => NULL
                 ]);
                 $motivoSocial->save();
+                $obsIt = 'N/A';
             }
-            //return back()->with('info','Se ha ingresado con éxito la visita');
+            return back()->with('info','Se ha ingresado con éxito la visita');
 
         } elseif(isset($_POST["ayudas_btn"])) {
 
