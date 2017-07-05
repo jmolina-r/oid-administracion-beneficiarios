@@ -16,15 +16,20 @@ class CreateAntecedentesMedicosTable extends Migration
         Schema::create('antecedentes_medicos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('diagnostico')->nullable();
             $table->string('evaluacion_psiquiatra')->nullable();
             $table->string('enfermedades_familiares')->nullable();
-            $table->string('tratamientos_psiquiatra')->nullable();
-            $table->string('tratamientos_fonoaudiologo')->nullable();
-            $table->string('tratamientos_ocupacional')->nullable();
-            $table->string('tratamientos_kinesiologo')->nullable();
-            $table->string('tratamientos_psicologo')->nullable();
-            $table->string('tratamientos_neurologo')->nullable();
+            $table->string('tratamientos_neurologo_nombre')->nullable();
+            $table->string('tratamientos_neurologo_sesiones')->nullable();
+            $table->string('tratamientos_psiquiatra_nombre')->nullable();
+            $table->string('tratamientos_psiquiatra_sesiones')->nullable();
+            $table->string('tratamientos_fonoaudiologo_nombre')->nullable();
+            $table->string('tratamientos_fonoaudiologo_sesiones')->nullable();
+            $table->string('tratamientos_ocupacional_nombre')->nullable();
+            $table->string('tratamientos_ocupacional_sesiones')->nullable();
+            $table->string('tratamientos_kinesiologo_nombre')->nullable();
+            $table->string('tratamientos_kinesiologo_sesiones')->nullable();
+            $table->string('tratamientos_psicologo_nombre')->nullable();
+            $table->string('tratamientos_psicologo_sesiones')->nullable();
             $table->string('medicamentos')->nullable();
         });
     }

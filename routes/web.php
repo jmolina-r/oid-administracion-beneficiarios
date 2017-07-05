@@ -98,7 +98,7 @@ Route::group(['prefix' => '/area-medica'], function (){
             ]);
 
             Route::post('/store', [
-                'uses' => 'FichapsicologiaController@store',
+                'uses' => 'FichaPsicologiaController@store',
                 'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.store'
             ]);
         });
