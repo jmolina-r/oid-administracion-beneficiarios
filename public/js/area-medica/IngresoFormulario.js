@@ -9,7 +9,6 @@ $(document).ready(function() {
     $('#formulario-registro').validator();
 
     $('#myWizard').wizard().on('actionclicked.fu.wizard', function(e, data) {
-        alert('hola');
         var hasErrors = $('#formulario_registro').validator('validate').has('.has-error').length;
         //if (hasErrors) e.preventDefault();
 
@@ -26,7 +25,6 @@ $(document).ready(function() {
      * Si hay puntuacion se activa comentario.
      */
     $("#puntaje").change(function() {
-        alert('hola');
         //Si se ha seleccionado si
         if (this.value == 1) {
             $('#comentario').removeAttr('disabled');
@@ -77,12 +75,6 @@ $(document).ready(function() {
         $('#formulario-registro').validator("destroy");
         $('#formulario-registro').validator();
     }
-    /**
-     * Beneficios tipo tags
-     */
-    $(".select-tag").select2({
-        tags: true
-    });
 
     /**
      * Estilos para select del tema
@@ -93,6 +85,18 @@ $(document).ready(function() {
 
     $(function () {
         $('#fecha_nacimiento').datetimepicker({
+            maxDate:"now",
+            format: "DD/MM/YYYY",
+            icons: {
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right'
+            },
+            viewMode: 'years'
+        });
+    });
+
+    $(function () {
+        $('#fecha_nacimiento2').datetimepicker({
             maxDate:"now",
             format: "DD/MM/YYYY",
             icons: {

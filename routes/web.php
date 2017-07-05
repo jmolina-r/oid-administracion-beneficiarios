@@ -53,37 +53,51 @@ Route::group(['prefix' => '/area-medica'], function (){
 
         Route::group(['prefix' => '/fonoaudiologia'], function (){
 
-            Route::get('/ingresar', [
-                'uses' => 'FichaFonoaudiologiaController@getIngresar',
-                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.ingresar'
+            Route::get('/create/{id}', [
+                'uses' => 'FichaFonoaudiologiaController@create',
+                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.create'
             ]);
 
-            Route::post('/ingresar', [
-                'uses' => 'FichaFonoaudiologiaController@postIngresar',
-                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.ingresar'
+            Route::post('/postfono', [
+                'uses' => 'FichaFonoaudiologiaController@postFono',
+                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.postfono'
             ]);
 
-            Route::get('/mostrar-lista', [
-                'uses' => 'FichaFonoaudiologiaController@getMostrarLista',
-                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.mostrar-lista'
+            Route::post('/agregarpariente', [
+                'uses' => 'FichaFonoaudiologiaController@postAgregarPariente',
+                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.agregarpariente'
             ]);
+
         });
 
         Route::group(['prefix' => '/terapia-ocupacional'], function (){
 
-            Route::get('/ingresar', [
+            Route::get('/ingresar/{id}', [
                 'uses' => 'FichaTerapiaOcupacionalController@getIngresar',
-                'as' => 'medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
+                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
             ]);
 
             Route::post('/ingresar', [
                 'uses' => 'FichaTerapiaOcupacionalController@postIngresar',
-                'as' => 'medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
+                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
             ]);
 
             Route::get('/mostrar-lista', [
                 'uses' => 'FichaTerapiaOcupacionalController@getMostrarLista',
-                'as' => 'medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista'
+                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista'
+            ]);
+        });
+
+        Route::group(['prefix' => '/psicologia'], function (){
+
+            Route::get('/create/{id}', [
+                'uses' => 'FichaPsicologiaController@create',
+                'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.create'
+            ]);
+
+            Route::post('/store', [
+                'uses' => 'FichaPsicologiaController@store',
+                'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.store'
             ]);
         });
     });

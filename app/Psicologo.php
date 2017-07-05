@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Fonoaudiologo extends Model
+class Psicologo extends Model
 {
     protected $fillable = ['rut', 'nombres', 'apellidos', 'telefono', 'fecha_nacimiento', 'direccion'];
 
-    public function ingresoFonoaudiologia()
+    public function ingresoPsicologia()
     {
-        return $this->hasMany(FichaFonoaudiologia::class);
+        return $this->hasMany(FichaPsicologia::class);
     }
 }

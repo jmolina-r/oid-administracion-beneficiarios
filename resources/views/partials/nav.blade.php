@@ -65,11 +65,28 @@
                 </a>
                 <ul class='nav nav-stacked'>
                     <li class=''>
-                        <a href='{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.ingresar'). '/'. 1}}'>
+                        <a href='{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.create',1)}}'>
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>
                             </div>
                             <span>Formulario ingreso fono</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class=''>
+                <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
+                    <span>Psicología</span>
+                    <i class='fa fa-angle-down angle-down'></i>
+                </a>
+                <ul class='nav nav-stacked'>
+                    <li class=''>
+                        <a href='{{route('area-medica.ficha-evaluacion-inicial.psicologia.create',1)}}'>
+                            <div class='icon'>
+                                <i class='fa fa-caret-right'></i>
+                            </div>
+                            <span>Formulario ingreso psicología</span>
                         </a>
                     </li>
 
@@ -82,7 +99,7 @@
                 </a>
                 <ul class='nav nav-stacked'>
                     <li class=''>
-                        <a href='{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.ingresar'). '/'. 1}}'>
+                        <a href='{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar',1)}}'>
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>
                             </div>
