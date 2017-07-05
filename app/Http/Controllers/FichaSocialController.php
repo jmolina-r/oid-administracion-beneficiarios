@@ -34,6 +34,7 @@ class FichaSocialController extends Controller
             Buscar que panel esta activo para poder rescatar los datos de este, depues se hace un switch por cada tab para generar 
             el envio de datos a la base de datos por cada uno.
          */
+
         $now = new \DateTime();
         $obsIt = 'N/A';
      
@@ -42,7 +43,6 @@ class FichaSocialController extends Controller
             $motivoVisita = $request -> input('vd');
             $obsVisita = $request -> input('vdText');
 
-
             for($i=0;$i<count($motivoVisita);$i++){
 
                 $textPos = $motivoVisita[$i]-7;
@@ -50,6 +50,7 @@ class FichaSocialController extends Controller
                 if($obsVisita[$textPos]!=NULL){
                     $obsIt = $obsVisita[$textPos];
                 }
+                $this->validate($request, ['vd' => 'required',]);
                 $motivoSocial = new \App\MotivoAtencionSocial([
 
                     'observación' => $obsIt,
@@ -65,7 +66,9 @@ class FichaSocialController extends Controller
             return back()->with('info','Se ha ingresado con éxito la visita');
 
         } elseif(isset($_POST["ayudas_btn"])) {
-
+            
+            $this->validate($request, ['tipoAyudaTecnica' => 'required',
+                                        'tipoAyudaSocial' => 'required']);
             $motivoAyudaTecnica = $request -> input('tipoAyudaTecnica');
             $motivoAyudaSocial = $request -> input('tipoAyudaSocial');
             if($request -> input('observacionAyuda') != ''){
@@ -105,7 +108,36 @@ class FichaSocialController extends Controller
             return back()->with('info','Se ha ingresado con éxito la visita');
 
         } elseif(isset($_POST["becas_btn"])){
-            echo "Esta sección aún no se encuentra habilitada";
+            
+            $subMotivos = $request -> input('inputSubMotivo');
+            if($subMotivos[0]==12){
+                $postAT = $request -> input('postAT');
+                $obsIt = $postAT[0] . ";";
+                $obsIt = $obsIt . $postAT[1] . ";";;
+                $resultado = $request -> input('resultado');
+
+                if($resultado==0){
+                    $obsIt = $obsIt . "reprobado" . ";";;
+                    $reprobado = $request -> input('reprobado');
+                    $obsIt = $obsIt . $reprobado[0] . ";";;
+                    $obsIt = $obsIt . $reprobado[1] . ";";;
+                    $obsIt = $obsIt . $reprobado[2];
+                }else{
+                    $obsIt = $obsIt . "aprobado";
+                }
+
+            }
+            $motivoSocial = new \App\MotivoAtencionSocial([
+
+                'observación' => $obsIt,
+                'fecha_visita' => $now->format('Y-m-d H:i:s'),
+                'ficha_atencion_social_id' => '1',
+                'tipo_motivo_social_id' => '1',
+                'tipo_submotivo_id' => $subMotivos[0],
+                'tipo_ayuda_id' => NULL
+            ]);
+            $motivoSocial->save();
+            return back()->with('info','Se ha ingresado con éxito la visita');
         } else{
 
             //Orientacion
@@ -156,5 +188,6 @@ class FichaSocialController extends Controller
         }*/
 
     }
+    
 
 }

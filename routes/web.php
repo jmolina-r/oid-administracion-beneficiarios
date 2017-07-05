@@ -20,7 +20,7 @@ Route::get('/', [
 Route::group(['prefix' => 'areasocial'], function(){
     Route::get('/asistentesocial', [
     'uses' => 'FichaSocialController@index',
-    'as' => 'social.asistenteSocial'
+    'as' => 'social.asistenteSocialGet'
     ]);
     
     Route::get('/asistentesocial/menu', [

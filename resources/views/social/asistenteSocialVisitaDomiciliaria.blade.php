@@ -52,7 +52,10 @@
     <script src="{{ asset('/js/social/showcontent.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/javascripts/plugins/fileinput/bootstrap-fileinput.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/javascripts/plugins/fileinput/bootstrap-fileinput-fa.js') }}" type="text/javascript"></script>
-
+    <!-- / START - Validaciones-->
+   <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
+   <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>
 
 @endsection
 
@@ -100,11 +103,16 @@
                     <div class='box'>
                       <div class='box-content box-padding'>
                         <div class="row">
-                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                         <div class="col-sm-5">
 
                             <h4>Menú Area Social</h4>
 
                           </div>
+                          <a href="{{route("social.asistenteSocialGet")}}">
+                            <button type="submit" href=""  class="pull-right btn ">Terminar Visita</button>
+                          </a>
+                          
+                          
                             @if(count($errors) > 0)
                                 <hr class='hr-normal controls'>
 
@@ -118,8 +126,8 @@
                                 <hr class='hr-normal controls'>
                                 <div class="alert alert-success">{{ session('info') }}</div>
                             @endif
-
-                            <div class='col-md-12 form-group'>
+                            
+                            <div class='col-sm-12 form-group'>
                                 <?php $i = 1; ?>
                                  <div class="tabbable tabs-left">
                                       <ul class="nav nav-tabs">
@@ -141,7 +149,7 @@
                                                 <form accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data">
                                                     {!!csrf_field()!!}
                                                     <fieldset>
-                                                      <fieldset id="tecnico">
+                                                      <fieldset name="tecnico">
                                                         <label class='control-label' for='inputText'>Ayuda Técnica</label>
                                                               @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
                                                                 @if ($tipoAyuda->tipo=='tecnico')
@@ -151,7 +159,8 @@
                                                                 @endif
                                                             @endforeach
                                                       </fieldset>
-                                                      <fieldset id="social">
+                                                      <fieldset name="social">
+                                                        <br>
                                                           <label class='control-label' for='inputText'>Ayuda Social</label>
                                                           @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
                                                                   @if ($tipoAyuda->tipo=='social')
@@ -187,6 +196,7 @@
                                                               <div class="control" style="margin-top:10px;">
                                                                 <input class='make-switch' value="{{$sMotivo->id}}" name="vd[]" id="{{$sMotivo->id}}.vd" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}.vd')" ><p id="hverificacion"> {{$sMotivo->nombre}} </p>
                                                               </div>
+                                                              <div class="help-block with-errors"></div>
                                                               <div class='controls' id="{{$sMotivo->nombre}}" style="display:none">
                                                                   <div>
                                                                     <label for="inputText"style="display:block;">Observación</label>
@@ -212,16 +222,16 @@
                                                                     <div class='controls' id="uno" style="display:none">
                                                                         <div>
                                                                             <label for="inputText"style="display:block;">Anio postulación</label>
-                                                                            <input type="number" name="vdText[]" id="añoPostulacion.text" min="1990" max="2017"></input>
+                                                                            <input type="number" name="postAT[]" id="añoPostulacion.text" min="1990" max="2017" required autofocus></input>
                                                                         </div>
                                                                         <div>
                                                                             <label for="inputText"style="display:block;">Tipo ayuda</label>
-                                                                            <input name="vdText[]" id="tipoAyudaSenadis.text"></input>
+                                                                            <input name="postAT[]" id="tipoAyudaSenadis.text" required autofocus></input>
+                                                                            <div class="help-block with-errors"></div>
                                                                         </div>
                                                                         <div>
                                                                             <label for="inputText"style="display:block;">Resultado</label>
                                                                             <select	id="resultado" name="resultado" onChange="javascript: mostrar(this.value);">
-                                                                                <option value=""></option>
                                                                                 <option value="1">Aprobado</option>
                                                                                 <option value="0">Reprobado</option>
                                                                             </select>

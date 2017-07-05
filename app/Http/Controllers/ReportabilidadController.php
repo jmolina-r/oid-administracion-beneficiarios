@@ -26,15 +26,13 @@ class ReportabilidadController extends Controller
         
         $cant = Beneficiario::count();
         $masculino = Beneficiario::where('sexo','masculino')->count();
-        $porcentajeMasculino = $masculino*100/$cant;
         $fem = Beneficiario::where('sexo','femenino')->count();
-        $porcentajeFemenino=$fem*100/$cant;
         $ingresoAnual=FichaBeneficiario::whereYear('fecha_ingreso', '=', date('Y'))->count();
         $ingresoMensual = FichaBeneficiario::whereYear('fecha_ingreso', '=', date('Y'))
             ->whereMonth('fecha_ingreso', '=', date('m'))
             ->count();
         $credencial = CredencialDiscapacidad::count();
-        $porcentajeCredencial=$credencial*100/$cant;
+
         $atencionAnual=PrestacionRealizada::whereYear('fecha', '=', date('Y'))->count();
         $atencionMensual=PrestacionRealizada::whereYear('fecha', '=', date('Y'))
             ->whereMonth('fecha', '=', date('m'))
@@ -47,17 +45,25 @@ class ReportabilidadController extends Controller
 
         //SALUD FONASA O ISAPRE
         $fonasa=DatoSocial::where('fonasa_id','!=', null)->count();
-        $porcentajeFonasa = $fonasa*100/$cant;
         $fonasaTramoA= DatoSocial::where('fonasa_id','=',1)->count();
-        $porcentajeFonasaTramoA=$fonasaTramoA;
         $fonasaTramoB= DatoSocial::where('fonasa_id','=',2)->count();
-        $porcentajeFonasaTramoB=$fonasaTramoB;
         $fonasaTramoC= DatoSocial::where('fonasa_id','=',3)->count();
-        $porcentajeFonasaTramoC=$fonasaTramoC;
         $fonasaTramoD= DatoSocial::where('fonasa_id','=',4)->count();
-        $porcentajeFonasaTramoD=$fonasaTramoD;
         $isapre=DatoSocial::where('isapre_id','!=', null)->count();
-        $porcentajeIsapre=$isapre*100/$cant;
+
+        if($fonasa!=0){
+            $porcentajeFonasa = $fonasa*100/$cant;
+            $porcentajeFonasaTramoA=$fonasaTramoA*100/$fonasa;
+            $porcentajeFonasaTramoB=$fonasaTramoB*100/$fonasa;
+            $porcentajeFonasaTramoC=$fonasaTramoC*100/$fonasa;
+            $porcentajeFonasaTramoD=$fonasaTramoD*100/$fonasa;
+        }else{
+            $porcentajeFonasa = 0;
+            $porcentajeFonasaTramoA=0;
+            $porcentajeFonasaTramoB=0;
+            $porcentajeFonasaTramoC=0;
+            $porcentajeFonasaTramoD=0;
+        }
 
         //EDUCACION id 1-9
         $preBasico=Beneficiario::where('educacion_id','=',1)->count();
@@ -72,18 +78,23 @@ class ReportabilidadController extends Controller
 
         //SITUACION LABORAL id 1-5
         $trabajador=Beneficiario::where('ocupacion_id','=',1)->count();
-        $porcentajeTrabajador=$trabajador*100/$cant;
         $estudiante=Beneficiario::where('ocupacion_id','=',2)->count();
-        $porcentajeEstudiante=$estudiante*100/$cant;
         $duenoCasa=Beneficiario::where('ocupacion_id','=',3)->count();
-        $porcentajeDuenoCasa=$duenoCasa*100/$cant;
         $pensionado=Beneficiario::where('ocupacion_id','=',4)->count();
-        $porcentajePensionado=$pensionado*100/$cant;
         $cesante=Beneficiario::where('ocupacion_id','=',5)->count();
-        $porcentajeCesante=$cesante*100/$cant;
-
-
-
+        
+        if($cant!=0){
+            $porcentajeMasculino = $masculino*100/$cant;
+            $porcentajeFemenino=$fem*100/$cant;
+            $porcentajeCredencial=$credencial*100/$cant;
+            $porcentajeIsapre=$isapre*100/$cant;
+        }else{
+            $porcentajeMasculino =0;
+            $porcentajeFemenino=0;
+            $porcentajeCredencial=0;
+            $porcentajeIsapre=0;
+        }
+        
         return view('reportabilidad.createFichaPaciente', compact('cant', 'porcentajeFemenino', 'porcentajeMasculino', 'ingresoAnual', 'ingresoMensual', 'porcentajeCredencial', 'atencionAnual' , 'atencionMensual','porcentajeAdulto', 'porcentajeJoven', 'porcentajeAdultoMayor', 'porcentajeFonasa',
             'porcentajeFonasaTramoA','porcentajeFonasaTramoB', 'porcentajeFonasaTramoC','porcentajeFonasaTramoD', 'porcentajeIsapre', 'preBasico','basicoIncompleto', 'basicoCompleto',
             'medioIncompleto', 'medioCompleto', 'tecnicoIncompleto', 'tecnicoCompleto', 'universitarioIncompleto' ,
