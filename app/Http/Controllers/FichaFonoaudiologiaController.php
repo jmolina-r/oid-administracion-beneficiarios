@@ -34,5 +34,11 @@ class FichaFonoaudiologiaController extends Controller
 
     }
 
+    public function postFono(Request $request){
+
+        return $request->all();
+
+    }
+
 
 }

@@ -54,8 +54,6 @@
     <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
     <script src="{{ asset("/assets/javascripts/plugins/validate/additional-methods.js") }}" type="text/javascript"></script>
 
-    <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
-    <script src="{{ asset("/js/area-medica/IngresoFormulario.js") }}" type="text/javascript"></script>
     <!-- / END - validaciones-->
 
     <!-- / START - Handler agregar parientes-->
@@ -147,7 +145,7 @@
                                                     </div>
                                                 @endif
                                                 <hr class='hr-normal'>
-                                                <form role="form" id="formulario-registro" action="{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.store')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
+                                                <form role="form" id="formulario-registro-fono" action="{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.postfono')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
                                                     <div class='step-content'>
                                                         <!-- STEP 1 -->
                                                         <div class='step-pane active' data-step='1'>
