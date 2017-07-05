@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Fonoaudiologo extends Model
 {
-    protected $fillable = ['rut', 'nombres', 'apellidos', 'fecha_nacimiento', 'direccion'];
+    protected $fillable = ['rut', 'nombres', 'apellidos', 'telefono', 'fecha_nacimiento', 'direccion'];
 
     public function ingresoFonoaudiologia()
     {

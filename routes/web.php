@@ -58,35 +58,33 @@ Route::group(['prefix' => '/area-medica'], function (){
                 'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.create'
             ]);
 
-            Route::post('/store', [
-                'uses' => 'FichaFonoaudiologiaController@store',
-                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.store'
-            ]);
-
             Route::post('/postfono', [
                 'uses' => 'FichaFonoaudiologiaController@postFono',
                 'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.postfono'
             ]);
 
-            Route::post('/agregarpariente', 'FichaFonoaudiologiaController@postAgregarPariente');
+            Route::post('/agregarpariente', [
+                'uses' => 'FichaFonoaudiologiaController@postAgregarPariente',
+                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.agregarpariente'
+            ]);
 
         });
 
         Route::group(['prefix' => '/terapia-ocupacional'], function (){
 
-            Route::get('/ingresar', [
+            Route::get('/ingresar/{id}', [
                 'uses' => 'FichaTerapiaOcupacionalController@getIngresar',
-                'as' => 'medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
+                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
             ]);
 
             Route::post('/ingresar', [
                 'uses' => 'FichaTerapiaOcupacionalController@postIngresar',
-                'as' => 'medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
+                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
             ]);
 
             Route::get('/mostrar-lista', [
                 'uses' => 'FichaTerapiaOcupacionalController@getMostrarLista',
-                'as' => 'medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista'
+                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista'
             ]);
         });
 
