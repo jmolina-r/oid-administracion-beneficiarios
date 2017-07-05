@@ -436,7 +436,6 @@ $factory->define(App\HabilidadesSociales::class, function (Faker\Generator $fake
         'sonrisa_social' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
         'seguimiento_personas' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
         'seguimiento_objetos' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
-        'vestuario_inferior' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
         'investigacion_visual' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
         'investigacion_motora' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
         'atencion_conjunta' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
