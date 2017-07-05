@@ -39,7 +39,7 @@ class FichaSocialController extends Controller
         $obsIt = 'N/A';
      
         if (isset($_POST["visita_domiciliaria_btn"])) {
-
+            $this->validate($request, ['vd' => 'required']);
             $motivoVisita = $request -> input('vd');
             $obsVisita = $request -> input('vdText');
 
@@ -67,8 +67,8 @@ class FichaSocialController extends Controller
 
         } elseif(isset($_POST["ayudas_btn"])) {
             
-            $this->validate($request, ['tipoAyudaTecnica' => 'required',
-                                        'tipoAyudaSocial' => 'required']);
+            $this->validate($request, ['tipoAyudaSocial' => 'required_without_all:tipoAyudaTecnica',
+                                         'tipoAyudaTecnica' => 'required_without_all:tipoAyudaSocial',]);
             $motivoAyudaTecnica = $request -> input('tipoAyudaTecnica');
             $motivoAyudaSocial = $request -> input('tipoAyudaSocial');
             if($request -> input('observacionAyuda') != ''){
@@ -141,6 +141,7 @@ class FichaSocialController extends Controller
         } else{
 
             //Orientacion
+            $this->validate($request, ['inputSubMotivo' => 'required']);
             $subMotivos = $request -> input('inputSubMotivo');
             for($i=0;$i<count($subMotivos);$i++){
 
