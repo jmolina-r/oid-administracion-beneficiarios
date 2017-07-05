@@ -19,7 +19,15 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="form-group">
                 <div class='input-group' id='credencial_venc'>
-                    <input name='credencial_vencimiento' class='form-control' data-format='DD/MM/YYYY' placeholder='Vencimiento' type='text' id="credencial_vencimiento" disabled>
+                    <input value-date=
+                    @if(old('credencial_vencimiento') != null)
+                        "{{ old('credencial_vencimiento') }}"
+                    @elseif(isset($persona))
+                        "{{ $persona->credencial_discapacidad->fecha_vencimiento }}"
+                    @else
+                        ""
+                    @endif
+                    name='credencial_vencimiento' class='form-control' data-format='DD/MM/YYYY' placeholder='Vencimiento' type='text' id="credencial_vencimiento" disabled>
                     <span class='input-group-addon'>
                         <span class='fa fa-calendar'></span>
                     </span>
