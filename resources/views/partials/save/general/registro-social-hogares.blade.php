@@ -9,9 +9,9 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class='form-group'>
                 <select style="width:100%;" name='registro_social_hogares' class='form-control select-tag' required id="registro_social_hogares">
-                   <option value='0'>No</option>
-                   <option value='2'>En trámite</option>
-                   <option value='1'>Si</option>
+                   <option value='0' {{ old('registro_social_hogares') == "0" ? "selected" : ""}}>No</option>
+                   <option value='2' {{ old('registro_social_hogares') == "2" ? "selected" : ""}}>En trámite</option>
+                   <option value='1' {{ old('registro_social_hogares') == "1" ? "selected" : ""}}>Si</option>
                 </select>
             </div>
         </div>

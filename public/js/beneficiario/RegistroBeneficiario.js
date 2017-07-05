@@ -3,6 +3,10 @@ $(document).ready(function() {
     //Activa o deshabilita vencimiento credencial segun seleccion anterior
     activadorVencimientoCredencial($("#credencial_discapacidad"));
 
+    //Rellena el vencimiento de la credencial
+    rellenarFecha("#credencial_vencimiento");
+    rellenarFecha("#fecha_nacimiento");    
+    
     /**
      * Acciones al cambiar al step siguiente o al anterior
      */
@@ -76,7 +80,6 @@ $(document).ready(function() {
      * Funcion que habilita o deshabilita la fecha de la credencial segun seleccion anterior
      */
     function activadorVencimientoCredencial(){
-        console.log($("#credencial_discapacidad").val());
 
         //Si se ha seleccionado si
         if ($("#credencial_discapacidad").val() == 1) {
@@ -108,6 +111,9 @@ $(document).ready(function() {
     $(".select2-search").css("width","100%");
     $(".select2-search__field").css("width","100%");
 
+    /**
+     * Inicia datetimepicker fecha nacimiento
+     */
     $(function () {
         $('#fecha_nacimiento').datetimepicker({
             maxDate:"now",
@@ -120,8 +126,11 @@ $(document).ready(function() {
         });
     });
 
+    /**
+     * Inicia datetimepicker credencial vencimiento
+     */
     $(function () {
-        $('#credencial_venc').datetimepicker({
+        $('#credencial_vencimiento').datetimepicker({
             minDate:"now",
             format: "DD/MM/YYYY",
             icons: {
@@ -131,8 +140,19 @@ $(document).ready(function() {
         });
     });
 
-    $('#credencial_venc').datetimepicker({
-        format: "DD/MM/YYYY",
-        date: new Date("2015-03-23")
-    });
+    /**
+     * Funciona que rellena los campos de fecha
+     */
+    function rellenarFecha(input){
+        //Rellena la fecha de nacimiento
+        var valueDate = $(input).attr('value-date');
+
+        if(valueDate != ""){
+            $(input).datetimepicker({
+                format: "DD/MM/YYYY",
+                date: new Date(valueDate)
+            });
+        }
+    }
+    
 });
