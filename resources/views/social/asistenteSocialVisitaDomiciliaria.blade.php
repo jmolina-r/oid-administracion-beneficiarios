@@ -222,11 +222,11 @@
                                                                     <div class='controls' id="uno" style="display:none">
                                                                         <div>
                                                                             <label for="inputText"style="display:block;">Anio postulación</label>
-                                                                            <input type="number" name="postAT[]" id="añoPostulacion.text" min="1990" max="2017" required autofocus></input>
+                                                                            <input type="number" name="postAT[]" id="añoPostulacion.text" min="1990" max="2017"></input>
                                                                         </div>
                                                                         <div>
                                                                             <label for="inputText"style="display:block;">Tipo ayuda</label>
-                                                                            <input name="postAT[]" id="tipoAyudaSenadis.text" required autofocus></input>
+                                                                            <input name="postAT[]" id="tipoAyudaSenadis.text"></input>
                                                                             <div class="help-block with-errors"></div>
                                                                         </div>
                                                                         <div>

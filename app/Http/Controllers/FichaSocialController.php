@@ -45,11 +45,14 @@ class FichaSocialController extends Controller
 
             for($i=0;$i<count($motivoVisita);$i++){
 
+                //Se obtiene la posicion de la observacion del motivo de visita
                 $textPos = $motivoVisita[$i]-7;
-                // "Observacion: ". $obsVisita[$textPos] . "<br>";
+                //Se comprueba que no sea null
                 if($obsVisita[$textPos]!=NULL){
+                    //Si se lleno el campo, este sustituye el N/A
                     $obsIt = $obsVisita[$textPos];
                 }
+                //Se valida que vd sea requerido
                 $this->validate($request, ['vd' => 'required',]);
                 $motivoSocial = new \App\MotivoAtencionSocial([
 
