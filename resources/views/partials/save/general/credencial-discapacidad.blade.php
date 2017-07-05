@@ -29,7 +29,7 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="form-group">
-                <div class='input-group' id='credencial_venc'>
+                <div class='input-group'>
                     <input value-date=
                     @if(old('credencial_vencimiento') != null)
                         "{{ old('credencial_vencimiento') }}"
