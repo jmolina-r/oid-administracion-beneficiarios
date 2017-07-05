@@ -130,4 +130,9 @@ $(document).ready(function() {
             }
         });
     });
+
+    $('#credencial_venc').datetimepicker({
+        format: "DD/MM/YYYY",
+        date: new Date("2015-03-23")
+    });
 });
