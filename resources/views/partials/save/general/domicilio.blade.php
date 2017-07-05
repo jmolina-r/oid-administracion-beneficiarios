@@ -4,7 +4,14 @@
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         	<div class='form-group'>
 			    <div class='controls'>                            
-			        <input value="{{ old('domicilio_calle') }}" name='domicilio_calle' class='form-control' id='domicilio_calle' placeholder='Calle' type='text' maxlength="200">
+			        <input name='domicilio_calle' class='form-control' id='domicilio_calle' placeholder='Calle' type='text' maxlength="200" value=
+			        	@if(old('domicilio_calle')) 
+			        		"{{ old('domicilio_calle') }}"
+			        	@elseif(isset($persona) && $persona->domicilio->calle != null)
+			        		"{{$persona->domicilio->calle}}"
+			        	@else
+			        		""
+			        	@endif>
 			    </div>
 			</div>
 		</div>

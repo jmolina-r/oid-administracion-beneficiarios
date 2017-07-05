@@ -1,8 +1,11 @@
 $(document).ready(function() {
+
+    //Activa o deshabilita vencimiento credencial segun seleccion anterior
+    activadorVencimientoCredencial($("#credencial_discapacidad"));
+
     /**
      * Acciones al cambiar al step siguiente o al anterior
      */
-
     $('#formulario-registro').validator();
 
     $('#myWizard').wizard().on('actionclicked.fu.wizard', function(e, data) {
@@ -23,21 +26,7 @@ $(document).ready(function() {
      * si no, lo bloquea.
      */
     $("#credencial_discapacidad").change(function() {
-        //Si se ha seleccionado si
-        if (this.value == 1) {
-            $("#credencial_vencimiento").prop('required', true);
-            $('#credencial_vencimiento').removeAttr('disabled');
-        }
-
-        //Si se ha seleccionado en tramite o no
-        if (this.value == 0 || this.value == 2) {
-            $('#credencial_vencimiento').removeAttr('required');
-            $('#credencial_vencimiento').val("");
-            $("#credencial_vencimiento").prop('disabled', true);
-        }
-
-        actualizarValidador();
-
+        activadorVencimientoCredencial();
     });
 
     /**
@@ -82,6 +71,29 @@ $(document).ready(function() {
         $('#formulario-registro').validator("destroy");
         $('#formulario-registro').validator();
     }
+
+    /**
+     * Funcion que habilita o deshabilita la fecha de la credencial segun seleccion anterior
+     */
+    function activadorVencimientoCredencial(){
+        console.log($("#credencial_discapacidad").val());
+
+        //Si se ha seleccionado si
+        if ($("#credencial_discapacidad").val() == 1) {
+            $("#credencial_vencimiento").prop('required', true);
+            $('#credencial_vencimiento').removeAttr('disabled');
+        }
+
+        //Si se ha seleccionado en tramite o no
+        if ($("#credencial_discapacidad").val() == 0 || $("#credencial_discapacidad").val() == 2) {
+            $('#credencial_vencimiento').removeAttr('required');
+            $('#credencial_vencimiento').val("");
+            $("#credencial_vencimiento").prop('disabled', true);
+        }
+
+        actualizarValidador();
+    }
+
     /**
      * Beneficios tipo tags
      */
