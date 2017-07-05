@@ -22,7 +22,7 @@ Route::group(['prefix' => 'areasocial'], function(){
     'uses' => 'FichaSocialController@index',
     'as' => 'social.asistenteSocial'
     ]);
-    
+
     Route::post('/asistentesocial/beneficiario', [
     'uses' => 'FichaSocialController@store',
     'as' => 'social.asistenteSocialBeneficiario'
@@ -107,6 +107,11 @@ Route::group(['prefix' => 'beneficiario'], function () {
         'as' => 'beneficiario.edit'
     ]);
 
+    Route::post('/editar/{id}', [
+        'uses' => 'BeneficiarioController@update',
+        'as' => 'beneficiario.update'
+    ]);
+
     Route::get('/informacion/{id}', [
         'uses' => 'BeneficiarioController@show',
         'as' => 'beneficiario.show'
@@ -122,4 +127,3 @@ Route::group(['prefix' => 'beneficiario'], function () {
         'as' => 'beneficiario.findLikeNombreApellidoRutJson'
     ]);
 });
-
