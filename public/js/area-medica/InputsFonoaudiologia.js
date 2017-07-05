@@ -29,7 +29,7 @@ $('#morb_oti_si').click(function () {
     $('#des_trat2').removeAttr("disabled");
 });
 
-$('#morb_oti_no').click(function () {
+$('#morb_oti_n').click(function () {
     $('#des_trat2').attr("disabled","disabled");
     $('#des_trat2').val("");
 });
