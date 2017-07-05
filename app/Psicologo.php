@@ -10,6 +10,6 @@ class Psicologo extends Model
 
     public function ingresoPsicologia()
     {
-        return $this->hasOne(FichaPsicologia::class);
+        return $this->hasMany(FichaPsicologia::class);
     }
 }

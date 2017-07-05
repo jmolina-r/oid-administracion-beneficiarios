@@ -162,8 +162,6 @@ class FichaKinesiologiaController extends Controller
             $valSocial->save();
 
             $fichaKinesiologia = new FichaKinesiologia([
-                //'diagnostico' => $beneficiario->diagnostico,
-                'diagnostico' => 'diagnostico_provicional', //provisional, diagnostico no esta implementado en beneficiario
                 'motivo_consulta' => $request->input('motivo_consulta'),
                 'situacion_laboral' => $request->input('situacion_laboral'),
                 'situacion_familiar' => $request->input('situacion_familiar'),
