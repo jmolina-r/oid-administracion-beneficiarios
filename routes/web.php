@@ -72,19 +72,19 @@ Route::group(['prefix' => '/area-medica'], function (){
 
         Route::group(['prefix' => '/terapia-ocupacional'], function (){
 
-            Route::get('/ingresar', [
+            Route::get('/ingresar/{id}', [
                 'uses' => 'FichaTerapiaOcupacionalController@getIngresar',
-                'as' => 'medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
+                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
             ]);
 
             Route::post('/ingresar', [
                 'uses' => 'FichaTerapiaOcupacionalController@postIngresar',
-                'as' => 'medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
+                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
             ]);
 
             Route::get('/mostrar-lista', [
                 'uses' => 'FichaTerapiaOcupacionalController@getMostrarLista',
-                'as' => 'medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista'
+                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista'
             ]);
         });
 
@@ -96,7 +96,7 @@ Route::group(['prefix' => '/area-medica'], function (){
             ]);
 
             Route::post('/store', [
-                'uses' => 'FichapsicologiaController@store',
+                'uses' => 'FichaPsicologiaController@store',
                 'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.store'
             ]);
         });

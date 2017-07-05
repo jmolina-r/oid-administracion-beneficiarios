@@ -96,6 +96,18 @@ $(document).ready(function() {
     });
 
     $(function () {
+        $('#fecha_nacimiento2').datetimepicker({
+            maxDate:"now",
+            format: "DD/MM/YYYY",
+            icons: {
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right'
+            },
+            viewMode: 'years'
+        });
+    });
+
+    $(function () {
         $('#credencial_venc').datetimepicker({
             minDate:"now",
             format: "DD/MM/YYYY",

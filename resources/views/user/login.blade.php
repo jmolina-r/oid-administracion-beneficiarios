@@ -78,7 +78,8 @@
                           <i class='fa fa-lock text-muted'></i>
                         </div>
                       </div>
-                      <button class='btn btn-block'>Ingresar!</button>
+                      <!--<button class='btn btn-block'>Ingresar!</button>-->
+                        <a href="/beneficiario/registrar" class='btn btn-block'>Ingresar</a><!--Provisional-->
                     </form>
                     <div class='text-center'>
                       <hr class='hr-normal'>

@@ -151,7 +151,6 @@ $factory->define(App\RegistroSocialHogar::class, function (Faker\Generator $fake
 $factory->define(App\FichaKinesiologia::class, function (Faker\Generator $faker) {
 
     return [
-        'diagnostico' => $faker -> regexify('(SE DESCONOCE EL DIAGNOSTICO|DERRAME CEREBRAL|RETRASO MENTAL SEVERO|DISTROFIA MUSCULAR|DIABETES)'),
         'motivo_consulta' => $faker -> regexify('(Evaluación Movilidad|Evaluación Motora|Evaluación Social)'),
         'situacion_laboral' => $faker -> regexify('(Desempleado|Estudiante|Trabajando)'),
         'situacion_familiar' => $faker -> regexify('(Normal|Anormal)'),
@@ -186,6 +185,18 @@ $factory->define(App\AntecedentesMorbidos::class, function (Faker\Generator $fak
 });
 
 $factory->define(App\Kinesiologo::class, function (Faker\Generator $faker) {
+
+    return [
+        'rut' => $faker -> regexify('\[1-9]{8,9}\-(k|[0-9])'),
+        'nombres' => $faker -> firstName,
+        'apellidos' => $faker -> lastName,
+        'telefono' => $faker -> regexify('[0-9]{8}'),
+        'fecha_nacimiento' => $faker -> dateTimeBetween('-50 years', '-25 years'),
+        'direccion' => $faker -> address,
+    ];
+});
+
+$factory->define(App\Psicologo::class, function (Faker\Generator $faker) {
 
     return [
         'rut' => $faker -> regexify('\[1-9]{8,9}\-(k|[0-9])'),

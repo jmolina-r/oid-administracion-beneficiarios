@@ -53,20 +53,26 @@ class FichaPsicologiaController extends Controller
 
         try{
             $antecedentesMedicos = new AntecedentesMedicos([
-                'diagnostico' => $request->input('diagnostico'),
                 'enfermedades_familiares' => $request->input('enfermedades_familiares'),
-                'tratamientos_psiquiatra' => $request->input('tratamientos_psiquiatra'),
-                'tratamientos_fonoaudiologo' => $request->input('tratamientos_fonoaudiologo'),
-                'tratamientos_ocupacional' => $request->input('tratamientos_ocupacional'),
-                'tratamientos_kinesiologo' => $request->input('tratamientos_kinesiologo'),
-                'tratamientos_psicologo' => $request->input('tratamientos_psicologo'),
-                'tratamientos_neurologo' => $request->input('tratamientos_neurologo'),
+                'tratamientos_neurologo_nombre' => $request->input('tratamientos_neurologo_nombre'),
+                'tratamientos_neurologo_sesiones' => $request->input('tratamientos_neurologo_sesiones'),
+                'tratamientos_psiquiatra_nombre' => $request->input('tratamientos_psiquiatra_nombre'),
+                'tratamientos_psiquiatra_sesiones' => $request->input('tratamientos_psiquiatra_sesiones'),
+                'tratamientos_fonoaudiologo_nombre' => $request->input('tratamientos_fonoaudiologo_nombre'),
+                'tratamientos_fonoaudiologo_sesiones' => $request->input('tratamientos_fonoaudiologo_sesiones'),
+                'tratamientos_ocupacional_nombre' => $request->input('tratamientos_ocupacional_nombre'),
+                'tratamientos_ocupacional_sesiones' => $request->input('tratamientos_ocupacional_sesiones'),
+                'tratamientos_kinesiologo_nombre' => $request->input('tratamientos_kinesiologo_nombre'),
+                'tratamientos_kinesiologo_sesiones' => $request->input('tratamientos_kinesiologo_sesiones'),
+                'tratamientos_psicologo_nombre' => $request->input('tratamientos_psicologo_nombre'),
+                'tratamientos_psicologo_sesiones' => $request->input('tratamientos_psicologo_sesiones'),
                 'medicamentos' => $request->input('medicamentos'),
             ]);
             $antecedentesMedicos->save();
 
             $antecedentesFamiliares = new AntecedentesFamiliares([
                 'nombre_madre' => $request->input('nombre_madre'),
+                'rut_madre' => $request->input('rut_madre'),
                 'edad_madre' => $request->input('edad_madre'),
                 'ocupacion_madre' => $request->input('ocupacion_madre'),
                 'escolaridad_madre' => $request->input('escolaridad_madre'),
@@ -74,6 +80,7 @@ class FichaPsicologiaController extends Controller
                 'observaciones_madre' => $request->input('observaciones_madre'),
                 'fecha_nacimiento_madre' => $request->input('fecha_nacimiento_madre'),
                 'nombre_padre' => $request->input('nombre_padre'),
+                'rut_padre' => $request->input('rut_padre'),
                 'edad_padre' => $request->input('edad_padre'),
                 'ocupacion_padre' => $request->input('ocupacion_padre'),
                 'escolaridad_padre' => $request->input('escolaridad_padre'),
@@ -84,13 +91,12 @@ class FichaPsicologiaController extends Controller
             $antecedentesFamiliares->save();
 
             $fichaPsicologia = new FichaPsicologia([
-                //'diagnostico' => $beneficiario->diagnostico,
-                'diagnostico_base' => 'diagnostico_provisional', //provisional, diagnostico no esta implementado en beneficiario
                 'image' => $request->input('image'),
                 'antecedentes_medicos_id' => $antecedentesMedicos->id,
                 'antecedentes_familiares_id' => $antecedentesFamiliares->id,
                 //'psicologo_id' => $psicologo->id,
                 'psicologo_id' => '1', //provisional, psicologo no esta implementado
+                'beneficiario_id' => $request->input('id'),
             ]);
             $fichaPsicologia->save();
         }
@@ -160,21 +166,27 @@ class FichaPsicologiaController extends Controller
     private function rules(Request $request) {
         $rules = [
             'id' => 'required|exists:beneficiarios',
-            'enfermedades_familiares' => 'required|max:200',
-            'tratamientos_psiquiatra' => 'required|max:200',
-            'tratamientos_fonoaudiologo' => 'required|max:200',
-            'tratamientos_ocupacional' => 'required|max:200',
-            'tratamientos_kinesiologo' => 'required|max:200',
-            'tratamientos_psicologo' => 'required|max:200',
-            'tratamientos_neurologo' => 'required|max:200',
-            'medicamentos' => 'required|max:200',
+            'enfermedades_familiares' => 'max:200',
+            'tratamientos_neurologo_nombre' => 'max:200',
+            'tratamientos_neurologo_sesiones' => 'max:200',
+            'tratamientos_psiquiatra_nombre' => 'max:200',
+            'tratamientos_psiquiatra_sesiones' => 'max:200',
+            'tratamientos_fonoaudiologo_nombre' => 'max:200',
+            'tratamientos_fonoaudiologo_sesiones' => 'max:200',
+            'tratamientos_ocupacional_nombre' => 'max:200',
+            'tratamientos_ocupacional_sesiones' => 'max:200',
+            'tratamientos_kinesiologo_nombre' => 'max:200',
+            'tratamientos_kinesiologo_sesiones' => 'max:200',
+            'tratamientos_psicologo_nombre' => 'max:200',
+            'tratamientos_psicologo_sesiones' => 'max:200',
+            'medicamentos' => 'max:200',
             'nombre_madre' => 'required|max:200',
             'edad_madre' => 'required|numeric|between:0,120',
             'ocupacion_madre' => 'required|max:200',
             'escolaridad_madre' => 'required|max:200',
             'telefono_madre' => 'required|numeric',
             'observaciones_madre' => 'max:200',
-            'fecha_nacimiento_madre' => 'required|date',
+            'fecha_nacimiento_madre' => 'required',
             'rut_madre'=> 'required|max:200',
             'nombre_padre' => 'required|max:200',
             'edad_padre' => 'required|numeric|between:0,120',
@@ -182,9 +194,9 @@ class FichaPsicologiaController extends Controller
             'escolaridad_padre' => 'required|max:200',
             'telefono_padre' => 'required|numeric',
             'observaciones_padre' => 'max:200',
-            'fecha_nacimiento_padre' => 'required|date',
+            'fecha_nacimiento_padre' => 'required',
             'rut_padre' => 'required|max:200',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
         return $rules;
     }

@@ -19,10 +19,10 @@ class CreateFichaPsicologiasTable extends Migration
             $table->string('motivo_consulta')->nullable();
             $table->binary('genograma')->nullable();
 
-            $table->string('antecedentes_medicos_id')->nullable();
-            $table->string('antecedentes_familiares_id')->nullable();
-            $table->string('psicologo_id')->nullable();
-            $table->string('beneficiario_id')->nullable();
+            $table->integer('antecedentes_medicos_id')->unsigned();
+            $table->integer('antecedentes_familiares_id')->unsigned();
+            $table->integer('psicologo_id')->unsigned();
+            $table->integer('beneficiario_id')->unsigned();
         });
 
         Schema::table('ficha_psicologias', function($table) {
