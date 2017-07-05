@@ -105,6 +105,12 @@
                                                         <li data-step='4'>
                                                             <span class='step'>4</span>
                                                         </li>
+                                                        <li data-step='5'>
+                                                            <span class='step'>4</span>
+                                                        </li>
+                                                        <li data-step='6'>
+                                                            <span class='step'>4</span>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                                 <div class='actions'>
@@ -545,7 +551,7 @@
                                                                 <hr/>
                                                             </div>
                                                             <div class="col-md-12">
-                                                                <h3>Criterios: Dominado (D),Parcial (P) o Emergente (E)</h3>
+                                                                <h4>Criterios: Dominado (D),Parcial (P) o Emergente (E)</h4>
                                                                 <hr/>
                                                             </div>
                                                             <div class="col-md-12">

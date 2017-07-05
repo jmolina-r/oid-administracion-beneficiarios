@@ -76,17 +76,17 @@ Route::group(['prefix' => '/area-medica'], function (){
 
             Route::get('/ingresar', [
                 'uses' => 'FichaTerapiaOcupacionalController@getIngresar',
-                'as' => 'medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
+                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
             ]);
 
             Route::post('/ingresar', [
                 'uses' => 'FichaTerapiaOcupacionalController@postIngresar',
-                'as' => 'medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
+                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
             ]);
 
             Route::get('/mostrar-lista', [
                 'uses' => 'FichaTerapiaOcupacionalController@getMostrarLista',
-                'as' => 'medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista'
+                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista'
             ]);
         });
 
