@@ -58,17 +58,15 @@ Route::group(['prefix' => '/area-medica'], function (){
                 'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.create'
             ]);
 
-            Route::post('/store', [
-                'uses' => 'FichaFonoaudiologiaController@store',
-                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.store'
-            ]);
-
             Route::post('/postfono', [
                 'uses' => 'FichaFonoaudiologiaController@postFono',
                 'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.postfono'
             ]);
 
-            Route::post('/agregarpariente', 'FichaFonoaudiologiaController@postAgregarPariente');
+            Route::post('/agregarpariente', [
+                'uses' => 'FichaFonoaudiologiaController@postAgregarPariente',
+                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.agregarpariente'
+            ]);
 
         });
 

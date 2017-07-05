@@ -36,7 +36,9 @@ class FichaFonoaudiologiaController extends Controller
 
     public function postFono(Request $request){
 
-        return $request->all();
+        $id = $request->input('id');
+        return view('area-medica.ficha-evaluacion-inicial.fonoaudiologia.create')
+            ->with(compact('id'));
 
     }
 
