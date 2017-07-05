@@ -53,12 +53,15 @@
     <script src="{{ asset("/assets/javascripts/plugins/validate/jquery.validate.min.js") }}" type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
     <script src="{{ asset("/assets/javascripts/plugins/validate/additional-methods.js") }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/area-medica/IngresoFormulario.js') }}" type="text/javascript"></script>
 
     <!-- / END - validaciones-->
 
     <!-- / START - Handler agregar parientes-->
     <script src="{{ asset("/js/area-medica/AgregarPariente.js") }}" type="text/javascript"></script>
     <script src="{{ asset("/js/area-medica/InputsFonoaudiologia.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("/js/area-medica/postFichaFono.js") }}" type="text/javascript"></script>
 @endsection
 
 @section("content")
@@ -145,7 +148,7 @@
                                                     </div>
                                                 @endif
                                                 <hr class='hr-normal'>
-                                                <form class="form" action="{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.postfono')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
+                                                <form id="formulario_registro" class="form" action="" accept-charset="UTF-8" style="margin-bottom: 0;">
                                                     <div class='step-content'>
                                                         <!-- STEP 1 -->
                                                         <div class='step-pane active' data-step='1'>
@@ -258,38 +261,38 @@
                                                                 <div class="col-md-8 controls">
                                                                     <div>
                                                                         <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="">Rubeola
+                                                                            <input type="checkbox" value="" id="check_rubeola">Rubeola
                                                                         </label>
                                                                         <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="">Diabetes
+                                                                            <input type="checkbox" value="" id="check_diabetes">Diabetes
                                                                         </label>
                                                                         <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="">Enf. Renal
+                                                                            <input type="checkbox" value="" id="check_renal">Enf. Renal
                                                                         </label>
                                                                         <label class="checkbox-inline col-md-3">
-                                                                            <input type="checkbox" value="">Hipertensión
+                                                                            <input type="checkbox" value="" id="check_hiper">Hipertensión
                                                                         </label>
                                                                     </div>
                                                                     <br/>
                                                                     <div>
                                                                         <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="">Nutricionales
+                                                                            <input type="checkbox" value="" id="check_nutri">Nutricionales
                                                                         </label>
                                                                         <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="">Traumatismos
+                                                                            <input type="checkbox" value="" id="check_trauma">Traumatismos
                                                                         </label>
                                                                         <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="">Venéreas
+                                                                            <input type="checkbox" value="" id="check_vene">Venéreas
                                                                         </label>
                                                                         <label class="checkbox-inline">
-                                                                            <input type="checkbox" value="">Infecciosas
+                                                                            <input type="checkbox" value="" id="check_infecciones">Infecciosas
                                                                         </label>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group col-md-6">
                                                                 <label for="otros_prenatal">Otros:</label>
-                                                                <textarea class="form-control" rows="4" id="otros_prenatal"></textarea>
+                                                                <textarea class="form-control" rows="4" name="otros_prenatal" id="otros_prenatal"></textarea>
                                                             </div>
                                                         </div>
                                                         <!-- STEP 3 -->
@@ -345,13 +348,13 @@
                                                                 <div class="col-md-8 controls">
                                                                     <div>
                                                                         <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="">Asfixia perinatal
+                                                                            <input type="checkbox" value="" id="check_asfixia">Asfixia perinatal
                                                                         </label>
                                                                         <label class="checkbox-inline col-md-3">
-                                                                            <input type="checkbox" value="">Neumonía por infecciones
+                                                                            <input type="checkbox" value="" id="check_neumo">Neumonía por infecciones
                                                                         </label>
                                                                         <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="">Traumatismos
+                                                                            <input type="checkbox" value="" id="check_trauma_peri">Traumatismos
                                                                         </label>
                                                                     </div>
                                                                 </div>
@@ -866,36 +869,36 @@
                                                                 <label class="col-md-2">Enfermedades</label>
                                                                 <div class="col-md-2">
                                                                     <div class="checkbox">
-                                                                        <label><input type="checkbox" value="" id="check_diabetes">Diabetes</label>
+                                                                        <label><input type="checkbox" name="check_diabetes"  value="" id="check_diabetes">Diabetes</label>
                                                                     </div>
                                                                     <div class="checkbox">
-                                                                        <label><input type="checkbox" value="" id="check_hiper">Hipertensión</label>
+                                                                        <label><input type="checkbox" name="check_hiper" value="" id="check_hiper">Hipertensión</label>
                                                                     </div>
                                                                     <div class="checkbox disabled">
-                                                                        <label><input type="checkbox" value="" id="check_epilepsia">Epilepsia</label>
+                                                                        <label><input type="checkbox" name="check_epilepsia" value="" id="check_epilepsia">Epilepsia</label>
                                                                     </div>
                                                                     <div class="checkbox">
-                                                                        <label><input type="checkbox" value="" id="check_def">Deficiencia mental</label>
+                                                                        <label><input type="checkbox" name="check_def" value="" id="check_def">Deficiencia mental</label>
                                                                     </div>
                                                                     <div class="checkbox disabled">
-                                                                        <label><input type="checkbox" value="" id="check_autismo">Autismo</label>
+                                                                        <label><input type="checkbox" name="check_autismo" value="" id="check_autismo">Autismo</label>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-2">
                                                                     <div class="checkbox">
-                                                                        <label><input type="checkbox" value="" id="check_leng">Trastornos del lenguaje</label>
+                                                                        <label><input type="checkbox" name="check_leng" value="" id="check_leng">Trastornos del lenguaje</label>
                                                                     </div>
                                                                     <div class="checkbox">
-                                                                        <label><input type="checkbox" value="" id="check_apr">Trastornos del aprendizaje</label>
+                                                                        <label><input type="checkbox" name="check_apr" value="" id="check_apr">Trastornos del aprendizaje</label>
                                                                     </div>
                                                                     <div class="checkbox disabled">
-                                                                        <label><input type="checkbox" value="" id="check_visuales">Trastornos visuales</label>
+                                                                        <label><input type="checkbox" name="check_visuales" value="" id="check_visuales">Trastornos visuales</label>
                                                                     </div>
                                                                     <div class="checkbox">
-                                                                        <label><input type="checkbox" value="" id="check_aud">Trastornos auditivos</label>
+                                                                        <label><input type="checkbox" name="check_aud" value="" id="check_aud">Trastornos auditivos</label>
                                                                     </div>
                                                                     <div class="checkbox disabled">
-                                                                        <label><input type="checkbox" value="" id="check_autismo">Trastornos psiquiátricos</label>
+                                                                        <label><input type="checkbox" name="check_autismo" value="" id="check_autismo">Trastornos psiquiátricos</label>
                                                                     </div>
                                                                 </div>
                                                             </div>

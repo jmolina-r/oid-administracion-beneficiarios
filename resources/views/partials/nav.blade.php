@@ -99,7 +99,7 @@
                 </a>
                 <ul class='nav nav-stacked'>
                     <li class=''>
-                        <a href='{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar', 1)}}'>
+                        <a href='{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar',1)}}'>
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>
                             </div>
