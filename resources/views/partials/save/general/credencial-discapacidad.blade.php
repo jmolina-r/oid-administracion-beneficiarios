@@ -9,9 +9,27 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class='form-group'>
                 <select style="width:100%;" name='credencial_discapacidad' class='form-control select-tag' id='credencial_discapacidad' required>
-                   <option value="0" {{ old('credencial_discapacidad') == "0" ? "selected" : ""}}>No</option>
-                   <option value="2" {{ old('credencial_discapacidad') == "2" ? "selected" : ""}}>En trámite</option>
-                   <option value="1" {{ old('credencial_discapacidad') == "1" ? "selected" : ""}}>Si</option>
+                   <option value="0"
+                        @if(old('credencial_discapacidad') == "0")
+                            "selected"
+                        @elseif(old('credencial_discapacidad') == null && isset($persona) && $persona->credencial_discapacidad == null)
+                            "selected"
+                        @endif
+                   >No</option>
+                   <option value="2"
+                       @if(old('credencial_discapacidad') == "2")
+                           "selected"
+                       @elseif(old('credencial_discapacidad') == null && isset($persona) && $persona->credencial_discapacidad != null && $persona->credencial_discapacidad->en_tramite == true)
+                           "selected"
+                       @endif
+                   >En trámite</option>
+                   <option value="1"
+                       @if(old('credencial_discapacidad') == "1")
+                           "selected"
+                       @elseif(old('credencial_discapacidad') == null && isset($persona) && $persona->credencial_discapacidad != null && $persona->credencial_discapacidad->en_tramite == false)
+                           "selected"
+                       @endif
+                   >Si</option>
                 </select>
             </div>
         </div>
