@@ -2,11 +2,19 @@
     <label class='control-label'>Sexo</label>
     <div class='col-md-12'>
         <label style="margin-top: 0px;" class='radio radio-inline'>
-            <input name='sexo' @if(old('sexo') != 'femenino') checked @endif type='radio' value='masculino' required>
+            <input name='sexo'
+                @if((old('sexo') != 'femenino') || (old('sexo') == null && isset($persona) && $persona->sexo == "masculino"))
+                    checked
+                @endif
+            type='radio' value='masculino' required>
             Masculino
         </label>
         <label class='radio radio-inline'>
-            <input name='sexo' @if(old('sexo') === 'femenino') checked @endif type='radio' value='femenino' required>
+            <input name='sexo'
+            @if((old('sexo') === 'femenino') || (old('sexo') == null && isset($persona) && $persona->sexo == "femenino"))
+                checked
+            @endif
+            type='radio' value='femenino' required>
             Femenino
         </label>
     </div>
