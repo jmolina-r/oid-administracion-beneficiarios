@@ -105,7 +105,7 @@
                         <div class="row">
                          <div class="col-sm-5">
 
-                            <h4>Menú Area Social</h4>
+                            <h4 style="margin-bottom:30px;">Menú Area Social</h4>
 
                           </div>
                           <a href="{{route("social.asistenteSocialGet")}}">
@@ -148,35 +148,45 @@
                                               <div class="tab-pane active" id=  "{{$tMotivos->id}}"  >
                                                 <form accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data">
                                                     {!!csrf_field()!!}
-                                                    <fieldset>
-                                                      <fieldset name="tecnico">
+                                                    <div class="col-sm-8">
+                                                      <fieldset name="tecnico" class="col-sm-12">
                                                         <label class='control-label' for='inputText'>Ayuda Técnica</label>
+                                                        <div class="funkyradio">
                                                               @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
                                                                 @if ($tipoAyuda->tipo=='tecnico')
-                                                                  <div class='controls'>
-                                                                      <label class="radio-inline"> <input type="radio" name="tipoAyudaTecnica[]" id="tipoAyudaTecnica" value="{{$tipoAyuda->id}}">{{$tipoAyuda->nombre}}</label>
+                                                                  <div class='funkyradio-primary col-sm-12'>
+                                                                      <input type="radio" name="tipoAyudaTecnica[]" id="{{$tipoAyuda->id}}.t" value="{{$tipoAyuda->id}}">
+                                                                      <label for="{{$tipoAyuda->id}}.t">{{$tipoAyuda->nombre}}</label>
                                                                   </div>
                                                                 @endif
                                                             @endforeach
+                                                        </div>
                                                       </fieldset>
-                                                      <fieldset name="social">
+                                                      <fieldset name="social" class="col-sm-12">
                                                         <br>
                                                           <label class='control-label' for='inputText'>Ayuda Social</label>
+                                                          <div class="funkyradio">
                                                           @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
                                                                   @if ($tipoAyuda->tipo=='social')
-                                                                          <div class='controls'>
-                                                                                  <label class="radio-inline"> <input type="radio" name="tipoAyudaSocial[]" id="tipoAyudaSocial" value="{{$tipoAyuda->id}}"> {{$tipoAyuda->nombre}}</label>
-                                                                          </div>
+                                                                  <div class='funkyradio-warning col-sm-12'>
+                                                                      <input type="radio" name="tipoAyudaSocial[]" id="{{$tipoAyuda->id}}.t" value="{{$tipoAyuda->id}}">
+                                                                      <label for="{{$tipoAyuda->id}}.t">{{$tipoAyuda->nombre}}</label>
+                                                                  </div>
                                                                   @endif
                                                           @endforeach
-                                                  <div class='controls' id="contentVD">
-                                                          <div style="display: inline;">
-                                                                  <label for="inputText">Observación</label>
-                                                                  <textarea name="observacionAyuda" id="observacionAyuda" cols="40" rows="4"></textarea>
                                                           </div>
+                                                         
+                                                  <div class='controls col-sm-12' id="contentVD">
+                                                          <div style="display: inline;">
+                                                             <br>
+                                                                  <label for="inputText" style="display:block;">Observación</label>
+                                                                  <textarea name="observacionAyuda" id="observacionAyuda" cols="80" rows="4"></textarea>
+                                                          </div>
+                                                    </div>
                                                   </div>
+                                                  
                                                 </fieldset>
-                                                    </fieldset>
+                                                
                                                     
                                                 <div class="col-sm-12 col-offset-2">
                                                    <button type="submit" name="{{$tMotivos->nombre}}.btn" class="pull-right btn btn-success">Aceptar</button>
@@ -263,6 +273,7 @@
                                               </div>
                                            @endif
                                           @endforeach
+                                            
                                       </div>
                                 </div>
                             </div>
