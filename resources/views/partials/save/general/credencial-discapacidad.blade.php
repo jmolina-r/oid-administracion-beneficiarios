@@ -22,7 +22,7 @@
                     <input value-date=
                     @if(old('credencial_vencimiento') != null)
                         "{{ old('credencial_vencimiento') }}"
-                    @elseif(isset($persona))
+                    @elseif(isset($persona) && $persona->credencial_discapacidad != null)
                         "{{ $persona->credencial_discapacidad->fecha_vencimiento }}"
                     @else
                         ""
