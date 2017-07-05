@@ -42,23 +42,14 @@ class FichaSocialController extends Controller
             $motivoVisita = $request -> input('vd');
             $obsVisita = $request -> input('vdText');
 
-<<<<<<< HEAD
             for($i=0;$i<count($motivoVisita);$i++){
 
                 $textPos = $motivoVisita[$i]-7;
                 // "Observacion: ". $obsVisita[$textPos] . "<br>";
                 if($obsVisita[$textPos]!=NULL){
                     $obsIt = $obsVisita[$textPos];
-=======
-            $this->validate($request, ['vd' => 'required',]);
-
-            for($i=0;$i<count($obsVisita);$i++){
-               
-                if($obsVisita[$i]!=null){
-           
-                    $obsIt = $obsVisita[$i];
->>>>>>> d6bc37e480eaa3a46974f29ce2c6b37f1cbe4c98
                 }
+                $this->validate($request, ['vd' => 'required',]);
                 $motivoSocial = new \App\MotivoAtencionSocial([
 
                     'observación' => $obsIt,
@@ -114,7 +105,36 @@ class FichaSocialController extends Controller
             return back()->with('info','Se ha ingresado con éxito la visita');
 
         } elseif(isset($_POST["becas_btn"])){
-            echo "Esta sección aún no se encuentra habilitada";
+
+            $subMotivos = $request -> input('inputSubMotivo');
+            if($subMotivos[0]==12){
+                $postAT = $request -> input('postAT');
+                $obsIt = $postAT[0] . ";";
+                $obsIt = $obsIt . $postAT[1] . ";";;
+                $resultado = $request -> input('resultado');
+
+                if($resultado==0){
+                    $obsIt = $obsIt . "reprobado" . ";";;
+                    $reprobado = $request -> input('reprobado');
+                    $obsIt = $obsIt . $reprobado[0] . ";";;
+                    $obsIt = $obsIt . $reprobado[1] . ";";;
+                    $obsIt = $obsIt . $reprobado[2];
+                }else{
+                    $obsIt = $obsIt . "aprobado";
+                }
+
+            }
+            $motivoSocial = new \App\MotivoAtencionSocial([
+
+                'observación' => $obsIt,
+                'fecha_visita' => $now->format('Y-m-d H:i:s'),
+                'ficha_atencion_social_id' => '1',
+                'tipo_motivo_social_id' => '1',
+                'tipo_submotivo_id' => $subMotivos[0],
+                'tipo_ayuda_id' => NULL
+            ]);
+            $motivoSocial->save();
+            return back()->with('info','Se ha ingresado con éxito la visita');
         } else{
 
             //Orientacion

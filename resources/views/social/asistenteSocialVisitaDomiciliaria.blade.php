@@ -212,16 +212,15 @@
                                                                     <div class='controls' id="uno" style="display:none">
                                                                         <div>
                                                                             <label for="inputText"style="display:block;">Anio postulación</label>
-                                                                            <input type="number" name="vdText[]" id="añoPostulacion.text" min="1990" max="2017"></input>
+                                                                            <input type="number" name="postAT[]" id="añoPostulacion.text" min="1990" max="2017"></input>
                                                                         </div>
                                                                         <div>
                                                                             <label for="inputText"style="display:block;">Tipo ayuda</label>
-                                                                            <input name="vdText[]" id="tipoAyudaSenadis.text"></input>
+                                                                            <input name="postAT[]" id="tipoAyudaSenadis.text"></input>
                                                                         </div>
                                                                         <div>
                                                                             <label for="inputText"style="display:block;">Resultado</label>
                                                                             <select	id="resultado" name="resultado" onChange="javascript: mostrar(this.value);">
-                                                                                <option value=""></option>
                                                                                 <option value="1">Aprobado</option>
                                                                                 <option value="0">Reprobado</option>
                                                                             </select>
