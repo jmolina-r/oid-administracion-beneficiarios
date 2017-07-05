@@ -189,7 +189,7 @@ class FichaTerapiaOcupacionalController extends Controller
                 'observaciones_generales' => $request->input('observaciones_generales'),
                 'actividades_vida_diaria_id' => $actividadesVidaDiaria->id,
                 'antecedentes_salud_id' => $antecedentesSalud->id,
-                'antecedentes_socio_familiares_id' => $antecedentesSocioFamiliares->id,
+                'antecedentes_so_fa_id' => $antecedentesSocioFamiliares->id,
                 'desarrollo_evolutivo_id' => $desarrolloEvolutivo->id,
                 'habilidades_sociales_id' => $habilidadesSociales->id,
                 'historial_clinico_id' => $historialClinico->id,
@@ -220,5 +220,13 @@ class FichaTerapiaOcupacionalController extends Controller
         $fichas = FichaTerapiaOcupacional::all();
 
         return view('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista', [ 'fichas' => $fichas ]);
+    }
+
+    private function rules(Request $request) {
+        $rules = [
+            'id' => 'required|exists:beneficiarios',
+
+        ];
+        return $rules;
     }
 }

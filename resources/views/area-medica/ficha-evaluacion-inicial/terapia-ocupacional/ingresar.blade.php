@@ -111,6 +111,9 @@
                                                         <li data-step='6'>
                                                             <span class='step'>6</span>
                                                         </li>
+                                                        <li data-step='7'>
+                                                            <span class='step'>6</span>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                                 <div class='actions'>
@@ -147,6 +150,33 @@
                                                                     <input class="form-control" id="rut" name="rut" placeholder="RUT" type="text">
                                                                 </div>
                                                             </div>-->
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="motivo_consulta">Motivo de consulta</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="motivo_consulta" name="motivo_consulta" value="{{ old('motivo_consulta') }}"  placeholder="Motivo">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="derivado_por">Derivado por</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="derivado_por" name="derivado_por" value="{{ old('derivado_por') }}"  placeholder="Psicólogo, Kinesiólogo, etc.">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="relacion_paciente">Relación con el paciente</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="relacion_paciente" name="relacion_paciente" value="{{ old('relacion_paciente') }}"  placeholder="Padre, Madre, Tutor,etc.">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="observaciones_generales">Observaciones sobre enfermedades</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="observaciones_generales" name="observaciones_generales" value="{{ old('observaciones_generales') }}"  placeholder="Observaciones generales">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- STEP 2 -->
+                                                        <div class='step-pane active' data-step='2'>
                                                             <div class="col-md-12">
                                                                 <h3>Antecedentes Socio-Familiares</h3>
                                                                 <hr/>
@@ -213,8 +243,8 @@
                                                             </div>
                                                             <!--FALTA GENOGRAMA-->
                                                         </div>
-                                                        <!-- STEP 2 -->
-                                                        <div class='step-pane active' data-step='2'>
+                                                        <!-- STEP 3 -->
+                                                        <div class='step-pane active' data-step='3'>
                                                             <div class="col-md-12">
                                                                 <h3>Antecedentes de Salud</h3>
                                                                 <hr/>
@@ -244,8 +274,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!-- STEP 3 -->
-                                                        <div class='step-pane active' data-step='3'>
+                                                        <!-- STEP 4 -->
+                                                        <div class='step-pane active' data-step='4'>
                                                             <div class="col-md-12">
                                                                 <h3>Historial Clínico del Paciente</h3>
                                                                 <hr/>
@@ -317,8 +347,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!-- STEP 4 -->
-                                                        <div class='step-pane active' data-step='4'>
+                                                        <!-- STEP 5 -->
+                                                        <div class='step-pane active' data-step='5'>
                                                             <div class="col-md-12">
                                                                 <h3>Desarrollo Evolutivo</h3>
                                                                 <hr/>
@@ -544,8 +574,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!-- STEP 5 -->
-                                                        <div class='step-pane active' data-step='5'>
+                                                        <!-- STEP 6 -->
+                                                        <div class='step-pane active' data-step='6'>
                                                             <div class="col-md-12">
                                                                 <h3>Actividades vida diaria</h3>
                                                                 <hr/>
@@ -701,8 +731,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <!-- STEP 6 -->
-                                                        <div class='step-pane active' data-step='6'>
+                                                        <!-- STEP 7 -->
+                                                        <div class='step-pane active' data-step='7'>
                                                             <div class="col-md-12">
                                                                 <h3>Habilidades Sociales</h3>
                                                                 <hr/>
