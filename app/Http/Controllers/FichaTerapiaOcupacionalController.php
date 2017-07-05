@@ -225,7 +225,9 @@ class FichaTerapiaOcupacionalController extends Controller
     private function rules(Request $request) {
         $rules = [
             'id' => 'required|exists:beneficiarios',
-
+            'motivo_consulta' => 'required|max:200',
+            'derivado_por' => 'nullable|max:200',
+            'relacion_paciente' => 'required|max:200',
         ];
         return $rules;
     }

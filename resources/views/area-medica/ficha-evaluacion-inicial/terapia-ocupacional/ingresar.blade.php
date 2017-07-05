@@ -112,7 +112,7 @@
                                                             <span class='step'>6</span>
                                                         </li>
                                                         <li data-step='7'>
-                                                            <span class='step'>6</span>
+                                                            <span class='step'>7</span>
                                                         </li>
                                                     </ul>
                                                 </div>
