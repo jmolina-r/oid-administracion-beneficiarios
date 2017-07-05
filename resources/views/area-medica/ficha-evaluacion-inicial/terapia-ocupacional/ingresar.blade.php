@@ -106,10 +106,10 @@
                                                             <span class='step'>4</span>
                                                         </li>
                                                         <li data-step='5'>
-                                                            <span class='step'>4</span>
+                                                            <span class='step'>5</span>
                                                         </li>
                                                         <li data-step='6'>
-                                                            <span class='step'>4</span>
+                                                            <span class='step'>6</span>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -132,7 +132,7 @@
                                                     </div>
                                                 @endif
                                                 <hr class='hr-normal'>
-                                                <form role="form" id="formulario_registro" action="{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.store')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
+                                                <form role="form" id="formulario_registro" action="{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
                                                     <div class='step-content'>
                                                         <!-- STEP 1 -->
                                                         <div class='step-pane active' data-step='1'>

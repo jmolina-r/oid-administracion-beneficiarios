@@ -74,7 +74,7 @@ Route::group(['prefix' => '/area-medica'], function (){
 
         Route::group(['prefix' => '/terapia-ocupacional'], function (){
 
-            Route::get('/ingresar', [
+            Route::get('/ingresar/{id}', [
                 'uses' => 'FichaTerapiaOcupacionalController@getIngresar',
                 'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
             ]);
