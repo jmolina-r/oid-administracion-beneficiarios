@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AntecedentesPerinatalesFono;
 use App\ParienteHogarFono;
 use Illuminate\Http\Request;
 
@@ -36,11 +37,20 @@ class FichaFonoaudiologiaController extends Controller
 
     public function postFono(Request $request){
 
-        $id = $request->input('id');
-        return view('area-medica.ficha-evaluacion-inicial.fonoaudiologia.create')
-            ->with(compact('id'));
+        $antecedentesPerinatalesFono = new AntecedentesPerinatalesFono([
+            'tipo_parto' => $request->input('tipoParto'),
+            'suf_fetal' => $request->input('sufrimientoFatal'),
+            'edad_gest' => $request->input('edadGestacional'),
+            'lugar_naci' => $request->input('lugarNacimiento'),
+            'peso' => $request->input('peso'),
+            'talla' => $request->input('talla'),
+            'apgar' => $request->input('apgar'),
+            'comp_parto' => $request->input('complicaciones')
+        ]);
+
+        $antecedentesPerinatalesFono->save();
+        return $antecedentesPerinatalesFono->toJson();
 
     }
-
 
 }
