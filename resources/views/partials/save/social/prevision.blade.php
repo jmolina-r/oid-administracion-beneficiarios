@@ -10,7 +10,7 @@
                 <option 
                 @if(@old('prevision') == $prevision->id)
                 	selected 
-                @elseif(@old('prevision') == null)
+                @elseif(@old('prevision') == null && isset($persona) && $persona->ficha_beneficiario->dato_social->prevision->id == $prevision->id)
                 	selected
                 @endif
                 value="{{$prevision->id}}">{{$prevision->nombre}}</option>
