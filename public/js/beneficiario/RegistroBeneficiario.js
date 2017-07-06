@@ -10,7 +10,7 @@ $(document).ready(function() {
     rellenarFecha("#credencial_vencimiento", "min", function() {
         rellenarFecha("#fecha_nacimiento", "max");
     });
-        
+
 
     /**
      * Acciones al cambiar al step siguiente o al anterior
@@ -121,15 +121,15 @@ $(document).ready(function() {
             },
             viewMode: 'years'
         }
-        
-        if(valueDate != ""){
-            options.date = new Date(valueDate);
 
-            if(restriccionFecha == "max") {
-                options.maxDate = "now";
-            } else if(restriccionFecha == "min") {
-                options.minDate = "now"
-            }
+        if(restriccionFecha == "max") {
+            options.maxDate = "now";
+        } else if(restriccionFecha == "min") {
+            options.minDate = "now"
+        }
+
+        if(valueDate != ""){
+            options.date = new Date(valueDate);            
         }
 
         console.log(options)
@@ -141,8 +141,8 @@ $(document).ready(function() {
         }
 
 
-       
-        
+
+
     }
 
 });
