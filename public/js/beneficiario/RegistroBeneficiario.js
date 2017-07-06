@@ -6,40 +6,11 @@ $(document).ready(function() {
     //Activa o deshabilita porcentaje registro social segun seleccion anterior
     activador("#registro_social_hogares","#registro_social_porcentaje");
 
-    // /**
-    //  * Inicia datetimepicker fecha nacimiento
-    //  */
-    // $(function () {
-    //     $('#fecha_nacimiento').datetimepicker({
-    //         maxDate:"now",
-    //         format: "DD/MM/YYYY",
-    //         icons: {
-    //             previous: 'fa fa-chevron-left',
-    //             next: 'fa fa-chevron-right'
-    //         },
-    //         viewMode: 'years'
-    //     });
-    // });
-    //
-    // /**
-    //  * Inicia datetimepicker credencial vencimiento
-    //  */
-    // $(function () {
-    //     $('#credencial_vencimiento').datetimepicker({
-    //         minDate:"now",
-    //         format: "DD/MM/YYYY",
-    //         icons: {
-    //             previous: 'fa fa-chevron-left',
-    //             next: 'fa fa-chevron-right'
-    //         }
-    //     });
-    // });
-
     //Rellena el vencimiento de la credencial
-    rellenarFecha("#credencial_vencimiento", function() {
-        //Rellna la fecha de nacimiento
-        rellenarFecha("#fecha_nacimiento");
+    rellenarFecha("#credencial_vencimiento", "min", function() {
+        rellenarFecha("#fecha_nacimiento", "max");
     });
+        
 
     /**
      * Acciones al cambiar al step siguiente o al anterior
@@ -137,35 +108,41 @@ $(document).ready(function() {
     /**
      * Funciona que rellena los campos de fecha
      */
-    function rellenarFecha(input, callback){
+    function rellenarFecha(input, restriccionFecha, callback){
         //Rellena la fecha de nacimiento
+
         var valueDate = $(input).attr('value-date');
 
-        if(valueDate != "" && input=="#credencial_vencimiento"){
-            $(input).datetimepicker({
-                minDate:"now",
-                format: "DD/MM/YYYY",
-                date: new Date(valueDate),
-                icons: {
+        var options = {
+            format: "DD/MM/YYYY",
+            icons: {
                 previous: 'fa fa-chevron-left',
                 next: 'fa fa-chevron-right'
-            }
-            });
-        }else if(valueDate != "" && input=="#fecha_nacimiento"){
-            $(input).datetimepicker({
-                maxDate:"now",
-                format: "DD/MM/YYYY",
-                date: new Date(valueDate),
-                icons: {
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right'
-            }
-            });
+            },
+            viewMode: 'years'
         }
+        
+        if(valueDate != ""){
+            options.date = new Date(valueDate);
+
+            if(restriccionFecha == "max") {
+                options.maxDate = "now";
+            } else if(restriccionFecha == "min") {
+                options.minDate = "now"
+            }
+        }
+
+        console.log(options)
+
+         $(input).datetimepicker(options);
 
         if(callback && typeof callback == "function"){
             callback();
         }
+
+
+       
+        
     }
 
 });
