@@ -129,10 +129,20 @@ $(document).ready(function() {
         }
 
         if(valueDate != ""){
-            options.date = new Date(valueDate);            
-        }
 
-        console.log(options)
+            console.log(valueDate);
+
+
+            if(valueDate.includes("/")) {
+                valueDateArr = valueDate.split(/\//);
+                // TODO: Algo extranio pasa aca
+                valueDate = valueDateArr[2]  + "-" + valueDate[3]+valueDate[4] + "-" + valueDate[0] + valueDate[1];
+            }
+            console.log(valueDate);
+
+            options.date = new Date(valueDate);
+            console.log(options.date);
+        }
 
          $(input).datetimepicker(options);
 
