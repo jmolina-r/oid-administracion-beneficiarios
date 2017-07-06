@@ -16,7 +16,7 @@
     </div>
 
     <div class="col-md-12 col-lg-6">
-        
+        @include('partials.save.social.beneficios')
     </div>
 
     <div class='col-md-12 col-lg-6'>

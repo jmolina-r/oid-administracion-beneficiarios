@@ -3,9 +3,17 @@
 
     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
         <select style="width:100%;" name='prevision' class='form-control capitalize select-tag' id='inputSelect'>
-            <option value=''>No tiene</option>
+            @if(@old('prevision') == null && isset($persona) == null) 
+            	<option selected value=''>No tiene</option>
+            @endif
             @foreach($previsiones as $prevision)
-                <option value="{{$prevision->id}}">{{$prevision->nombre}}</option>
+                <option 
+                @if(@old('prevision') == $prevision->id)
+                	selected 
+                @elseif(@old('prevision') == null)
+                	selected
+                @endif
+                value="{{$prevision->id}}">{{$prevision->nombre}}</option>
             @endforeach
         </select>
     </div>
