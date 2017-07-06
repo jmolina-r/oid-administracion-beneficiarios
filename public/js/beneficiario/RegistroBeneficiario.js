@@ -5,6 +5,8 @@ $(document).ready(function() {
 
     //Rellena el vencimiento de la credencial
     rellenarFecha("#credencial_vencimiento");
+
+    //Rellna la fecha de nacimiento
     rellenarFecha("#fecha_nacimiento");    
     
     /**
@@ -147,10 +149,25 @@ $(document).ready(function() {
         //Rellena la fecha de nacimiento
         var valueDate = $(input).attr('value-date');
 
-        if(valueDate != ""){
+        if(valueDate != "" && valueDate=="#credencial_vencimiento"){
             $(input).datetimepicker({
+                minDate:"now",
                 format: "DD/MM/YYYY",
-                date: new Date(valueDate)
+                date: new Date(valueDate),
+                icons: {
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right'
+            }
+            });
+        }else if(valueDate != "" && valueDate=="#fecha_nacimiento"){
+            $(input).datetimepicker({
+                maxDate:"now",
+                format: "DD/MM/YYYY",
+                date: new Date(valueDate),
+                icons: {
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right'
+            }
             });
         }
     }
