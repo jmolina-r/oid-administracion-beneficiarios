@@ -149,7 +149,7 @@ $(document).ready(function() {
         //Rellena la fecha de nacimiento
         var valueDate = $(input).attr('value-date');
 
-        if(valueDate != "" && valueDate=="#credencial_vencimiento"){
+        if(valueDate != "" && input=="#credencial_vencimiento"){
             $(input).datetimepicker({
                 minDate:"now",
                 format: "DD/MM/YYYY",
@@ -159,7 +159,7 @@ $(document).ready(function() {
                 next: 'fa fa-chevron-right'
             }
             });
-        }else if(valueDate != "" && valueDate=="#fecha_nacimiento"){
+        }else if(valueDate != "" && input=="#fecha_nacimiento"){
             $(input).datetimepicker({
                 maxDate:"now",
                 format: "DD/MM/YYYY",
