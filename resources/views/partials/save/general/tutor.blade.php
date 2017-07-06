@@ -45,7 +45,7 @@
                     @if(old('telefono_tutor') != null)
                         "{{ old('telefono_tutor') }}"
                     @elseif(isset($persona) && $persona->tutor != null && $persona->tutor->telefonos->first() != null)
-                        "{{ $persona->tutor->telefonos->first() }}"
+                        "{{ $persona->tutor->telefonos->first()->numero }}"
                     @else
                         ""
                     @endif
