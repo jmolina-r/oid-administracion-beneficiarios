@@ -6,12 +6,41 @@ $(document).ready(function() {
     //Activa o deshabilita porcentaje registro social segun seleccion anterior
     activador("#registro_social_hogares","#registro_social_porcentaje");
 
-    //Rellena el vencimiento de la credencial
-    rellenarFecha("#credencial_vencimiento");
+    // /**
+    //  * Inicia datetimepicker fecha nacimiento
+    //  */
+    // $(function () {
+    //     $('#fecha_nacimiento').datetimepicker({
+    //         maxDate:"now",
+    //         format: "DD/MM/YYYY",
+    //         icons: {
+    //             previous: 'fa fa-chevron-left',
+    //             next: 'fa fa-chevron-right'
+    //         },
+    //         viewMode: 'years'
+    //     });
+    // });
+    //
+    // /**
+    //  * Inicia datetimepicker credencial vencimiento
+    //  */
+    // $(function () {
+    //     $('#credencial_vencimiento').datetimepicker({
+    //         minDate:"now",
+    //         format: "DD/MM/YYYY",
+    //         icons: {
+    //             previous: 'fa fa-chevron-left',
+    //             next: 'fa fa-chevron-right'
+    //         }
+    //     });
+    // });
 
-    //Rellna la fecha de nacimiento
-    rellenarFecha("#fecha_nacimiento");    
-    
+    //Rellena el vencimiento de la credencial
+    rellenarFecha("#credencial_vencimiento", function() {
+        //Rellna la fecha de nacimiento
+        rellenarFecha("#fecha_nacimiento");
+    });
+
     /**
      * Acciones al cambiar al step siguiente o al anterior
      */
@@ -103,39 +132,12 @@ $(document).ready(function() {
     $(".select2-search").css("width","100%");
     $(".select2-search__field").css("width","100%");
 
-    /**
-     * Inicia datetimepicker fecha nacimiento
-     */
-    $(function () {
-        $('#fecha_nacimiento').datetimepicker({
-            maxDate:"now",
-            format: "DD/MM/YYYY",
-            icons: {
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right'
-            },
-            viewMode: 'years'
-        });
-    });
 
-    /**
-     * Inicia datetimepicker credencial vencimiento
-     */
-    $(function () {
-        $('#credencial_vencimiento').datetimepicker({
-            minDate:"now",
-            format: "DD/MM/YYYY",
-            icons: {
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right'
-            }
-        });
-    });
 
     /**
      * Funciona que rellena los campos de fecha
      */
-    function rellenarFecha(input){
+    function rellenarFecha(input, callback){
         //Rellena la fecha de nacimiento
         var valueDate = $(input).attr('value-date');
 
@@ -160,6 +162,10 @@ $(document).ready(function() {
             }
             });
         }
+
+        if(callback && typeof callback == "function"){
+            callback();
+        }
     }
-    
+
 });
