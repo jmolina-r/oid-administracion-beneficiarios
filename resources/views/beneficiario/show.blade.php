@@ -131,7 +131,19 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                 @include('partials.profile.contact', ['persona' => $persona->tutor])
                             </div>                        
                         </div>     
-                        @endisset               
+                        @endisset
+                        @isset($persona->ficha_beneficiario->dato_social->observacion)
+                        <div class="col-lg-12">
+                            <div class="col-md-12">
+                                <h4>
+                                    <i class='fa fa-binoculars'></i>
+                                    Observaciones
+                                </h4>
+                                <div class="arrow-down"></div>
+                                @include('partials.profile.observacion')
+                            </div>                        
+                        </div>
+                        @endisset             
                     </div>
                 </div>
                 @include('partials.footer')

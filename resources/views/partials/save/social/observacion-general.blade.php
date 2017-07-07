@@ -7,6 +7,8 @@
                     >{{ old('observacion_general') }}</textarea>
                 @elseif(isset($persona))
                     >{{ $persona->ficha_beneficiario->dato_social->observacion }}</textarea>
+                @else
+                    ></textarea>
                 @endif
         </div>
     </div>
