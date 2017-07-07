@@ -1,7 +1,7 @@
 <div class="form-group">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <label class='control-label' for='inputSelect'>
-            Acompañante o tutor
+            Acompañante o tutor (*)
         </label>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
