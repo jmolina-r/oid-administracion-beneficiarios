@@ -3,7 +3,7 @@
     <div class='col-md-12'>
         <label style="margin-top: 0px;" class='radio radio-inline'>
             <input name='sexo'
-                @if((old('sexo') != 'femenino') || (old('sexo') == null && isset($persona) && $persona->sexo == "masculino"))
+                @if((old('sexo') != null && old('sexo') != 'femenino') || (old('sexo') == null && isset($persona) && $persona->sexo == "masculino"))
                     checked
                 @endif
             type='radio' value='masculino' required>
@@ -11,7 +11,7 @@
         </label>
         <label class='radio radio-inline'>
             <input name='sexo'
-            @if((old('sexo') === 'femenino') || (old('sexo') == null && isset($persona) && $persona->sexo == "femenino"))
+            @if((old('sexo') != null && old('sexo') === 'femenino') || (old('sexo') == null && isset($persona) && $persona->sexo == "femenino"))
                 checked
             @endif
             type='radio' value='femenino' required>
