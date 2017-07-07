@@ -2,11 +2,7 @@
   <div class='footer-wrapper'>
     <div class='row'>
       <div class='col-sm-6 text'>
-        Copyright © 2016 Your Project Name
-      </div>
-      <div class='col-sm-6 buttons'>
-        <a class="btn btn-link" href="http://flatty-v2-4-1.bublinastudio.com/">Preview</a>
-        <a class="btn btn-link" href="https://wrapbootstrap.com/theme/flatty-flat-administration-template-WB0P6NR1N?ref=metheus">Purchase</a>
+        Copyright © 2017 Oficina para la Integración de personas con Discapacidad
       </div>
     </div>
   </div>
