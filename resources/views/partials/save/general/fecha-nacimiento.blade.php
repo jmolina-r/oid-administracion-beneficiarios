@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label class='control-label' for='inputSelect'>Fecha de Nacimiento</label>
+    <label class='control-label' for='inputSelect'>Fecha de Nacimiento (*)</label>
     <div class='input-group'>
         <input id='fecha_nacimiento' value-date=
             @if(old('fecha_nacimiento') != null)

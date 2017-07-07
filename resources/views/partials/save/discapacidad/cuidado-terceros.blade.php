@@ -12,7 +12,7 @@
             </label>
             <label class='radio radio-inline'>
                 <input name='cuidados' 
-                @if((old('cuidados') != null && old('cuidados') != '1') || (old('cuidados') == null && isset($persona) && $persona->ficha_beneficiario->ficha_discapacidad->requiere_cuidado == '0'))
+                @if((old('cuidados')== null && !isset($persona)) || (old('cuidados') != null && old('cuidados') != '1') || (old('cuidados') == null && isset($persona) && $persona->ficha_beneficiario->ficha_discapacidad->requiere_cuidado == '0'))
                     checked
                 @endif
                 type='radio' value='0' required>
