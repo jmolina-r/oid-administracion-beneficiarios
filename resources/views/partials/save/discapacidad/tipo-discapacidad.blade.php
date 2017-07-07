@@ -3,7 +3,7 @@
         Tipo de Discapacidad
     </label>
 
-    @foreach ($tipo_discapacidades as $tipo_discapacidad)
+    @foreach ($tipo_discapacidades as $key => $tipo_discapacidad)
         <div class='form-group col-md-12 col-lg-6'>
             <div class='input-group'>
                 <span class='capitalize input-group-addon'>
@@ -11,7 +11,7 @@
                 </span>
                 <input name="tipo_discapacidad[{{$tipo_discapacidad->id}}]" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true"
                     @if(old('tipo_discapacidad') != null)
-                        value="{{ old('tipo_discapacidad') }}"
+                            value="{{ old('tipo_discapacidad')[$key+1] }}"
                     @elseif(isset($persona) && $persona->ficha_beneficiario->ficha_discapacidad->porcentaje_discapacidades != null && count($persona->ficha_beneficiario->ficha_discapacidad->porcentaje_discapacidades) > 0)
                         @php ($end = count($persona->ficha_beneficiario->ficha_discapacidad->porcentaje_discapacidades))
                         @foreach ($persona->ficha_beneficiario->ficha_discapacidad->porcentaje_discapacidades as $key => $discapacidad)
@@ -27,7 +27,7 @@
 
                     @endif
                 >
-                <span class="input-group-addon">%</span>
+                <span class="input-group-addon">&#37</span>
             </div>
         </div>
     @endforeach
