@@ -131,7 +131,7 @@ class='contrast-red'
                                                 </div>
                                             @endif
                                             <hr class='hr-normal'>
-                                            <form role="form" id="formulario-registro" action="{{route('beneficiario.store')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
+                                            <form role="form" id="formulario-registro" action="{{route('beneficiario.update')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
                                                 <div class='step-content'>
                                                     <!-- STEP 1 -->
                                                     @include('partials.save.general')
