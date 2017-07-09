@@ -606,6 +606,8 @@ class BeneficiarioController extends Controller
 
         $beneficiario->ficha_beneficiario->dato_social->update($arrDatoSocial);
 
+        $beneficiario->ficha_beneficiario->dato_social->beneficios->first()->detach();
+
 
     }
 
