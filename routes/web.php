@@ -107,7 +107,7 @@ Route::group(['prefix' => 'beneficiario'], function () {
         'as' => 'beneficiario.edit'
     ]);
 
-    Route::post('/editar/{id}', [
+    Route::post('/editar', [
         'uses' => 'BeneficiarioController@update',
         'as' => 'beneficiario.update'
     ]);

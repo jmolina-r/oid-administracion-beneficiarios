@@ -5,7 +5,7 @@
 
             @foreach($beneficios as $beneficio)
                 <option value="{{$beneficio->id}}"
-                    @if(isset($persona) && $persona->ficha_beneficiario->dato_social->beneficios !=null && count($persona->ficha_beneficiario->dato_social->beneficios) > 0 && count($persona->ficha_beneficiario->dato_social->beneficios->where('id', $beneficio->id)) > 0)
+                    @if(isset($persona) && $persona->ficha_beneficiario != null && $persona->ficha_beneficiario->dato_social->beneficios !=null && count($persona->ficha_beneficiario->dato_social->beneficios) > 0 && count($persona->ficha_beneficiario->dato_social->beneficios->where('id', $beneficio->id)) > 0)
                         selected
                     @endif
                 >{{$beneficio->nombre}}</option>

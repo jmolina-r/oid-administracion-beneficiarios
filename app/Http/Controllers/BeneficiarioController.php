@@ -105,6 +105,9 @@ class BeneficiarioController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'rut' => 'required|unique:beneficiarios'
+        ], $this->messages($request));
 
         // Validate Fields
         $this->validate($request, $this->rules($request), $this->messages($request));
@@ -390,9 +393,10 @@ class BeneficiarioController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request)
     {
-        //
+        $persona = Beneficiario::where('rut', $request->input('rut'))->first();
+        $persona->delete();
     }
 
     /**
@@ -403,7 +407,7 @@ class BeneficiarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 
     private function rules(Request $request)
@@ -411,7 +415,6 @@ class BeneficiarioController extends Controller
         $rules = [
             'nombres' => 'required|max:200',
             'apellidos' => 'required|max:200',
-            'rut' => 'required|unique:beneficiarios',
             'fecha_nacimiento' => 'required|date_format:"d/m/Y"|before:"today"',
             'nombre_tutor' => 'required',
             'apellido_tutor' => 'required',
