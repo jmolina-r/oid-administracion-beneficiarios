@@ -1,21 +1,43 @@
 $(document).ready(function() {
+
+    //Activa o deshabilita vencimiento credencial segun seleccion anterior
+    activador("#credencial_discapacidad","#credencial_vencimiento");
+
+    //Activa o deshabilita porcentaje registro social segun seleccion anterior
+    activador("#registro_social_hogares","#registro_social_porcentaje");
+
+    //Rellena el vencimiento de la credencial
+    rellenarFecha("#credencial_vencimiento", "min", function() {
+        rellenarFecha("#fecha_nacimiento", "max");
+    });
+
+
     /**
      * Acciones al cambiar al step siguiente o al anterior
      */
-
     $('#formulario-registro').validator();
 
     $('#myWizard').wizard().on('actionclicked.fu.wizard', function(e, data) {
         var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
-        //if (hasErrors) e.preventDefault();
+        if (hasErrors) e.preventDefault();
 
     }).on('finished.fu.wizard', function(e) {
         var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
         if (hasErrors) e.preventDefault();
         if (hasErrors == 0) {
-            $('#formulario-registro').submit();
+
+            $('#nombre').html($("nombres").val() + " " + $("apellidos").val());
+            $('#confirmation').modal('show');
         }
     });
+
+    /**
+     * Envia el formulario cuando ya fueron revisados todos los datos
+     */
+    function enviarFormulario(){
+        $('#confirmation').modal('hide');
+        $('#formulario-registro').submit();
+    }
 
 
     /**
@@ -23,21 +45,7 @@ $(document).ready(function() {
      * si no, lo bloquea.
      */
     $("#credencial_discapacidad").change(function() {
-        //Si se ha seleccionado si
-        if (this.value == 1) {
-            $("#credencial_vencimiento").prop('required', true);
-            $('#credencial_vencimiento').removeAttr('disabled');
-        }
-
-        //Si se ha seleccionado en tramite o no
-        if (this.value == 0 || this.value == 2) {
-            $('#credencial_vencimiento').removeAttr('required');
-            $('#credencial_vencimiento').val("");
-            $("#credencial_vencimiento").prop('disabled', true);
-        }
-
-        actualizarValidador();
-
+        activador("#credencial_discapacidad","#credencial_vencimiento");
     });
 
     /**
@@ -45,20 +53,7 @@ $(document).ready(function() {
      * si no, lo bloquea.
      */
     $("#registro_social_hogares").change(function() {
-        //Si se ha seleccionado si
-        if (this.value == 1) {
-            $("#registro_social_porcentaje").prop('required', true);
-            $('#registro_social_porcentaje').removeAttr('disabled');
-        }
-
-        //Si se ha seleccionado en tramite o no
-        if (this.value == 0 || this.value == 2) {
-            $('#registro_social_porcentaje').removeAttr('required');
-            $('#registro_social_porcentaje').val("");
-            $("#registro_social_porcentaje").prop('disabled', true);
-        }
-        actualizarValidador();
-
+        activador("#registro_social_hogares","#registro_social_porcentaje");
     });
 
     /**
@@ -82,6 +77,28 @@ $(document).ready(function() {
         $('#formulario-registro').validator("destroy");
         $('#formulario-registro').validator();
     }
+
+    /**
+     * Funcion que habilita o deshabilita la fecha de la credencial segun seleccion anterior
+     */
+    function activador(selector,inputDependiente){
+
+        //Si se ha seleccionado si
+        if ($(selector).val() == 1) {
+            $(inputDependiente).prop('required', true);
+            $(inputDependiente).removeAttr('disabled');
+        }
+
+        //Si se ha seleccionado en tramite o no
+        if ($(selector).val() == 0 || $(selector).val() == 2) {
+            $(inputDependiente).removeAttr('required');
+            $(inputDependiente).val("");
+            $(inputDependiente).prop('disabled', true);
+        }
+
+        actualizarValidador();
+    }
+
     /**
      * Beneficios tipo tags
      */
@@ -96,26 +113,51 @@ $(document).ready(function() {
     $(".select2-search").css("width","100%");
     $(".select2-search__field").css("width","100%");
 
-    $(function () {
-        $('#fecha_nacimiento').datetimepicker({
-            maxDate:"now",
+
+
+    /**
+     * Funciona que rellena los campos de fecha
+     */
+    function rellenarFecha(input, restriccionFecha, callback){
+        //Rellena la fecha de nacimiento
+
+        var valueDate = $(input).attr('value-date');
+
+        var options = {
             format: "DD/MM/YYYY",
             icons: {
                 previous: 'fa fa-chevron-left',
                 next: 'fa fa-chevron-right'
             },
             viewMode: 'years'
-        });
-    });
+        }
 
-    $(function () {
-        $('#credencial_venc').datetimepicker({
-            minDate:"now",
-            format: "DD/MM/YYYY",
-            icons: {
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right'
+        if(restriccionFecha == "max") {
+            options.maxDate = "now";
+        } else if(restriccionFecha == "min") {
+            options.minDate = "now"
+        }
+
+        if(valueDate != ""){
+
+            console.log(valueDate);
+
+
+            if(valueDate.includes("/")) {
+                valueDateArr = valueDate.split(/\//);
+                // TODO: Algo extranio pasa aca
+                valueDate = valueDateArr[2]  + "-" + valueDate[3]+valueDate[4] + "-" + valueDate[0] + valueDate[1];
             }
-        });
-    });
+            console.log(valueDate);
+
+            options.date = new Date(valueDate);
+            console.log(options.date);
+        }
+
+         $(input).datetimepicker(options);
+
+        if(callback && typeof callback == "function"){
+            callback();
+        }
+    }
 });

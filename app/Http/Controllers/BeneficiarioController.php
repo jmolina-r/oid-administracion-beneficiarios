@@ -32,7 +32,6 @@ use App\Tutor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-
 class BeneficiarioController extends Controller
 {
 
@@ -54,11 +53,6 @@ class BeneficiarioController extends Controller
     public function create()
     {
         \Debugbar::warning('Watch out…');
-        /**
-         * Estas son las clecciones vacias de prueba
-         * Son las que se deben enviar al fronend a partir de los datos
-         * almacenados en la BD
-         */
 
         //Lista de Paises
         $paises = Pais::get();
@@ -102,7 +96,6 @@ class BeneficiarioController extends Controller
             ->with(compact('datos_sociales'))
             ->with(compact('organizaciones_sociales'))
             ->with(compact('beneficios'));
-
     }
 
     /**
@@ -112,19 +105,14 @@ class BeneficiarioController extends Controller
      */
     public function store(Request $request)
     {
-        //Log::critical($request->input('beneficios'));
-        // Log::critical('La descapacidad'.$request->input('tipo_discapacidad')['2']);
-        // 0, 1, or 2. 0 inexistence, 1 exists, 2 waiting.
+        $this->validate($request, [
+            'rut' => 'required|unique:beneficiarios'
+        ], $this->messages($request));
 
         // Validate Fields
         $this->validate($request, $this->rules($request), $this->messages($request));
 
-        // $this->validate($request, );
-
-
-
-
-        // Beneficiario Create
+        // Beneficiario Save
         $beneficiario = new Beneficiario([
             'nombre' => strtolower($request->input('nombres')),
             'apellido' => strtolower($request->input('apellidos')),
@@ -134,11 +122,13 @@ class BeneficiarioController extends Controller
             'pais_id' => $request->input('id_pais'),
             'estado_civil_id' => $request->input('estado_civil'),
             'educacion_id' => $request->input('educacion'),
-            'ocupacion_id' => $request->input('ocupacion')
+            'ocupacion_id' => $request->input('ocupacion'),
+            'email' => $request->input('email'),
         ]);
         $beneficiario->save();
 
-        if($request->input('tel_fijo')) {
+        // TelefonoBeneficiario Save
+        if ($request->input('tel_fijo')) {
             $telefonoFijo = new TelefonoBeneficiario([
                 'numero' => $request->input('tel_fijo'),
                 'tipo' => 'fijo',
@@ -146,8 +136,8 @@ class BeneficiarioController extends Controller
             ]);
             $telefonoFijo->save();
         }
-
-        if($request->input('tel_movil')) {
+         // TelefonoBeneficiario Save (Movil)
+        if ($request->input('tel_movil')) {
             $telefonoMovil = new TelefonoBeneficiario([
                 'numero' => $request->input('tel_movil'),
                 'tipo' => 'movil',
@@ -156,16 +146,16 @@ class BeneficiarioController extends Controller
             $telefonoMovil->save();
         }
 
-
-        if($request->input('credencial_discapacidad') != 0) {
-            if($request->input('credencial_discapacidad') == 2) {
+        // CredencialDiscapacidad Save
+        if ($request->input('credencial_discapacidad') != 0) {
+            if ($request->input('credencial_discapacidad') == 2) {
                 $credeDic = new CredencialDiscapacidad([
                     'fecha_vencimiento' => null,
                     'en_tramite' => true,
                     'beneficiario_id' => $beneficiario->id
                 ]);
                 $credeDic->save();
-            } else if($request->input('credencial_discapacidad') == 1) {
+            } elseif ($request->input('credencial_discapacidad') == 1) {
                 $credeDic = new CredencialDiscapacidad([
                     'fecha_vencimiento' => date('Y-m-d', strtotime(str_replace('/', '-', $request->input('credencial_vencimiento')))),
                     'en_tramite' => false,
@@ -175,15 +165,16 @@ class BeneficiarioController extends Controller
             }
         }
 
-        if($request->input('registro_social_hogares') != 0) {
-            if($request->input('registro_social_hogares') == 2) {
+        // RegistroSocialHogar Save
+        if ($request->input('registro_social_hogares') != 0) {
+            if ($request->input('registro_social_hogares') == 2) {
                 $regSocHog = new RegistroSocialHogar([
                     'porcentaje' => null,
                     'en_tramite' => true,
                     'beneficiario_id' => $beneficiario->id
                 ]);
                 $regSocHog->save();
-            } else if($request->input('registro_social_hogares') == 1) {
+            } elseif ($request->input('registro_social_hogares') == 1) {
                 $regSocHog = new RegistroSocialHogar([
                     'porcentaje' => $request->input('registro_social_porcentaje'),
                     'en_tramite' => false,
@@ -193,8 +184,8 @@ class BeneficiarioController extends Controller
             }
         }
 
-
-        if($request->input('domicilio_calle')) {
+        // Domicilio Save
+        if ($request->input('domicilio_calle')) {
             $domicilio = new Domicilio([
                 'pobl_vill' => $request->input('domicilio_poblacion'),
                 'calle' => $request->input('domicilio_calle'),
@@ -206,56 +197,55 @@ class BeneficiarioController extends Controller
             $domicilio->save();
         }
 
-
+        // Tutor Save
         $tutor = new Tutor([
-            'nombres' => $request->input('nombre_tutor'),
-            'apellidos' => $request->input('apellido_tutor'),
+            'nombre' => $request->input('nombre_tutor'),
+            'apellido' => $request->input('apellido_tutor'),
             'beneficiario_id' => $beneficiario->id
         ]);
         $tutor->save();
 
+        // TelefonoTutor Save
         $telefonoTutor = new TelefonoTutor([
             'numero' => $request->input('telefono_tutor'),
             'tutor_id' => $tutor->id
         ]);
         $telefonoTutor->save();
 
+        // FichaBeneficiario Save
         $fichaBeneficiario = new FichaBeneficiario([
             'fecha_ingreso' => date('Y-m-d'),
             'beneficiario_id' => $beneficiario->id
         ]);
         $fichaBeneficiario->save();
 
-        // Dato social
+        // DatoSocial Save
         $arrDatoSocial['ficha_beneficiario_id'] = $fichaBeneficiario->id;
         $arrDatoSocial['observacion'] = $request->input('observacion_general');
 
-
-        if($request->input('sistema_salud') && $request->input('sistema_salud') == 'fonasa') {
+        if ($request->input('sistema_salud') && $request->input('sistema_salud') == 'fonasa') {
             $arrDatoSocial['fonasa_id'] = $request->input('fonasa');
-
-        } else if($request->input('sistema_salud') && $request->input('sistema_salud') == 'isapre') {
+        } elseif ($request->input('sistema_salud') && $request->input('sistema_salud') == 'isapre') {
             $arrDatoSocial['isapre_id'] = $request->input('isapre');
         }
 
-        if($request->input('prevision') && $request->input('prevision') != '') {
+        if ($request->input('prevision') && $request->input('prevision') != '') {
             $arrDatoSocial['prevision_id'] = $request->input('prevision');
         }
 
-        if($request->input('sistema_proteccion') && $request->input('sistema_proteccion') != '') {
+        if ($request->input('sistema_proteccion') && $request->input('sistema_proteccion') != '') {
             $arrDatoSocial['sistema_proteccion_id'] = $request->input('sistema_proteccion');
         }
 
         $datoSocial = new DatoSocial($arrDatoSocial);
         $datoSocial->save();
 
-        // Beneficios
-        if($request->input('beneficios')) {
-            foreach($request->input('beneficios') as $key => $val)
-            {
-                if(is_numeric($val)) {
+        // Beneficio Save
+        if ($request->input('beneficios')) {
+            foreach ($request->input('beneficios') as $key => $val) {
+                if (is_numeric($val)) {
                     $beneficio = Beneficio::find($val);
-                    if($beneficio) {
+                    if ($beneficio) {
                         $datoSocial->beneficios()->save($beneficio);
                     }
                 } else {
@@ -268,13 +258,12 @@ class BeneficiarioController extends Controller
             }
         }
 
-        // Organizaciones sociales
-        if($request->input('organizaciones_sociales')) {
-            foreach($request->input('organizaciones_sociales') as $key => $val)
-            {
-                if(is_numeric($val)) {
+        // OrganizacionSocial Save
+        if ($request->input('organizaciones_sociales')) {
+            foreach ($request->input('organizaciones_sociales') as $key => $val) {
+                if (is_numeric($val)) {
                     $organizacionSocial = OrganizacionSocial::find($val);
-                    if($organizacionSocial) {
+                    if ($organizacionSocial) {
                         $datoSocial->organizaciones_sociales()->save($organizacionSocial);
                     }
                 } else {
@@ -287,6 +276,7 @@ class BeneficiarioController extends Controller
             }
         }
 
+        // FichaDiscapacidad Save
         $fichaDiscapacidad = new FichaDiscapacidad([
             'requiere_cuidado' => $request->input('cuidados'),
             'diagnostico' => $request->input('diagnostico'),
@@ -296,10 +286,10 @@ class BeneficiarioController extends Controller
         ]);
         $fichaDiscapacidad->save();
 
-        if($request->input('tipo_discapacidad')) {
-            foreach($request->input('tipo_discapacidad') as $key => $val)
-            {
-                if($val > 0 && TipoDiscapacidad::find($key)) {
+        // TipoDiscapacidad Save
+        if ($request->input('tipo_discapacidad')) {
+            foreach ($request->input('tipo_discapacidad') as $key => $val) {
+                if ($val > 0 && TipoDiscapacidad::find($key)) {
                     $fichaDiscTipoDisc = new fichaDiscTipoDisc([
                         'porcentaje' => $val,
                         'ficha_discapacidad_id' => $fichaDiscapacidad->id,
@@ -310,11 +300,6 @@ class BeneficiarioController extends Controller
             }
         }
 
-
-
-
-
-        $email = $request->input('email');
         $planDeRehabilitacionTratamientoControl= $request->input('p_reha_trat_ctrl');
 
         return redirect()->route('beneficiario.show', ['id' => $beneficiario->id]);
@@ -338,10 +323,9 @@ class BeneficiarioController extends Controller
      */
     public function show($id)
     {
-        $beneficiario = Beneficiario::where('id',$id)->first();
-        $pais = $beneficiario->pais;
+        $persona = Beneficiario::find($id);
 
-        return view('beneficiario.show',compact('beneficiario'))
+        return view('beneficiario.show', compact('persona'))
             ->with(compact('pais'));
     }
 
@@ -353,7 +337,53 @@ class BeneficiarioController extends Controller
      */
     public function edit($id)
     {
-        return view('beneficiario.edit');
+        //Lista de Paises
+        $paises = Pais::get();
+
+        //Lista de Estados Civiles
+        $estados_civiles = EstadoCivil::get();
+
+        //Situacin actual, cesante, estudiante, etc...
+        $situaciones = Ocupacion::get();
+
+        //Niveles de educacion, basico, universitario, etc...
+        $niveles_educacion = Educacion::get();
+
+        //Dependencias del paciente
+        $dependencias = TipoDependencia::get();
+
+        $fonasa = Fonasa::get();
+
+        $isapre = Isapre::get();
+
+        $tipo_discapacidades = TipoDiscapacidad::get();
+
+        $previsiones = Prevision::get();
+
+        $datos_sociales = SistemaProteccion::get();
+
+        $organizaciones_sociales = OrganizacionSocial::get();
+
+        $beneficios = Beneficio::get();
+
+        $persona = Beneficiario::find($id);
+
+
+        return view('beneficiario.edit')
+            ->with(compact('paises'))
+            ->with(compact('estados_civiles'))
+            ->with(compact('previsiones'))
+            ->with(compact('situaciones'))
+            ->with(compact('niveles_educacion'))
+            ->with(compact('dependencias'))
+            ->with(compact('fonasa'))
+            ->with(compact('tipo_discapacidades'))
+            ->with(compact('isapre'))
+            ->with(compact('datos_sociales'))
+            ->with(compact('organizaciones_sociales'))
+            ->with(compact('beneficios'))
+            ->with(compact('persona'));
+
     }
 
     /**
@@ -362,9 +392,290 @@ class BeneficiarioController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request)
     {
-        //
+        $this->validate($request, [
+            'rut' => 'required|exists:beneficiarios,rut'
+        ], $this->messages($request));
+
+        // Validate Fields
+        $this->validate($request, $this->rules($request), $this->messages($request));
+
+        $beneficiario = Beneficiario::where('rut', $request->input('rut'))->first();
+
+        // General information update
+        $beneficiario->update([
+            'nombre' => strtolower($request->input('nombres')),
+            'apellido' => strtolower($request->input('apellidos')),
+            'fecha_nacimiento' => date('Y-m-d', strtotime(str_replace('/', '-', $request->input('fecha_nacimiento')))),
+            'sexo' => strtolower($request->input('sexo')),
+            'rut' => $request->input('rut'),
+            'pais_id' => $request->input('id_pais'),
+            'estado_civil_id' => $request->input('estado_civil'),
+            'educacion_id' => $request->input('educacion'),
+            'ocupacion_id' => $request->input('ocupacion'),
+            'email' => $request->input('email'),
+        ]);
+
+        // TelefonoBeneficiario Update
+        if ($request->input('tel_fijo')) {
+            if($beneficiario->telefonos->where('tipo', 'fijo')->first()) {
+                $beneficiario->telefonos->where('tipo', 'fijo')->first()->update([
+                    'numero' => $request->input('tel_fijo'),
+                    'tipo' => 'fijo',
+                ]);
+            } else {
+                $telefonoFijo = new TelefonoBeneficiario([
+                    'numero' => $request->input('tel_fijo'),
+                    'tipo' => 'fijo',
+                    'beneficiario_id' => $beneficiario->id
+                ]);
+                $telefonoFijo->save();
+            }
+        } elseif($beneficiario->telefonos->where('tipo', 'fijo')->first() != null){
+            $beneficiario->telefonos->where('tipo', 'fijo')->first()->delete();
+        }
+
+         // TelefonoBeneficiario Update (Movil)
+        if ($request->input('tel_movil')) {
+            if($beneficiario->telefonos->where('tipo', 'movil')->first()) {
+                $beneficiario->telefonos->where('tipo', 'movil')->first()->update([
+                    'numero' => $request->input('tel_movil'),
+                    'tipo' => 'movil',
+                ]);
+            } else {
+                $telefonoMovil = new TelefonoBeneficiario([
+                    'numero' => $request->input('tel_movil'),
+                    'tipo' => 'movil',
+                    'beneficiario_id' => $beneficiario->id
+                ]);
+                $telefonoMovil->save();
+            }
+        } elseif($beneficiario->telefonos->where('tipo', 'movil')->first() != null){
+            $beneficiario->telefonos->where('tipo', 'movil')->first()->delete();
+        }
+
+        // CredencialDiscapacidad Update
+        if ($request->input('credencial_discapacidad') != 0) {
+            if ($request->input('credencial_discapacidad') == 2) {
+                if ($beneficiario->credencial_discapacidad != null) {
+                    $beneficiario->credencial_discapacidad->update([
+                        'fecha_vencimiento' => null,
+                        'en_tramite' => true,
+                    ]);
+                } else {
+                    $credeDic = new CredencialDiscapacidad([
+                        'fecha_vencimiento' => null,
+                        'en_tramite' => true,
+                        'beneficiario_id' => $beneficiario->id
+                    ]);
+                    $credeDic->save();
+                }
+            } elseif ($request->input('credencial_discapacidad') == 1) {
+                if ($beneficiario->credencial_discapacidad != null) {
+                    $beneficiario->credencial_discapacidad->update([
+                        'fecha_vencimiento' => date('Y-m-d', strtotime(str_replace('/', '-', $request->input('credencial_vencimiento')))),
+                        'en_tramite' => false,
+                    ]);
+                } else {
+                    $credeDic = new CredencialDiscapacidad([
+                        'fecha_vencimiento' => date('Y-m-d', strtotime(str_replace('/', '-', $request->input('credencial_vencimiento')))),
+                        'en_tramite' => false,
+                        'beneficiario_id' => $beneficiario->id
+                    ]);
+                    $credeDic->save();
+                }
+            }
+        } elseif($request->input('credencial_discapacidad') == 0 && $beneficiario->credencial_discapacidad != null) {
+            $beneficiario->credencial_discapacidad->delete();
+        }
+
+        // RegistroSocialHogar Update
+        if ($request->input('registro_social_hogares') != 0) {
+            if ($request->input('registro_social_hogares') == 2) {
+                if ($beneficiario->registro_social_hogar != null) {
+                    $beneficiario->registro_social_hogar->update([
+                        'porcentaje' => null,
+                        'en_tramite' => true,
+                    ]);
+                } else {
+                    $regSocHog = new RegistroSocialHogar([
+                        'porcentaje' => null,
+                        'en_tramite' => true,
+                        'beneficiario_id' => $beneficiario->id
+                    ]);
+                    $regSocHog->save();
+                }
+            } elseif ($request->input('registro_social_hogares') == 1) {
+                if ($beneficiario->registro_social_hogar != null) {
+                    $beneficiario->registro_social_hogar->update([
+                        'porcentaje' => $request->input('registro_social_porcentaje'),
+                        'en_tramite' => false,
+                    ]);
+                } else {
+                    $regSocHog = new RegistroSocialHogar([
+                        'porcentaje' => $request->input('registro_social_porcentaje'),
+                        'en_tramite' => false,
+                        'beneficiario_id' => $beneficiario->id
+                    ]);
+                    $regSocHog->save();
+                }
+            }
+        } elseif($request->input('registro_social_hogares') == 0 && $beneficiario->registro_social_hogar != null) {
+            $beneficiario->registro_social_hogar->delete();
+        }
+
+        // Domicilio Update
+        if ($request->input('domicilio_calle')) {
+            if ($beneficiario->domicilio != null) {
+                $beneficiario->domicilio->update([
+                    'pobl_vill' => $request->input('domicilio_poblacion'),
+                    'calle' => $request->input('domicilio_calle'),
+                    'numero' => $request->input('domicilio_numero'),
+                    'bloque' => $request->input('domicilio_block'),
+                    'numero_depto' => $request->input('domicilio_numero_dpto'),
+                ]);
+            } else {
+                $domicilio = new Domicilio([
+                    'pobl_vill' => $request->input('domicilio_poblacion'),
+                    'calle' => $request->input('domicilio_calle'),
+                    'numero' => $request->input('domicilio_numero'),
+                    'bloque' => $request->input('domicilio_block'),
+                    'numero_depto' => $request->input('domicilio_numero_dpto'),
+                    'beneficiario_id' => $beneficiario->id,
+                ]);
+                $domicilio->save();
+            }
+        } elseif ($beneficiario->domicilio != null) {
+            $beneficiario->domicilio->delete();
+        }
+
+        /*
+        * If conditions chage on future and the stakeholders want to delete the
+        * constrait of "Must Have" in the relation Beneficiario->Tutor. At the
+        * moment, is blocked by the validations.
+        * Tutor Update
+        */
+        if ($request->input('nombre_tutor') || $request->input('apellido_tutor')) {
+            if ($beneficiario->tutor != null) {
+                $beneficiario->tutor->update([
+                    'nombre' => $request->input('nombre_tutor'),
+                    'apellido' => $request->input('apellido_tutor'),
+                ]);
+            } else {
+                $tutor = new Tutor([
+                    'nombre' => $request->input('nombre_tutor'),
+                    'apellido' => $request->input('apellido_tutor'),
+                    'beneficiario_id' => $beneficiario->id
+                ]);
+                $tutor->save();
+            }
+        } elseif ($beneficiario->tutor != null) {
+            $beneficiario->tutor->delete();
+        }
+
+        // TelefonoTutor Update
+        if ($request->input('nombre_tutor') || $request->input('apellido_tutor')) {
+            if ($request->input('telefono_tutor')) {
+                if($beneficiario->tutor->telefonos->first() != null) {
+                    $beneficiario->tutor->telefonos->first()->update([
+                        'numero' => $request->input('telefono_tutor'),
+                    ]);
+                } else {
+                    $telefonoTutor = new TelefonoTutor([
+                        'numero' => $request->input('telefono_tutor'),
+                        'tutor_id' => $beneficiario->tutor->id
+                    ]);
+                    $telefonoTutor->save();
+                }
+            } elseif($beneficiario->tutor->telefonos->first() != null) {
+                $beneficiario->tutor->telefonos->first()->delete();
+            }
+        }
+
+        // DatoSocial Update
+        $arrDatoSocial['observacion'] = $request->input('observacion_general');
+
+
+        // TODO: Sistema de salud
+
+
+        $arrDatoSocial['prevision_id'] = $request->input('prevision');
+        $arrDatoSocial['sistema_proteccion_id'] = $request->input('sistema_proteccion');
+
+        $beneficiario->ficha_beneficiario->dato_social->update($arrDatoSocial);
+
+        // Beneficio Update
+        foreach ($beneficiario->ficha_beneficiario->dato_social->beneficios as $beneficio) {
+            $beneficio->pivot->delete();
+        }
+
+        if ($request->input('beneficios')) {
+            foreach ($request->input('beneficios') as $key => $val) {
+                if (is_numeric($val)) {
+                    $beneficio = Beneficio::find($val);
+                    if ($beneficio) {
+                        $beneficiario->ficha_beneficiario->dato_social->beneficios()->save($beneficio);
+                    }
+                } else {
+                    $beneficio = new Beneficio([
+                        'nombre' => strtolower($val)
+                    ]);
+                    $beneficio->save();
+                    $beneficiario->ficha_beneficiario->dato_social->beneficios()->save($beneficio);
+                }
+            }
+        }
+
+        // OrganizacionSocial Save
+        foreach ($beneficiario->ficha_beneficiario->dato_social->organizaciones_sociales as $orgSocial) {
+            $orgSocial->pivot->delete();
+        }
+
+        if ($request->input('organizaciones_sociales')) {
+            foreach ($request->input('organizaciones_sociales') as $key => $val) {
+                if (is_numeric($val)) {
+                    $organizacionSocial = OrganizacionSocial::find($val);
+                    if ($organizacionSocial) {
+                        $beneficiario->ficha_beneficiario->dato_social->organizaciones_sociales()->save($organizacionSocial);
+                    }
+                } else {
+                    $organizacionSocial = new OrganizacionSocial([
+                        'nombre' => strtolower($val)
+                    ]);
+                    $organizacionSocial->save();
+                    $beneficiario->ficha_beneficiario->dato_social->organizaciones_sociales()->save($organizacionSocial);
+                }
+            }
+        }
+
+        // FichaDiscapacidad Update
+        $beneficiario->ficha_beneficiario->ficha_discapacidad->update([
+            'requiere_cuidado' => $request->input('cuidados'),
+            'diagnostico' => $request->input('diagnostico'),
+            'otras_enfermedades' => $request->input('otras_enfermedades'),
+            'tipo_dependencia_id' => $request->input('tipo_dependencia')
+        ]);
+
+        // TipoDiscapacidad Update
+        foreach ($beneficiario->ficha_beneficiario->ficha_discapacidad->porcentaje_discapacidades as $porcDisc) {
+            $porcDisc->delete();
+        }
+
+        if ($request->input('tipo_discapacidad')) {
+            foreach ($request->input('tipo_discapacidad') as $key => $val) {
+                if ($val > 0 && TipoDiscapacidad::find($key)) {
+                    $fichaDiscTipoDisc = new fichaDiscTipoDisc([
+                        'porcentaje' => $val,
+                        'ficha_discapacidad_id' => $beneficiario->ficha_beneficiario->ficha_discapacidad->id,
+                        'tipo_discapacidad_id' => $key
+                    ]);
+                    $fichaDiscTipoDisc->save();
+                }
+            }
+        }
+
+        return redirect()->route('beneficiario.show', ['id' => $beneficiario->id]);
     }
 
     /**
@@ -375,48 +686,45 @@ class BeneficiarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 
-    private function rules(Request $request) {
-
+    private function rules(Request $request)
+    {
         $rules = [
-            'nombres' => 'required|max:200',
             'apellidos' => 'required|max:200',
-            'rut' => 'required|unique:beneficiarios',
-            'fecha_nacimiento' => 'required|date_format:"d/m/Y"|before:"today"',
-            'nombre_tutor' => 'required',
             'apellido_tutor' => 'required',
-            'telefono_tutor' => 'required_with:nombre_tutor|numeric',
-            'ocupacion' => 'required|exists:ocupacions,id',
-            'educacion' => 'required|exists:educacions,id',
-            'tel_fijo' => 'nullable|numeric',
-            'tel_movil' => 'nullable|numeric',
-            'email' => 'nullable|email',
             'credencial_discapacidad' => 'required|numeric|between:0,2',
-            //TODO: Validar que sea fecha
             'credencial_vencimiento' => 'required_if:credencial_discapacidad,1|date_format:"d/m/Y"|after:"yesterday"',
-            'registro_social_hogares' => 'required|numeric|between:0,2',
-            'registro_social_porcentaje' => 'required_if:registro_social_hogares,1|numeric|between:0,100',
+            'cuidados' => 'required|numeric|between:0,1',
             'domicilio_calle' => 'nullable|max:200',
             'domicilio_numero' => 'nullable|required_with:domicilio_calle|numeric',
             'domicilio_numero_dpto' => 'nullable',
             'domicilio_block' => 'nullable',
             'domicilio_poblacion' => 'nullable',
-            'sexo' => 'required|in:masculino,femenino',
-            'sistema_salud' => 'required|in:fonasa,isapre',
+            'nombres' => 'required|max:200',
+            'educacion' => 'required|exists:educacions,id',
+            'email' => 'nullable|email',
+            'fecha_nacimiento' => 'required|date_format:"d/m/Y"|before:"today"',
             'fonasa' => 'required_if:sistema_salud,fonasa|exists:fonasas,id',
             'isapre' => 'required_if:sistema_salud,isapre|exists:isapres,id',
-            'prevision' => 'nullable|exists:previsions,id',
-            'tipo_dependencia' => 'required|exists:tipo_dependencias,id',
-            'cuidados' => 'required|numeric|between:0,1',
+            'nombre_tutor' => 'required',
+            'observacion_general' => 'nullable',
+            'ocupacion' => 'required|exists:ocupacions,id',
             'otras_enfermedades' => 'nullable',
+            'prevision' => 'nullable|exists:previsions,id',
+            'registro_social_hogares' => 'required|numeric|between:0,2',
+            'registro_social_porcentaje' => 'required_if:registro_social_hogares,1|numeric|between:0,100',
+            'sexo' => 'required|in:masculino,femenino',
             'sistema_proteccion' => 'nullable|exists:sistema_proteccions,id',
-            'observacion_general' => 'nullable'
+            'sistema_salud' => 'required|in:fonasa,isapre',
+            'tel_fijo' => 'nullable|numeric',
+            'tel_movil' => 'nullable|numeric',
+            'telefono_tutor' => 'required_with:nombre_tutor|numeric',
+            'tipo_dependencia' => 'required|exists:tipo_dependencias,id',
         ];
 
-        foreach($request->input('tipo_discapacidad') as $key => $val)
-        {
+        foreach ($request->input('tipo_discapacidad') as $key => $val) {
             $rules['tipo_discapacidad.'.$key] = 'required|numeric|between:0,100';
         }
         return $rules;
@@ -424,14 +732,14 @@ class BeneficiarioController extends Controller
 
     private function messages(Request $request)
     {
-        foreach($request->input('tipo_discapacidad') as $key => $val)
-        {
+        foreach ($request->input('tipo_discapacidad') as $key => $val) {
             $messages['tipo_discapacidad.'.$key.'.between'] = 'Discapacidad '.$key.' debe tener un porcentaje menor a :min y mayor que :max.';
         }
         return $messages;
     }
 
-    public function findLikeNombreApellidoRutJson(Request $request) {
+    public function findLikeNombreApellidoRutJson(Request $request)
+    {
         $queryLike = $request->input('query').'%';
         $beneficiarios = Beneficiario::where('rut', 'like', $queryLike)
             ->orWhere('nombre', 'like', $queryLike)
@@ -441,5 +749,4 @@ class BeneficiarioController extends Controller
             ->toArray();
         return response()->json(['beneficiarios' => $beneficiarios]);
     }
-
 }

@@ -18,7 +18,6 @@ class CreateFichaFonoaudiologiaTable extends Migration
             $table->timestamps();
             $table->string('motivo_consulta')->nullable();
 
-            $table->integer('pariente_hogar_fonos_id')->unsigned();
             $table->integer('habitos_sino_fono_id')->unsigned();
             $table->integer('antecedentes_perinatales_fono_id')->unsigned();
             $table->integer('antecedentes_prenatales_fono_id')->unsigned();
@@ -31,9 +30,6 @@ class CreateFichaFonoaudiologiaTable extends Migration
             $table->integer('fonoaudiologos_id')->unsigned();
         });
 
-        Schema::table('ficha_fonoaudiologia', function($table) {
-            $table->foreign('pariente_hogar_fonos_id')->references('id')->on('pariente_hogar_fonos');
-        });
 
         Schema::table('ficha_fonoaudiologia', function($table) {
             $table->foreign('habitos_sino_fono_id')->references('id')->on('habitos_sino_fono');

@@ -9,7 +9,7 @@ class AntecedentesSalud extends Model
     //sn=si/no
     protected $fillable = ['tiempo_gestacional', 'tipo_parto', 'enfermedades_natal_sn', 'observaciones_enfermedades'];
 
-    public function ingresoKinesiologia()
+    public function ingresoTerapiaOcupacional()
     {
         return $this->hasOne(FichaTerapiaOcupacional::class);
     }

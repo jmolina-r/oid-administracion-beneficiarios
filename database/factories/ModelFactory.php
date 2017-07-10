@@ -106,8 +106,8 @@ $factory->define(App\SubMotivoAtencionSocial::class, function (Faker\Generator $
 */
 $factory->define(App\Tutor::class, function (Faker\Generator $faker) {
     return [
-        'nombres' => $faker->firstName,
-        'apellidos' => $faker->lastName,
+        'nombre' => $faker->firstName,
+        'apellido' => $faker->lastName,
         'beneficiario_id' => $faker->unique()->numberBetween($min = 1, $max = 150)
     ];
 });
@@ -151,7 +151,6 @@ $factory->define(App\RegistroSocialHogar::class, function (Faker\Generator $fake
 $factory->define(App\FichaKinesiologia::class, function (Faker\Generator $faker) {
 
     return [
-        'diagnostico' => $faker -> regexify('(SE DESCONOCE EL DIAGNOSTICO|DERRAME CEREBRAL|RETRASO MENTAL SEVERO|DISTROFIA MUSCULAR|DIABETES)'),
         'motivo_consulta' => $faker -> regexify('(Evaluación Movilidad|Evaluación Motora|Evaluación Social)'),
         'situacion_laboral' => $faker -> regexify('(Desempleado|Estudiante|Trabajando)'),
         'situacion_familiar' => $faker -> regexify('(Normal|Anormal)'),
@@ -186,6 +185,18 @@ $factory->define(App\AntecedentesMorbidos::class, function (Faker\Generator $fak
 });
 
 $factory->define(App\Kinesiologo::class, function (Faker\Generator $faker) {
+
+    return [
+        'rut' => $faker -> regexify('\[1-9]{8,9}\-(k|[0-9])'),
+        'nombres' => $faker -> firstName,
+        'apellidos' => $faker -> lastName,
+        'telefono' => $faker -> regexify('[0-9]{8}'),
+        'fecha_nacimiento' => $faker -> dateTimeBetween('-50 years', '-25 years'),
+        'direccion' => $faker -> address,
+    ];
+});
+
+$factory->define(App\Psicologo::class, function (Faker\Generator $faker) {
 
     return [
         'rut' => $faker -> regexify('\[1-9]{8,9}\-(k|[0-9])'),
@@ -425,7 +436,6 @@ $factory->define(App\HabilidadesSociales::class, function (Faker\Generator $fake
         'sonrisa_social' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
         'seguimiento_personas' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
         'seguimiento_objetos' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
-        'vestuario_inferior' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
         'investigacion_visual' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
         'investigacion_motora' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
         'atencion_conjunta' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),

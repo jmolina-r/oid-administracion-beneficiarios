@@ -25,3 +25,98 @@ i.fontawesomesize {
 textarea {
 	resize:none;
 }
+
+/***************************/
+/***** Person Profile ******/
+/***************************/
+
+.profile h4 {
+	color: #FFF;
+	background-color: #183446;
+	padding: 10px 0 10px 10px;
+	font-size: 16px;
+	margin-bottom: 0px;
+}
+
+.profile .arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #183446;
+  margin-left: 10px;
+}
+
+	.profile .v2{
+		margin-left: 25px;
+	}
+
+.profile .tit {
+	color: #595959;
+	font-weight: bold;
+}
+
+.profile p{
+	color: #747474;
+	margin-top: 15px;
+	line-height: 22px;
+}
+
+.profile .box-content{
+	margin: 0 auto;
+	max-width: 400px;
+}
+
+.btn{
+	font-size: 16px;
+}
+
+/******************************/
+/***** End Person Profile *****/
+/******************************/
+
+
+
+
+
+
+/******************************/
+/***** Buscar Beneficiario*****/
+/******************************/
+.card-frame{
+	border-radius: 10px;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+/******************************/
+/******************************/
+
+
+
+
+/***************************/
+/****** Modal Custom *******/
+/***************************/
+.modal-custom h4, h5, p{
+	font-family: "Arial";
+	font-weight: lighter;
+}
+
+.modal-custom h5{
+	font-size: 12px;
+}
+
+.modal-custom h4{
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.modal-custom p{
+	font-size: 12px;
+	margin-top: 5px;
+	text-align: justify;
+}
+
+/***************************/
+/**** End Modal Custom *****/
+/***************************/

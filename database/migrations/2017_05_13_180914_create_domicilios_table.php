@@ -20,7 +20,7 @@ class CreateDomiciliosTable extends Migration
             $table->string('calle');
             $table->integer('numero');
             $table->string('bloque')->nullable();
-            $table->integer('numero_depto')->nullable();
+            $table->string('numero_depto')->nullable();
 
             $table->integer('beneficiario_id')->unsigned();
         });

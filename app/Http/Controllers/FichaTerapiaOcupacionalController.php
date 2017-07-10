@@ -16,28 +16,28 @@ class FichaTerapiaOcupacionalController extends Controller
     /**
      * Mostrar formulario de ingreso de evaluacion inicial.
      *
+     * @param $id
      * @return view
      */
-    public function getIngresar()
+    public function getIngresar($id)
     {
-        return view('medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar');
+        return view('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar')
+            ->with(compact('id'));
     }
 
     /**
      * Guardar datos recibidos del formulario en bd.
-     *
+     *@param Request $request
      * @return redirect
      */
     public function postIngresar(Request $request)
     {
-        $this->validate($request, [
-            'rut' => 'required|exists:beneficiarios',
-
-        ]);
+        // Validate Fields
+        $this->validate($request, $this->rules($request));
 
 
         //Obtener el beneficiario segun el rut
-        $beneficiario = Beneficiario::where('rut', $request->input('rut'))->get();
+        //$beneficiario = Beneficiario::where('rut', $request->input('rut'))->get();
 
         //obtener el terapeuta ocupacional por su sesion
         /*
@@ -189,13 +189,13 @@ class FichaTerapiaOcupacionalController extends Controller
                 'observaciones_generales' => $request->input('observaciones_generales'),
                 'actividades_vida_diaria_id' => $actividadesVidaDiaria->id,
                 'antecedentes_salud_id' => $antecedentesSalud->id,
-                'antecedentes_socio_familiares_id' => $antecedentesSocioFamiliares->id,
+                'antecedentes_so_fa_id' => $antecedentesSocioFamiliares->id,
                 'desarrollo_evolutivo_id' => $desarrolloEvolutivo->id,
                 'habilidades_sociales_id' => $habilidadesSociales->id,
                 'historial_clinico_id' => $historialClinico->id,
                 //'terapeuta_ocupacional_id' => $terapeuta->id,
                 'terapeuta_ocupacional_id' => '1', //provisional, terapeutaOcupacional no esta implementado
-                'beneficiario_id' => $beneficiario->last()->id,
+                'beneficiario_id' => $request->input('id'),
                 //'beneficiario_id' => '1',
             ]);
             $fichaTerapiaOcupacional->save();
@@ -205,7 +205,9 @@ class FichaTerapiaOcupacionalController extends Controller
             //procedimiento en caso de reportar errores
 
         }
-        return redirect()->route('medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar');
+        $id = $request->input('id');
+        return redirect()->route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar')
+            ->with(compact('id'));
     }
 
     /**
@@ -217,6 +219,16 @@ class FichaTerapiaOcupacionalController extends Controller
     {
         $fichas = FichaTerapiaOcupacional::all();
 
-        return view('medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista', [ 'fichas' => $fichas ]);
+        return view('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista', [ 'fichas' => $fichas ]);
+    }
+
+    private function rules(Request $request) {
+        $rules = [
+            'id' => 'required|exists:beneficiarios',
+            'motivo_consulta' => 'required|max:200',
+            'derivado_por' => 'nullable|max:200',
+            'relacion_paciente' => 'required|max:200',
+        ];
+        return $rules;
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateParienteHogarFonosTable extends Migration
+class CreatePsicologosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateParienteHogarFonosTable extends Migration
      */
     public function up()
     {
-        Schema::create('pariente_hogar_fonos', function (Blueprint $table) {
+        Schema::create('psicologos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('nombre');
-            $table->string('parentesco');
-            $table->string('edad')->nullable();
-            $table->string('escolaridad')->nullable();
-            $table->string('ocupacion')->nullable();
+            $table->string('rut');
+            $table->string('nombres');
+            $table->string('apellidos');
+            $table->string('telefono');
+            $table->date('fecha_nacimiento');
+            $table->string('direccion');
         });
     }
 
@@ -31,6 +32,6 @@ class CreateParienteHogarFonosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pariente_hogar_fonos');
+        Schema::dropIfExists('psicologos');
     }
 }
