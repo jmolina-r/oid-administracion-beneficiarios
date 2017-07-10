@@ -72,6 +72,15 @@ $factory->define(App\FichaAtencionSocial::class, function (Faker\Generator $fake
         'prestacion_realizadas_id' => $faker->numberBetween($min = 1, $max = 100)
     ];
 });
+/*
+$factory->define(App\TipoSubmotivoSocial::class, function (Faker\Generator $faker) {
+
+    return [
+        'nombre' => $faker->regexify('[0-9]{8}'),
+
+        'ficha_atencion_social_id' => $faker->numberBetween($min = 1, $max = 10),
+    ];
+});
 
 $factory->define(App\MotivoAtencionSocial::class, function (Faker\Generator $faker) {
 
@@ -82,28 +91,19 @@ $factory->define(App\MotivoAtencionSocial::class, function (Faker\Generator $fak
         'ficha_atencion_social_id' => $faker->numberBetween($min = 1, $max = 100),
     ];
 });
-
-$factory->define(App\AyudaTecnicoSocial::class, function (Faker\Generator $faker) {
-
-    return [
-        'nombre' => $faker->regexify('(Tecnico|Social)'),
-        'tipo' => $faker->regexify('(Canasta|Silla|Burro|Cama)'),
-        'descripcion' => $faker->regexify('(Atencion social)'),
-
-        'motivo_atencion_social_id' => $faker->numberBetween($min = 1, $max = 100)
-    ];
-});
+*/
+/*
 $factory->define(App\SubMotivoAtencionSocial::class, function (Faker\Generator $faker) {
 
     return [
         'nombre' => $faker->regexify('[1-5]{1}'),
         'fecha' => $faker->date('y-m-d','now'),
-        'descripcion' => $faker->regexify('(Atencion social)'),
+        'observacion' => $faker->regexify('(Atencion social)'),
 
         'motivo_atencion_social_id' => $faker->numberBetween($min = 1, $max = 100)
     ];
 });
-
+*/
 $factory->define(App\Tutor::class, function (Faker\Generator $faker) {
     return [
         'nombre' => $faker->firstName,

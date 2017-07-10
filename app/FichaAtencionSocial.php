@@ -11,4 +11,9 @@ class FichaAtencionSocial extends Model
     public function prestacionRealizada(){
         return $this->belongsTo(PrestacionRealizada::class);
     }
+
+    public function motivo_atencion_social()
+    {
+        return $this->hasMany(MotivoAtencionSocial::class);
+    }
 }

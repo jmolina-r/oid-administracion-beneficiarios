@@ -20,21 +20,27 @@ Route::get('/', [
 Route::group(['prefix' => 'areasocial'], function(){
     Route::get('/asistentesocial', [
     'uses' => 'FichaSocialController@index',
+    'as' => 'social.asistenteSocialGet'
+    ]);
+
+    Route::get('/asistentesocial/menu', [
+    'uses' => 'FichaSocialController@show',
     'as' => 'social.asistenteSocial'
-    ]);
+    ]);   
 
-    Route::post('/asistentesocial/beneficiario', [
-    'uses' => 'FichaSocialController@store',
-    'as' => 'social.asistenteSocialBeneficiario'
-    ]);
 
-    Route::get('/asistentesocial/menu/visita', [
-    'uses' => 'FichaSocialController@index2',
-    'as' => 'social.asistenteSocialVisitaDomiciliaria'
+    Route::post('/asistentesocial/menu',[
+    'uses' => 'FichaSocialController@post',
+    'as' => 'social.asistentesocial'
     ]);
 });
 
+/*
+
+Route::group(['prefix' => '/medica'], function (){
+*/
 Route::group(['prefix' => '/area-medica'], function (){
+
 
     Route::group(['prefix' => '/ficha-evaluacion-inicial'], function (){
 
@@ -141,3 +147,16 @@ Route::group(['prefix' => 'beneficiario'], function () {
         'as' => 'beneficiario.findLikeNombreApellidoRutJson'
     ]);
 });
+
+Route::group(['prefix' => 'reportabilidad'], function(){
+    Route::get('/createFichaPaciente', [
+    'uses' => 'ReportabilidadController@show',
+    'as' => 'reportabilidad.createFichaPaciente'
+    ]);
+    
+    Route::get('/showEstadistica', [
+    'uses' => 'ReportabilidadController@showResults',
+    'as' => 'reportabilidad.showEstadistica'
+    ]);   
+});
+
