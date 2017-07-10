@@ -19,7 +19,7 @@ class DatoSocialOrganizacionSocial extends Migration
             $table->foreign('organizacion_social_id')->references('id')->on('organizacion_socials');
 
             $table->integer('dato_social_id')->unsigned();
-            $table->foreign('dato_social_id')->references('id')->on('dato_socials');
+            $table->foreign('dato_social_id')->references('id')->on('dato_socials')->onDelete('cascade');
         });
 
     }

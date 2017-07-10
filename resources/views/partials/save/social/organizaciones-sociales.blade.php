@@ -4,7 +4,7 @@
         <select style="width:100%;" name='organizaciones_sociales[]' class='form-control capitalize select-tag' multiple='multiple' data-placeholder='Seleccione o agregue organizaciones...'>
             @foreach($organizaciones_sociales as $organizacion_social)
                 <option value="{{$organizacion_social->id}}"
-                    @if(isset($persona) && $persona->ficha_beneficiario->dato_social->organizaciones_sociales !=null && count($persona->ficha_beneficiario->dato_social->organizaciones_sociales) > 0 && count($persona->ficha_beneficiario->dato_social->organizaciones_sociales->where('id', $organizacion_social->id)) > 0)
+                    @if(isset($persona) && $persona->ficha_beneficiario != null && $persona->ficha_beneficiario->dato_social->organizaciones_sociales !=null && count($persona->ficha_beneficiario->dato_social->organizaciones_sociales) > 0 && count($persona->ficha_beneficiario->dato_social->organizaciones_sociales->where('id', $organizacion_social->id)) > 0)
                         selected
                     @endif
                 >{{$organizacion_social->nombre}}</option>
