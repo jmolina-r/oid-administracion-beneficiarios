@@ -26,7 +26,11 @@ $(document).ready(function() {
         if (hasErrors) e.preventDefault();
         if (hasErrors == 0) {
 
-            $('#nombre').html($("nombres").val() + " " + $("apellidos").val());
+            $('#nombre').html($("#nombres").val() + " " + $("#apellidos").val());
+            $('#rut').html($("#rut").val());
+            $('#sexo').html($("#sexo").val());
+            $('#domicilio').html($("#domicilio_calle").val() + " " + $("#domicilio_numero").val() + " " + $("#domicilio_block").val() + " " + $("#domicilio_numero_dpto").val() + " " + $("#domicilio_poblacion").val());
+
             $('#confirmation').modal('show');
         }
     });

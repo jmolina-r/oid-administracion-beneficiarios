@@ -16,29 +16,29 @@
                             <h4>Rut</h4>
                             <p id="rut"></p>
                             <h4>Sexo</h4>
-                            <p>Masculino</p>
+                            <p id="sexo"></p>
                             <h4>Domicilio</h4>
-                            <p>Via Niza 56, 1230 Block 3</p>
+                            <p id="domicilio">Via Niza 56, 1230 Block 3</p>
                             <h4>Credencial de Discapacidad</h4>
-                            <p>No</p>
+                            <p id="credencial"></p>
                             <h4>Registro Social de Hogares</h4>
-                            <p>24/03/2018</p>
+                            <p id="reg_social"></p>
                         </div>
                         <div class="col-sm-12 col-lg-6">
                             <h4>Nacionalidad</h4>
-                            <p>Chile</p>
+                            <p id="nacionalidad"></p>
                             <h4>Fecha de Nacimiento</h4>
-                            <p>25/04/1992</p>
+                            <p id="fecha_nacimiento"></p>
                             <h4>Situación Civil</h4>
-                            <p>Casado</p>
+                            <p id="situacion_civil"></p>
                             <h4>Teléfono(s)</h4>
-                            <p>+56987452431 +56552546987</p>
+                            <p id="telefonos"></p>
                             <h4>E-mail</h4>
-                            <p>juanjo@hotmail.com</p>
+                            <p id="email"></p>
                             <h4>Acompañante</h4>
-                            <p>Julio Brito Yañez</p>
+                            <p id="acompaniante"></p>
                             <h4>Contacto Acompañante</h4>
-                            <p>+56932545687</p>
+                            <p id="contacto_acompaniante"></p>
                         </div>
                     </div>
                     <hr>
