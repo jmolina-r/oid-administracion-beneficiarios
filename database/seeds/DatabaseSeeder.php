@@ -56,9 +56,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ValSensorialTableSeeder::class);
         $this->call(ValSocialTableSeeder::class);
         $this->call(FichaKinesiologiaTableSeeder::class);
-<<<<<<< HEAD
-        
-=======
 
         $this->call(PsicologoTableSeeder::class);
 
@@ -71,7 +68,6 @@ class DatabaseSeeder extends Seeder
         $this->call(HabilidadesSocialesTableSeeder::class);
         $this->call(TerapeutaOcupacionalTableSeeder::class);
         $this->call(FichaTerapiaOcupacionalTableSeeder::class);
->>>>>>> developer
 
     }
 }
