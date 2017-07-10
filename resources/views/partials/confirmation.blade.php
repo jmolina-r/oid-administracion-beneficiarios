@@ -1,6 +1,3 @@
-<div class='text-center'>
-    <a class='btn btn-success btn-lg' data-toggle='modal' href='#confirmation' role='button'>Launch big modal</a>
-</div>
 <div class="modal-custom">
     <div class='modal fade' id='confirmation' tabindex='-1'>
         <div class='modal-dialog'>
@@ -17,15 +14,15 @@
                             <h4>Nombre</h4>
                             <p id="nombre"></p>
                             <h4>Rut</h4>
-                            <p id="rut"></p> 
+                            <p id="rut"></p>
                             <h4>Sexo</h4>
-                            <p>Masculino</p>  
+                            <p>Masculino</p>
                             <h4>Domicilio</h4>
                             <p>Via Niza 56, 1230 Block 3</p>
                             <h4>Credencial de Discapacidad</h4>
-                            <p>No</p>   
+                            <p>No</p>
                             <h4>Registro Social de Hogares</h4>
-                            <p>24/03/2018</p>                      
+                            <p>24/03/2018</p>
                         </div>
                         <div class="col-sm-12 col-lg-6">
                             <h4>Nacionalidad</h4>
@@ -41,9 +38,9 @@
                             <h4>Acompañante</h4>
                             <p>Julio Brito Yañez</p>
                             <h4>Contacto Acompañante</h4>
-                            <p>+56932545687</p> 
+                            <p>+56932545687</p>
                         </div>
-                    </div>                    
+                    </div>
                     <hr>
                     <div class="row">
                         <div class="col-sm-12 col-lg-6">
@@ -70,7 +67,7 @@
                             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
                         </div>
-                    </div>  
+                    </div>
                     <hr>
                     <div class="row">
                         <div class="col-sm-12 col-lg-6">
@@ -109,7 +106,7 @@
                             <h4>Cuidado de terceros</h4>
                             <p>Si</p>
                         </div>
-                    </div>                  
+                    </div>
                 </div>
                 <div class='modal-footer'>
                     <button class='btn btn-default' data-dismiss='modal' type='button'>Volver</button>
@@ -119,3 +116,13 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    /**
+     * Envia el formulario cuando ya fueron revisados todos los datos
+     */
+    function enviarFormulario(){
+
+        $('#formulario-registro').submit();
+    }
+</script>

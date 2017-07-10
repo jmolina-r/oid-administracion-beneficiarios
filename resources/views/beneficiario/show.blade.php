@@ -57,18 +57,15 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                     <h1 class='pull-left'>
                                         <i class='fa fa-user'></i>
                                         <span>
-                                        Información de 
+                                        Información de
                                         <span class="capitalize">
-                                        {{$persona->nombre}} {{$persona->apellido}} 
-                                        <div class='btn btn-default btn-md'>
-                                            <i class='fa fa-cog'></i>
-                                            Editar Perfil
-                                        </div>
+                                        {{$persona->nombre}} {{$persona->apellido}}
+                                        
                                     </h1>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12">       
+                        <div class="col-lg-12">
                             <div class="col-lg-3">
                                 @include('partials.profile.photo')
                             </div>
@@ -99,9 +96,9 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                 <div class="arrow-down"></div>
                                 @include('partials.profile.contact')
                             </div>
-                            @endif                 
+                            @endif
                         </div>
-                        <div class="col-lg-12">                  
+                        <div class="col-lg-12">
                             <div class="col-md-12">
                                 <h4>
                                     <i class='fa fa-envira'></i>
@@ -129,8 +126,8 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                 <div class="arrow-down"></div>
                                 @include('partials.profile.personal', ['persona' => $persona->tutor])
                                 @include('partials.profile.contact', ['persona' => $persona->tutor])
-                            </div>                        
-                        </div>     
+                            </div>
+                        </div>
                         @endisset
                         @isset($persona->ficha_beneficiario->dato_social->observacion)
                         <div class="col-lg-12">
@@ -141,9 +138,9 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                 </h4>
                                 <div class="arrow-down"></div>
                                 @include('partials.profile.observacion')
-                            </div>                        
+                            </div>
                         </div>
-                        @endisset             
+                        @endisset
                     </div>
                 </div>
                 @include('partials.footer')
