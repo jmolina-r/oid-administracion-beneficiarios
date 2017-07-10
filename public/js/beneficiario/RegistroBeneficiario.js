@@ -31,14 +31,6 @@ $(document).ready(function() {
         }
     });
 
-    /**
-     * Envia el formulario cuando ya fueron revisados todos los datos
-     */
-    function enviarFormulario(){
-        $('#confirmation').modal('hide');
-        $('#formulario-registro').submit();
-    }
-
 
     /**
      * Credencial de discapacidad, si es si, activa vencimiento y lo pone requerido,
