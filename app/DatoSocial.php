@@ -39,6 +39,6 @@ class DatoSocial extends Model
 
     public function prevision()
     {
-        return $this->belongsTo(Beneficio::class);
+        return $this->belongsTo(Prevision::class);
     }
 }

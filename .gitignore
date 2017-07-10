@@ -16,3 +16,5 @@ npm-debug.log
 .git-old/
 
 .fuse_hidden*
+
+/storage/debugbar/
