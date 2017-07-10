@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Beneficiario extends Model
 {
-    protected $fillable = ['nombre', 'apellido', 'rut', 'sexo', 'pais_id', 'estado_civil_id', 'educacion_id'];
+    protected $fillable = ['nombre', 'apellido', 'fecha_nacimiento', 'sexo', 'rut',  'pais_id', 'estado_civil_id', 'educacion_id', 'ocupacion_id'];
 
     public function pais()
     {
@@ -15,7 +15,12 @@ class Beneficiario extends Model
 
     public function telefonos()
     {
-        return $this->hasMany(Telefono::class);
+        return $this->hasMany(TelefonoBeneficiario::class);
+    }
+
+    public function domicilio()
+    {
+        return $this->hasOne(Domicilio::class);
     }
 
     public function estado_civil()
@@ -45,5 +50,10 @@ class Beneficiario extends Model
     public function credencial_discapacidad()
     {
         return $this->hasOne(CredencialDiscapacidad::class);
+    }
+
+    public function ficha_beneficiario()
+    {
+        return $this->hasOne(FichaBeneficiario::class);
     }
 }

@@ -16,7 +16,8 @@ class CreateCredencialDiscapacidadsTable extends Migration
         Schema::create('credencial_discapacidads', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->date('fecha_vencimiento');
+            $table->date('fecha_vencimiento')->nullable();
+            $table->boolean('en_tramite');
             $table->integer('beneficiario_id')->unsigned();
         });
 

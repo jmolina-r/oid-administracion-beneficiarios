@@ -16,13 +16,15 @@ class CreateDatoSocialsTable extends Migration
         Schema::create('dato_socials', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->longText('observacion');
+            $table->longText('observacion')->nullable();
 
             $table->integer('ficha_beneficiario_id')->unsigned();
             $table->integer('isapre_id')->unsigned()->nullable();
             $table->integer('fonasa_id')->unsigned()->nullable();
-            $table->integer('organizacion_social_id')->unsigned()->nullable();
             $table->integer('sistema_proteccion_id')->unsigned()->nullable();
+
+            $table->integer('prevision_id')->unsigned()->nullable();
+
 
         });
 
@@ -36,10 +38,10 @@ class CreateDatoSocialsTable extends Migration
             $table->foreign('fonasa_id')->references('id')->on('fonasas');
         });
         Schema::table('dato_socials', function($table) {
-            $table->foreign('organizacion_social_id')->references('id')->on('organizacion_socials');
+            $table->foreign('sistema_proteccion_id')->references('id')->on('sistema_proteccions');
         });
         Schema::table('dato_socials', function($table) {
-            $table->foreign('sistema_proteccion_id')->references('id')->on('sistema_proteccions');
+            $table->foreign('prevision_id')->references('id')->on('previsions');
         });
     }
 

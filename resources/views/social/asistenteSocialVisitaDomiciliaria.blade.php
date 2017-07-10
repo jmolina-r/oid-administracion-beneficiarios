@@ -231,7 +231,7 @@
                                                                 @if($sMotivo->id == '12')
                                                                     <div class='controls' id="uno" style="display:none">
                                                                         <div>
-                                                                            <label for="inputText"style="display:block;">Anio postulación</label>
+                                                                            <label for="inputText"style="display:block;">Anio postulación (1990-2017)</label>
                                                                             <input type="number" name="postAT[]" id="añoPostulacion.text" min="1990" max="2017"></input>
                                                                         </div>
                                                                         <div>

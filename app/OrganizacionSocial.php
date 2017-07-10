@@ -10,6 +10,6 @@ class OrganizacionSocial extends Model
 
     public function datos_sociales()
     {
-        return $this->hasMany(DatoSocial::class);
+        return $this->belongsToMany(DatoSocial::class);
     }
 }

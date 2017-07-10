@@ -26,15 +26,16 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Pais::class, function (Faker\Generator $faker) {
 
     return [
-        'nombre' => $faker->country
+        'nombre' => strtolower($faker->country)
     ];
 });
 
 $factory->define(App\Beneficiario::class, function (Faker\Generator $faker) {
 
     return [
-        'nombre' => $faker->firstName,
-        'apellido' => $faker->lastName,
+        'nombre' => strtolower($faker->firstName),
+        'apellido' => strtolower($faker->lastName),
+        'fecha_nacimiento' => $faker->dateTimeBetween($startDate = '-60 years', $endDate = '-4 years', $timezone = date_default_timezone_get()),
         'sexo' => $faker->regexify('(masculino|femenino)'),
         'rut' => $faker->unique()->regexify('\[1-9]{8,9}\-(k|[0-9])'),
         'pais_id' => $faker->numberBetween($min = 1, $max = 70),
@@ -44,7 +45,7 @@ $factory->define(App\Beneficiario::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Telefono::class, function (Faker\Generator $faker) {
+$factory->define(App\TelefonoBeneficiario::class, function (Faker\Generator $faker) {
 
     return [
         'numero' => $faker->unique()->regexify('[0-9]{8}'),
@@ -110,6 +111,7 @@ $factory->define(App\Tutor::class, function (Faker\Generator $faker) {
         'beneficiario_id' => $faker->unique()->numberBetween($min = 1, $max = 150)
     ];
 });
+
 
 $factory->define(App\CredencialDiscapacidad::class, function (Faker\Generator $faker) {
     return [
@@ -297,5 +299,186 @@ $factory->define(App\ValSocial::class, function (Faker\Generator $faker) {
         'puntaje_memoria' => $faker -> numberBetween($min = 1, $max = 10),
         'coment_memoria' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
 
+    ];
+});
+
+$factory->define(App\FichaTerapiaOcupacional::class, function (Faker\Generator $faker) {
+
+    return [
+        'diagnostico_base' => $faker -> regexify('(SE DESCONOCE EL DIAGNOSTICO|DERRAME CEREBRAL|RETRASO MENTAL SEVERO|DISTROFIA MUSCULAR|DIABETES)'),
+        'motivo_consulta' => $faker -> regexify('(Evaluación Movilidad|Evaluación Motora|Evaluación Social)'),
+        'derivado_por' => $faker -> regexify('(Kinesiologo|Psicologo)'),
+        'relacion_paciente' => $faker -> regexify('(Padre|Madre|Cuidador|Abuelo)'),
+        'observaciones_generales' => $faker -> regexify('(|Comentarios varios)'),
+        'actividades_vida_diaria_id' => $faker -> numberBetween($min = 1, $max = 5),
+        'antecedentes_salud_id' => $faker -> numberBetween($min = 1, $max = 5),
+        'antecedentes_so_fa_id' => $faker -> numberBetween($min = 1, $max = 5),
+        'desarrollo_evolutivo_id' => $faker -> numberBetween($min = 1, $max = 5),
+        'habilidades_sociales_id' => $faker -> numberBetween($min = 1, $max = 5),
+        'historial_clinico_id' => $faker -> numberBetween($min = 1, $max = 5),
+        'terapeuta_ocupacional_id' => $faker -> numberBetween($min = 1, $max = 5),
+        'beneficiario_id' => $faker -> numberBetween($min = 1, $max = 150),
+
+    ];
+});
+
+$factory->define(App\ActividadesVidaDiaria::class, function (Faker\Generator $faker) {
+
+    return [
+        'alimentacion' => $faker -> regexify('(D|P|E)'),
+        'arreglo_personal' => $faker -> regexify('(D|P|E)'),
+        'banio' => $faker -> regexify('(D|P|E)'),
+        'vestuario_superior' => $faker -> regexify('(D|P|E)'),
+        'vestuario_inferior' => $faker -> regexify('(D|P|E)'),
+        'ponerse_zapatos' => $faker -> regexify('(D|P|E)'),
+        'aseo_perianal' => $faker -> regexify('(D|P|E)'),
+        'lavado_dental' => $faker -> regexify('(D|P|E)'),
+        'manejo_vesical' => $faker -> regexify('(D|P|E)'),
+        'manejo_anal' => $faker -> regexify('(D|P|E)'),
+        'preparar_comida' => $faker -> regexify('(D|P|E)'),
+        'poner_mesa' => $faker -> regexify('(D|P|E)'),
+        'espacio_ordenado' => $faker -> regexify('(D|P|E)'),
+        'manejo_dinero' => $faker -> regexify('(D|P|E)'),
+        'ir_compras' => $faker -> regexify('(D|P|E)'),
+        'locomocion' => $faker -> regexify('(D|P|E)'),
+        'resolver_problemas' => $faker -> regexify('(D|P|E)'),
+        'adecuacion_social' => $faker -> regexify('(D|P|E)'),
+        'seguir_instrucciones' => $faker -> regexify('(D|P|E)'),
+        'expresar_necesidades' => $faker -> regexify('(D|P|E)'),
+
+    ];
+});
+
+$factory->define(App\AntecedentesSalud::class, function (Faker\Generator $faker) {
+
+    return [
+        'tiempo_gestacional' => $faker -> regexify('(D|P|E)'),
+        'tipo_parto' => $faker -> regexify('(Normal|Inducido|Fórceps|Cesárea)'),
+        'enfermedades_natal_sn' => $faker -> regexify('(Si|No)'),
+        'observaciones_enfermedades' => $faker -> regexify('(|Observaciones varias)'),
+
+    ];
+});
+
+$factory->define(App\AntecedentesSocioFamiliares::class, function (Faker\Generator $faker) {
+
+    return [
+        'nombre_madre' => $faker -> regexify('(María|Elisa|Abril)'),
+        'edad_madre' => $faker ->  numberBetween($min = 26, $max = 45),
+        'ocupacion_madre' => $faker -> regexify('(Trabajadora|Dueña de casa)'),
+        'escolaridad_madre' => $faker -> regexify('(Educación básica|Educación media|Educación superior)'),
+        'horario_trabajo_madre' => $faker -> regexify('(8:00-13:00|15:00-20:00)'),
+        'nombre_padre' => $faker -> regexify('(Pedro|Juan|Diego)'),
+        'edad_padre' => $faker ->  numberBetween($min = 26, $max = 45),
+        'ocupacion_padre' => $faker -> regexify('(Trabajador|Dueño de casa)'),
+        'escolaridad_padre' => $faker -> regexify('(Educación básica|Educación media|Educación superior)'),
+        'horario_trabajo_padre' => $faker -> regexify('(8:00-13:00|15:00-20:00)'),
+
+    ];
+});
+
+$factory->define(App\DesarrolloEvolutivo::class, function (Faker\Generator $faker) {
+
+    return [
+        'edad_sento' => $faker -> numberBetween($min = 2, $max = 6),
+        'edad_camino' => $faker -> numberBetween($min = 2, $max = 6),
+        'edad_palabra' => $faker -> numberBetween($min = 2, $max = 6),
+        'control_vesical_sn' => $faker -> regexify('(Si|No)'),
+        'edad_control_vesical' => $faker -> numberBetween($min = 2, $max = 6),
+        'control_anal_sn' => $faker -> regexify('(Si|No)'),
+        'edad_control_anal' => $faker -> numberBetween($min = 2, $max = 6),
+        'vesical_diurno' => $faker -> regexify('(Si|No)'),
+        'vesical_nocturno' => $faker -> regexify('(Si|No)'),
+        'anal_diurno' => $faker -> regexify('(Si|No)'),
+        'anal_nocturno' => $faker -> regexify('(Si|No)'),
+        'observaciones' => $faker -> regexify('(|Observaciones varias)'),
+        'estabilidad_caminar_sna' => $faker -> regexify('(Si|No|A veces)'),
+        'caidas_frecuentes_sna' => $faker -> regexify('(Si|No|A veces)'),
+        'dominancia_lateral_sna' => $faker -> regexify('(Si|No|A veces)'),
+        'garra_sna' => $faker -> regexify('(Si|No|A veces)'),
+        'pinza_sna' => $faker -> regexify('(Si|No|A veces)'),
+        'como_pinza' => $faker -> regexify('(Si|No|A veces)'),
+        'dibuja_sna' => $faker -> regexify('(Si|No|A veces)'),
+        'escribe_sna' => $faker -> regexify('(Si|No|A veces)'),
+        'corta_sna' => $faker -> regexify('(Si|No|A veces)'),
+        'estimulos_visuales' => $faker -> regexify('(Se altera|Se calma|No reacciona)'),
+        'estimulos_auditivos' => $faker -> regexify('(Se altera|Se calma|No reacciona)'),
+        'estimulos_gustativos' => $faker -> regexify('(Se altera|Se calma|No reacciona)'),
+        'estimulos_tactiles' => $faker -> regexify('(Se altera|Se calma|No reacciona)'),
+        'estimulos_olfativos' => $faker -> regexify('(Se altera|Se calma|No reacciona)'),
+        'come_solo_sn' => $faker -> regexify('(Si|No)'),
+        'acepta_solido_sn' => $faker -> regexify('(Si|No)'),
+        'acepta_semisolido_sn' => $faker -> regexify('(Si|No)'),
+        'acepta_liquidos_sn' => $faker -> regexify('(Si|No)'),
+        'temperatura_preferida' => $faker -> regexify('(25°C|30°C|35°C)'),
+        'sabores_preferidos' => $faker -> regexify('(Dulce|Salado|Agridulce)'),
+        'colores_preferidos' => $faker -> regexify('(Rojo|Verde|Azul|Amarillo)'),
+        'ejemplo_comida' => $faker -> regexify('(Pollo asado|Tallarines con salsa|sushi)'),
+
+    ];
+});
+
+$factory->define(App\HabilidadesSociales::class, function (Faker\Generator $faker) {
+
+    return [
+        'contacto_visual' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'sonrisa_social' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'seguimiento_personas' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'seguimiento_objetos' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'vestuario_inferior' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'investigacion_visual' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'investigacion_motora' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'atencion_conjunta' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'imitacion_gestual' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'imitacion_vocal' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'imitacion_motora' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'situaciones_repetidas' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'situaciones_nuevas' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'intencion_comunicacional' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'carinioso' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'juego_solitario' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'juego_paralelo' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'juego_interactivo' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'gestos_adecuados' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'inicia_conversacion' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'formula_peticiones' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'aclarar_dudas' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'emisor_receptor' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'ninios_edad' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
+        'preferencia_tipo_persona' => $faker -> regexify('(Hombre|Mujer|Niños|Ancianos)'),
+        'mayores_intereses' => $faker -> regexify('(Jugar|Pintar|Ver películas)'),
+        'cosas_no_gustan' => $faker -> regexify('(Conversar|Pintar|Hablar)'),
+        'juegos' => $faker -> regexify('(Escondida|Juegos de video|Patear la pelota)'),
+
+    ];
+});
+
+$factory->define(App\HistorialClinico::class, function (Faker\Generator $faker) {
+
+    return [
+        'enfermedades_familiares' => $faker -> regexify('(Cáncer|Diabetes|Hipertensión|Ninguna)'),
+        'evaluacion_psiquiatra' => $faker -> regexify('(Observaciones varias psiquiatra)'),
+        'evaluacion_fonoaudiologo' => $faker -> regexify('(Observaciones varias fonoaudiologo)'),
+        'evaluacion_ocupacional' => $faker -> regexify('(Observaciones varias ocupacional)'),
+        'evaluacion_kinesiologo' => $faker -> regexify('(Observaciones varias kinesiologo)'),
+        'evaluacion_psicologo' => $faker -> regexify('(Observaciones varias psicologo)'),
+        'otra_evaluacion' => $faker -> regexify('(Observaciones varias Otros)'),
+        'tratamientos_recibidos' => $faker -> regexify('(Ninguno|Operación de apendicitis|Opreación Adenoides)'),
+        'medicamentos_sn' => $faker -> regexify('(Si|No)'),
+        'medicamentos' => $faker -> regexify('(|Paracetamol|Nefersil|Ninguno|Otros medicamentos)'),
+        'efectos_medicamentos' => $faker -> regexify('(|Mareos|Sueño|Nada)'),
+        'diagnosticos_previos' => $faker -> regexify('(|Diagnótico previo A|Diagnótico previo B)'),
+    ];
+});
+
+$factory->define(App\TerapeutaOcupacional::class, function (Faker\Generator $faker) {
+
+    return [
+        'rut' => $faker -> regexify('\[1-9]{8,9}\-(k|[0-9])'),
+        'nombres' => $faker -> firstName,
+        'apellidos' => $faker -> lastName,
+        'telefono' => $faker -> regexify('[0-9]{8}'),
+        'fecha_nacimiento' => $faker -> dateTimeBetween('-50 years', '-25 years'),
+        'direccion' => $faker -> address,
     ];
 });

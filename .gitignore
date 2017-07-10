@@ -13,4 +13,6 @@ npm-debug.log
 .DS_Store
 ._.DS_Store
 
+.git-old/
+
 .fuse_hidden*

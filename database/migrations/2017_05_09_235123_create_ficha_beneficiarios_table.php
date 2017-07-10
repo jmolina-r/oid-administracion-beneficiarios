@@ -16,7 +16,6 @@ class CreateFichaBeneficiariosTable extends Migration
         Schema::create('ficha_beneficiarios', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('numero');
             $table->date('fecha_ingreso');
 
             $table->integer('beneficiario_id')->unsigned();

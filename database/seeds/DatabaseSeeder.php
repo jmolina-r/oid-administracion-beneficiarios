@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call(EducacionTableSeeder::class);
         $this->call(OcupacionTableSeeder::class);
         $this->call(BeneficiarioTableSeeder::class);
-        $this->call(TelefonoTableSeeder::class);
+        $this->call(TelefonoBeneficiarioTableSeeder::class);
+
 
         $this->call(PrestacionRealizadaTableSeeder::class);
         $this->call(FichaAtencionSocialTableSeeder::class);
@@ -28,7 +29,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(TutorTableSeeder::class);
         $this->call(RegistroSocialHogarTableSeeder::class);
-        $this->call(TelefonoTableSeeder::class);
         $this->call(CredencialDiscapacidadTableSeeder::class);
         $this->call(FichaBeneficiarioTableSeeder::class);
         $this->call(IsapreTableSeeder::class);
@@ -39,7 +39,9 @@ class DatabaseSeeder extends Seeder
         $this->call(TipoDependenciaTableSeeder::class);
         $this->call(FichaDiscapacidadTableSeeder::class);
         $this->call(TipoDiscapacidadTableSeeder::class);
+        $this->call(PrevisionTableSeeder::class);
         $this->call(DatoSocialTableSeeder::class);
+        $this->call(DomicilioTableSeeder::class);
 
 
         $this->call(KinesiologoTableSeeder::class);
