@@ -21,6 +21,7 @@ class CreateBeneficiariosTable extends Migration
             $table->date('fecha_nacimiento');
             $table->string('sexo');
             $table->string('rut', 250)->unique();
+            $table->string('email')->nullable();
 
             $table->integer('pais_id')->unsigned();
             $table->integer('estado_civil_id')->unsigned();

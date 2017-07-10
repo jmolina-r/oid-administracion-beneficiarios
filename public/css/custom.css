@@ -39,10 +39,10 @@ textarea {
 }
 
 .profile .arrow-down {
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-left: 10px solid transparent;
-  border-right: 10px solid transparent;  
+  border-right: 10px solid transparent;
   border-top: 10px solid #183446;
   margin-left: 10px;
 }
@@ -75,6 +75,11 @@ textarea {
 /***** End Person Profile *****/
 /******************************/
 
+
+
+
+
+
 /******************************/
 /***** Buscar Beneficiario*****/
 /******************************/
@@ -85,3 +90,33 @@ textarea {
 }
 /******************************/
 /******************************/
+
+
+
+
+/***************************/
+/****** Modal Custom *******/
+/***************************/
+.modal-custom h4, h5, p{
+	font-family: "Arial";
+	font-weight: lighter;
+}
+
+.modal-custom h5{
+	font-size: 12px;
+}
+
+.modal-custom h4{
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.modal-custom p{
+	font-size: 12px;
+	margin-top: 5px;
+	text-align: justify;
+}
+
+/***************************/
+/**** End Modal Custom *****/
+/***************************/

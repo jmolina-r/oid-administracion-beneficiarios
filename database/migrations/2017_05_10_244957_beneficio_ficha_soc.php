@@ -19,7 +19,7 @@ class BeneficioFichaSoc extends Migration
             $table->foreign('beneficio_id')->references('id')->on('beneficios');
 
             $table->integer('dato_social_id')->unsigned();
-            $table->foreign('dato_social_id')->references('id')->on('dato_socials');
+            $table->foreign('dato_social_id')->references('id')->on('dato_socials')->onDelete('cascade');
 
         });
     }
