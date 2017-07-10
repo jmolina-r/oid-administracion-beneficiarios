@@ -300,7 +300,6 @@ class BeneficiarioController extends Controller
             }
         }
 
-        $email = $request->input('email');
         $planDeRehabilitacionTratamientoControl= $request->input('p_reha_trat_ctrl');
 
         return redirect()->route('beneficiario.show', ['id' => $beneficiario->id]);
@@ -606,9 +605,77 @@ class BeneficiarioController extends Controller
 
         $beneficiario->ficha_beneficiario->dato_social->update($arrDatoSocial);
 
-        $beneficiario->ficha_beneficiario->dato_social->beneficios->first()->detach();
+        // Beneficio Update
+        foreach ($beneficiario->ficha_beneficiario->dato_social->beneficios as $beneficio) {
+            $beneficio->pivot->delete();
+        }
 
+        if ($request->input('beneficios')) {
+            foreach ($request->input('beneficios') as $key => $val) {
+                if (is_numeric($val)) {
+                    $beneficio = Beneficio::find($val);
+                    if ($beneficio) {
+                        $beneficiario->ficha_beneficiario->dato_social->beneficios()->save($beneficio);
+                    }
+                } else {
+                    $beneficio = new Beneficio([
+                        'nombre' => strtolower($val)
+                    ]);
+                    $beneficio->save();
+                    $beneficiario->ficha_beneficiario->dato_social->beneficios()->save($beneficio);
+                }
+            }
+        }
 
+        // OrganizacionSocial Save
+        foreach ($beneficiario->ficha_beneficiario->dato_social->organizaciones_sociales as $orgSocial) {
+            $orgSocial->pivot->delete();
+        }
+
+        if ($request->input('organizaciones_sociales')) {
+            foreach ($request->input('organizaciones_sociales') as $key => $val) {
+                if (is_numeric($val)) {
+                    $organizacionSocial = OrganizacionSocial::find($val);
+                    if ($organizacionSocial) {
+                        $beneficiario->ficha_beneficiario->dato_social->organizaciones_sociales()->save($organizacionSocial);
+                    }
+                } else {
+                    $organizacionSocial = new OrganizacionSocial([
+                        'nombre' => strtolower($val)
+                    ]);
+                    $organizacionSocial->save();
+                    $beneficiario->ficha_beneficiario->dato_social->organizaciones_sociales()->save($organizacionSocial);
+                }
+            }
+        }
+
+        // FichaDiscapacidad Update
+        $beneficiario->ficha_beneficiario->ficha_discapacidad->update([
+            'requiere_cuidado' => $request->input('cuidados'),
+            'diagnostico' => $request->input('diagnostico'),
+            'otras_enfermedades' => $request->input('otras_enfermedades'),
+            'tipo_dependencia_id' => $request->input('tipo_dependencia')
+        ]);
+
+        // TipoDiscapacidad Update
+        foreach ($beneficiario->ficha_beneficiario->ficha_discapacidad->porcentaje_discapacidades as $porcDisc) {
+            $porcDisc->delete();
+        }
+
+        if ($request->input('tipo_discapacidad')) {
+            foreach ($request->input('tipo_discapacidad') as $key => $val) {
+                if ($val > 0 && TipoDiscapacidad::find($key)) {
+                    $fichaDiscTipoDisc = new fichaDiscTipoDisc([
+                        'porcentaje' => $val,
+                        'ficha_discapacidad_id' => $beneficiario->ficha_beneficiario->ficha_discapacidad->id,
+                        'tipo_discapacidad_id' => $key
+                    ]);
+                    $fichaDiscTipoDisc->save();
+                }
+            }
+        }
+
+        return redirect()->route('beneficiario.show', ['id' => $beneficiario->id]);
     }
 
     /**
