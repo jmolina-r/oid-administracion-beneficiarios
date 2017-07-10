@@ -36,7 +36,7 @@ $(document).ready(function() {
         if (beneficiarios) {
             $("#listaBeneficiario").empty();
             beneficiarios.forEach(function(element) {
-                var cardData = '<div class="card col-xs-12 col-md-6 col-lg-4">' +
+                var cardData = '<div class="card col-xs-12 col-md-6 col-lg-4 card-frame">' +
                     '<img class="card-img-top" src="http://placehold.it/230x230&text=Photo" alt="Card image cap">' +
                     '<div class="card-block">' +
                     '<h4 class="card-title capitalize">' + element.nombre + ' ' + element.apellido + '</h4>' +
