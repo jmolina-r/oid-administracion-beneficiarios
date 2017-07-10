@@ -116,7 +116,7 @@
                 </a>
                 <ul class='nav nav-stacked'>
                     <li class=''>
-                        <a href='{{route('social.asistenteSocial')}}'>
+                        <a href='{{route('social.asistenteSocialGet')}}'>
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>
                             </div>
@@ -126,7 +126,24 @@
 
                 </ul>
             </li>
+                <li class=''>
+                <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
+                    <span>Reportabilidad</span>
+                    <i class='fa fa-angle-down angle-down'></i>
+                </a>
+                
+                <ul class='nav nav-stacked'>
+                    <li class=''>
+                        <a href='{{route('reportabilidad.showEstadistica')}}'>
+                            <div class='icon'>
+                                <i class='fa fa-caret-right'></i>
+                            </div>
+                            <span>Visualizar estadísticas</span>
+                        </a>
+                    </li>
 
+                </ul>
+            </li>
         </ul>
     </div>
 </nav>

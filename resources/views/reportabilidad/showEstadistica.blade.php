@@ -14,7 +14,7 @@
 
 <!-- Atributos del body -->
 @section('body-attr')
-    class='contrast-red login contrast-background'
+    class='contrast-red'
 @endsection
 
 <!-- Inyeccion de scripts
@@ -72,12 +72,12 @@
                             <i class='fa fa-angle-right'></i>
                           </li>
                           <li>
-                            Forms
+                            Reportabilidad
                           </li>
                           <li class='separator'>
                             <i class='fa fa-angle-right'></i>
                           </li>
-                          <li class='active'>Wizard</li>
+                          <li class='active'>Creacion de ficha de pacientes</li>
                         </ul>
                       </div>
                     </div>
@@ -88,31 +88,28 @@
                     <div class='box'>
                       <div class='box-content box-padding'>
                         <div class="row">
+                          @if(count($errors) > 0)
+                              <hr class='hr-normal'>
+
+                                <div class="alert alert-danger">
+                                    @foreach($errors->all() as $error)
+                                        <p>{{ $error }}</p>
+                                    @endforeach
+                                </div>
+                          @endif
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <h2>Beneficiario</h2>
-                            <h4>{{$beneficiario->nombre}} {{$beneficiario->apellido}}</h4>
-                            Rut
-                            <h4>{{$beneficiario->rut}}</h4>
-                          </div>
-                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 areaSocialMenu">
-                            <a href="{{route('social.asistenteSocialVisitaDomiciliaria')}}" title="">
-                              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-                                <i class='fa fa-home text-contrast '></i>
-                                <h1>Visita domiciliaria</h1>
-                              </div>
-                            </a>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-                              <i class='fa fa-users text-contrast'></i>
-                              <h1>Orientación</h1>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-                              <i class='fa fa-user text-contrast'></i>
-                              <h1>Ayuda técnica</h1>
-                            </div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center">
-                              <i class='fa fa-wheelchair text-contrast'></i>
-                              <h1>Prestaciones</h1>
-                            </div>                            
+                            <form action="{{route('social.asistenteSocial')}}"method="get" accept-charset="utf-8">
+                              {!!csrf_field()!!}
+                              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                                <label for="inputRut">Ingresar rut beneficiario</label>
+                                <input type="text" name="rut" id="inputRut" class="form-control" value="" required pattern="\d{3,8}-[\d|kK]{1}" placeholder="Ingrese rut 12345678-9">
+                              </div>  
+                              <div class="form-group pull-right">
+                                <div class="col-sm-10 col-offset-2">
+                                  <button type="submit" class="btn btn-success">Buscar beneficiario</button>
+                                </div>
+                              </div>                          
+                            </form>
                           </div>
                         </div>
                       </div>
