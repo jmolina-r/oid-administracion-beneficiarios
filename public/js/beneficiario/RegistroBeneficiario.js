@@ -25,9 +25,19 @@ $(document).ready(function() {
         var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
         if (hasErrors) e.preventDefault();
         if (hasErrors == 0) {
-            $('#formulario-registro').submit();
+
+            $('#nombre').html($("nombres").val() + " " + $("apellidos").val());
+            $('#confirmation').modal('show');
         }
     });
+
+    /**
+     * Envia el formulario cuando ya fueron revisados todos los datos
+     */
+    function enviarFormulario(){
+        $('#confirmation').modal('hide');
+        $('#formulario-registro').submit();
+    }
 
 
     /**
@@ -149,10 +159,5 @@ $(document).ready(function() {
         if(callback && typeof callback == "function"){
             callback();
         }
-
-
-
-
     }
-
 });

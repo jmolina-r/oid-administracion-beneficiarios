@@ -74,3 +74,30 @@ textarea {
 /******************************/
 /***** End Person Profile *****/
 /******************************/
+
+/***************************/
+/****** Modal Custom *******/
+/***************************/
+.modal-custom h4, h5, p{
+	font-family: "Arial";
+	font-weight: lighter;
+}
+
+.modal-custom h5{
+	font-size: 12px;
+}
+
+.modal-custom h4{
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.modal-custom p{
+	font-size: 12px;
+	margin-top: 5px;
+	text-align: justify;
+}
+
+/***************************/
+/**** End Modal Custom *****/
+/***************************/

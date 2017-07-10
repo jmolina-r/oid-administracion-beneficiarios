@@ -1,7 +1,7 @@
 <div class='form-group'>
     <label class='control-label' for='inputText'>Nombres (*)</label>
     <div class='controls'>
-        <input name='nombres' class='form-control onlyletters' value=
+        <input id="nombres" name='nombres' class='form-control onlyletters' value=
             @if(old('nombres'))
                 "{{ old('nombres') }}"
             @elseif(isset($persona))
