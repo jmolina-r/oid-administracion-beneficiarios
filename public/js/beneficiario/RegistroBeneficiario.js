@@ -186,12 +186,16 @@ $(document).ready(function() {
             }
 
             //Confirmacion Beneficios
-            
+            $('#beneficios_confirmation').html($("#beneficios option:selected").text());
 
-            //Falta
-            //Beneficios, Sistema de proteccion, Participacion en organizaciones
-            // Discapacidades
+            //Confirmacion Beneficios
+            $('#beneficios_confirmation').html($("#beneficios option:selected").text());
 
+            //Confirmacion Sistema de Proteccion
+            $('#proteccion_confirmation').html($("#sistema_proteccion option:selected").text());
+
+            //Confirmacion Participacion en Organizaciones Sociales
+            $('#organizaciones_confirmation').html($("#organizaciones_sociales option:selected").text());
 
             $('#confirmation').modal('show');
         }
