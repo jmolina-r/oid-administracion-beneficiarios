@@ -91,7 +91,7 @@
                         </div>
                         <div class="col-sm-12 col-lg-6">
                             <h4>Cuidado de terceros</h4>
-                            <p id="cuidado_confirmation">-</p>
+                            <p id="cuidados_confirmation">-</p>
                         </div>
                     </div>
                 </div>
