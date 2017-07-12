@@ -3,7 +3,6 @@
  */
 
 $('#formulario_registro').on("submit", function() {
-    alert("HINT");
 
     var enfermedadesPrenatal = "";
     var complicacionesParto = "";

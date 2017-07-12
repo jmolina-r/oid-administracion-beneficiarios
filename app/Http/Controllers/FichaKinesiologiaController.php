@@ -92,7 +92,7 @@ class FichaKinesiologiaController extends Controller
             $valAutocuidado->save();
 
             $valComCog = new ValComCog([
-                'puntae_expresion' => $request->input('puntae_expresion'),
+                'puntae_expresion' => $request->input('puntaje_expresion'),
                 'coment_expresion' => $request->input('coment_expresion'),
                 'puntaje_comprension' => $request->input('puntaje_comprension'),
                 'coment_comprension' => $request->input('coment_comprension'),
@@ -110,7 +110,7 @@ class FichaKinesiologiaController extends Controller
             $valDeambulacion = new ValDeambulacion([
                 'puntaje_desp_caminando' => $request->input('puntaje_desp_caminando'),
                 'coment_desp_caminando' => $request->input('coment_desp_caminando'),
-                'puntae_escaleras' => $request->input('puntae_escaleras'),
+                'puntae_escaleras' => $request->input('puntaje_escaleras'),
                 'coment_escaleras' => $request->input('coment_escaleras'),
             ]);
             $valDeambulacion->save();
