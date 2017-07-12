@@ -12,13 +12,13 @@
                     <div class="row">
                         <div class="col-sm-12 col-lg-6">
                             <h4>Nombre</h4>
-                            <p id="nombre_confirmation">-</p>
+                            <p class="capitalize" id="nombre_confirmation">-</p>
                             <h4>Rut</h4>
                             <p id="rut_confirmation">-</p>
                             <h4>Sexo</h4>
-                            <p id="sexo_confirmation">-</p>
+                            <p class="capitalize" id="sexo_confirmation">-</p>
                             <h4>Domicilio</h4>
-                            <p id="domicilio_confirmation">-</p>
+                            <p class="capitalize" id="domicilio_confirmation">-</p>
                             <h4>Credencial de Discapacidad</h4>
                             <p id="credencial_confirmation">-</p>
                             <h4>Registro Social de Hogares</h4>
@@ -26,11 +26,11 @@
                         </div>
                         <div class="col-sm-12 col-lg-6">
                             <h4>Nacionalidad</h4>
-                            <p id="nacionalidad_confirmation">-</p>
+                            <p class="capitalize" id="nacionalidad_confirmation">-</p>
                             <h4>Fecha de Nacimiento</h4>
                             <p id="fecha_nacimiento_confirmation">-</p>
                             <h4>Situación Civil</h4>
-                            <p id="estado_civil_confirmation">-</p>
+                            <p class="capitalize" id="estado_civil_confirmation">-</p>
                             <h4>Teléfono(s)</h4>
                             <p id="telefonos_confirmation">-</p>
                             <h4>E-mail</h4>
@@ -47,19 +47,19 @@
                             <h4>Sistema de Salud</h4>
                             <p id="salud_confirmation">-</p>
                             <h4>Nivel Educacional</h4>
-                            <p id="nivel_educacional_confirmation">-</p>
+                            <p class="capitalize" id="nivel_educacional_confirmation">-</p>
                             <h4>Beneficios</h4>
-                            <p id="beneficios_confirmation">-</p>
+                            <p class="capitalize" id="beneficios_confirmation">-</p>
                             <h4>Participación en Organizaciones Sociales</h4>
-                            <p id="organizaciones_confirmation">-</p>
+                            <p class="capitalize" id="organizaciones_confirmation">-</p>
                         </div>
                         <div class="col-sm-12 col-lg-6">
                             <h4>Previsión</h4>
-                            <p id="prevision_confirmation">-</p>
+                            <p class="capitalize" id="prevision_confirmation">-</p>
                             <h4>Ocupación Actual</h4>
-                            <p id="ocupacion_confirmation">-</p>
+                            <p class="capitalize" id="ocupacion_confirmation">-</p>
                             <h4>Sistema de Protección</h4>
-                            <p id="proteccion_confirmation">-</p>
+                            <p class="capitalize" id="proteccion_confirmation">-</p>
                         </div>
                         <div class="col-lg-12">
                             <h4>Observación General</h4>
@@ -85,7 +85,7 @@
                         </div>
                         <div class="col-sm-12 col-lg-6">
                             <h4>Dependencia</h4>
-                            <p id="dependencia_confirmation">-</p>
+                            <p class="capitalize" id="dependencia_confirmation">-</p>
                             <h4>Plan de rehabilitación, tratamiento o control</h4>
                             <p id="plan_confirmation">-</p>
                         </div>
