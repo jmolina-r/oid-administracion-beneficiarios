@@ -5,7 +5,7 @@
             <div class='form-group'>
                 <div class='input-group'>
                     <span class='capitalize input-group-addon'>+56</span>
-                    <input name='tel_fijo' value=
+                    <input name='tel_fijo' id="tel_fijo" value=
                         @if(old('tel_fijo'))
                             "{{ old('tel_fijo') }}"
                         @elseif(isset($persona) && $persona->telefonos()->where('tipo', 'fijo')->first() != null)
@@ -22,7 +22,7 @@
             <div class='form-group'>
                 <div class='input-group'>
                     <span class='capitalize input-group-addon'>+56</span>
-                    <input name='tel_movil' value=
+                    <input name='tel_movil' id="tel_movil" value=
                         @if(old('tel_movil'))
                             "{{ old('tel_movil') }}"
                         @elseif(isset($persona) && $persona->telefonos()->where('tipo', 'movil')->first() != null)
@@ -37,7 +37,7 @@
 
         <div class="col-md-4 controls">
             <div class='form-group'>
-                <input name='email'  value=
+                <input name='email'  id="email" value=
                     @if(old('email'))
                         "{{ old('email') }}"
                     @elseif(isset($persona) && isset($persona->email))
