@@ -12,99 +12,86 @@
                     <div class="row">
                         <div class="col-sm-12 col-lg-6">
                             <h4>Nombre</h4>
-                            <p id="nombre"></p>
+                            <p id="nombre_confirmation">-</p>
                             <h4>Rut</h4>
-                            <p id="rut"></p>
+                            <p id="rut_confirmation">-</p>
                             <h4>Sexo</h4>
-                            <p id="sexo"></p>
+                            <p id="sexo_confirmation">-</p>
                             <h4>Domicilio</h4>
-                            <p id="domicilio">Via Niza 56, 1230 Block 3</p>
+                            <p id="domicilio_confirmation">-</p>
                             <h4>Credencial de Discapacidad</h4>
-                            <p id="credencial"></p>
+                            <p id="credencial_confirmation">-</p>
                             <h4>Registro Social de Hogares</h4>
-                            <p id="reg_social"></p>
+                            <p id="registro_social_confirmation">-</p>
                         </div>
                         <div class="col-sm-12 col-lg-6">
                             <h4>Nacionalidad</h4>
-                            <p id="nacionalidad"></p>
+                            <p id="nacionalidad_confirmation">-</p>
                             <h4>Fecha de Nacimiento</h4>
-                            <p id="fecha_nacimiento"></p>
+                            <p id="fecha_nacimiento_confirmation">-</p>
                             <h4>Situación Civil</h4>
-                            <p id="situacion_civil"></p>
+                            <p id="estado_civil_confirmation">-</p>
                             <h4>Teléfono(s)</h4>
-                            <p id="telefonos"></p>
+                            <p id="telefonos_confirmation">-</p>
                             <h4>E-mail</h4>
-                            <p id="email"></p>
+                            <p id="email_confirmation">-</p>
                             <h4>Acompañante</h4>
-                            <p id="acompaniante"></p>
+                            <p id="tutor_confirmation">-</p>
                             <h4>Contacto Acompañante</h4>
-                            <p id="contacto_acompaniante"></p>
+                            <p id="telefono_tutor_confirmation">-</p>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-sm-12 col-lg-6">
                             <h4>Sistema de Salud</h4>
-                            <p>Fonasa - A</p>
+                            <p id="salud_confirmation">-</p>
                             <h4>Nivel Educacional</h4>
-                            <p>Medio Completo</p>
+                            <p id="nivel_educacional_confirmation">-</p>
                             <h4>Beneficios</h4>
-                            <p>Sub. Discapacidad Mental - Pbs Vejez - Sub. Familiar</p>
+                            <p id="beneficios_confirmation">-</p>
                             <h4>Participación en Organizaciones Sociales</h4>
-                            <p>La de mi casa - La de mi abuelita</p>
+                            <p id="organizaciones_confirmation">-</p>
                         </div>
                         <div class="col-sm-12 col-lg-6">
                             <h4>Previsión</h4>
-                            <p>Cuprum</p>
+                            <p id="prevision_confirmation">-</p>
                             <h4>Ocupación Actual</h4>
-                            <p>Trabajador</p>
+                            <p id="ocupacion_confirmation">-</p>
                             <h4>Sistema de Protección</h4>
-                            <p>Vínculos</p>
+                            <p id="proteccion_confirmation">-</p>
                         </div>
                         <div class="col-lg-12">
                             <h4>Observación General</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                            <p id="observacion_confirmation">-</p>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-sm-12 col-lg-6">
-                            <h4>Discapacidad Física</h4>
-                            <p>0%</p>
-                            <h4>Discapacidad Psíquica</h4>
-                            <p>15%</p>
-                            <h4>Discapacidad Sensorial</h4>
-                            <p>50%</p>
-                        </div>
-                        <div class="col-sm-12 col-lg-6">
-                            <h4>Discapacidad Cognitiva</h4>
-                            <p>0%</p>
-                            <h4>Discapacidad Sensorial Visual</h4>
-                            <p>0%</p>
-                            <h4>Discapacidad Social y de la Comunicación</h4>
-                            <p>0%</p>
-                        </div>
+                        @foreach ($tipo_discapacidades as $tipo_discapacidad)
+                            <div class="col-sm-12 col-lg-6">
+                                <h4>Discapacidad {{$tipo_discapacidad->nombre}}</h4>
+                                <p id="discapacidad_{{$tipo_discapacidad->id}}_confirmation">-</p>
+                            </div>
+                        @endforeach
+
                         <div class="col-lg-12">
                             <h4>Diagnóstico médico</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. </p>
+                            <p id="diagnostico_confirmation">-</p>
                         </div>
                         <div class="col-lg-12">
-                            <h4>Diagnóstico médico</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+                            <h4>Otras Enfermedades</h4>
+                            <p id="otras_enfermedades_confirmation">-</p>
                         </div>
                         <div class="col-sm-12 col-lg-6">
                             <h4>Dependencia</h4>
-                            <p>Intermitente</p>
+                            <p id="dependencia_confirmation">-</p>
                             <h4>Plan de rehabilitación, tratamiento o control</h4>
-                            <p>El plan es seguir las instrucciones del doctor</p>
+                            <p id="plan_confirmation">-</p>
                         </div>
                         <div class="col-sm-12 col-lg-6">
                             <h4>Cuidado de terceros</h4>
-                            <p>Si</p>
+                            <p id="cuidado_confirmation">-</p>
                         </div>
                     </div>
                 </div>
