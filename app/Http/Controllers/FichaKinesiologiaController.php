@@ -203,7 +203,7 @@ class FichaKinesiologiaController extends Controller
     }
 
     /**
-     * Mostrar formulario de ingreso de evaluacion inicial.
+     * Display the specified resource.
      *
      * @return Response
      */

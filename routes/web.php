@@ -160,3 +160,10 @@ Route::group(['prefix' => 'reportabilidad'], function(){
     ]);   
 });
 
+Route::group(['prefix' => '/malla'], function (){
+    Route::get('/show', [
+        'uses' => 'MallaController@show',
+        'as' => 'malla.show'
+    ]);
+});
+
