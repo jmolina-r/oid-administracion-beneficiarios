@@ -3,8 +3,8 @@
  */
 
 (function() {
-    var cal, calendarDate, d, m, y;
 
+    var cal, calendarDate, d, m, y;
     this.setDraggableEvents = function() {
         return $("#events .external-event").each(function() {
             var eventObject;
@@ -41,11 +41,11 @@
             next: "fa-chevron-right"
         },
         buttonText: {
-            today: "Today",
-            agendaDay: "Day",
-            agendaWeek: "Week",
-            month: "Month",
-            listWeek: "List"
+            today: "Hoy",
+            agendaDay: "Día",
+            agendaWeek: "Semana",
+            month: "Mes",
+            listWeek: "Lista"
         },
         droppable: true,
         editable: true,
