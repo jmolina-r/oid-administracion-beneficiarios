@@ -1,7 +1,7 @@
 @extends("layouts.master")
 
 @section("title")
-    Ficha Kinesiología - OID
+    Malla - OID
 @endsection
 
 @section("styles_before")
@@ -14,6 +14,11 @@
     <link href="{{ asset("/assets/images/meta_icons/apple-touch-icon-precomposed.png") }}" rel="apple-touch-icon-precomposed">
     <link href="{{ asset('/assets/stylesheets/plugins/select2/select2.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+
+    <link href='{{ asset("assets/images/meta_icons/favicon.ico") }}' rel='shortcut icon' type='image/x-icon'>
+    <link href="{{ asset("assets/stylesheets/plugins/fullcalendar/fullcalendar.css") }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset("assets/stylesheets/plugins/wysihtml/wysihtml.css") }}" rel="stylesheet" type="text/css" media="all" />
+
 @endsection
 
 @section("body-attr")
@@ -37,10 +42,7 @@
     <script src="{{ asset("/assets/javascripts/plugins/retina/retina.js") }}" type="text/javascript"></script>
     <!-- / theme file [required] -->
     <script src="{{ asset("/assets/javascripts/theme.js") }}" type="text/javascript"></script>
-    <!-- / START - page related files and scripts [optional] -->
-    <script src="{{ asset("/assets/javascripts/plugins/fuelux/wizard.js") }}" type="text/javascript"></script>
-    <!-- / END - page related files and scripts [optional] -->
-    <script src="{{ asset("/assets/javascripts/plugins/fullcalendar/fullcalendar.js") }}" type="text/javascript"></script>
+
 
     <!-- / START - moments-->
     <script src="{{ asset("/assets/javascripts/plugins/common/moment.min.js") }}" type="text/javascript"></script>
@@ -56,9 +58,28 @@
     <script src="{{ asset("/assets/javascripts/plugins/validate/additional-methods.js") }}" type="text/javascript"></script>
 
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/area-medica/FormularioKinesiologia.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/area-medica/scriptCalendario.js') }}" type="text/javascript"></script>
+
     <!-- / END - validaciones-->
+
+    <!-- / START - page related files and scripts [optional] -->
+    <script src="{{ asset("assets/javascripts/plugins/common/moment.min.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("assets/javascripts/plugins/fullcalendar/fullcalendar.min.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("assets/javascripts/plugins/bootbox/bootbox.min.js") }}" type="text/javascript"></script>
+
+    <script src="{{ asset('/js/calendar/Calendar.js') }}" type="text/javascript"></script>
+    <script>
+        $("#new-event").on('submit', function(e) {
+            var value;
+            e.preventDefault();
+            value = $("#new-event-input").val();
+            if (value.length > 0) {
+                $("#events .box-content").prepend("<div class='label label-important external-event'>" + value + "</div>");
+                $("#new-event-input").val("");
+                return setDraggableEvents();
+            }
+        });
+    </script>
+    <!-- / END - page related files and scripts [optional] -->
 @endsection
 
 @section("content")
@@ -70,6 +91,38 @@
         <section id="content">
             <div class="container">
                 <div class="row" id="content-wrapper">
+
+                    <div class='col-xs-12'>
+                        <div class='group-header'>
+                            <div class='row'>
+                                <div class='col-sm-6 col-sm-offset-3'>
+                                    <div class='text-center'>
+                                        <h2>Malla de Atenciones</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-sm-12'>
+                                <div class='row'>
+                                    <div class='col-sm-12'>
+                                        <div class='box box-bordered purple-border'>
+                                            <div class='box-header purple-background'>
+                                                <div class='title'>
+                                                    <i class='fa fa-calendar'></i>
+                                                    Malla de Atenciones
+                                                </div>
+                                            </div>
+                                            <div class='box-content'>
+                                                <div class='full-calendar-demo'></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 @include('partials.footer')
             </div>
