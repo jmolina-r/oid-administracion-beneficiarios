@@ -1,7 +1,7 @@
 @extends("layouts.master")
 
 @section("title")
-    Ficha Kinesiología - OID
+    Malla - OID
 @endsection
 
 @section("styles_before")
@@ -56,8 +56,12 @@
     <script src="{{ asset("/assets/javascripts/plugins/validate/additional-methods.js") }}" type="text/javascript"></script>
 
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/area-medica/FormularioKinesiologia.js') }}" type="text/javascript"></script>
     <!-- / END - validaciones-->
+
+    <!-- / START - Calendar-->
+    <script src="{{ asset('/js/calendar/Calendar.js') }}" type="text/javascript"></script>
+
+    <!-- / END - calendar-->
 @endsection
 
 @section("content")
@@ -69,6 +73,20 @@
         <section id="content">
             <div class="container">
                 <div class="row" id="content-wrapper">
+
+                    <div class='box box-bordered purple-border'>
+                        <div class='box-header purple-background'>
+                            <div class='title'>
+                                <i class='fa fa-calendar'></i>
+                                Calendar
+                            </div>
+                        </div>
+                        <div class='box-content'>
+                            <!-- calendar definition -->
+                            <div class='full-calendar-demo'></div>
+                        </div>
+                    </div>
+
                 </div>
                 @include('partials.footer')
             </div>
