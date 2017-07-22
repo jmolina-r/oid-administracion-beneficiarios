@@ -5,7 +5,7 @@
 @endsection
 
 @section("styles_before")
-    <link href="{{ asset("/assets/stylesheets/plugins/fuelux/wizard.css") }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset("/assets/stylesheets/plugins/fullcalendar/fullcalendar.css") }}" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
 @section("styles")
@@ -40,7 +40,7 @@
     <!-- / START - page related files and scripts [optional] -->
     <script src="{{ asset("/assets/javascripts/plugins/fuelux/wizard.js") }}" type="text/javascript"></script>
     <!-- / END - page related files and scripts [optional] -->
-
+    <script src="{{ asset("/assets/javascripts/plugins/fullcalendar/fullcalendar.js") }}" type="text/javascript"></script>
 
     <!-- / START - moments-->
     <script src="{{ asset("/assets/javascripts/plugins/common/moment.min.js") }}" type="text/javascript"></script>
@@ -57,6 +57,7 @@
 
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/area-medica/FormularioKinesiologia.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/area-medica/scriptCalendario.js') }}" type="text/javascript"></script>
     <!-- / END - validaciones-->
 @endsection
 
