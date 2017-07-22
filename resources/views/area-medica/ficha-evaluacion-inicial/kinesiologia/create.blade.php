@@ -56,7 +56,7 @@
     <script src="{{ asset("/assets/javascripts/plugins/validate/additional-methods.js") }}" type="text/javascript"></script>
 
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/area-medica/IngresoFormulario.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/area-medica/FormularioKinesiologia.js') }}" type="text/javascript"></script>
     <!-- / END - validaciones-->
 @endsection
 
@@ -570,6 +570,183 @@
                     </div>
                 </div>
                 @include('partials.footer')
+
+                <div class="modal-custom">
+                    <div class='modal fade' id='confirmation' tabindex='-1'>
+                        <div class='modal-dialog'>
+                            <div class='modal-content'>
+                                <div class='modal-header'>
+                                    <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                                    <h3 class='modal-title' id='myModalLabel'>Confirmación</h3>
+                                </div>
+                                <div class='modal-body'>
+                                    <h5>A continuación se muestran todos los datos ingresados para el formulario de evaluaciń inicial. Favor leer detalladamente y confirmar con el botón registrar. De lo contrario, vuelva y modifique los datos que sean necesarios.</h5>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-lg-6">
+                                            <h4>Patologías Concomitantes</h4>
+                                            <p id="pat_concom_confirmation">-</p>
+                                            <h4>Alergias</h4>
+                                            <p id="alergias_confirmation">-</p>
+                                            <h4>Medicamentos</h4>
+                                            <p id="medicamentos_confirmation">-</p>
+                                            <h4>Antecedentes Quirúrgicos</h4>
+                                            <p id="ant_quir_confirmation">-</p>
+                                            <h4>Aparatos</h4>
+                                            <p id="aparatos_confirmation">-</p>
+                                            <h4>¿Fuma?</h4>
+                                            <p id="fuma_sn_confirmation">-</p>
+                                            <h4>¿Bebe OH?</h4>
+                                            <p id="alcohol_sn_confirmation">-</p>
+                                            <h4>Act. física</h4>
+                                            <p id="act_fisica_sn_confirmation">-</p>
+                                        </div>
+                                        <div class="col-sm-12 col-lg-6">
+                                            <h4>1. Situación Familiar</h4>
+                                            <p id="situacion_familiar_confirmation">-</p>
+                                            <h4>2. Situación Laboral</h4>
+                                            <p id="situacion_laboral_confirmation">-</p>
+                                            <h4>3. ¿Asiste algún centro de RHB?</h4>
+                                            <p id="asiste_centro_rhb_confirmation">-</p>
+                                            <h4>4. Motivo de Consulta</h4>
+                                            <p id="motivo_consulta_confirmation">-</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <h3>Autocuidado</h3>
+                                        <div class="col-lg-12">
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>1. Alimentación</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_alimentacion_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_alimentacion_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>2. Arreglo Personal</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_arreglo_pers_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_arreglo_pers_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>3. Baño</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_bano_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_bano_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>4. Vestuario Superior</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_vest_sup_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_vest_sup_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>5. Vestuario Inerior</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_vest_inf_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_vest_inf_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>6. Aseo Personal</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_aseo_pers_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_aseo_pers_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                        <h3>Control de Esfinteres</h3>
+                                        <div class="col-lg-12">
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>1. Control de Vejiga</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_control_vejiga_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_control_vejiga_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>2. Control de Instestino</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_control_intestino_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_control_intestino_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+
+                                        <div class="col-lg-12">
+                                            <h4>Diagnóstico médico</h4>
+                                            <p id="diagnostico_confirmation">-</p>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <h4>Otras Enfermedades</h4>
+                                            <p id="otras_enfermedades_confirmation">-</p>
+                                        </div>
+                                        <div class="col-sm-12 col-lg-6">
+                                            <h4>Dependencia</h4>
+                                            <p id="dependencia_confirmation">-</p>
+                                            <h4>Plan de rehabilitación, tratamiento o control</h4>
+                                            <p id="plan_confirmation">-</p>
+                                        </div>
+                                        <div class="col-sm-12 col-lg-6">
+                                            <h4>Cuidado de terceros</h4>
+                                            <p id="cuidado_confirmation">-</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='modal-footer'>
+                                    <button class='btn btn-default' data-dismiss='modal' type='button'>Volver</button>
+                                    <button class='btn btn-success' type='button' onclick="enviarFormulario()">Registrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    /**
+                     * Envia el formulario cuando ya fueron revisados todos los datos
+                     */
+                    function enviarFormulario(){
+
+                        $('#formulario-registro').submit();
+                    }
+                </script>
+
             </div>
         </section>
     </div>
