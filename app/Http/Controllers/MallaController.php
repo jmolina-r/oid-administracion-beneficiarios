@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Beneficiario;
 use App\HoraAgendada;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MallaController extends Controller
 {
@@ -44,13 +45,18 @@ class MallaController extends Controller
         $beneficiario = Beneficiario::where('rut', $rut_beneficiario)->first();
         $id_beneficiario = $beneficiario->id;
 
+        if (Auth::check())
+        {
+            $id = Auth::user()->id;
+        }
+
         $hora_agendada = new HoraAgendada([
             'beneficiario_id' => $id_beneficiario,
             'asist_sn' => '-',
             'hora' => $hora,
             'fecha' => $fecha,
             'razon_inasis' => '-',
-            'user_id' => '1'
+            'user_id' => $id
         ]);
 
         $hora_agendada->save();

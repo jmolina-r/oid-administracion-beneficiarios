@@ -221,7 +221,6 @@
 
         var fecha = moment(start).format('DD/MM/YYYY');
         var hora = moment(start).format('hh:mm');
-        alert(rut);
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
