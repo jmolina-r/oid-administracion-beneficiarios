@@ -66,11 +66,10 @@
 
 
         select: function(start, end, allDay) {
-            alert(moment(start).format('DD/MM/YYYY'));
-            return bootbox.prompt("Event title", function(title) {
+            return bootbox.prompt("Ingrese rut de beneficiario", function(title) {
                 if (title !== null) {
                     cal.fullCalendar("renderEvent", {
-                        title: title,
+                        title: encontrarNombre(title),
                         start: start,
                         end: end,
                         allDay: allDay
@@ -169,5 +168,30 @@
             }
         ]
     });
+
+    function encontrarNombre(rut) {
+        var nombre_encontrado;
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            async: false,
+            url: "/malla/getnombre",
+            type: "GET",
+            data: {
+                rutBuscado: rut
+            },
+            success: function(data, textStatus, jqXHR) {
+                var beneficiario_encontrado = $.parseJSON(data);
+                nombre_encontrado = beneficiario_encontrado.nombre;
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+
+        return nombre_encontrado;
+    }
 
 })();

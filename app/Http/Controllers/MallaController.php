@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Beneficiario;
 use Illuminate\Http\Request;
 
 class MallaController extends Controller
@@ -90,4 +91,5 @@ class MallaController extends Controller
     {
         //
     }
+
 }

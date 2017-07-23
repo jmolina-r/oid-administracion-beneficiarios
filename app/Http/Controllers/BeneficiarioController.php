@@ -749,4 +749,12 @@ class BeneficiarioController extends Controller
             ->toArray();
         return response()->json(['beneficiarios' => $beneficiarios]);
     }
+
+    public function findNombrePorRut(Request $request){
+        $rutBuscado = $request->input('rutBuscado');
+
+        $beneficiarioEncontrado = Beneficiario::where('rut', $rutBuscado)->first();
+
+        return $beneficiarioEncontrado->toJson();
+    }
 }

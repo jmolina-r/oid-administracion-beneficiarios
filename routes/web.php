@@ -165,5 +165,8 @@ Route::group(['prefix' => '/malla'], function (){
         'uses' => 'MallaController@show',
         'as' => 'malla.show'
     ]);
+    Route::get('/getnombre', [
+        'uses' => 'BeneficiarioController@findNombrePorRut'
+    ]);
 });
 
