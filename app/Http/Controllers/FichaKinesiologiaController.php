@@ -20,6 +20,7 @@ use Illuminate\Http\Request;
 
 class FichaKinesiologiaController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *

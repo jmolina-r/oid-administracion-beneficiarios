@@ -26,6 +26,10 @@ textarea {
 	resize:none;
 }
 
+#userOptions {
+	margin-top: 15px;
+}
+
 /***************************/
 /***** Person Profile ******/
 /***************************/
