@@ -11,11 +11,9 @@
 @section("styles")
     <link href="{{ asset("/assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css") }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset("/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css") }}" rel="stylesheet" type="text/css" media="all" />
-    <link href="{{ asset("/assets/images/meta_icons/apple-touch-icon-precomposed.png") }}" rel="apple-touch-icon-precomposed">
     <link href="{{ asset('/assets/stylesheets/plugins/select2/select2.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
 
-    <link href='{{ asset("assets/images/meta_icons/favicon.ico") }}' rel='shortcut icon' type='image/x-icon'>
     <link href="{{ asset("assets/stylesheets/plugins/fullcalendar/fullcalendar.css") }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset("assets/stylesheets/plugins/wysihtml/wysihtml.css") }}" rel="stylesheet" type="text/css" media="all" />
 
@@ -94,27 +92,20 @@
 
                     <div class='col-xs-12'>
                         <div class='group-header'>
-                            <div class='row'>
-                                <div class='col-sm-6 col-sm-offset-3'>
-                                    <div class='text-center'>
-                                        <h2>Malla de Atenciones</h2>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <div class='row'>
                             <div class='col-sm-12'>
                                 <div class='row'>
                                     <div class='col-sm-12'>
-                                        <div class='box box-bordered purple-border'>
-                                            <div class='box-header purple-background'>
+                                        <div class='box box-bordered blue-border'>
+                                            <div class='box-header blue-background'>
                                                 <div class='title'>
                                                     <i class='fa fa-calendar'></i>
                                                     Malla de Atenciones
                                                 </div>
                                             </div>
                                             <div class='box-content'>
-                                                <div class='full-calendar-demo'></div>
+                                                <div class='full-calendar'></div>
                                             </div>
                                         </div>
                                     </div>
