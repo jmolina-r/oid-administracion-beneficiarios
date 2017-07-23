@@ -26,9 +26,6 @@ use App\TipoDependencia;
 use App\TipoDiscapacidad;
 use App\Tutor;
 
-
-
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
