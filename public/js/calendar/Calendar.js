@@ -30,7 +30,7 @@
 
     y = calendarDate.getFullYear();
 
-    cal = $(".full-calendar-demo").fullCalendar({
+    cal = $(".full-calendar").fullCalendar({
         header: {
             center: "title",
             left: "month,agendaWeek,agendaDay,listWeek",
@@ -47,9 +47,24 @@
             month: "Mes",
             listWeek: "Lista"
         },
+        firstDay: Monday=1,
         droppable: true,
         editable: true,
         selectable: true,
+        defaultView: 'agendaWeek',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+        slotEventOverlap: false,
+        locale: 'es',
+
+        contentHeight: 465,
+        minTime: "08:00:00",
+        maxTime: "17:00:00",
+        slotDuration: '00:30:00',
+
+
         select: function(start, end, allDay) {
             return bootbox.prompt("Event title", function(title) {
                 if (title !== null) {
