@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Beneficiario;
 use Illuminate\Http\Request;
 
 class MallaController extends Controller
@@ -36,6 +37,8 @@ class MallaController extends Controller
     public function store(Request $request)
     {
         //
+        return response()
+            ->json(['y' => '2017', 'm' => '06', 'd' => '23']);
     }
 
     /**
@@ -89,5 +92,31 @@ class MallaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Poblar malla.
+     *
+     * @param Request $request
+     * @return view
+     */
+    public function poblar(Request $request)
+    {
+        // Returning array
+        $events = array();
+
+        //while (){
+            $e = array();
+            $e['id'] = '1';
+            $e['title'] = 'Lo logre !!!!!';
+            $e['start'] = '2017-07-23T08:00';
+            $e['end'] = '2017-07-23T09:00';
+            $e['allDay'] = false;
+
+            // Merge the event array into the return array
+            array_push($events, $e);
+        //}
+
+        return json_encode($events);
     }
 }

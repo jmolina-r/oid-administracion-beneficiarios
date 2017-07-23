@@ -5,7 +5,7 @@
 @endsection
 
 @section("styles_before")
-    <link href="{{ asset("/assets/stylesheets/plugins/fuelux/wizard.css") }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset("/assets/stylesheets/plugins/fullcalendar/fullcalendar.css") }}" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
 @section("styles")
@@ -41,6 +41,7 @@
     <!-- / theme file [required] -->
     <script src="{{ asset("/assets/javascripts/theme.js") }}" type="text/javascript"></script>
 
+
     <!-- / START - moments-->
     <script src="{{ asset("/assets/javascripts/plugins/common/moment.min.js") }}" type="text/javascript"></script>
     <!-- / END - moments-->
@@ -55,6 +56,7 @@
     <script src="{{ asset("/assets/javascripts/plugins/validate/additional-methods.js") }}" type="text/javascript"></script>
 
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
+
     <!-- / END - validaciones-->
 
     <!-- / START - page related files and scripts [optional] -->

@@ -1,10 +1,9 @@
 /**
- * Created by pablofb on 22-07-17.
+ * Created by lfgut on 22-07-2017.
  */
-
 (function() {
-
     var cal, calendarDate, d, m, y;
+
     this.setDraggableEvents = function() {
         return $("#events .external-event").each(function() {
             var eventObject;
@@ -30,7 +29,7 @@
 
     y = calendarDate.getFullYear();
 
-    cal = $(".full-calendar").fullCalendar({
+    cal = $(".full-calendar-demo").fullCalendar({
         header: {
             center: "title",
             left: "month,agendaWeek,agendaDay,listWeek",
@@ -41,43 +40,20 @@
             next: "fa-chevron-right"
         },
         buttonText: {
-            today: "Hoy",
-            agendaDay: "Día",
-            agendaWeek: "Semana",
-            month: "Mes",
-            listWeek: "Lista"
+            today: "Today",
+            agendaDay: "Day",
+            agendaWeek: "Week",
+            month: "Month",
+            listWeek: "List"
         },
-        firstDay: Monday=1,
         droppable: true,
         editable: true,
         selectable: true,
-        defaultView: 'agendaWeek',
-        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-        slotEventOverlap: false,
-        locale: 'es',
-
-        contentHeight: 465,
-        minTime: "08:00:00",
-        maxTime: "17:00:00",
-        slotDuration: '00:30:00',
-
-        eventSources: [
-            {
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                url: 'poblar/',
-            }
-        ],
-
         select: function(start, end, allDay) {
-            return bootbox.prompt("Ingrese rut de beneficiario", function(title) {
+            return bootbox.prompt("Event title", function(title) {
                 if (title !== null) {
                     cal.fullCalendar("renderEvent", {
-                        title: encontrarNombre(title),
+                        title: title,
                         start: start,
                         end: end,
                         allDay: allDay
@@ -176,30 +152,5 @@
             }
         ]
     });
-
-    function encontrarNombre(rut) {
-        var nombre_encontrado;
-
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            async: false,
-            url: "/malla/getnombre",
-            type: "GET",
-            data: {
-                rutBuscado: rut
-            },
-            success: function(data, textStatus, jqXHR) {
-                var beneficiario_encontrado = $.parseJSON(data);
-                nombre_encontrado = beneficiario_encontrado.nombre;
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-
-            }
-        });
-
-        return nombre_encontrado;
-    }
 
 })();
