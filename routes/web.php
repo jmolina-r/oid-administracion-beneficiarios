@@ -166,6 +166,11 @@ Route::group(['prefix' => '/malla'], function (){
         'as' => 'malla.show'
     ]);
 
+    Route::post('/store', [
+        'uses' => 'MallaController@store',
+        'as' => 'malla.store'
+    ]);
+
     Route::get('/poblar', [
         'uses' => 'MallaController@poblar',
     ]);

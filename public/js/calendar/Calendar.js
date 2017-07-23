@@ -59,10 +59,10 @@
         slotEventOverlap: false,
         locale: 'es',
 
-        contentHeight: 465,
-        minTime: "08:00:00",
-        maxTime: "17:00:00",
-        slotDuration: '00:30:00',
+        contentHeight: parseInt(document.getElementById("contentHeight").value),
+        minTime: document.getElementById("minTime").value,
+        maxTime: document.getElementById("maxTime").value,
+        slotDuration: document.getElementById("slotDuration").value,
 
         eventSources: [
             {
@@ -73,15 +73,15 @@
             }
         ],
 
-        select: function(start, end, allDay) {
+        select: function(start, end) {
             return bootbox.prompt("Ingrese rut de beneficiario", function(title) {
                 if (title !== null) {
                     cal.fullCalendar("renderEvent", {
                         title: encontrarNombre(title),
                         start: start,
-                        end: end,
-                        allDay: allDay
+                        end: end
                     }, true);
+                    //guardarHora({'title': title, 'start': start, 'end': end});
                     return cal.fullCalendar('unselect');
                 }
             });
@@ -176,6 +176,26 @@
             }
         ]
     });
+
+    function guardarHora(event) {
+        alert(event.start);
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            async: true,
+            url: "/malla/store",
+            type: "POST",
+            data: {
+                title: event.title,
+                start: event.start,
+                end:   event.end
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+    }
 
     function encontrarNombre(rut) {
         var nombre_encontrado;

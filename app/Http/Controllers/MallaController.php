@@ -37,8 +37,6 @@ class MallaController extends Controller
     public function store(Request $request)
     {
         //
-        return response()
-            ->json(['y' => '2017', 'm' => '06', 'd' => '23']);
     }
 
     /**
@@ -54,11 +52,28 @@ class MallaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @return Response
+     * @return view
      */
     public function show()
     {
-        return view('malla.show');
+        //obtener el rol por su sesion
+        /*
+        if (Auth::check())
+        {
+            $rolUsuario = Auth::user()->rol;
+        }
+        */
+
+        $contentHeight = 465;
+        $minTime = '08:00:00';
+        $maxTime = '17:00:00';
+        $slotDuration = '00:30:00';
+
+        return view('malla.show')
+            ->with(compact('contentHeight'))
+            ->with(compact('minTime'))
+            ->with(compact('maxTime'))
+            ->with(compact('slotDuration'));
     }
 
     /**
@@ -104,6 +119,8 @@ class MallaController extends Controller
     {
         // Returning array
         $events = array();
+
+        //$horasAgendadas = HoraAgendada::where();
 
         //while (){
             $e = array();
