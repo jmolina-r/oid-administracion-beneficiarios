@@ -41,9 +41,19 @@ class MallaController extends Controller
         $hora = $request->input('hora');
         $rut_beneficiario = $request->input('rut');
 
-        $hora_agendada = new HoraAgendada([
+        $beneficiario = Beneficiario::where('rut', $rut_beneficiario)->first();
+        $id_beneficiario = $beneficiario->id;
 
+        $hora_agendada = new HoraAgendada([
+            'beneficiario_id' => $id_beneficiario,
+            'asist_sn' => '-',
+            'hora' => $hora,
+            'fecha' => $fecha,
+            'razon_inasis' => '-',
+            'user_id' => '1'
         ]);
+
+        $hora_agendada->save();
     }
 
     /**
