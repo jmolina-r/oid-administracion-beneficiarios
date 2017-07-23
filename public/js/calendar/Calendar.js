@@ -77,11 +77,10 @@
             return bootbox.prompt("Ingrese rut de beneficiario", function(title) {
                 if (title !== null) {
                     cal.fullCalendar("renderEvent", {
-                        title: encontrarNombre(title),
+                        title: encontrarNombre(title, start),
                         start: start,
                         end: end
                     }, true);
-                    //guardarHora({'title': title, 'start': start, 'end': end});
                     return cal.fullCalendar('unselect');
                 }
             });
@@ -178,7 +177,9 @@
     });
 
     function guardarHora(event) {
-        alert(event.start);
+        var fecha = moment(event).format('DD/MM/YYYY');
+        var hora = moment(event).format('hh:mm');
+
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -187,9 +188,8 @@
             url: "/malla/store",
             type: "POST",
             data: {
-                title: event.title,
-                start: event.start,
-                end:   event.end
+                fecha: fecha,
+                hora: hora
             },
             error: function(jqXHR, textStatus, errorThrown) {
 
@@ -197,7 +197,7 @@
         });
     }
 
-    function encontrarNombre(rut) {
+    function encontrarNombre(rut, start) {
         var nombre_encontrado;
 
         $.ajax({
@@ -213,6 +213,26 @@
             success: function(data, textStatus, jqXHR) {
                 var beneficiario_encontrado = $.parseJSON(data);
                 nombre_encontrado = beneficiario_encontrado.nombre;
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+
+            }
+        });
+
+        var fecha = moment(start).format('DD/MM/YYYY');
+        var hora = moment(start).format('hh:mm');
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            async: true,
+            url: "/malla/store",
+            type: "POST",
+            data: {
+                fecha: fecha,
+                hora: hora,
+                rut: rut
             },
             error: function(jqXHR, textStatus, errorThrown) {
 

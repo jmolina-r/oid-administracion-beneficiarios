@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Beneficiario;
+use App\HoraAgendada;
 use Illuminate\Http\Request;
 
 class MallaController extends Controller
@@ -36,7 +37,13 @@ class MallaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fecha = $request->input('fecha');
+        $hora = $request->input('hora');
+        $rut_beneficiario = $request->input('rut');
+
+        $hora_agendada = new HoraAgendada([
+
+        ]);
     }
 
     /**

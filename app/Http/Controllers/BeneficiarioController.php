@@ -749,7 +749,6 @@ class BeneficiarioController extends Controller
 
     public function findNombrePorRut(Request $request){
         $rutBuscado = $request->input('rutBuscado');
-
         $beneficiarioEncontrado = Beneficiario::where('rut', $rutBuscado)->first();
 
         return $beneficiarioEncontrado->toJson();
