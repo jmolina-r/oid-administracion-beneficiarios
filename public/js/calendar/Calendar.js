@@ -51,6 +51,7 @@
         editable: true,
         selectable: true,
         select: function(start, end, allDay) {
+            alert(moment(start).format('DD/MM/YYYY'));
             return bootbox.prompt("Event title", function(title) {
                 if (title !== null) {
                     cal.fullCalendar("renderEvent", {
