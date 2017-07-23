@@ -30,6 +30,17 @@
 
     y = calendarDate.getFullYear();
 
+    var sources = {
+        sourceone: {
+            url: 'malla/store/',
+            type: 'POST',
+            data: { 'year': y },
+            cache: false,       //this is optional
+            color: '#6C92A8',   //this is optional
+            textColor: 'white'  //this is optional
+        }
+    }
+
     cal = $(".full-calendar").fullCalendar({
         header: {
             center: "title",
@@ -64,6 +75,7 @@
         maxTime: "17:00:00",
         slotDuration: '00:30:00',
 
+        eventSources: [sources.sourceone],
 
         select: function(start, end, allDay) {
             return bootbox.prompt("Event title", function(title) {
