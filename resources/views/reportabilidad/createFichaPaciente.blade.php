@@ -194,17 +194,17 @@
                       </div>
                     </div>
                     <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-info'><?php echo $porcentajeFemenino; echo '%'?></h3>
+                          <h3 class='title text-info'><?php echo intval($porcentajeFemenino); echo '%'?></h3>
                           <small>INSCRITOS FEMENINOS</small>
                           <div class='text-info fa fa-venus align-left'></div>
                         </div>
                     <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-muted'><?php echo $porcentajeMasculino; echo '%'?></h3>
+                          <h3 class='title text-muted'><?php echo intval($porcentajeMasculino); echo '%'?></h3>
                           <small>INSCRITOS MASCULINOS</small>
                           <div class='text-muted fa fa-mars align-left'></div>
                      </div>
                       <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-inverse'><?php echo $porcentajeCredencial; echo '%'?></h3>
+                          <h3 class='title text-inverse'><?php echo intval($porcentajeCredencial); echo '%'?></h3>
                           <small>CREDENCIAL DE DISCAPACIDAD ENTREGADAS</small>
                           <div class='text-inverse fa fa-credit-card align-left'></div>
                      </div>
@@ -215,12 +215,12 @@
                             <div class='text-error fa fa-ambulance align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
-                              <h3 class='title text-error'><?php echo $porcentajeFonasa; echo '%'?></h3>
+                              <h3 class='title text-error'><?php echo intval($porcentajeFonasa); echo '%'?></h3>
                               <small>USUARIOS FONASA</small>
                               <div class='text-error fa fa-ambulance align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
-                              <h3 class='title text-error'><?php echo $porcentajeIsapre; echo '%'?></h3>
+                              <h3 class='title text-error'><?php echo intval($porcentajeIsapre); echo '%'?></h3>
                               <small>USUARIOS ISAPRE</small>
                               <div class='text-error fa fa-ambulance align-left'></div>
                         </div>
