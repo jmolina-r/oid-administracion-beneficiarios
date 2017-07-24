@@ -56,6 +56,7 @@
    <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
    <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>
+   <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
 
 @endsection
 
@@ -111,8 +112,8 @@
                           <a href="{{route("social.asistenteSocialGet")}}">
                             <button type="submit" href=""  class="pull-right btn ">Terminar Visita</button>
                           </a>
-                          
-                          
+
+
                             @if(count($errors) > 0)
                                 <hr class='hr-normal controls'>
 
@@ -126,9 +127,10 @@
                                 <hr class='hr-normal controls'>
                                 <div class="alert alert-success">{{ session('info') }}</div>
                             @endif
-                            
+
                             <div class='col-sm-12 form-group'>
                                 <?php $i = 1; ?>
+                                <?php $a = 1; ?>
                                  <div class="tabbable tabs-left">
                                       <ul class="nav nav-tabs">
                                       @foreach($tipoMotivoSocial as $tMotivos)
@@ -154,10 +156,18 @@
                                                         <div class="funkyradio">
                                                               @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
                                                                 @if ($tipoAyuda->tipo=='tecnico')
-                                                                  <div class='funkyradio-primary col-sm-12'>
+                                                                  <!--<div class='funkyradio-primary col-sm-12'>
                                                                       <input type="radio" name="tipoAyudaTecnica[]" id="{{$tipoAyuda->id}}.t" value="{{$tipoAyuda->id}}">
                                                                       <label for="{{$tipoAyuda->id}}.t">{{$tipoAyuda->nombre}}</label>
                                                                   </div>
+                                                                  -->
+
+                                                                      <div class="box-content box-statistic" style="margin-top:10px;">
+                                                                        <input class='make-switch' value="{{$tipoAyuda->id}}" name="tipoAyudaSocial[]" id="{{$tipoAyuda->id}}.t"
+                                                                               data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>'
+                                                                               type='checkbox' onchange="javascript:showContent('{{$tipoAyuda->nombre}}','{{$tipoAyuda->id}}.t')" >
+                                                                        <p id="hverificacion"> {{$tipoAyuda->nombre}} </p>
+                                                                    </div>
                                                                 @endif
                                                             @endforeach
                                                         </div>
@@ -168,26 +178,38 @@
                                                           <div class="funkyradio">
                                                           @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
                                                                   @if ($tipoAyuda->tipo=='social')
-                                                                  <div class='funkyradio-warning col-sm-12'>
+                                                                  <!--<div class='funkyradio-warning col-sm-12'>
                                                                       <input type="radio" name="tipoAyudaSocial[]" id="{{$tipoAyuda->id}}.t" value="{{$tipoAyuda->id}}">
                                                                       <label for="{{$tipoAyuda->id}}.t">{{$tipoAyuda->nombre}}</label>
                                                                   </div>
+                                                                  -->
+                                                                      <div class="box-content box-statistic" style="margin-top:10px;">
+                                                                          <input class='make-switch' value="{{$tipoAyuda->id}}" name="tipoAyudaSocial[]" id="{{$tipoAyuda->id}}.t"
+                                                                                 data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>'
+                                                                                 type='checkbox' onchange="javascript:showContent('{{$tipoAyuda->nombre}}','{{$tipoAyuda->id}}.t')" >
+                                                                          <p id="hverificacion"> {{$tipoAyuda->nombre}} </p>
+                                                                      </div>
                                                                   @endif
                                                           @endforeach
                                                           </div>
-                                                         
+<!--
                                                   <div class='controls col-sm-12' id="contentVD">
                                                           <div style="display: inline;">
                                                              <br>
                                                                   <label for="inputText" style="display:block;">Observación</label>
                                                                   <textarea name="observacionAyuda" id="observacionAyuda" cols="80" rows="4"></textarea>
                                                           </div>
-                                                    </div>
+                                                    </div>-->
+                                                          <div class='box-content box-statistic' id="observacionAyuda">
+                                                              <div>
+                                                                  <textarea name="observacionAyuda" id="observacionAyuda" style="width:100%;" rows="4" placeholder="Observacion.."></textarea>
+                                                              </div>
+                                                          </div>
                                                   </div>
-                                                  
+
                                                 </fieldset>
-                                                
-                                                    
+
+
                                                 <div class="col-sm-12 col-offset-2">
                                                    <button type="submit" name="{{$tMotivos->nombre}}.btn" class="pull-right btn btn-success">Aceptar</button>
                                                 </div>
@@ -197,18 +219,21 @@
                                            @else
                                               <div class="tab-pane" id= "{{$tMotivos->id}}">
                                               <fieldset>
-                                                <form accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data">
+                                                <form accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data" data-toggle="validator" role="form">
                                                  {!!csrf_field()!!}
+                                                
                                                 @foreach($tipoSubmotivoSocial as $sMotivo)
 
                                                     @if($sMotivo->tipo_motivo_social_id == $tMotivos->id)
+                                                         
                                                            @if($tMotivos->id == '3')
-                                                              <div class="control" style="margin-top:10px;">
-                                                                <input class='make-switch' value="{{$sMotivo->id}}" name="vd[]" id="{{$sMotivo->id}}.vd" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}.vd')" ><p id="hverificacion"> {{$sMotivo->nombre}} </p>
+                                                              <div class="box-content box-statistic" style="margin-top:10px;">
+                                                                <input class='make-switch' value="{{$sMotivo->id}}" name="vd[]" id="{{$sMotivo->id}}.vd" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox'><p id="hverificacion"> {{$sMotivo->nombre}} </p>
                                                               </div>
                                                               <div class="help-block with-errors"></div>
                                                               <div class='controls' id="{{$sMotivo->nombre}}" style="display:none">
-                                                                  <div>
+                                                              <!--
+                                                              <div>
                                                                     <label for="inputText"style="display:block;">Observación</label>
                                                                     <textarea name="vdText[]" id="{{$sMotivo->id}}.text" cols="40" rows="4"></textarea>
 
@@ -217,17 +242,39 @@
 
                                                                       <input type="file" name="avatar"></input>
 
-                                                                  @endif
-                                                              </div>
+                                                                  @endif -->
+                                                                  <div>
+                                                                      <input type="file" name="avatar"></input>
 
+                                                                  </div>
+                                                              </div>
+                                                               @if($sMotivo->id == '10')
+                                                                <div>
+                                                                   <input data-file-input data-show-upload="false" data-show-preview='false' title='Search for a file to add' type='file'name="document">
+                                                                </div>
+                                                                <!--
+                                                                <div class='box-content box-statistic' id="{{$sMotivo->nombre}}">
+                                                                  <div>                                                                   
+                                                                    <textarea name="vdText[]" id="{{$sMotivo->id}}.text" style="width:100%;" rows="4" placeholder="Observacion.."></textarea>
+                                                                  </div>                                                                
+                                                                </div>
+                                                                -->
+                                                                  @endif
                                                            @elseif($tMotivos->id == '2')
-                                                               <div class='controls'style="margin-top:10px;">
+                                                               <div class="box-content box-statistic" style="margin-top:10px;">
                                                                     <input class='make-switch' value="{{$sMotivo->id}}" id="inputSubMotivo" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}')"  name="inputSubMotivo[]"><p id="hverificacion">{{$sMotivo->nombre}}</p>
                                                               </div>
+                                                               @if($sMotivo->id == '6')
+
+                                                              @endif
                                                             @elseif($tMotivos->id == '4')
-                                                                <div class='controls'>
+                                                              
+                                                             <div class='controls'>
+                                                                 <div class='box-content box-statistic' id="{{$sMotivo->nombre}}">
                                                                     <label class="radio-inline"> <input type="radio" name="inputSubMotivo[]" onClick="javascript:toggle(this)" id="{{$sMotivo->id}}" value="{{$sMotivo->id}}">{{$sMotivo->nombre}}</label>
-                                                                </div>
+
+
+                                                              
                                                                 @if($sMotivo->id == '12')
                                                                     <div class='controls' id="uno" style="display:none">
                                                                         <div>
@@ -240,6 +287,7 @@
                                                                             <div class="help-block with-errors"></div>
                                                                         </div>
                                                                         <div>
+
                                                                             <label for="inputText"style="display:block;">Resultado</label>
                                                                             <select	id="resultado" name="resultado" onChange="javascript: mostrar(this.value);">
                                                                                 <option value="1">Aprobado</option>
@@ -262,9 +310,26 @@
                                                                         </div>
                                                                     </div>
                                                                 @endif
+                                                                 </div>
+                                                             </div>
                                                             @endif
                                                     @endif
+                                                    
                                                 @endforeach
+    <!--
+                                                    <div class='controls col-sm-12' id="contentVD">
+                                                        <div style="display: inline;">
+                                                            <br>
+                                                            <label for="inputText" style="display:block;">Observación</label>
+                                                            <textarea name="observacion" id="observacion.text" cols="80" rows="4"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    -->
+                                                    <div class='box-content box-statistic' id="{{$sMotivo->nombre}}">
+                                                        <div>
+                                                            <textarea name="observacion{{$tMotivos->id}}" id="observacion.text" style="width:100%;" rows="4" placeholder="Observacion.."></textarea>
+                                                        </div>
+                                                    </div>
                                                 <div class="col-sm-12 col-offset-2">
                                                    <button type="submit" name="{{$tMotivos->nombre}}.btn" class="pull-right btn btn-success" onclick="javascript:checkButton(this)">Aceptar</button>
                                                 </div>
@@ -273,7 +338,7 @@
                                               </div>
                                            @endif
                                           @endforeach
-                                            
+
                                       </div>
                                 </div>
                             </div>

@@ -160,3 +160,12 @@ Route::group(['prefix' => 'reportabilidad'], function(){
     ]);   
 });
 
+Route::group(['prefix' => '/docs'], function(){
+
+    Route::get('/pdf', [
+        'uses' => 'PdfController@invoice',
+        'as' => 'pdf'
+    ]);
+
+});
+
