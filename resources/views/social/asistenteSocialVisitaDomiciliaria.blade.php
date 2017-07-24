@@ -111,8 +111,8 @@
                           <a href="{{route("social.asistenteSocialGet")}}">
                             <button type="submit" href=""  class="pull-right btn ">Terminar Visita</button>
                           </a>
-                          
-                          
+
+
                             @if(count($errors) > 0)
                                 <hr class='hr-normal controls'>
 
@@ -126,7 +126,7 @@
                                 <hr class='hr-normal controls'>
                                 <div class="alert alert-success">{{ session('info') }}</div>
                             @endif
-                            
+
                             <div class='col-sm-12 form-group'>
                                 <?php $i = 1; ?>
                                  <div class="tabbable tabs-left">
@@ -154,10 +154,17 @@
                                                         <div class="funkyradio">
                                                               @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
                                                                 @if ($tipoAyuda->tipo=='tecnico')
-                                                                  <div class='funkyradio-primary col-sm-12'>
+                                                                  <!--<div class='funkyradio-primary col-sm-12'>
                                                                       <input type="radio" name="tipoAyudaTecnica[]" id="{{$tipoAyuda->id}}.t" value="{{$tipoAyuda->id}}">
                                                                       <label for="{{$tipoAyuda->id}}.t">{{$tipoAyuda->nombre}}</label>
                                                                   </div>
+                                                                  -->
+                                                                    <div class="control" style="margin-top:10px;">
+                                                                        <input class='make-switch' value="{{$tipoAyuda->id}}" name="tipoAyudaSocial[]" id="{{$tipoAyuda->id}}.t"
+                                                                               data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>'
+                                                                               type='checkbox' onchange="javascript:showContent('{{$tipoAyuda->nombre}}','{{$tipoAyuda->id}}.t')" >
+                                                                        <p id="hverificacion"> {{$tipoAyuda->nombre}} </p>
+                                                                    </div>
                                                                 @endif
                                                             @endforeach
                                                         </div>
@@ -168,14 +175,21 @@
                                                           <div class="funkyradio">
                                                           @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
                                                                   @if ($tipoAyuda->tipo=='social')
-                                                                  <div class='funkyradio-warning col-sm-12'>
+                                                                  <!--<div class='funkyradio-warning col-sm-12'>
                                                                       <input type="radio" name="tipoAyudaSocial[]" id="{{$tipoAyuda->id}}.t" value="{{$tipoAyuda->id}}">
                                                                       <label for="{{$tipoAyuda->id}}.t">{{$tipoAyuda->nombre}}</label>
                                                                   </div>
+                                                                  -->
+                                                                      <div class="control" style="margin-top:10px;">
+                                                                          <input class='make-switch' value="{{$tipoAyuda->id}}" name="tipoAyudaSocial[]" id="{{$tipoAyuda->id}}.t"
+                                                                                 data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>'
+                                                                                 type='checkbox' onchange="javascript:showContent('{{$tipoAyuda->nombre}}','{{$tipoAyuda->id}}.t')" >
+                                                                          <p id="hverificacion"> {{$tipoAyuda->nombre}} </p>
+                                                                      </div>
                                                                   @endif
                                                           @endforeach
                                                           </div>
-                                                         
+
                                                   <div class='controls col-sm-12' id="contentVD">
                                                           <div style="display: inline;">
                                                              <br>
@@ -184,10 +198,10 @@
                                                           </div>
                                                     </div>
                                                   </div>
-                                                  
+
                                                 </fieldset>
-                                                
-                                                    
+
+
                                                 <div class="col-sm-12 col-offset-2">
                                                    <button type="submit" name="{{$tMotivos->nombre}}.btn" class="pull-right btn btn-success">Aceptar</button>
                                                 </div>
@@ -208,7 +222,8 @@
                                                               </div>
                                                               <div class="help-block with-errors"></div>
                                                               <div class='controls' id="{{$sMotivo->nombre}}" style="display:none">
-                                                                  <div>
+                                                              <!--
+                                                              <div>
                                                                     <label for="inputText"style="display:block;">Observación</label>
                                                                     <textarea name="vdText[]" id="{{$sMotivo->id}}.text" cols="40" rows="4"></textarea>
 
@@ -217,7 +232,11 @@
 
                                                                       <input type="file" name="avatar"></input>
 
-                                                                  @endif
+                                                                  @endif -->
+                                                                  <div>
+                                                                      <input type="file" name="avatar"></input>
+
+                                                                  </div>
                                                               </div>
 
                                                            @elseif($tMotivos->id == '2')
@@ -265,6 +284,14 @@
                                                             @endif
                                                     @endif
                                                 @endforeach
+                                                    <div class='controls col-sm-12' id="contentVD">
+                                                        <div style="display: inline;">
+                                                            <br>
+                                                            <label for="inputText" style="display:block;">Observación</label>
+                                                            <textarea name="observacion" id="observacion.text" cols="80" rows="4"></textarea>
+                                                        </div>
+                                                    </div>
+
                                                 <div class="col-sm-12 col-offset-2">
                                                    <button type="submit" name="{{$tMotivos->nombre}}.btn" class="pull-right btn btn-success" onclick="javascript:checkButton(this)">Aceptar</button>
                                                 </div>
@@ -273,7 +300,7 @@
                                               </div>
                                            @endif
                                           @endforeach
-                                            
+
                                       </div>
                                 </div>
                             </div>

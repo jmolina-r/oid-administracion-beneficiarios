@@ -20,7 +20,7 @@ class FichaSocialController extends Controller
 
         $this->validate($request, ['rut' => 'required|exists:beneficiarios,rut']);
         $beneficiario = Beneficiario::where('rut',$request->input('rut'))->first();
-                         
+
         $tipoMotivoSocial = TipoMotivoSocial::get();
         $tipoSubmotivoSocial = TipoSubmotivoSocial::get();
         $tipoAyudaTecnicoSocial = TipoAyudaTecnicoSocial::get();
@@ -41,17 +41,21 @@ class FichaSocialController extends Controller
         if (isset($_POST["visita_domiciliaria_btn"])) {
             $this->validate($request, ['vd' => 'required']);
             $motivoVisita = $request -> input('vd');
-            $obsVisita = $request -> input('vdText');
+            $obsVisita = $request -> input('observacion');
 
             for($i=0;$i<count($motivoVisita);$i++){
 
                 //Se obtiene la posicion de la observacion del motivo de visita
                 $textPos = $motivoVisita[$i]-7;
                 //Se comprueba que no sea null
-                if($obsVisita[$textPos]!=NULL){
+                if($obsVisita!=NULL){
+                    //Si se lleno el campo, este sustituye el N/A
+                    $obsIt = $obsVisita;
+                }
+                /*if($obsVisita[$textPos]!=NULL){
                     //Si se lleno el campo, este sustituye el N/A
                     $obsIt = $obsVisita[$textPos];
-                }
+                }*/
                 //Se valida que vd sea requerido
                 $this->validate($request, ['vd' => 'required',]);
                 $motivoSocial = new \App\MotivoAtencionSocial([
@@ -87,7 +91,7 @@ class FichaSocialController extends Controller
                         'ficha_atencion_social_id' => '1',
                         'tipo_motivo_social_id' => '1',
                         'tipo_submotivo_id' => NULL,
-                        'tipo_ayuda_id' => $motivoAyudaTecnica[0]
+                        'tipo_ayuda_id' => $motivoAyudaTecnica[$i]
                     ]);
                     $motivoSocial->save();
 
@@ -102,7 +106,7 @@ class FichaSocialController extends Controller
                     'ficha_atencion_social_id' => '1',
                     'tipo_motivo_social_id' => '1',
                     'tipo_submotivo_id' => NULL,
-                    'tipo_ayuda_id' => $motivoAyudaSocial[0]
+                    'tipo_ayuda_id' => $motivoAyudaSocial[$i]
                 ]);
                 $motivoSocial->save();
 
