@@ -37,11 +37,13 @@ class FichaSocialController extends Controller
 
         $now = new \DateTime();
         $obsIt = 'N/A';
-     
+
         if (isset($_POST["visita_domiciliaria_btn"])) {
+            //En caso de que se ingrese una visita domiciliaria
+      
             $this->validate($request, ['vd' => 'required']);
             $motivoVisita = $request -> input('vd');
-            $obsVisita = $request -> input('observacion');
+            $obsVisita = $request -> input('observacion3');
 
             for($i=0;$i<count($motivoVisita);$i++){
 
@@ -56,11 +58,28 @@ class FichaSocialController extends Controller
                     //Si se lleno el campo, este sustituye el N/A
                     $obsIt = $obsVisita[$textPos];
                 }*/
+
+/*Esto lo hizo el bryan
+            if($request -> input('observacionVisita') != ''){
+                    $obsIt = $request -> input('observacionVisita');
+            }
+
+            for($i=0;$i<count($motivoVisita);$i++){
+Esto lo hizo el bryan
+*/
+               
+
                 //Se valida que vd sea requerido
                 $this->validate($request, ['vd' => 'required',]);
+                $archivo = NULL;
+                if($request->hasFile('document')) {
+                    $archivo = $request->file('document')->store('public');
+                }
+
                 $motivoSocial = new \App\MotivoAtencionSocial([
 
                     'observación' => $obsIt,
+                    'documento' => $archivo,
                     'fecha_visita' => $now->format('Y-m-d H:i:s'),
                     'ficha_atencion_social_id' => '1',
                     'tipo_motivo_social_id' => '3',
@@ -73,6 +92,7 @@ class FichaSocialController extends Controller
             return back()->with('info','Se ha ingresado con éxito la visita');
 
         } elseif(isset($_POST["ayudas_btn"])) {
+            //En caso de que se ingrese una ayuda
             
             $this->validate($request, ['tipoAyudaSocial' => 'required_without_all:tipoAyudaTecnica',
                                          'tipoAyudaTecnica' => 'required_without_all:tipoAyudaSocial',]);
@@ -115,11 +135,18 @@ class FichaSocialController extends Controller
             return back()->with('info','Se ha ingresado con éxito la visita');
 
         } elseif(isset($_POST["becas_btn"])){
-            
+            //En caso de que se ingrese beca como motivo
+
             $subMotivos = $request -> input('inputSubMotivo');
+            $obsVisita = $request -> input('observacion4');
+            if($obsVisita!=NULL){
+                //Si se lleno el campo, este sustituye el N/A
+                $obsIt = $obsVisita;
+            }
+
             if($subMotivos[0]==12){
                 $postAT = $request -> input('postAT');
-                $obsIt = $postAT[0] . ";";
+                $obsIt = $obsIt . $postAT[0] . ";";
                 $obsIt = $obsIt . $postAT[1] . ";";;
                 $resultado = $request -> input('resultado');
 
@@ -149,7 +176,13 @@ class FichaSocialController extends Controller
 
             //Orientacion
             $this->validate($request, ['inputSubMotivo' => 'required']);
+            $obsVisita = $request -> input('observacion2');
             $subMotivos = $request -> input('inputSubMotivo');
+
+            if($obsVisita!=NULL){
+                //Si se lleno el campo, este sustituye el N/A
+                $obsIt = $obsVisita;
+            }
             for($i=0;$i<count($subMotivos);$i++){
 
                 $motivoSocial = new \App\MotivoAtencionSocial([

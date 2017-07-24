@@ -59,7 +59,7 @@
         ]);
 
         var options = {
-          title: 'TRAMOS FONASA'
+          title: 'TRAMOS FONASA',
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -68,7 +68,7 @@
       }
     </script>
     <script type="text/javascript">
-       google.charts.load("current", {packages:["corechart"]});
+      google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
