@@ -194,12 +194,12 @@
                       </div>
                     </div>
                     <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-info'><?php echo $porcentajeFemenino; echo '%'?></h3>
+                          <h3 class='title text-info'><?php echo number_format($porcentajeFemenino,2,'.',''); echo '%'?></h3>
                           <small>INSCRITOS FEMENINOS</small>
                           <div class='text-info fa fa-venus align-left'></div>
                         </div>
                     <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-muted'><?php echo $porcentajeMasculino; echo '%'?></h3>
+                          <h3 class='title text-muted'><?php echo number_format($porcentajeMasculino,2,'.',''); echo '%'?></h3>
                           <small>INSCRITOS MASCULINOS</small>
                           <div class='text-muted fa fa-mars align-left'></div>
                      </div>

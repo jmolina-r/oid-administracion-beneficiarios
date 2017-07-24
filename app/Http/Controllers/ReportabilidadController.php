@@ -18,7 +18,7 @@ use Illuminate\Http\Request;
 class ReportabilidadController extends Controller
 {
     public function index() {
-        return view('social.asistenteSocial');
+        return view('reportabilidad.menuReportabilidad');
     }
 
 

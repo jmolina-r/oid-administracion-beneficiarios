@@ -150,14 +150,25 @@ Route::group(['prefix' => 'beneficiario'], function () {
 
 Route::group(['prefix' => 'reportabilidad'], function(){
     Route::get('/createFichaPaciente', [
-    'uses' => 'ReportabilidadController@show',
-    'as' => 'reportabilidad.createFichaPaciente'
+        'uses' => 'ReportabilidadController@show',
+        'as' => 'reportabilidad.createFichaPaciente'
     ]);
-    
+
     Route::get('/showEstadistica', [
-    'uses' => 'ReportabilidadController@showResults',
-    'as' => 'reportabilidad.showEstadistica'
-    ]);   
+        'uses' => 'ReportabilidadController@showResults',
+        'as' => 'reportabilidad.showEstadistica'
+    ]);
+
+    Route::get('/menuReportabilidad', [
+        'uses' => 'ReportabilidadController@index',
+        'as' => 'reportabilidad.menu'
+    ]);
+
+    Route::get('/reporteGeneralOID.pdf', [
+        'uses' => 'PdfController@invoice',
+        'as' => 'reportabilidad.reporteGeneral'
+    ]);
+
 });
 
 Route::group(['prefix' => '/docs'], function(){

@@ -141,7 +141,16 @@
                             <span>Visualizar estadísticas</span>
                         </a>
                     </li>
-
+                </ul>
+                <ul class='nav nav-stacked'>
+                    <li class=''>
+                        <a href='{{route('reportabilidad.menu')}}'>
+                            <div class='icon'>
+                                <i class='fa fa-caret-right'></i>
+                            </div>
+                            <span>Menu reportabilidad</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>

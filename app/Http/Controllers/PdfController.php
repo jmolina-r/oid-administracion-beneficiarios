@@ -47,8 +47,7 @@ class PdfController extends Controller
         $atencionMensual = PrestacionRealizada::whereYear('fecha', '=', date('Y'))
             ->whereMonth('fecha', '=', date('m'))
             ->count();
-        //$joven = Beneficiario::where('edad',''<='',18)->count(); 0-18
-        //adulto 19-65    adulto mayor   65-100
+
         $porcentajeJoven = 0;
         $porcentajeAdulto = 0;
         $porcentajeAdultoMayor = 0;
