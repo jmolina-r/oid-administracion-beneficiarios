@@ -134,7 +134,7 @@
                 
                 <ul class='nav nav-stacked'>
                     <li class=''>
-                        <a href='{{route('reportabilidad.showEstadistica')}}'>
+                        <a href='{{route('reportabilidad.menuReportabilidad')}}'>
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>
                             </div>
