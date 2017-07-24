@@ -87,16 +87,18 @@ class MallaController extends Controller
         }
         */
 
-        $contentHeight = 465;
+        $contentHeight = 286;
         $minTime = '08:00:00';
         $maxTime = '17:00:00';
-        $slotDuration = '00:30:00';
+        $slotDuration = '00:45:00';
+        $slotLabelInterval = 1;
 
         return view('malla.show')
             ->with(compact('contentHeight'))
             ->with(compact('minTime'))
             ->with(compact('maxTime'))
-            ->with(compact('slotDuration'));
+            ->with(compact('slotDuration'))
+            ->with(compact('slotLabelInterval'));
     }
 
     /**
@@ -155,18 +157,31 @@ class MallaController extends Controller
 
             $beneficiario = Beneficiario::where('id', $horaAgendada->beneficiario_id)->first();
 
-            $hora = explode(':',$horaAgendada->hora);
-            $horaMasUno = ((int)$hora[0]+1).':'.$hora[1];
+            $horaSeparada = explode(':',$horaAgendada->hora);
 
-            if(strlen($horaMasUno) == 4){
-                $horaMasUno = '0'.$horaMasUno;
+            $hora = $horaSeparada[0];
+            $minutos = (int)$horaSeparada[1] + 45;
+
+            if($minutos >= 60){
+                $hora = ((int)$horaSeparada[0] + 1);
+                $minutos = $minutos - 60;
+
+                if($hora < 10){
+                    $hora = '0'.$hora;
+                }
+
+                if($minutos < 10){
+                    $minutos = '0'.$minutos;
+                }
             }
+
+            $horaEnd = $hora.':'.$minutos;
 
             $e = array();
             $e['id'] = $horaAgendada->id;
             $e['title'] = $beneficiario->nombre;
             $e['start'] = $horaAgendada->fecha.'T'.$horaAgendada->hora;
-            $e['end'] = $horaAgendada->fecha.'T'.$horaMasUno;
+            $e['end'] = $horaAgendada->fecha.'T'.$horaEnd;
             $e['allDay'] = false;
 
             // Merge the event array into the return array

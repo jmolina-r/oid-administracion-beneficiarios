@@ -94,6 +94,7 @@
                     <input id="minTime" name="minTime" type="hidden" value="{{$minTime}}">
                     <input id="maxTime" name="maxTime" type="hidden" value="{{$maxTime}}">
                     <input id="slotDuration" name="slotDuration" type="hidden" value="{{$slotDuration}}">
+                    <input id="slotLabelInterval" name="slotLabelInterval" type="hidden" value="{{$slotLabelInterval}}">
 
                     <div class='col-xs-12'>
                         <div class='group-header'>

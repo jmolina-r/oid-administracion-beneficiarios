@@ -58,11 +58,13 @@
         dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
         slotEventOverlap: false,
         locale: 'es',
+        allDaySlot: false,
 
         contentHeight: parseInt(document.getElementById("contentHeight").value),
         minTime: document.getElementById("minTime").value,
         maxTime: document.getElementById("maxTime").value,
         slotDuration: document.getElementById("slotDuration").value,
+        slotLabelInterval: parseInt(document.getElementById("slotLabelInterval").value),
 
         eventSources: [
             {
@@ -160,55 +162,7 @@
             if ($("#calendar-remove-after-drop").is(":checked")) {
                 return $(this).remove();
             }
-        },
-        events: [
-            {
-                id: "event1",
-                title: "All Day Event",
-                start: moment().startOf('month').format('YYYY-MM-DD'),
-                className: 'event-orange'
-            }, {
-                id: "event2",
-                title: "Long Event",
-                start: moment().subtract(5, 'day').format('YYYY-MM-DD'),
-                end: moment().subtract(1, 'day').format('YYYY-MM-DD'),
-                className: "event-red"
-            }, {
-                id: 999,
-                id: "event3",
-                title: "Repeating Event",
-                start: moment().subtract(3, 'day').format('YYYY-MM-DD HH:mm'),
-                allDay: false,
-                className: "event-blue"
-            }, {
-                id: 999,
-                id: "event3",
-                title: "Repeating Event",
-                start: moment().add(4, 'day').format('YYYY-MM-DD HH:mm'),
-                allDay: false,
-                className: "event-green"
-            }, {
-                id: "event4",
-                title: "Meeting",
-                start: moment().startOf('day').add(10, 'hours').add(30, 'minute').format('YYYY-MM-DD HH:mm'),
-                allDay: false,
-                className: "event-orange"
-            }, {
-                id: "event5",
-                title: "Lunch",
-                start: moment().startOf('day').add(12, 'hours').add(0, 'minute').format('YYYY-MM-DD HH:mm'),
-                end: moment().startOf('day').add(14, 'hours').add(0, 'minute').format('YYYY-MM-DD HH:mm'),
-                allDay: false,
-                className: "event-red"
-            }, {
-                id: "event6",
-                title: "Birthday Party",
-                start: moment().startOf('day').add(1, 'day').add(19, 'hours').add(0, 'minute').format('YYYY-MM-DD HH:mm'),
-                end: moment().startOf('day').add(1, 'day').add(22, 'hours').add(30, 'minute').format('YYYY-MM-DD HH:mm'),
-                allDay: false,
-                className: "event-purple"
-            }
-        ]
+        }
     });
 
     function guardarHora(event) {
