@@ -105,8 +105,13 @@
                 }
 
                 if (title !== null) {
+                    var nombre = encontrarNombre(title, start);
+                    if(nombre == null){
+                        alert('El beneficiario no se encuentra en la base de datos');
+                        return;
+                    }
                     cal.fullCalendar("renderEvent", {
-                        title: encontrarNombre(title, start),
+                        title: nombre,
                         start: start,
                         end: end
                     }, true);
