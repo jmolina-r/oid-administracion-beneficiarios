@@ -39,24 +39,23 @@ class FichaSocialController extends Controller
         $obsIt = 'N/A';
      
         if (isset($_POST["visita_domiciliaria_btn"])) {
+            
+      
             $this->validate($request, ['vd' => 'required']);
             $motivoVisita = $request -> input('vd');
-            $obsVisita = $request -> input('vdText');
+            if($request -> input('observacionVisita') != ''){
+                    $obsIt = $request -> input('observacionVisita');
+            }
 
             for($i=0;$i<count($motivoVisita);$i++){
 
-                //Se obtiene la posicion de la observacion del motivo de visita
-                $textPos = $motivoVisita[$i]-7;
-                //Se comprueba que no sea null
-                if($obsVisita[$textPos]!=NULL){
-                    //Si se lleno el campo, este sustituye el N/A
-                    $obsIt = $obsVisita[$textPos];
-                }
+               
                 //Se valida que vd sea requerido
                 $this->validate($request, ['vd' => 'required',]);
                 $motivoSocial = new \App\MotivoAtencionSocial([
 
                     'observación' => $obsIt,
+                    'documento' => $request->file('document')->store('public'),
                     'fecha_visita' => $now->format('Y-m-d H:i:s'),
                     'ficha_atencion_social_id' => '1',
                     'tipo_motivo_social_id' => '3',
