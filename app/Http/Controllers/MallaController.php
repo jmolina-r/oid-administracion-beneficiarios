@@ -83,7 +83,7 @@ class MallaController extends Controller
         /*
         if (Auth::check())
         {
-            $rolUsuario = Auth::user()->rol;
+            $id = Auth::user()->id;
         }
         */
 
@@ -141,22 +141,38 @@ class MallaController extends Controller
     public function poblar(Request $request)
     {
         // Returning array
-        $events = array();
+        $eventos = array();
 
-        //$horasAgendadas = HoraAgendada::where();
+        if (Auth::check())
+        {
+            $id = Auth::user()->id;
+        }
 
-        //while (){
+        $horasAgendadas = HoraAgendada::where('user_id', $id)->get();
+
+
+        foreach ($horasAgendadas as $horaAgendada) {
+
+            $beneficiario = Beneficiario::where('id', $horaAgendada->beneficiario_id)->first();
+
+            $hora = explode(':',$horaAgendada->hora);
+            $horaMasUno = ((int)$hora[0]+1).':'.$hora[1];
+
+            if(strlen($horaMasUno) == 4){
+                $horaMasUno = '0'.$horaMasUno;
+            }
+
             $e = array();
-            $e['id'] = '1';
-            $e['title'] = 'Lo logre !!!!!';
-            $e['start'] = '2017-07-23T08:00';
-            $e['end'] = '2017-07-23T09:00';
+            $e['id'] = $horaAgendada->id;
+            $e['title'] = $beneficiario->nombre;
+            $e['start'] = $horaAgendada->fecha.'T'.$horaAgendada->hora;
+            $e['end'] = $horaAgendada->fecha.'T'.$horaMasUno;
             $e['allDay'] = false;
 
             // Merge the event array into the return array
-            array_push($events, $e);
-        //}
+            array_push($eventos, $e);
+        }
 
-        return json_encode($events);
+        return json_encode($eventos);
     }
 }

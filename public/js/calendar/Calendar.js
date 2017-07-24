@@ -219,8 +219,8 @@
             }
         });
 
-        var fecha = moment(start).format('DD/MM/YYYY');
-        var hora = moment(start).format('hh:mm');
+        var fecha = moment(start).format('YYYY-MM-DD');
+        var hora = moment(start).format('HH:mm');
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
