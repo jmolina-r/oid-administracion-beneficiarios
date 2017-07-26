@@ -149,6 +149,11 @@ Route::group(['prefix' => 'beneficiario', 'middleware' => 'auth'], function () {
         'uses' => 'BeneficiarioController@findLikeNombreApellidoRutJson',
         'as' => 'beneficiario.findLikeNombreApellidoRutJson'
     ])->middleware('roles:admin|secretaria');
+
+    Route::get('/pdf/{id}', [
+        'uses' => 'BeneficiarioController@generatePDF',
+        'as' => 'beneficiario.generatePDF'
+    ]);
 });
 
 Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
@@ -156,7 +161,7 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     'uses' => 'ReportabilidadController@show',
     'as' => 'reportabilidad.createFichaPaciente'
     ]);
-    
+
     Route::get('/showEstadistica', [
     'uses' => 'ReportabilidadController@showResults',
     'as' => 'reportabilidad.showEstadistica'

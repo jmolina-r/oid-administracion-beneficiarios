@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use \PDF;
+
 use App\Beneficiario;
 use App\Beneficio;
 use App\CredencialDiscapacidad;
@@ -49,6 +51,7 @@ class BeneficiarioController extends Controller
      */
     public function create()
     {
+
         \Debugbar::warning('Watch out…');
 
         //Lista de Paises
@@ -752,5 +755,16 @@ class BeneficiarioController extends Controller
         $beneficiarioEncontrado = Beneficiario::where('rut', $rutBuscado)->first();
 
         return $beneficiarioEncontrado->toJson();
+    }
+
+    /*
+    *
+    * Esta es tu función Peter. Debes generar un pdf del beneficiario que sea presentable
+    *
+    */
+
+    public function generatePDF(Request $request, $id) {
+        $pdf = PDF::loadHTML('<h1>'.Beneficiario::find($id)->nombre.'</h1>');
+        return $pdf->download('invoice.pdf');
     }
 }
