@@ -764,7 +764,63 @@ class BeneficiarioController extends Controller
     */
 
     public function generatePDF(Request $request, $id) {
-        $pdf = PDF::loadHTML('<h1>'.Beneficiario::find($id)->nombre.'</h1>');
+        // Consultas para datos Personales
+        // -------------------------------
+        // busqueda del pais del beneficiario.
+        $idPais = Beneficiario::find($id)->pais_id;
+        $nombrePais = Pais::find($idPais)->nombre;
+        // busqueda del estado civil del beneficiario.
+        $idEstadoCivil = Beneficiario::find($id)->estado_civil_id;
+        $situacionEstadoCivil = EstadoCivil::find($idEstadoCivil)->nombre;
+
+        // Consultas para datos sociales
+        // -----------------------------
+        // busqueda del nivel de educacion del beneficiario.
+        $idEducacion = Beneficiario::find($id)->educacion_id;
+        $nivelEducativo = Educacion::find($idEducacion)->nombre;
+        // busqueda de la ocupacion del beneficiario.
+        $idOcupacion = Beneficiario::find($id)->ocupacion_id;
+        $ocupacion = Ocupacion::find($idOcupacion)->nombre;
+        // busqueda del tramo de fonasa
+        $idFonasa =  DatoSocial::find($id)->fonasa_id;
+        $tramoFonasa = Fonasa::find($idFonasa)->tramo;
+        // busqueda de la prevision
+        $idPrevision = DatoSocial::find($id)->prevision_id;
+        $tipoPrevision = Prevision::find($idPrevision)->nombre;
+
+        $pdf = PDF::loadHTML
+        ('<h1>'.'Información del Beneficiario'.'</h1>'.
+            '<hr>'.'<h2>'.'Datos Personales'.'</h2>'.'</hr>'.
+            'Nombre: '.Beneficiario::find($id)->nombre.'<br/>'.
+            'Apellido: '.Beneficiario::find($id)->apellido.'<br/>'.
+            'Rut: '.Beneficiario::find($id)->rut.'<br/>'.
+            'Fecha de Nacimiento: '.Beneficiario::find($id)->fecha_nacimiento.'<br/>'.
+            'Genero: '.Beneficiario::find($id)->sexo.'<br/>'.
+            'Pais de Origen: '.$nombrePais.'<br/>'.
+            'Situación Civil: '.$situacionEstadoCivil.'<br/>'.
+            '<h2>'.'Ubicación'.'</h2>'.
+            'Calle de Domicilio: '.Domicilio::find($id)->calle.'<br/>'.
+            'Número de Domicilio: '.Domicilio::find($id)->numero.'<br/>'.
+            'Número de Departamento: '.Domicilio::find($id)->numero_depto.'<br/>'.
+            'Block: '.Domicilio::find($id)->bloque.'<br/>'.
+            'Población o Villa: '.Domicilio::find($id)->pobl_vill.'<br/>'.
+            '<h2>'.'Datos de Contacto'.'</h2>'.
+            'Teléfono de Red Fija: '.'<br/>'.
+            'Teléfono Celular: '.'<br/>'.
+            'Correo Electrónico: '.Beneficiario::find($id)->email.'<br/>'.
+            '<h2>'.'Datos Sociales'.'</h2>'.
+            'Tramo Fonasa: '.$tramoFonasa.'<br/>'.
+            'Previsión: '.$tipoPrevision.'<br/>'.
+            'Nivel Educacional: '.$nivelEducativo.'<br/>'.
+            'Ocupación: '.$ocupacion.'<br/>'.
+            'Porcentaje Registro Social de Hogares: '.RegistroSocialHogar::find($id)->porcentaje.'%'.'<br/>'.
+            '<h2>'.'Datos Tutor'.'</h2>'.
+            'Nombre Completo: '.Tutor::find($id)->nombre.' '.Tutor::find($id)->apellido.'<br/>'.
+            '<h2>'.'Observaciones'.'</h2>'.
+            'Observaciones Generales: '.'<br/>'
+
+        );
+
         return $pdf->download('invoice.pdf');
     }
 }

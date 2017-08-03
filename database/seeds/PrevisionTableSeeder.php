@@ -12,12 +12,13 @@ class PrevisionTableSeeder extends Seeder
     public function run()
     {
         $prevision = new \App\Prevision([
-            'nombre' => 'bansander',
+            //'nombre' => 'bansander',
+            'nombre' => 'Bansander',
         ]);
         $prevision->save();
 
-
         $prevision = new \App\Prevision([
+            //'nombre' => 'cuprum ',
             'nombre' => 'cuprum ',
         ]);
         $prevision->save();
@@ -62,6 +63,12 @@ class PrevisionTableSeeder extends Seeder
             'nombre' => 'IPS',
         ]);
         $prevision->save();
+
+        // esta opción fue requerida por Paola.
+        //$prevision = new \App\Prevision([
+          //  'nombre' => 'Otra previsión',
+        //]);
+        //$prevision->save();
 
     }
 }
