@@ -163,6 +163,7 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     ])->middleware('roles:admin');
 });
 
+
 Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
     Route::get('/show', [
         'uses' => 'MallaController@show',
