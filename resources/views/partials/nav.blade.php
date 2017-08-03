@@ -10,13 +10,13 @@
         </div>
         <ul class='nav nav-stacked'>
             <li class='active'>
-                <a href='·'>
+                <a href='/home'>
                     <i class='fa fa-tachometer'></i>
                     <span>Servicio Administrativo OID</span>
                 </a>
             </li>
 
-            @if(Auth::user()->hasAnyRole(['admin']))
+            @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
                 <li class=''>
                     <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
                         <span>Beneficiarios</span>
@@ -28,18 +28,20 @@
                                 <div class='icon'>
                                     <i class='fa fa-caret-right'></i>
                                 </div>
-                                <span>Buscar Beneficiario</span>
+                                <span>Administrar Beneficiarios</span>
                             </a>
                         </li>
 
-                        <li class=''>
-                            <a href='{{route('beneficiario.create')}}'>
-                                <div class='icon'>
-                                    <i class='fa fa-caret-right'></i>
-                                </div>
-                                <span>Registro Beneficiario</span>
-                            </a>
-                        </li>
+                        @if(Auth::user()->hasAnyRole(['admin']))
+                            <li class=''>
+                                <a href='{{route('beneficiario.create')}}'>
+                                    <div class='icon'>
+                                        <i class='fa fa-caret-right'></i>
+                                    </div>
+                                    <span>Registro Beneficiario</span>
+                                </a>
+                            </li>
+                        @endif
 
                     </ul>
                 </li>

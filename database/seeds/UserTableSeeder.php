@@ -25,5 +25,45 @@ class UserTableSeeder extends Seeder
             'name' => 'diego',
             'email' => 'diego@diego.com'
         ]);
+
+        factory(App\User::class)->create([
+            'name' => 'secretaria',
+            'email' => 'secretaria@oid.cl'
+        ]);
+
+        factory(App\User::class)->create([
+            'name' => 'coordinador_oficina',
+            'email' => 'coordinador_oficina@oid.cl'
+        ]);
+
+        factory(App\User::class)->create([
+            'name' => 'jefatura',
+            'email' => 'jefatura@oid.cl'
+        ]);
+
+        factory(App\User::class)->create([
+            'name' => 'psicologia',
+            'email' => 'psicologia@oid.cl'
+        ]);
+
+        factory(App\User::class)->create([
+            'name' => 'kinesiologia',
+            'email' => 'kinesiologia@oid.cl'
+        ]);
+
+        factory(App\User::class)->create([
+            'name' => 'trabajo_social',
+            'email' => 'trabajo_social@oid.cl'
+        ]);
+
+        factory(App\User::class)->create([
+            'name' => 'terapia_ocupacional',
+            'email' => 'terapia_ocupacional@oid.cl'
+        ]);
+
+        factory(App\User::class)->create([
+            'name' => 'fonoaudiologia',
+            'email' => 'fonoaudiologia@oid.cl'
+        ]);
     }
 }
