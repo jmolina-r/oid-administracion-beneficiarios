@@ -67,15 +67,15 @@
 
                         {{ csrf_field() }}
 
-                      <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                      <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                         <div class='controls with-icon-over-input'>
-                            <input id="email" type="email" placeholder="Email" class="form-control" name="email" value="{{ old('email') }}" data-rule-required="true" autofocus>
+                            <input id="username"  placeholder="Rut" class="form-control" name="username" value="{{ old('username') }}" data-rule-required="true" autofocus>
 
                           <i class='fa fa-user text-muted'></i>
                         </div>
-                        @if ($errors->has('email'))
+                        @if ($errors->has('username'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
+                                <strong>{{ $errors->first('username') }}</strong>
                             </span>
                         @endif
                       </div>
