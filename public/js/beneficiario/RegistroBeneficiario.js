@@ -33,7 +33,13 @@ $(document).ready(function() {
             $('#rut_confirmation').html($("#rut").val());
 
             //Confirmacion Sexo
-            $('#sexo_confirmation').html($("#sexo").val());
+            
+            if ($("#sexo").is(":checked"))
+            {
+                $('#sexo_confirmation').html("Masculino");
+            }else {
+                $('#sexo_confirmation').html("Femenino");
+            }
 
             //Confirmacion domicilio
             if($("#domicilio_calle").val()){
@@ -59,10 +65,10 @@ $(document).ready(function() {
             $('#fecha_nacimiento_confirmation').html($("#fecha_nacimiento").val());
 
             //Confirmacion Nacionalidad
-            $('#nacionalidad_confirmation').html($("#id_pais").val());
+            $('#nacionalidad_confirmation').html($("#id_pais option:selected").text());
 
             //Confirmacion Estado Civil
-            $('#estado_civil_confirmation').html($("#estado_civil").val());
+            $('#estado_civil_confirmation').html($("#estado_civil option:selected").text());
 
             //Confirmacion Telefonos
             var telefonos = "";
@@ -114,14 +120,14 @@ $(document).ready(function() {
 
             //Confirmacion Prevision
             if($("#prevision").val()){
-                $("#prevision_confirmation").html($("#prevision").val());
+                $('#prevision_confirmation').html($("#prevision option:selected").text());
             }
 
             //Confirmacion Nivel Educacional
-            $("#nivel_educacional_confirmation").html($("#nivel_educacional").val());
+            $('#nivel_educacional_confirmation').html($("#nivel_educacional option:selected").text());
 
             //Confirmacion Ocupacion
-            $("#ocupacion_confirmation").html($("#ocupacion").val());
+            $('#ocupacion_confirmation').html($("#ocupacion option:selected").text());
 
             //Confirmacion Observacion General
             if($("#observacion_general").val()){
@@ -154,18 +160,15 @@ $(document).ready(function() {
             }    
 
             //Confirmacion Dependencia
-            if($("#dependencia").val()){
-                $("#dependencia_confirmation").html($("#dependencia").val());    
-            } else {
-                $("#dependencia_confirmation").html("-");
-            }
+            $('#dependencia_confirmation').html($("#dependencia option:selected").text());
 
-            // //Confirmacion Cuidado de Terceros
-            // if($("#cuidados").val()){
-            //     $('#cuidados_confirmation').html("Si");
-            // } else {
-            //     $('#cuidados_confirmation').html("No");
-            // }
+            //Confirmacion Cuidado de Terceros
+            if ($("#cuidados").is(":checked"))
+            {
+                $('#cuidados_confirmation').html("Si");
+            }else {
+                $('#cuidados_confirmation').html("No");
+            }
             
             //Confirmacion Plan de Rehabilitacion
             if($("#p_reha_trat_ctrl").val()){
@@ -174,9 +177,25 @@ $(document).ready(function() {
                 $('#plan_confirmation').html("-");
             }
 
-            //Falta
-            //Nacionalidad, Situacion Civil, Sexo, SOCIAL COMPLETO MENOS OBS, Discapacidades, Dependencia, Cuidado de terceros
+            //Confirmacion Sistema de Salud
+            if ($("#sistema_salud").is(":checked"))
+            {
+                $('#salud_confirmation').html("Fonasa - " + $("#sistemaSaludSelec option:selected").text());
+            }else {
+                $('#salud_confirmation').html("Isapre - " + $("#sistemaSaludSelec option:selected").text());
+            }
 
+            //Confirmacion Beneficios
+            $('#beneficios_confirmation').html($("#beneficios option:selected").text());
+
+            //Confirmacion Beneficios
+            $('#beneficios_confirmation').html($("#beneficios option:selected").text());
+
+            //Confirmacion Sistema de Proteccion
+            $('#proteccion_confirmation').html($("#sistema_proteccion option:selected").text());
+
+            //Confirmacion Participacion en Organizaciones Sociales
+            $('#organizaciones_confirmation').html($("#organizaciones_sociales option:selected").text());
 
             $('#confirmation').modal('show');
         }
