@@ -7,7 +7,7 @@
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <div class='form-group'>
-                <input name='nombre_tutor' class='form-control onlyletters' id='nombre_tutor' placeholder='Nombre' type='text' required maxlength="200" value=
+                <input name='nombre_tutor' class='form-control onlyletters' id='nombre_tutor' placeholder='Nombre' type='text' maxlength="200" value=
                 @if(old('nombre_tutor') != null)
                     "{{ old('nombre_tutor') }}"
                 @elseif(isset($persona) && $persona->tutor != null && $persona->tutor->nombre != null)
@@ -22,7 +22,7 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
             <div class='form-group'>
-                <input name='apellido_tutor' class='form-control onlyletters' id='apellido_tutor' placeholder='Apellidos' type='text' required maxlength="200" value=
+                <input name='apellido_tutor' class='form-control onlyletters' id='apellido_tutor' placeholder='Apellidos' type='text' maxlength="200" value=
                 @if(old('apellido_tutor') != null)
                     "{{ old('apellido_tutor') }}"
                 @elseif(isset($persona) && $persona->tutor != null && $persona->tutor->apellido != null)
