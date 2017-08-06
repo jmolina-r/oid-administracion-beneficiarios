@@ -21,7 +21,7 @@
 
 <!-- Atributos del body -->
 @section('body-attr')
-    class='contrast-red login contrast-background'
+    class='contrast-red'
 @endsection
 
 @section('scripts')
@@ -61,101 +61,115 @@
     <script src="{{ asset('/assets/javascripts/plugins/charCount/charCount.js') }}" type="text/javascript"></script>
 @endsection
 
+<!-- Contenido del body -->
 @section('content')
-    @include('partials.header')
+@include('partials.header')
 
 
 
+<div id='wrapper'>
+    <div id='main-nav-bg'></div>
+    @include('partials.nav')
+    <section id='content'>
+        <div class='container'>
+            <div class='row' id='content-wrapper'>
+                <div class='col-xs-12'>
+                    <div class='row'>
+                        <div class='col-sm-12'>
+                            <div class='page-header'>
+                                <h1 class='pull-left'>
+                                    <i class='fa fa-pencil-square-o'></i>
+                                    <span>Registro de Usuario</span>
+                                </h1>
+                                <div class='pull-right'>
+                                    <ul class='breadcrumb'>
+                                      <li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='col-sm-12'>
+                            <div class='box'>
+                                <div class='box-content box-padding'>
+                                    <form action='' class='validate-form' method="POST" action="{{ route('login') }}">
 
-    <div class='middle-container'>
-      <div class='middle-row'>
-        <div class='middle-wrapper'>
+                                        {{ csrf_field() }}
 
-          <div class='login-container'>
-            <div class='container'>
-              <div class='row'>
-                <div class='col-sm-4 col-sm-offset-4'>
-                  <h1 class='text-center title'>Sistema de Administración OID</h1>
+                                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                                            <label class='control-label' for='inputText'>Datos de Usuario</label>
 
-                  <form action='' class='validate-form' method="POST" action="{{ route('login') }}">
+                                            <div class="controls with-icon-over-input">
+                                                <input id="username" type="text" class="form-control" name="username" placeholder="Nombre de Usuario" value="{{ old('username') }}" required autofocus>
 
-                      {{ csrf_field() }}
+                                                @if ($errors->has('username'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('username') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
 
-                      <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 
-                          <div class="controls with-icon-over-input">
-                              <input id="username" type="text" class="form-control" name="username" placeholder="username" value="{{ old('username') }}" required autofocus>
+                                            <div class="controls with-icon-over-input">
+                                                <input id="email" type="email" class="form-control" placeholder="E-mail" name="email" value="{{ old('email') }}" required>
 
-                              @if ($errors->has('username'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('username') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
+                                                @if ($errors->has('email'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('email') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
 
-                      <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 
-                          <div class="controls with-icon-over-input">
-                              <input id="email" type="email" class="form-control" placeholder="email" name="email" value="{{ old('email') }}" required>
+                                            <div class="controls with-icon-over-input">
+                                                <input id="password" type="password" class="form-control" placeholder="Contraseña" name="password" required>
 
-                              @if ($errors->has('email'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('email') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
+                                                @if ($errors->has('password'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('password') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
+                                        </div>
 
-                      <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                        <div class="form-group">
+                                            <div class="controls with-icon-over-input">
+                                                <input id="password-confirm" type="password" class="form-control" placeholder="Confirmar Contraseña" name="password_confirmation" required>
+                                            </div>
+                                        </div>
 
-                          <div class="controls with-icon-over-input">
-                              <input id="password" type="password" class="form-control" placeholder="password" name="password" required>
+                                        <div class="form-group{{ $errors->has('roles') ? ' has-error' : '' }}">
+                                            <label class='control-label' for='inputText'>Roles</label>
 
-                              @if ($errors->has('password'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('password') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
+                                            <select style="width:100%;" name="roles[]" class='form-control select-tag' data-placeholder='Selecciona los beneficios asociados...' multiple='multiple'>
 
-                      <div class="form-group">
+                                                @foreach($roles as $role)
+                                                    <option value="{{$role->id}}">{{$role->nombre}}</option>
+                                                @endforeach
+                                            </select>
 
-                          <div class="controls with-icon-over-input">
-                              <input id="password-confirm" type="password" class="form-control" placeholder="password Confirmation" name="password_confirmation" required>
-                          </div>
-                      </div>
+                                            @if ($errors->has('roles'))
+                                                <span class="help-block">
+                                                    <strong>{{ $errors->first('roles') }}</strong>
+                                                </span>
+                                            @endif
+                                        </div>
 
-                      <div class="form-group{{ $errors->has('roles') ? ' has-error' : '' }}">
-                          <label class='control-label' for='inputText'>Roles</label>
-
-                              <select style="width:100%;" name="roles[]" class='form-control select-tag' data-placeholder='Selecciona los beneficios asociados...' multiple='multiple'>
-
-                                  @foreach($roles as $role)
-                                      <option value="{{$role->id}}">{{$role->nombre}}</option>
-                                  @endforeach
-                              </select>
-
-                              @if ($errors->has('roles'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('roles') }}</strong>
-                                  </span>
-                              @endif
-
-                      </div>
-
-                    <button class='btn btn-block'>Registrar!</button>
-
-                  </form>
-
-
+                                        <button class='btn btn-block btn-success'>Registrar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+            @include('partials.footer')
         </div>
-      </div>
-    </div>
-
+    </section>
+</div>
 @endsection
