@@ -20,8 +20,8 @@ Auth::routes();
 
 
 // Registration Routes...
-Route::get('update', 'Auth\RegisterController@showUpdateForm')->name('update');
-Route::post('update', 'Auth\RegisterController@update');
+Route::get('update', 'Auth\UpdateController@showUpdateForm')->name('update');
+Route::post('update', 'Auth\UpdateController@update');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
