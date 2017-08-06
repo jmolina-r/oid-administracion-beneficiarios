@@ -304,7 +304,8 @@ $(document).ready(function() {
                 previous: 'fa fa-chevron-left',
                 next: 'fa fa-chevron-right'
             },
-            viewMode: 'years'
+            viewMode: 'years',
+            locale: 'es'
         }
 
         if(restriccionFecha == "max") {
