@@ -17,7 +17,8 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
+        // 'name' => $faker->name,
+        'username' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('123456'),
         'remember_token' => str_random(10),
@@ -73,6 +74,15 @@ $factory->define(App\FichaAtencionSocial::class, function (Faker\Generator $fake
         'prestacion_realizadas_id' => $faker->numberBetween($min = 1, $max = 100)
     ];
 });
+/*
+$factory->define(App\TipoSubmotivoSocial::class, function (Faker\Generator $faker) {
+
+    return [
+        'nombre' => $faker->regexify('[0-9]{8}'),
+
+        'ficha_atencion_social_id' => $faker->numberBetween($min = 1, $max = 10),
+    ];
+});
 
 $factory->define(App\MotivoAtencionSocial::class, function (Faker\Generator $faker) {
 
@@ -83,28 +93,19 @@ $factory->define(App\MotivoAtencionSocial::class, function (Faker\Generator $fak
         'ficha_atencion_social_id' => $faker->numberBetween($min = 1, $max = 100),
     ];
 });
-
-$factory->define(App\AyudaTecnicoSocial::class, function (Faker\Generator $faker) {
-
-    return [
-        'nombre' => $faker->regexify('(Tecnico|Social)'),
-        'tipo' => $faker->regexify('(Canasta|Silla|Burro|Cama)'),
-        'descripcion' => $faker->regexify('(Atencion social)'),
-
-        'motivo_atencion_social_id' => $faker->numberBetween($min = 1, $max = 100)
-    ];
-});
+*/
+/*
 $factory->define(App\SubMotivoAtencionSocial::class, function (Faker\Generator $faker) {
 
     return [
         'nombre' => $faker->regexify('[1-5]{1}'),
         'fecha' => $faker->date('y-m-d','now'),
-        'descripcion' => $faker->regexify('(Atencion social)'),
+        'observacion' => $faker->regexify('(Atencion social)'),
 
         'motivo_atencion_social_id' => $faker->numberBetween($min = 1, $max = 100)
     ];
 });
-
+*/
 $factory->define(App\Tutor::class, function (Faker\Generator $faker) {
     return [
         'nombre' => $faker->firstName,
@@ -152,7 +153,6 @@ $factory->define(App\RegistroSocialHogar::class, function (Faker\Generator $fake
 $factory->define(App\FichaKinesiologia::class, function (Faker\Generator $faker) {
 
     return [
-        'diagnostico' => $faker -> regexify('(SE DESCONOCE EL DIAGNOSTICO|DERRAME CEREBRAL|RETRASO MENTAL SEVERO|DISTROFIA MUSCULAR|DIABETES)'),
         'motivo_consulta' => $faker -> regexify('(Evaluación Movilidad|Evaluación Motora|Evaluación Social)'),
         'situacion_laboral' => $faker -> regexify('(Desempleado|Estudiante|Trabajando)'),
         'situacion_familiar' => $faker -> regexify('(Normal|Anormal)'),
@@ -187,6 +187,18 @@ $factory->define(App\AntecedentesMorbidos::class, function (Faker\Generator $fak
 });
 
 $factory->define(App\Kinesiologo::class, function (Faker\Generator $faker) {
+
+    return [
+        'rut' => $faker -> regexify('\[1-9]{8,9}\-(k|[0-9])'),
+        'nombres' => $faker -> firstName,
+        'apellidos' => $faker -> lastName,
+        'telefono' => $faker -> regexify('[0-9]{8}'),
+        'fecha_nacimiento' => $faker -> dateTimeBetween('-50 years', '-25 years'),
+        'direccion' => $faker -> address,
+    ];
+});
+
+$factory->define(App\Psicologo::class, function (Faker\Generator $faker) {
 
     return [
         'rut' => $faker -> regexify('\[1-9]{8,9}\-(k|[0-9])'),
@@ -426,7 +438,6 @@ $factory->define(App\HabilidadesSociales::class, function (Faker\Generator $fake
         'sonrisa_social' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
         'seguimiento_personas' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
         'seguimiento_objetos' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
-        'vestuario_inferior' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
         'investigacion_visual' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
         'investigacion_motora' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),
         'atencion_conjunta' => $faker -> regexify('(Si|No|A veces|Observaciones varias)'),

@@ -23,7 +23,7 @@ class CreateFichaDiscTipoDiscsTable extends Migration
         });
 
         Schema::table('ficha_disc_tipo_discs', function($table) {
-            $table->foreign('ficha_discapacidad_id')->references('id')->on('ficha_discapacidads');
+            $table->foreign('ficha_discapacidad_id')->references('id')->on('ficha_discapacidads')->onDelete('cascade');
         });
 
         Schema::table('ficha_disc_tipo_discs', function($table) {

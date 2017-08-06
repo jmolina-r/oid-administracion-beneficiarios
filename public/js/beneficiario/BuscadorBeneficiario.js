@@ -36,23 +36,14 @@ $(document).ready(function() {
         if (beneficiarios) {
             $("#listaBeneficiario").empty();
             beneficiarios.forEach(function(element) {
-                var cardData = '<div class="card col-xs-12 col-md-6 col-lg-4">' +
-                    '<img class="card-img-top" src="http://placehold.it/230x230&text=Photo" alt="Card image cap">' +
+                var cardData = '<div class="card col-xs-12 col-sm-6 col-md-6 col-lg-4 card-frame">' +
+                    '<img class="card-img-top" src="http://placehold.it/180x180&text=Photo" alt="Card image cap">' +
                     '<div class="card-block">' +
                     '<h4 class="card-title capitalize">' + element.nombre + ' ' + element.apellido + '</h4>' +
                     '<p class="card-text">' + element.rut + '</p>' +
-                    '<button class="btn btn-primary btn-xs" style="margin-bottom:5px">' +
-                    '<i class="fa fa-ambulance"></i>' +
-                    'Médica' +
-                    '</button>' +
-                    '<button class="btn btn-success btn-xs" style="margin-bottom:5px">' +
-                    '<i class="fa fa-users"></i>' +
-                    'Social' +
-                    '</button>' +
-                    '<button class="btn btn-danger btn-xs" style="margin-bottom:5px">' +
-                    '<i class="fa fa-user"></i>' +
-                    'Perfil' +
-                    '</button>' +
+                    '<form method="GET" action="/beneficiario/informacion/'+ element.id +'">' +
+                    '<button class="btn btn-primary" type="submit"> Ver Perfil </button>' +
+                    '</form>' +
                     '</div>' +
                     '</div>';
                 $(cardData).appendTo('#listaBeneficiario').fadeIn('normal');

@@ -10,37 +10,44 @@
         </div>
         <ul class='nav nav-stacked'>
             <li class='active'>
-                <a href='·'>
+                <a href='/home'>
                     <i class='fa fa-tachometer'></i>
                     <span>Servicio Administrativo OID</span>
                 </a>
             </li>
-            <li class=''>
-                <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
-                    <span>Beneficiarios</span>
-                    <i class='fa fa-angle-down angle-down'></i>
-                </a>
-                <ul class='nav nav-stacked'>
-                    <li class=''>
-                        <a href='{{route('beneficiario.find')}}'>
-                            <div class='icon'>
-                                <i class='fa fa-caret-right'></i>
-                            </div>
-                            <span>Buscar Beneficiario</span>
-                        </a>
-                    </li>
 
-                    <li class=''>
-                        <a href='{{route('beneficiario.create')}}'>
-                            <div class='icon'>
-                                <i class='fa fa-caret-right'></i>
-                            </div>
-                            <span>Registro Beneficiario</span>
-                        </a>
-                    </li>
+            @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
+                <li class=''>
+                    <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
+                        <span>Beneficiarios</span>
+                        <i class='fa fa-angle-down angle-down'></i>
+                    </a>
+                    <ul class='nav nav-stacked'>
+                        <li class=''>
+                            <a href='{{route('beneficiario.find')}}'>
+                                <div class='icon'>
+                                    <i class='fa fa-caret-right'></i>
+                                </div>
+                                <span>Administrar Beneficiarios</span>
+                            </a>
+                        </li>
 
-                </ul>
-            </li>
+                        @if(Auth::user()->hasAnyRole(['admin']))
+                            <li class=''>
+                                <a href='{{route('beneficiario.create')}}'>
+                                    <div class='icon'>
+                                        <i class='fa fa-caret-right'></i>
+                                    </div>
+                                    <span>Registro Beneficiario</span>
+                                </a>
+                            </li>
+                        @endif
+
+                    </ul>
+                </li>
+            @endif
+
+            @if(Auth::user()->hasAnyRole(['admin']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
                     <span>Kinesiología</span>
@@ -58,6 +65,9 @@
 
                 </ul>
             </li>
+            @endif
+
+            @if(Auth::user()->hasAnyRole(['admin']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
                     <span>Fonoaudiología</span>
@@ -65,7 +75,7 @@
                 </a>
                 <ul class='nav nav-stacked'>
                     <li class=''>
-                        <a href='{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.ingresar'). '/'. 1}}'>
+                        <a href='{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.create',1)}}'>
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>
                             </div>
@@ -75,6 +85,29 @@
 
                 </ul>
             </li>
+            @endif
+
+            @if(Auth::user()->hasAnyRole(['admin']))
+            <li class=''>
+                <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
+                    <span>Psicología</span>
+                    <i class='fa fa-angle-down angle-down'></i>
+                </a>
+                <ul class='nav nav-stacked'>
+                    <li class=''>
+                        <a href='{{route('area-medica.ficha-evaluacion-inicial.psicologia.create',1)}}'>
+                            <div class='icon'>
+                                <i class='fa fa-caret-right'></i>
+                            </div>
+                            <span>Formulario ingreso psicología</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            @endif
+
+            @if(Auth::user()->hasAnyRole(['admin']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
                     <span>Terapia Ocupacional</span>
@@ -82,7 +115,7 @@
                 </a>
                 <ul class='nav nav-stacked'>
                     <li class=''>
-                        <a href='{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.ingresar'). '/'. 1}}'>
+                        <a href='{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar',1)}}'>
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>
                             </div>
@@ -92,6 +125,9 @@
 
                 </ul>
             </li>
+            @endif
+
+            @if(Auth::user()->hasAnyRole(['admin']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
                     <span>Area Social</span>
@@ -99,7 +135,7 @@
                 </a>
                 <ul class='nav nav-stacked'>
                     <li class=''>
-                        <a href='{{route('social.asistenteSocial')}}'>
+                        <a href='{{route('social.asistenteSocialGet')}}'>
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>
                             </div>
@@ -109,6 +145,49 @@
 
                 </ul>
             </li>
+            @endif
+
+            @if(Auth::user()->hasAnyRole(['admin']))
+            <li class=''>
+                <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
+                    <span>Reportabilidad</span>
+                    <i class='fa fa-angle-down angle-down'></i>
+                </a>
+
+                <ul class='nav nav-stacked'>
+                    <li class=''>
+                        <a href='{{route('reportabilidad.showEstadistica')}}'>
+                            <div class='icon'>
+                                <i class='fa fa-caret-right'></i>
+                            </div>
+                            <span>Visualizar estadísticas</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            @endif
+
+            @if(Auth::user()->hasAnyRole(['admin']))
+            <li class=''>
+                <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
+                    <span>Malla</span>
+                    <i class='fa fa-angle-down angle-down'></i>
+                </a>
+
+                <ul class='nav nav-stacked'>
+                    <li class=''>
+                        <a href='{{route('malla.show')}}'>
+                            <div class='icon'>
+                                <i class='fa fa-caret-right'></i>
+                            </div>
+                            <span>Mostrar malla</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+            @endif
 
         </ul>
     </div>

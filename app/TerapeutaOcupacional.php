@@ -8,7 +8,7 @@ class TerapeutaOcupacional extends Model
 {
     protected $fillable = ['rut', 'nombres', 'apellidos', 'telefono', 'fecha_nacimiento', 'direccion'];
 
-    public function ingreso_terapia_ocupacional()
+    public function ingresoTerapiaOcupacional()
     {
         return $this->hasOne(FichaTerapiaOcupacional::class);
     }

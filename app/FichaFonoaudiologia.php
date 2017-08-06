@@ -52,4 +52,9 @@ class FichaFonoaudiologia extends Model
     {
         return $this->belongsTo(AntecedentesMorbidosFamiliaresSiNoFono::class);
     }
+
+    public function parientesHogarFono()
+    {
+        return $this->hasMany(ParienteHogarFono::class);
+    }
 }

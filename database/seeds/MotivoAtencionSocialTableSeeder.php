@@ -11,6 +11,6 @@ class MotivoAtencionSocialTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\MotivoAtencionSocial::class,100)->create();
+        //factory(App\MotivoAtencionSocial::class,100)->create();
     }
 }

@@ -44,7 +44,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
 <!-- Contenido del body -->
 @section('content')
     @include('partials.header')
-    <div id='wrapper'>
+    <div id='wrapper' class="profile">
         <div id='main-nav-bg'></div>
         @include('partials.nav')
         <section id='content'>
@@ -57,54 +57,91 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                     <h1 class='pull-left'>
                                         <i class='fa fa-user'></i>
                                         <span>
-                                        Información de 
+                                        Información de
                                         <span class="capitalize">
-                                        {{$persona->nombre}} {{$persona->apellido}} 
-                                        <span></span>
+                                        {{$persona->nombre}} {{$persona->apellido}}
+                                        <a href="{{route('beneficiario.edit', $persona->id)}}"><i class="fa fa-pencil-square-o"></i></a>
+
                                     </h1>
                                 </div>
                             </div>
-                        </div>                
+                        </div>
                         <div class="col-lg-12">
                             <div class="col-lg-3">
                                 @include('partials.profile.photo')
                             </div>
-                            <div class="col-md-3">
-                                <h4>Datos Personales</h4>
+                            <div class="col-md-12 col-lg-3">
+                                <h4>
+                                    <i class='fa fa-user'></i>
+                                    Datos Personales
+                                </h4>
+                                <div class="arrow-down"></div>
                                 @include('partials.profile.personal')
                             </div>
                             @isset($persona->domicilio)
-                            <div class="col-md-3">
-                                <h4>Ubicación</h4>
+                            <div class="col-md-12 col-lg-3">
+                                <h4>
+                                    <i class='fa fa-location-arrow'></i>
+                                    Ubicación
+                                </h4>
+                                <div class="arrow-down"></div>
                                 @include('partials.profile.location')
                             </div>
                             @endisset
                             @if((isset($persona->telefonos) && count($persona->telefonos) > 0) || isset($persona->email))
-                            <div class="col-md-3">
-                                <h4>Datos de Contacto</h4>
+                            <div class="col-md-12 col-lg-3">
+                                <h4>
+                                    <i class='fa fa-address-book'></i>
+                                    Datos de Contacto
+                                </h4>
+                                <div class="arrow-down"></div>
                                 @include('partials.profile.contact')
                             </div>
-                            @endif                 
+                            @endif
                         </div>
-                        <div class="col-lg-12">                  
+                        <div class="col-lg-12">
                             <div class="col-md-12">
-                                <h4>Datos sociales</h4>
+                                <h4>
+                                    <i class='fa fa-envira'></i>
+                                    Datos sociales
+                                </h4>
+                                <div class="arrow-down v2"></div>
                                 @include('partials.profile.social')
                             </div>
                             <div class="col-md-12">
-                                <h4>Datos de Discapacidad</h4>
+                                <h4>
+                                    <i class='fa fa-wheelchair'></i>
+                                    Datos de Discapacidad
+                                </h4>
+                                <div class="arrow-down v2"></div>
                                 @include('partials.profile.discapacidad')
                             </div>
                         </div>
                         @isset($persona->tutor)
                         <div class="col-lg-12">
-                            <div class="col-md-4">
-                            <h4>Datos Tutor</h4>
-                            @include('partials.profile.personal', ['persona' => $persona->tutor])
-                            @include('partials.profile.contact', ['persona' => $persona->tutor])
-                            </div>                        
-                        </div>     
-                        @endisset               
+                            <div class="col-md-12">
+                                <h4>
+                                    <i class='fa fa-user'></i>
+                                    Datos Tutor
+                                </h4>
+                                <div class="arrow-down"></div>
+                                @include('partials.profile.personal', ['persona' => $persona->tutor])
+                                @include('partials.profile.contact', ['persona' => $persona->tutor])
+                            </div>
+                        </div>
+                        @endisset
+                        @isset($persona->ficha_beneficiario->dato_social->observacion)
+                        <div class="col-lg-12">
+                            <div class="col-md-12">
+                                <h4>
+                                    <i class='fa fa-binoculars'></i>
+                                    Observaciones
+                                </h4>
+                                <div class="arrow-down"></div>
+                                @include('partials.profile.observacion')
+                            </div>
+                        </div>
+                        @endisset
                     </div>
                 </div>
                 @include('partials.footer')

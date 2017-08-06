@@ -20,12 +20,12 @@ class DatabaseSeeder extends Seeder
         $this->call(TelefonoBeneficiarioTableSeeder::class);
 
 
-
         $this->call(PrestacionRealizadaTableSeeder::class);
         $this->call(FichaAtencionSocialTableSeeder::class);
-        $this->call(MotivoAtencionSocialTableSeeder::class);
-        $this->call(AyudaTecnicoSocialTableSeed::class);
-        $this->call(SubMotivoAtencionSocialTableSeed::class);
+        $this->call(TipoMotivoSocialTableSeeder::class);
+        $this->call(TipoAyudaTecnicoSocialTableSeeder::Class);
+        $this->call(TipoSubmotivoSocialTableSeeder::class);
+        $this->call(MotivoAtencionSocialTableSeeder::Class);
 
         $this->call(TutorTableSeeder::class);
         $this->call(RegistroSocialHogarTableSeeder::class);
@@ -56,6 +56,18 @@ class DatabaseSeeder extends Seeder
         $this->call(ValSensorialTableSeeder::class);
         $this->call(ValSocialTableSeeder::class);
         $this->call(FichaKinesiologiaTableSeeder::class);
+
+        $this->call(PsicologoTableSeeder::class);
+
+        $this->call(TerapeutaOcupacionalTableSeeder::class);
+        $this->call(ActividadesVidaDiariaTableSeeder::class);
+        $this->call(AntecedentesSocioFamiliaresTableSeeder::class);
+        $this->call(AntecedentesSaludTableSeeder::class);
+        $this->call(HistorialClinicoTableSeeder::class);
+        $this->call(DesarrolloEvolutivoTableSeeder::class);
+        $this->call(HabilidadesSocialesTableSeeder::class);
+        $this->call(TerapeutaOcupacionalTableSeeder::class);
+        $this->call(FichaTerapiaOcupacionalTableSeeder::class);
 
         $this->call(RoleTableSeeder::class);
         $this->call(UserTableSeeder::class);

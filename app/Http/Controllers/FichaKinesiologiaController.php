@@ -93,7 +93,7 @@ class FichaKinesiologiaController extends Controller
             $valAutocuidado->save();
 
             $valComCog = new ValComCog([
-                'puntae_expresion' => $request->input('puntae_expresion'),
+                'puntae_expresion' => $request->input('puntaje_expresion'),
                 'coment_expresion' => $request->input('coment_expresion'),
                 'puntaje_comprension' => $request->input('puntaje_comprension'),
                 'coment_comprension' => $request->input('coment_comprension'),
@@ -111,7 +111,7 @@ class FichaKinesiologiaController extends Controller
             $valDeambulacion = new ValDeambulacion([
                 'puntaje_desp_caminando' => $request->input('puntaje_desp_caminando'),
                 'coment_desp_caminando' => $request->input('coment_desp_caminando'),
-                'puntae_escaleras' => $request->input('puntae_escaleras'),
+                'puntae_escaleras' => $request->input('puntaje_escaleras'),
                 'coment_escaleras' => $request->input('coment_escaleras'),
             ]);
             $valDeambulacion->save();
@@ -163,8 +163,6 @@ class FichaKinesiologiaController extends Controller
             $valSocial->save();
 
             $fichaKinesiologia = new FichaKinesiologia([
-                //'diagnostico' => $beneficiario->diagnostico,
-                'diagnostico' => 'diagnostico', //provisional, diagnostico no esta implementado en beneficiario
                 'motivo_consulta' => $request->input('motivo_consulta'),
                 'situacion_laboral' => $request->input('situacion_laboral'),
                 'situacion_familiar' => $request->input('situacion_familiar'),
@@ -182,7 +180,6 @@ class FichaKinesiologiaController extends Controller
                 //'kinesiologo_id' => $kinesiologo->id,
                 'kinesiologo_id' => '1', //provisional, kinesiologo no esta implementado
                 'beneficiario_id' => $request->input('id'),
-                //'beneficiario_id' => '1',
             ]);
             $fichaKinesiologia->save();
         }
@@ -207,7 +204,7 @@ class FichaKinesiologiaController extends Controller
     }
 
     /**
-     * Mostrar formulario de ingreso de evaluacion inicial.
+     * Display the specified resource.
      *
      * @return Response
      */
@@ -252,68 +249,68 @@ class FichaKinesiologiaController extends Controller
     private function rules(Request $request) {
         $rules = [
             'id' => 'required|exists:beneficiarios',
-            'pat_concom' => 'required|max:200',
-            'alergias' => 'required|max:200',
-            'medicamentos' => 'required|max:200',
-            'ant_quir' => 'required|max:200',
-            'aparatos' => 'required|max:200',
-            'fuma_sn' => 'required|max:200',
-            'alcohol_sn' => 'required|max:200',
-            'act_fisica_sn' => 'required|max:200',
-            'puntaje_alimentacion' => 'required|numeric|between:0,10',
+            'pat_concom' => 'nullable|max:200',
+            'alergias' => 'nullable|max:200',
+            'medicamentos' => 'nullable|max:200',
+            'ant_quir' => 'nullable|max:200',
+            'aparatos' => 'nullable|max:200',
+            'fuma_sn' => 'nullable|max:200',
+            'alcohol_sn' => 'nullable|max:200',
+            'act_fisica_sn' => 'nullable|max:200',
+            'puntaje_alimentacion' => 'nullable|numeric|between:1,7',
             'coment_alimentacion' => 'nullable|max:200',
-            'puntaje_arreglo_pers' => 'required|numeric|between:0,10',
+            'puntaje_arreglo_pers' => 'nullable|numeric|between:1,7',
             'coment_arreglo_pers' => 'nullable|max:200',
-            'puntaje_bano' => 'required|numeric|between:0,10',
+            'puntaje_bano' => 'nullable|numeric|between:1,7',
             'coment_bano' => 'nullable|max:200',
-            'puntaje_vest_sup' => 'required|numeric|between:0,10',
+            'puntaje_vest_sup' => 'nullable|numeric|between:1,7',
             'coment_vest_sup' => 'nullable|max:200',
-            'puntaje_vest_inf' => 'required|numeric|between:0,10',
+            'puntaje_vest_inf' => 'nullable|numeric|between:1,7',
             'coment_vest_inf' => 'nullable|max:200',
-            'puntaje_aseo_pers' => 'required|numeric|between:0,10',
+            'puntaje_aseo_pers' => 'nullable|numeric|between:1,7',
             'coment_aseo_pers' => 'nullable|max:200',
-            'puntae_expresion' => 'required|numeric|between:0,10',
+            'puntaje_expresion' => 'nullable|numeric|between:1,7',
             'coment_expresion' => 'nullable|max:200',
-            'puntaje_comprension' => 'required|numeric|between:0,10',
+            'puntaje_comprension' => 'nullable|numeric|between:1,7',
             'coment_comprension' => 'nullable|max:200',
-            'puntaje_control_vejiga' => 'required|numeric|between:0,10',
+            'puntaje_control_vejiga' => 'nullable|numeric|between:1,7',
             'coment_control_vejiga' => 'nullable|max:200',
-            'puntaje_control_intestino' => 'required|numeric|between:0,10',
+            'puntaje_control_intestino' => 'nullable|numeric|between:1,7',
             'coment_control_intestino' => 'nullable|max:200',
-            'puntaje_desp_caminando' => 'required|numeric|between:0,10',
+            'puntaje_desp_caminando' => 'nullable|numeric|between:1,7',
             'coment_desp_caminando' => 'nullable|max:200',
-            'puntae_escaleras' => 'required|numeric|between:0,10',
+            'puntaje_escaleras' => 'nullable|numeric|between:1,7',
             'coment_escaleras' => 'nullable|max:200',
-            'conexion_medio' => 'required|max:200',
-            'nivel_cognitivo_apar' => 'required|max:200',
-            'rom' => 'required|max:200',
-            'fm' => 'required|max:200',
-            'tono' => 'required|max:200',
-            'dolor' => 'required|max:200',
-            'hab_motrices' => 'required|max:200',
-            'equilibrio' => 'required|max:200',
-            'coordinacion' => 'required|max:200',
-            'puntaje_trans_cama_silla' => 'required|numeric|between:0,10',
+            'conexion_medio' => 'nullable|max:200',
+            'nivel_cognitivo_apar' => 'nullable|max:200',
+            'rom' => 'nullable|max:200',
+            'fm' => 'nullable|max:200',
+            'tono' => 'nullable|max:200',
+            'dolor' => 'nullable|max:200',
+            'hab_motrices' => 'nullable|max:200',
+            'equilibrio' => 'nullable|max:200',
+            'coordinacion' => 'nullable|max:200',
+            'puntaje_trans_cama_silla' => 'nullable|numeric|between:1,7',
             'coment_trans_cama_silla' => 'nullable|max:200',
-            'puntaje_traslado_bano' => 'required|numeric|between:0,10',
+            'puntaje_traslado_bano' => 'nullable|numeric|between:1,7',
             'coment_traslado_bano' => 'nullable|max:200',
-            'puntaje_traslado_ducha' => 'required|numeric|between:0,10',
+            'puntaje_traslado_ducha' => 'nullable|numeric|between:1,7',
             'coment_traslado_ducha' => 'nullable|max:200',
-            'visual' => 'required|max:200',
-            'auditivo' => 'required|max:200',
-            'tactil' => 'required|max:200',
-            'propioceptivo' => 'required|max:200',
-            'vestibular' => 'required|max:200',
-            'puntaje_int_social' => 'required|numeric|between:0,10',
+            'visual' => 'nullable|max:200',
+            'auditivo' => 'nullable|max:200',
+            'tactil' => 'nullable|max:200',
+            'propioceptivo' => 'nullable|max:200',
+            'vestibular' => 'nullable|max:200',
+            'puntaje_int_social' => 'nullable|numeric|between:1,7',
             'coment_int_social' => 'nullable|max:200',
-            'puntaje_sol_problemas' => 'required|numeric|between:0,10',
+            'puntaje_sol_problemas' => 'nullable|numeric|between:1,7',
             'coment_sol_problemas' => 'nullable|max:200',
-            'puntaje_memoria' => 'required|numeric|between:0,10',
+            'puntaje_memoria' => 'nullable|numeric|between:1,7',
             'coment_memoria' => 'nullable|max:200',
-            'motivo_consulta' => 'required|max:200',
-            'situacion_laboral' => 'required|max:200',
-            'situacion_familiar' => 'required|max:200',
-            'asiste_centro_rhb' => 'required|max:200',
+            'motivo_consulta' => 'nullable|max:200',
+            'situacion_laboral' => 'nullable|max:200',
+            'situacion_familiar' => 'nullable|max:200',
+            'asiste_centro_rhb' => 'nullable|max:200',
         ];
         return $rules;
     }

@@ -4,6 +4,7 @@
         <html lang="{{ config('app.locale') }}">
         <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
         @yield('styles_before')
@@ -27,5 +28,6 @@
 
         <!-- Con este yield se inyectan los scripts -->
         @yield('scripts')
+        {{-- <script type="text/javascript" src="{{ asset('/js/general.js') }}"></script> --}}
     </body>
 </html>

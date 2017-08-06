@@ -1,6 +1,6 @@
 <header>
     <nav class='navbar navbar-default'>
-        <a class='navbar-brand' href='#'>
+        <a class='navbar-brand' href='/'>
             <img class="logo-img" src="{{ asset('/images/logo.png') }}" alt="">
         </a>
         <a class='toggle-nav btn pull-left' href='#'>
@@ -10,7 +10,7 @@
         <ul id="userOptions" class='nav'>
           <li class='dropdown dark user-menu'>
             <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
-              <span class='user-name'>{{ Auth::user()->name }}</span>
+              <span class='user-name'>{{ Auth::user()->username }}</span>
               <b class='caret'></b>
             </a>
             <ul class='dropdown-menu'>
