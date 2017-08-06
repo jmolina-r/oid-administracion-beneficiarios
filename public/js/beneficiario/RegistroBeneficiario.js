@@ -1,4 +1,9 @@
 $(document).ready(function() {
+    
+    //Trigger del segundo boton continuar al primero
+    $("#continuar_btn_bottom" ).click(function() {
+        $('#continuar_btn').click();
+    });    
 
     //Activa o deshabilita vencimiento credencial segun seleccion anterior
     activador("#credencial_discapacidad","#credencial_vencimiento");
@@ -18,6 +23,14 @@ $(document).ready(function() {
     $('#formulario-registro').validator();
 
     $('#myWizard').wizard().on('actionclicked.fu.wizard', function(e, data) {
+
+        //Acctiones del boton continuar en parte inferior
+        if(data.step == "2" && data.direction == "next"){
+            $("#continuar_btn_bottom").html("Finalizar <i class='fa fa-arrow-right'></i>");
+        } else{
+            $("#continuar_btn_bottom").html("Continuar <i class='fa fa-arrow-right'></i>");
+        }
+
         var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
         if (hasErrors) e.preventDefault();
 

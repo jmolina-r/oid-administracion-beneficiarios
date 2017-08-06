@@ -142,6 +142,16 @@ class='contrast-red'
                                                 </div>
                                                 {{ csrf_field() }}
                                             </form>
+                                            <div class="actions_bottom">
+                                                <button id="continuar_btn_bottom" type='submit' class='pull-right btn btn-md btn-success' data-last='Finalizar'>
+                                                    Continuar
+                                                    <i class='fa fa-arrow-right'></i>
+                                                </button>
+                                                <button class='pull-right btn btn-md btn-prev'>
+                                                    <i class='fa fa-arrow-left'></i>
+                                                    Volver
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
