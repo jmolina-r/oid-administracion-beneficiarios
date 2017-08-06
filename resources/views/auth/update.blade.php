@@ -79,7 +79,7 @@
                             <div class='page-header'>
                                 <h1 class='pull-left'>
                                     <i class='fa fa-pencil-square-o'></i>
-                                    <span>Registro de Usuario</span>
+                                    <span>Guardado de Usuario</span>
                                 </h1>
                                 <div class='pull-right'>
                                     <ul class='breadcrumb'>
