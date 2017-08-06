@@ -211,7 +211,7 @@
                                     <div class='icon'>
                                         <i class='fa fa-caret-right'></i>
                                     </div>
-                                    <span>Registro Usuario</span>
+                                    <span>Creación Usuario</span>
                                 </a>
                             </li>
                         @endif
