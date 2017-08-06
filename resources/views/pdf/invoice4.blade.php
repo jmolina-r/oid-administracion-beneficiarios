@@ -1,3 +1,11 @@
+<!--
+/**
+ * Created by PhpStorm.
+ * User: JOHN
+ * Date: 24-07-2017
+ * Time: 4:35
+ */
+ -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,10 +44,10 @@
 </head>
 <body>
 <div class="div1">
-    <h1>Reporte Kinesiología</h1>
+    <h1>Reporte Atención Social</h1>
     <table>
         <tr >
-            <th class="th1">Kinesiología</th>
+            <th class="th1">OID</th>
             <th class="th1"></th>
             <th class="th1"></th>
         </tr>
@@ -52,16 +60,6 @@
             <td>ATENCIONES MENSUALES</td>
             <td></td>
             <td>12</td>
-        </tr>
-        <tr>
-            <td>CANTIDAD DE ASISTENCIA DE PACIENTES</td>
-            <td></td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>CANTIDAD DE INASISTENCIA DE PACIENTES</td>
-            <td></td>
-            <td>3</td>
         </tr>
     </table>
 </div>

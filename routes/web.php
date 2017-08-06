@@ -155,6 +155,7 @@ Route::group(['prefix' => 'reportabilidad'], function(){
     ]);
 
     Route::get('/showEstadistica', [
+//<<<<<<< HEAD
         'uses' => 'ReportabilidadController@showResults',
         'as' => 'reportabilidad.showEstadistica'
     ]);
@@ -169,8 +170,63 @@ Route::group(['prefix' => 'reportabilidad'], function(){
         'as' => 'reportabilidad.reporteGeneral'
     ]);
 
-});
+    Route::get('/reporteKinesiologia.pdf', [
+        'uses' => 'PdfController@invoice1',
+        'as' => 'reportabilidad.reporteKine'
+    ]);
 
+    Route::get('/reportePsicologia.pdf', [
+        'uses' => 'PdfController@invoice2',
+        'as' => 'reportabilidad.reportePsico'
+    ]);
+
+    Route::get('/reporteTerapOcupacional.pdf', [
+        'uses' => 'PdfController@invoice3',
+        'as' => 'reportabilidad.reporteTer'
+    ]);
+
+    Route::get('/reporteSocial.pdf', [
+        'uses' => 'PdfController@invoice4',
+        'as' => 'reportabilidad.reporteSoc'
+    ]);
+
+    Route::get('/reporteGrupal.pdf', [
+        'uses' => 'PdfController@invoice5',
+        'as' => 'reportabilidad.reporteGru'
+    ]);
+
+    Route::get('/menu', [
+    'uses' => 'ReportabilidadController@index',
+    'as' => 'reportabilidad.menuReportabilidad'
+    ]); 
+
+    Route::get('/reportabilidadKinesiologia',[
+    'uses'=>'ReportabilidadController@showResultKine',
+    'as' => 'reportabilidad.reportabilidadKine'
+    ]); 
+
+    Route::get('/reportabilidadPsiclogia',[
+    'uses'=>'ReportabilidadController@showResultPsico',
+    'as' => 'reportabilidad.reportabilidadPsico'
+    ]);
+
+    Route::get('/reportabilidadTerapiaOcupacional',[
+    'uses'=>'ReportabilidadController@showResultTer',
+    'as' => 'reportabilidad.reportabilidadTer'
+    ]); 
+
+    Route::get('/reportabilidadAtencionSocial',[
+    'uses'=>'ReportabilidadController@showResultSoc',
+    'as' => 'reportabilidad.reportabilidadSoc'
+    ]); 
+
+    Route::get('/reportabilidadGrupal',[
+    'uses'=>'ReportabilidadController@showResultGrupal',
+    'as' => 'reportabilidad.reportabilidadGru'
+    ]);   
+
+});
+/*
 Route::group(['prefix' => '/docs'], function(){
 
     Route::get('/pdf', [
@@ -180,3 +236,4 @@ Route::group(['prefix' => '/docs'], function(){
 
 });
 
+*/

@@ -115,6 +115,35 @@
         chart.draw(data, options);
       }
     </script>
+     <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        
+          ['Task', 'Hours per Day'],
+          ['Cruz Blanca',<?php echo $isapreCruzBlanca ?>],
+          ['Colmena',<?php echo $isapreColmena ?>],
+          ['Mas vida',<?php echo $isapreMasVida ?>],
+          ['Consalud',<?php echo $isapreConsalud ?>],
+          ['Banmedica',<?php echo $isapreBanmedica ?>],
+          ['Vida Tres',<?php echo $isapreVidaTres ?>],
+          ['Codelco', <?php echo $isapreCodelco ?>],
+          ['Dipreca',<?php echo $isapreDipreca ?>],
+          ['Capredena',<?php echo $isapreCapredena ?>],
+          ['Ferro Salud',<?php echo $isapreFerroSalud ?>],
+          ['Otras',<?php echo $isapreOtro ?>],
+        ]);
+
+        var options = {
+          title: 'TIPOS DE ISAPRE',
+         
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('pieechart'));
+        chart.draw(data, options);
+      }
+    </script>
 @endsection
 
 <!-- Contenido del body -->
@@ -200,11 +229,12 @@
                         </div>
                     <div class='box-content box-statistic text-right'>
                           <h3 class='title text-muted'><?php echo number_format($porcentajeMasculino,2,'.',''); echo '%'?></h3>
+
                           <small>INSCRITOS MASCULINOS</small>
                           <div class='text-muted fa fa-mars align-left'></div>
                      </div>
                       <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-inverse'><?php echo $porcentajeCredencial; echo '%'?></h3>
+                          <h3 class='title text-inverse'><?php echo intval($porcentajeCredencial); echo '%'?></h3>
                           <small>CREDENCIAL DE DISCAPACIDAD ENTREGADAS</small>
                           <div class='text-inverse fa fa-credit-card align-left'></div>
                      </div>
@@ -215,18 +245,21 @@
                             <div class='text-error fa fa-ambulance align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
-                              <h3 class='title text-error'><?php echo $porcentajeFonasa; echo '%'?></h3>
+                              <h3 class='title text-error'><?php echo intval($porcentajeFonasa); echo '%'?></h3>
                               <small>USUARIOS FONASA</small>
                               <div class='text-error fa fa-ambulance align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
-                              <h3 class='title text-error'><?php echo $porcentajeIsapre; echo '%'?></h3>
+                              <h3 class='title text-error'><?php echo intval($porcentajeIsapre); echo '%'?></h3>
                               <small>USUARIOS ISAPRE</small>
                               <div class='text-error fa fa-ambulance align-left'></div>
                         </div>
                      </div>
                      <div class='box-content box-statistic col-sm-6 sinpadding'>
                        <div  id="piechart" style="width: 100%; height: 100%;"></div>
+                     </div>
+                     <div class='box-content box-statistic col-sm-12 sinpadding'>
+                       <div  id="pieechart" style="width: 100%; height: 100%;"></div>
                      </div>
                        <div class='box-content box-statistic col-sm-12 text-right'>
                               <h3 class='title text-error'><br></h3>
