@@ -10,6 +10,7 @@
         <ul id="userOptions" class='nav'>
           <li class='dropdown dark user-menu'>
             <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+              <i class="fa fa-user"></i>
               <span class='user-name'>{{ Auth::user()->username }}</span>
               <b class='caret'></b>
             </a>

@@ -125,7 +125,7 @@
                                         </div>
 
                                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-
+                                        <label class='control-label' for='inputText'>Contraseña</label>
                                             <div class="controls with-icon-over-input">
                                                 <input id="password" type="password" class="form-control" placeholder="Contraseña" name="password" required>
 
