@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 
  use Illuminate\Http\Request;
 
-class RegisterController extends Controller
+class UpdateController extends Controller
 {
 
     /**
@@ -77,13 +77,18 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showUpdateForm()
+    public function showUpdateForm($id)
     {
-        //Role
+        // Role
         $roles = Role::get();
 
+        // User
+        $user = User::find($id);
+
         return view('auth.update')
-            ->with(compact('roles'));
+            ->with(compact('roles'))
+            ->with(compact('user'));
+
     }
 
 }

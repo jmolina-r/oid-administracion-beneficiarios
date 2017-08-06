@@ -197,7 +197,7 @@
                     </a>
                     <ul class='nav nav-stacked'>
                         <li class=''>
-                            <a href='{{route('update')}}'>
+                            <a href='#'>
                                 <div class='icon'>
                                     <i class='fa fa-caret-right'></i>
                                 </div>
