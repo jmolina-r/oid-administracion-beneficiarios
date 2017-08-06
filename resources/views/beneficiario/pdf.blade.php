@@ -32,16 +32,39 @@
                 <p>Población o Villa: <span class="capitalize">{{$beneficiario->domicilio->pobl_vill}}</span></p>
             <h2>Datos de Contacto</h2>
                 <p>Teléfono de Red Fija:</p>
-                <p>Teléfono Celuclar:</p>
+                <p>Teléfono Celular:</p>
                 <p>Correo Electrónico:<span class="capitalize">{{$beneficiario->email}}</span></p>
             <h2>Datos Sociales</h2>
-                <p>Tramo Fonasa:</p>
-            <p>Previsión:</p>
+                <p>Tramo Fonasa: <span class="capitalize">{{$beneficiario->ficha_beneficiario->dato_social->fonasa->tramo}}
+                    </span></p>
+                <p>Previsión: <span class="capitalize">{{$beneficiario->ficha_beneficiario->dato_social->prevision->nombre}}
+                    </span></p>
                 <p>Nivel Educacional: <span class="capitalize">{{$beneficiario->educacion->nombre}}</span></p>
                 <p>Ocupación: <span class="capitalize">{{$beneficiario->ocupacion->nombre}}</span></p>
+                <p>Porcentaje Registro Social de Hogares: <span class="capitalize">{{$beneficiario->registro_social_hogar->porcentaje}}%</span></p>
+                @if($beneficiario->credencial_discapacidad->en_tramite === 1)
+                    <p>Credencial de Discapacidad: </span>En Trámite</p>
+                @else
+                    @isset($beneficiario->credencial_discapacidad->fecha_vencimiento)
+                        <p>Vencimiento Credencial de Discapacidad :{{ date('d/m/Y', strtotime($beneficiario->credencial_discapacidad->fecha_vencimiento)) }}</p>
+                    @endisset
+                @endif
+            <h2>Datos de Discapacidad</h2>
+                <p>Tipo de Dependencia: <span class="capitalize">{{$beneficiario->ficha_beneficiario->ficha_discapacidad->tipo_dependencia->nombre}}</span></p>
+                @if($beneficiario->ficha_beneficiario->ficha_discapacidad->requiere_cuidado === 1)
+                    <p>Requiere Cuidados de Terceros: Si</p>
+                @else
+                    <p>Requiere Cuidados de Terceros: No</p>
+                @endif
+
+                <p>Diagnóstico Médico: {{$beneficiario->ficha_beneficiario->ficha_discapacidad->diagnostico}}</p>
             <h2>Datos Tutor</h2>
-            <p>Nombre Completo: <span class="capitalize">{{ $beneficiario->tutor->nombre }}</span>&nbsp;
-                <span class="capitalize">{{ $beneficiario->tutor->apellido }}</span></p>
+                <p>Nombre Completo: <span class="capitalize">{{ $beneficiario->tutor->nombre }}</span>&nbsp;
+                    <span class="capitalize">{{ $beneficiario->tutor->apellido }}</span></p>
+                <p>Teléfono de Red Fija:</p>
+                <p>Teléfono Celular:</p>
+            <h2>Observaciones Tutor</h2>
+            <p>Observacion General: {{$beneficiario->ficha_beneficiario->dato_social->observacion}}</p>
 
 
         </section>
