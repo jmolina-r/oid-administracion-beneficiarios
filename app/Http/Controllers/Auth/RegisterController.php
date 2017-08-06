@@ -59,6 +59,7 @@ class RegisterController extends Controller
             'username' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'roles' => 'required'
         ]);
     }
 
@@ -70,12 +71,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             /*'name' => $data['name'],*/
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        // Role Save
+        if ($data['roles']) {
+            foreach ($data['roles'] as $key => $val) {
+                if (is_numeric($val)) {
+                    $role = Role::find($val);
+                    if ($role) {
+                        $user->roles()->save($role);
+                    }
+                }
+            }
+        }
+
+        return $user;
     }
 
     /**
