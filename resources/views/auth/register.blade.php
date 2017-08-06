@@ -42,7 +42,7 @@
 
 @section('content')
     @include('partials.header')
-    
+
 
 
 
@@ -103,6 +103,18 @@
 
                           <div class="controls with-icon-over-input">
                               <input id="password-confirm" type="password" class="form-control" placeholder="password Confirmation" name="password_confirmation" required>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label class='control-label' for='inputText'>Roles</label>
+                          <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group'>
+                              <select style="width:100%;" name="roles[]" class='form-control select-tag' data-placeholder='Selecciona los beneficios asociados...' multiple='multiple'>
+
+                                  @foreach($roles as $role)
+                                      <option value="{{$role->id}}">{{$role->nombre}}</option>
+                                  @endforeach
+                              </select>
                           </div>
                       </div>
 
