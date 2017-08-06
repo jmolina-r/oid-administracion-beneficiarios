@@ -17,6 +17,12 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+
+// Registration Routes...
+Route::get('update', 'Auth\RegisterController@showUpdateForm')->name('update');
+Route::post('update', 'Auth\RegisterController@update');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'areasocial', 'middleware' => 'auth'], function(){

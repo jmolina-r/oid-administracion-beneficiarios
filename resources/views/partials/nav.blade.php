@@ -189,6 +189,37 @@
             </li>
             @endif
 
+            @if(Auth::user()->hasAnyRole(['admin', 'coordinador_oficina']))
+                <li class=''>
+                    <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
+                        <span>Usuarios</span>
+                        <i class='fa fa-angle-down angle-down'></i>
+                    </a>
+                    <ul class='nav nav-stacked'>
+                        <li class=''>
+                            <a href='{{route('update')}}'>
+                                <div class='icon'>
+                                    <i class='fa fa-caret-right'></i>
+                                </div>
+                                <span>Administrar Usurarios</span>
+                            </a>
+                        </li>
+
+                        @if(Auth::user()->hasAnyRole(['admin']))
+                            <li class=''>
+                                <a href='{{route('register')}}'>
+                                    <div class='icon'>
+                                        <i class='fa fa-caret-right'></i>
+                                    </div>
+                                    <span>Registro Usuario</span>
+                                </a>
+                            </li>
+                        @endif
+
+                    </ul>
+                </li>
+            @endif
+
         </ul>
     </div>
 </nav>
