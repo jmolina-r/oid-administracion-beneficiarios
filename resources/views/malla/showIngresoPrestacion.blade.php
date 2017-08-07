@@ -75,11 +75,43 @@
     <!-- AQUI VA EL NAVBAR  -->
         <section id="content">
             <div class="container">
-                <div class="row" id="content-wrapper">
-
+                <div class="col" id="content-wrapper">
                     <h1>Registro de prestaciones</h1>
-
                 </div>
+                <div class="col-md-12 form-group">
+                    <br>
+                    <label class="col-md-2 control-label" for="paciente-actual">Atendiendo al paciente:</label>
+                    <div class="col-md-4 control-label">
+                        <input class="form-control" id="paciente-actual" name="paciente-actual" value="{{ old('paciente') }}"  placeholder="" disabled>
+                    </div>
+                </div>
+                <div class="col-md-12 form-group">
+                    <label class="col-md-2 control-label" for="area">Área:</label>
+                    <div class="col-md-4 control-label">
+                        <input class="form-control" id="area" name="area" value="{{ old('area') }}"  placeholder="" disabled>
+                    </div>
+                </div>
+
+                <div class="col-md-12 form-group">
+                    <label class="col-md-2 control-label" for="area">Seleccione prestación a realizar</label>
+                    <select class="col-md-3 control-label" id="combo-prestacion" name="combo-prestacion"></select>
+                    <button id="boton-agregar-prestacion" type="button" class="btn btn-primary enabled">
+                        Agregar
+                    </button>
+                    </button>
+                    <table class="col-md-4 table-striped pull-right" id="tabla-prestaciones">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre prestación</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
                 @include('partials.footer')
             </div>
         </section>
