@@ -121,8 +121,8 @@
             });
         },
         eventClick: function(calEvent, jsEvent, view) {
-            return bootbox.dialog({
-                message: $("<form class='form'><label>Change event name</label></form><input id='new-event-title' class='form-control' type='text' value='" + calEvent.title + "' /> "),
+            /*return bootbox.dialog({
+                message: $("<form class='form'><label>Seleccione prestación realizada</label></form><input id='new-event-title' class='form-control' type='text' value='" + calEvent.title + "' /> "),
                 buttons: {
                     "delete": {
                         label: "<i class='fa fa-trash-o'></i> Delete Event",
@@ -142,7 +142,11 @@
                         }
                     }
                 }
-            });
+            });*/
+            calEvent.url = '/registro_prestacion/' + calEvent.id;
+            alert(calEvent.url);
+            window.open(calEvent.url, '_self');
+            return false;
         },
         drop: function(date, allDay) {
             var copiedEventObject, eventClass, originalEventObject;

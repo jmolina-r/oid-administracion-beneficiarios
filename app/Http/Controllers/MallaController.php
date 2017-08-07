@@ -175,4 +175,11 @@ class MallaController extends Controller
 
         return json_encode($eventos);
     }
+
+    public function registroPrestacion($id){
+
+        return view('malla.showIngresoPrestacion')->with(compact('id'));
+
+    }
+
 }
