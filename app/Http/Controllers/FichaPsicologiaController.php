@@ -95,7 +95,7 @@ class FichaPsicologiaController extends Controller
                 'antecedentes_medicos_id' => $antecedentesMedicos->id,
                 'antecedentes_familiares_id' => $antecedentesFamiliares->id,
                 //'psicologo_id' => $psicologo->id,
-                'psicologo_id' => '1', //provisional, psicologo no esta implementado
+                'profesional_id' => '1', //provisional, profesional no esta implementado
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaPsicologia->save();

@@ -338,25 +338,47 @@ $factory->define(App\ActividadesVidaDiaria::class, function (Faker\Generator $fa
 
     return [
         'alimentacion' => $faker -> regexify('(D|P|E)'),
+        'comentario_alimen' => $faker -> regexify('comentario 1|comentario 2'),
         'arreglo_personal' => $faker -> regexify('(D|P|E)'),
+        'comentario_arreglo' => $faker -> regexify('comentario 1|comentario 2'),
         'banio' => $faker -> regexify('(D|P|E)'),
+        'comentario_banio' => $faker -> regexify('comentario 1|comentario 2'),
         'vestuario_superior' => $faker -> regexify('(D|P|E)'),
+        'comentario_superior' => $faker -> regexify('comentario 1|comentario 2'),
         'vestuario_inferior' => $faker -> regexify('(D|P|E)'),
+        'comentario_inferior' => $faker -> regexify('comentario 1|comentario 2'),
         'ponerse_zapatos' => $faker -> regexify('(D|P|E)'),
+        'comentario_zapatos' => $faker -> regexify('comentario 1|comentario 2'),
         'aseo_perianal' => $faker -> regexify('(D|P|E)'),
+        'comentario_aseo' => $faker -> regexify('comentario 1|comentario 2'),
         'lavado_dental' => $faker -> regexify('(D|P|E)'),
+        'comentario_dental' => $faker -> regexify('comentario 1|comentario 2'),
         'manejo_vesical' => $faker -> regexify('(D|P|E)'),
+        'comentario_vesical' => $faker -> regexify('comentario 1|comentario 2'),
         'manejo_anal' => $faker -> regexify('(D|P|E)'),
+        'comentario_anal' => $faker -> regexify('comentario 1|comentario 2'),
         'preparar_comida' => $faker -> regexify('(D|P|E)'),
+        'comentario_comida' => $faker -> regexify('comentario 1|comentario 2'),
         'poner_mesa' => $faker -> regexify('(D|P|E)'),
+        'comentario_mesa' => $faker -> regexify('comentario 1|comentario 2'),
+        'limpieza_ligera' => $faker -> regexify('(D|P|E)'),
+        'ligera' => $faker -> regexify('comentario 1|comentario 2'),
         'espacio_ordenado' => $faker -> regexify('(D|P|E)'),
+        'comentario_orden' => $faker -> regexify('comentario 1|comentario 2'),
         'manejo_dinero' => $faker -> regexify('(D|P|E)'),
+        'comentario_dinero' => $faker -> regexify('comentario 1|comentario 2'),
         'ir_compras' => $faker -> regexify('(D|P|E)'),
+        'comentario_compras' => $faker -> regexify('comentario 1|comentario 2'),
         'locomocion' => $faker -> regexify('(D|P|E)'),
+        'comentario_locomocion' => $faker -> regexify('comentario 1|comentario 2'),
         'resolver_problemas' => $faker -> regexify('(D|P|E)'),
+        'comentario_problemas' => $faker -> regexify('comentario 1|comentario 2'),
         'adecuacion_social' => $faker -> regexify('(D|P|E)'),
+        'comentario_adecuacion' => $faker -> regexify('comentario 1|comentario 2'),
         'seguir_instrucciones' => $faker -> regexify('(D|P|E)'),
+        'comentario_instrucciones' => $faker -> regexify('comentario 1|comentario 2'),
         'expresar_necesidades' => $faker -> regexify('(D|P|E)'),
+        'comentario_necesidades' => $faker -> regexify('comentario 1|comentario 2'),
 
     ];
 });
@@ -482,7 +504,7 @@ $factory->define(App\HistorialClinico::class, function (Faker\Generator $faker) 
     ];
 });
 
-$factory->define(App\TerapeutaOcupacional::class, function (Faker\Generator $faker) {
+$factory->define(App\Profesional::class, function (Faker\Generator $faker) {
 
     return [
         'rut' => $faker -> regexify('\[1-9]{8,9}\-(k|[0-9])'),
@@ -491,5 +513,6 @@ $factory->define(App\TerapeutaOcupacional::class, function (Faker\Generator $fak
         'telefono' => $faker -> regexify('[0-9]{8}'),
         'fecha_nacimiento' => $faker -> dateTimeBetween('-50 years', '-25 years'),
         'direccion' => $faker -> address,
+        'profesion' => $faker -> regexify('Terapia Ocupacional|Kinesiología|Fonoaudiología|Psicología|Asistencia Social'),
     ];
 });

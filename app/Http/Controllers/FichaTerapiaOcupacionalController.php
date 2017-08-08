@@ -51,26 +51,47 @@ class FichaTerapiaOcupacionalController extends Controller
         try{
             $actividadesVidaDiaria = new ActividadesVidaDiaria([
                 'alimentacion' => $request->input('alimentacion'),
+                'comentario_alimen' => $request->input('comentario_alimen'),
                 'arreglo_personal' => $request->input('arreglo_personal'),
+                'comentario_arreglo' => $request->input('comentario_arreglo'),
                 'banio' => $request->input('banio'),
+                'comentario_banio' => $request->input('comentario_banio'),
                 'vestuario_superior' => $request->input('vestuario_superior'),
+                'comentario_superior' => $request->input('comentario_superior'),
                 'vestuario_inferior' => $request->input('vestuario_inferior'),
+                'comentario_inferior' => $request->input('comentario_inferior'),
                 'ponerse_zapatos' => $request->input('ponerse_zapatos'),
+                'comentario_zapatos' => $request->input('comentario_zapatos'),
                 'aseo_perianal' => $request->input('aseo_perianal'),
+                'comentario_aseo' => $request->input('comentario_aseo'),
                 'lavado_dental' => $request->input('lavado_dental'),
+                'comentario_dental' => $request->input('comentario_dental'),
                 'manejo_vesical' => $request->input('manejo_vesical'),
+                'comentario_vesical' => $request->input('comentario_vesical'),
                 'manejo_anal' => $request->input('manejo_anal'),
+                'comentario_anal' => $request->input('comentario_anal'),
                 'preparar_comida' => $request->input('preparar_comida'),
+                'comentario_comida' => $request->input('comentario_comida'),
                 'poner_mesa' => $request->input('poner_mesa'),
+                'comentario_mesa' => $request->input('comentario_mesa'),
                 'limpieza_ligera' => $request->input('limpieza_ligera'),
+                'comentario_ligera' => $request->input('comentario_ligera'),
                 'espacio_ordenado' => $request->input('espacio_ordenado'),
+                'comentario_orden' => $request->input('comentario_orden'),
                 'manejo_dinero' => $request->input('manejo_dinero'),
+                'comentario_dinero' => $request->input('comentario_dinero'),
                 'ir_compras' => $request->input('ir_compras'),
+                'comentario_compras' => $request->input('comentario_compras'),
                 'locomocion' => $request->input('locomocion'),
+                'comentario_locomocion' => $request->input('comentario_locomocion'),
                 'resolver_problemas' => $request->input('resolver_problemas'),
+                'comentario_problemas' => $request->input('comentario_problemas'),
                 'adecuacion_social' => $request->input('adecuacion_social'),
+                'comentario_adecuacion' => $request->input('comentario_adecuacion'),
                 'seguir_instrucciones' => $request->input('seguir_instrucciones'),
+                'comentario_instrucciones' => $request->input('comentario_instrucciones'),
                 'expresar_necesidades' => $request->input('expresar_necesidades'),
+                'comentario_necesidades' => $request->input('comentario_necesidades'),
             ]);
             $actividadesVidaDiaria->save();
 
@@ -195,7 +216,7 @@ class FichaTerapiaOcupacionalController extends Controller
                 'habilidades_sociales_id' => $habilidadesSociales->id,
                 'historial_clinico_id' => $historialClinico->id,
                 //'terapeuta_ocupacional_id' => $terapeuta->id,
-                'terapeuta_ocupacional_id' => '1', //provisional, terapeutaOcupacional no esta implementado
+                'profesional_id' => '1', //provisional, profesional no esta implementado
                 'beneficiario_id' => $request->input('id'),
                 //'beneficiario_id' => '1',
             ]);
@@ -207,7 +228,7 @@ class FichaTerapiaOcupacionalController extends Controller
 
         }
         $id = $request->input('id');
-        return redirect()->route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar')
+        return view('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar')
             ->with(compact('id'));
     }
 
