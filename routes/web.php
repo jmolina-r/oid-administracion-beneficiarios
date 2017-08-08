@@ -23,6 +23,9 @@ Auth::routes();
 Route::get('update/{id}', 'Auth\UpdateController@showUpdateForm')->name('update');
 Route::post('update/{id}', 'Auth\UpdateController@update');
 
+// Registration Routes...
+Route::get('/find', 'Auth\FindController@showSearch')->name('find');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'areasocial', 'middleware' => 'auth'], function(){
