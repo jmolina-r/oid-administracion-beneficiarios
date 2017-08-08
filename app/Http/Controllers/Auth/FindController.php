@@ -34,7 +34,7 @@ class FindController extends Controller
     {
         $users = User::get();
 
-        return view('auth.find');
+        return view('auth.find')
             ->with(compact('users'));
     }
 
