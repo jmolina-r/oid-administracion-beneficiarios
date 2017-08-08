@@ -25,6 +25,8 @@ Route::post('update/{id}', 'Auth\UpdateController@update');
 
 // Registration Routes...
 Route::get('/find', 'Auth\FindController@showSearch')->name('find');
+Route::get('/user/{id}', 'Auth\FindController@userInfoJson')->name('find');
+
 
 
 Route::get('/home', 'HomeController@index')->name('home');

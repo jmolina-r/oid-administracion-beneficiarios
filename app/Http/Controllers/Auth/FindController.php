@@ -38,4 +38,9 @@ class FindController extends Controller
             ->with(compact('users'));
     }
 
+    public function userInfoJson($id)
+    {
+        return User::find($id);
+    }
+
 }
