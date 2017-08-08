@@ -86,15 +86,6 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                             <div class='row'>
                                                 <div class='col-sm-12'>
                                                     <div class='box bordered-box orange-border' style='margin-bottom:0;'>
-                                                        <div class='box-header orange-background'>
-                                                            <div class='title'>Usuario en Sistema</div>
-                                                            <div class='actions'>
-                                                                <a class="btn box-remove btn-xs btn-link" href="#"><i class='fa fa-times'></i>
-                                                                </a>
-                                                                <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
-                                                                </a>
-                                                            </div>
-                                                        </div>
                                                         <div class='box-content box-no-padding'>
                                                             <div class='responsive-table'>
                                                                 <div class='scrollable-area'>
@@ -102,28 +93,32 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                         <thead>
                                                                             <tr>
                                                                                 <th>
-                                                                                    Name
+                                                                                    Nombre de Usuario
                                                                                 </th>
                                                                                 <th>
                                                                                     E-mail
                                                                                 </th>
-                                                                                <th>
-                                                                                    Status
-                                                                                </th>
+                                                                                {{-- <!-- <th>
+                                                                                    Estado
+                                                                                </th> 
+                                                                                --> --}}
                                                                                 <th></th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
+                                                                            @foreach($users as $user)
                                                                             <tr>
-                                                                                <td>José Valdebenito Pertierra</td>
-                                                                                <td>jose@elpro.fr</td>
+                                                                                <td>{{$user->username}} </td>
+                                                                                <td>{{$user->email}}</td>
+                                                                                {{-- <!--
                                                                                 <td>
-                                                                                    <span class='label label-success'>Pulento</span>
-                                                                                </td>
+                                                                                    <span class='label label-success'>Activo</span>
+                                                                                </td> 
+                                                                                --> --}}
                                                                                 <td>
                                                                                     <div class='text-right'>
                                                                                         <a class='btn btn-success btn-xs' href='#'>
-                                                                                            <i class='fa fa-check'></i>
+                                                                                            <i class='fa fa-user'></i>
                                                                                         </a>
                                                                                         <a class='btn btn-danger btn-xs' href='#'>
                                                                                             <i class='fa fa-times'></i>
@@ -131,23 +126,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                                     </div>
                                                                                 </td>
                                                                             </tr>
-                                                                            <tr>
-                                                                                <td>Arnoldo</td>
-                                                                                <td>ano@asdsa.com</td>
-                                                                                <td>
-                                                                                    <span class='label label-success'>Gay</span>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <div class='text-right'>
-                                                                                        <a class='btn btn-success btn-xs' href='#'>
-                                                                                            <i class='fa fa-check'></i>
-                                                                                        </a>
-                                                                                        <a class='btn btn-danger btn-xs' href='#'>
-                                                                                            <i class='fa fa-times'></i>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </td>
-                                                                            </tr>
+                                                                            @endforeach
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
@@ -156,7 +135,6 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
