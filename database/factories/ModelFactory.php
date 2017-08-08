@@ -166,7 +166,7 @@ $factory->define(App\FichaKinesiologia::class, function (Faker\Generator $faker)
         'val_com_cog_id' => $faker -> numberBetween($min = 1, $max = 2),
         'val_evaluacion_id' => $faker -> numberBetween($min = 1, $max = 2),
         'val_control_esfinter_id' => $faker -> numberBetween($min = 1, $max = 2),
-        'kinesiologo_id' => $faker -> numberBetween($min = 1, $max = 3),
+        'profesional_id' => $faker -> numberBetween($min = 1, $max = 3),
         'beneficiario_id' => $faker -> numberBetween($min = 1, $max = 150),
     ];
 });
@@ -185,44 +185,24 @@ $factory->define(App\AntecedentesMorbidos::class, function (Faker\Generator $fak
     ];
 });
 
-$factory->define(App\Kinesiologo::class, function (Faker\Generator $faker) {
 
-    return [
-        'rut' => $faker -> regexify('\[1-9]{8,9}\-(k|[0-9])'),
-        'nombres' => $faker -> firstName,
-        'apellidos' => $faker -> lastName,
-        'telefono' => $faker -> regexify('[0-9]{8}'),
-        'fecha_nacimiento' => $faker -> dateTimeBetween('-50 years', '-25 years'),
-        'direccion' => $faker -> address,
-    ];
-});
 
-$factory->define(App\Psicologo::class, function (Faker\Generator $faker) {
 
-    return [
-        'rut' => $faker -> regexify('\[1-9]{8,9}\-(k|[0-9])'),
-        'nombres' => $faker -> firstName,
-        'apellidos' => $faker -> lastName,
-        'telefono' => $faker -> regexify('[0-9]{8}'),
-        'fecha_nacimiento' => $faker -> dateTimeBetween('-50 years', '-25 years'),
-        'direccion' => $faker -> address,
-    ];
-});
 
 $factory->define(App\ValAutocuidado::class, function (Faker\Generator $faker) {
 
     return [
-        'puntaje_alimentacion' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntaje_alimentacion' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_alimentacion' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
-        'puntaje_arreglo_pers' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntaje_arreglo_pers' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_arreglo_pers' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
-        'puntaje_bano' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntaje_bano' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_bano' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
-        'puntaje_vest_sup' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntaje_vest_sup' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_vest_sup' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
-        'puntaje_vest_inf' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntaje_vest_inf' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_vest_inf' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
-        'puntaje_aseo_pers' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntaje_aseo_pers' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_aseo_pers' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
     ];
 });

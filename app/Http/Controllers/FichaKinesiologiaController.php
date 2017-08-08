@@ -9,7 +9,7 @@ use App\ValControlEsfinter;
 use App\ValEvaluacion;
 use App\ValSocial;
 use App\FichaKinesiologia;
-use App\Kinesiologo;
+use App\Profesional;
 use App\ValDeambulacion;
 use App\ValMotora;
 use App\ValMovilidad;
@@ -178,7 +178,7 @@ class FichaKinesiologiaController extends Controller
                 'val_evaluacion_id' => $valEvaluacion->id,
                 'val_control_esfinter_id' => $valControlEsfinter->id,
                 //'kinesiologo_id' => $kinesiologo->id,
-                'kinesiologo_id' => '1', //provisional, kinesiologo no esta implementado
+                'profesional_id' => '1', //provisional, profesional no esta implementado
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaKinesiologia->save();

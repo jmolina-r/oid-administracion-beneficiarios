@@ -8,9 +8,14 @@ class Profesional extends Model
 {
     protected $fillable = ['rut', 'nombres', 'apellidos', 'telefono', 'fecha_nacimiento', 'direccion','profesion'];
 
+    public function ingresoKinesiologia()
+    {
+        return $this->hasMany(FichaKinesiologia::class);
+    }
+
     public function ingresoTerapiaOcupacional()
     {
-        return $this->hasOne(FichaTerapiaOcupacional::class);
+        return $this->hasMany(FichaTerapiaOcupacional::class);
     }
 
     public function ingresoPsicologia()
