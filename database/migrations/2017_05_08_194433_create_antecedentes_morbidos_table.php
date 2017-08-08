@@ -16,14 +16,14 @@ class CreateAntecedentesMorbidosTable extends Migration
         Schema::create('antecedentes_morbidos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('pat_concom')->nullable();
-            $table->string('alergias')->nullable();
-            $table->string('medicamentos')->nullable();
-            $table->string('ant_quir')->nullable();
-            $table->string('aparatos')->nullable();
-            $table->string('fuma_sn')->nullable();
-            $table->string('alcohol_sn')->nullable();
-            $table->string('act_fisica_sn')->nullable();
+            $table->string('pat_concom', 200)->nullable();
+            $table->string('alergias', 200)->nullable();
+            $table->string('medicamentos', 200)->nullable();
+            $table->string('ant_quir', 200)->nullable();
+            $table->string('aparatos', 200)->nullable();
+            $table->string('fuma_sn', 200)->nullable();
+            $table->string('alcohol_sn', 200)->nullable();
+            $table->string('act_fisica_sn', 200)->nullable();
         });
     }
 

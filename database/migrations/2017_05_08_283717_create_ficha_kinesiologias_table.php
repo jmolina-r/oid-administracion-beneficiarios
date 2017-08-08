@@ -16,10 +16,10 @@ class CreateFichaKinesiologiasTable extends Migration
         Schema::create('ficha_kinesiologias', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('motivo_consulta')->nullable();
-            $table->string('situacion_laboral')->nullable();
-            $table->string('situacion_familiar')->nullable();
-            $table->string('asiste_centro_rhb')->nullable();
+            $table->string('motivo_consulta', 200)->nullable();
+            $table->string('situacion_laboral', 200)->nullable();
+            $table->string('situacion_familiar', 200)->nullable();
+            $table->string('asiste_centro_rhb', 200)->nullable();
 
             $table->integer('antecedentes_morbidos_id')->unsigned();
             $table->integer('val_motora_id')->unsigned();

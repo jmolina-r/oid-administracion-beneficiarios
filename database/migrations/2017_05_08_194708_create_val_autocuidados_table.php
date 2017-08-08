@@ -16,18 +16,18 @@ class CreateValAutocuidadosTable extends Migration
         Schema::create('val_autocuidados', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('puntaje_alimentacion')->nullable();
-            $table->string('coment_alimentacion')->nullable();
-            $table->string('puntaje_arreglo_pers')->nullable();
-            $table->string('coment_arreglo_pers')->nullable();
-            $table->string('puntaje_bano')->nullable();
-            $table->string('coment_bano')->nullable();
-            $table->string('puntaje_vest_sup')->nullable();
-            $table->string('coment_vest_sup')->nullable();
-            $table->string('puntaje_vest_inf')->nullable();
-            $table->string('coment_vest_inf')->nullable();
-            $table->string('puntaje_aseo_pers')->nullable();
-            $table->string('coment_aseo_pers')->nullable();
+            $table->string('puntaje_alimentacion', 1)->nullable();
+            $table->string('coment_alimentacion', 200)->nullable();
+            $table->string('puntaje_arreglo_pers', 1)->nullable();
+            $table->string('coment_arreglo_pers', 200)->nullable();
+            $table->string('puntaje_bano', 1)->nullable();
+            $table->string('coment_bano', 200)->nullable();
+            $table->string('puntaje_vest_sup', 1)->nullable();
+            $table->string('coment_vest_sup', 200)->nullable();
+            $table->string('puntaje_vest_inf', 1)->nullable();
+            $table->string('coment_vest_inf', 200)->nullable();
+            $table->string('puntaje_aseo_pers', 1)->nullable();
+            $table->string('coment_aseo_pers', 200)->nullable();
         });
     }
 
