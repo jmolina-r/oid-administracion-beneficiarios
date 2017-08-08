@@ -153,6 +153,25 @@
                     </li>
                 </ul>-->
             </li>
+            </li>
+            <li class=''>
+                <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
+                    <span>Malla</span>
+                    <i class='fa fa-angle-down angle-down'></i>
+                </a>
+
+                <ul class='nav nav-stacked'>
+                    <li class=''>
+                        <a href='{{route('malla.show')}}'>
+                            <div class='icon'>
+                                <i class='fa fa-caret-right'></i>
+                            </div>
+                            <span>Mostrar malla</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
         </ul>
     </div>
 </nav>

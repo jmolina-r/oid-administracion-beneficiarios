@@ -26,6 +26,10 @@ textarea {
 	resize:none;
 }
 
+#userOptions {
+	margin-top: 15px;
+}
+
 /***************************/
 /***** Person Profile ******/
 /***************************/
@@ -84,10 +88,34 @@ textarea {
 /***** Buscar Beneficiario*****/
 /******************************/
 .card-frame{
-	border-radius: 10px;
-	margin-bottom: 20px;
-	padding: 10px;
+	margin-bottom: 40px;
+	text-align: center;
 }
+
+.card-frame img{
+	border-radius: 50%;
+}
+
+.card-frame button{
+	width: 130px;
+}
+
+.card-title{
+	color: #7D7D7D;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.card-frame h4{
+	
+}
+
+.card-text{
+	color: #A5A5A5;
+	font-size: 15px;
+	letter-spacing: 4px;
+}
+
 /******************************/
 /******************************/
 

@@ -8,7 +8,7 @@
                 <span class='capitalize input-group-addon'>
                     {{$tipo_discapacidad->nombre}}
                 </span>
-                <input name="tipo_discapacidad[{{$tipo_discapacidad->id}}]" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true"
+                <input name="tipo_discapacidad[{{$tipo_discapacidad->id}}]" id="discapacidad_{{$tipo_discapacidad->id}}" type="number" class="form-control bfh-number input-lg text-right" min="0" max="100" data-wrap="true"
                     @if(old('tipo_discapacidad') != null)
                         value="{{ old('tipo_discapacidad')[$key+1] }}"
                     @elseif(!isset($persona) && old('tipo_discapacidad') == null)

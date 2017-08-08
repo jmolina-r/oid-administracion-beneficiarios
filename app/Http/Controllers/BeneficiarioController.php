@@ -26,9 +26,6 @@ use App\TipoDependencia;
 use App\TipoDiscapacidad;
 use App\Tutor;
 
-
-
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -198,19 +195,21 @@ class BeneficiarioController extends Controller
         }
 
         // Tutor Save
-        $tutor = new Tutor([
-            'nombre' => $request->input('nombre_tutor'),
-            'apellido' => $request->input('apellido_tutor'),
-            'beneficiario_id' => $beneficiario->id
-        ]);
-        $tutor->save();
+        if($request->input('nombre_tutor') || $request->input('apellido_tutor')) {
+            $tutor = new Tutor([
+                'nombre' => $request->input('nombre_tutor'),
+                'apellido' => $request->input('apellido_tutor'),
+                'beneficiario_id' => $beneficiario->id
+            ]);
+            $tutor->save();
 
-        // TelefonoTutor Save
-        $telefonoTutor = new TelefonoTutor([
-            'numero' => $request->input('telefono_tutor'),
-            'tutor_id' => $tutor->id
-        ]);
-        $telefonoTutor->save();
+            // TelefonoTutor Save
+            $telefonoTutor = new TelefonoTutor([
+                'numero' => $request->input('telefono_tutor'),
+                'tutor_id' => $tutor->id
+            ]);
+            $telefonoTutor->save();
+        }
 
         // FichaBeneficiario Save
         $fichaBeneficiario = new FichaBeneficiario([
@@ -693,7 +692,7 @@ class BeneficiarioController extends Controller
     {
         $rules = [
             'apellidos' => 'required|max:200',
-            'apellido_tutor' => 'required',
+            'apellido_tutor' => 'nullable|required_with:nombre_tutor',
             'credencial_discapacidad' => 'required|numeric|between:0,2',
             'credencial_vencimiento' => 'required_if:credencial_discapacidad,1|date_format:"d/m/Y"|after:"yesterday"',
             'cuidados' => 'required|numeric|between:0,1',
@@ -708,7 +707,7 @@ class BeneficiarioController extends Controller
             'fecha_nacimiento' => 'required|date_format:"d/m/Y"|before:"today"',
             'fonasa' => 'required_if:sistema_salud,fonasa|exists:fonasas,id',
             'isapre' => 'required_if:sistema_salud,isapre|exists:isapres,id',
-            'nombre_tutor' => 'required',
+            'nombre_tutor' => 'nullable|required_with:apellido_tutor',
             'observacion_general' => 'nullable',
             'ocupacion' => 'required|exists:ocupacions,id',
             'otras_enfermedades' => 'nullable',
@@ -720,7 +719,7 @@ class BeneficiarioController extends Controller
             'sistema_salud' => 'required|in:fonasa,isapre',
             'tel_fijo' => 'nullable|numeric',
             'tel_movil' => 'nullable|numeric',
-            'telefono_tutor' => 'required_with:nombre_tutor|numeric',
+            'telefono_tutor' => 'nullable|required_with:nombre_tutor|numeric',
             'tipo_dependencia' => 'required|exists:tipo_dependencias,id',
         ];
 
@@ -748,5 +747,12 @@ class BeneficiarioController extends Controller
             ->get()
             ->toArray();
         return response()->json(['beneficiarios' => $beneficiarios]);
+    }
+
+    public function findNombrePorRut(Request $request){
+        $rutBuscado = $request->input('rutBuscado');
+        $beneficiarioEncontrado = Beneficiario::where('rut', $rutBuscado)->first();
+
+        return $beneficiarioEncontrado->toJson();
     }
 }

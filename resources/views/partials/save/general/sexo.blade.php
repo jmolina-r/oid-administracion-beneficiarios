@@ -2,7 +2,7 @@
     <label class='control-label'>Sexo</label>
     <div class='col-md-12'>
         <label style="margin-top: 0px;" class='radio radio-inline'>
-            <input name='sexo'
+            <input name='sexo' id="sexo" 
                 @if((old('sexo') == null && !isset($persona)) || (old('sexo') != null && old('sexo') != 'femenino') || (old('sexo') == null && isset($persona) && $persona->sexo == "masculino"))
                     checked
                 @endif
@@ -10,7 +10,7 @@
             Masculino
         </label>
         <label class='radio radio-inline'>
-            <input name='sexo'
+            <input name='sexo' 
             @if((old('sexo') != null && old('sexo') === 'femenino') || (old('sexo') == null && isset($persona) && $persona->sexo == "femenino"))
                 checked
             @endif

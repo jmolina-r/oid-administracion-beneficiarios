@@ -1,31 +1,21 @@
+/**
+ * Created by pablofb on 23-05-17.
+ */
 $(document).ready(function() {
-
-    //Activa o deshabilita vencimiento credencial segun seleccion anterior
-    activador("#credencial_discapacidad","#credencial_vencimiento");
-
-    //Activa o deshabilita porcentaje registro social segun seleccion anterior
-    activador("#registro_social_hogares","#registro_social_porcentaje");
-
-    //Rellena el vencimiento de la credencial
-    rellenarFecha("#credencial_vencimiento", "min", function() {
-        rellenarFecha("#fecha_nacimiento", "max");
-    });
-
-
     /**
      * Acciones al cambiar al step siguiente o al anterior
      */
+
     $('#formulario-registro').validator();
 
     $('#myWizard').wizard().on('actionclicked.fu.wizard', function(e, data) {
-        var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
-        if (hasErrors) e.preventDefault();
+        var hasErrors = $('#formulario_registro').validator('validate').has('.has-error').length;
+        //if (hasErrors) e.preventDefault();
 
     }).on('finished.fu.wizard', function(e) {
-        var hasErrors = $('#formulario-registro').validator('validate').has('.has-error').length;
+        var hasErrors = $('#formulario_registro').validator('validate').has('.has-error').length;
         if (hasErrors) e.preventDefault();
         if (hasErrors == 0) {
-
             //Confirmacion Nombre
             $('#nombre_confirmation').html($("#nombres").val() + " " + $("#apellidos").val());
 
@@ -33,13 +23,7 @@ $(document).ready(function() {
             $('#rut_confirmation').html($("#rut").val());
 
             //Confirmacion Sexo
-            
-            if ($("#sexo").is(":checked"))
-            {
-                $('#sexo_confirmation').html("Masculino");
-            }else {
-                $('#sexo_confirmation').html("Femenino");
-            }
+            $('#sexo_confirmation').html($("#sexo").val());
 
             //Confirmacion domicilio
             if($("#domicilio_calle").val()){
@@ -56,7 +40,7 @@ $(document).ready(function() {
                 if ($("#domicilio_poblacion").val()) {
                     direccion = direccion + " " + $("#domicilio_poblacion").val();
                 }
-                $('#domicilio_confirmation').html(direccion);  
+                $('#domicilio_confirmation').html(direccion);
             }else if($("#domicilio_calle").val()==""){
                 $('#domicilio_confirmation').html("-");
             }
@@ -65,10 +49,10 @@ $(document).ready(function() {
             $('#fecha_nacimiento_confirmation').html($("#fecha_nacimiento").val());
 
             //Confirmacion Nacionalidad
-            $('#nacionalidad_confirmation').html($("#id_pais option:selected").text());
+            $('#nacionalidad_confirmation').html($("#id_pais").val());
 
             //Confirmacion Estado Civil
-            $('#estado_civil_confirmation').html($("#estado_civil option:selected").text());
+            $('#estado_civil_confirmation').html($("#estado_civil").val());
 
             //Confirmacion Telefonos
             var telefonos = "";
@@ -120,56 +104,59 @@ $(document).ready(function() {
 
             //Confirmacion Prevision
             if($("#prevision").val()){
-                $('#prevision_confirmation').html($("#prevision option:selected").text());
+                $("#prevision_confirmation").html($("#prevision").val());
             }
 
             //Confirmacion Nivel Educacional
-            $('#nivel_educacional_confirmation').html($("#nivel_educacional option:selected").text());
+            $("#nivel_educacional_confirmation").html($("#nivel_educacional").val());
 
             //Confirmacion Ocupacion
-            $('#ocupacion_confirmation').html($("#ocupacion option:selected").text());
+            $("#ocupacion_confirmation").html($("#ocupacion").val());
 
             //Confirmacion Observacion General
             if($("#observacion_general").val()){
-                $("#observacion_confirmation").html($("#observacion_general").val());    
+                $("#observacion_confirmation").html($("#observacion_general").val());
             } else {
                 $("#observacion_confirmation").html("-");
-            }     
+            }
 
             //Confirmacion Discapacidad
             for (var i = 1; i < 7; i++) {
                 if($("#discapacidad_" + i).val()){
                     $("#discapacidad_" + i + "_confirmation").html($("#discapacidad_" + i).val());
                 } else {
-                     $("#discapacidad_" + i + "_confirmation").html("-");
+                    $("#discapacidad_" + i + "_confirmation").html("-");
                 }
             }
 
             //Confirmacion Diagnostico Medico
             if($("#inputDiagnostico").val()){
-                $("#diagnostico_confirmation").html($("#inputDiagnostico").val());    
+                $("#diagnostico_confirmation").html($("#inputDiagnostico").val());
             } else {
                 $("#diagnostico_confirmation").html("-");
-            }  
+            }
 
             //Confirmacion Otras Enfermedades
             if($("#otras_enfermedades").val()){
-                $("#otras_enfermedades_confirmation").html($("#otras_enfermedades").val());    
+                $("#otras_enfermedades_confirmation").html($("#otras_enfermedades").val());
             } else {
                 $("#otras_enfermedades_confirmation").html("-");
-            }    
+            }
 
             //Confirmacion Dependencia
-            $('#dependencia_confirmation').html($("#dependencia option:selected").text());
-
-            //Confirmacion Cuidado de Terceros
-            if ($("#cuidados").is(":checked"))
-            {
-                $('#cuidados_confirmation').html("Si");
-            }else {
-                $('#cuidados_confirmation').html("No");
+            if($("#dependencia").val()){
+                $("#dependencia_confirmation").html($("#dependencia").val());
+            } else {
+                $("#dependencia_confirmation").html("-");
             }
-            
+
+            // //Confirmacion Cuidado de Terceros
+            // if($("#cuidados").val()){
+            //     $('#cuidados_confirmation').html("Si");
+            // } else {
+            //     $('#cuidados_confirmation').html("No");
+            // }
+
             //Confirmacion Plan de Rehabilitacion
             if($("#p_reha_trat_ctrl").val()){
                 $('#plan_confirmation').html($("#p_reha_trat_ctrl").val());
@@ -177,25 +164,9 @@ $(document).ready(function() {
                 $('#plan_confirmation').html("-");
             }
 
-            //Confirmacion Sistema de Salud
-            if ($("#sistema_salud").is(":checked"))
-            {
-                $('#salud_confirmation').html("Fonasa - " + $("#sistemaSaludSelec option:selected").text());
-            }else {
-                $('#salud_confirmation').html("Isapre - " + $("#sistemaSaludSelec option:selected").text());
-            }
+            //Falta
+            //Nacionalidad, Situacion Civil, Sexo, SOCIAL COMPLETO MENOS OBS, Discapacidades, Dependencia, Cuidado de terceros
 
-            //Confirmacion Beneficios
-            $('#beneficios_confirmation').html($("#beneficios option:selected").text());
-
-            //Confirmacion Beneficios
-            $('#beneficios_confirmation').html($("#beneficios option:selected").text());
-
-            //Confirmacion Sistema de Proteccion
-            $('#proteccion_confirmation').html($("#sistema_proteccion option:selected").text());
-
-            //Confirmacion Participacion en Organizaciones Sociales
-            $('#organizaciones_confirmation').html($("#organizaciones_sociales option:selected").text());
 
             $('#confirmation').modal('show');
         }
@@ -203,11 +174,15 @@ $(document).ready(function() {
 
 
     /**
-     * Credencial de discapacidad, si es si, activa vencimiento y lo pone requerido,
-     * si no, lo bloquea.
+     * Si hay puntuacion se activa comentario.
      */
-    $("#credencial_discapacidad").change(function() {
-        activador("#credencial_discapacidad","#credencial_vencimiento");
+    $("#puntaje").change(function() {
+        //Si se ha seleccionado si
+        if (this.value == 1) {
+            $('#comentario').removeAttr('disabled');
+        }
+        actualizarValidador();
+
     });
 
     /**
@@ -215,7 +190,20 @@ $(document).ready(function() {
      * si no, lo bloquea.
      */
     $("#registro_social_hogares").change(function() {
-        activador("#registro_social_hogares","#registro_social_porcentaje");
+        //Si se ha seleccionado si
+        if (this.value == 1) {
+            $("#registro_social_porcentaje").prop('required', true);
+            $('#registro_social_porcentaje').removeAttr('disabled');
+        }
+
+        //Si se ha seleccionado en tramite o no
+        if (this.value == 0 || this.value == 2) {
+            $('#registro_social_porcentaje').removeAttr('required');
+            $('#registro_social_porcentaje').val("");
+            $("#registro_social_porcentaje").prop('disabled', true);
+        }
+        actualizarValidador();
+
     });
 
     /**
@@ -241,85 +229,44 @@ $(document).ready(function() {
     }
 
     /**
-     * Funcion que habilita o deshabilita la fecha de la credencial segun seleccion anterior
-     */
-    function activador(selector,inputDependiente){
-
-        //Si se ha seleccionado si
-        if ($(selector).val() == 1) {
-            $(inputDependiente).prop('required', true);
-            $(inputDependiente).removeAttr('disabled');
-        }
-
-        //Si se ha seleccionado en tramite o no
-        if ($(selector).val() == 0 || $(selector).val() == 2) {
-            $(inputDependiente).removeAttr('required');
-            $(inputDependiente).val("");
-            $(inputDependiente).prop('disabled', true);
-        }
-
-        actualizarValidador();
-    }
-
-    /**
-     * Beneficios tipo tags
-     */
-    $(".select-tag").select2({
-      tags: true
-    });
-
-    /**
      * Estilos para select del tema
      */
     $(".select2-selection").addClass("capitalize");
     $(".select2-search").css("width","100%");
     $(".select2-search__field").css("width","100%");
 
-
-
-    /**
-     * Funciona que rellena los campos de fecha
-     */
-    function rellenarFecha(input, restriccionFecha, callback){
-        //Rellena la fecha de nacimiento
-
-        var valueDate = $(input).attr('value-date');
-
-        var options = {
+    $(function () {
+        $('#fecha_nacimiento').datetimepicker({
+            maxDate:"now",
             format: "DD/MM/YYYY",
             icons: {
                 previous: 'fa fa-chevron-left',
                 next: 'fa fa-chevron-right'
             },
             viewMode: 'years'
-        }
+        });
+    });
 
-        if(restriccionFecha == "max") {
-            options.maxDate = "now";
-        } else if(restriccionFecha == "min") {
-            options.minDate = "now"
-        }
+    $(function () {
+        $('#fecha_nacimiento2').datetimepicker({
+            maxDate:"now",
+            format: "DD/MM/YYYY",
+            icons: {
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right'
+            },
+            viewMode: 'years'
+        });
+    });
 
-        if(valueDate != ""){
-
-            console.log(valueDate);
-
-
-            if(valueDate.includes("/")) {
-                valueDateArr = valueDate.split(/\//);
-                // TODO: Algo extranio pasa aca
-                valueDate = valueDateArr[2]  + "-" + valueDate[3]+valueDate[4] + "-" + valueDate[0] + valueDate[1];
+    $(function () {
+        $('#credencial_venc').datetimepicker({
+            minDate:"now",
+            format: "DD/MM/YYYY",
+            icons: {
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right'
             }
-            console.log(valueDate);
-
-            options.date = new Date(valueDate);
-            console.log(options.date);
-        }
-
-         $(input).datetimepicker(options);
-
-        if(callback && typeof callback == "function"){
-            callback();
-        }
-    }
+        });
+    });
 });
