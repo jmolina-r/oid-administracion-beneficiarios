@@ -210,9 +210,9 @@ $factory->define(App\ValAutocuidado::class, function (Faker\Generator $faker) {
 $factory->define(App\ValComCog::class, function (Faker\Generator $faker) {
 
     return [
-        'puntae_expresion' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntae_expresion' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_expresion' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
-        'puntaje_comprension' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntaje_comprension' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_comprension' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
     ];
 });
@@ -220,9 +220,9 @@ $factory->define(App\ValComCog::class, function (Faker\Generator $faker) {
 $factory->define(App\ValControlEsfinter::class, function (Faker\Generator $faker) {
 
     return [
-        'puntaje_control_vejiga' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntaje_control_vejiga' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_control_vejiga' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
-        'puntaje_control_intestino' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntaje_control_intestino' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_control_intestino' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
     ];
 });
@@ -230,9 +230,9 @@ $factory->define(App\ValControlEsfinter::class, function (Faker\Generator $faker
 $factory->define(App\ValDeambulacion::class, function (Faker\Generator $faker) {
 
     return [
-        'puntaje_desp_caminando' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntaje_desp_caminando' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_desp_caminando' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
-        'puntae_escaleras' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntae_escaleras' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_escaleras' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
     ];
 });
@@ -248,24 +248,24 @@ $factory->define(App\ValEvaluacion::class, function (Faker\Generator $faker) {
 $factory->define(App\ValMotora::class, function (Faker\Generator $faker) {
 
     return [
-        'rom' => $faker -> numberBetween($min = 1, $max = 5),
-        'fm' => $faker -> numberBetween($min = 1, $max = 5),
-        'tono' => $faker -> numberBetween($min = 1, $max = 5),
-        'dolor' => $faker -> numberBetween($min = 1, $max = 5),
-        'hab_motrices' => $faker -> numberBetween($min = 1, $max = 5),
-        'equilibrio' => $faker -> numberBetween($min = 1, $max = 5),
-        'coordinacion' => $faker -> numberBetween($min = 1, $max = 5),
+        'rom' => $faker -> numberBetween($min = 1, $max = 7),
+        'fm' => $faker -> numberBetween($min = 1, $max = 7),
+        'tono' => $faker -> numberBetween($min = 1, $max = 7),
+        'dolor' => $faker -> numberBetween($min = 1, $max = 7),
+        'hab_motrices' => $faker -> numberBetween($min = 1, $max = 7),
+        'equilibrio' => $faker -> numberBetween($min = 1, $max = 7),
+        'coordinacion' => $faker -> numberBetween($min = 1, $max = 7),
     ];
 });
 
 $factory->define(App\ValMovilidad::class, function (Faker\Generator $faker) {
 
     return [
-        'puntaje_trans_cama_silla' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntaje_trans_cama_silla' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_trans_cama_silla' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
-        'puntaje_traslado_bano' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntaje_traslado_bano' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_traslado_bano' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
-        'puntaje_traslado_ducha' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntaje_traslado_ducha' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_traslado_ducha' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
     ];
 });
@@ -273,22 +273,22 @@ $factory->define(App\ValMovilidad::class, function (Faker\Generator $faker) {
 $factory->define(App\ValSensorial::class, function (Faker\Generator $faker) {
 
     return [
-        'visual' => $faker -> numberBetween($min = 1, $max = 5),
-        'auditivo' => $faker -> numberBetween($min = 1, $max = 5),
-        'tactil' => $faker -> numberBetween($min = 1, $max = 5),
-        'propioceptivo' => $faker -> numberBetween($min = 1, $max = 5),
-        'vestibular' => $faker -> numberBetween($min = 1, $max = 5),
+        'visual' => $faker -> numberBetween($min = 1, $max = 7),
+        'auditivo' => $faker -> numberBetween($min = 1, $max = 7),
+        'tactil' => $faker -> numberBetween($min = 1, $max = 7),
+        'propioceptivo' => $faker -> numberBetween($min = 1, $max = 7),
+        'vestibular' => $faker -> numberBetween($min = 1, $max = 7),
     ];
 });
 
 $factory->define(App\ValSocial::class, function (Faker\Generator $faker) {
 
     return [
-        'puntaje_int_social' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntaje_int_social' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_int_social' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
-        'puntaje_sol_problemas' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntaje_sol_problemas' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_sol_problemas' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
-        'puntaje_memoria' => $faker -> numberBetween($min = 1, $max = 10),
+        'puntaje_memoria' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_memoria' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
 
     ];
