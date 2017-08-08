@@ -26,24 +26,16 @@ class FindController extends Controller
 
 
     /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function getUsers()
-    {
-        return User::get();
-    }
-
-    /**
      * Show the application registration form.
      *
      * @return \Illuminate\Http\Response
      */
     public function showSearch()
     {
+        $users = User::get();
+
         return view('auth.find');
+            ->with(compact('users'));
     }
 
 }
