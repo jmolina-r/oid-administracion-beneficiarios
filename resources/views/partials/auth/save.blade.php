@@ -94,4 +94,28 @@
     @endif
 </div>
 
+<div class="form-group">
+    <label class='control-label'>Estado</label>
+    <div class='col-md-12'>
+        <label style="margin-top: 0px;" class='radio radio-inline'>
+            <input name='status' id="status"
+                @if((old('status') == null && !isset($user)) || (old('status') != null && old('status') != '0') || (old('status') == null && isset($user) && $user->status == "1"))
+                    checked
+                @endif
+            type='radio' value='1' required>
+            Activo
+        </label>
+        <label class='radio radio-inline'>
+            <input name='status' id="status"
+            @if((old('status') != null && old('status') == '0') || (old('status') == null && isset($user) && $user->status == "0"))
+                checked
+            @endif
+            type='radio' value='0' required>
+            Inactivo
+        </label>
+    </div>
+</div>
+
+<br>
+
 <button class='btn btn-block btn-success'>Guardar Usuario</button>

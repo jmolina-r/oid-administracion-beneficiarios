@@ -38,7 +38,8 @@ class UpdateController extends Controller
             /*'username' => 'required|string|max:255|exists:users,username',*/
             'email' => 'required|string|email|max:255',
             'password' => 'nullable|string|min:6|confirmed',
-            'roles' => 'required'
+            'roles' => 'required',
+            'status' => 'required|boolean'
         ];
 
         return $rules;
@@ -55,7 +56,8 @@ class UpdateController extends Controller
         $this->validate($request, $this->rules($request));
         $user = User::find($id);
         $updateArray = [
-            'email' => $request['email']
+            'email' => $request['email'],
+            'status' => $request['status']
         ];
         if($request['password'] != null && $request['password'] != '') {
             $updateArray['password'] = bcrypt($request['password']);
