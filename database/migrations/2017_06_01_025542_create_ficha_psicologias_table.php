@@ -21,7 +21,7 @@ class CreateFichaPsicologiasTable extends Migration
 
             $table->integer('antecedentes_medicos_id')->unsigned();
             $table->integer('antecedentes_familiares_id')->unsigned();
-            $table->integer('psicologo_id')->unsigned();
+            $table->integer('profesional_id')->unsigned();
             $table->integer('beneficiario_id')->unsigned();
         });
 
@@ -34,7 +34,7 @@ class CreateFichaPsicologiasTable extends Migration
         });
 
         Schema::table('ficha_psicologias', function($table) {
-            $table->foreign('psicologo_id')->references('id')->on('psicologos');
+            $table->foreign('profesional_id')->references('id')->on('profesionals');
         });
 
         Schema::table('ficha_psicologias', function($table) {

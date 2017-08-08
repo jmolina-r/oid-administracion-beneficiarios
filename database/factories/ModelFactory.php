@@ -328,7 +328,7 @@ $factory->define(App\FichaTerapiaOcupacional::class, function (Faker\Generator $
         'desarrollo_evolutivo_id' => $faker -> numberBetween($min = 1, $max = 5),
         'habilidades_sociales_id' => $faker -> numberBetween($min = 1, $max = 5),
         'historial_clinico_id' => $faker -> numberBetween($min = 1, $max = 5),
-        'terapeuta_ocupacional_id' => $faker -> numberBetween($min = 1, $max = 5),
+        'profesional_id' => $faker -> numberBetween($min = 1, $max = 5),
         'beneficiario_id' => $faker -> numberBetween($min = 1, $max = 150),
 
     ];
@@ -362,7 +362,7 @@ $factory->define(App\ActividadesVidaDiaria::class, function (Faker\Generator $fa
         'poner_mesa' => $faker -> regexify('(D|P|E)'),
         'comentario_mesa' => $faker -> regexify('comentario 1|comentario 2'),
         'limpieza_ligera' => $faker -> regexify('(D|P|E)'),
-        'ligera' => $faker -> regexify('comentario 1|comentario 2'),
+        'comentario_ligera' => $faker -> regexify('comentario 1|comentario 2'),
         'espacio_ordenado' => $faker -> regexify('(D|P|E)'),
         'comentario_orden' => $faker -> regexify('comentario 1|comentario 2'),
         'manejo_dinero' => $faker -> regexify('(D|P|E)'),
