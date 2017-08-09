@@ -29,5 +29,8 @@
         <!-- Con este yield se inyectan los scripts -->
         @yield('scripts')
         {{-- <script type="text/javascript" src="{{ asset('/js/general.js') }}"></script> --}}
+        <!-- / START AJAX para busqueda -->
+        <script src="{{ asset('/js/auth/BuscadorUsuario.js') }}" type="text/javascript"></script>
+        <!-- / END  -->
     </body>
 </html>

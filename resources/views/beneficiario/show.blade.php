@@ -15,7 +15,7 @@
 
 <!-- Atributos del body -->
 @section('body-attr')
-    class='contrast-red login contrast-background'
+    class='contrast-red'
 @endsection
 
 <!-- Inyeccion de scripts

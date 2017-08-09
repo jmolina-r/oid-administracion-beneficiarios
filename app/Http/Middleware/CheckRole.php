@@ -20,7 +20,7 @@ class CheckRole
         if (!Auth::check()) {
             return redirect('/home');
         }
-        $actions = $request->route()->getAction();
+        // $actions = $request->route()->getAction();
         $roles = isset($role) ? explode('|', $role) : null;
         if (Auth::user()->hasAnyRole($roles) || !$roles) {
             return $next($request);
