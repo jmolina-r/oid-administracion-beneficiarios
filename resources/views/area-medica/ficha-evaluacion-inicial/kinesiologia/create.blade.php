@@ -332,7 +332,7 @@
                                                                     <input class="form-control onlynumbers" id="puntaje_control_vejiga" name="puntaje_control_vejiga" value="{{ old('puntaje_control_vejiga') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="coment_control_vejiga" name="coment_contrl_vejiga" value="{{ old('coment_contrl_vejiga') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_control_vejiga" name="coment_control_vejiga" value="{{ old('coment_control_vejiga') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">

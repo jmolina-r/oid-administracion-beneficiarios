@@ -214,16 +214,16 @@ class FichaKinesiologiaController extends Controller
 
         $persona = Beneficiario::find($fichaKinesiologia->beneficiario_id);
 
-        $valSocial = ValSocial::find($fichaKinesiologia->id);
-        $valSensorial = ValSensorial::find($fichaKinesiologia->id);
-        $valMovilidad = ValMovilidad::find($fichaKinesiologia->id);
-        $valMotora = ValMotora::find($fichaKinesiologia->id);
-        $valEvaluacion = ValEvaluacion::find($fichaKinesiologia->id);
-        $valDeambulacion = ValDeambulacion::find($fichaKinesiologia->id);
-        $valControlEsfinter = ValControlEsfinter::find($fichaKinesiologia->id);
-        $valComCog = ValComCog::find($fichaKinesiologia->id);
-        $valAutocuidado = ValAutocuidado::find($fichaKinesiologia->id);
-        $antecedentesMorbidos = AntecedentesMorbidos::find($fichaKinesiologia->id);
+        $valSocial = ValSocial::find($fichaKinesiologia->val_social_id);
+        $valSensorial = ValSensorial::find($fichaKinesiologia->val_sensorial_id);
+        $valMovilidad = ValMovilidad::find($fichaKinesiologia->val_movilidad_id);
+        $valMotora = ValMotora::find($fichaKinesiologia->val_motora_id);
+        $valEvaluacion = ValEvaluacion::find($fichaKinesiologia->val_evaluacion_id);
+        $valDeambulacion = ValDeambulacion::find($fichaKinesiologia->val_deambulacion_id);
+        $valControlEsfinter = ValControlEsfinter::find($fichaKinesiologia->val_control_esfinter_id);
+        $valComCog = ValComCog::find($fichaKinesiologia->val_com_cog_id);
+        $valAutocuidado = ValAutocuidado::find($fichaKinesiologia->val_autocuidado_id);
+        $antecedentesMorbidos = AntecedentesMorbidos::find($fichaKinesiologia->antecedentes_morbidos_id);
 
         return view('area-medica.ficha-evaluacion-inicial.kinesiologia.show', compact('fichaKinesiologia'))
             ->with(compact('persona'))
