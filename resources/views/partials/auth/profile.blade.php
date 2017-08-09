@@ -10,12 +10,12 @@
                     <h5>A continuación se muestran los datos de usuario. Para modificar, presione el botón editar.</h5>
                     <div class="row">
                         <div class="col-sm-12 col-lg-6">
-                            <h4>Nombre</h4>
+                            <h4>Nombre de Usuario</h4>
                             <p id="username">-</p>
                             <h4>E-mail</h4>
                             <p id="email">-</p>
                             <h4>Estado</h4>
-                            <p id="estado">-</p>
+                            <span id="estado" class='label'>-</span>
                         </div>
                     </div>
                 </div>

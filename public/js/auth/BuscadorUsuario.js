@@ -11,8 +11,12 @@ function getUsuarioPorId(userId) {
             $('#username').html(res.username);
             $('#email').html(res.email);
             if(res.status == 1){
+                $("#estado").removeClass("label-danger");
+                $("#estado").addClass("label-success");
                 $('#estado').html("Activo");
             } else {
+                $("#estado").removeClass("label-success");
+                $("#estado").addClass("label-danger");
                 $('#estado').html("Inactivo");
             }
 

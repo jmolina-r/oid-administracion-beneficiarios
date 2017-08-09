@@ -21,12 +21,14 @@
                   Mi perfil
                 </a>
               </li>
-              {{--<li>
+              {{-- <!--
+              <li>
                 <a href='user_profile.html'>
                   <i class='fa fa-cog'></i>
                   Settings
                 </a>
-              </li>--}}
+              </li>
+              --> --}}
               <li class='divider'></li>
               <li>
                   <a href="{{ route('logout') }}"
