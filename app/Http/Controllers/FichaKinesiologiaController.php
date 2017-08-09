@@ -208,9 +208,36 @@ class FichaKinesiologiaController extends Controller
      *
      * @return Response
      */
-    public function show()
+    public function show($id)
     {
-        //
+        $fichaKinesiologia = FichaKinesiologia::find($id);
+
+        $persona = Beneficiario::find($fichaKinesiologia->beneficiario_id);
+
+        $valSocial = ValSocial::find($fichaKinesiologia->id);
+        $valSensorial = ValSensorial::find($fichaKinesiologia->id);
+        $valMovilidad = ValMovilidad::find($fichaKinesiologia->id);
+        $valMotora = ValMotora::find($fichaKinesiologia->id);
+        $valEvaluacion = ValEvaluacion::find($fichaKinesiologia->id);
+        $valDeambulacion = ValDeambulacion::find($fichaKinesiologia->id);
+        $valControlEsfinter = ValControlEsfinter::find($fichaKinesiologia->id);
+        $valComCog = ValComCog::find($fichaKinesiologia->id);
+        $valAutocuidado = ValAutocuidado::find($fichaKinesiologia->id);
+        $antecedentesMorbidos = AntecedentesMorbidos::find($fichaKinesiologia->id);
+
+        return view('area-medica.ficha-evaluacion-inicial.kinesiologia.show', compact('fichaKinesiologia'))
+            ->with(compact('persona'))
+            ->with(compact('valSocial'))
+            ->with(compact('valSensorial'))
+            ->with(compact('valMovilidad'))
+            ->with(compact('valMotora'))
+            ->with(compact('valEvaluacion'))
+            ->with(compact('valDeambulacion'))
+            ->with(compact('valControlEsfinter'))
+            ->with(compact('valComCog'))
+            ->with(compact('valAutocuidado'))
+            ->with(compact('antecedentesMorbidos'))
+            ;
     }
 
     /**
