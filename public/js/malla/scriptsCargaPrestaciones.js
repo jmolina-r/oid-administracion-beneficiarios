@@ -25,4 +25,20 @@ $(document).ready(function () {
         }
     });
 
+    $('#boton-agregar-prestacion').click(function () {
+
+        var texto = $('#combo-prestacion option:selected').text();
+        var resultado = texto.split("-");
+
+        $('#tabla-prestaciones > tbody:last-child').append('<tr><td>'+
+            resultado[0] + '</td><td>' +
+            resultado[1] + '</td><td>' +
+            '<button id = "eliminar-prestacion" type="button" class="delbtn"' + '>Eliminar</button>' + '</td></tr>');
+
+        $('button.delbtn').click(function(){
+            $(this).parent().parents("tr").remove()
+        });
+
+    });
+
 });
