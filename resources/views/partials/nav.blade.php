@@ -39,6 +39,7 @@
                         </a>
                     </li>
 
+
                 </ul>
             </li>
             <li class=''>
@@ -126,33 +127,42 @@
 
                 </ul>
             </li>
-                <li class=''>
+            <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
                     <span>Reportabilidad</span>
                     <i class='fa fa-angle-down angle-down'></i>
                 </a>
-                
+
                 <ul class='nav nav-stacked'>
                     <li class=''>
                         <a href='{{route('reportabilidad.menuReportabilidad')}}'>
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>
                             </div>
-                            <span>Visualizar estadísticas</span>
+                            <span>Visualizar estadísticas por area</span>
                         </a>
                     </li>
                 </ul>
-                <!--<ul class='nav nav-stacked'>
+                <ul class='nav nav-stacked'>
                     <li class=''>
-                        <a href='{{route('reportabilidad.menu')}}'>
+                        <a href='{{route('reportabilidad.reportabilidadPorProfesional')}}'>
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>
                             </div>
-                            <span>Menu reportabilidad</span>
+                            <span>Visualizar estadísticas por profesional</span>
                         </a>
                     </li>
-                </ul>-->
-            </li>
+                </ul>
+            <!--<ul class='nav nav-stacked'>
+                <li class=''>
+                    <a href='{{route('reportabilidad.menu')}}'>
+                        <div class='icon'>
+                            <i class='fa fa-caret-right'></i>
+                        </div>
+                        <span>Menu reportabilidad</span>
+                    </a>
+                </li>
+            </ul>-->
             </li>
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
@@ -172,6 +182,25 @@
 
                 </ul>
             </li>
+            <li class=''>
+                <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
+                    <span>Dar de alta</span>
+                    <i class='fa fa-angle-down angle-down'></i>
+                </a>
+
+                <ul class='nav nav-stacked'>
+                    <li class=''>
+                        <a href='{{route('area-medica.informe-cierre.createInformeCierre')}}'>
+                            <div class='icon'>
+                                <i class='fa fa-caret-right'></i>
+                            </div>
+                            <span>Informe de cierre</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
         </ul>
     </div>
 </nav>

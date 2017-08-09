@@ -27,6 +27,13 @@ class ReportabilidadController extends Controller
         return view('reportabilidad.menuReportabilidad');
     }
 
+    public function porProfesional() {
+        return view('reportabilidad.reportabilidadPorProfesional');
+    }
+
+    public function createInformeCierre() {
+        return view('area-medica.informe-cierre.createInformeCierre');
+    }
 
     public function showResults(Request $request){
         

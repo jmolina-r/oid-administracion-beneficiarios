@@ -109,6 +109,14 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
             ]);
         });
     });
+
+    Route::group(['prefix' => '/informe-cierre'], function (){
+
+        Route::get('/createInforme', [
+            'uses' => 'ReportabilidadController@createInformeCierre',
+            'as' => 'area-medica.informe-cierre.createInformeCierre'
+        ]);
+    });
 });
 
 
@@ -158,8 +166,6 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     ]);
 
     Route::get('/showEstadistica', [
-//<<<<<<< HEAD
-//<<<<<<< HEAD
         'uses' => 'ReportabilidadController@showResults',
         'as' => 'reportabilidad.showEstadistica'
     ]);
@@ -202,7 +208,12 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     Route::get('/menu', [
     'uses' => 'ReportabilidadController@index',
     'as' => 'reportabilidad.menuReportabilidad'
-    ]); 
+    ]);
+
+    Route::get('/profesional',[
+        'uses'=>'ReportabilidadController@porProfesional',
+        'as' => 'reportabilidad.reportabilidadPorProfesional'
+    ]);
 
     Route::get('/reportabilidadKinesiologia',[
     'uses'=>'ReportabilidadController@showResultKine',
@@ -227,7 +238,8 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     Route::get('/reportabilidadGrupal',[
     'uses'=>'ReportabilidadController@showResultGrupal',
     'as' => 'reportabilidad.reportabilidadGru'
-    ]);   
+    ]);
+
 
 });
 /*

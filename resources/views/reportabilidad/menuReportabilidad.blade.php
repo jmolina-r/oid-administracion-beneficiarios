@@ -4,7 +4,7 @@
 
 <!-- meta atributo title -->
 @section('title')
-    Área Social - OID
+    Reportabilidad - OID
 @endsection
 
 <!-- inyeccion de estilos -->
@@ -48,10 +48,7 @@
 
 <!-- Contenido del body -->
 @section('content')
-
-    
-
-      @include('partials.header')
+  @include('partials.header')
       <div id='wrapper'>
         <div id='main-nav-bg'></div>
         @include('partials.nav')
@@ -64,7 +61,7 @@
                     <div class='page-header'>
                       <h1 class='pull-left'>
                         <i class='fa fa-pencil-square-o'></i>
-                        <span>Asistente Social</span>
+                        <span>Reportabilidad</span>
                       </h1>
                       <div class='pull-right'>
                         <ul class='breadcrumb'>
@@ -76,13 +73,7 @@
                           <li class='separator'>
                             <i class='fa fa-angle-right'></i>
                           </li>
-                          <li>
-                            Área social
-                          </li>
-                          <li class='separator'>
-                            <i class='fa fa-angle-right'></i>
-                          </li>
-                          <li class='active'>Ingreso de usuario</li>
+                          <li class='active'>Reportabilidad</li>
                         </ul>
                       </div>
                     </div>
@@ -91,8 +82,6 @@
                 <div class='row'>
                   <div class='col-sm-12'>
                     <div class='box'>
-                      
-                        
                          <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">
                                 <h4>Reportabilidad General</h4>
@@ -157,6 +146,5 @@
         </section>
 
       </div>
->>>>>>> 13e440feee295874f18ababff9c469f243d040e9
 
 @endsection
