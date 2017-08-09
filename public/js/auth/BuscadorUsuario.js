@@ -20,6 +20,9 @@ function getUsuarioPorId(userId) {
                 $('#estado').html("Inactivo");
             }
 
+            console.log(res)
+
+            $('#editar_btn').show();
             $('#editar_btn').click(function() {
                 window.location.href = "/update/" + $('#userId').val();
             });
@@ -33,4 +36,22 @@ function getUsuarioPorId(userId) {
             console.log(err);
         }
     });
+}
+
+function mostrarPerfilUsuario(username, email, status){
+    $('#username').html(username);
+    $('#email').html(email);
+    if(status == 1){
+        $("#estado").removeClass("label-danger");
+        $("#estado").addClass("label-success");
+        $('#estado').html("Activo");
+    } else {
+        $("#estado").removeClass("label-success");
+        $("#estado").addClass("label-danger");
+        $('#estado').html("Inactivo");
+    }
+
+    $('#editar_btn').hide();
+
+    $('#profile').modal('show');
 }
