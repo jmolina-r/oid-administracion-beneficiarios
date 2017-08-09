@@ -102,23 +102,24 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                         <thead>
                                                                             <tr>
                                                                                 <th>
-                                                                                    Name
+                                                                                    Nombre de Usuario
                                                                                 </th>
                                                                                 <th>
                                                                                     E-mail
                                                                                 </th>
                                                                                 <th>
-                                                                                    Status
+                                                                                    Estado
                                                                                 </th>
                                                                                 <th></th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
+                                                                            @foreach($users as $user)
                                                                             <tr>
-                                                                                <td>José Valdebenito Pertierra</td>
-                                                                                <td>jose@elpro.fr</td>
+                                                                                <td>{{$user->username}} </td>
+                                                                                <td>{{$user->email}}</td>
                                                                                 <td>
-                                                                                    <span class='label label-success'>Pulento</span>
+                                                                                    <span class='label label-success'>Activo</span>
                                                                                 </td>
                                                                                 <td>
                                                                                     <div class='text-right'>
@@ -131,23 +132,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                                     </div>
                                                                                 </td>
                                                                             </tr>
-                                                                            <tr>
-                                                                                <td>Arnoldo</td>
-                                                                                <td>ano@asdsa.com</td>
-                                                                                <td>
-                                                                                    <span class='label label-success'>Gay</span>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <div class='text-right'>
-                                                                                        <a class='btn btn-success btn-xs' href='#'>
-                                                                                            <i class='fa fa-check'></i>
-                                                                                        </a>
-                                                                                        <a class='btn btn-danger btn-xs' href='#'>
-                                                                                            <i class='fa fa-times'></i>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </td>
-                                                                            </tr>
+                                                                            @endforeach
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
