@@ -120,7 +120,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                                 </td>
                                                                                 <td>
                                                                                     <div class='text-right'>
-                                                                                        <a class='btn btn-success btn-xs' href='#' onclick="getUsuarioPorId({{$user->id}})">
+                                                                                        <a class='btn btn-success btn-xs' href='#' onclick="getUsuarioPorId('{{$user->id}}')">
                                                                                             <i class='fa fa-user'></i>
                                                                                         </a>
                                                                                         <a class='btn btn-danger btn-xs' href='#'>
@@ -147,6 +147,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                 </div>
             </div>
             @include('partials.footer')
+            @include('partials.auth.profile')
         </div>
     </section>
 </div>
