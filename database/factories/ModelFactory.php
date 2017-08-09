@@ -210,7 +210,7 @@ $factory->define(App\ValAutocuidado::class, function (Faker\Generator $faker) {
 $factory->define(App\ValComCog::class, function (Faker\Generator $faker) {
 
     return [
-        'puntae_expresion' => $faker -> numberBetween($min = 1, $max = 7),
+        'puntaje_expresion' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_expresion' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
         'puntaje_comprension' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_comprension' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
@@ -232,7 +232,7 @@ $factory->define(App\ValDeambulacion::class, function (Faker\Generator $faker) {
     return [
         'puntaje_desp_caminando' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_desp_caminando' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
-        'puntae_escaleras' => $faker -> numberBetween($min = 1, $max = 7),
+        'puntaje_escaleras' => $faker -> numberBetween($min = 1, $max = 7),
         'coment_escaleras' => $faker -> regexify('(|Comentarios varios sobre la puntuación obtenida)'),
     ];
 });

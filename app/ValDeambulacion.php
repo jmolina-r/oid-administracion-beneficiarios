@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ValDeambulacion extends Model
 {
-    protected $fillable = ['puntaje_desp_caminando', 'coment_desp_caminando', 'puntae_escaleras', 'coment_escaleras'];
+    protected $fillable = ['puntaje_desp_caminando', 'coment_desp_caminando', 'puntaje_escaleras', 'coment_escaleras'];
 
     public function ingresoKinesiologia()
     {

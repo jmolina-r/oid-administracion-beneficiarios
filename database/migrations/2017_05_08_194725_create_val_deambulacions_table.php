@@ -18,7 +18,7 @@ class CreateValdeambulacionsTable extends Migration
             $table->timestamps();
             $table->string('puntaje_desp_caminando', 1)->nullable();
             $table->string('coment_desp_caminando', 200)->nullable();
-            $table->string('puntae_escaleras', 1)->nullable();
+            $table->string('puntaje_escaleras', 1)->nullable();
             $table->string('coment_escaleras', 200)->nullable();
         });
     }

@@ -110,7 +110,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
-                                    <h4>Autocuidado</h4>
+                                    <h3>Autocuidado</h3>
                                     <div class="col-sm-12 col-lg-5">
                                         <p class="tit">1. Alimentación</p>
                                     </div>
@@ -179,7 +179,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <h4>Control de Esfinteres</h4>
+                                    <h3>Control de Esfinteres</h3>
                                     <div class="col-sm-12 col-lg-5">
                                         <p class="tit">1. Control de Vejiga</p>
                                     </div>
@@ -204,7 +204,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <h4>Movilidad</h4>
+                                    <h3>Movilidad</h3>
                                     <div class="col-sm-12 col-lg-5">
                                         <p class="tit">1. Transferencia cama-silla</p>
                                     </div>
@@ -240,7 +240,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <h4>Deambulación</h4>
+                                    <h3>Deambulación</h3>
                                     <div class="col-sm-12 col-lg-5">
                                         <p class="tit">1. Desplazarse caminando/sr</p>
                                     </div>
@@ -265,7 +265,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <h4>Comunicación/Cognitivo</h4>
+                                    <h3>Comunicación/Cognitivo</h3>
                                     <div class="col-sm-12 col-lg-5">
                                         <p class="tit">1. Expresión</p>
                                     </div>
@@ -290,7 +290,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <h4>Social</h4>
+                                    <h3>Social</h3>
                                     <div class="col-sm-12 col-lg-5">
                                         <p class="tit">1. Interacción social</p>
                                     </div>
@@ -326,45 +326,31 @@
                             </div>
                             <hr>
                             <div class="row">
+                                <h4>Evaluación</h4>
                                 <div class="col-sm-12 col-lg-6">
-                                    <h4>Evaluación</h4>
                                     <div class="col-sm-12 col-lg-12">
-                                        <h4>1. Conexión con el medio</h4>
-                                        <p id="conexion_medio_confirmation">-</p>
-                                        <h4>2. Nivel cognitivo aparente</h4>
-                                        <p id="nivel_cognitivo_apar_confirmation">-</p>
+                                        <p class="capitalize"><span class="tit">1. Conexión con el medio</span><br>{{ $valEvaluacion->conexion_medio }}</p>
+                                        <p class="capitalize"><span class="tit">2. Nivel cognitivo aparente</span><br>{{ $valEvaluacion->nivel_cognitivo_apar }}</p>
                                     </div>
-                                    <h4>Evaluación Sensorial</h4>
+                                    <h3>Evaluación Sensorial</h3>
                                     <div class="col-sm-12 col-lg-12">
-                                        <h4>1. Visual</h4>
-                                        <p id="visual_confirmation">-</p>
-                                        <h4>2. Auditivo</h4>
-                                        <p id="auditivo_confirmation">-</p>
-                                        <h4>3. Táctil</h4>
-                                        <p id="tactil_confirmation">-</p>
-                                        <h4>4. Propioceptivo</h4>
-                                        <p id="propioceptivo_confirmation">-</p>
-                                        <h4>5. Vestibular</h4>
-                                        <p id="vestibular_confirmation">-</p>
+                                        <p class="capitalize"><span class="tit">1. Visual</span><br>{{ $valSensorial->visual }}</p>
+                                        <p class="capitalize"><span class="tit">2. Auditivo</span><br>{{ $valSensorial->auditivo }}</p>
+                                        <p class="capitalize"><span class="tit">3. Táctil</span><br>{{ $valSensorial->tactil }}</p>
+                                        <p class="capitalize"><span class="tit">4. Propioceptivo</span><br>{{ $valSensorial->propioceptivo }}</p>
+                                        <p class="capitalize"><span class="tit">5. Vestibular</span><br>{{ $valSensorial->vestibular }}</p>
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-lg-6">
-                                    <h4>Evaluación Motora</h4>
+                                    <h3>Evaluación Motora</h3>
                                     <div class="col-sm-12 col-lg-12">
-                                        <h4>6. Tono</h4>
-                                        <p id="tono_confirmation">-</p>
-                                        <h4>7. ROM</h4>
-                                        <p id="rom_confirmation">-</p>
-                                        <h4>8. Dolor</h4>
-                                        <p id="dolor_confirmation">-</p>
-                                        <h4>9. Fuerza Muscular</h4>
-                                        <p id="fm_confirmation">-</p>
-                                        <h4>10. Habilidades Motrices</h4>
-                                        <p id="hab_motrices_confirmation">-</p>
-                                        <h4>11. Coordinación</h4>
-                                        <p id="coordinacion_confirmation">-</p>
-                                        <h4>12. Equilibrio</h4>
-                                        <p id="equilibrio_confirmation">-</p>
+                                        <p class="capitalize"><span class="tit">6. Tono</span><br>{{ $valMotora->tono }}</p>
+                                        <p class="capitalize"><span class="tit">7. ROM</span><br>{{ $valMotora->rom }}</p>
+                                        <p class="capitalize"><span class="tit">8. Dolor</span><br>{{ $valMotora->dolor }}</p>
+                                        <p class="capitalize"><span class="tit">9. Fuerza Muscular</span><br>{{ $valMotora->fm }}</p>
+                                        <p class="capitalize"><span class="tit">10. Habilidades Motrices</span><br>{{ $valMotora->hab_motrices }}</p>
+                                        <p class="capitalize"><span class="tit">11. Coordinación</span><br>{{ $valMotora->coordinacion }}</p>
+                                        <p class="capitalize"><span class="tit">12. Equilibrio</span><br>{{ $valMotora->equilibrio }}</p>
                                     </div>
                                 </div>
                             </div>
