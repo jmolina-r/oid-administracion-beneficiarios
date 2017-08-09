@@ -21,7 +21,7 @@ class FindController extends Controller
     {
         // Changed to redirect to Login page.
         $this->middleware('auth');
-        $this->middleware('roles:admin');
+        $this->middleware('roles:admin|coordinador_oficina');
     }
 
 

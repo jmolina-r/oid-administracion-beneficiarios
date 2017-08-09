@@ -35,23 +35,23 @@ Route::group(['prefix' => 'areasocial', 'middleware' => 'auth'], function(){
     Route::get('/asistentesocial', [
     'uses' => 'FichaSocialController@index',
     'as' => 'social.asistenteSocialGet'
-    ])->middleware('roles:admin');
+    ])->middleware('roles:admin|trabajo_social');
 
     Route::post('/asistentesocial/beneficiario', [
     'uses' => 'FichaSocialController@store',
     'as' => 'social.asistenteSocialBeneficiario'
-    ])->middleware('roles:admin');
+    ])->middleware('roles:admin|trabajo_social');
 
     Route::get('/asistentesocial/menu', [
     'uses' => 'FichaSocialController@show',
     'as' => 'social.asistenteSocial'
-    ])->middleware('roles:admin');
+    ])->middleware('roles:admin|trabajo_social');
 
 
     Route::post('/asistentesocial/menu',[
     'uses' => 'FichaSocialController@post',
     'as' => 'social.asistentesocial'
-    ])->middleware('roles:admin');
+    ])->middleware('roles:admin|trabajo_social');
 });
 
 Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
@@ -63,12 +63,12 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
             Route::get('/create/{id}', [
                 'uses' => 'FichaKinesiologiaController@create',
                 'as' => 'area-medica.ficha-evaluacion-inicial.kinesiologia.create'
-            ])->middleware('roles:secretaria|admin');
+            ])->middleware('roles:admin|kinesiologia');
 
             Route::post('/store', [
                 'uses' => 'FichaKinesiologiaController@store',
                 'as' => 'area-medica.ficha-evaluacion-inicial.kinesiologia.store'
-            ])->middleware('roles:admin');
+            ])->middleware('roles:admin|kinesiologia');
         });
 
         Route::group(['prefix' => '/fonoaudiologia'], function (){
@@ -76,17 +76,17 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
             Route::get('/create/{id}', [
                 'uses' => 'FichaFonoaudiologiaController@create',
                 'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.create'
-            ])->middleware('roles:admin');
+            ])->middleware('roles:admin|fonoaudiologia');
 
             Route::post('/postfono', [
                 'uses' => 'FichaFonoaudiologiaController@postFono',
                 'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.postfono'
-            ])->middleware('roles:admin');
+            ])->middleware('roles:admin|fonoaudiologia');
 
             Route::post('/agregarpariente', [
                 'uses' => 'FichaFonoaudiologiaController@postAgregarPariente',
                 'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.agregarpariente'
-            ])->middleware('roles:admin');
+            ])->middleware('roles:admin|fonoaudiologia');
 
         });
 
@@ -95,17 +95,17 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
             Route::get('/ingresar/{id}', [
                 'uses' => 'FichaTerapiaOcupacionalController@getIngresar',
                 'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
-            ])->middleware('roles:admin');
+            ])->middleware('roles:admin|terapia_ocupacional');
 
             Route::post('/ingresar', [
                 'uses' => 'FichaTerapiaOcupacionalController@postIngresar',
                 'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
-            ])->middleware('roles:admin');
+            ])->middleware('roles:admin|terapia_ocupacional');
 
             Route::get('/mostrar-lista', [
                 'uses' => 'FichaTerapiaOcupacionalController@getMostrarLista',
                 'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista'
-            ])->middleware('roles:admin');
+            ])->middleware('roles:admin|terapia_ocupacional');
         });
 
         Route::group(['prefix' => '/psicologia'], function (){
@@ -113,12 +113,12 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
             Route::get('/create/{id}', [
                 'uses' => 'FichaPsicologiaController@create',
                 'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.create'
-            ])->middleware('roles:admin');
+            ])->middleware('roles:admin|psicologia');
 
             Route::post('/store', [
                 'uses' => 'FichaPsicologiaController@store',
                 'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.store'
-            ])->middleware('roles:admin');
+            ])->middleware('roles:admin|psicologia');
         });
     });
 });
@@ -167,12 +167,12 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     Route::get('/createFichaPaciente', [
     'uses' => 'ReportabilidadController@show',
     'as' => 'reportabilidad.createFichaPaciente'
-    ])->middleware('roles:admin');;
+    ])->middleware('roles:admin|jefatura');;
 
     Route::get('/showEstadistica', [
     'uses' => 'ReportabilidadController@showResults',
     'as' => 'reportabilidad.showEstadistica'
-    ])->middleware('roles:admin');
+    ])->middleware('roles:admin|jefatura');
 });
 
 

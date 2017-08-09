@@ -32,22 +32,20 @@
                             </a>
                         </li>
 
-                        @if(Auth::user()->hasAnyRole(['admin']))
-                            <li class=''>
-                                <a href='{{route('beneficiario.create')}}'>
-                                    <div class='icon'>
-                                        <i class='fa fa-caret-right'></i>
-                                    </div>
-                                    <span>Registro Beneficiario</span>
-                                </a>
-                            </li>
-                        @endif
+                        <li class=''>
+                            <a href='{{route('beneficiario.create')}}'>
+                                <div class='icon'>
+                                    <i class='fa fa-caret-right'></i>
+                                </div>
+                                <span>Registro Beneficiario</span>
+                            </a>
+                        </li>
 
                     </ul>
                 </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin']))
+            @if(Auth::user()->hasAnyRole(['admin', 'kinesiologia']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
                     <span>Kinesiología</span>
@@ -67,7 +65,7 @@
             </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin']))
+            @if(Auth::user()->hasAnyRole(['admin', 'fonoaudiologia']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
                     <span>Fonoaudiología</span>
@@ -87,7 +85,7 @@
             </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin']))
+            @if(Auth::user()->hasAnyRole(['admin', 'psicologia']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
                     <span>Psicología</span>
@@ -107,7 +105,7 @@
             </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin']))
+            @if(Auth::user()->hasAnyRole(['admin', 'terapia_ocupacional']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
                     <span>Terapia Ocupacional</span>
@@ -127,7 +125,7 @@
             </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin']))
+            @if(Auth::user()->hasAnyRole(['admin', 'trabajo_social']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
                     <span>Area Social</span>
@@ -147,7 +145,7 @@
             </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin']))
+            @if(Auth::user()->hasAnyRole(['admin', 'jefatura']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
                     <span>Reportabilidad</span>
@@ -168,7 +166,7 @@
             </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin']))
+            @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
                     <span>Malla</span>
@@ -205,16 +203,14 @@
                             </a>
                         </li>
 
-                        @if(Auth::user()->hasAnyRole(['admin']))
-                            <li class=''>
-                                <a href='{{route('register')}}'>
-                                    <div class='icon'>
-                                        <i class='fa fa-caret-right'></i>
-                                    </div>
-                                    <span>Creación Usuario</span>
-                                </a>
-                            </li>
-                        @endif
+                        <li class=''>
+                            <a href='{{route('register')}}'>
+                                <div class='icon'>
+                                    <i class='fa fa-caret-right'></i>
+                                </div>
+                                <span>Creación Usuario</span>
+                            </a>
+                        </li>
 
                     </ul>
                 </li>
