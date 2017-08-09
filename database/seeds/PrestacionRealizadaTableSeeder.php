@@ -11,6 +11,6 @@ class PrestacionRealizadaTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\PrestacionRealizada::class,100)->create();
+        //factory(App\PrestacionRealizada::class,100)->create();
     }
 }

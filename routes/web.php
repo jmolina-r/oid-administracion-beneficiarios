@@ -182,3 +182,16 @@ Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
         'uses' => 'BeneficiarioController@findNombrePorRut'
     ]);
 });
+
+Route::group(['prefix' => '/registro_prestacion', 'middleware' => 'auth'], function (){
+    Route::get('/{id}', [
+        'uses' => 'MallaController@registroPrestacion',
+        'as' => 'malla.showIngresoPrestacion'
+    ]);
+
+    Route::post('/getprestacionesprofesional', [
+        'uses' => 'MallaController@getPrestacionesProfesional'
+    ]);
+});
+
+
