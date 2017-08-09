@@ -64,4 +64,10 @@ $(document).ready(function () {
 
     });
 
+    $('#boton-finalizar').click(function () {
+
+
+
+    });
+
 });
