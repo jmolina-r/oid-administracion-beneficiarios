@@ -19,7 +19,7 @@ class UserTableSeeder extends Seeder
 
         factory(App\User::class)->create([
             // 'name' => 'juan',
-            'username' => 'juan',
+            'username' => '17514574-5',
             'email' => 'juan@juan.com'
         ]);
 
