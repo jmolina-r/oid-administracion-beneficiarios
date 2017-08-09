@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Role;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+
+ use Illuminate\Http\Request;
+ use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -38,6 +43,7 @@ class RegisterController extends Controller
     {
         // Changed to redirect to Login page.
         $this->middleware('auth');
+        $this->middleware('roles:admin|coordinador_oficina');
     }
 
     /**
@@ -49,9 +55,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            /*'name' => 'required|string|max:255', */
+            'username' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'roles' => 'required',
+            'status' => 'required|boolean'
         ]);
     }
 
@@ -63,10 +72,59 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $user = User::create([
+            /*'name' => $data['name'],*/
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'status' => $data['status']
         ]);
+
+        // Role Save
+        if ($data['roles']) {
+            foreach ($data['roles'] as $key => $val) {
+                if (is_numeric($val)) {
+                    $role = Role::find($val);
+                    if ($role) {
+                        $user->roles()->save($role);
+                    }
+                }
+            }
+        }
+
+        return $user;
     }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        //Role
+        $roles = Role::get();
+
+        return view('auth.register')
+            ->with(compact('roles'));
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        //$this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
+
 }
