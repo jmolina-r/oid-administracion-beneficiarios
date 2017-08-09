@@ -43,4 +43,9 @@ class FindController extends Controller
         return User::find($id);
     }
 
+    public function userInfoRolesJson($id)
+    {
+        return User::find($id)->roles;
+    }
+
 }
