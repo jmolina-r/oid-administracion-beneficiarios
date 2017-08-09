@@ -101,7 +101,9 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                                 <th>
                                                                                     Estado
                                                                                 </th> 
-                                                                                <th></th>
+                                                                                <th>
+                                                                                    
+                                                                                </th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -123,9 +125,9 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                                         <a class='btn btn-success btn-xs' href='#' onclick="getUsuarioPorId('{{$user->id}}')">
                                                                                             <i class='fa fa-user'></i>
                                                                                         </a>
-                                                                                        <a class='btn btn-danger btn-xs' href='#'>
+                                                                                        {{-- <a class='btn btn-danger btn-xs' href='#'>
                                                                                             <i class='fa fa-times'></i>
-                                                                                        </a>
+                                                                                        </a> --}}
                                                                                     </div>
                                                                                 </td>
                                                                             </tr>

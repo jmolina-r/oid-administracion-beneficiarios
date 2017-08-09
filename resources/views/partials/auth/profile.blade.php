@@ -21,7 +21,7 @@
                 </div>
                 <div class='modal-footer'>
                     <button class='btn btn-default' data-dismiss='modal' type='button'>Volver</button>
-                    <button id="editar_btn" class='btn btn-success' type='button'>Editar</button>
+                    <button id="editar_btn" class='btn btn-warning' type='button'>Editar</button>
                     <input id="userId" type="hidden" value="">
                 </div>
             </div>

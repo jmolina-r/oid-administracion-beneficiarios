@@ -16,8 +16,8 @@ function getUsuarioPorId(userId) {
                 $('#estado').html("Inactivo");
             }
 
-            $('#editar_btn').click(function() { 
-                alert($('#userId').val())
+            $('#editar_btn').click(function() {
+                window.location.href = "/update/" + $('#userId').val();
             });
 
             $('#profile').modal('show');
