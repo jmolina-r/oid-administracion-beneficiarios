@@ -12,32 +12,32 @@ class BeneficioTableSeeder extends Seeder
     public function run()
     {
         $beneficio = new \App\Beneficio([
-            'nombre' => 'sub. discapacidad mental'
+            'nombre' => 'subsidio discapacidad mental'
         ]);
         $beneficio->save();
 
         $beneficio = new \App\Beneficio([
-            'nombre' => 'pbs invalidez'
+            'nombre' => 'pensión básica solidaria de invalidez'
         ]);
         $beneficio->save();
 
         $beneficio = new \App\Beneficio([
-            'nombre' => 'sub. agua potable'
+            'nombre' => 'subsidio agua potable'
         ]);
         $beneficio->save();
 
         $beneficio = new \App\Beneficio([
-            'nombre' => 'pbs vejez'
+            'nombre' => 'pensión básica solidaria de vejez'
         ]);
         $beneficio->save();
 
         $beneficio = new \App\Beneficio([
-            'nombre' => 'sub. maternal'
+            'nombre' => 'subsidio maternal'
         ]);
         $beneficio->save();
 
         $beneficio = new \App\Beneficio([
-            'nombre' => 'sub. familiar'
+            'nombre' => 'subsidio familiar'
         ]);
         $beneficio->save();
 
