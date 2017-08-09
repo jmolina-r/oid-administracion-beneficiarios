@@ -152,43 +152,36 @@
 
         <h2>Datos de Discapacidad</h2>
         <section id="datosDiscapacidad">
+            @if(isset($beneficiario->ficha_beneficiario->ficha_discapacidad->porcentaje_discapacidades) && count($beneficiario->ficha_beneficiario->ficha_discapacidad->porcentaje_discapacidades) > 0)
+                <p>
+                    <strong>Porcentajes de Discapacidades: </strong><br><br>
+                    @foreach ($beneficiario->ficha_beneficiario->ficha_discapacidad->porcentaje_discapacidades as $discapacidad)
+                        <span class="capitalize"> {{ $discapacidad->tipo_discapacidad->nombre }} {{ $discapacidad->porcentaje }}%</span>
+                    @endforeach
+                </p>
+            @endif
+
+            @if($beneficiario->ficha_beneficiario->ficha_discapacidad->requiere_cuidado === 1)
+                <p><strong>Requiere Cuidados de Tercero: </strong> Si</p>
+            @else
+                <p><strong>Requiere Cuidados de Tercero: </strong> No</p>
+            @endif
+            <p><strong>Tipo de Dependencia: </strong><span class="capitalize">{{$beneficiario->ficha_beneficiario->ficha_discapacidad->tipo_dependencia->nombre}}</span></p>
                 @if(isset($beneficiario->ficha_beneficiario->ficha_discapacidad->diagnostico) || isset($beneficiario->ficha_beneficiario->ficha_discapacidad->otras_enfermedades))
-                <p>
-                    @isset($beneficiario->ficha_beneficiario->ficha_discapacidad->diagnostico)
-                        <strong>Diagnóstico Médico: </strong>
-                        <span class="capitalize">{{ $beneficiario->ficha_beneficiario->ficha_discapacidad->diagnostico }}</span>
-                    @endisset
-                </p>
-                <p>
-                    @isset($beneficiario->ficha_beneficiario->ficha_discapacidad->otras_enfermedades)
-                        <strong>Otras Enfermedades</strong>
-                        <span class="capitalize">{{ $beneficiario->ficha_beneficiario->ficha_discapacidad->otras_enfermedades }}</span>
-                    @endisset
-                </p>
-                @endif
-
-                @if(isset($beneficiario->ficha_beneficiario->ficha_discapacidad->porcentaje_discapacidades) && count($beneficiario->ficha_beneficiario->ficha_discapacidad->porcentaje_discapacidades) > 0)
                     <p>
-                        <strong>Porcentajes de Discapacidades: </strong><br><br>
-                        @foreach ($beneficiario->ficha_beneficiario->ficha_discapacidad->porcentaje_discapacidades as $discapacidad)
-                            <span class="capitalize"> {{ $discapacidad->tipo_discapacidad->nombre }} {{ $discapacidad->porcentaje }}%</span>
-                        @endforeach
+                        @isset($beneficiario->ficha_beneficiario->ficha_discapacidad->diagnostico)
+                            <strong>Diagnóstico Médico: </strong>
+                            <span class="capitalize">{{ $beneficiario->ficha_beneficiario->ficha_discapacidad->diagnostico }}</span>
+                        @endisset
+                    </p>
+                    <p>
+                        @isset($beneficiario->ficha_beneficiario->ficha_discapacidad->otras_enfermedades)
+                            <strong>Otras Enfermedades</strong>
+                            <span class="capitalize">{{ $beneficiario->ficha_beneficiario->ficha_discapacidad->otras_enfermedades }}</span>
+                        @endisset
                     </p>
                 @endif
 
-                @isset($beneficiario->ficha_beneficiario->ficha_discapacidad->diagnostico)
-                    <p>
-                        <strong>Diagnóstico Médico: </strong>
-                        <span class="capitalize">{{$beneficiario->ficha_beneficiario->ficha_discapacidad->diagnostico}}</span>
-                    </p>
-                @endisset 
-
-                @if($beneficiario->ficha_beneficiario->ficha_discapacidad->requiere_cuidado === 1)
-                    <p><strong>Requiere Cuidados de Tercero: </strong> Si</p>
-                @else
-                    <p><strong>Requiere Cuidados de Tercero: </strong> No</p>
-                @endif
-                <p><strong>Tipo de Dependencia: </strong><span class="capitalize">{{$beneficiario->ficha_beneficiario->ficha_discapacidad->tipo_dependencia->nombre}}</span></p>
         </section>
 
         <h2>Datos Tutor</h2>
