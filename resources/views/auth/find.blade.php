@@ -49,7 +49,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
 <script src="assets/javascripts/plugins/datatables/datatables.min.js" type="text/javascript"></script>
 <!-- / END - validaciones-->
 <!-- / START AJAX para busqueda -->
-<script src="{{ asset('/js/beneficiario/BuscadorBeneficiario.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/auth/BuscadorUsuario.js') }}" type="text/javascript"></script>
 <!-- / END  -->
 @endsection
 
@@ -98,10 +98,9 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                                 <th>
                                                                                     E-mail
                                                                                 </th>
-                                                                                {{-- <!-- <th>
+                                                                                <th>
                                                                                     Estado
                                                                                 </th> 
-                                                                                --> --}}
                                                                                 <th></th>
                                                                             </tr>
                                                                         </thead>
@@ -110,14 +109,18 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                             <tr>
                                                                                 <td>{{$user->username}} </td>
                                                                                 <td>{{$user->email}}</td>
-                                                                                {{-- <!--
                                                                                 <td>
-                                                                                    <span class='label label-success'>Activo</span>
-                                                                                </td> 
-                                                                                --> --}}
+                                                                                    <span class='label 
+                                                                                    @if($user->status == 1)
+                                                                                        label-success'>Activo
+                                                                                    @else
+                                                                                        label-danger'>Inactivo
+                                                                                    @endif
+                                                                                    </span>
+                                                                                </td>
                                                                                 <td>
                                                                                     <div class='text-right'>
-                                                                                        <a class='btn btn-success btn-xs' href='#'>
+                                                                                        <a class='btn btn-success btn-xs' href='#' onclick="getUsuarioPorId({{$user->id}})">
                                                                                             <i class='fa fa-user'></i>
                                                                                         </a>
                                                                                         <a class='btn btn-danger btn-xs' href='#'>
