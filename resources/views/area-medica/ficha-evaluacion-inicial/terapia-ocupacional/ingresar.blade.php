@@ -135,7 +135,7 @@
                                                     </div>
                                                 @endif
                                                 <hr class='hr-normal'>
-                                                <form role="form" id="formulario_registro" action="{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
+                                                <form role="form" id="formulario_registro" action="{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresando')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
                                                     <div class='step-content'>
                                                         <!-- STEP 1 -->
                                                         <div class='step-pane active' data-step='1'>
@@ -246,7 +246,9 @@
                                                                 <h3>Genograma</h3>
                                                                 <hr/>
                                                             </div>
-                                                            <input type="file" name="avatar"></input>
+                                                            <div class="col-md-8 controls">
+                                                                <input type="file" name="genograma" ></input>
+                                                            </div>
                                                         </div>
                                                         <!-- STEP 3 -->
                                                         <div class='step-pane active' data-step='3'>
@@ -982,6 +984,39 @@
                     </div>
                 </div>
                 @include('partials.footer')
+
+                <div class="modal-custom">
+                    <div class='modal fade' id='confirmation' tabindex='-1'>
+                        <div class='modal-dialog'>
+                            <div class='modal-content'>
+                                <div class='modal-header'>
+                                    <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                                    <h3 class='modal-title' id='myModalLabel'>Confirmación</h3>
+                                </div>
+                                <div class='modal-body'>
+                                    <h5>Ya ha completado la ficha de evaluación inicial para Terapia Ocupacional. Favor de verificar que los datos que ingresó son los correctos. <br>
+                                        Para guardar pulse el botón Registrar. Si desea realizar un cambio, pulse el botón Volver.</h5>
+                                    <hr>
+                                </div>
+                                <div class='modal-footer'>
+                                    <button class='btn btn-default' data-dismiss='modal' type='button'>Volver</button>
+                                    <button class='btn btn-success' type='button' onclick="enviarFormulario()">Registrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    /**
+                     * Envia el formulario cuando ya fueron revisados todos los datos
+                     */
+                    function enviarFormulario(){
+
+                        $('#formulario_registro').submit();
+                    }
+                </script>
+
             </div>
         </section>
     </div>

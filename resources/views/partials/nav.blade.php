@@ -110,7 +110,7 @@
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>
                             </div>
-                            <span>Formulario ingreso terapia ocipacional</span>
+                            <span>Formulario Ingreso Terapia Ocupacional</span>
                         </a>
                     </li>
 

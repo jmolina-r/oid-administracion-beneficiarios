@@ -580,7 +580,7 @@
                                     <h3 class='modal-title' id='myModalLabel'>Confirmación</h3>
                                 </div>
                                 <div class='modal-body'>
-                                    <h5>A continuación se muestran todos los datos ingresados para el formulario de evaluaciń inicial. Favor leer detalladamente y confirmar con el botón registrar. De lo contrario, vuelva y modifique los datos que sean necesarios.</h5>
+                                    <h5>A continuación se muestran todos los datos ingresados para el formulario de evaluación inicial. Favor leer detalladamente y confirmar con el botón registrar. De lo contrario, vuelva y modifique los datos que sean necesarios.</h5>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-12 col-lg-6">
