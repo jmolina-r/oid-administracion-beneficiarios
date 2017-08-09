@@ -204,4 +204,15 @@ class MallaController extends Controller
         return $data->toJson();
     }
 
+    public function getNombreCompleto(Request $request){
+
+        $idHora = $request->input('id');
+        $hora = HoraAgendada::where('id', $idHora)->first();
+        $idBeneficiario = $hora->beneficiario_id;
+        $beneficiarioEncontrado = Beneficiario::where('id', $idBeneficiario)->first();
+
+        return $beneficiarioEncontrado->nombre . " " . $beneficiarioEncontrado->apellido;
+
+    }
+
 }

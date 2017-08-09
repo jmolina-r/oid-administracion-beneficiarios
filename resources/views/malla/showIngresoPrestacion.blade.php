@@ -98,6 +98,9 @@
                     <button id="boton-agregar-prestacion" type="button" class="btn btn-primary enabled">
                         Agregar
                     </button>
+                    <button id="boton-finalizar" type="button" class="btn btn-primary enabled">
+                        Finalizar
+                    </button>
                     </button>
                     <table class="col-md-4 table-striped pull-right" id="tabla-prestaciones">
                         <thead>

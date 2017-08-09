@@ -25,6 +25,29 @@ $(document).ready(function () {
         }
     });
 
+    var url = $(location).attr('href'),
+        parts = url.split("/"),
+        idHoraAgendada = parts[parts.length-1];
+
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: "/registro_prestacion/getnombrecompleto",
+        dataType: "text",
+        data: {
+            id: idHoraAgendada
+        },
+        type: "POST",
+        success: function(data, textStatus, jqXHR) {
+            $('#paciente-actual').val(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("Hubo un error, reintente");
+        }
+    });
+
+
     $('#boton-agregar-prestacion').click(function () {
 
         var texto = $('#combo-prestacion option:selected').text();

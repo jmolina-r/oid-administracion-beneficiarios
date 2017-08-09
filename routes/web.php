@@ -197,6 +197,10 @@ Route::group(['prefix' => '/registro_prestacion', 'middleware' => 'auth'], funct
     Route::post('/getprestacionesprofesional', [
         'uses' => 'MallaController@getPrestacionesProfesional'
     ]);
+
+    Route::post('/getnombrecompleto', [
+        'uses' => 'MallaController@getNombreCompleto'
+    ]);
 });
 
 
