@@ -48,9 +48,6 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
 <!-- / START - Validaciones-->
 <script src="assets/javascripts/plugins/datatables/datatables.min.js" type="text/javascript"></script>
 <!-- / END - validaciones-->
-<!-- / START AJAX para busqueda -->
-<script src="{{ asset('/js/auth/BuscadorUsuario.js') }}" type="text/javascript"></script>
-<!-- / END  -->
 @endsection
 
 <!-- Contenido del body -->
@@ -149,7 +146,6 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                 </div>
             </div>
             @include('partials.footer')
-            @include('partials.auth.profile')
         </div>
     </section>
 </div>

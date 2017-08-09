@@ -7,7 +7,7 @@
                     <h3 class='modal-title' id='myModalLabel'>Datos de Usuario</h3>
                 </div>
                 <div class='modal-body'>
-                    <h5>A continuación se muestran los datos del usuario seleccionado. Para modificar, presione el botón editar.</h5>
+                    <h5>A continuación se muestran los datos de usuario. Para modificar, presione el botón editar.</h5>
                     <div class="row">
                         <div class="col-sm-12 col-lg-6">
                             <h4>Nombre</h4>
