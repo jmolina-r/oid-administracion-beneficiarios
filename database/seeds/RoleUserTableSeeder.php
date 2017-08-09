@@ -14,10 +14,9 @@ class RoleUserTableSeeder extends Seeder
         $user = \App\User::where('username', 'admin')->first();
         $user->roles()->save(\App\Role::where('nombre', 'admin')->first());
 
-        $user = \App\User::where('username', 'juan')->first();
+        $user = \App\User::where('username', '17514574-5')->first();
         $user->roles()->save(\App\Role::where('nombre', 'secretaria')->first());
         $user->roles()->save(\App\Role::where('nombre', 'psicologia')->first());
-        $user->roles()->save(\App\Role::where('nombre', 'jefatura')->first());
         $user->roles()->save(\App\Role::where('nombre', 'jefatura')->first());
 
 
