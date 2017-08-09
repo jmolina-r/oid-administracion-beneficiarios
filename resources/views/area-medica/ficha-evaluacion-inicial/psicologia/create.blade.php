@@ -56,7 +56,7 @@
     <script src="{{ asset("/assets/javascripts/plugins/validate/additional-methods.js") }}" type="text/javascript"></script>
 
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/area-medica/IngresoFormulario.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/area-medica/FormularioPsicologia.js') }}" type="text/javascript"></script>
     <!-- / END - validaciones-->
 @endsection
 
@@ -224,28 +224,28 @@
                                                             <div class="col-md-8 form-group">
                                                                 <label class="control-label" for="nombre_madre">Nombre</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control onlyletters" name="nombre_madre" value="{{ old('nombre_madre') }}"  placeholder="Nombre" type="text" maxlength="200" required>
+                                                                    <input class="form-control onlyletters" name="nombre_madre" value="{{ old('nombre_madre') }}"  placeholder="Nombre" type="text" maxlength="200" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <label class="control-label" for="edad_madre">Edad</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control onlynumbers" name="edad_madre" value="{{ old('edad_madre') }}"  placeholder="Edad" type="text" maxlength="3" required>
+                                                                    <input class="form-control onlynumbers" name="edad_madre" value="{{ old('edad_madre') }}"  placeholder="Edad" type="text" maxlength="3" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-8 form-group">
                                                                 <label class="control-label" for="rut_madre">RUT</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control onlyrut" name="rut_madre" value="{{ old('rut_madre') }}"  placeholder="RUT" type="text" maxlength="15" required>
+                                                                    <input class="form-control onlyrut" name="rut_madre" value="{{ old('rut_madre') }}"  placeholder="RUT" type="text" maxlength="15" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <label class="control-label" for="fecha_nacimiento_madre">Fecha de Nacimiento</label>
                                                                 <div class='input-group' id='fecha_nacimiento'>
-                                                                    <input class="form-control" data-format='DD/MM/YYYY' name="fecha_nacimiento_madre" value="{{ old('fecha_nacimiento_madre') }}"  placeholder="Fecha de Nacimiento" type="text" maxlength="50" required>
+                                                                    <input class="form-control" data-format='DD/MM/YYYY' name="fecha_nacimiento_madre" value="{{ old('fecha_nacimiento_madre') }}"  placeholder="Fecha de Nacimiento" type="text" maxlength="50" >
                                                                     <span class='input-group-addon'>
                                                                         <span class='fa fa-calendar'></span>
                                                                     </span>
@@ -255,28 +255,28 @@
                                                             <div class="col-md-8 form-group">
                                                                 <label class="control-label" for="escolaridad_madre">Escolaridad</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" name="escolaridad_madre" value="{{ old('escolaridad_madre') }}"  placeholder="Escolaridad" type="text" maxlength="200" required>
+                                                                    <input class="form-control" name="escolaridad_madre" value="{{ old('escolaridad_madre') }}"  placeholder="Escolaridad" type="text" maxlength="200" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <label class="control-label" for="telefono_madre">Telefono</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control onlynumbers" name="telefono_madre" value="{{ old('telefono_madre') }}"  placeholder="Telefono" type="text" maxlength="12" required>
+                                                                    <input class="form-control onlynumbers" name="telefono_madre" value="{{ old('telefono_madre') }}"  placeholder="Telefono" type="text" maxlength="12" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="ocupacion_madre">Ocupación</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" name="ocupacion_madre" value="{{ old('ocupacion_madre') }}"  placeholder="Ocupación" type="text" maxlength="200" required>
+                                                                    <input class="form-control" name="ocupacion_madre" value="{{ old('ocupacion_madre') }}"  placeholder="Ocupación" type="text" maxlength="200" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="observaciones_madre">Observaciones</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" name="observaciones_madre" value="{{ old('observaciones_madre') }}"  placeholder="Observaciones" type="text" maxlength="200" required>
+                                                                    <input class="form-control" name="observaciones_madre" value="{{ old('observaciones_madre') }}"  placeholder="Observaciones" type="text" maxlength="200" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
@@ -290,28 +290,28 @@
                                                             <div class="col-md-8 form-group">
                                                                 <label class="control-label" for="nombre_padre">Nombre</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control onlyletters" name="nombre_padre" value="{{ old('nombre_padre') }}"  placeholder="Nombre" type="text" maxlength="200" required>
+                                                                    <input class="form-control onlyletters" name="nombre_padre" value="{{ old('nombre_padre') }}"  placeholder="Nombre" type="text" maxlength="200" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <label class="control-label" for="edad_padre">Edad</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control onlynumbers" name="edad_padre" value="{{ old('edad_padre') }}"  placeholder="Edad" type="text" maxlength="3" required>
+                                                                    <input class="form-control onlynumbers" name="edad_padre" value="{{ old('edad_padre') }}"  placeholder="Edad" type="text" maxlength="3" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-8 form-group">
                                                                 <label class="control-label" for="rut_padre">RUT</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control onlyrut" name="rut_padre" value="{{ old('rut_padre') }}"  placeholder="RUT" type="text" maxlength="15" required>
+                                                                    <input class="form-control onlyrut" name="rut_padre" value="{{ old('rut_padre') }}"  placeholder="RUT" type="text" maxlength="15" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <label class="control-label" for="fecha_nacimiento_padre">Fecha de Nacimiento</label>
                                                                 <div class='input-group' id='fecha_nacimiento2'>
-                                                                    <input class="form-control" data-format='DD/MM/YYYY' name="fecha_nacimiento_padre" value="{{ old('fecha_nacimiento_padre') }}"  placeholder="Fecha de Nacimiento" type="text" maxlength="50" required>
+                                                                    <input class="form-control" data-format='DD/MM/YYYY' name="fecha_nacimiento_padre" value="{{ old('fecha_nacimiento_padre') }}"  placeholder="Fecha de Nacimiento" type="text" maxlength="50" >
                                                                     <span class='input-group-addon'>
                                                                         <span class='fa fa-calendar'></span>
                                                                     </span>
@@ -321,28 +321,28 @@
                                                             <div class="col-md-8 form-group">
                                                                 <label class="control-label" for="escolaridad_padre">Escolaridad</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" name="escolaridad_padre" value="{{ old('escolaridad_padre') }}"  placeholder="Escolaridad" type="text" maxlength="200" required>
+                                                                    <input class="form-control" name="escolaridad_padre" value="{{ old('escolaridad_padre') }}"  placeholder="Escolaridad" type="text" maxlength="200" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <label class="control-label" for="telefono_padre">Telefono</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control onlynumbers" name="telefono_padre" value="{{ old('telefono_padre') }}"  placeholder="Telefono" type="text" maxlength="12" required>
+                                                                    <input class="form-control onlynumbers" name="telefono_padre" value="{{ old('telefono_padre') }}"  placeholder="Telefono" type="text" maxlength="12" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="ocupacion_padre">Ocupación</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" name="ocupacion_padre" value="{{ old('ocupacion_padre') }}"  placeholder="Ocupación" type="text" maxlength="200" required>
+                                                                    <input class="form-control" name="ocupacion_padre" value="{{ old('ocupacion_padre') }}"  placeholder="Ocupación" type="text" maxlength="200" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="observaciones_padre">Observaciones</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" name="observaciones_padre" value="{{ old('observaciones_padre') }}"  placeholder="Observaciones" type="text" maxlength="200" required>
+                                                                    <input class="form-control" name="observaciones_padre" value="{{ old('observaciones_padre') }}"  placeholder="Observaciones" type="text" maxlength="200" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
