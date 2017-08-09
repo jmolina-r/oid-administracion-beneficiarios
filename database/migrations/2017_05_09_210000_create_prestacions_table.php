@@ -16,6 +16,8 @@ class CreatePrestacionsTable extends Migration
         Schema::create('prestacions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('nombre');
+            $table->string('area');
         });
     }
 

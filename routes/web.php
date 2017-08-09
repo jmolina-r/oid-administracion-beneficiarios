@@ -188,6 +188,10 @@ Route::group(['prefix' => '/registro_prestacion', 'middleware' => 'auth'], funct
         'uses' => 'MallaController@registroPrestacion',
         'as' => 'malla.showIngresoPrestacion'
     ]);
+
+    Route::post('/getprestacionesprofesional', [
+        'uses' => 'MallaController@getPrestacionesProfesional'
+    ]);
 });
 
 

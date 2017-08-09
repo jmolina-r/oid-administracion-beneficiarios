@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Beneficiario;
 use App\HoraAgendada;
+use App\Prestacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use function MongoDB\BSON\toJSON;
 
 class MallaController extends Controller
 {
@@ -180,6 +182,11 @@ class MallaController extends Controller
 
         return view('malla.showIngresoPrestacion')->with(compact('id'));
 
+    }
+
+    public function getPrestacionesProfesional(Request $request){
+        $data = Prestacion::all();
+        return $data->toJson();
     }
 
 }
