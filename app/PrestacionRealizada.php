@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PrestacionRealizada extends Model
 {
-    protected $fillable=['fecha', 'beneficiario_id', 'prestacion_id'];
+    protected $fillable=['fecha', 'beneficiario_id', 'prestacions_id'];
 
     public function beneficiario(){
         return $this->hasOne(Beneficiario::class);

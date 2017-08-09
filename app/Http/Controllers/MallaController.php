@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Beneficiario;
 use App\HoraAgendada;
 use App\Prestacion;
+use App\PrestacionRealizada;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function MongoDB\BSON\toJSON;
@@ -213,6 +214,30 @@ class MallaController extends Controller
 
         return $beneficiarioEncontrado->nombre . " " . $beneficiarioEncontrado->apellido;
 
+    }
+
+    public function storePrestaciones(Request $request){
+
+        //necesito el id para borrar la hora
+        $idHora = $request->input('idHoraAgendada');
+        $jsonPrestaciones = $request->input('jsonPrestaciones');
+
+        $horaAgendada = HoraAgendada::where('id', $idHora)->first();
+
+
+        foreach ($jsonPrestaciones as $prestacionRegistro){
+
+            $prestacionRealizada = new PrestacionRealizada([
+               'beneficiario_id' => $horaAgendada->beneficiario_id,
+                'prestacions_id' => $prestacionRegistro['id'],
+                'fecha' => date('Y-m-d')
+            ]);
+            $prestacionRealizada->save();
+        }
+
+        $horaAgendada->delete();
+
+        return;
     }
 
 }

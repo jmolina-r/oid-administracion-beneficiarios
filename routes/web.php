@@ -201,6 +201,10 @@ Route::group(['prefix' => '/registro_prestacion', 'middleware' => 'auth'], funct
     Route::post('/getnombrecompleto', [
         'uses' => 'MallaController@getNombreCompleto'
     ]);
+
+    Route::post('/storeprestaciones', [
+        'uses' => 'MallaController@storePrestaciones'
+    ]);
 });
 
 

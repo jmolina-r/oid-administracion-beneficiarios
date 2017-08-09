@@ -66,7 +66,42 @@ $(document).ready(function () {
 
     $('#boton-finalizar').click(function () {
 
+        var respuesta = confirm("¿Seguro que desea finalizar el registro de prestaciones?");
 
+        if(respuesta == false){
+            return;
+        }
+
+        var jsonPrestacionesRealizadas = [];
+
+        $('#tabla-prestaciones').find('tbody tr').each(function(){
+            var obj = {},
+                $td = $(this).find('td'),
+                id = $td.eq(0).text(),
+                nombre = $td.eq(1).text();
+            obj['id'] = id;
+            obj['nombre'] = nombre;
+            jsonPrestacionesRealizadas.push(obj);
+        });
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "/registro_prestacion/storeprestaciones",
+            data: {
+                idHoraAgendada: idHoraAgendada,
+                jsonPrestaciones: jsonPrestacionesRealizadas
+            },
+            type: "POST",
+            success: function(data, textStatus, jqXHR) {
+                alert("Prestaciones registradas correctamente. Volviendo a la malla.");
+                window.location.replace("/malla/show");
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert("Hubo un error, reintente");
+            }
+        });
 
     });
 
