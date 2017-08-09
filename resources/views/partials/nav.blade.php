@@ -55,7 +55,14 @@
                             <span>Formulario ingreso kine</span>
                         </a>
                     </li>
-
+                    <li class=''>
+                        <a href='{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show',1)}}'>
+                            <div class='icon'>
+                                <i class='fa fa-caret-right'></i>
+                            </div>
+                            <span>Ver formulario ingreso kine</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class=''>
@@ -103,7 +110,7 @@
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>
                             </div>
-                            <span>Formulario ingreso terapia ocipacional</span>
+                            <span>Formulario Ingreso Terapia Ocupacional</span>
                         </a>
                     </li>
 

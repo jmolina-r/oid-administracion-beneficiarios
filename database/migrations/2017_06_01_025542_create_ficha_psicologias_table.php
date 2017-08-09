@@ -16,12 +16,12 @@ class CreateFichaPsicologiasTable extends Migration
         Schema::create('ficha_psicologias', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('motivo_consulta')->nullable();
+            $table->string('motivo_consulta',200)->nullable();
             $table->binary('genograma')->nullable();
 
             $table->integer('antecedentes_medicos_id')->unsigned();
             $table->integer('antecedentes_familiares_id')->unsigned();
-            $table->integer('psicologo_id')->unsigned();
+            $table->integer('profesional_id')->unsigned();
             $table->integer('beneficiario_id')->unsigned();
         });
 
@@ -34,7 +34,7 @@ class CreateFichaPsicologiasTable extends Migration
         });
 
         Schema::table('ficha_psicologias', function($table) {
-            $table->foreign('psicologo_id')->references('id')->on('psicologos');
+            $table->foreign('profesional_id')->references('id')->on('profesionals');
         });
 
         Schema::table('ficha_psicologias', function($table) {

@@ -16,11 +16,11 @@ class CreateValSensorialsTable extends Migration
         Schema::create('val_sensorials', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('visual')->nullable();
-            $table->string('auditivo')->nullable();
-            $table->string('tactil')->nullable();
-            $table->string('propioceptivo')->nullable();
-            $table->string('vestibular')->nullable();
+            $table->string('visual', 200)->nullable();
+            $table->string('auditivo', 200)->nullable();
+            $table->string('tactil', 200)->nullable();
+            $table->string('propioceptivo', 200)->nullable();
+            $table->string('vestibular', 200)->nullable();
         });
     }
 

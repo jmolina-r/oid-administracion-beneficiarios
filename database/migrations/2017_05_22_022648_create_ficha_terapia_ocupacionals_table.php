@@ -16,11 +16,11 @@ class CreateFichaTerapiaOcupacionalsTable extends Migration
         Schema::create('ficha_terapia_ocupacionals', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('diagnostico_base')->nullable();
-            $table->string('motivo_consulta')->nullable();
-            $table->string('derivado_por')->nullable();
-            $table->string('relacion_paciente')->nullable();
-            $table->string('observaciones_generales')->nullable();
+            $table->string('diagnostico_base',200)->nullable();
+            $table->string('motivo_consulta',200)->nullable();
+            $table->string('derivado_por',200)->nullable();
+            $table->string('relacion_paciente',200)->nullable();
+            $table->string('observaciones_generales',200)->nullable();
 
             $table->integer('actividades_vida_diaria_id')->unsigned();
             $table->integer('antecedentes_salud_id')->unsigned();
@@ -28,7 +28,7 @@ class CreateFichaTerapiaOcupacionalsTable extends Migration
             $table->integer('desarrollo_evolutivo_id')->unsigned();
             $table->integer('habilidades_sociales_id')->unsigned();
             $table->integer('historial_clinico_id')->unsigned();
-            $table->integer('terapeuta_ocupacional_id')->unsigned();
+            $table->integer('profesional_id')->unsigned();
             $table->integer('beneficiario_id')->unsigned();
         });
 
@@ -57,7 +57,7 @@ class CreateFichaTerapiaOcupacionalsTable extends Migration
         });
 
         Schema::table('ficha_terapia_ocupacionals', function($table) {
-            $table->foreign('terapeuta_ocupacional_id')->references('id')->on('terapeuta_ocupacionals');
+            $table->foreign('profesional_id')->references('id')->on('profesionals');
         });
 
         Schema::table('ficha_terapia_ocupacionals', function($table) {

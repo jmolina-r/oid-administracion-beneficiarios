@@ -135,7 +135,7 @@
                                                     </div>
                                                 @endif
                                                 <hr class='hr-normal'>
-                                                <form role="form" id="formulario_registro" action="{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
+                                                <form role="form" id="formulario_registro" action="{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresando')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
                                                     <div class='step-content'>
                                                         <!-- STEP 1 -->
                                                         <div class='step-pane active' data-step='1'>
@@ -242,6 +242,13 @@
                                                                 </div>
                                                             </div>
                                                             <!--FALTA GENOGRAMA-->
+                                                            <div class="col-md-4">
+                                                                <h3>Genograma</h3>
+                                                                <hr/>
+                                                            </div>
+                                                            <div class="col-md-8 controls">
+                                                                <input type="file" name="genograma" ></input>
+                                                            </div>
                                                         </div>
                                                         <!-- STEP 3 -->
                                                         <div class='step-pane active' data-step='3'>
@@ -589,51 +596,75 @@
                                                                 <hr/>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="alimentacion">Alimentación</label>
-                                                                <div class="col-md-9 controls">
+                                                                <label class="col-md-4 control-label" for="alimentacion">Alimentación</label>
+                                                                <div class="col-md-2 controls">
                                                                     <input class="form-control" id="alimentacion" name="alimentacion" value="{{ old('alimentacion') }}"  placeholder="Punto" type="text">
                                                                 </div>
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_alimen" name="comentario_alimen" value="{{ old('comentario_alimen') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="arreglo_personal">Arreglo personal</label>
-                                                                <div class="col-md-9 controls">
+                                                                <label class="col-md-4 control-label" for="arreglo_personal">Arreglo personal</label>
+                                                                <div class="col-md-2 controls">
                                                                     <input class="form-control" id="arreglo_personal" name="arreglo_personal" value="{{ old('arreglo_personal') }}"  placeholder="Punto" type="text">
                                                                 </div>
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_arreglo" name="comentario_arreglo" value="{{ old('comentario_arreglo') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="banio">Baño</label>
-                                                                <div class="col-md-9 controls">
+                                                                <label class="col-md-4 control-label" for="banio">Baño</label>
+                                                                <div class="col-md-2 controls">
                                                                     <input class="form-control" id="banio" name="banio" value="{{ old('banio') }}"  placeholder="Punto" type="text">
                                                                 </div>
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_banio" name="comentario_banio" value="{{ old('comentario_banio') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="vestuario_superior">Vestuario tren superior</label>
-                                                                <div class="col-md-9 controls">
+                                                                <label class="col-md-4 control-label" for="vestuario_superior">Vestuario tren superior</label>
+                                                                <div class="col-md-2 controls">
                                                                     <input class="form-control" id="vestuario_superior" name="vestuario_superior" value="{{ old('vestuario_superior') }}"  placeholder="Punto" type="text">
                                                                 </div>
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_superior" name="comentario_superior" value="{{ old('comentario_superior') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="vestuario_inferior">Vestuario tren inferior</label>
-                                                                <div class="col-md-9 controls">
+                                                                <label class="col-md-4 control-label" for="vestuario_inferior">Vestuario tren inferior</label>
+                                                                <div class="col-md-2 controls">
                                                                     <input class="form-control" id="vestuario_inferior" name="vestuario_inferior" value="{{ old('vestuario_inferior') }}"  placeholder="Punto" type="text">
                                                                 </div>
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_inferior" name="comentario_inferior" value="{{ old('comentario_inferior') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="ponerse_zapatos">Ponerse los zapatos (amarre)</label>
-                                                                <div class="col-md-9 controls">
+                                                                <label class="col-md-4 control-label" for="ponerse_zapatos">Ponerse los zapatos (amarre)</label>
+                                                                <div class="col-md-2 controls">
                                                                     <input class="form-control" id="ponerse_zapatos" name="ponerse_zapatos" value="{{ old('ponerse_zapatos') }}"  placeholder="Punto" type="text">
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="aseo_perianal">Aseo perianal</label>
-                                                                <div class="col-md-9 controls">
-                                                                    <input class="form-control" id="aseo_perianal" name="aseo_perianal" value="{{ old('aseo_perianal') }}"  placeholder="Punto" type="text">
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_zapatos" name="comentario_zapatos" value="{{ old('comentario_zapatos') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="lavado_dental">Lavar los dientes</label>
-                                                                <div class="col-md-9 controls">
+                                                                <label class="col-md-4 control-label" for="aseo_perianal">Aseo perianal</label>
+                                                                <div class="col-md-2 controls">
+                                                                    <input class="form-control" id="aseo_perianal" name="aseo_perianal" value="{{ old('aseo_perianal') }}"  placeholder="Punto" type="text">
+                                                                </div>
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_aseo" name="comentario_aseo" value="{{ old('comentario_aseo') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="lavado_dental">Lavar los dientes</label>
+                                                                <div class="col-md-2 controls">
                                                                     <input class="form-control" id="lavado_dental" name="lavado_dental" value="{{ old('lavado_dental') }}"  placeholder="Punto" type="text">
+                                                                </div>
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_dental" name="comentario_dental" value="{{ old('comentario_dental') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
@@ -641,15 +672,21 @@
                                                                 <hr/>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="manejo_vesical">Manejo vesical</label>
-                                                                <div class="col-md-9 controls">
+                                                                <label class="col-md-4 control-label" for="manejo_vesical">Manejo vesical</label>
+                                                                <div class="col-md-2 controls">
                                                                     <input class="form-control" id="manejo_vesical" name="manejo_vesical" value="{{ old('manejo_vesical') }}"  placeholder="Punto" type="text">
+                                                                </div>
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_vesical" name="comentario_vesical" value="{{ old('comentario_vesical') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="manejo_anal">Manejo anal</label>
-                                                                <div class="col-md-9 controls">
+                                                                <label class="col-md-4 control-label" for="manejo_anal">Manejo anal</label>
+                                                                <div class="col-md-2 controls">
                                                                     <input class="form-control" id="manejo_anal" name="manejo_anal" value="{{ old('manejo_anal') }}"  placeholder="Punto" type="text">
+                                                                </div>
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_anal" name="comentario_anal" value="{{ old('comentario_anal') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
@@ -657,27 +694,39 @@
                                                                 <hr/>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="preparar_comida">Prepararse algo de comer</label>
-                                                                <div class="col-md-9 controls">
+                                                                <label class="col-md-4 control-label" for="preparar_comida">Prepararse algo de comer</label>
+                                                                <div class="col-md-2 controls">
                                                                     <input class="form-control" id="preparar_comida" name="preparar_comida" value="{{ old('preparar_comida') }}"  placeholder="Punto" type="text">
                                                                 </div>
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_comida" name="comentario_comida" value="{{ old('comentario_comida') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="poner_mesa">Poner la mesa</label>
-                                                                <div class="col-md-9 controls">
+                                                                <label class="col-md-4 control-label" for="poner_mesa">Poner la mesa</label>
+                                                                <div class="col-md-2 controls">
                                                                     <input class="form-control" id="poner_mesa" name="poner_mesa" value="{{ old('poner_mesa') }}"  placeholder="Punto" type="text">
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="limpieza_ligera">Limpieza ligera (barrer,sacudir)</label>
-                                                                <div class="col-md-9 controls">
-                                                                    <input class="form-control" id="limpieza_ligera" name="limpieza_ligera" value="{{ old('limpieza_ligera') }}"  placeholder="Punto" type="text">
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_mesa" name="comentario_mesa" value="{{ old('comentario_mesa') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="espacio_ordenado">Mantener su espacio en orden</label>
-                                                                <div class="col-md-9 controls">
+                                                                <label class="col-md-4 control-label" for="limpieza_ligera">Limpieza ligera (barrer,sacudir)</label>
+                                                                <div class="col-md-2 controls">
+                                                                    <input class="form-control" id="limpieza_ligera" name="limpieza_ligera" value="{{ old('limpieza_ligera') }}"  placeholder="Punto" type="text">
+                                                                </div>
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_ligera" name="comentario_ligera" value="{{ old('comentario_ligera') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="espacio_ordenado">Mantener su espacio en orden</label>
+                                                                <div class="col-md-2 controls">
                                                                     <input class="form-control" id="espacio_ordenado" name="espacio_ordenado" value="{{ old('espacio_ordenado') }}"  placeholder="Punto" type="text">
+                                                                </div>
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_orden" name="comentario_orden" value="{{ old('comentario_orden') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
@@ -685,21 +734,30 @@
                                                                 <hr/>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="manejo_dinero">Manejo del dinero</label>
-                                                                <div class="col-md-9 controls">
+                                                                <label class="col-md-4 control-label" for="manejo_dinero">Manejo del dinero</label>
+                                                                <div class="col-md-2 controls">
                                                                     <input class="form-control" id="manejo_dinero" name="manejo_dinero" value="{{ old('manejo_dinero') }}"  placeholder="Punto" type="text">
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="ir_compras">Ir de compras</label>
-                                                                <div class="col-md-9 controls">
-                                                                    <input class="form-control" id="ir_compras" name="ir_compras" value="{{ old('ir_compras') }}"  placeholder="Punto" type="text">
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_dinero" name="comentario_dinero" value="{{ old('comentario_dinero') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="locomocion">Locomoción</label>
-                                                                <div class="col-md-9 controls">
+                                                                <label class="col-md-4 control-label" for="ir_compras">Ir de compras</label>
+                                                                <div class="col-md-2 controls">
+                                                                    <input class="form-control" id="ir_compras" name="ir_compras" value="{{ old('ir_compras') }}"  placeholder="Punto" type="text">
+                                                                </div>
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_compras" name="comentario_compras" value="{{ old('comentario_compras') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="locomocion">Locomoción</label>
+                                                                <div class="col-md-2 controls">
                                                                     <input class="form-control" id="locomocion" name="locomocion" value="{{ old('locomocion') }}"  placeholder="Punto" type="text">
+                                                                </div>
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_locomocion" name="comentario_locomocion" value="{{ old('comentario_locomocion') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
@@ -707,27 +765,39 @@
                                                                 <hr/>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="resolver_problemas">Resolución de problemas</label>
-                                                                <div class="col-md-9 controls">
+                                                                <label class="col-md-4 control-label" for="resolver_problemas">Resolución de problemas</label>
+                                                                <div class="col-md-2 controls">
                                                                     <input class="form-control" id="resolver_problemas" name="resolver_problemas" value="{{ old('resolver_problemas') }}"  placeholder="Punto" type="text">
                                                                 </div>
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_problemas" name="comentario_problemas" value="{{ old('comentario_problemas') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="adecuacion_social">Adecuación social</label>
-                                                                <div class="col-md-9 controls">
+                                                                <label class="col-md-4 control-label" for="adecuacion_social">Adecuación social</label>
+                                                                <div class="col-md-2 controls">
                                                                     <input class="form-control" id="adecuacion_social" name="adecuacion_social" value="{{ old('adecuacion_social') }}"  placeholder="Punto" type="text">
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="seguir_instrucciones">Seguir instrucciones</label>
-                                                                <div class="col-md-9 controls">
-                                                                    <input class="form-control" id="seguir_instrucciones" name="seguir_instrucciones" value="{{ old('seguir_instrucciones') }}"  placeholder="Punto" type="text">
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_adecuacion" name="comentario_adecuacion" value="{{ old('comentario_adecuacion') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="expresar_necesidades">Expresar necesidades básicas</label>
-                                                                <div class="col-md-9 controls">
+                                                                <label class="col-md-4 control-label" for="seguir_instrucciones">Seguir instrucciones</label>
+                                                                <div class="col-md-2 controls">
+                                                                    <input class="form-control" id="seguir_instrucciones" name="seguir_instrucciones" value="{{ old('seguir_instrucciones') }}"  placeholder="Punto" type="text">
+                                                                </div>
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_instrucciones" name="comentario_instrucciones" value="{{ old('comentario_instrucciones') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="expresar_necesidades">Expresar necesidades básicas</label>
+                                                                <div class="col-md-2 controls">
                                                                     <input class="form-control" id="expresar_necesidades" name="expresar_necesidades" value="{{ old('expresar_necesidades') }}"  placeholder="Punto" type="text">
+                                                                </div>
+                                                                <div class="col-md-6 controls">
+                                                                    <input class="form-control" id="comentario_necesidades" name="comentario_necesidades" value="{{ old('comentario_necesidades') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -914,6 +984,39 @@
                     </div>
                 </div>
                 @include('partials.footer')
+
+                <div class="modal-custom">
+                    <div class='modal fade' id='confirmation' tabindex='-1'>
+                        <div class='modal-dialog'>
+                            <div class='modal-content'>
+                                <div class='modal-header'>
+                                    <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                                    <h3 class='modal-title' id='myModalLabel'>Confirmación</h3>
+                                </div>
+                                <div class='modal-body'>
+                                    <h5>Ya ha completado la ficha de evaluación inicial para Terapia Ocupacional. Favor de verificar que los datos que ingresó son los correctos. <br>
+                                        Para guardar pulse el botón Registrar. Si desea realizar un cambio, pulse el botón Volver.</h5>
+                                    <hr>
+                                </div>
+                                <div class='modal-footer'>
+                                    <button class='btn btn-default' data-dismiss='modal' type='button'>Volver</button>
+                                    <button class='btn btn-success' type='button' onclick="enviarFormulario()">Registrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    /**
+                     * Envia el formulario cuando ya fueron revisados todos los datos
+                     */
+                    function enviarFormulario(){
+
+                        $('#formulario_registro').submit();
+                    }
+                </script>
+
             </div>
         </section>
     </div>

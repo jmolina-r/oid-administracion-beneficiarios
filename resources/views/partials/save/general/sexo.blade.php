@@ -10,7 +10,7 @@
             Masculino
         </label>
         <label class='radio radio-inline'>
-            <input name='sexo' id="sexo" 
+            <input name='sexo' 
             @if((old('sexo') != null && old('sexo') === 'femenino') || (old('sexo') == null && isset($persona) && $persona->sexo == "femenino"))
                 checked
             @endif

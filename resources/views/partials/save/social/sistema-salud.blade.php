@@ -3,7 +3,7 @@
 
     <div class="col-sm-12 col-md-6 col-lg-6 form-group">
         <label style="margin-top: 0px;" class='radio radio-inline'>
-            <input name='sistema_salud' type='radio' value='fonasa' checked>
+            <input id="#sistema_salud" name='sistema_salud' type='radio' value='fonasa' checked>
             Fonasa
         </label>
         <label class='radio radio-inline'>
