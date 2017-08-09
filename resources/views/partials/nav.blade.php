@@ -195,7 +195,7 @@
                     </a>
                     <ul class='nav nav-stacked'>
                         <li class=''>
-                            <a href='#'>
+                            <a href='{{route('find')}}'>
                                 <div class='icon'>
                                     <i class='fa fa-caret-right'></i>
                                 </div>

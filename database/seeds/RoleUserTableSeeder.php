@@ -11,18 +11,22 @@ class RoleUserTableSeeder extends Seeder
      */
     public function run()
     {
-        $role1 = \App\Role::find(1);
-        $role2 = \App\Role::find(2);
+        $user = \App\User::where('username', 'admin')->first();
+        $user->roles()->save(\App\Role::where('nombre', 'admin')->first());
 
-        $user = \App\User::find(1);
-        $user->roles()->save($role1);
+        $user = \App\User::where('username', 'juan')->first();
+        $user->roles()->save(\App\Role::where('nombre', 'secretaria')->first());
+        $user->roles()->save(\App\Role::where('nombre', 'psicologia')->first());
+        $user->roles()->save(\App\Role::where('nombre', 'jefatura')->first());
+        $user->roles()->save(\App\Role::where('nombre', 'jefatura')->first());
 
-        $user = \App\User::find(2);
-        $user->roles()->save($role2);
 
-        $user = \App\User::find(3);
-        $user->roles()->save($role1);
-        $user->roles()->save($role2);
+        $user = \App\User::where('username', 'pedro')->first();
+        $user->roles()->save(\App\Role::where('nombre', 'coordinador_oficina')->first());
+        $user->roles()->save(\App\Role::where('nombre', 'jefatura')->first());
+
+        $user = \App\User::where('username', 'diego')->first();
+        $user->roles()->save(\App\Role::where('nombre', 'admin')->first());
 
         $user = \App\User::where('username', 'secretaria')->first();
         $user->roles()->save(\App\Role::where('nombre', 'secretaria')->first());

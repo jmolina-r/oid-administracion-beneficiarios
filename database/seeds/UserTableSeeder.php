@@ -13,6 +13,12 @@ class UserTableSeeder extends Seeder
     {
         factory(App\User::class)->create([
             // 'name' => 'juan',
+            'username' => 'admin',
+            'email' => 'admin@admin.com'
+        ]);
+
+        factory(App\User::class)->create([
+            // 'name' => 'juan',
             'username' => 'juan',
             'email' => 'juan@juan.com'
         ]);
@@ -20,7 +26,8 @@ class UserTableSeeder extends Seeder
         factory(App\User::class)->create([
             // 'name' => 'pedro',
             'username' => 'pedro',
-            'email' => 'pedro@pedro.com'
+            'email' => 'pedro@pedro.com',
+            'status' => 0
         ]);
 
         factory(App\User::class)->create([
