@@ -16,7 +16,7 @@ class CreateFichaPsicologiasTable extends Migration
         Schema::create('ficha_psicologias', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('motivo_consulta')->nullable();
+            $table->string('motivo_consulta',200)->nullable();
             $table->binary('genograma')->nullable();
 
             $table->integer('antecedentes_medicos_id')->unsigned();

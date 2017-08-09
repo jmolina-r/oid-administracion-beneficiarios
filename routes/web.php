@@ -87,7 +87,7 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
 
             Route::post('/ingresar', [
                 'uses' => 'FichaTerapiaOcupacionalController@postIngresar',
-                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
+                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresando'
             ]);
 
             Route::get('/mostrar-lista', [
