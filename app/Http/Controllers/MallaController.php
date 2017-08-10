@@ -259,6 +259,10 @@ class MallaController extends Controller
                 return "";
             }
 
+            if($rol->nombre == 'secretaria'){
+                return "";
+            }
+
             $nombreRol = $rol->nombre;
             $prestacionSegunRol = Prestacion::where('area', $nombreRol)->get();
 
