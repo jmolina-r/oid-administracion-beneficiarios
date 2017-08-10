@@ -150,7 +150,7 @@
                         <form action="{{route('reportabilidad.reportabilidadTer')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
                         <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">
-                                <h4>Reportabilidad Terapia ocupacional </h4>
+                                <h4>Reportabilidad Terapeuta</h4>
                             </div>
                             <span>Seleccionar Profesional:</span>
                             <select name="terapeutas">

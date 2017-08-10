@@ -27,6 +27,7 @@ class CreateFichaFonoaudiologiaTable extends Migration
             $table->integer('ant_morb_familiares_si_no_fonos_id')->unsigned();
             $table->integer('antecedentes_postnatales_fonos_id')->unsigned();
             $table->integer('desarrollo_lenguaje_edades_id')->unsigned();
+            $table->integer('profesional_id')->unsigned();
             $table->integer('fonoaudiologos_id')->unsigned();
         });
 
@@ -68,8 +69,13 @@ class CreateFichaFonoaudiologiaTable extends Migration
         });
 
         Schema::table('ficha_fonoaudiologia', function($table) {
+            $table->foreign('profesional_id')->references('id')->on('profesionals');
+        });
+
+        Schema::table('ficha_fonoaudiologia', function($table) {
             $table->foreign('fonoaudiologos_id')->references('id')->on('fonoaudiologos');
         });
+
 
     }
 

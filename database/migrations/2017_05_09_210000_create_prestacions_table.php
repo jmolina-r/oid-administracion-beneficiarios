@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateValEvaluacionsTable extends Migration
+class CreatePrestacionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateValEvaluacionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('val_evaluacions', function (Blueprint $table) {
+        Schema::create('prestacions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('conexion_medio', 200)->nullable();
-            $table->string('nivel_cognitivo_apar', 200)->nullable();
+            $table->string('nombre');
+            $table->string('area');
+            $table->softDeletes();
         });
     }
 
@@ -28,6 +29,6 @@ class CreateValEvaluacionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('val_evaluacions');
+        Schema::dropIfExists('prestacions');
     }
 }
