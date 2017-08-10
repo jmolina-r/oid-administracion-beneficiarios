@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TerapeutaOcupacionalTableSeeder extends Seeder
+class PrestacionTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class TerapeutaOcupacionalTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\TerapeutaOcupacional::class, 5)->create();
+        factory(App\Prestacion::class,3)->create();
     }
 }
