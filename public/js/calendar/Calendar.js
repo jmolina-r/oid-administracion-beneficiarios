@@ -126,6 +126,7 @@
         eventClick: function(calEvent, jsEvent, view) {
             if(calEvent.realizado) {
                 alert("Ya se han asignado prestaciones a esa hora agendada");
+                return;
             }else{
                 calEvent.url = '/registro_prestacion/' + calEvent.id;
                 window.open(calEvent.url, '_self');

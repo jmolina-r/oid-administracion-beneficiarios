@@ -12,7 +12,6 @@ $(document).ready(function () {
         success: function(data, textStatus, jqXHR) {
 
             var arrayPrestaciones = JSON.parse(data);
-
             $.each(arrayPrestaciones, function(index, item) {
                 $('#combo-prestacion').append(
                     $('<option></option>').val(item).html(item.id + "-" + item.nombre)

@@ -6,9 +6,11 @@ use App\Beneficiario;
 use App\HoraAgendada;
 use App\Prestacion;
 use App\PrestacionRealizada;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use function MongoDB\BSON\toJSON;
+use Psy\Util\Json;
 
 class MallaController extends Controller
 {
@@ -218,7 +220,7 @@ class MallaController extends Controller
             $horaEnd = $hora.':'.$minutos;
 
             $f = array();
-            $f['id'] = $horaAgendada->id;
+            $f['id'] = $horaDeleted->id;
             $f['title'] = $beneficiario->nombre . " " . $beneficiario->apellido . " (REALIZADO)";
             $f['start'] = $horaDeleted->fecha.'T'.$horaDeleted->hora;
             $f['end'] = $horaDeleted->fecha.'T'.$horaEnd;
@@ -241,8 +243,30 @@ class MallaController extends Controller
     }
 
     public function getPrestacionesProfesional(Request $request){
-        $data = Prestacion::all();
-        return $data->toJson();
+
+        if (Auth::check())
+        {
+            $id = Auth::user()->id;
+        }
+
+        $prestacionesConsolidadas = new Json();
+
+        $user = User::where('id', $id)->first();
+
+        foreach($user->roles()->get() as $rol){
+
+            if($rol->nombre == 'admin'){
+                return "";
+            }
+
+            $nombreRol = $rol->nombre;
+            $prestacionSegunRol = Prestacion::where('area', $nombreRol)->get()->toJson();
+
+            $prestacionesConsolidadas = json_encode(array_merge(json_decode($prestacionesConsolidadas, true),json_decode($prestacionSegunRol, true)));
+
+        }
+
+        return $prestacionesConsolidadas->toJson();
     }
 
     public function getNombreCompleto(Request $request){
