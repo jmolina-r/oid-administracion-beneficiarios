@@ -72,11 +72,11 @@
     .contrast-red header .navbar > .nav > li.medium > a:hover, .contrast-red header .navbar > .nav > li.medium > a:active, .contrast-red header .navbar > .nav > li.medium > a:focus {
       background-color: #cb110d; }
   .contrast-red header .navbar > .nav > li.dark > a {
-    background-color: #c3100c; }
+    background-color: #183446; }
     .contrast-red header .navbar > .nav > li.dark > a .label {
       color: #c3100c; }
     .contrast-red header .navbar > .nav > li.dark > a:hover, .contrast-red header .navbar > .nav > li.dark > a:active, .contrast-red header .navbar > .nav > li.dark > a:focus {
-      background-color: #b60f0b; }
+      background-color: #183446; }
   .contrast-red header .navbar .widget .dropdown-menu > li.widget-footer a:hover {
     background-color: #0090c1; }
 .contrast-red header .navbar .nav li .label {

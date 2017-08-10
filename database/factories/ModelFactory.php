@@ -17,9 +17,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
+        // 'name' => $faker->name,
+        'username' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('123456'),
+        'status' => 1,
         'remember_token' => str_random(10),
     ];
 });
@@ -55,15 +57,25 @@ $factory->define(App\TelefonoBeneficiario::class, function (Faker\Generator $fak
     ];
 });
 
+$factory->define(App\Prestacion::class, function (Faker\Generator $faker) {
+
+    return [
+        'nombre' => $faker->word(),
+        'area' => $faker->word(),
+    ];
+});
+
 $factory->define(App\PrestacionRealizada::class, function (Faker\Generator $faker) {
 
     return [
-        'numero' => $faker->regexify('[0-9]{8}'),
         'fecha' => $faker->date('y-m-d','now'),
 
-        'beneficiario_id' => $faker->numberBetween($min = 1, $max = 150)
+        'beneficiario_id' => $faker->numberBetween($min = 1, $max = 150),
+
+        'prestacions_id' => $faker->numberBetween($min = 1, $max = 3)
     ];
 });
+
 $factory->define(App\FichaAtencionSocial::class, function (Faker\Generator $faker) {
 
     return [

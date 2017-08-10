@@ -1,6 +1,6 @@
 <header>
     <nav class='navbar navbar-default'>
-        <a class='navbar-brand' href='#'>
+        <a class='navbar-brand' href='/'>
             <img class="logo-img" src="{{ asset('/images/logo.png') }}" alt="">
         </a>
         <a class='toggle-nav btn pull-left' href='#'>
@@ -10,22 +10,25 @@
         <ul id="userOptions" class='nav'>
           <li class='dropdown dark user-menu'>
             <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
-              <span class='user-name'>{{ Auth::user()->name }}</span>
+              <i class="fa fa-user"></i>
+              <span class='user-name'>{{ Auth::user()->username }}</span>
               <b class='caret'></b>
             </a>
             <ul class='dropdown-menu'>
               <li>
-                <a href='user_profile.html'>
+                <a href='#' onclick="mostrarPerfilUsuario('{{ Auth::user()->username }}', '{{ Auth::user()->email }}', '{{ Auth::user()->status }}')">
                   <i class='fa fa-user'></i>
-                  Profile
+                  Mi perfil
                 </a>
               </li>
+              {{-- <!--
               <li>
                 <a href='user_profile.html'>
                   <i class='fa fa-cog'></i>
                   Settings
                 </a>
               </li>
+              --> --}}
               <li class='divider'></li>
               <li>
                   <a href="{{ route('logout') }}"
@@ -41,7 +44,6 @@
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
         </form>
-
-
     </nav>
+    @include('partials.auth.profile')
 </header>

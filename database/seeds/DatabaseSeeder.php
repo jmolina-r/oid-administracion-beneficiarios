@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(TelefonoBeneficiarioTableSeeder::class);
         $this->call(ProfesionalTableSeeder::class);
 
+        $this->call(PrestacionTableSeeder::class);
+
         $this->call(PrestacionRealizadaTableSeeder::class);
         $this->call(FichaAtencionSocialTableSeeder::class);
         $this->call(TipoMotivoSocialTableSeeder::class);

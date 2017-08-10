@@ -164,7 +164,8 @@ return [
         'sistema_salud'             => 'sistema de salud',
         'fonasa'                    => 'Fonasa',
         'isapre'                    => 'Isapre',
-        'prevision'                 => 'previsión'
+        'prevision'                 => 'previsión',
+        'status'                    => 'estado'
 
     ],
 
