@@ -60,8 +60,11 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                         Información de
                                         <span class="capitalize">
                                         {{$persona->nombre}} {{$persona->apellido}}
-                                        <a href="{{route('beneficiario.edit', $persona->id)}}"><i class="fa fa-pencil-square-o"></i></a>
-
+                                    </h1>
+                                    <h1 class="pull-right">
+                                        <a href="{{route('beneficiario.edit', $persona->id)}}">
+                                        <span>Editar</span>
+                                        <i class="fa fa-pencil-square-o"></i></a>
                                     </h1>
                                 </div>
                             </div>
