@@ -10,7 +10,7 @@
             ""
         @endif
 
-        @if($persona)
+        @if(isset($persona))
              readonly="readonly"
         @endif
         >
