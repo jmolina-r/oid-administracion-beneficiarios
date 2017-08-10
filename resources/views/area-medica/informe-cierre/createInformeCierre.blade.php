@@ -99,86 +99,110 @@
                                                         @endforeach
                                                     </div>
                                                 @endif
-                                                <hr class='hr-normal'>
-                                                <form role="form" id="formulario_registro" action="{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
-                                                    <input id="id" name="id" type="hidden" value="ola">
+                                                <form role="form" id="formulario_registro" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
+                                                    <input id="ben_id" name="ben_id" type="hidden" value="{{$beneficiario->id}}">
                                                     <div class="col-md-12">
-                                                        <h3>Información del beneficiario</h3>
+                                                        <h4>Información del beneficiario</h4>
                                                         <hr/>
                                                     </div>
                                                     <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="motivo_consulta">Nombre</label>
+                                                        <label class="col-md-4 control-label" for="nombre">Nombre</label>
                                                         <div class="col-md-8 controls">
-                                                            <input class="form-control" id="motivo_consulta" name="motivo_consulta" value="{{ old('motivo_consulta') }}"  placeholder="Motivo">
+                                                            <p>{{ ucfirst($beneficiario->nombre)." ".ucfirst($beneficiario->apellido)}}</p>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="derivado_por">Edad</label>
+                                                        <label class="col-md-4 control-label" for="edad">Edad</label>
                                                         <div class="col-md-8 controls">
-                                                            <input class="form-control" id="derivado_por" name="derivado_por" value="{{ old('derivado_por') }}"  placeholder="Psicólogo, Kinesiólogo, etc.">
+                                                            <p>{{ $edad }}</p>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="relacion_paciente">Fecha de nacimiento</label>
+                                                        <label class="col-md-4 control-label" for="fecha_nacimiento">Fecha de nacimiento</label>
                                                         <div class="col-md-8 controls">
-                                                            <input class="form-control" id="relacion_paciente" name="relacion_paciente" value="{{ old('relacion_paciente') }}"  placeholder="Padre, Madre, Tutor,etc.">
+                                                            <p>{{ $beneficiario->fecha_nacimiento }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <h4>Información de alta</h4>
+                                                        <hr/>
+                                                    </div>
+                                                    <div class="col-md-12 form-group">
+                                                        <label class="col-md-4 control-label" for="cant_sesiones">Cantidad de sesiones</label>
+                                                        <div class="col-md-8 controls">
+                                                            <input class="form-control" id="cant_sesiones" name="cant_sesiones" placeholder="Cantidad de sesiones">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="observaciones_generales">Cantidad de sesiones</label>
+                                                        <label class="col-md-4 control-label" for="fecha_inicio">Fecha de inicio</label>
                                                         <div class="col-md-8 controls">
-                                                            <input class="form-control" id="observaciones_generales" name="observaciones_generales" value="{{ old('observaciones_generales') }}"  placeholder="Observaciones generales">
+                                                            <input id="fecha_inicio" value-date="" name="fecha_inicio" class="form-control" data-format="DD/MM/YYYY" placeholder="Fecha de inicio" type="date" required>
+                                                            <span class="input-group-addon">
+                                                                <span class="fa fa-calendar"></span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="help-block with-errors">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="observaciones_generales">Fecha de inicio</label>
+                                                        <label class="col-md-4 control-label" for='fecha_termino'>Fecha de termino</label>
                                                         <div class="col-md-8 controls">
-                                                            <input class="form-control" id="observaciones_generales" name="observaciones_generales" value="{{ old('observaciones_generales') }}"  placeholder="Observaciones generales">
+                                                            <input id='fecha_termino' value-date='' name='fecha_termino' class='form-control' data-format='DD/MM/YYYY' placeholder='Fecha de termino' type="date" required>
+                                                            <span class='input-group-addon'>
+                                                                <span class='fa fa-calendar'></span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="help-block with-errors">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="observaciones_generales">Fecha de término</label>
+                                                        <label class="col-md-4 control-label" for="motivo_atencion">Motivo de atención</label>
                                                         <div class="col-md-8 controls">
-                                                            <input class="form-control" id="observaciones_generales" name="observaciones_generales" value="{{ old('observaciones_generales') }}"  placeholder="Observaciones generales">
+                                                            <input class="form-control" id="motivo_atencion" name="motivo_atencion" placeholder="Motivo de atención">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="observaciones_generales">Motivo de atención</label>
+                                                        <label class="col-md-4 control-label" for="objetivos_trabajados">Objetivos trabajados</label>
                                                         <div class="col-md-8 controls">
-                                                            <input class="form-control" id="observaciones_generales" name="observaciones_generales" value="{{ old('observaciones_generales') }}"  placeholder="Observaciones generales">
+                                                            <input class="form-control" id="objetivos_trabajados" name="objetivos_trabajados" placeholder="Objetivos trabajados">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="observaciones_generales">Objetivos trabajados</label>
+                                                        <label class="col-md-4 control-label" for="desercionar">Deserción (Sí/No)</label>
                                                         <div class="col-md-8 controls">
-                                                            <input class="form-control" id="observaciones_generales" name="observaciones_generales" value="{{ old('observaciones_generales') }}"  placeholder="Observaciones generales">
+                                                            <select	class="form-control" id="desercionar" name="desercionar">
+                                                                <option value=""></option>
+                                                                <option value="1">Sí</option>
+                                                                <option value="0">No</option>
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="observaciones_generales">Deserción si/no</label>
+                                                        <label class="col-md-4 control-label" for="culminar_proceso">Culmina proceso (Sí/No)</label>
                                                         <div class="col-md-8 controls">
-                                                            <input class="form-control" id="observaciones_generales" name="observaciones_generales" value="{{ old('observaciones_generales') }}"  placeholder="Observaciones generales">
+                                                            <select	class="form-control" id="culminar_proceso" name="culminar_proceso">
+                                                                <option value=""></option>
+                                                                <option value="1">Sí</option>
+                                                                <option value="0">No</option>
+                                                            </select>
+
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="observaciones_generales">Culmina proceso si/no</label>
+                                                        <label class="col-md-4 control-label" for="observaciones_sugerencias">Observacion y sugerencias</label>
                                                         <div class="col-md-8 controls">
-                                                            <input class="form-control" id="observaciones_generales" name="observaciones_generales" value="{{ old('observaciones_generales') }}"  placeholder="Observaciones generales">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="observaciones_generales">Observacion y sugerencias</label>
-                                                        <div class="col-md-8 controls">
-                                                            <input class="form-control" id="observaciones_generales" name="observaciones_generales" value="{{ old('observaciones_generales') }}"  placeholder="Observaciones generales">
+                                                            <input class="form-control" id="observaciones_sugerencias" name="observaciones_sugerencias" placeholder="Observaciones y/o sugerencias">
                                                         </div>
                                                     </div>
                                                     <div class='actions'>
-                                                        <button id="continuar_btn" type='submit' class='pull-right btn btn-md btn-success btn-next' data-last='Finalizar'>
-                                                            Finalizar
+                                                        <button id="continuar_btn" type='submit' class='pull-right btn btn-md btn-success btn-next'>
+                                                            Guardar y visualizar para imprimir
                                                         </button>
+                                                        <div class="col-md-1 controls">
                                                         <button class='pull-right btn btn-md btn-prev'>
                                                             Volver
                                                         </button>
+                                                        </div>
                                                     </div>
                                                     {{ csrf_field() }}
                                                 </form>

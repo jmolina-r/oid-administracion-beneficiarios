@@ -190,7 +190,7 @@
 
                 <ul class='nav nav-stacked'>
                     <li class=''>
-                        <a href='{{route('area-medica.informe-cierre.createInformeCierre')}}'>
+                        <a href='{{route('area-medica.informe-cierre.buscarUser')}}'>
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>
                             </div>

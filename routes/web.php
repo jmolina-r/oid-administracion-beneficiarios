@@ -21,24 +21,24 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'areasocial', 'middleware' => 'auth'], function(){
     Route::get('/asistentesocial', [
-    'uses' => 'FichaSocialController@index',
-    'as' => 'social.asistenteSocialGet'
+        'uses' => 'FichaSocialController@index',
+        'as' => 'social.asistenteSocialGet'
     ]);
 
     Route::post('/asistentesocial/beneficiario', [
-    'uses' => 'FichaSocialController@store',
-    'as' => 'social.asistenteSocialBeneficiario'
+        'uses' => 'FichaSocialController@store',
+        'as' => 'social.asistenteSocialBeneficiario'
     ]);
 
     Route::get('/asistentesocial/menu', [
-    'uses' => 'FichaSocialController@show',
-    'as' => 'social.asistenteSocial'
+        'uses' => 'FichaSocialController@show',
+        'as' => 'social.asistenteSocial'
     ]);
 
 
     Route::post('/asistentesocial/menu',[
-    'uses' => 'FichaSocialController@post',
-    'as' => 'social.asistentesocial'
+        'uses' => 'FichaSocialController@post',
+        'as' => 'social.asistentesocial'
     ]);
 });
 
@@ -112,8 +112,18 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
 
     Route::group(['prefix' => '/informe-cierre'], function (){
 
-        Route::get('/createInforme', [
+        Route::get('/buscarUser', [
             'uses' => 'ReportabilidadController@createInformeCierre',
+            'as' => 'area-medica.informe-cierre.buscarUser'
+        ]);
+
+        Route::get('/createInformeCierre', [
+            'uses' => 'ReportabilidadController@showUser',
+            'as' => 'area-medica.informe-cierre.createInformeCierre'
+        ]);
+
+        Route::post('/createInformeCierre',[
+            'uses' => 'ReportabilidadController@postInformeCierre',
             'as' => 'area-medica.informe-cierre.createInformeCierre'
         ]);
     });
@@ -206,8 +216,8 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     ]);
 
     Route::get('/menu', [
-    'uses' => 'ReportabilidadController@index',
-    'as' => 'reportabilidad.menuReportabilidad'
+        'uses' => 'ReportabilidadController@index',
+        'as' => 'reportabilidad.menuReportabilidad'
     ]);
 
     Route::get('/profesional',[
@@ -216,28 +226,28 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     ]);
 
     Route::get('/reportabilidadKinesiologia',[
-    'uses'=>'ReportabilidadController@showResultKine',
-    'as' => 'reportabilidad.reportabilidadKine'
-    ]); 
+        'uses'=>'ReportabilidadController@showResultKine',
+        'as' => 'reportabilidad.reportabilidadKine'
+    ]);
 
     Route::get('/reportabilidadPsiclogia',[
-    'uses'=>'ReportabilidadController@showResultPsico',
-    'as' => 'reportabilidad.reportabilidadPsico'
+        'uses'=>'ReportabilidadController@showResultPsico',
+        'as' => 'reportabilidad.reportabilidadPsico'
     ]);
 
     Route::get('/reportabilidadTerapiaOcupacional',[
-    'uses'=>'ReportabilidadController@showResultTer',
-    'as' => 'reportabilidad.reportabilidadTer'
-    ]); 
+        'uses'=>'ReportabilidadController@showResultTer',
+        'as' => 'reportabilidad.reportabilidadTer'
+    ]);
 
     Route::get('/reportabilidadAtencionSocial',[
-    'uses'=>'ReportabilidadController@showResultSoc',
-    'as' => 'reportabilidad.reportabilidadSoc'
-    ]); 
+        'uses'=>'ReportabilidadController@showResultSoc',
+        'as' => 'reportabilidad.reportabilidadSoc'
+    ]);
 
     Route::get('/reportabilidadGrupal',[
-    'uses'=>'ReportabilidadController@showResultGrupal',
-    'as' => 'reportabilidad.reportabilidadGru'
+        'uses'=>'ReportabilidadController@showResultGrupal',
+        'as' => 'reportabilidad.reportabilidadGru'
     ]);
 
 
