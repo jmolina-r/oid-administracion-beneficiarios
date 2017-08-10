@@ -79,7 +79,7 @@
                             <div class='page-header'>
                                 <h1 class='pull-left'>
                                     <i class='fa fa-pencil-square-o'></i>
-                                    <span>Registro de Usuario</span>
+                                    <span>Guardado de Usuario</span>
                                 </h1>
                                 <div class='pull-right'>
                                     <ul class='breadcrumb'>
@@ -93,7 +93,7 @@
                         <div class='col-sm-12'>
                             <div class='box'>
                                 <div class='box-content box-padding'>
-                                    <form action='' class='validate-form' method="POST" action="{{ route('login') }}">
+                                    <form action='' class='validate-form' method="POST" action="{{ route('update', $user->id) }}">
 
                                         {{ csrf_field() }}
 

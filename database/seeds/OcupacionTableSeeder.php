@@ -36,6 +36,11 @@ class OcupacionTableSeeder extends Seeder
         ]);
         $ocupacion->save();
 
-        
+        $ocupacion = new \App\Ocupacion([
+            'nombre' => 'otros'
+        ]);
+        $ocupacion->save();
+
+
     }
 }

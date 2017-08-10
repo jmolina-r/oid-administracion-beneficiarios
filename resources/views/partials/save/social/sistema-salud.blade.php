@@ -15,7 +15,7 @@
     </div>
 
     <div class='col-sm-12 col-md-6 col-lg-6 form-group'>
-        <select style="width:100%;" id="sistemaSaludSelec" name='fonasa' class='form-control capitalize select-tag' required>
+        <select style="width:100%;" id="sistemaSaludSelec" name='fonasa' class='form-control capitalize select-nomore' required>
             @foreach($fonasa as $fona)
                 <option value="{{$fona->id}}">{{$fona->tramo}}</option>
             @endforeach

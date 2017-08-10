@@ -51,6 +51,7 @@ class='contrast-red'
 <script src="{{ asset('assets/javascripts/plugins/select2/select2.js') }}" type="text/javascript"></script>
 <!-- / START - moments-->
 <script src="{{ asset('/assets/javascripts/plugins/common/moment.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/assets/javascripts/plugins/common/locale/es.js') }}" type="text/javascript"></script>
 <!-- / END - moments-->
 <!-- / START - datepicker-->
 <script src="{{ asset('/assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
@@ -142,6 +143,16 @@ class='contrast-red'
                                                 </div>
                                                 {{ csrf_field() }}
                                             </form>
+                                            <div class="actions_bottom">
+                                                <button id="continuar_btn_bottom" type='submit' class='pull-right btn btn-md btn-success' data-last='Finalizar'>
+                                                    Continuar
+                                                    <i class='fa fa-arrow-right'></i>
+                                                </button>
+                                                <button class='pull-right btn btn-md btn-prev'>
+                                                    <i class='fa fa-arrow-left'></i>
+                                                    Volver
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -60,7 +60,6 @@ class='contrast-red'
 <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
 <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
-<script src="{{ asset('/js/beneficiario/RegistroBeneficiario.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/assets/javascripts/plugins/charCount/charCount.js') }}" type="text/javascript"></script>
 <!-- / END - validaciones-->
 

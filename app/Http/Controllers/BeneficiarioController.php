@@ -742,7 +742,7 @@ class BeneficiarioController extends Controller
         $queryLike = $request->input('query').'%';
         $beneficiarios = Beneficiario::where('rut', 'like', $queryLike)
             ->orWhere('nombre', 'like', $queryLike)
-            ->orWhere('apellido', 'like', '%'.$queryLike)
+            ->orWhere('apellido', 'like', $queryLike)
             ->orWhereRaw("concat(nombre, ' ', apellido) like ?", [$queryLike])
             ->get()
             ->toArray();

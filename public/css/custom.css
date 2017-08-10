@@ -26,8 +26,8 @@ textarea {
 	resize:none;
 }
 
-#userOptions {
-	margin-top: 15px;
+.dropdown-toggle{
+	height: 100px;
 }
 
 /***************************/
@@ -80,7 +80,24 @@ textarea {
 /******************************/
 
 
+/******************************/
+/********* Star app ***********/ 
+/******************************/
+.user-btn{
+	text-transform: capitalize;
+}
+/******************************/
+/********* End app ***********/ 
+/******************************/
 
+
+.user-menu{
+	margin-top: 15px;
+}
+
+.user-name{
+	margin-left: 2px;
+}
 
 
 
