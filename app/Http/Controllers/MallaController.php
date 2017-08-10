@@ -240,4 +240,92 @@ class MallaController extends Controller
         return;
     }
 
+
+    /**
+     *
+     *
+     * @return Response
+     */
+    public function listaPrestaciones()
+    {
+        $prestaciones = Prestacion::orderBy('area', $direction = 'asc')->get();
+
+        return view('malla.listaPrestaciones', compact('prestaciones'));
+    }
+
+    /**
+     *
+     *
+     * @return Response
+     */
+    public function crearPrestacion()
+    {
+        return view('malla.crearPrestacion');
+    }
+
+    /**
+     *
+     *
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function guardarPrestacion(Request $request)
+    {
+        $this->validate($request, $this->rules($request));
+
+        try{
+            $prestacion = new Prestacion([
+                'nombre' => $request->input('nombre'),
+                'area' => $request->input('area')
+            ]);
+            $prestacion->save();
+        }
+        catch(Exception $e){
+
+            //procedimiento en caso de reportar errores
+
+        }
+
+        return view('malla.crearPrestacion');
+    }
+
+    /**
+     *
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function confirmarEliminarPrestacion($id)
+    {
+        $prestacion = Prestacion::find($id);
+
+        return view('malla.confirmarEliminarPrestacion', compact('prestacion'));
+    }
+
+    /**
+     *
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function eliminarPrestacion(Request $request)
+    {
+        $prestacion = Prestacion::find($request->id);
+
+        $prestacion->delete();
+
+        $prestaciones = Prestacion::orderBy('area', $direction = 'asc')->get();
+
+        return view('malla.listaPrestaciones', compact('prestaciones'));
+    }
+
+    private function rules(Request $request)
+    {
+        $rules = [
+            'nombre' => 'required|max:200',
+            'area' => 'required|max:200'
+        ];
+        return $rules;
+    }
 }

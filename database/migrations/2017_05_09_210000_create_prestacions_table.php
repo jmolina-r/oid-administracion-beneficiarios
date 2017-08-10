@@ -18,6 +18,7 @@ class CreatePrestacionsTable extends Migration
             $table->timestamps();
             $table->string('nombre');
             $table->string('area');
+            $table->softDeletes();
         });
     }
 
