@@ -15,16 +15,24 @@ class SistemaProteccionTableSeeder extends Seeder
             'nombre' => 'chisol/sof'
         ]);
         $sistemaProteccion->save();
+
         $sistemaProteccion = new \App\SistemaProteccion([
             'nombre' => 'vinculos'
         ]);
         $sistemaProteccion->save();
+
         $sistemaProteccion = new \App\SistemaProteccion([
             'nombre' => 'calle'
         ]);
         $sistemaProteccion->save();
+
         $sistemaProteccion = new \App\SistemaProteccion([
             'nombre' => 'chile crece contigo'
+        ]);
+        $sistemaProteccion->save();
+
+        $sistemaProteccion = new \App\SistemaProteccion([
+            'nombre' => 'otros'
         ]);
         $sistemaProteccion->save();
     }
