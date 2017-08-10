@@ -98,7 +98,11 @@
                     </div>
   
                         <div class='box-content box-statistic text-right'>
+<<<<<<< HEAD
                           <h3 class='title text-error'><?php echo $atencionAnualKine ?></h3>
+=======
+                          <h3 class='title text-error'><?php //echo $atencionAnualKine ?>5</h3>
+>>>>>>> 647415b682e2797e5a758ac73ecaaa9273381b49
                           <small>ATENCIONES ANUALES</small>
                           <div class='text-error fa fa-users align-left'></div>
                         </div>

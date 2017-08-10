@@ -25,14 +25,13 @@ use Illuminate\Http\Request;
 
 class ReportabilidadController extends Controller
 {
-    public function index()
-    {
+
+    public function index() {
+
         return view('reportabilidad.menuReportabilidad');
     }
 
-
-    public function porProfesional()
-    {
+    public function porProfesional() {
         return view('reportabilidad.reportabilidadPorProfesional');
     }
 
@@ -84,6 +83,7 @@ class ReportabilidadController extends Controller
         $fonasaTramoC = DatoSocial::where('fonasa_id', '=', 3)->count();
         $fonasaTramoD = DatoSocial::where('fonasa_id', '=', 4)->count();
         //isapre
+
         $isapre = DatoSocial::where('isapre_id', '!=', null)->count();
         $isapreCruzBlanca = datoSocial::where('isapre_id', '=', 1)->count();
         $isapreColmena = datoSocial::where('isapre_id', '=', 2)->count();
@@ -169,13 +169,12 @@ class ReportabilidadController extends Controller
 
     }
 
-    public function showResultKine(Request $request)
-    {
+    public function showResultKine(Request $request){
         //KINE
-        $user_rut = "185341126-k";
-        $atencionAnualKine = FichaKinesiologia::whereYear('ficha_kinesiologias.created_at', '=', date('Y'))
-            ->join('kinesiologos', 'ficha_kinesiologias.kinesiologo_id', '=', 'kinesiologos.id')
-            ->where('kinesiologos.rut', '=', $user_rut)
+        $user_rut="185341126-k";
+        $atencionAnualKine=FichaKinesiologia::whereYear('ficha_kinesiologias.created_at', '=', date('Y'))
+            ->join('kinesiologos','ficha_kinesiologias.kinesiologo_id','=','kinesiologos.id')
+            ->where('kinesiologos.rut','=',$user_rut)
             ->count();
         print $atencionAnualKine;
         $atencionMensualKine = FichaKinesiologia::whereYear('ficha_kinesiologias.created_at', '=', date('Y'))
@@ -192,12 +191,9 @@ class ReportabilidadController extends Controller
             ->where('kinesiologos.rut', '=', $user_rut)
             ->count();
         return view('reportabilidad.reportabilidadKine', compact('atencionAnualKine', 'atencionMensualKine', 'asistenciaKine', '$inasistenciaKine'));
-
-        return view('reportabilidad.reportabilidadKine', compact('atencionAnualKine', 'atencionMensualKine'));
     }
 
-    public function showResultFono(Request $request)
-    {
+    public function showResultFono(Request $request){
         //FONO
         /*     $user_rut1="0";
              $atencionAnualFono=FichaFonoaudiologia::whereYear('ficha_fonoaudiologia.created_at', '=', date('Y'))
@@ -236,34 +232,33 @@ class ReportabilidadController extends Controller
             ->join('psicologos', 'ficha_psicologias.psicologo_id', '=', 'psicologos.id')
             ->where('psicologos.rut', '=', $user_rut1)
             ->count();
-
-        // $asistenciaPsico =HoraAgendada::where('hora_agendadas.asist_sn','=','si')
-
-        $asistenciaPsico = HoraAgendada::where('hora_agendadas.asist_sn', '=', 'si')
-            ->join('psicologos', 'hora_agendadas.user_id', '=', 'psicologos.id')
-            ->where('psicologos.rut', '=', $user_rut1)
-            ->count();
         $inasistenciaPsico = HoraAgendada::where('hora_agendadas.asist_sn', '=', 'no')
             ->join('psicologos', 'hora_agendadas.user_id', '=', 'psicologos.id')
             ->where('psicologos.rut', '=', $user_rut1)
             ->count();
 
+        // $asistenciaPsico =HoraAgendada::where('hora_agendadas.asist_sn','=','si')
+
+        $asistenciaPsico = HoraAgendada::where('hora_agendadas.asist_sn', '=', 'si')
+            ->join('psicologos', 'hora_agendadas.user_id', '=', 'psicologos.id')
+            ->where('psicologos.rut', '=', $user_rut1)->coutn();
+
         return view('reportabilidad.reportabilidadPsico', compact('atencionAnualPsico', 'atencionMensualPsico', 'asistenciaPsico', 'inasistenciaPsico'));
     }
 
-    public function showResultTer(Request $request)
-    {
+    public function showResultTer(Request $request){
         //terapiaocupacional
-        $user_rut2 = "57726529-5";
-        $atencionAnualTer = FichaTerapiaOcupacional::whereYear('ficha_terapia_ocupacionals.created_at', '=', date('Y'))
-            ->join('terapeuta_ocupacionals', 'ficha_terapia_ocupacionals.terapeuta_ocupacional_id', '=', 'terapeuta_ocupacionals.id')
-            ->where('terapeuta_ocupacionals.rut', '=', $user_rut2)
+        $user_rut2="57726529-5";
+        $atencionAnualTer=FichaTerapiaOcupacional::whereYear('ficha_terapia_ocupacionals.created_at', '=', date('Y'))
+            ->join('terapeuta_ocupacionals','ficha_terapia_ocupacionals.terapeuta_ocupacional_id','=','terapeuta_ocupacionals.id')
+            ->where('terapeuta_ocupacionals.rut','=',$user_rut2)
             ->count();
         $atencionMensualTer = FichaTerapiaOcupacional::whereYear('ficha_terapia_ocupacionals.created_at', '=', date('Y'))
             ->whereMonth('ficha_terapia_ocupacionals.created_at', '=', date('m'))
             ->join('terapeuta_ocupacionals', 'ficha_terapia_ocupacionals.terapeuta_ocupacional_id', '=', 'terapeuta_ocupacionals.id')
             ->where('terapeuta_ocupacionals.rut', '=', $user_rut2)
             ->count();
+
         /*
                 $asistenciaTer =HoraAgendada::where('hora_agendadas.asist_sn','=','si')
                     ->join('terapeuta_ocupacionals','hora_agendadas.user_id','=','terapeuta_ocupacionals.id')
@@ -274,7 +269,7 @@ class ReportabilidadController extends Controller
                     ->where('terapeuta_ocupacionals.rut','=',$user_rut2)
                     ->count();
                     */
-        return view('reportabilidad.reportabilidadTer', compact('atencionAnualTer', 'atencionMensualTer', 'asistenciaTer', 'inasistenciaTer'));
+        return view('reportabilidad.reportabilidadTer', compact('atencionAnualTer','atencionMensualTer','asistenciaTer','inasistenciaTer'));
     }
 
     public function showResultSoc(Request $request)
@@ -285,11 +280,12 @@ class ReportabilidadController extends Controller
         $atencionMensualSocial = FichaAtencionSocial::whereYear('created_at', '=', date('Y'))
             ->whereMonth('created_at', '=', date('m'))
             ->count();
+
         return view('reportabilidad.reportabilidadSoc', compact('atencionAnualSocial', 'atencionMensualSocial'));
     }
 
-    public function showResultGrupal(Request $request)
-    {
+    public function showResultGrupal(Request $request){
+
         // El que mas ha trabajado
         $atencionAnualKines = FichaKinesiologia::whereYear('ficha_kinesiologias.created_at', '=', date('Y'))
             ->count();
@@ -298,11 +294,13 @@ class ReportabilidadController extends Controller
             ->count();
         $atencionAnualFonos = 0;
         $atencionMensualFonos = 0;
+
         /*   $atencionAnualFonos=FichaFonoaudiologia::whereYear('created_at', '=', date('Y'))
                ->count();
            $atencionMensualFonos=FichaFonoaudiologia::whereYear('created_at', '=', date('Y'))
                ->whereMonth('ficha_kinesiologias.created_at', '=', date('m'))
                ->count(); */
+
         $atencionAnualPsicos = FichaPsicologia::whereYear('created_at', '=', date('Y'))
             ->count();
         $atencionMensualPsicos = FichaPsicologia::whereYear('created_at', '=', date('Y'))
@@ -316,7 +314,6 @@ class ReportabilidadController extends Controller
 
         return view('reportabilidad.reportabilidadGrupal', compact('atencionAnualKines', 'atencionMensualKines', 'atencionAnualFonos', 'atencionMensualFonos',
             'atencionAnualPsicos', 'atencionMensualPsicos', 'atencionAnualTers', 'atencionMensualTers'));
-
     }
 
     public function showResutlPorFecha(Request $request)
@@ -333,4 +330,5 @@ class ReportabilidadController extends Controller
         return view('reportabilidad.reportabilidadGrupal', compact('cantUsuarioTotal','$cantIngresadosAño','$cantIngresadosMes','atencionAnual','atencionMensual'));
 
     }
+
 }
