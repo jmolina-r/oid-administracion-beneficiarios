@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    
+
     //Trigger del segundo boton continuar al primero
     $("#continuar_btn_bottom" ).click(function() {
         $('#continuar_btn').click();
-    });    
+    });
 
     //Activa o deshabilita vencimiento credencial segun seleccion anterior
     activador("#credencial_discapacidad","#credencial_vencimiento");
@@ -46,7 +46,7 @@ $(document).ready(function() {
             $('#rut_confirmation').html($("#rut").val());
 
             //Confirmacion Sexo
-            
+
             if ($("#sexo").is(":checked"))
             {
                 $('#sexo_confirmation').html("Masculino");
@@ -69,7 +69,7 @@ $(document).ready(function() {
                 if ($("#domicilio_poblacion").val()) {
                     direccion = direccion + " " + $("#domicilio_poblacion").val();
                 }
-                $('#domicilio_confirmation').html(direccion);  
+                $('#domicilio_confirmation').html(direccion);
             }else if($("#domicilio_calle").val()==""){
                 $('#domicilio_confirmation').html("-");
             }
@@ -144,10 +144,10 @@ $(document).ready(function() {
 
             //Confirmacion Observacion General
             if($("#observacion_general").val()){
-                $("#observacion_confirmation").html($("#observacion_general").val());    
+                $("#observacion_confirmation").html($("#observacion_general").val());
             } else {
                 $("#observacion_confirmation").html("-");
-            }     
+            }
 
             //Confirmacion Discapacidad
             for (var i = 1; i < 7; i++) {
@@ -160,17 +160,17 @@ $(document).ready(function() {
 
             //Confirmacion Diagnostico Medico
             if($("#inputDiagnostico").val()){
-                $("#diagnostico_confirmation").html($("#inputDiagnostico").val());    
+                $("#diagnostico_confirmation").html($("#inputDiagnostico").val());
             } else {
                 $("#diagnostico_confirmation").html("-");
-            }  
+            }
 
             //Confirmacion Otras Enfermedades
             if($("#otras_enfermedades").val()){
-                $("#otras_enfermedades_confirmation").html($("#otras_enfermedades").val());    
+                $("#otras_enfermedades_confirmation").html($("#otras_enfermedades").val());
             } else {
                 $("#otras_enfermedades_confirmation").html("-");
-            }    
+            }
 
             //Confirmacion Dependencia
             $('#dependencia_confirmation').html($("#dependencia option:selected").text());
@@ -182,7 +182,7 @@ $(document).ready(function() {
             }else {
                 $('#cuidados_confirmation').html("No");
             }
-            
+
             //Confirmacion Plan de Rehabilitacion
             if($("#p_reha_trat_ctrl").val()){
                 $('#plan_confirmation').html($("#p_reha_trat_ctrl").val());
@@ -280,6 +280,8 @@ $(document).ready(function() {
     $(".select-tag").select2({
       tags: true
     });
+
+    $(".select-nomore").select2();
 
     /**
      * Estilos para select del tema
