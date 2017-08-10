@@ -74,23 +74,111 @@
             </tr>
             <tr>
                 <td colspan="3">CREDENCIAL DE DISCAPACIDAD ENTREGADAS</td>
-                <td colspan="2"><?php echo $porcentajeCredencial; echo '%'?></td>
+                <td colspan="2"><?php echo number_format($porcentajeCredencialEntregada,2,'.',''); echo '%'?></td>
+            </tr>
+            <tr>
+                <td colspan="3">CREDENCIAL DE DISCAPACIDAD EN TRÁMITE</td>
+                <td colspan="2"><?php echo number_format($porcentajeCredencialTramite,2,'.',''); echo '%'?></td>
+            </tr>
+            <tr>
+                <td colspan="3">REGISTRO SOCIAL DE HOGARES</td>
+                <td colspan="2"><?php echo number_format($porcentajeRSTiene,2,'.',''); echo '%'?></td>
+            </tr>
+            <tr>
+                <td colspan="3">REGISTRO SOCIAL DE HOGARES EN TÁMITE</td>
+                <td colspan="2"><?php echo number_format($porcentajeRSTramite,2,'.',''); echo '%'?></td>
+            </tr>
+            <tr>
+                <td colspan="1">EDUCACION</td>
+                <td colspan="4"><table>
+                        <tr>
+                            <th>NIVEL EDUCACIONAL</th>
+                            <th>CANTIDAD</th>
+                        </tr>
+                        <tr>
+                            <td>Prebasico</td>
+                            <td><?php echo intval($preBasico) ?></td>
+                        </tr>
+                        <tr>
+                            <td>Basico incompleto</td>
+                            <td><?php echo intval($basicoIncompleto) ?></td>
+                        </tr>
+                        <tr>
+                            <td>Basico completo</td>
+                            <td><?php echo intval($basicoCompleto) ?></td>
+                        </tr>
+                        <tr>
+                            <td>Medio incompleto</td>
+                            <td><?php echo intval($medioIncompleto) ?></td>
+                        </tr>
+                        <tr>
+                            <td>Medio completo</td>
+                            <td><?php echo intval($medioCompleto) ?></td>
+                        </tr>
+                        <tr>
+                            <td>Tecnico incompleto</td>
+                            <td><?php echo intval($tecnicoIncompleto) ?></td>
+                        </tr>
+                        <tr>
+                            <td>Tecnico completo</td>
+                            <td><?php echo intval($tecnicoCompleto) ?></td>
+                        </tr>
+                        <tr>
+                            <td>Universitario incompleto</td>
+                            <td><?php echo intval($universitarioIncompleto) ?></td>
+                        </tr>
+                        <tr>
+                            <td>Universitario completo</td>
+                            <td><?php echo intval($universitarioCompleto) ?></td>
+                        </tr>
+                    </table></td>
+            </tr>
+            <tr>
+                <td colspan="1">SITUACIÓN LABORAL</td>
+                <td colspan="4"><table>
+                        <tr>
+                            <th>OCUPACIÓN</th>
+                            <th>CANTIDAD</th>
+                        </tr>
+                        <tr>
+                            <td>Trabajador</td>
+                            <td><?php echo intval($trabajador) ?></td>
+                        </tr>
+                        <tr>
+                            <td>Estudiante</td>
+                            <td><?php echo intval($estudiante) ?></td>
+                        </tr>
+                        <tr>
+                            <td>Dueño de casa</td>
+                            <td><?php echo intval($duenoCasa) ?></td>
+                        </tr>
+                        <tr>
+                            <td>Pensionado</td>
+                            <td><?php echo intval($pensionado) ?></td>
+                        </tr>
+                        <tr>
+                            <td>Cesante</td>
+                            <td><?php echo intval($cesante) ?></td>
+                        </tr>
+                    </table></td>
             </tr>
             <tr>
                 <td>SALUD</td>
-                <td colspan="2"><table>
+                <td colspan="2">
+                    <table>
                         <tr>
                             <td colspan="2" align="center" valign="middle">USUARIOS FONASA </td>
                             <td colspan="2" align="center" valign="middle">USUARIOS ISAPRE </td>
                         </tr>
                         <tr>
-                            <td colspan="2"><?php echo number_format($porcentajeFonasaTramoA,2,'.','') ?>%</td>
+                            <td colspan="2"><?php echo number_format($porcentajeFonasa,2,'.','') ?>%</td>
 
-                            <td colspan="2"><?php echo number_format($porcentajeFonasaTramoA,2,'.','') ?>%</td>
+                            <td colspan="2"><?php echo number_format($porcentajeIsapre,2,'.','') ?>%</td>
                         </tr>
                     </table>
                 </td>
-                <td colspan="2"><table>
+                <td colspan="2">
+                    <table>
                         <tr>
                             <td colspan="2" align="center" valign="middle">Tramos Fonasa</td>
                             <td></td>
@@ -111,83 +199,59 @@
                             <td>Tramo D</td>
                             <td><?php echo number_format($porcentajeFonasaTramoD,2,'.','') ?>%</td>
                         </tr>
+                        <tr>
+                            <td colspan="2" align="center" valign="middle">  Tipos de Isapre</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Cruz Blanca</td>
+                            <td><?php echo number_format($isapreCruzBlanca,2,'.','') ?>%</td>
+                        </tr>
+                        <tr>
+                            <td>Colmena</td>
+                            <td><?php echo number_format($isapreColmena,2,'.','') ?>%</td>
+                        </tr>
+                        <tr>
+                            <td>Más vida</td>
+                            <td><?php echo number_format($isapreMasVida,2,'.','') ?>%</td>
+                        </tr>
+                        <tr>
+                            <td>Consalud</td>
+                            <td><?php echo number_format($isapreConsalud,2,'.','') ?>%</td>
+                        </tr>
+                        <tr>
+                            <td>Banmedica</td>
+                            <td><?php echo number_format($isapreBanmedica,2,'.','') ?>%</td>
+                        </tr>
+                        <tr>
+                            <td>Vida Tres</td>
+                            <td><?php echo number_format($isapreVidaTres,2,'.','') ?>%</td>
+                        </tr>
+                        <tr>
+                            <td>Codelco</td>
+                            <td><?php echo number_format($isapreCodelco,2,'.','') ?>%</td>
+                        </tr>
+                        <tr>
+                            <td>Dipreca</td>
+                            <td><?php echo number_format($isapreDipreca,2,'.','') ?>%</td>
+                        </tr>
+                        <tr>
+                            <td>Capredena</td>
+                            <td><?php echo number_format($isapreCapredena,2,'.','') ?>%</td>
+                        </tr>
+                        <tr>
+                            <td>Ferro Salud</td>
+                            <td><?php echo number_format($isapreFerroSalud,2,'.','') ?>%</td>
+                        </tr>
+                        <tr>
+                            <td>Otros</td>
+                            <td><?php echo number_format($isapreOtro,2,'.','') ?>%</td>
+                        </tr>
                     </table>
                 </td>
             </tr>
-            <tr>
-                <td colspan="1">EDUCACION</td>
-                <td colspan="4"><table>
-                        <tr>
-                            <th>NIVEL EDUCACIONAL</th>
-                            <th>CANTIDAD</th>
-                        </tr>
-                        <tr>
-                            <td>Prebasico</td>
-                            <td><?php echo number_format($preBasico,2,'.','') ?></td>
-                        </tr>
-                        <tr>
-                            <td>Basico incompleto</td>
-                            <td><?php echo number_format($basicoIncompleto,2,'.','') ?></td>
-                        </tr>
-                        <tr>
-                            <td>Basico completo</td>
-                            <td><?php echo number_format($basicoCompleto,2,'.','') ?></td>
-                        </tr>
-                        <tr>
-                            <td>Medio incompleto</td>
-                            <td><?php echo number_format($medioIncompleto,2,'.','') ?></td>
-                        </tr>
-                        <tr>
-                            <td>Medio completo</td>
-                            <td><?php echo number_format($medioCompleto,2,'.','') ?></td>
-                        </tr>
-                        <tr>
-                            <td>Tecnico incompleto</td>
-                            <td><?php echo number_format($tecnicoIncompleto,2,'.','') ?></td>
-                        </tr>
-                        <tr>
-                            <td>Tecnico completo</td>
-                            <td><?php echo number_format($tecnicoCompleto,2,'.','') ?></td>
-                        </tr>
-                        <tr>
-                            <td>Universitario incompleto</td>
-                            <td><?php echo number_format($universitarioIncompleto,2,'.','') ?></td>
-                        </tr>
-                        <tr>
-                            <td>Universitario completo</td>
-                            <td><?php echo number_format($universitarioCompleto,2,'.','') ?></td>
-                        </tr>
-                    </table></td>
-            </tr>
-            <tr>
-                <td colspan="1">SITUACIÓN LABORAL</td>
-                <td colspan="4"><table>
-                        <tr>
-                            <th>OCUPACIÓN</th>
-                            <th>CANTIDAD</th>
-                        </tr>
-                        <tr>
-                            <td>Trabajador</td>
-                            <td><?php echo number_format($trabajador,2,'.','') ?></td>
-                        </tr>
-                        <tr>
-                            <td>Estudiante</td>
-                            <td><?php echo number_format($estudiante,2,'.','') ?></td>
-                        </tr>
-                        <tr>
-                            <td>Dueño de casa</td>
-                            <td><?php echo number_format($duenoCasa,2,'.','') ?></td>
-                        </tr>
-                        <tr>
-                            <td>Pensionado</td>
-                            <td><?php echo number_format($pensionado,2,'.','') ?></td>
-                        </tr>
-                        <tr>
-                            <td>Cesante</td>
-                            <td><?php echo number_format($cesante,2,'.','') ?></td>
-                        </tr>
-                    </table></td>
-            </tr>
+
+
         </table>
         <br>
         <table>

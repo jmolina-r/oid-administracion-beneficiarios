@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AntecedentesFamiliares;
 use App\AntecedentesMedicos;
 use App\FichaPsicologia;
+use App\Beneficiario;
 use Illuminate\Http\Request;
 
 class FichaPsicologiaController extends Controller
@@ -91,11 +92,13 @@ class FichaPsicologiaController extends Controller
             $antecedentesFamiliares->save();
 
             $fichaPsicologia = new FichaPsicologia([
-                'image' => $request->input('image'),
+                'motivo_consulta' => $request->input('motivo_consulta'),
+                $request->file('genograma')->store('public/genogramas-psi'),
+                'genograma' => $request->file('genograma')->hashName(),
                 'antecedentes_medicos_id' => $antecedentesMedicos->id,
                 'antecedentes_familiares_id' => $antecedentesFamiliares->id,
                 //'psicologo_id' => $psicologo->id,
-                'psicologo_id' => '1', //provisional, psicologo no esta implementado
+                'profesional_id' => '1', //provisional, profesional no esta implementado
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaPsicologia->save();
@@ -106,8 +109,9 @@ class FichaPsicologiaController extends Controller
 
         }
         $id = $request->input('id');
-        return view('area-medica.ficha-evaluacion-inicial.psicologia.create')
-            ->with(compact('id'));
+        //return view('area-medica.ficha-evaluacion-inicial.psicologia.create')
+            //->with(compact('id'));
+        return view('home');
     }
 
     /**
@@ -125,9 +129,26 @@ class FichaPsicologiaController extends Controller
      *
      * @return Response
      */
-    public function show()
+    public function show($id)
     {
-        //
+        $fichaPsicologia = FichaPsicologia::find($id);
+
+        if($fichaPsicologia == null){
+            return view('home');
+        }
+
+        $persona = Beneficiario::find($fichaPsicologia->beneficiario_id);
+
+        $antecedentesMedicos = AntecedentesMedicos::find($fichaPsicologia->antecedentes_medicos_id);
+        $antecedentesFamiliares = AntecedentesFamiliares::find($fichaPsicologia->antecedentes_familiares_id);
+
+
+
+        return view('area-medica.ficha-evaluacion-inicial.psicologia.show', compact('fichaPsicologia'))
+            ->with(compact('persona'))
+            ->with(compact('antecedentesMedicos'))
+            ->with(compact('antecedentesFamiliares'))
+            ;
     }
 
     /**
@@ -166,37 +187,38 @@ class FichaPsicologiaController extends Controller
     private function rules(Request $request) {
         $rules = [
             'id' => 'required|exists:beneficiarios',
-            'enfermedades_familiares' => 'max:200',
-            'tratamientos_neurologo_nombre' => 'max:200',
-            'tratamientos_neurologo_sesiones' => 'max:200',
-            'tratamientos_psiquiatra_nombre' => 'max:200',
-            'tratamientos_psiquiatra_sesiones' => 'max:200',
-            'tratamientos_fonoaudiologo_nombre' => 'max:200',
-            'tratamientos_fonoaudiologo_sesiones' => 'max:200',
-            'tratamientos_ocupacional_nombre' => 'max:200',
-            'tratamientos_ocupacional_sesiones' => 'max:200',
-            'tratamientos_kinesiologo_nombre' => 'max:200',
-            'tratamientos_kinesiologo_sesiones' => 'max:200',
-            'tratamientos_psicologo_nombre' => 'max:200',
-            'tratamientos_psicologo_sesiones' => 'max:200',
-            'medicamentos' => 'max:200',
-            'nombre_madre' => 'required|max:200',
-            'edad_madre' => 'required|numeric|between:0,120',
-            'ocupacion_madre' => 'required|max:200',
-            'escolaridad_madre' => 'required|max:200',
-            'telefono_madre' => 'required|numeric',
-            'observaciones_madre' => 'max:200',
-            'fecha_nacimiento_madre' => 'required',
-            'rut_madre'=> 'required|max:200',
-            'nombre_padre' => 'required|max:200',
-            'edad_padre' => 'required|numeric|between:0,120',
-            'ocupacion_padre' => 'required|max:200',
-            'escolaridad_padre' => 'required|max:200',
-            'telefono_padre' => 'required|numeric',
-            'observaciones_padre' => 'max:200',
-            'fecha_nacimiento_padre' => 'required',
-            'rut_padre' => 'required|max:200',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'motivo_consulta' => 'nullable|max:200',
+            'enfermedades_familiares' => 'nullable|max:200',
+            'tratamientos_neurologo_nombre' => 'nullable|max:200',
+            'tratamientos_neurologo_sesiones' => 'nullable|max:200',
+            'tratamientos_psiquiatra_nombre' => 'nullable|max:200',
+            'tratamientos_psiquiatra_sesiones' => 'nullable|max:200',
+            'tratamientos_fonoaudiologo_nombre' => 'nullable|max:200',
+            'tratamientos_fonoaudiologo_sesiones' => 'nullable|max:200',
+            'tratamientos_ocupacional_nombre' => 'nullable|max:200',
+            'tratamientos_ocupacional_sesiones' => 'nullable|max:200',
+            'tratamientos_kinesiologo_nombre' => 'nullable|max:200',
+            'tratamientos_kinesiologo_sesiones' => 'nullable|max:200',
+            'tratamientos_psicologo_nombre' => 'nullable|max:200',
+            'tratamientos_psicologo_sesiones' => 'nullable|max:200',
+            'medicamentos' => 'nullable|max:200',
+            'nombre_madre' => 'nullable|max:200',
+            'edad_madre' => 'nullable|max:200',
+            'ocupacion_madre' => 'nullable|max:200',
+            'escolaridad_madre' => 'nullable|max:200',
+            'telefono_madre'=> 'nullable|max:200',
+            'observaciones_madre' => 'nullable|max:200',
+            'fecha_nacimiento_madre' => 'nullable|max:200',
+            'rut_madre'=> 'nullable|max:200',
+            'nombre_padre' => 'nullable|max:200',
+            'edad_padre' => 'nullable|max:200',
+            'ocupacion_padre' => 'nullable|max:200',
+            'escolaridad_padre' => 'nullable|max:200',
+            'telefono_padre' => 'nullable|max:200',
+            'observaciones_padre' => 'nullable|max:200',
+            'fecha_nacimiento_padre' => 'nullable|max:200',
+            'rut_padre' => 'nullable|max:200',
+            'genograma' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
         return $rules;
     }

@@ -86,6 +86,7 @@
                     </div>
                   </div>
                 </div>
+                  <form action="{{route('reportabilidad.reporteKine')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="post">
                  <div class='row'>
                     <div class='col-sm-12'>
                       <div class='box bordered-box blue-border' style='margin-bottom:0;'>
@@ -94,7 +95,7 @@
                         </div>
                          <div class="col-sm-6">
                             <p class="capitalize"><span class="tit">Nombre Completo</span><br>{{ $kinesiologo->nombres }} {{ $kinesiologo->apellidos }}</p>
-                            <p class="capitalize"><span class="tit">Rut</span><br>{{ $kinesiologo->rut }}</p>
+                             <p class="capitalize"><span class="tit">Rut</span><br>{{ $kinesiologo->rut }}</p>
                         </div>
                         <div class="col-sm-6">
                             <p class="capitalize"><span class="tit">Telefono</span><br>{{ $kinesiologo->telefono }}</p>
@@ -143,6 +144,9 @@
                 
               </div>
             </div>
+                      <a href='{{route('reportabilidad.reporteKine')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
+                      <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Vista previa a imprimir</button>
+                  </form>
             @include('partials.footer')
           </div>
         </section>

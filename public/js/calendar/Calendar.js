@@ -49,7 +49,7 @@
         },
         firstDay: Monday=1,
         droppable: true,
-        editable: true,
+        editable: false,
         selectable: true,
         defaultView: 'agendaWeek',
         monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
@@ -117,34 +117,21 @@
                         start: start,
                         end: end
                     }, true);
+                    location.reload();
                     return cal.fullCalendar('unselect');
                 }
 
             });
         },
         eventClick: function(calEvent, jsEvent, view) {
-            return bootbox.dialog({
-                message: $("<form class='form'><label>Change event name</label></form><input id='new-event-title' class='form-control' type='text' value='" + calEvent.title + "' /> "),
-                buttons: {
-                    "delete": {
-                        label: "<i class='fa fa-trash-o'></i> Delete Event",
-                        className: "pull-left",
-                        callback: function() {
-                            return cal.fullCalendar("removeEvents", function(ev) {
-                                return ev._id === calEvent._id;
-                            });
-                        }
-                    },
-                    success: {
-                        label: "<i class='fa fa-floppy-o'></i> Save",
-                        className: "btn-success",
-                        callback: function() {
-                            calEvent.title = $("#new-event-title").val();
-                            return cal.fullCalendar('updateEvent', calEvent);
-                        }
-                    }
-                }
-            });
+            if(calEvent.realizado) {
+                alert("Ya se han asignado prestaciones a esa hora agendada");
+                return;
+            }else{
+                calEvent.url = '/registro_prestacion/' + calEvent.id;
+                window.open(calEvent.url, '_self');
+            }
+            return false;
         },
         drop: function(date, allDay) {
             var copiedEventObject, eventClass, originalEventObject;

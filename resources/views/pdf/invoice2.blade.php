@@ -1,11 +1,3 @@
-<!--
-/**
- * Created by PhpStorm.
- * User: JOHN
- * Date: 24-07-2017
- * Time: 4:35
- */
- -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,29 +39,56 @@
     <h1>Reporte Psicología</h1>
     <table>
         <tr >
-            <th class="th1">OID</th>
+            <th class="th1">Datos Personales Psicólogo(a)</th>
+            <th class="th1"></th>
+            <th class="th1"></th>
+        </tr>
+        <tr>
+            <td>Nombre Completo</td>
+            <td></td>
+            <td>{{ $psicologo->nombres }} {{ $psicologo->apellidos }}</td>
+        </tr>
+        <tr>
+            <td>Rut</td>
+            <td></td>
+            <td>{{ $psicologo->rut }}</td>
+        </tr>
+        <tr>
+            <td>Telefono</td>
+            <td></td>
+            <td>{{ $psicologo->telefono }}</td>
+        </tr>
+        <tr>
+            <td>Dirección</td>
+            <td></td>
+            <td>{{ $psicologo->direccion }}</td>
+        </tr>
+    </table>
+    <table>
+        <tr >
+            <th class="th1">Psicología</th>
             <th class="th1"></th>
             <th class="th1"></th>
         </tr>
         <tr>
             <td>ATENCIONES ANUALES</td>
             <td></td>
-            <td>5</td>
+            <td>{{$atencionAnualPsico}}</td>
         </tr>
         <tr>
             <td>ATENCIONES MENSUALES</td>
             <td></td>
-            <td>12</td>
+            <td>{{$atencionMensualPsico}}</td>
         </tr>
         <tr>
             <td>CANTIDAD DE ASISTENCIA DE PACIENTES</td>
             <td></td>
-            <td>5</td>
+            <td>{{$asistenciaPsico}}</td>
         </tr>
         <tr>
             <td>CANTIDAD DE INASISTENCIA DE PACIENTES</td>
             <td></td>
-            <td>3</td>
+            <td>{{$inasistenciaPsico}}</td>
         </tr>
     </table>
 </div>

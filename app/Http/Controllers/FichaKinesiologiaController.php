@@ -9,7 +9,7 @@ use App\ValControlEsfinter;
 use App\ValEvaluacion;
 use App\ValSocial;
 use App\FichaKinesiologia;
-use App\Kinesiologo;
+use App\Profesional;
 use App\ValDeambulacion;
 use App\ValMotora;
 use App\ValMovilidad;
@@ -93,7 +93,7 @@ class FichaKinesiologiaController extends Controller
             $valAutocuidado->save();
 
             $valComCog = new ValComCog([
-                'puntae_expresion' => $request->input('puntaje_expresion'),
+                'puntaje_expresion' => $request->input('puntaje_expresion'),
                 'coment_expresion' => $request->input('coment_expresion'),
                 'puntaje_comprension' => $request->input('puntaje_comprension'),
                 'coment_comprension' => $request->input('coment_comprension'),
@@ -111,7 +111,7 @@ class FichaKinesiologiaController extends Controller
             $valDeambulacion = new ValDeambulacion([
                 'puntaje_desp_caminando' => $request->input('puntaje_desp_caminando'),
                 'coment_desp_caminando' => $request->input('coment_desp_caminando'),
-                'puntae_escaleras' => $request->input('puntaje_escaleras'),
+                'puntaje_escaleras' => $request->input('puntaje_escaleras'),
                 'coment_escaleras' => $request->input('coment_escaleras'),
             ]);
             $valDeambulacion->save();
@@ -178,7 +178,7 @@ class FichaKinesiologiaController extends Controller
                 'val_evaluacion_id' => $valEvaluacion->id,
                 'val_control_esfinter_id' => $valControlEsfinter->id,
                 //'kinesiologo_id' => $kinesiologo->id,
-                'kinesiologo_id' => '1', //provisional, kinesiologo no esta implementado
+                'profesional_id' => '1', //provisional, profesional no esta implementado
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaKinesiologia->save();
@@ -208,9 +208,40 @@ class FichaKinesiologiaController extends Controller
      *
      * @return Response
      */
-    public function show()
+    public function show($id)
     {
-        //
+        $fichaKinesiologia = FichaKinesiologia::find($id);
+
+        if($fichaKinesiologia == null){
+            return view('home');
+        }
+
+        $persona = Beneficiario::find($fichaKinesiologia->beneficiario_id);
+
+        $valSocial = ValSocial::find($fichaKinesiologia->val_social_id);
+        $valSensorial = ValSensorial::find($fichaKinesiologia->val_sensorial_id);
+        $valMovilidad = ValMovilidad::find($fichaKinesiologia->val_movilidad_id);
+        $valMotora = ValMotora::find($fichaKinesiologia->val_motora_id);
+        $valEvaluacion = ValEvaluacion::find($fichaKinesiologia->val_evaluacion_id);
+        $valDeambulacion = ValDeambulacion::find($fichaKinesiologia->val_deambulacion_id);
+        $valControlEsfinter = ValControlEsfinter::find($fichaKinesiologia->val_control_esfinter_id);
+        $valComCog = ValComCog::find($fichaKinesiologia->val_com_cog_id);
+        $valAutocuidado = ValAutocuidado::find($fichaKinesiologia->val_autocuidado_id);
+        $antecedentesMorbidos = AntecedentesMorbidos::find($fichaKinesiologia->antecedentes_morbidos_id);
+
+        return view('area-medica.ficha-evaluacion-inicial.kinesiologia.show', compact('fichaKinesiologia'))
+            ->with(compact('persona'))
+            ->with(compact('valSocial'))
+            ->with(compact('valSensorial'))
+            ->with(compact('valMovilidad'))
+            ->with(compact('valMotora'))
+            ->with(compact('valEvaluacion'))
+            ->with(compact('valDeambulacion'))
+            ->with(compact('valControlEsfinter'))
+            ->with(compact('valComCog'))
+            ->with(compact('valAutocuidado'))
+            ->with(compact('antecedentesMorbidos'))
+            ;
     }
 
     /**

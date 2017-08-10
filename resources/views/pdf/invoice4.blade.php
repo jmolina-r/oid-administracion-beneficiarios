@@ -47,19 +47,19 @@
     <h1>Reporte Atención Social</h1>
     <table>
         <tr >
-            <th class="th1">OID</th>
+            <th class="th1">Atención social</th>
             <th class="th1"></th>
             <th class="th1"></th>
         </tr>
         <tr>
             <td>ATENCIONES ANUALES</td>
             <td></td>
-            <td>5</td>
+            <td>{{$atencionAnualSocial}}</td>
         </tr>
         <tr>
             <td>ATENCIONES MENSUALES</td>
             <td></td>
-            <td>12</td>
+            <td>{{$atencionMensualSocial}}</td>
         </tr>
     </table>
 </div>

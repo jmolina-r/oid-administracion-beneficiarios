@@ -211,22 +211,22 @@
                                     <h3 class='title text-inside text-center'>Reportabilidad por profesional</h3>
                                     </div>
                         <form action="{{route('reportabilidad.reportabilidadKine')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
-                        <div class='box-content box-statistic' >                           
+                        <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">
                                 <h4>Reportabilidad Kinesiologia</h4>
-                                
+
                             </div>
                             <span>Seleccionar Profesional:</span>
                             <select name="kinesiologos">
                                  @foreach($kines as $kine)
-                                    <option value="{{$kine->rut}}">{{$kine->nombres}} {{$kine->apellidos}}</option>
+                            <option value="{{$kine->rut}}">{{$kine->nombres}} {{$kine->apellidos}}</option>
                                  @endforeach
-                            </select>
-                            
-                            <div class="boton pull-right" style="display:inline-block">
-                                <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
-                                <a href='{{route('reportabilidad.reporteKine')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
-                            </div>  
+                                </select>
+                                <div class="boton pull-right" style="display:inline-block">
+                                    <button type="submit" id="visualKine" name="visualKine" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
+                                    <button type="submit" id="imprimirReporKine" name="imprimirReporKine" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>
+                                    <!--<a href='{{route('reportabilidad.reporteKine')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>-->
+                            </div>
                         </div>
                         </form>
                         <form action="{{route('reportabilidad.reportabilidadPsico')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
@@ -241,15 +241,15 @@
                                  @endforeach
                             </select>
                             <div class="boton pull-right" style="display:inline-block">
-                                <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
-                                <a href='{{route('reportabilidad.reportePsico')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
+                                <button type="submit" id="visualSico" name="visualSico" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
+                                <button type="submit" id="imprimirReporSico" name="imprimirReporSico" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>
                             </div>  
                         </div>
                         </form>
                         <form action="{{route('reportabilidad.reportabilidadTer')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
                         <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">
-                                <h4>Reportabilidad Terapia ocupacional </h4>
+                                <h4>Reportabilidad Terapeuta</h4>
                             </div>
                             <span>Seleccionar Profesional:</span>
                             <select name="terapeutas">
@@ -258,8 +258,8 @@
                                  @endforeach
                             </select>
                             <div class="boton pull-right" style="display:inline-block">
-                                <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
-                                <a href='{{route('reportabilidad.reporteTer')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
+                                <button type="submit" id="visualTerap" name="visualTerap" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
+                                <button type="submit" id="imprimirReporTerap" name="imprimirReporTerap" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>
                             </div>  
                         </div>
                         </form>
@@ -298,8 +298,8 @@
                                 @endfor
                             </select>
                             <div class="boton pull-right" style="display:inline-block">
-                                <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
-                                <a href=''><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
+                                <button type="submit" id="visualHist" name="visualHist" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
+                                <button type="submit" id="imprimirReporHist" name="imprimirReporHist" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>
                             </div>  
                         </div>
                         </div>

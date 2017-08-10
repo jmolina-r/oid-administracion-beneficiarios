@@ -16,10 +16,10 @@ class CreateValdeambulacionsTable extends Migration
         Schema::create('val_deambulacions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('puntaje_desp_caminando')->nullable();
-            $table->string('coment_desp_caminando')->nullable();
-            $table->string('puntae_escaleras')->nullable();
-            $table->string('coment_escaleras')->nullable();
+            $table->string('puntaje_desp_caminando', 1)->nullable();
+            $table->string('coment_desp_caminando', 200)->nullable();
+            $table->string('puntaje_escaleras', 1)->nullable();
+            $table->string('coment_escaleras', 200)->nullable();
         });
     }
 

@@ -22,6 +22,7 @@ class CreateHoraAgendadasTable extends Migration
             $table->string('fecha');
             $table->string('razon_inasis');
             $table->integer('user_id')->unsigned();
+            $table->softDeletes();
         });
 
         Schema::table('hora_agendadas', function($table) {

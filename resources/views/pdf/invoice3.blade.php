@@ -1,11 +1,3 @@
-<!--
-/**
- * Created by PhpStorm.
- * User: JOHN
- * Date: 24-07-2017
- * Time: 4:35
- */
- -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,32 +36,59 @@
 </head>
 <body>
 <div class="div1">
-    <h1>Reporte Terapia Ocupacional</h1>
+    <h1>Reporte Terapías</h1>
     <table>
         <tr >
-            <th class="th1">OID</th>
+            <th class="th1">Datos Personales Terapeuta</th>
+            <th class="th1"></th>
+            <th class="th1"></th>
+        </tr>
+        <tr>
+            <td>Nombre Completo</td>
+            <td></td>
+            <td>{{ $terapeuta->nombres }} {{ $terapeuta->apellidos }}</td>
+        </tr>
+        <tr>
+            <td>Rut</td>
+            <td></td>
+            <td>{{ $terapeuta->rut }}</td>
+        </tr>
+        <tr>
+            <td>Telefono</td>
+            <td></td>
+            <td>{{ $terapeuta->telefono }}</td>
+        </tr>
+        <tr>
+            <td>Dirección</td>
+            <td></td>
+            <td>{{ $terapeuta->direccion }}</td>
+        </tr>
+    </table>
+    <table>
+        <tr >
+            <th class="th1">Terapías</th>
             <th class="th1"></th>
             <th class="th1"></th>
         </tr>
         <tr>
             <td>ATENCIONES ANUALES</td>
             <td></td>
-            <td>5</td>
+            <td>{{$atencionAnualTer}}</td>
         </tr>
         <tr>
             <td>ATENCIONES MENSUALES</td>
             <td></td>
-            <td>12</td>
+            <td>{{$atencionMensualTer}}</td>
         </tr>
         <tr>
             <td>CANTIDAD DE ASISTENCIA DE PACIENTES</td>
             <td></td>
-            <td>5</td>
+            <td>{{$asistenciaTer}}</td>
         </tr>
         <tr>
             <td>CANTIDAD DE INASISTENCIA DE PACIENTES</td>
             <td></td>
-            <td>3</td>
+            <td>{{$inasistenciaTer}}</td>
         </tr>
     </table>
 </div>

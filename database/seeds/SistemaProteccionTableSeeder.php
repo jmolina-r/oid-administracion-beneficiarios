@@ -11,6 +11,7 @@ class SistemaProteccionTableSeeder extends Seeder
      */
     public function run()
     {
+        // Cambiar a mayusculas.
         $sistemaProteccion = new \App\SistemaProteccion([
             'nombre' => 'chisol/sof'
         ]);
