@@ -181,7 +181,6 @@ return [
 
         Barryvdh\Debugbar\ServiceProvider::class,
 
-        Barryvdh\DomPDF\ServiceProvider::class
 
     ],
 
@@ -232,7 +231,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

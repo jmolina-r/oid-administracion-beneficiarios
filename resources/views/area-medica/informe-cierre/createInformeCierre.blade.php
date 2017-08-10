@@ -100,7 +100,8 @@
                                                     </div>
                                                 @endif
                                                 <form role="form" id="formulario_registro" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
-                                                    <input id="ben_id" name="ben_id" type="hidden" value="{{$beneficiario->id}}">
+                                                    <input id="idben" name="idben" type="hidden" value="{{$beneficiario->id}}">
+                                                    <input type="hidden" class="form-control" id="ben_id" name="ben_id" value="{{$beneficiario->id}}">
                                                     <div class="col-md-12">
                                                         <h4>Información del beneficiario</h4>
                                                         <hr/>

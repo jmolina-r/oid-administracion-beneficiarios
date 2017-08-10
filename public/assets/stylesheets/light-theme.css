@@ -2490,7 +2490,7 @@ header .navbar {
       display: none; }
       @media (min-width: 768px) {
         header .navbar .user-menu .dropdown-toggle .user-name {
-          display: inline; } }
+          display: inline; text-transform: capitalize;} }
     @media screen and (-webkit-min-device-pixel-ratio: 0) {
       header .navbar .user-menu .dropdown-toggle span {
         position: relative;

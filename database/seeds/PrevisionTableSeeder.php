@@ -63,5 +63,10 @@ class PrevisionTableSeeder extends Seeder
         ]);
         $prevision->save();
 
+        $prevision = new \App\Prevision([
+            'nombre' => 'otros',
+        ]);
+        $prevision->save();
+
     }
 }
