@@ -36,13 +36,13 @@ $(document).ready(function() {
         if (beneficiarios) {
             $("#listaBeneficiario").empty();
             beneficiarios.forEach(function(element) {
-                var cardData = '<div class="card col-xs-12 col-md-6 col-lg-4 card-frame">' +
-                    '<img class="card-img-top" src="http://placehold.it/230x230&text=Photo" alt="Card image cap">' +
+                var cardData = '<div class="card col-xs-12 col-sm-6 col-md-6 col-lg-4 card-frame">' +
+                    '<img class="card-img-top" src="http://placehold.it/180x180&text=Photo" alt="Card image cap">' +
                     '<div class="card-block">' +
                     '<h4 class="card-title capitalize">' + element.nombre + ' ' + element.apellido + '</h4>' +
                     '<p class="card-text">' + element.rut + '</p>' +
                     '<form method="GET" action="/beneficiario/informacion/'+ element.id +'">' +
-                    '<button style="margin-bottom:10px" class="btn btn-primary" type="submit"> Perfil del Beneficiario </button>' +
+                    '<button class="btn btn-primary" type="submit"> Ver Perfil </button>' +
                     '</form>' +
                     '</div>' +
                     '</div>';

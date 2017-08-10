@@ -151,6 +151,7 @@ class='contrast-red'
                 </div>
             </div>
             @include('partials.footer')
+            @include('partials.confirmation')
         </div>
     </section>
 </div>

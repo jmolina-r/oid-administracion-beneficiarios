@@ -47,8 +47,7 @@ class PdfController extends Controller
         $atencionMensual = PrestacionRealizada::whereYear('fecha', '=', date('Y'))
             ->whereMonth('fecha', '=', date('m'))
             ->count();
-        //$joven = Beneficiario::where('edad',''<='',18)->count(); 0-18
-        //adulto 19-65    adulto mayor   65-100
+
         $porcentajeJoven = 0;
         $porcentajeAdulto = 0;
         $porcentajeAdultoMayor = 0;
@@ -124,6 +123,43 @@ class PdfController extends Controller
         ];
         return $data;
     }*/
+    public function invoice1()
+    {
+        $view =  \View::make('pdf.invoice1', compact('invoice1'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoice1');
+    }
 
+    public function invoice2()
+    {
+        $view =  \View::make('pdf.invoice2', compact('invoice2'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoice2');
+    }
 
+    public function invoice3()
+    {
+        $view =  \View::make('pdf.invoice3', compact('invoice3'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoice3');
+    }
+
+    public function invoice4()
+    {
+        $view =  \View::make('pdf.invoice4', compact('invoice4'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoice4');
+    }
+
+    public function invoice5()
+    {
+        $view =  \View::make('pdf.invoice5', compact('invoice5'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoice5');
+    }
 }

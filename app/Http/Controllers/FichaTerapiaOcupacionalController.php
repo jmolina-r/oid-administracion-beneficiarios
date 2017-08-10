@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 
 class FichaTerapiaOcupacionalController extends Controller
 {
+
     /**
      * Mostrar formulario de ingreso de evaluacion inicial.
      *

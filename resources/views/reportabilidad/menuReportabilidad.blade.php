@@ -1,15 +1,16 @@
-
 <!-- Extiende el master layout -->
 @extends('layouts.master')
 
 <!-- meta atributo title -->
 @section('title')
-    Área Social - OID
+    Reportabilidad - OID
 @endsection
 
 <!-- inyeccion de estilos -->
 @section('styles')
+
     <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+
 @endsection
 
 <!-- Atributos del body -->
@@ -59,7 +60,7 @@
                                 <div class='page-header'>
                                     <h1 class='pull-left'>
                                         <i class='fa fa-pencil-square-o'></i>
-                                        <span>Asistente Social</span>
+                                        <span>Reportabilidad</span>
                                     </h1>
                                     <div class='pull-right'>
                                         <ul class='breadcrumb'>
@@ -71,13 +72,7 @@
                                             <li class='separator'>
                                                 <i class='fa fa-angle-right'></i>
                                             </li>
-                                            <li>
-                                                Área social
-                                            </li>
-                                            <li class='separator'>
-                                                <i class='fa fa-angle-right'></i>
-                                            </li>
-                                            <li class='active'>Ingreso de usuario</li>
+                                            <li class='active'>Reportabilidad</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -86,15 +81,13 @@
                         <div class='row'>
                             <div class='col-sm-12'>
                                 <div class='box'>
-
-
                                     <div class='box-content box-statistic' >
                                         <div class="nombre" style="display:inline-block">
                                             <h4>Reportabilidad General</h4>
                                         </div>
                                         <div class="boton pull-right" style="display:inline-block">
                                             <a href='{{route('reportabilidad.showEstadistica')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
-                                            <input type="button" value="Imprimir" class="btn btn-primary" style="margin-bottom:5px" />
+                                            <a href='{{route('reportabilidad.reporteGeneral')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
                                         </div>
                                     </div>
                                     <div class='box-content box-statistic' >
@@ -102,26 +95,8 @@
                                             <h4>Reportabilidad Kinesiologia</h4>
                                         </div>
                                         <div class="boton pull-right" style="display:inline-block">
-                                            <input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" />
-                                            <input type="button" value="Imprimir" class="btn btn-primary" style="margin-bottom:5px" />
-                                        </div>
-                                    </div>
-                                    <div class='box-content box-statistic' >
-                                        <div class="nombre" style="display:inline-block">
-                                            <h4>Reportabilidad Fonoaudilogia</h4>
-                                        </div>
-                                        <div class="boton pull-right" style="display:inline-block">
-                                            <input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" />
-                                            <input type="button" value="Imprimir" class="btn btn-primary" style="margin-bottom:5px" />
-                                        </div>
-                                    </div>
-                                    <div class='box-content box-statistic' >
-                                        <div class="nombre" style="display:inline-block">
-                                            <h4>Reportabilidad Terapia ocupacional</h4>
-                                        </div>
-                                        <div class="boton pull-right" style="display:inline-block">
-                                            <input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" />
-                                            <input type="button" value="Imprimir" class="btn btn-primary" style="margin-bottom:5px" />
+                                            <a href='{{route('reportabilidad.reportabilidadKine')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
+                                            <a href='{{route('reportabilidad.reporteKine')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
                                         </div>
                                     </div>
                                     <div class='box-content box-statistic' >
@@ -129,8 +104,17 @@
                                             <h4>Reportabilidad Psicología</h4>
                                         </div>
                                         <div class="boton pull-right" style="display:inline-block">
-                                            <input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" />
-                                            <input type="button" value="Imprimir" class="btn btn-primary" style="margin-bottom:5px" />
+                                            <a href='{{route('reportabilidad.reportabilidadPsico')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
+                                            <a href='{{route('reportabilidad.reportePsico')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
+                                        </div>
+                                    </div>
+                                    <div class='box-content box-statistic' >
+                                        <div class="nombre" style="display:inline-block">
+                                            <h4>Reportabilidad Terapia ocupacional</h4>
+                                        </div>
+                                        <div class="boton pull-right" style="display:inline-block">
+                                            <a href='{{route('reportabilidad.reportabilidadTer')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
+                                            <a href='{{route('reportabilidad.reporteTer')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
                                         </div>
                                     </div>
                                     <div class='box-content box-statistic' >
@@ -138,12 +122,19 @@
                                             <h4>Reportabilidad Social</h4>
                                         </div>
                                         <div class="boton pull-right" style="display:inline-block">
-                                            <input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" />
-                                            <input type="button" value="Imprimir" class="btn btn-primary" style="margin-bottom:5px" />
+                                            <a href='{{route('reportabilidad.reportabilidadSoc')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
+                                            <a href='{{route('reportabilidad.reporteSoc')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
                                         </div>
                                     </div>
-
-
+                                    <div class='box-content box-statistic' >
+                                        <div class="nombre" style="display:inline-block">
+                                            <h4>Reportabilidad Grupal</h4>
+                                        </div>
+                                        <div class="boton pull-right" style="display:inline-block">
+                                            <a href='{{route('reportabilidad.reportabilidadGru')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
+                                            <a href='{{route('reportabilidad.reporteGru')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
