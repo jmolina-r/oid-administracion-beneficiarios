@@ -35,10 +35,6 @@ class ReportabilidadController extends Controller
         return view('reportabilidad.menuReportabilidad', compact('kines','terapeutas','psicologos'));
     }
 
-    public function porProfesional() {
-        return view('reportabilidad.reportabilidadPorProfesional');
-    }
-
     public function createInformeCierre() {
         return view('area-medica.informe-cierre.buscarUser');
     }
@@ -72,14 +68,6 @@ class ReportabilidadController extends Controller
         ]);
         $informe_cierre->save();
         return view('area-medica.informe-cierre.buscarUser')->with('info','Se ha ingresado con éxito la visita');
-    }
-
-    public function porProfesional() {
-        return view('reportabilidad.reportabilidadPorProfesional');
-    }
-
-    public function createInformeCierre() {
-        return view('area-medica.informe-cierre.createInformeCierre');
     }
 
     public function showResults(Request $request){
