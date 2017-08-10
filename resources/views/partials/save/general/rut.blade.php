@@ -10,7 +10,7 @@
             ""
         @endif
 
-        @if($persona->rut)
+        @if($persona)
              readonly="readonly"
         @endif
         >
