@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Validation\Rule;
 use App\ActividadesVidaDiaria;
 use App\AntecedentesSalud;
+use App\Beneficiario;
 use App\AntecedentesSocioFamiliares;
 use App\DesarrolloEvolutivo;
 use App\FichaTerapiaOcupacional;
@@ -237,15 +238,43 @@ class FichaTerapiaOcupacionalController extends Controller
     }
 
     /**
-     * Mostrar formulario de ingreso de evaluacion inicial.
+     * Show the form for finding a resourse
      *
-     * @return view
+     * @return Response
      */
-    public function getMostrarLista()
+    public function find()
     {
-        $fichas = FichaTerapiaOcupacional::all();
+        //
+    }
 
-        return view('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista', [ 'fichas' => $fichas ]);
+    /**
+     * Display the specified resource.
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
+        $fichaTerapiaOcupacional = FichaTerapiaOcupacional::find($id);
+
+        $persona = Beneficiario::find($fichaTerapiaOcupacional->beneficiario_id);
+
+        $actividadesVidaDiaria = ActividadesVidaDiaria::find($fichaTerapiaOcupacional->actividades_vida_diaria_id);
+        $antecedentesSalud = AntecedentesSalud::find($fichaTerapiaOcupacional->antecedentes_salud_id);
+        $antecedentesSocioFamiliares = AntecedentesSocioFamiliares::find($fichaTerapiaOcupacional->antecedentes_so_fa_id);
+        $desarrolloEvolutivo = DesarrolloEvolutivo::find($fichaTerapiaOcupacional->desarrollo_evolutivo_id);
+        $habilidadesSociales = HabilidadesSociales::find($fichaTerapiaOcupacional->habilidades_sociales_id);
+        $historialClinico = HistorialClinico::find($fichaTerapiaOcupacional->historial_clinico_id);
+
+
+        return view('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.show', compact('fichaTerapiaOcupacional'))
+            ->with(compact('persona'))
+            ->with(compact('actividadesVidaDiaria'))
+            ->with(compact('antecedentesSalud'))
+            ->with(compact('antecedentesSocioFamiliares'))
+            ->with(compact('desarrolloEvolutivo'))
+            ->with(compact('habilidadesSociales'))
+            ->with(compact('historialClinico'))
+            ;
     }
 
     private function rules(Request $request) {

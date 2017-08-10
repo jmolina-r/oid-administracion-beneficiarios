@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AntecedentesFamiliares;
 use App\AntecedentesMedicos;
 use App\FichaPsicologia;
+use App\Beneficiario;
 use Illuminate\Http\Request;
 
 class FichaPsicologiaController extends Controller
@@ -128,9 +129,22 @@ class FichaPsicologiaController extends Controller
      *
      * @return Response
      */
-    public function show()
+    public function show($id)
     {
-        //
+        $fichaPsicologia = FichaPsicologia::find($id);
+
+        $persona = Beneficiario::find($fichaPsicologia->beneficiario_id);
+
+        $antecedentesMedicos = AntecedentesMedicos::find($fichaPsicologia->antecedentes_medicos_id);
+        $antecedentesFamiliares = AntecedentesFamiliares::find($fichaPsicologia->antecedentes_familiares_id);
+
+
+
+        return view('area-medica.ficha-evaluacion-inicial.psicologia.show', compact('fichaPsicologia'))
+            ->with(compact('persona'))
+            ->with(compact('antecedentesMedicos'))
+            ->with(compact('antecedentesFamiliares'))
+            ;
     }
 
     /**
@@ -200,7 +214,7 @@ class FichaPsicologiaController extends Controller
             'observaciones_padre' => 'nullable|max:200',
             'fecha_nacimiento_padre' => 'nullable|max:200',
             'rut_padre' => 'nullable|max:200',
-
+            'genograma' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
         return $rules;
     }

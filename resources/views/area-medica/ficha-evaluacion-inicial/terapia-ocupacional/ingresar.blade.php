@@ -344,6 +344,13 @@
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
+                                                                <label class="col-md-4 control-label" for="evaluacion_psicologo">Evaluación del Psicólogo</label>
+                                                                <div class="col-md-8 controls">
+                                                                    <input class="form-control" id="evaluacion_psicologo" name="evaluacion_psicologo" value="{{ old('evaluacion_psicologo') }}"  placeholder="Especificar diagnóstico">
+                                                                </div>
+                                                                <div class="help-block with-errors"></div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
                                                                 <label class="col-md-4 control-label" for="otra_evaluacion">Alguna otra evaluación</label>
                                                                 <div class="col-md-8 controls">
                                                                     <input class="form-control" id="otra_evaluacion" name="otra_evaluacion" value="{{ old('otra_evaluacion') }}"  placeholder="Especificar diagnóstico">
