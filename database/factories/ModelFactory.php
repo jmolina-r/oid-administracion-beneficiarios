@@ -493,6 +493,6 @@ $factory->define(App\Profesional::class, function (Faker\Generator $faker) {
         'telefono' => $faker -> regexify('[0-9]{8}'),
         'fecha_nacimiento' => $faker -> dateTimeBetween('-50 years', '-25 years'),
         'direccion' => $faker -> address,
-        'profesion' => $faker -> regexify('Terapia Ocupacional|Kinesiología|Fonoaudiología|Psicología|Asistencia Social'),
+        'profesion' => $faker -> regexify('(Terapia Ocupacional|Kinesiología|Fonoaudiología|Psicología|Asistencia Social)'),
     ];
 });
