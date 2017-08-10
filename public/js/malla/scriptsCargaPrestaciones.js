@@ -46,6 +46,20 @@ $(document).ready(function () {
         }
     });
 
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: "/registro_prestacion/getarea",
+        dataType: "text",
+        type: "POST",
+        success: function(data, textStatus, jqXHR) {
+            $('#area').val(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("Hubo un error, reintente");
+        }
+    });
 
     $('#boton-agregar-prestacion').click(function () {
 

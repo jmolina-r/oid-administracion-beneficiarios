@@ -193,7 +193,7 @@ class MallaController extends Controller
             array_push($eventos, $e);
         }
 
-        $horasAgendadasSoftdeleted = HoraAgendada::onlyTrashed()->get();
+        $horasAgendadasSoftdeleted = HoraAgendada::onlyTrashed()->where('user_id', $id)->get();
 
         foreach ($horasAgendadasSoftdeleted as $horaDeleted) {
 
@@ -249,7 +249,7 @@ class MallaController extends Controller
             $id = Auth::user()->id;
         }
 
-        $prestacionesConsolidadas = new Json();
+        $prestacionesConsolidadas = array();
 
         $user = User::where('id', $id)->first();
 
@@ -260,13 +260,15 @@ class MallaController extends Controller
             }
 
             $nombreRol = $rol->nombre;
-            $prestacionSegunRol = Prestacion::where('area', $nombreRol)->get()->toJson();
+            $prestacionSegunRol = Prestacion::where('area', $nombreRol)->get();
 
-            $prestacionesConsolidadas = json_encode(array_merge(json_decode($prestacionesConsolidadas, true),json_decode($prestacionSegunRol, true)));
+            foreach ($prestacionSegunRol as $prestacionRol){
+                array_push($prestacionesConsolidadas, $prestacionRol);
+            }
 
         }
 
-        return $prestacionesConsolidadas->toJson();
+        return json_encode($prestacionesConsolidadas);
     }
 
     public function getNombreCompleto(Request $request){
@@ -391,5 +393,18 @@ class MallaController extends Controller
             'area' => 'required|max:200'
         ];
         return $rules;
+    }
+
+    public function getArea(Request $request){
+
+        if (Auth::check())
+        {
+            $id = Auth::user()->id;
+        }
+
+        $user = User::where('id', $id)->first();
+
+        return $user->roles()->get()->first()->nombre;
+
     }
 }
