@@ -102,11 +102,10 @@
                                                 <div class="form-group">
                                                     <label class='control-label' for='inputText'>Área de la Prestación</label>
                                                     <select style="width:100%;" name='area' class='form-control capitalize select-tag' id='area'>
-                                                        <option value="Kinesiología">Kinesiología</option>
-                                                        <option value="Fonoaudiología">Fonoaudiología</option>
-                                                        <option value="Psicología">Psicología</option>
+                                                        <option value="Kinesiologia">Kinesiología</option>
+                                                        <option value="Fonoaudiologia">Fonoaudiología</option>
+                                                        <option value="Psicologia">Psicología</option>
                                                         <option value="Terapia Ocupacional">Terapia Ocupacional</option>
-                                                        <option value="Area Social">Área Social</option>
                                                     </select>
                                                 </div>
                                             </div>

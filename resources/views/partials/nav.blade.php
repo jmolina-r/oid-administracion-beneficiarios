@@ -107,6 +107,14 @@
                             <span>Formulario ingreso psicología</span>
                         </a>
                     </li>
+                    <li class=''>
+                        <a href='{{route('area-medica.ficha-evaluacion-inicial.psicologia.show',1)}}'>
+                            <div class='icon'>
+                                <i class='fa fa-caret-right'></i>
+                            </div>
+                            <span>Ver formulario ingreso psicologia</span>
+                        </a>
+                    </li>
 
                 </ul>
             </li>
@@ -125,6 +133,14 @@
                                 <i class='fa fa-caret-right'></i>
                             </div>
                             <span>Formulario Ingreso Terapia Ocupacional</span>
+                        </a>
+                    </li>
+                    <li class=''>
+                        <a href='{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.show',1)}}'>
+                            <div class='icon'>
+                                <i class='fa fa-caret-right'></i>
+                            </div>
+                            <span>Ver formulario ingreso terapia ocupacional</span>
                         </a>
                     </li>
 
