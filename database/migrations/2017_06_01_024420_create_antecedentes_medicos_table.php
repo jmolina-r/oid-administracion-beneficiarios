@@ -16,21 +16,21 @@ class CreateAntecedentesMedicosTable extends Migration
         Schema::create('antecedentes_medicos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('evaluacion_psiquiatra')->nullable();
-            $table->string('enfermedades_familiares')->nullable();
-            $table->string('tratamientos_neurologo_nombre')->nullable();
-            $table->string('tratamientos_neurologo_sesiones')->nullable();
-            $table->string('tratamientos_psiquiatra_nombre')->nullable();
-            $table->string('tratamientos_psiquiatra_sesiones')->nullable();
-            $table->string('tratamientos_fonoaudiologo_nombre')->nullable();
-            $table->string('tratamientos_fonoaudiologo_sesiones')->nullable();
-            $table->string('tratamientos_ocupacional_nombre')->nullable();
-            $table->string('tratamientos_ocupacional_sesiones')->nullable();
+            $table->string('evaluacion_psiquiatra',200)->nullable();
+            $table->string('enfermedades_familiares',200)->nullable();
+            $table->string('tratamientos_neurologo_nombre',200)->nullable();
+            $table->string('tratamientos_neurologo_sesiones',200)->nullable();
+            $table->string('tratamientos_psiquiatra_nombre',200)->nullable();
+            $table->string('tratamientos_psiquiatra_sesiones',200)->nullable();
+            $table->string('tratamientos_fonoaudiologo_nombre',200)->nullable();
+            $table->string('tratamientos_fonoaudiologo_sesiones',200)->nullable();
+            $table->string('tratamientos_ocupacional_nombre',200)->nullable();
+            $table->string('tratamientos_ocupacional_sesiones',200)->nullable();
             $table->string('tratamientos_kinesiologo_nombre')->nullable();
-            $table->string('tratamientos_kinesiologo_sesiones')->nullable();
-            $table->string('tratamientos_psicologo_nombre')->nullable();
-            $table->string('tratamientos_psicologo_sesiones')->nullable();
-            $table->string('medicamentos')->nullable();
+            $table->string('tratamientos_kinesiologo_sesiones',200)->nullable();
+            $table->string('tratamientos_psicologo_nombre',200)->nullable();
+            $table->string('tratamientos_psicologo_sesiones',200)->nullable();
+            $table->string('medicamentos',200)->nullable();
         });
     }
 

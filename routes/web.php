@@ -67,6 +67,11 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'as' => 'area-medica.ficha-evaluacion-inicial.kinesiologia.create'
             ])->middleware('roles:admin|kinesiologia');
 
+            Route::get('/show/{id}', [
+                'uses' => 'FichaKinesiologiaController@show',
+                'as' => 'area-medica.ficha-evaluacion-inicial.kinesiologia.show'
+            ])->middleware('roles:secretaria|admin');
+
             Route::post('/store', [
                 'uses' => 'FichaKinesiologiaController@store',
                 'as' => 'area-medica.ficha-evaluacion-inicial.kinesiologia.store'
@@ -101,13 +106,19 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
 
             Route::post('/ingresar', [
                 'uses' => 'FichaTerapiaOcupacionalController@postIngresar',
-                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar'
-            ])->middleware('roles:admin|terapia_ocupacional');
+                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresando'
+            ]);
 
+            //creo q esto esta de mas, era parte de un conflicto de merge
             Route::get('/mostrar-lista', [
                 'uses' => 'FichaTerapiaOcupacionalController@getMostrarLista',
                 'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista'
             ])->middleware('roles:admin|terapia_ocupacional');
+
+            Route::get('/show/{id}', [
+                'uses' => 'FichaTerapiaOcupacionalController@show',
+                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.show'
+            ])->middleware('roles:secretaria|admin');
         });
 
         Route::group(['prefix' => '/psicologia'], function (){
@@ -121,6 +132,11 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'uses' => 'FichaPsicologiaController@store',
                 'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.store'
             ])->middleware('roles:admin|psicologia');
+
+            Route::get('/show/{id}', [
+                'uses' => 'FichaPsicologiaController@show',
+                'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.show'
+            ])->middleware('roles:secretaria|admin');
         });
     });
 });
@@ -187,18 +203,68 @@ Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
     Route::get('/show', [
         'uses' => 'MallaController@show',
         'as' => 'malla.show'
-    ])->middleware('roles:admin');;
+    ]);;
 
     Route::post('/store', [
         'uses' => 'MallaController@store',
         'as' => 'malla.store'
-    ])->middleware('roles:admin');;
+    ]);;
 
     Route::get('/poblar', [
         'uses' => 'MallaController@poblar',
-    ])->middleware('roles:admin');;
+    ]);
 
     Route::get('/getnombre', [
         'uses' => 'BeneficiarioController@findNombrePorRut'
+    ]);
+
+    Route::get('/listaPrestaciones', [
+        'uses' => 'MallaController@listaPrestaciones',
+        'as' => 'malla.listaPrestaciones'
+    ])->middleware('roles:admin');;
+
+    Route::get('/crearPrestacion', [
+        'uses' => 'MallaController@crearPrestacion',
+        'as' => 'malla.crearPrestacion'
+    ])->middleware('roles:admin');;
+
+    Route::post('/guardarPrestacion', [
+        'uses' => 'MallaController@guardarPrestacion',
+        'as' => 'malla.guardarPrestacion'
+    ])->middleware('roles:admin');;
+
+    Route::get('/confirmarEliminarPrestacion/{id}', [
+        'uses' => 'MallaController@confirmarEliminarPrestacion',
+        'as' => 'malla.confirmarEliminarPrestacion'
+    ])->middleware('roles:admin');;
+
+    Route::post('/eliminarPrestacion', [
+        'uses' => 'MallaController@eliminarPrestacion',
+        'as' => 'malla.eliminarPrestacion'
     ])->middleware('roles:admin');;
 });
+
+Route::group(['prefix' => '/registro_prestacion', 'middleware' => 'auth'], function (){
+    Route::get('/{id}', [
+        'uses' => 'MallaController@registroPrestacion',
+        'as' => 'malla.showIngresoPrestacion'
+    ]);
+
+    Route::post('/getprestacionesprofesional', [
+        'uses' => 'MallaController@getPrestacionesProfesional'
+    ]);
+
+    Route::post('/getnombrecompleto', [
+        'uses' => 'MallaController@getNombreCompleto'
+    ]);
+
+    Route::post('/getarea', [
+        'uses' => 'MallaController@getArea'
+    ]);
+
+    Route::post('/storeprestaciones', [
+        'uses' => 'MallaController@storePrestaciones'
+    ]);
+});
+
+

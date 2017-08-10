@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FichaPsicologia extends Model
 {
-    protected $fillable = ['antecedentes_medicos_id','antecedentes_familiares_id','psicologo_id','beneficiario_id','genograma'];
+    protected $fillable = ['motivo_consulta','antecedentes_medicos_id','antecedentes_familiares_id','profesional_id','beneficiario_id','genograma'];
 
     public function antecedentes_medicos()
     {
@@ -18,9 +18,9 @@ class FichaPsicologia extends Model
         return $this->belongsTo(AntecedentesFamiliares::class);
     }
 
-    public function psicologo()
+    public function profesional()
     {
-        return $this->belongsTo(Psicologo::class);
+        return $this->belongsTo(Profesional::class);
     }
 
     public function beneficiario()

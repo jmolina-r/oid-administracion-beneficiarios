@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePsicologosTable extends Migration
+class CreatePrestacionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreatePsicologosTable extends Migration
      */
     public function up()
     {
-        Schema::create('psicologos', function (Blueprint $table) {
+        Schema::create('prestacions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('rut');
-            $table->string('nombres');
-            $table->string('apellidos');
-            $table->string('telefono');
-            $table->date('fecha_nacimiento');
-            $table->string('direccion');
+            $table->string('nombre');
+            $table->string('area');
+            $table->softDeletes();
         });
     }
 
@@ -32,6 +29,6 @@ class CreatePsicologosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('psicologos');
+        Schema::dropIfExists('prestacions');
     }
 }

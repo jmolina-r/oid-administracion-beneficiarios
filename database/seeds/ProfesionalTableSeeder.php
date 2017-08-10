@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class PsicologoTableSeeder extends Seeder
+class ProfesionalTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class PsicologoTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Psicologo::class, 5)->create();
+        factory(App\Profesional::class, 5)->create();
     }
 }

@@ -223,28 +223,28 @@
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="situacion_familiar">1. Situación Familiar</label>
                                                                 <div class="controls">
-                                                                    <textarea name="situacion_familiar" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='¿Con quien?¿Accesibilidad?' rows='3' style='margin-bottom:10px;' value="{{ old('situacion_familiar') }}" id="inputDiagnostico" maxlength="200"></textarea>
+                                                                    <textarea name="situacion_familiar" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='¿Con quien?¿Accesibilidad?' rows='3' style='margin-bottom:10px;' value="{{ old('situacion_familiar') }}" id="situacion_familiar" maxlength="200"></textarea>
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="situacion_laboral">2. Situación Laboral</label>
                                                                 <div class="controls">
-                                                                    <textarea name="situacion_laboral" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Situación Laboral' rows='3' style='margin-bottom:10px;' value="{{ old('situacion_laboral') }}" id="inputDiagnostico" maxlength="200"></textarea>
+                                                                    <textarea name="situacion_laboral" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Situación Laboral' rows='3' style='margin-bottom:10px;' value="{{ old('situacion_laboral') }}" id="situacion_laboral" maxlength="200"></textarea>
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="asiste_centro_rhb">3. ¿Asiste algún centro de RHB?</label>
                                                                 <div class="controls">
-                                                                    <textarea name="asiste_centro_rhb" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='¿Asiste algún centro de RHB?' rows='3' style='margin-bottom:10px;' value="{{ old('asiste_centro_rhb') }}" id="inputDiagnostico" maxlength="200"></textarea>
+                                                                    <textarea name="asiste_centro_rhb" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='¿Asiste algún centro de RHB?' rows='3' style='margin-bottom:10px;' value="{{ old('asiste_centro_rhb') }}" id="asiste_centro_rhb" maxlength="200"></textarea>
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="motivo_consulta">4. Motivo de Consulta</label>
                                                                 <div class="controls">
-                                                                    <textarea name="motivo_consulta" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Motivo de Consulta' rows='3' style='margin-bottom:10px;' value="{{ old('motivo_consulta') }}" id="inputDiagnostico" maxlength="200"></textarea>
+                                                                    <textarea name="motivo_consulta" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Motivo de Consulta' rows='3' style='margin-bottom:10px;' value="{{ old('motivo_consulta') }}" id="motivo_consulta" maxlength="200"></textarea>
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
@@ -272,55 +272,55 @@
                                                             <div class="col-md-12">
                                                                 <label class="col-md-4 control-label" for="puntaje_alimentacion">1. Alimentación</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_alimentacion" value="{{ old('puntaje_alimentacion') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_alimentacion" name="puntaje_alimentacion" value="{{ old('puntaje_alimentacion') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_alimentacion" value="{{ old('coment_alimentacion') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_alimentacion" name="coment_alimentacion" value="{{ old('coment_alimentacion') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <label class="col-md-4 control-label " for="puntaje_arreglo_pers">2. Arreglo Personal</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_arreglo_pers" value="{{ old('puntaje_arreglo_pers') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_arreglo_pers" name="puntaje_arreglo_pers" value="{{ old('puntaje_arreglo_pers') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_arreglo_pers" value="{{ old('coment_arreglo_pers') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_arreglo_pers" name="coment_arreglo_pers" value="{{ old('coment_arreglo_pers') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <label class="col-md-4 control-label" for="puntaje_bano">3. Baño</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_bano" value="{{ old('puntaje_bano') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_bano" name="puntaje_bano" value="{{ old('puntaje_bano') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_bano" value="{{ old('coment_bano') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_bano" name="coment_bano" value="{{ old('coment_bano') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <label class="col-md-4 control-label" for="puntaje_vest_sup">4. Vestuario Superior</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_vest_sup" value="{{ old('puntaje_vest_sup') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_vest_sup" name="puntaje_vest_sup" value="{{ old('puntaje_vest_sup') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_vest_sup" value="{{ old('coment_vest_sup') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_vest_sup" name="coment_vest_sup" value="{{ old('coment_vest_sup') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <label class="col-md-4 control-label" for="puntaje_vest_inf">5. Vestuario Inerior</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_vest_inf" value="{{ old('puntaje_vest_inf') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_vest_inf" name="puntaje_vest_inf" value="{{ old('puntaje_vest_inf') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_vest_inf" value="{{ old('coment_vest_inf') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_vest_inf" name="coment_vest_inf" value="{{ old('coment_vest_inf') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <label class="col-md-4 control-label" for="puntaje_aseo_pers">6. Aseo Personal</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_aseo_pers" value="{{ old('puntaje_aseo_pers') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_aseo_pers" name="puntaje_aseo_pers" value="{{ old('puntaje_aseo_pers') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_aseo_pers" value="{{ old('coment_aseo_pers') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_aseo_pers" name="coment_aseo_pers" value="{{ old('coment_aseo_pers') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
@@ -329,19 +329,19 @@
                                                             <div class="col-md-12">
                                                                 <label class="col-md-4 control-label" for="puntaje_control_vejiga">1. Control de Vejiga</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_control_vejiga" value="{{ old('puntaje_control_vejiga') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_control_vejiga" name="puntaje_control_vejiga" value="{{ old('puntaje_control_vejiga') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_contrl_vejiga" value="{{ old('coment_contrl_vejiga') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_control_vejiga" name="coment_control_vejiga" value="{{ old('coment_control_vejiga') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <label class="col-md-4 control-label" for="puntaje_control_intestino">2. Control de Instestino</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_control_intestino" value="{{ old('puntaje_control_intestino') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_control_intestino" name="puntaje_control_intestino" value="{{ old('puntaje_control_intestino') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_control_intestino" value="{{ old('coment_control_intestino') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_control_intestino" name="coment_control_intestino" value="{{ old('coment_control_intestino') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
@@ -350,28 +350,28 @@
                                                             <div class="col-md-12">
                                                                 <label class="col-md-4 control-label" for="puntaje_trans_cama_silla">1. Transferencia cama-silla</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_trans_cama_silla" value="{{ old('puntaje_trans_cama_silla') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_trans_cama_silla" name="puntaje_trans_cama_silla" value="{{ old('puntaje_trans_cama_silla') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_trans_cama_silla" value="{{ old('coment_trans_cama_silla') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_trans_cama_silla" name="coment_trans_cama_silla" value="{{ old('coment_trans_cama_silla') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <label class="col-md-4 control-label" for="puntaje_traslado_bano">2. Traslado baño</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_traslado_bano" value="{{ old('puntaje_traslado_bano') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_traslado_bano" name="puntaje_traslado_bano" value="{{ old('puntaje_traslado_bano') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_traslado_bano" value="{{ old('coment_traslado_bano') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_traslado_bano" name="coment_traslado_bano" value="{{ old('coment_traslado_bano') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <label class="col-md-4 control-label" for="puntaje_traslado_ducha">3. Traslado ducha</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_traslado_ducha" value="{{ old('puntaje_traslado_ducha') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_traslado_ducha" name="puntaje_traslado_ducha" value="{{ old('puntaje_traslado_ducha') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_traslado_ducha" value="{{ old('coment_traslado_ducha') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_traslado_ducha" name="coment_traslado_ducha" value="{{ old('coment_traslado_ducha') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
@@ -380,19 +380,19 @@
                                                             <div class="col-md-12">
                                                                 <label class="col-md-4 control-label" for="puntaje_desp_caminando">1. Desplazarse caminando/sr</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_desp_caminando" value="{{ old('puntaje_desp_caminando') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_desp_caminando" name="puntaje_desp_caminando" value="{{ old('puntaje_desp_caminando') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_desp_caminando" value="{{ old('coment_desp_caminando') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_desp_caminando" name="coment_desp_caminando" value="{{ old('coment_desp_caminando') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <label class="col-md-4 control-label" for="puntaje_escaleras">2. Subir y bajar escaleras</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_escaleras" value="{{ old('puntaje_escaleras') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_escaleras" name="puntaje_escaleras" value="{{ old('puntaje_escaleras') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_escaleras" value="{{ old('coment_escaleras') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_escaleras" name="coment_escaleras" value="{{ old('coment_escaleras') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
@@ -401,19 +401,19 @@
                                                             <div class="col-md-12">
                                                                 <label class="col-md-4 control-label" for="puntaje_expresion">1. Expresión</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_expresion" value="{{ old('puntaje_expresion') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_expresion" name="puntaje_expresion" value="{{ old('puntaje_expresion') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_expresion" value="{{ old('coment_expresion') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_expresion" name="coment_expresion" value="{{ old('coment_expresion') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <label class="col-md-4 control-label" for="puntaje_comprension">2. Comprensión</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_comprension" value="{{ old('puntaje_comprension') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_comprension" name="puntaje_comprension" value="{{ old('puntaje_comprension') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_comprension" value="{{ old('coment_comprension') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_comprension" name="coment_comprension" value="{{ old('coment_comprension') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
@@ -422,28 +422,28 @@
                                                             <div class="col-md-12">
                                                                 <label class="col-md-4 control-label" for="puntaje_int_social">1. Interacción social</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_int_social" value="{{ old('puntaje_int_social') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_int_social" name="puntaje_int_social" value="{{ old('puntaje_int_social') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_int_social" value="{{ old('coment_int_social') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_int_social" name="coment_int_social" value="{{ old('coment_int_social') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <label class="col-md-4 control-label" for="puntaje_sol_problemas">2. Solución de problemas</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_sol_problemas" value="{{ old('puntaje_sol_problemas') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_sol_problemas" name="puntaje_sol_problemas" value="{{ old('puntaje_sol_problemas') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_sol_problemas" value="{{ old('coment_sol_problemas') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_sol_problemas" name="coment_sol_problemas" value="{{ old('coment_sol_problemas') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-4 control-label" for="puntaje_memoria">3. Memoria</label>
                                                                 <div class="col-md-2 controls">
-                                                                    <input class="form-control onlynumbers" id="puntaje" name="puntaje_memoria" value="{{ old('puntaje_memoria') }}"  placeholder="Puntuación" type="text" maxlength="2">
+                                                                    <input class="form-control onlynumbers" id="puntaje_memoria" name="puntaje_memoria" value="{{ old('puntaje_memoria') }}"  placeholder="Puntuación" type="text" maxlength="2">
                                                                 </div>
                                                                 <div class="col-md-6 controls">
-                                                                    <input class="form-control" id="comentario" name="coment_memoria" value="{{ old('coment_memoria') }}"  placeholder="Comentario" type="text" maxlength="200">
+                                                                    <input class="form-control" id="coment_memoria" name="coment_memoria" value="{{ old('coment_memoria') }}"  placeholder="Comentario" type="text" maxlength="200">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -580,7 +580,7 @@
                                     <h3 class='modal-title' id='myModalLabel'>Confirmación</h3>
                                 </div>
                                 <div class='modal-body'>
-                                    <h5>A continuación se muestran todos los datos ingresados para el formulario de evaluaciń inicial. Favor leer detalladamente y confirmar con el botón registrar. De lo contrario, vuelva y modifique los datos que sean necesarios.</h5>
+                                    <h5>A continuación se muestran todos los datos ingresados para el formulario de evaluación inicial. Favor leer detalladamente y confirmar con el botón registrar. De lo contrario, vuelva y modifique los datos que sean necesarios.</h5>
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-12 col-lg-6">
@@ -594,12 +594,6 @@
                                             <p id="ant_quir_confirmation">-</p>
                                             <h4>Aparatos</h4>
                                             <p id="aparatos_confirmation">-</p>
-                                            <h4>¿Fuma?</h4>
-                                            <p id="fuma_sn_confirmation">-</p>
-                                            <h4>¿Bebe OH?</h4>
-                                            <p id="alcohol_sn_confirmation">-</p>
-                                            <h4>Act. física</h4>
-                                            <p id="act_fisica_sn_confirmation">-</p>
                                         </div>
                                         <div class="col-sm-12 col-lg-6">
                                             <h4>1. Situación Familiar</h4>
@@ -612,10 +606,24 @@
                                             <p id="motivo_consulta_confirmation">-</p>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-lg-4">
+                                            <h4>¿Fuma?</h4>
+                                            <p id="fuma_sn_confirmation">-</p>
+                                        </div>
+                                        <div class="col-sm-12 col-lg-4">
+                                            <h4>¿Bebe OH?</h4>
+                                            <p id="alcohol_sn_confirmation">-</p>
+                                        </div>
+                                        <div class="col-sm-12 col-lg-4">
+                                            <h4>Act. física</h4>
+                                            <p id="act_fisica_sn_confirmation">-</p>
+                                        </div>
+                                    </div>
                                     <hr>
                                     <div class="row">
-                                        <h3>Autocuidado</h3>
                                         <div class="col-lg-12">
+                                            <h4>Autocuidado</h4>
                                             <div class="col-sm-12 col-lg-5">
                                                 <h4>1. Alimentación</h4>
                                             </div>
@@ -681,8 +689,10 @@
                                                 <p id="coment_aseo_pers_confirmation">-</p>
                                             </div>
                                         </div>
-                                        <h3>Control de Esfinteres</h3>
+                                    </div>
+                                    <div class="row">
                                         <div class="col-lg-12">
+                                            <h4>Control de Esfinteres</h4>
                                             <div class="col-sm-12 col-lg-5">
                                                 <h4>1. Control de Vejiga</h4>
                                             </div>
@@ -705,26 +715,170 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h4>Movilidad</h4>
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>1. Transferencia cama-silla</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_trans_cama_silla_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_trans_cama_silla_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>2. Traslado baño</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_traslado_bano_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_traslado_bano_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>3. Traslado ducha</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_traslado_ducha_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_traslado_ducha_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h4>Deambulación</h4>
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>1. Desplazarse caminando/sr</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_desp_caminando_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_desp_caminando_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>2. Subir y bajar escaleras</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_escaleras_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_escaleras_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h4>Comunicación/Cognitivo</h4>
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>1. Expresión</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_expresion_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_expresion_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>2. Comprensión</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_comprension_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_comprension_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h4>Social</h4>
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>1. Interacción social</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_int_social_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_int_social_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>2. Solución de problemas</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_sol_problemas_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_sol_problemas_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="col-sm-12 col-lg-5">
+                                                <h4>3. Memoria</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-1">
+                                                <p id="puntaje_memoria_confirmation">-</p>
+                                            </div>
+                                            <div class="col-sm-12 col-lg-6">
+                                                <p id="coment_memoria_confirmation">-</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <hr>
                                     <div class="row">
-
-                                        <div class="col-lg-12">
-                                            <h4>Diagnóstico médico</h4>
-                                            <p id="diagnostico_confirmation">-</p>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <h4>Otras Enfermedades</h4>
-                                            <p id="otras_enfermedades_confirmation">-</p>
+                                        <div class="col-sm-12 col-lg-6">
+                                            <h4>Evaluación</h4>
+                                            <div class="col-sm-12 col-lg-12">
+                                                <h4>1. Conexión con el medio</h4>
+                                                <p id="conexion_medio_confirmation">-</p>
+                                                <h4>2. Nivel cognitivo aparente</h4>
+                                                <p id="nivel_cognitivo_apar_confirmation">-</p>
+                                            </div>
+                                            <h4>Evaluación Sensorial</h4>
+                                            <div class="col-sm-12 col-lg-12">
+                                                <h4>1. Visual</h4>
+                                                <p id="visual_confirmation">-</p>
+                                                <h4>2. Auditivo</h4>
+                                                <p id="auditivo_confirmation">-</p>
+                                                <h4>3. Táctil</h4>
+                                                <p id="tactil_confirmation">-</p>
+                                                <h4>4. Propioceptivo</h4>
+                                                <p id="propioceptivo_confirmation">-</p>
+                                                <h4>5. Vestibular</h4>
+                                                <p id="vestibular_confirmation">-</p>
+                                            </div>
                                         </div>
                                         <div class="col-sm-12 col-lg-6">
-                                            <h4>Dependencia</h4>
-                                            <p id="dependencia_confirmation">-</p>
-                                            <h4>Plan de rehabilitación, tratamiento o control</h4>
-                                            <p id="plan_confirmation">-</p>
-                                        </div>
-                                        <div class="col-sm-12 col-lg-6">
-                                            <h4>Cuidado de terceros</h4>
-                                            <p id="cuidado_confirmation">-</p>
+                                            <h4>Evaluación Motora</h4>
+                                            <div class="col-sm-12 col-lg-12">
+                                                <h4>6. Tono</h4>
+                                                <p id="tono_confirmation">-</p>
+                                                <h4>7. ROM</h4>
+                                                <p id="rom_confirmation">-</p>
+                                                <h4>8. Dolor</h4>
+                                                <p id="dolor_confirmation">-</p>
+                                                <h4>9. Fuerza Muscular</h4>
+                                                <p id="fm_confirmation">-</p>
+                                                <h4>10. Habilidades Motrices</h4>
+                                                <p id="hab_motrices_confirmation">-</p>
+                                                <h4>11. Coordinación</h4>
+                                                <p id="coordinacion_confirmation">-</p>
+                                                <h4>12. Equilibrio</h4>
+                                                <p id="equilibrio_confirmation">-</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -743,7 +897,7 @@
                      */
                     function enviarFormulario(){
 
-                        $('#formulario-registro').submit();
+                        $('#formulario_registro').submit();
                     }
                 </script>
 

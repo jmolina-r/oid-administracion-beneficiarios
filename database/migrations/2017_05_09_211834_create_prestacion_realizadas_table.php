@@ -16,13 +16,18 @@ class CreatePrestacionRealizadasTable extends Migration
         Schema::create('prestacion_realizadas', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('numero');
             $table->date('fecha');
 
             $table->integer('beneficiario_id')->unsigned();
+            $table->integer('prestacions_id')->unsigned();
         });
+
         Schema::table('prestacion_realizadas', function ($table){
-         $table->foreign('beneficiario_id')->references('id')->on('beneficiarios')->onDelete('cascade');
+            $table->foreign('beneficiario_id')->references('id')->on('beneficiarios')->onDelete('cascade');
+        });
+
+        Schema::table('prestacion_realizadas', function ($table){
+            $table->foreign('prestacions_id')->references('id')->on('prestacions')->onDelete('cascade');
         });
     }
 
