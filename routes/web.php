@@ -21,24 +21,24 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'areasocial', 'middleware' => 'auth'], function(){
     Route::get('/asistentesocial', [
-    'uses' => 'FichaSocialController@index',
-    'as' => 'social.asistenteSocialGet'
+        'uses' => 'FichaSocialController@index',
+        'as' => 'social.asistenteSocialGet'
     ]);
 
     Route::post('/asistentesocial/beneficiario', [
-    'uses' => 'FichaSocialController@store',
-    'as' => 'social.asistenteSocialBeneficiario'
+        'uses' => 'FichaSocialController@store',
+        'as' => 'social.asistenteSocialBeneficiario'
     ]);
 
     Route::get('/asistentesocial/menu', [
-    'uses' => 'FichaSocialController@show',
-    'as' => 'social.asistenteSocial'
+        'uses' => 'FichaSocialController@show',
+        'as' => 'social.asistenteSocial'
     ]);
 
 
     Route::post('/asistentesocial/menu',[
-    'uses' => 'FichaSocialController@post',
-    'as' => 'social.asistentesocial'
+        'uses' => 'FichaSocialController@post',
+        'as' => 'social.asistentesocial'
     ]);
 });
 
@@ -108,6 +108,24 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.store'
             ]);
         });
+    });
+
+    Route::group(['prefix' => '/informe-cierre'], function (){
+
+        Route::get('/buscarUser', [
+            'uses' => 'ReportabilidadController@createInformeCierre',
+            'as' => 'area-medica.informe-cierre.buscarUser'
+        ]);
+
+        Route::get('/createInformeCierre', [
+            'uses' => 'ReportabilidadController@showUser',
+            'as' => 'area-medica.informe-cierre.createInformeCierre'
+        ]);
+
+        Route::post('/createInformeCierre',[
+            'uses' => 'ReportabilidadController@postInformeCierre',
+            'as' => 'area-medica.informe-cierre.createInformeCierre'
+        ]);
     });
 });
 
@@ -198,31 +216,37 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     ]);
 
     Route::get('/menu', [
-    'uses' => 'ReportabilidadController@index',
-    'as' => 'reportabilidad.menuReportabilidad'
-    ]); 
+        'uses' => 'ReportabilidadController@index',
+        'as' => 'reportabilidad.menuReportabilidad'
+    ]);
+
+    Route::get('/profesional',[
+        'uses'=>'ReportabilidadController@porProfesional',
+        'as' => 'reportabilidad.reportabilidadPorProfesional'
+    ]);
 
     Route::get('/reportabilidadKinesiologia',[
-    'uses'=>'ReportabilidadController@showResultKine',
-    'as' => 'reportabilidad.reportabilidadKine'
-    ]); 
+        'uses'=>'ReportabilidadController@showResultKine',
+        'as' => 'reportabilidad.reportabilidadKine'
+    ]);
 
     Route::get('/reportabilidadPsiclogia',[
-    'uses'=>'ReportabilidadController@showResultPsico',
-    'as' => 'reportabilidad.reportabilidadPsico'
+        'uses'=>'ReportabilidadController@showResultPsico',
+        'as' => 'reportabilidad.reportabilidadPsico'
     ]);
 
     Route::get('/reportabilidadTerapiaOcupacional',[
-    'uses'=>'ReportabilidadController@showResultTer',
-    'as' => 'reportabilidad.reportabilidadTer'
-    ]); 
+        'uses'=>'ReportabilidadController@showResultTer',
+        'as' => 'reportabilidad.reportabilidadTer'
+    ]);
 
     Route::get('/reportabilidadAtencionSocial',[
-    'uses'=>'ReportabilidadController@showResultSoc',
-    'as' => 'reportabilidad.reportabilidadSoc'
-    ]); 
+        'uses'=>'ReportabilidadController@showResultSoc',
+        'as' => 'reportabilidad.reportabilidadSoc'
+    ]);
 
     Route::get('/reportabilidadGrupal',[
+
     'uses'=>'ReportabilidadController@showResultGrupal',
     'as' => 'reportabilidad.reportabilidadGru'
     ]);  
@@ -231,6 +255,7 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     'uses'=>'ReportabilidadController@showResultHistorica',
     'as' => 'reportabilidad.reportabilidadHistorica'
     ]); 
+
 
 });
 /*
@@ -243,8 +268,6 @@ Route::group(['prefix' => '/docs'], function(){
 
 });
 
-
-=======
     'uses' => 'ReportabilidadController@showResults',
     'as' => 'reportabilidad.showEstadistica'
     ]);

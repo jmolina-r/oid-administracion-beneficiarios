@@ -56,4 +56,9 @@ class Beneficiario extends Model
     {
         return $this->hasOne(FichaBeneficiario::class);
     }
+
+    public function informe_cierres()
+    {
+        return $this->hasMany(InformeCierre::class);
+    }
 }
