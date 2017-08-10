@@ -17,7 +17,7 @@ class CreateFichaPsicologiasTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('motivo_consulta',200)->nullable();
-            $table->binary('genograma')->nullable();
+            $table->string('genograma',300)->nullable();
 
             $table->integer('antecedentes_medicos_id')->unsigned();
             $table->integer('antecedentes_familiares_id')->unsigned();

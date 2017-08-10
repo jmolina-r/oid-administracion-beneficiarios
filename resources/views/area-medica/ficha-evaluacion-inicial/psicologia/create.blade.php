@@ -126,11 +126,18 @@
                                                     </div>
                                                 @endif
                                                 <hr class='hr-normal'>
-                                                <form role="form" id="formulario_registro" action="{{route('area-medica.ficha-evaluacion-inicial.psicologia.store')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
+                                                <form role="form" id="formulario_registro" enctype="multipart/form-data" action="{{route('area-medica.ficha-evaluacion-inicial.psicologia.store')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
                                                     <div class='step-content'>
                                                         <!-- STEP 1 -->
                                                         <div class='step-pane active' data-step='1'>
                                                             <input id="id" name="id" type="hidden" value="{{$id}}">
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="control-label" for="motivo_consulta">Motivo consulta</label>
+                                                                <div class="controls">
+                                                                    <textarea name="motivo_consulta" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Motivo Consulta' rows='3' style='margin-bottom:10px;' value="{{ old('motivo_consulta') }}" id="inputDiagnostico" maxlength="200"></textarea>
+                                                                </div>
+                                                                <div class="help-block with-errors"></div>
+                                                            </div>
                                                             <div class="col-md-12">
                                                                 <h3>Antecedentes Medicos</h3>
                                                                 <hr/>
@@ -354,8 +361,9 @@
                                                                 <hr/>
                                                             </div>
                                                             <div class="col-md-8 controls">
-                                                                <input type="file" name="genograma" ></input>
+                                                                <input type="file"  name="genograma" id="genograma">
                                                             </div>
+                                                            <div class="help-block with-errors"></div>
                                                         </div>
                                                     </div>
                                                     {{ csrf_field() }}

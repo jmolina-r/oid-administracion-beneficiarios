@@ -33,6 +33,7 @@ class FichaTerapiaOcupacionalController extends Controller
      */
     public function postIngresar(Request $request)
     {
+        //dd($request->file('genograma'));
         // Validate Fields
         $this->validate($request, $this->rules($request));
 
@@ -114,6 +115,8 @@ class FichaTerapiaOcupacionalController extends Controller
                 'ocupacion_padre' => $request->input('ocupacion_padre'),
                 'escolaridad_padre' => $request->input('escolaridad_padre'),
                 'horario_trabajo_padre' => $request->input('horario_trabajo_padre'),
+                $request->file('genograma')->store('public/genogramas-to'),
+                'genograma' => $request->file('genograma')->hashName(),
             ]);
             $antecedentesSocioFamiliares->save();
 
@@ -152,8 +155,9 @@ class FichaTerapiaOcupacionalController extends Controller
                 'sabores_preferidos' => $request->input('sabores_preferidos'),
                 'colores_preferidos' => $request->input('colores_preferidos'),
                 'ejemplo_comida' => $request->input('ejemplo_comida'),
-                'genograma' => $request->file('genograma'),
+
             ]);
+
             $desarrolloEvolutivo->save();
 
             $habilidadesSociales = new HabilidadesSociales([

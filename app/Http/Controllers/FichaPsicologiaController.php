@@ -91,7 +91,9 @@ class FichaPsicologiaController extends Controller
             $antecedentesFamiliares->save();
 
             $fichaPsicologia = new FichaPsicologia([
-                'genograma' => $request->input('genograma'),
+                'motivo_consulta' => $request->input('motivo_consulta'),
+                $request->file('genograma')->store('public/genogramas-psi'),
+                'genograma' => $request->file('genograma')->hashName(),
                 'antecedentes_medicos_id' => $antecedentesMedicos->id,
                 'antecedentes_familiares_id' => $antecedentesFamiliares->id,
                 //'psicologo_id' => $psicologo->id,
@@ -167,6 +169,7 @@ class FichaPsicologiaController extends Controller
     private function rules(Request $request) {
         $rules = [
             'id' => 'required|exists:beneficiarios',
+            'motivo_consulta' => 'nullable|max:200',
             'enfermedades_familiares' => 'nullable|max:200',
             'tratamientos_neurologo_nombre' => 'nullable|max:200',
             'tratamientos_neurologo_sesiones' => 'nullable|max:200',
@@ -197,7 +200,7 @@ class FichaPsicologiaController extends Controller
             'observaciones_padre' => 'nullable|max:200',
             'fecha_nacimiento_padre' => 'nullable|max:200',
             'rut_padre' => 'nullable|max:200',
-            'genograma' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
         ];
         return $rules;
     }

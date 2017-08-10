@@ -135,7 +135,7 @@
                                                     </div>
                                                 @endif
                                                 <hr class='hr-normal'>
-                                                <form role="form" id="formulario_registro" action="{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresando')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
+                                                <form role="form" id="formulario_registro" enctype="multipart/form-data" action="{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresando')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
                                                     <div class='step-content'>
                                                         <!-- STEP 1 -->
                                                         <div class='step-pane active' data-step='1'>
@@ -255,15 +255,17 @@
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
-                                                            <!--FALTA GENOGRAMA-->
+                                                            <!--GENOGRAMA-->
                                                             <div class="col-md-4">
                                                                 <h3>Genograma</h3>
                                                                 <hr/>
                                                             </div>
-                                                            <div class="col-md-8 controls">
-                                                                <input class="file" type="file" name="genograma" >
-                                                            </div>
-                                                            <div class="help-block with-errors"></div>
+
+                                                                <div class="col-md-8 controls">
+                                                                    <input type="file"  name="genograma" id="genograma">
+                                                                </div>
+                                                                <div class="help-block with-errors"></div>
+
                                                         </div>
                                                         <!-- STEP 3 -->
                                                         <div class='step-pane active' data-step='3'>

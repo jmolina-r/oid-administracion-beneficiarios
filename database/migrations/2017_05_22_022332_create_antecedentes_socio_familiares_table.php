@@ -26,7 +26,7 @@ class CreateAntecedentesSocioFamiliaresTable extends Migration
             $table->string('ocupacion_padre',200)->nullable();
             $table->string('escolaridad_padre',200)->nullable();
             $table->string('horario_trabajo_padre',200)->nullable();
-            $table->binary('genograma')->nullable();
+            $table->string('genograma',300)->nullable();
         });
     }
 
