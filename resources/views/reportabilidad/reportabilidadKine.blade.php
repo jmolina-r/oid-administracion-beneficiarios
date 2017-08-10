@@ -86,6 +86,23 @@
                     </div>
                   </div>
                 </div>
+                 <div class='row'>
+                    <div class='col-sm-12'>
+                      <div class='box bordered-box blue-border' style='margin-bottom:0;'>
+                        <div class='box-header blue-background'>
+                          <div class='title'>Datos personales</div>                        
+                        </div>
+                         <div class="col-sm-6">
+                            <p class="capitalize"><span class="tit">Nombre Completo</span><br>{{ $kinesiologo->nombres }} {{ $kinesiologo->apellidos }}</p>
+                            <p class="capitalize"><span class="tit">Rut</span><br>{{ $kinesiologo->rut }}</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="capitalize"><span class="tit">Telefono</span><br>{{ $kinesiologo->telefono }}</p>
+                            <p class="capitalize"><span class="tit">Dirección</span><br>{{ $kinesiologo->direccion }}</p>
+                        </div>    
+                    </div> 
+                  </div>
+                </div>
                 <div class='row'>
                 <div class='col-sm-12'>
                   <div class='box bordered-box blue-border' style='margin-bottom:0;'>
@@ -96,24 +113,24 @@
                         </a>
                       </div>
                     </div>
-  
+                        
                         <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-error'><?php //echo $atencionAnualKine ?>5</h3>
+                          <h3 class='title text-error'><?php echo $atencionAnualKine ?></h3>
                           <small>ATENCIONES ANUALES</small>
                           <div class='text-error fa fa-users align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-warning'><?php //echo //$atencionMensualKine ?>12</h3>
+                          <h3 class='title text-warning'><?php echo $atencionMensualKine ?></h3>
                           <small>ATENCIONES MENSUALES</small>
                           <div class='text-warning fa fa-users align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-primary'>5</h3>
+                          <h3 class='title text-primary'><?php echo $asistenciaKine ?></h3>
                           <small>CANTIDAD DE ASISTENCIA DE PACIENTES</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-primary'>3</h3>
+                          <h3 class='title text-primary'><?php echo $inasistenciaKine ?></h3>
                           <small>CANTIDAD DE INASISTENCIA DE PACIENTES</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>

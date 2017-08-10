@@ -246,9 +246,15 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     ]);
 
     Route::get('/reportabilidadGrupal',[
-        'uses'=>'ReportabilidadController@showResultGrupal',
-        'as' => 'reportabilidad.reportabilidadGru'
-    ]);
+
+    'uses'=>'ReportabilidadController@showResultGrupal',
+    'as' => 'reportabilidad.reportabilidadGru'
+    ]);  
+
+    Route::get('/reportabilidadHistorica',[
+    'uses'=>'ReportabilidadController@showResultHistorica',
+    'as' => 'reportabilidad.reportabilidadHistorica'
+    ]); 
 
 
 });
@@ -262,8 +268,6 @@ Route::group(['prefix' => '/docs'], function(){
 
 });
 
-
-=======
     'uses' => 'ReportabilidadController@showResults',
     'as' => 'reportabilidad.showEstadistica'
     ]);
@@ -288,4 +292,10 @@ Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
         'uses' => 'BeneficiarioController@findNombrePorRut'
     ]);
 });
-//>>>>>>> developer
+
+Route::group(['prefix' => 'informecierre', 'middleware' => 'auth'], function(){
+    Route::get('/informe', [
+        'uses' => 'InformeController@index',
+        'as' => 'informe-cierre.informe'
+    ]);
+});  

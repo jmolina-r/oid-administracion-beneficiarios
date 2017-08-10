@@ -10,6 +10,7 @@
 <!-- inyeccion de estilos -->
 @section('styles')
   <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+  <link href="{{ asset('/css/social/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
 <!-- Atributos del body -->
@@ -42,7 +43,8 @@
     <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
     <!-- / END - page related files and scripts [optional] -->
-    
+    <script src="{{ asset('/js/social/loader.js') }}" type="text/javascript"></script>
+   
 @endsection
 
 <!-- Contenido del body -->
@@ -60,7 +62,7 @@
                     <div class='page-header'>
                       <h1 class='pull-left'>
                         <i class='fa fa-pencil-square-o'></i>
-                        <span>Asistente Social</span>
+                        <span>Reportabilidad Histórica</span>
                       </h1>
                       <div class='pull-right'>
                         <ul class='breadcrumb'>
@@ -78,45 +80,45 @@
                           <li class='separator'>
                             <i class='fa fa-angle-right'></i>
                           </li>
-                          <li class='active'>Creacion de ficha de pacientes</li>
+                          <li class='active'>Estadísticas</li>
                         </ul>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class='row'>
-                  <div class='col-sm-12'>
-                    <div class='box'>
-                      <div class='box-content box-padding'>
-                        <div class="row">
-                          @if(count($errors) > 0)
-                              <hr class='hr-normal'>
-
-                                <div class="alert alert-danger">
-                                    @foreach($errors->all() as $error)
-                                        <p>{{ $error }}</p>
-                                    @endforeach
-                                </div>
-                          @endif
-                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <form action="{{route('social.asistenteSocial')}}"method="get" accept-charset="utf-8">
-                              {!!csrf_field()!!}
-                              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
-                                <label for="inputRut">Ingresar rut beneficiario</label>
-                                <input type="text" name="rut" id="inputRut" class="form-control" value="" required pattern="\d{3,8}-[\d|kK]{1}" placeholder="Ingrese rut 12345678-9">
-                              </div>  
-                              <div class="form-group pull-right">
-                                <div class="col-sm-10 col-offset-2">
-                                  <button type="submit" class="btn btn-success">Buscar beneficiario</button>
-                                </div>
-                              </div>                          
-                            </form>
-                          </div>
-                        </div>
-                      </div>
+                <div class='col-sm-12'>
+                  <div class='box bordered-box blue-border' style='margin-bottom:0;'>
+                    <div class='box-header blue-background'>
+                      <div class='title'>Reportabilidad Histórica</div>
+                      <div class='text-right'><span>Fecha: {{$mes}}/{{$anio}}</span></div>
                     </div>
-                  </div>
-                </div>
+                         <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-info'><?php echo $cantUsuarioTotal?></h3>
+                          <small>TOTAL DE USUARIOS EN EL AÑO</small>
+                          <div class='text-info fa fa-users align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-error'><?php echo $cantIngresadosAño ?></h3>
+                          <small>USUARIOS INGRESADOS EN EL AÑO</small>
+                          <div class='text-error fa fa-users align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-warning'><?php echo $cantIngresadosMes ?></h3>
+                          <small>USUARIOS INGRESADOS EN EL MES</small>
+                          <div class='text-warning fa fa-users align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-primary'><?php echo $atencionAnual ?></h3>
+                          <small>ATENCIONES DEL AÑO</small>
+                          <div class='text-primary fa fa-book align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-primary'><?php echo $atencionMensual ?></h3>
+                          <small>ATENCIONES DEL MES</small>
+                          <div class='text-primary fa fa-book align-left'></div>
+                        </div>
+              </div>
               </div>
             </div>
             @include('partials.footer')

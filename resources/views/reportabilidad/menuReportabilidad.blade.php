@@ -82,6 +82,12 @@
                 <div class='row'>
                   <div class='col-sm-12'>
                     <div class='box'>
+
+                      
+                        <div class='box-content' >
+                                    <div class='box-content box-statistic' >
+                                    <h3 class='title text-inside text-center'>Reportabilidad</h3>
+                                    </div>
                          <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">
                                 <h4>Reportabilidad General</h4>
@@ -93,31 +99,71 @@
                         </div>
                         <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">
-                                <h4>Reportabilidad Kinesiologia</h4>
+                                <h4>Reportabilidad Grupal</h4>
                             </div>
                             <div class="boton pull-right" style="display:inline-block">
-                                <a href='{{route('reportabilidad.reportabilidadKine')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
+                                <a href='{{route('reportabilidad.reportabilidadGru')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
+                                <a href='{{route('reportabilidad.reporteGru')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
+                            </div>  
+                        </div>
+                        </div>
+                        <div class='box-content' >
+                                    <div class='box-content box-statistic' >
+                                    <h3 class='title text-inside text-center'>Reportabilidad por profesional</h3>
+                                    </div>
+                        <form action="{{route('reportabilidad.reportabilidadKine')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
+                        <div class='box-content box-statistic' >                           
+                            <div class="nombre" style="display:inline-block">
+                                <h4>Reportabilidad Kinesiologia</h4>
+                                
+                            </div>
+                            <span>Seleccionar Profesional:</span>
+                            <select name="kinesiologos">
+                                 @foreach($kines as $kine)
+                                    <option value="{{$kine->rut}}">{{$kine->nombres}} {{$kine->apellidos}}</option>
+                                 @endforeach
+                            </select>
+                            
+                            <div class="boton pull-right" style="display:inline-block">
+                                <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
                                 <a href='{{route('reportabilidad.reporteKine')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
                             </div>  
                         </div>
+                        </form>
+                        <form action="{{route('reportabilidad.reportabilidadPsico')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
                         <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">
                                 <h4>Reportabilidad Psicología</h4>
                             </div>
+                            <span>Seleccionar Profesional:</span>
+                             <select name="psicologos">
+                                 @foreach($psicologos as $psicologo)
+                                    <option value="{{$psicologo->rut}}">{{$psicologo->nombres}} {{$psicologo->apellidos}}</option>
+                                 @endforeach
+                            </select>
                             <div class="boton pull-right" style="display:inline-block">
-                                <a href='{{route('reportabilidad.reportabilidadPsico')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
+                                <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
                                 <a href='{{route('reportabilidad.reportePsico')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
                             </div>  
                         </div>
+                        </form>
+                        <form action="{{route('reportabilidad.reportabilidadTer')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
                         <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">
-                                <h4>Reportabilidad Terapia ocupacional</h4>
+                                <h4>Reportabilidad Terapia ocupacional </h4>
                             </div>
+                            <span>Seleccionar Profesional:</span>
+                            <select name="terapeutas">
+                                 @foreach($terapeutas as $terapeuta)
+                                    <option value="{{$terapeuta->rut}}">{{$terapeuta->nombres}} {{$terapeuta->apellidos}}</option>
+                                 @endforeach
+                            </select>
                             <div class="boton pull-right" style="display:inline-block">
-                                <a href='{{route('reportabilidad.reportabilidadTer')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
+                                <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
                                 <a href='{{route('reportabilidad.reporteTer')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
                             </div>  
                         </div>
+                        </form>
                         <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">
                                 <h4>Reportabilidad Social</h4>
@@ -127,15 +173,38 @@
                                 <a href='{{route('reportabilidad.reporteSoc')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
                             </div>  
                         </div>
-                        <div class='box-content box-statistic' >
+                        </div>
+                         <div class='row'>
+                  <div class='col-sm-12'>
+                    <div class='box'>
+                       <form action="{{route('reportabilidad.reportabilidadHistorica')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
+                        <div class='box-content' >
+                                    <div class='box-content box-statistic' >
+                                    <h3 class='title text-inside text-center'>Reportabilidad Histórica</h3>
+                                    </div>
+                        
+                         <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">
-                                <h4>Reportabilidad Grupal</h4>
+                                <h4>Reportabilidad Histórica</h4>
                             </div>
+                            <span>Seleccionar mes y año:</span>
+                            <select name="mes">
+                                @for ($i = 1; $i < 13; $i++)
+                                   <option value="{{$i}}">{{$i}}</option>
+                                @endfor
+                            </select>
+                            <select name="anio">
+                                @for ($i = 2012; $i <= date('Y'); $i++)
+                                   <option value="{{$i}}">{{$i}}</option>
+                                @endfor
+                            </select>
                             <div class="boton pull-right" style="display:inline-block">
-                                <a href='{{route('reportabilidad.reportabilidadGru')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
-                                <a href='{{route('reportabilidad.reporteGru')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
+                                <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
+                                <a href=''><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
                             </div>  
                         </div>
+                        </div>
+                    </form>
                     </div>
                   </div>
                 </div>
@@ -144,7 +213,6 @@
             @include('partials.footer')
           </div>
         </section>
-
       </div>
 
 @endsection
