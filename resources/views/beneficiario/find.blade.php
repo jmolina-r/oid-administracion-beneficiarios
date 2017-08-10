@@ -113,7 +113,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                         <th>
                                                                             Registrado
                                                                         </th>
-                                                                        <th></th>
+                                                                        <th>Acciones</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody id="listaBeneficiario">
