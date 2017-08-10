@@ -182,13 +182,53 @@ class MallaController extends Controller
 
             $e = array();
             $e['id'] = $horaAgendada->id;
-            $e['title'] = $beneficiario->nombre;
+            $e['title'] = $beneficiario->nombre . " " . $beneficiario->apellido;
             $e['start'] = $horaAgendada->fecha.'T'.$horaAgendada->hora;
             $e['end'] = $horaAgendada->fecha.'T'.$horaEnd;
             $e['allDay'] = false;
 
             // Merge the event array into the return array
             array_push($eventos, $e);
+        }
+
+        $horasAgendadasSoftdeleted = HoraAgendada::onlyTrashed()->get();
+
+        foreach ($horasAgendadasSoftdeleted as $horaDeleted) {
+
+            $beneficiario = Beneficiario::where('id', $horaDeleted->beneficiario_id)->first();
+
+            $horaSeparada = explode(':',$horaDeleted->hora);
+
+            $hora = $horaSeparada[0];
+            $minutos = (int)$horaSeparada[1] + 45;
+
+            if($minutos >= 60){
+                $hora = ((int)$horaSeparada[0] + 1);
+                $minutos = $minutos - 60;
+
+                if($hora < 10){
+                    $hora = '0'.$hora;
+                }
+
+                if($minutos < 10){
+                    $minutos = '0'.$minutos;
+                }
+            }
+
+            $horaEnd = $hora.':'.$minutos;
+
+            $f = array();
+            $f['id'] = $horaAgendada->id;
+            $f['title'] = $beneficiario->nombre . " " . $beneficiario->apellido . " (REALIZADO)";
+            $f['start'] = $horaDeleted->fecha.'T'.$horaDeleted->hora;
+            $f['end'] = $horaDeleted->fecha.'T'.$horaEnd;
+            $f['allDay'] = false;
+            $f['color'] = "green";
+            $f['realizado'] = true;
+
+
+            // Merge the event array into the return array
+            array_push($eventos, $f);
         }
 
         return json_encode($eventos);

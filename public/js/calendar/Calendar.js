@@ -124,8 +124,12 @@
             });
         },
         eventClick: function(calEvent, jsEvent, view) {
-            calEvent.url = '/registro_prestacion/' + calEvent.id;
-            window.open(calEvent.url, '_self');
+            if(calEvent.realizado) {
+                alert("Ya se han asignado prestaciones a esa hora agendada");
+            }else{
+                calEvent.url = '/registro_prestacion/' + calEvent.id;
+                window.open(calEvent.url, '_self');
+            }
             return false;
         },
         drop: function(date, allDay) {
