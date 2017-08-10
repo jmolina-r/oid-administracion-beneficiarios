@@ -48,8 +48,8 @@
     <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
     <!-- / END - page related files and scripts [optional] -->
+     <script src="{{ asset('/js/social/showcontent.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/javascripts/plugins/bootstrap_switch/bootstrapSwitch.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/social/showcontent.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/javascripts/plugins/fileinput/bootstrap-fileinput.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/javascripts/plugins/fileinput/bootstrap-fileinput-fa.js') }}" type="text/javascript"></script>
     <!-- / START - Validaciones-->
@@ -162,10 +162,10 @@
                                                                   </div>
                                                                   -->
 
-                                                                      <div class="box-content box-statistic" style="margin-top:10px;">
-                                                                        <input class='make-switch' value="{{$tipoAyuda->id}}" name="tipoAyudaSocial[]" id="{{$tipoAyuda->id}}.t"
+                                                                      <div class="box-content" style="margin-top:10px;">
+                                                                        <input class='make-switch checkStyle' value="{{$tipoAyuda->id}}" name="tipoAyudaSocial[]" id="{{$tipoAyuda->id}}.t"
                                                                                data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>'
-                                                                               type='checkbox' onchange="javascript:showContent('{{$tipoAyuda->nombre}}','{{$tipoAyuda->id}}.t')" >
+                                                                               type='checkbox'>
                                                                         <p id="hverificacion"> {{$tipoAyuda->nombre}} </p>
                                                                     </div>
                                                                 @endif
@@ -183,10 +183,10 @@
                                                                       <label for="{{$tipoAyuda->id}}.t">{{$tipoAyuda->nombre}}</label>
                                                                   </div>
                                                                   -->
-                                                                      <div class="box-content box-statistic" style="margin-top:10px;">
+                                                                      <div class="box-content" style="margin-top:10px;">
                                                                           <input class='make-switch' value="{{$tipoAyuda->id}}" name="tipoAyudaSocial[]" id="{{$tipoAyuda->id}}.t"
                                                                                  data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>'
-                                                                                 type='checkbox' onchange="javascript:showContent('{{$tipoAyuda->nombre}}','{{$tipoAyuda->id}}.t')" >
+                                                                                 type='checkbox'>
                                                                           <p id="hverificacion"> {{$tipoAyuda->nombre}} </p>
                                                                       </div>
                                                                   @endif
@@ -200,7 +200,7 @@
                                                                   <textarea name="observacionAyuda" id="observacionAyuda" cols="80" rows="4"></textarea>
                                                           </div>
                                                     </div>-->
-                                                          <div class='box-content box-statistic' id="observacionAyuda">
+                                                          <div class='box-content' id="observacionAyuda">
                                                               <div>
                                                                   <textarea name="observacionAyuda" id="observacionAyuda" style="width:100%;" rows="4" placeholder="Observacion.."></textarea>
                                                               </div>
@@ -227,7 +227,7 @@
                                                     @if($sMotivo->tipo_motivo_social_id == $tMotivos->id)
                                                          
                                                            @if($tMotivos->id == '3')
-                                                              <div class="box-content box-statistic" style="margin-top:10px;">
+                                                              <div class="box-content " style="margin-top:10px;">
                                                                 <input class='make-switch' value="{{$sMotivo->id}}" name="vd[]" id="{{$sMotivo->id}}.vd" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox'><p id="hverificacion"> {{$sMotivo->nombre}} </p>
                                                               </div>
                                                               <div class="help-block with-errors"></div>
@@ -261,8 +261,8 @@
                                                                 -->
                                                                   @endif
                                                            @elseif($tMotivos->id == '2')
-                                                               <div class="box-content box-statistic" style="margin-top:10px;">
-                                                                    <input class='make-switch' value="{{$sMotivo->id}}" id="inputSubMotivo" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}')"  name="inputSubMotivo[]"><p id="hverificacion">{{$sMotivo->nombre}}</p>
+                                                               <div class="box-content " style="margin-top:10px;">
+                                                                    <input class='make-switch' value="{{$sMotivo->id}}" id="inputSubMotivo" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}')" name="inputSubMotivo[]"><p id="hverificacion">{{$sMotivo->nombre}}</p>
                                                               </div>
                                                                @if($sMotivo->id == '6')
 
@@ -270,7 +270,7 @@
                                                             @elseif($tMotivos->id == '4')
                                                               
                                                              <div class='controls'>
-                                                                 <div class='box-content box-statistic' id="{{$sMotivo->nombre}}">
+                                                                 <div class='box-content ' id="{{$sMotivo->nombre}}">
                                                                     <label class="radio-inline"> <input type="radio" name="inputSubMotivo[]" onClick="javascript:toggle(this)" id="{{$sMotivo->id}}" value="{{$sMotivo->id}}">{{$sMotivo->nombre}}</label>
 
 
@@ -325,7 +325,7 @@
                                                         </div>
                                                     </div>
                                                     -->
-                                                    <div class='box-content box-statistic' id="{{$sMotivo->nombre}}">
+                                                    <div class='box-content ' id="{{$sMotivo->nombre}}">
                                                         <div>
                                                             <textarea name="observacion{{$tMotivos->id}}" id="observacion.text" style="width:100%;" rows="4" placeholder="Observacion.."></textarea>
                                                         </div>

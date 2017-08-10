@@ -145,14 +145,8 @@
                      <div class='box-content box-statistic col-sm-12 sinpadding'>
                        <div  id="piesschart" style="width: 100%; height: 100%;"></div>
                      </div>
-  
-                        
               </div>
-              
-               
-                
 
-                
               </div>
             </div>
             @include('partials.footer')

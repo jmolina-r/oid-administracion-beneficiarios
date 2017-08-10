@@ -234,15 +234,29 @@
                           <div class='text-muted fa fa-mars align-left'></div>
                      </div>
                       <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-inverse'><?php echo intval($porcentajeCredencial); echo '%'?></h3>
+                          <h3 class='title text-inverse'><?php echo intval($porcentajeCredencialEntregada); echo '%'?></h3>
                           <small>CREDENCIAL DE DISCAPACIDAD ENTREGADAS</small>
                           <div class='text-inverse fa fa-credit-card align-left'></div>
                      </div>
+                     <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-inverse'><?php echo intval($porcentajeCredencialTramite); echo '%'?></h3>
+                          <small>CREDENCIAL DE DISCAPACIDAD EN TRÁMITE</small>
+                          <div class='text-inverse fa fa-credit-card align-left'></div>
+                     </div>
+                     <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-info'><?php echo intval($porcentajeRSTiene); echo '%'?></h3>
+                          <small>REGISTRO SOCIAL DE HOGARES</small>
+                          <div class='text-info fa fa-home align-left'></div>
+                     </div>
+                     <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-info'><?php echo intval($porcentajeRSTramite); echo '%'?></h3>
+                          <small>REGISTRO SOCIAL DE HOGARES EN TÁMITE</small>
+                          <div class='text-info fa fa-home align-left'></div>
+                     </div>
                      <div class='col-sm-6 sinpadding'>
-                        <div class='box-content box-statistic text-right'>
-                            <h3 class='title text-error'><br></h3>
-                            <small>SALUD</small>
-                            <div class='text-error fa fa-ambulance align-left'></div>
+                        <div class='box-content'>
+                            <h3 class='title text-error text-center'>SALUD</h3>
+                          
                         </div>
                         <div class='box-content box-statistic text-right'>
                               <h3 class='title text-error'><?php echo intval($porcentajeFonasa); echo '%'?></h3>
@@ -262,17 +276,13 @@
                        <div  id="pieechart" style="width: 100%; height: 100%;"></div>
                      </div>
                        <div class='box-content box-statistic col-sm-12 text-right'>
-                              <h3 class='title text-error'><br></h3>
-                              <small>NIVEL EDUACIONAL</small>
-                              <div class='text-invisor fa fa-book align-left'></div>
+                              <h3 class='title text-invisor text-center'>NIVEL EDUACIONAL</h3>
                         </div>
                         <div class='box-content box-statistic col-sm-12 sinpadding'>
                        <div  id="donutchart" style="width: 100%; height: 100%;"></div>
                      </div>
                      <div class='box-content box-statistic col-sm-12 text-right'>
-                              <h3 class='title text-error'><br></h3>
-                              <small>SITUACION LABORAL</small>
-                              <div class='text-invisor fa fa-book align-left'></div>
+                              <h3 class='title text-invisor text-center'>SITUACION LABORAL</h3>
                         </div>
                         <div class='box-content box-statistic col-sm-12 sinpadding'>
                        <div  id="chartthree" style="width: 100%; height: 100%;"></div>
@@ -290,8 +300,7 @@
                     <div class='box-header blue-background'>
                       <div class='title'>Atenciones Global</div>
                       <div class='actions'>
-                        <a class="btn box-remove btn-xs btn-link" href="#"><i class='fa fa-times'></i>
-                        </a>
+            
                         <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
                         </a>
                       </div>

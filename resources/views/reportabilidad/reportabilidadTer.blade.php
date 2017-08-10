@@ -87,6 +87,23 @@
                   </div>
                 </div>
                 <div class='row'>
+                    <div class='col-sm-12'>
+                      <div class='box bordered-box blue-border' style='margin-bottom:0;'>
+                        <div class='box-header blue-background'>
+                          <div class='title'>Datos personales</div>                        
+                        </div>
+                         <div class="col-sm-6">
+                            <p class="capitalize"><span class="tit">Nombre Completo</span><br>{{ $terapeuta->nombres }} {{ $terapeuta->apellidos }}</p>
+                            <p class="capitalize"><span class="tit">Rut</span><br>{{ $terapeuta->rut }}</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="capitalize"><span class="tit">Telefono</span><br>{{ $terapeuta->telefono }}</p>
+                            <p class="capitalize"><span class="tit">Dirección</span><br>{{ $terapeuta->direccion }}</p>
+                        </div>    
+                    </div> 
+                  </div>
+                </div>
+                <div class='row'>
                 <div class='col-sm-12'>
                   <div class='box bordered-box blue-border' style='margin-bottom:0;'>
                     <div class='box-header blue-background'>
@@ -98,33 +115,29 @@
                     </div>
   
                         <div class='box-content box-statistic text-right'>
-                         <h3 class='title text-error'><?php //echo $atencionAnualTer ?></h3> 
-                          <h3 class='title text-error'>21</h3>
+                         <h3 class='title text-error'><?php echo $atencionAnualTer ?></h3> 
+                          <h3 class='title text-error'></h3>
                           <small>ATENCIONES ANUALES</small>
                           <div class='text-error fa fa-users align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-warning'><?php // echo $atencionMensualTer ?></h3>
-                          <h3 class='title text-error'>10</h3>
+                          <h3 class='title text-warning'><?php  echo $atencionMensualTer ?></h3>
+                          <h3 class='title text-error'></h3>
                           <small>ATENCIONES MENSUALES</small>
                           <div class='text-warning fa fa-users align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-primary'>12</h3>
+                          <h3 class='title text-primary'><?php  echo $asistenciaTer ?></h3>
                           <small>CANTIDAD DE ASISTENCIA DE PACIENTES</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-primary'>5</h3>
+                          <h3 class='title text-primary'><?php  echo $inasistenciaTer ?></h3>
                           <small>CANTIDAD DE INASISTENCIA DE PACIENTES</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>
               </div>
-              
-               
-                
-
-                
+      
               </div>
             </div>
             @include('partials.footer')
