@@ -9,6 +9,10 @@
         @else
             ""
         @endif
+
+        @if($persona->rut)
+             readonly="readonly"
+        @endif
         >
         <div class="help-block with-errors">
         </div>
