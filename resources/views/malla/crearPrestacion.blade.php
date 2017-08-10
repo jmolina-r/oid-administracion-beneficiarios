@@ -79,7 +79,7 @@
                                 <div class='page-header'>
                                     <h1 class='pull-left'>
                                         <i class='fa fa-pencil-square-o'></i>
-                                        <span>Agrear Prestación</span>
+                                        <span>Agregar Prestación</span>
                                     </h1>
                                     <div class='pull-right'>
                                         <ul class='breadcrumb'>
