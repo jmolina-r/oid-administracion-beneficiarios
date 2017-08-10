@@ -49,7 +49,7 @@
         },
         firstDay: Monday=1,
         droppable: true,
-        editable: true,
+        editable: false,
         selectable: true,
         defaultView: 'agendaWeek',
         monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
