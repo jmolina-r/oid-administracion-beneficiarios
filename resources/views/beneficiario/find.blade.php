@@ -121,6 +121,10 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                         <td>
                                                                             No hay datos para mostrar.
                                                                         </td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td></td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>

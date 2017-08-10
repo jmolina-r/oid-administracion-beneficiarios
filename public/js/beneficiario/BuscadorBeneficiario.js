@@ -1,8 +1,9 @@
 $(document).ready(function() {
 
-    $("#inputBuscador").on('input', function() {
-        if ($(this).val() == "" || $(this).val() == " ") {
-            $("#listaBeneficiario").empty();
+    $("#inputBuscador").on('keyup', function() {
+        $('#listaBeneficiario').html('<tr><td><i class="fa fa-spinner fa-spin"></i> <b>Cargando...</b></td><td></td><td></td><td></td></tr>');
+        if ($(this).val().length < 1 || $(this).val() == "" || $(this).val() == " ") {
+            $("#listaBeneficiario").html("<tr><td>No hay datos para mostrar.</td></td><td></td><td></td><td></td></tr>");
             return;
         }
         getBeneficiariosLikeNombre($(this).val());
@@ -33,7 +34,7 @@ $(document).ready(function() {
     }
 
     function addBeneficiarioToCard(beneficiarios) {
-        if (beneficiarios) {
+        if (beneficiarios && beneficiarios.length > 0) {
             $("#listaBeneficiario").empty();
             beneficiarios.forEach(function(element) {
                 var cardData = 
@@ -55,8 +56,8 @@ $(document).ready(function() {
                 "</tr>";
                 $(cardData).appendTo('#listaBeneficiario').fadeIn('normal');
             });
+        } else {
+            $("#listaBeneficiario").html("<tr><td>Beneficiario no encontrado.</td></td><td></td><td></td><td></td></tr>");
         }
-
     }
-
 });
