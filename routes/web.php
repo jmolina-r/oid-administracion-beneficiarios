@@ -201,6 +201,31 @@ Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
     Route::get('/getnombre', [
         'uses' => 'BeneficiarioController@findNombrePorRut'
     ])->middleware('roles:admin');;
+
+    Route::get('/listaPrestaciones', [
+        'uses' => 'MallaController@listaPrestaciones',
+        'as' => 'malla.listaPrestaciones'
+    ])->middleware('roles:admin');;
+
+    Route::get('/crearPrestacion', [
+        'uses' => 'MallaController@crearPrestacion',
+        'as' => 'malla.crearPrestacion'
+    ])->middleware('roles:admin');;
+
+    Route::post('/guardarPrestacion', [
+        'uses' => 'MallaController@guardarPrestacion',
+        'as' => 'malla.guardarPrestacion'
+    ])->middleware('roles:admin');;
+
+    Route::get('/confirmarEliminarPrestacion/{id}', [
+        'uses' => 'MallaController@confirmarEliminarPrestacion',
+        'as' => 'malla.confirmarEliminarPrestacion'
+    ])->middleware('roles:admin');;
+
+    Route::post('/eliminarPrestacion', [
+        'uses' => 'MallaController@eliminarPrestacion',
+        'as' => 'malla.eliminarPrestacion'
+    ])->middleware('roles:admin');;
 });
 
 Route::group(['prefix' => '/registro_prestacion', 'middleware' => 'auth'], function (){

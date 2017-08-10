@@ -189,7 +189,14 @@
                             <span>Mostrar malla</span>
                         </a>
                     </li>
-
+                    <li class=''>
+                        <a href='{{route('malla.listaPrestaciones')}}'>
+                            <div class='icon'>
+                                <i class='fa fa-caret-right'></i>
+                            </div>
+                            <span>Prestaciones</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             @endif
