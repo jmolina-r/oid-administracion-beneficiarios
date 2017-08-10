@@ -229,6 +229,11 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
         'as' => 'reportabilidad.reporteGru'
     ]);
 
+    Route::get('/reporteHistorico.pdf', [
+        'uses' => 'PdfController@invoiceHistoricReport',
+        'as' => 'reportabilidad.reporteHist'
+    ]);
+
     Route::get('/menu', [
         'uses' => 'ReportabilidadController@index',
         'as' => 'reportabilidad.menuReportabilidad'

@@ -2,18 +2,28 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Beneficiario;
 use App\CredencialDiscapacidad;
 use App\DatoSocial;
+use App\FichaAtencionSocial;
 use App\FichaBeneficiario;
+use App\FichaFonoaudiologia;
+use App\FichaKinesiologia;
+use App\FichaPsicologia;
+use App\FichaTerapiaOcupacional;
 use App\Fonasa;
+use App\HoraAgendada;
+use App\InformeCierre;
 use App\MotivoAtencionSocial;
 use App\PrestacionRealizada;
+use App\RegistroSocialHogar;
 use App\SubMotivoAtencionSocial;
 use App\TipoAyudaTecnicoSocial;
 use App\TipoSubmotivoSocial;
 use App\TipoMotivoSocial;
+use App\Kinesiologo;
+use App\TerapeutaOcupacional;
+use App\Psicologo;
 use Illuminate\Http\Request;
 
 class PdfController extends Controller
@@ -149,97 +159,17 @@ class PdfController extends Controller
             $porcentajeRSTramite=0;
         }
 
-        $view =  \View::make('pdf.invoice', compact('cant','porcentajeRSTramite','porcentajeRSTiene', 'porcentajeFemenino', 'porcentajeMasculino', 'ingresoAnual', 'ingresoMensual', 'porcentajeCredencialEntregada', 'porcentajeCredencialTramite' , 'atencionAnual' , 'atencionMensual','porcentajeAdulto', 'porcentajeJoven', 'porcentajeAdultoMayor', 'porcentajeFonasa',
-            'porcentajeFonasaTramoA','porcentajeFonasaTramoB', 'porcentajeFonasaTramoC','porcentajeFonasaTramoD', 'porcentajeIsapre', 'preBasico','basicoIncompleto', 'basicoCompleto',
-            'medioIncompleto', 'medioCompleto', 'tecnicoIncompleto', 'tecnicoCompleto', 'universitarioIncompleto' ,
-
-            'universitarioCompleto', 'trabajador','estudiante','duenoCasa','pensionado','cesante', 'isapreCruzBlanca','isapreColmena','isapreMasVida','isapreConsalud','isapreBanmedica','isapreVidaTres','isapreCodelco',
+        $view =  \View::make('pdf.invoice', compact('cant','porcentajeRSTramite','porcentajeRSTiene', 'porcentajeFemenino', 'porcentajeMasculino', 'ingresoAnual', 'ingresoMensual',
+            'porcentajeCredencialEntregada', 'porcentajeCredencialTramite' , 'atencionAnual' , 'atencionMensual','porcentajeAdulto', 'porcentajeJoven', 'porcentajeAdultoMayor',
+            'porcentajeFonasa', 'porcentajeFonasaTramoA','porcentajeFonasaTramoB', 'porcentajeFonasaTramoC','porcentajeFonasaTramoD', 'porcentajeIsapre', 'preBasico','basicoIncompleto',
+            'basicoCompleto', 'medioIncompleto', 'medioCompleto', 'tecnicoIncompleto', 'tecnicoCompleto', 'universitarioIncompleto', 'universitarioCompleto', 'trabajador','estudiante',
+            'duenoCasa','pensionado','cesante', 'isapreCruzBlanca','isapreColmena','isapreMasVida','isapreConsalud','isapreBanmedica','isapreVidaTres','isapreCodelco',
             'isapreDipreca','isapreCapredena','isapreFerroSalud','isapreOtro'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('invoice');
     }
 
-    public function invoice9()
-    {
-        $cant = Beneficiario::count();
-        $masculino = Beneficiario::where('sexo', 'masculino')->count();
-        $fem = Beneficiario::where('sexo', 'femenino')->count();
-        $ingresoAnual = FichaBeneficiario::whereYear('fecha_ingreso', '=', date('Y'))->count();
-        $ingresoMensual = FichaBeneficiario::whereYear('fecha_ingreso', '=', date('Y'))
-            ->whereMonth('fecha_ingreso', '=', date('m'))
-            ->count();
-        $credencial = CredencialDiscapacidad::count();
-
-        $atencionAnual = PrestacionRealizada::whereYear('fecha', '=', date('Y'))->count();
-        $atencionMensual = PrestacionRealizada::whereYear('fecha', '=', date('Y'))
-            ->whereMonth('fecha', '=', date('m'))
-            ->count();
-
-        $porcentajeJoven = 0;
-        $porcentajeAdulto = 0;
-        $porcentajeAdultoMayor = 0;
-
-        //SALUD FONASA O ISAPRE
-        $fonasa = DatoSocial::where('fonasa_id', '!=', null)->count();
-        $fonasaTramoA = DatoSocial::where('fonasa_id', '=', 1)->count();
-        $fonasaTramoB = DatoSocial::where('fonasa_id', '=', 2)->count();
-        $fonasaTramoC = DatoSocial::where('fonasa_id', '=', 3)->count();
-        $fonasaTramoD = DatoSocial::where('fonasa_id', '=', 4)->count();
-        $isapre = DatoSocial::where('isapre_id', '!=', null)->count();
-
-        if ($fonasa != 0) {
-            $porcentajeFonasa = $fonasa * 100 / $cant;
-            $porcentajeFonasaTramoA = $fonasaTramoA * 100 / $fonasa;
-            $porcentajeFonasaTramoB = $fonasaTramoB * 100 / $fonasa;
-            $porcentajeFonasaTramoC = $fonasaTramoC * 100 / $fonasa;
-            $porcentajeFonasaTramoD = $fonasaTramoD * 100 / $fonasa;
-        } else {
-            $porcentajeFonasa = 0;
-            $porcentajeFonasaTramoA = 0;
-            $porcentajeFonasaTramoB = 0;
-            $porcentajeFonasaTramoC = 0;
-            $porcentajeFonasaTramoD = 0;
-        }
-
-        //EDUCACION id 1-9
-        $preBasico = Beneficiario::where('educacion_id', '=', 1)->count();
-        $basicoIncompleto = Beneficiario::where('educacion_id', '=', 2)->count();
-        $basicoCompleto = Beneficiario::where('educacion_id', '=', 3)->count();
-        $medioIncompleto = Beneficiario::where('educacion_id', '=', 4)->count();
-        $medioCompleto = Beneficiario::where('educacion_id', '=', 5)->count();
-        $tecnicoIncompleto = Beneficiario::where('educacion_id', '=', 6)->count();
-        $tecnicoCompleto = Beneficiario::where('educacion_id', '=', 7)->count();
-        $universitarioIncompleto = Beneficiario::where('educacion_id', '=', 8)->count();
-        $universitarioCompleto = Beneficiario::where('educacion_id', '=', 9)->count();
-
-        //SITUACION LABORAL id 1-5
-        $trabajador = Beneficiario::where('ocupacion_id', '=', 1)->count();
-        $estudiante = Beneficiario::where('ocupacion_id', '=', 2)->count();
-        $duenoCasa = Beneficiario::where('ocupacion_id', '=', 3)->count();
-        $pensionado = Beneficiario::where('ocupacion_id', '=', 4)->count();
-        $cesante = Beneficiario::where('ocupacion_id', '=', 5)->count();
-
-        if ($cant != 0) {
-            $porcentajeMasculino = $masculino * 100 / $cant;
-            $porcentajeFemenino = $fem * 100 / $cant;
-            $porcentajeCredencial = $credencial * 100 / $cant;
-            $porcentajeIsapre = $isapre * 100 / $cant;
-        } else {
-            $porcentajeMasculino = 0;
-            $porcentajeFemenino = 0;
-            $porcentajeCredencial = 0;
-            $porcentajeIsapre = 0;
-        }
-
-        $view =  \View::make('pdf.invoice', compact('cant', 'porcentajeFemenino', 'porcentajeMasculino', 'ingresoAnual', 'ingresoMensual', 'porcentajeCredencial', 'atencionAnual' , 'atencionMensual','porcentajeAdulto', 'porcentajeJoven', 'porcentajeAdultoMayor', 'porcentajeFonasa',
-            'porcentajeFonasaTramoA','porcentajeFonasaTramoB', 'porcentajeFonasaTramoC','porcentajeFonasaTramoD', 'porcentajeIsapre', 'preBasico','basicoIncompleto', 'basicoCompleto',
-            'medioIncompleto', 'medioCompleto', 'tecnicoIncompleto', 'tecnicoCompleto', 'universitarioIncompleto' ,
-            'universitarioCompleto', 'trabajador','estudiante','duenoCasa','pensionado','cesante'))->render();
-        $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($view);
-        return $pdf->stream('invoice');
-    }
     /*
     public function getData()
     {
@@ -251,9 +181,32 @@ class PdfController extends Controller
         ];
         return $data;
     }*/
-    public function invoice1()
+    public function invoice1(Request $request)
     {
-        $view =  \View::make('pdf.invoice1', compact('invoice1'))->render();
+        //KINE
+        return $request->all();
+        $user_rut=$request->kinesiologos;
+        $kinesiologo = Kinesiologo::where('rut',$request->kinesiologos)->first();
+        $atencionAnualKine=FichaKinesiologia::whereYear('ficha_kinesiologias.created_at', '=', date('Y'))
+            ->join('kinesiologos','ficha_kinesiologias.kinesiologo_id','=','kinesiologos.id')
+            ->where('kinesiologos.rut','=',$user_rut)
+            ->count();
+
+        $atencionMensualKine=FichaKinesiologia::whereYear('ficha_kinesiologias.created_at', '=', date('Y'))
+            ->whereMonth('ficha_kinesiologias.created_at', '=', date('m'))
+            ->join('kinesiologos','ficha_kinesiologias.kinesiologo_id','=','kinesiologos.id')
+            ->where('kinesiologos.rut','=',$user_rut)
+            ->count();
+        $asistenciaKine =HoraAgendada::where('hora_agendadas.asist_sn','=','si')
+            ->join('kinesiologos','hora_agendadas.user_id','=','kinesiologos.id')
+            ->where('kinesiologos.rut','=',$user_rut)
+            ->count();
+        $inasistenciaKine =HoraAgendada::where('hora_agendadas.asist_sn','=','no')
+            ->join('kinesiologos','hora_agendadas.user_id','=','kinesiologos.id')
+            ->where('kinesiologos.rut','=',$user_rut)
+            ->count();
+        $nombreCompleto = $request->input('nombre');
+        $view =  \View::make('pdf.invoice1', compact('nombreCompleto','kinesiologo','atencionAnualKine','atencionMensualKine','asistenciaKine','inasistenciaKine'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('invoice1');
@@ -277,7 +230,12 @@ class PdfController extends Controller
 
     public function invoice4()
     {
-        $view =  \View::make('pdf.invoice4', compact('invoice4'))->render();
+        $atencionAnualSocial = FichaAtencionSocial::whereYear('created_at', '=', date('Y'))
+            ->count();
+        $atencionMensualSocial = FichaAtencionSocial::whereYear('created_at', '=', date('Y'))
+            ->whereMonth('created_at', '=', date('m'))
+            ->count();
+        $view =  \View::make('pdf.invoice4', compact('atencionAnualSocial','atencionMensualSocial'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('invoice4');
@@ -285,7 +243,31 @@ class PdfController extends Controller
 
     public function invoice5()
     {
-        $view =  \View::make('pdf.invoice5', compact('invoice5'))->render();
+        // El que mas ha trabajado
+        $atencionAnualKines=FichaKinesiologia::whereYear('ficha_kinesiologias.created_at', '=', date('Y'))
+            ->count();
+        $atencionMensualKines=FichaKinesiologia::whereYear('ficha_kinesiologias.created_at', '=', date('Y'))
+            ->whereMonth('ficha_kinesiologias.created_at', '=', date('m'))
+            ->count();
+        $atencionAnualFonos=0;
+        $atencionMensualFonos=0;
+        /*   $atencionAnualFonos=FichaFonoaudiologia::whereYear('created_at', '=', date('Y'))
+               ->count();
+           $atencionMensualFonos=FichaFonoaudiologia::whereYear('created_at', '=', date('Y'))
+               ->whereMonth('ficha_kinesiologias.created_at', '=', date('m'))
+               ->count(); */
+        $atencionAnualPsicos=FichaPsicologia::whereYear('created_at', '=', date('Y'))
+            ->count();
+        $atencionMensualPsicos=FichaPsicologia::whereYear('created_at', '=', date('Y'))
+            ->whereMonth('created_at', '=', date('m'))
+            ->count();
+        $atencionAnualTers=FichaTerapiaOcupacional::whereYear('created_at', '=', date('Y'))
+            ->count();
+        $atencionMensualTers=FichaTerapiaOcupacional::whereYear('created_at', '=', date('Y'))
+            ->whereMonth('created_at', '=', date('m'))
+            ->count();
+        $view =  \View::make('pdf.invoice5', compact('atencionAnualKines','atencionMensualKines','atencionAnualFonos','atencionMensualFonos',
+            'atencionAnualPsicos','atencionMensualPsicos','atencionAnualTers','atencionMensualTers'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('invoice5');

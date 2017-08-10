@@ -54,22 +54,22 @@
         <tr>
             <td>Kinesiología</td>
             <td></td>
-            <td>5</td>
+            <td>{{$atencionAnualKines}}</td>
         </tr>
         <tr>
             <td>Psicología</td>
             <td></td>
-            <td>12</td>
+            <td>{{$atencionAnualPsicos}}</td>
         </tr>
         <tr>
             <td>Terapeutas</td>
             <td></td>
-            <td>5</td>
+            <td>{{$atencionAnualTers}}</td>
         </tr>
         <tr>
-            <td>Asistente social</td>
+            <td>Fonoaudiología</td>
             <td></td>
-            <td>5</td>
+            <td>{{$atencionAnualFonos}}</td>
         </tr>
     </table>
     <br>
@@ -82,22 +82,22 @@
         <tr>
             <td>Kinesiología</td>
             <td></td>
-            <td>5</td>
+            <td>{{$atencionMensualKines}}</td>
         </tr>
         <tr>
             <td>Psicología</td>
             <td></td>
-            <td>12</td>
+            <td>{{$atencionMensualPsicos}}</td>
         </tr>
         <tr>
             <td>Terapeutas</td>
             <td></td>
-            <td>5</td>
+            <td>{{$atencionMensualTers}}</td>
         </tr>
         <tr>
-            <td>Asistente social</td>
+            <td>Fonoaudiología</td>
             <td></td>
-            <td>5</td>
+            <td>{{$atencionMensualPsicos}}</td>
         </tr>
     </table>
 </div>

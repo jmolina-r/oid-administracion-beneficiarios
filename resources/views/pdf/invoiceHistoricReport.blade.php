@@ -1,11 +1,3 @@
-<!--
-/**
- * Created by PhpStorm.
- * User: JOHN
- * Date: 24-07-2017
- * Time: 4:35
- */
- -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,22 +36,37 @@
 </head>
 <body>
 <div class="div1">
-    <h1>Reporte Atención Social</h1>
+    <h1>Reporte Histórico</h1>
     <table>
         <tr >
-            <th class="th1">Atención social</th>
+            <th class="th1">Fecha: {{$mes}}/{{$anio}}</th>
             <th class="th1"></th>
             <th class="th1"></th>
         </tr>
         <tr>
-            <td>ATENCIONES ANUALES</td>
+            <td>TOTAL DE USUARIOS EN EL AÑO</td>
             <td></td>
-            <td>{{$atencionAnualSocial}}</td>
+            <td>{{ $cantUsuarioTotal }}</td>
         </tr>
         <tr>
-            <td>ATENCIONES MENSUALES</td>
+            <td>USUARIOS INGRESADOS EN EL AÑO</td>
             <td></td>
-            <td>{{$atencionMensualSocial}}</td>
+            <td>{{ $cantIngresadosAño }}</td>
+        </tr>
+        <tr>
+            <td>USUARIOS INGRESADOS EN EL MES</td>
+            <td></td>
+            <td>{{ $cantIngresadosMes }}</td>
+        </tr>
+        <tr>
+            <td>ATENCIONES DEL AÑO</td>
+            <td></td>
+            <td>{{ $atencionAnual }}</td>
+        </tr>
+        <tr>
+            <td>ATENCIONES DEL MES</td>
+            <td></td>
+            <td>{{ $atencionMensual }}</td>
         </tr>
     </table>
 </div>

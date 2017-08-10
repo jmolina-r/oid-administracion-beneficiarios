@@ -25,6 +25,7 @@ use App\Kinesiologo;
 use App\TerapeutaOcupacional;
 use App\Psicologo;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\Isset_;
 
 class ReportabilidadController extends Controller
 {
@@ -197,7 +198,7 @@ class ReportabilidadController extends Controller
     }
     public function showResultKine(Request $request){
         //KINE
-        
+
         $user_rut=$request->kinesiologos;
         $kinesiologo = Kinesiologo::where('rut',$request->kinesiologos)->first();
         $atencionAnualKine=FichaKinesiologia::whereYear('ficha_kinesiologias.created_at', '=', date('Y'))
@@ -218,9 +219,17 @@ class ReportabilidadController extends Controller
             ->join('kinesiologos','hora_agendadas.user_id','=','kinesiologos.id')
             ->where('kinesiologos.rut','=',$user_rut)
             ->count();
-        return view('reportabilidad.reportabilidadKine', compact('kinesiologo','atencionAnualKine','atencionMensualKine','asistenciaKine','inasistenciaKine'));
+        if(isset($_GET['visualKine'])) {
+            return view('reportabilidad.reportabilidadKine', compact('kinesiologo','atencionAnualKine','atencionMensualKine','asistenciaKine','inasistenciaKine'));
+        }else {
+            if (isset($_GET['imprimirReporKine'])) {
+                $view =  \View::make('pdf.invoice1', compact('kinesiologo','atencionAnualKine','atencionMensualKine','asistenciaKine','inasistenciaKine'))->render();
+                $pdf = \App::make('dompdf.wrapper');
+                $pdf->loadHTML($view);
+                return $pdf->stream('invoice1');
+            }
+        }
 
-       
     }
 
     public function showResultFono(Request $request){
@@ -275,7 +284,18 @@ class ReportabilidadController extends Controller
             ->where('psicologos.rut','=',$user_rut1)
             ->count();
 
-        return view('reportabilidad.reportabilidadPsico', compact('psicologo','atencionAnualPsico','atencionMensualPsico','asistenciaPsico','inasistenciaPsico'));
+        if(isset($_GET['visualSico'])) {
+            return view('reportabilidad.reportabilidadPsico', compact('psicologo','atencionAnualPsico','atencionMensualPsico','asistenciaPsico','inasistenciaPsico'));
+        }else {
+            if (isset($_GET['imprimirReporSico'])) {
+
+                $view =  \View::make('pdf.invoice2', compact('psicologo','atencionAnualPsico','atencionMensualPsico','asistenciaPsico','inasistenciaPsico'))->render();
+                $pdf = \App::make('dompdf.wrapper');
+                $pdf->loadHTML($view);
+                return $pdf->stream('invoice2');
+
+            }
+        }
     }
 
     public function showResultTer(Request $request){
@@ -300,8 +320,19 @@ class ReportabilidadController extends Controller
             ->join('terapeuta_ocupacionals','hora_agendadas.user_id','=','terapeuta_ocupacionals.id')
             ->where('terapeuta_ocupacionals.rut','=',$user_rut2)
             ->count();
-            
-        return view('reportabilidad.reportabilidadTer', compact('terapeuta','atencionAnualTer','atencionMensualTer','asistenciaTer','inasistenciaTer'));
+
+        if(isset($_GET['visualTerap'])) {
+            return view('reportabilidad.reportabilidadTer', compact('terapeuta','atencionAnualTer','atencionMensualTer','asistenciaTer','inasistenciaTer'));
+        }else {
+            if (isset($_GET['imprimirReporTerap'])) {
+
+                $view =  \View::make('pdf.invoice3', compact('terapeuta','atencionAnualTer','atencionMensualTer','asistenciaTer','inasistenciaTer'))->render();
+                $pdf = \App::make('dompdf.wrapper');
+                $pdf->loadHTML($view);
+                return $pdf->stream('invoice3');
+
+            }
+        }
     }
 
     public function showResultSoc(Request $request)
@@ -355,7 +386,18 @@ class ReportabilidadController extends Controller
         $atencionAnual = PrestacionRealizada::whereYear('fecha', '=', $anio)->count();
         $atencionMensual = PrestacionRealizada::whereYear('fecha', '=',$anio)->whereMonth('fecha', '=', $mes)->count();
 
-        return view('reportabilidad.reportabilidadHistorica', compact('anio','mes','cantUsuarioTotal','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual'));
+
+        if(isset($_GET['visualHist'])) {
+            return view('reportabilidad.reportabilidadHistorica', compact('anio','mes','cantUsuarioTotal','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual'));
+        }else {
+            if (isset($_GET['imprimirReporHist'])) {
+                $view =  \View::make('pdf.invoiceHistoricReport', compact('anio','mes','cantUsuarioTotal','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual'))->render();
+                $pdf = \App::make('dompdf.wrapper');
+                $pdf->loadHTML($view);
+                return $pdf->stream('invoiceHistoricReport');
+
+            }
+        }
 
     }
 

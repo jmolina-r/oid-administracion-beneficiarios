@@ -39,6 +39,33 @@
     <h1>Reporte Kinesiología</h1>
     <table>
         <tr >
+            <th class="th1">Datos Personales Kinesiólogo(a)</th>
+            <th class="th1"></th>
+            <th class="th1"></th>
+        </tr>
+        <tr>
+            <td>Nombre Completo</td>
+            <td></td>
+            <td>{{ $kinesiologo->nombres }} {{ $kinesiologo->apellidos }}</td>
+        </tr>
+        <tr>
+            <td>Rut</td>
+            <td></td>
+            <td>{{ $kinesiologo->rut }}</td>
+        </tr>
+        <tr>
+            <td>Telefono</td>
+            <td></td>
+            <td>{{ $kinesiologo->telefono }}</td>
+        </tr>
+        <tr>
+            <td>Dirección</td>
+            <td></td>
+            <td>{{ $kinesiologo->direccion }}</td>
+        </tr>
+    </table>
+    <table>
+        <tr >
             <th class="th1">Kinesiología</th>
             <th class="th1"></th>
             <th class="th1"></th>
@@ -46,22 +73,22 @@
         <tr>
             <td>ATENCIONES ANUALES</td>
             <td></td>
-            <td>5</td>
+            <td>{{$atencionAnualKine}}</td>
         </tr>
         <tr>
             <td>ATENCIONES MENSUALES</td>
             <td></td>
-            <td>12</td>
+            <td>{{$atencionMensualKine}}</td>
         </tr>
         <tr>
             <td>CANTIDAD DE ASISTENCIA DE PACIENTES</td>
             <td></td>
-            <td>5</td>
+            <td>{{$asistenciaKine}}</td>
         </tr>
         <tr>
             <td>CANTIDAD DE INASISTENCIA DE PACIENTES</td>
             <td></td>
-            <td>3</td>
+            <td>{{$inasistenciaKine}}</td>
         </tr>
     </table>
 </div>
