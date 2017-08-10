@@ -1,8 +1,9 @@
 $(document).ready(function() {
 
-    $("#inputBuscador").on('input', function() {
-        if ($(this).val() == "" || $(this).val() == " ") {
-            $("#listaBeneficiario").empty();
+    $("#inputBuscador").on('keyup', function() {
+        $('#listaBeneficiario').html('<tr><td><i class="fa fa-spinner fa-spin"></i> <b>Cargando...</b></td><td></td><td></td><td></td></tr>');
+        if ($(this).val().length < 1 || $(this).val() == "" || $(this).val() == " ") {
+            $("#listaBeneficiario").html("<tr><td>No hay datos para mostrar.</td></td><td></td><td></td><td></td></tr>");
             return;
         }
         getBeneficiariosLikeNombre($(this).val());
@@ -33,23 +34,30 @@ $(document).ready(function() {
     }
 
     function addBeneficiarioToCard(beneficiarios) {
-        if (beneficiarios) {
+        if (beneficiarios && beneficiarios.length > 0) {
             $("#listaBeneficiario").empty();
             beneficiarios.forEach(function(element) {
-                var cardData = '<div class="card col-xs-12 col-sm-6 col-md-6 col-lg-4 card-frame">' +
-                    '<img class="card-img-top" src="http://placehold.it/180x180&text=Photo" alt="Card image cap">' +
-                    '<div class="card-block">' +
-                    '<h4 class="card-title capitalize">' + element.nombre + ' ' + element.apellido + '</h4>' +
-                    '<p class="card-text">' + element.rut + '</p>' +
-                    '<form method="GET" action="/beneficiario/informacion/'+ element.id +'">' +
-                    '<button class="btn btn-primary" type="submit"> Ver Perfil </button>' +
-                    '</form>' +
-                    '</div>' +
-                    '</div>';
+                var cardData = 
+                "<tr>" +
+                    "<td class='capitalize'>" + element.nombre + " " + element.apellido + "</td>" +
+                    "<td>" + element.rut + "</td>" +
+                    "<td class='capitalize'>" + element.sexo + "</td>" +
+                    "<td>" + element.created_at + "</td>" +
+                    "<td>" +
+                        "<div class='text-right'>" +
+                            "<a class='btn btn-primary btn-xs' href='/beneficiario/informacion/" + element.id + "'>" +
+                                "<i class='fa fa-user'></i>" +
+                            "</a>" +
+                            "<a class='btn btn-warning btn-xs' href='/beneficiario/editar/" + element.id + "'>" +
+                                "<i class='fa fa-pencil-square-o'></i>" +
+                            "</a>" +
+                        "</div>" +
+                    "</td>" +
+                "</tr>";
                 $(cardData).appendTo('#listaBeneficiario').fadeIn('normal');
             });
+        } else {
+            $("#listaBeneficiario").html("<tr><td>Beneficiario no encontrado.</td></td><td></td><td></td><td></td></tr>");
         }
-
     }
-
 });
