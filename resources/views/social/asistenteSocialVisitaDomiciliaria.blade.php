@@ -135,10 +135,10 @@
                                       <ul class="nav nav-tabs">
                                       @foreach($tipoMotivoSocial as $tMotivos)
                                         @if($i == 1)
-                                           <li class="active"><a href=<?php echo "#".$tMotivos->id ?> data-toggle="tab">{{$tMotivos->nombre}}</a></li>
+                                           <li class="active"><a href=<?php echo "#".$tMotivos->id ?> data-toggle="tab">{{ucfirst($tMotivos->nombre)}}</a></li>
                                            <?php $i = 2; ?>
                                         @else
-                                            <li><a href=<?php echo "#".$tMotivos->id ?> data-toggle="tab">{{$tMotivos->nombre}}</a></li>
+                                            <li><a href=<?php echo "#".$tMotivos->id ?> data-toggle="tab">{{ucfirst($tMotivos->nombre)}}</a></li>
                                         @endif
                                       @endforeach
                                       </ul>
@@ -166,7 +166,7 @@
                                                                         <input class='make-switch' value="{{$tipoAyuda->id}}" name="tipoAyudaSocial[]" id="{{$tipoAyuda->id}}.t"
                                                                                data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>'
                                                                                type='checkbox' onchange="javascript:showContent('{{$tipoAyuda->nombre}}','{{$tipoAyuda->id}}.t')" >
-                                                                        <p id="hverificacion"> {{$tipoAyuda->nombre}} </p>
+                                                                        <p id="hverificacion"> {{ucfirst($tipoAyuda->nombre)}} </p>
                                                                     </div>
                                                                 @endif
                                                             @endforeach
@@ -187,7 +187,7 @@
                                                                           <input class='make-switch' value="{{$tipoAyuda->id}}" name="tipoAyudaSocial[]" id="{{$tipoAyuda->id}}.t"
                                                                                  data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>'
                                                                                  type='checkbox' onchange="javascript:showContent('{{$tipoAyuda->nombre}}','{{$tipoAyuda->id}}.t')" >
-                                                                          <p id="hverificacion"> {{$tipoAyuda->nombre}} </p>
+                                                                          <p id="hverificacion"> {{ucfirst($tipoAyuda->nombre)}} </p>
                                                                       </div>
                                                                   @endif
                                                           @endforeach
@@ -228,7 +228,7 @@
                                                          
                                                            @if($tMotivos->id == '3')
                                                               <div class="box-content box-statistic" style="margin-top:10px;">
-                                                                <input class='make-switch' value="{{$sMotivo->id}}" name="vd[]" id="{{$sMotivo->id}}.vd" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox'><p id="hverificacion"> {{$sMotivo->nombre}} </p>
+                                                                <input class='make-switch' value="{{$sMotivo->id}}" name="vd[]" id="{{$sMotivo->id}}.vd" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox'><p id="hverificacion"> {{ucfirst($sMotivo->nombre)}} </p>
                                                               </div>
                                                               <div class="help-block with-errors"></div>
                                                               <div class='controls' id="{{$sMotivo->nombre}}" style="display:none">
@@ -262,7 +262,7 @@
                                                                   @endif
                                                            @elseif($tMotivos->id == '2')
                                                                <div class="box-content box-statistic" style="margin-top:10px;">
-                                                                    <input class='make-switch' value="{{$sMotivo->id}}" id="inputSubMotivo" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}')"  name="inputSubMotivo[]"><p id="hverificacion">{{$sMotivo->nombre}}</p>
+                                                                    <input class='make-switch' value="{{$sMotivo->id}}" id="inputSubMotivo" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}')"  name="inputSubMotivo[]"><p id="hverificacion">{{ucfirst($sMotivo->nombre)}}</p>
                                                               </div>
                                                                @if($sMotivo->id == '6')
 
@@ -271,14 +271,14 @@
                                                               
                                                              <div class='controls'>
                                                                  <div class='box-content box-statistic' id="{{$sMotivo->nombre}}">
-                                                                    <label class="radio-inline"> <input type="radio" name="inputSubMotivo[]" onClick="javascript:toggle(this)" id="{{$sMotivo->id}}" value="{{$sMotivo->id}}">{{$sMotivo->nombre}}</label>
+                                                                    <label class="radio-inline"> <input type="radio" name="inputSubMotivo[]" onClick="javascript:toggle(this)" id="{{$sMotivo->id}}" value="{{$sMotivo->id}}">{{ucfirst($sMotivo->nombre)}}</label>
 
 
                                                               
                                                                 @if($sMotivo->id == '12')
                                                                     <div class='controls' id="uno" style="display:none">
                                                                         <div>
-                                                                            <label for="inputText"style="display:block;">Anio postulación (1990-2017)</label>
+                                                                            <label for="inputText"style="display:block;">Año postulación (1990-2017)</label>
                                                                             <input type="number" name="postAT[]" id="añoPostulacion.text" min="1990" max="2017"></input>
                                                                         </div>
                                                                         <div>
