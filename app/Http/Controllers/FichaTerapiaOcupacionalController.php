@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Validation\Rule;
 use App\ActividadesVidaDiaria;
 use App\AntecedentesSalud;
+use App\Beneficiario;
 use App\AntecedentesSocioFamiliares;
 use App\DesarrolloEvolutivo;
 use App\FichaTerapiaOcupacional;
@@ -33,6 +34,7 @@ class FichaTerapiaOcupacionalController extends Controller
      */
     public function postIngresar(Request $request)
     {
+        //dd($request->file('genograma'));
         // Validate Fields
         $this->validate($request, $this->rules($request));
 
@@ -114,6 +116,8 @@ class FichaTerapiaOcupacionalController extends Controller
                 'ocupacion_padre' => $request->input('ocupacion_padre'),
                 'escolaridad_padre' => $request->input('escolaridad_padre'),
                 'horario_trabajo_padre' => $request->input('horario_trabajo_padre'),
+                $request->file('genograma')->store('public/genogramas-to'),
+                'genograma' => $request->file('genograma')->hashName(),
             ]);
             $antecedentesSocioFamiliares->save();
 
@@ -152,8 +156,9 @@ class FichaTerapiaOcupacionalController extends Controller
                 'sabores_preferidos' => $request->input('sabores_preferidos'),
                 'colores_preferidos' => $request->input('colores_preferidos'),
                 'ejemplo_comida' => $request->input('ejemplo_comida'),
-                'genograma' => $request->file('genograma'),
+
             ]);
+
             $desarrolloEvolutivo->save();
 
             $habilidadesSociales = new HabilidadesSociales([
@@ -233,15 +238,47 @@ class FichaTerapiaOcupacionalController extends Controller
     }
 
     /**
-     * Mostrar formulario de ingreso de evaluacion inicial.
+     * Show the form for finding a resourse
      *
-     * @return view
+     * @return Response
      */
-    public function getMostrarLista()
+    public function find()
     {
-        $fichas = FichaTerapiaOcupacional::all();
+        //
+    }
 
-        return view('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista', [ 'fichas' => $fichas ]);
+    /**
+     * Display the specified resource.
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
+        $fichaTerapiaOcupacional = FichaTerapiaOcupacional::find($id);
+
+        if($fichaTerapiaOcupacional == null){
+            return view('home');
+        }
+
+        $persona = Beneficiario::find($fichaTerapiaOcupacional->beneficiario_id);
+
+        $actividadesVidaDiaria = ActividadesVidaDiaria::find($fichaTerapiaOcupacional->actividades_vida_diaria_id);
+        $antecedentesSalud = AntecedentesSalud::find($fichaTerapiaOcupacional->antecedentes_salud_id);
+        $antecedentesSocioFamiliares = AntecedentesSocioFamiliares::find($fichaTerapiaOcupacional->antecedentes_so_fa_id);
+        $desarrolloEvolutivo = DesarrolloEvolutivo::find($fichaTerapiaOcupacional->desarrollo_evolutivo_id);
+        $habilidadesSociales = HabilidadesSociales::find($fichaTerapiaOcupacional->habilidades_sociales_id);
+        $historialClinico = HistorialClinico::find($fichaTerapiaOcupacional->historial_clinico_id);
+
+
+        return view('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.show', compact('fichaTerapiaOcupacional'))
+            ->with(compact('persona'))
+            ->with(compact('actividadesVidaDiaria'))
+            ->with(compact('antecedentesSalud'))
+            ->with(compact('antecedentesSocioFamiliares'))
+            ->with(compact('desarrolloEvolutivo'))
+            ->with(compact('habilidadesSociales'))
+            ->with(compact('historialClinico'))
+            ;
     }
 
     private function rules(Request $request) {
