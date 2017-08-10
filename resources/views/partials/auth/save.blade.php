@@ -79,7 +79,7 @@
 
         @foreach($roles as $role)
             <option value="{{$role->id}}"
-                @if(isset($user) && $user->roles != null && count($user->roles) > 0 && count($user->roles->where('id', $role->id)) > 0)
+                @if((old('roles') && in_array($role->id, old('roles'))) || (isset($user) && $user->roles != null && count($user->roles) > 0 && count($user->roles->where('id', $role->id)) > 0))
                     selected
                 @endif
             >{{$role->nombre}}</option>
