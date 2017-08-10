@@ -12,7 +12,6 @@ $(document).ready(function () {
         success: function(data, textStatus, jqXHR) {
 
             var arrayPrestaciones = JSON.parse(data);
-
             $.each(arrayPrestaciones, function(index, item) {
                 $('#combo-prestacion').append(
                     $('<option></option>').val(item).html(item.id + "-" + item.nombre)
@@ -47,6 +46,20 @@ $(document).ready(function () {
         }
     });
 
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: "/registro_prestacion/getarea",
+        dataType: "text",
+        type: "POST",
+        success: function(data, textStatus, jqXHR) {
+            $('#area').val(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("Hubo un error, reintente");
+        }
+    });
 
     $('#boton-agregar-prestacion').click(function () {
 

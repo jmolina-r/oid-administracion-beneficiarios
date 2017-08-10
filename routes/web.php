@@ -187,20 +187,20 @@ Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
     Route::get('/show', [
         'uses' => 'MallaController@show',
         'as' => 'malla.show'
-    ])->middleware('roles:admin');;
+    ]);;
 
     Route::post('/store', [
         'uses' => 'MallaController@store',
         'as' => 'malla.store'
-    ])->middleware('roles:admin');;
+    ]);;
 
     Route::get('/poblar', [
         'uses' => 'MallaController@poblar',
-    ])->middleware('roles:admin');;
+    ]);
 
     Route::get('/getnombre', [
         'uses' => 'BeneficiarioController@findNombrePorRut'
-    ])->middleware('roles:admin');;
+    ]);
 
     Route::get('/listaPrestaciones', [
         'uses' => 'MallaController@listaPrestaciones',
@@ -240,6 +240,10 @@ Route::group(['prefix' => '/registro_prestacion', 'middleware' => 'auth'], funct
 
     Route::post('/getnombrecompleto', [
         'uses' => 'MallaController@getNombreCompleto'
+    ]);
+
+    Route::post('/getarea', [
+        'uses' => 'MallaController@getArea'
     ]);
 
     Route::post('/storeprestaciones', [
