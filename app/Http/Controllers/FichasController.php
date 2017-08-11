@@ -22,26 +22,31 @@ class FichasController extends Controller
             $idUsuario = Auth::user()->id;
         }
 
-        $fichas = array();
-
+        $fichasKinesiologia = array();
         if(Auth::user()->hasRole('kinesiologia')){
-            array_merge($fichas, FichaKinesiologia::where('beneficiario_id', $id)->where('user_id', $idUsuario)->get()->toArray());
+            $fichasKinesiologia = FichaKinesiologia::where('beneficiario_id', $id)->get();
         }
 
+        $fichasPsicologia = array();
         if(Auth::user()->hasRole('psicologia')){
-            array_merge($fichas, FichaPsicologia::where('beneficiario_id', $id)->get()->toArray());
+            $fichasPsicologia= FichaPsicologia::where('beneficiario_id', $id)->get();
         }
 
+        $fichasFonoaudiologia = array();
         if(Auth::user()->hasRole('fonoaudiologia')){
-            array_merge($fichas, FichaFonoaudiologiaController::where('beneficiario_id', $id)->get()->toArray());
+            $fichasFonoaudiologia = FichaFonoaudiologiaController::where('beneficiario_id', $id)->get();
         }
 
+        $fichasTerapiaOcuacional = array();
         if(Auth::user()->hasRole('terapia_ocupacional')){
-            array_merge($fichas, FichaTerapiaOcupacionalController::where('beneficiario_id', $id)->get()->toArray());
+            $fichasTerapiaOcuacional = FichaTerapiaOcupacionalController::where('beneficiario_id', $id)->get();
         }
 
-        return view('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', compact('fichas'));
-            ->with(compact('idUsuario'));
+        return view('area-medica.ficha-evaluacion-inicial.fichas.listaFichas')
+            ->with(compact('fichasKinesiologia'))
+            ->with(compact('fichasPsicologia'))
+            ->with(compact('fichasFonoaudiologia'))
+            ->with(compact('fichasTerapiaOcuacional'));
     }
 
     /**

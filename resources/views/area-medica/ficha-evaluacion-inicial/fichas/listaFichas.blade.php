@@ -70,10 +70,6 @@
                                 </div>
                             </div>
                         </div>
-                        {{ $idUsuario }}
-                        @if($fichas == null)
-                            hola
-                        @endif
                         <div class="row">
                             <div class='col-sm-12'>
                                 <td><a class="btn btn-primary btn-block" href="{{route('malla.crearPrestacion')}}">Agregar Nueva Prestación</a></td>
@@ -96,22 +92,48 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($fichas as $ficha)
-                                            <tr>
-                                                <td>{{$ficha->id}}</td>
-                                                <td><a class="btn btn-primary btn-block btn-xs" href="{{route('malla.confirmarEliminarPrestacion', $ficha->id)}}">Eliminar</a></td>
-                                            </tr>
-                                        @endforeach
+                                        @if($fichasKinesiologia != null)
+                                            @foreach($fichasKinesiologia as $ficha)
+                                                <tr>
+                                                    <td>{{$ficha->id}}</td>
+                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('malla.confirmarEliminarPrestacion', $ficha->id)}}">Eliminar</a></td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                        @if($fichasPsicologia != null)
+                                            @foreach($fichasPsicologia as $ficha)
+                                                <tr>
+                                                    <td>{{$ficha->id}}</td>
+                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('malla.confirmarEliminarPrestacion', $ficha->id)}}">Eliminar</a></td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                        @if($fichasFonoaudiologia != null)
+                                            @foreach($fichasFonoaudiologia as $ficha)
+                                                <tr>
+                                                    <td>{{$ficha->id}}</td>
+                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('malla.confirmarEliminarPrestacion', $ficha->id)}}">Eliminar</a></td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                        @if($fichasTerapiaOcuacional != null)
+                                            @foreach($fichasTerapiaOcuacional as $ficha)
+                                                <tr>
+                                                    <td>{{$ficha->id}}</td>
+                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('malla.confirmarEliminarPrestacion', $ficha->id)}}">Eliminar</a></td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-        @include('partials.footer')
-    </div>
-    </section>
+            @include('partials.footer')
+        </section>
     </div>
 @endsection
