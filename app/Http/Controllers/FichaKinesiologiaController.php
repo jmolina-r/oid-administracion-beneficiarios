@@ -9,7 +9,7 @@ use App\ValControlEsfinter;
 use App\ValEvaluacion;
 use App\ValSocial;
 use App\FichaKinesiologia;
-use App\Profesional;
+use App\User;
 use App\ValDeambulacion;
 use App\ValMotora;
 use App\ValMovilidad;
@@ -177,8 +177,7 @@ class FichaKinesiologiaController extends Controller
                 'val_com_cog_id' => $valComCog->id,
                 'val_evaluacion_id' => $valEvaluacion->id,
                 'val_control_esfinter_id' => $valControlEsfinter->id,
-                //'kinesiologo_id' => $kinesiologo->id,
-                'profesional_id' => '1', //provisional, profesional no esta implementado
+                'user_id' => '1', //provisional
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaKinesiologia->save();
@@ -280,6 +279,7 @@ class FichaKinesiologiaController extends Controller
     private function rules(Request $request) {
         $rules = [
             'id' => 'required|exists:beneficiarios',
+            'user_id' => 'required|exists:users',
             'pat_concom' => 'nullable|max:200',
             'alergias' => 'nullable|max:200',
             'medicamentos' => 'nullable|max:200',

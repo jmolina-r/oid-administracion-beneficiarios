@@ -178,7 +178,7 @@ $factory->define(App\FichaKinesiologia::class, function (Faker\Generator $faker)
         'val_com_cog_id' => $faker -> numberBetween($min = 1, $max = 2),
         'val_evaluacion_id' => $faker -> numberBetween($min = 1, $max = 2),
         'val_control_esfinter_id' => $faker -> numberBetween($min = 1, $max = 2),
-        'profesional_id' => $faker -> numberBetween($min = 1, $max = 3),
+        'user_id' => $faker -> numberBetween($min = 1, $max = 3),
         'beneficiario_id' => $faker -> numberBetween($min = 1, $max = 150),
     ];
 });
@@ -309,7 +309,6 @@ $factory->define(App\ValSocial::class, function (Faker\Generator $faker) {
 $factory->define(App\FichaTerapiaOcupacional::class, function (Faker\Generator $faker) {
 
     return [
-        'diagnostico_base' => $faker -> regexify('(SE DESCONOCE EL DIAGNOSTICO|DERRAME CEREBRAL|RETRASO MENTAL SEVERO|DISTROFIA MUSCULAR|DIABETES)'),
         'motivo_consulta' => $faker -> regexify('(Evaluación Movilidad|Evaluación Motora|Evaluación Social)'),
         'derivado_por' => $faker -> regexify('(Kinesiologo|Psicologo)'),
         'relacion_paciente' => $faker -> regexify('(Padre|Madre|Cuidador|Abuelo)'),
@@ -320,7 +319,7 @@ $factory->define(App\FichaTerapiaOcupacional::class, function (Faker\Generator $
         'desarrollo_evolutivo_id' => $faker -> numberBetween($min = 1, $max = 5),
         'habilidades_sociales_id' => $faker -> numberBetween($min = 1, $max = 5),
         'historial_clinico_id' => $faker -> numberBetween($min = 1, $max = 5),
-        'profesional_id' => $faker -> numberBetween($min = 1, $max = 5),
+        'user_id' => $faker -> numberBetween($min = 1, $max = 3),
         'beneficiario_id' => $faker -> numberBetween($min = 1, $max = 150),
 
     ];

@@ -209,8 +209,6 @@ class FichaTerapiaOcupacionalController extends Controller
             $historialClinico->save();
 
             $fichaTerapiaOcupacional = new FichaTerapiaOcupacional([
-                //'diagnostico' => $beneficiario->diagnostico,
-                'diagnostico_base' => 'diagnostico_base', //provisional, diagnostico no esta implementado en beneficiario
                 'motivo_consulta' => $request->input('motivo_consulta'),
                 'derivado_por' => $request->input('derivado_por'),
                 'relacion_paciente' => $request->input('relacion_paciente'),
@@ -221,10 +219,8 @@ class FichaTerapiaOcupacionalController extends Controller
                 'desarrollo_evolutivo_id' => $desarrolloEvolutivo->id,
                 'habilidades_sociales_id' => $habilidadesSociales->id,
                 'historial_clinico_id' => $historialClinico->id,
-                //'terapeuta_ocupacional_id' => $terapeuta->id,
-                'profesional_id' => '1', //provisional, profesional no esta implementado
+                'user_id' => '1', //provisional
                 'beneficiario_id' => $request->input('id'),
-                //'beneficiario_id' => '1',
             ]);
             $fichaTerapiaOcupacional->save();
         }
@@ -284,6 +280,7 @@ class FichaTerapiaOcupacionalController extends Controller
     private function rules(Request $request) {
         $rules = [
             'id' => 'required|exists:beneficiarios',
+            'user_id' => 'required|exists:users',
             'motivo_consulta' => 'nullable|max:200',
             'derivado_por' => 'nullable|max:200',
             'relacion_paciente' => 'nullable|max:200',
