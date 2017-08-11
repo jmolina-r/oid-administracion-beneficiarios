@@ -97,8 +97,7 @@ class FichaPsicologiaController extends Controller
                 'genograma' => $request->file('genograma')->hashName(),
                 'antecedentes_medicos_id' => $antecedentesMedicos->id,
                 'antecedentes_familiares_id' => $antecedentesFamiliares->id,
-                //'psicologo_id' => $psicologo->id,
-                'profesional_id' => '1', //provisional, profesional no esta implementado
+                'user_id' => '1', //provisional
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaPsicologia->save();
@@ -187,6 +186,7 @@ class FichaPsicologiaController extends Controller
     private function rules(Request $request) {
         $rules = [
             'id' => 'required|exists:beneficiarios',
+            'user_id' => 'required|exists:users',
             'motivo_consulta' => 'nullable|max:200',
             'enfermedades_familiares' => 'nullable|max:200',
             'tratamientos_neurologo_nombre' => 'nullable|max:200',

@@ -109,16 +109,11 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresando'
             ]);
 
-            //creo q esto esta de mas, era parte de un conflicto de merge
-            Route::get('/mostrar-lista', [
-                'uses' => 'FichaTerapiaOcupacionalController@getMostrarLista',
-                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista'
-            ])->middleware('roles:admin|terapia_ocupacional');
 
             Route::get('/show/{id}', [
                 'uses' => 'FichaTerapiaOcupacionalController@show',
                 'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.show'
-            ])->middleware('roles:secretaria|admin');
+            ])->middleware('roles:admin|terapia_ocupacional');
         });
 
         Route::group(['prefix' => '/psicologia'], function (){
