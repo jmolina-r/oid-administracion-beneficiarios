@@ -7,6 +7,7 @@ use App\AntecedentesMedicos;
 use App\FichaPsicologia;
 use App\Beneficiario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FichaPsicologiaController extends Controller
 {
@@ -44,13 +45,10 @@ class FichaPsicologiaController extends Controller
         // Validate Fields
         $this->validate($request, $this->rules($request));
 
-        //obtener el psicologo por su sesion
-        /*
         if (Auth::check())
         {
-            $psicologo = Psicologo::where('rut', Auth::user()->rut);
+            $idUsuario = Auth::user()->id;
         }
-        */
 
         try{
             $antecedentesMedicos = new AntecedentesMedicos([
@@ -91,13 +89,17 @@ class FichaPsicologiaController extends Controller
             ]);
             $antecedentesFamiliares->save();
 
+            $hashName = null;
+            if($request->file('genograma') != null){
+                $request->file('genograma')->store('public/genogramas-psi');
+                $hashName = $request->file('genograma')->hashName();
+            }
             $fichaPsicologia = new FichaPsicologia([
                 'motivo_consulta' => $request->input('motivo_consulta'),
-                $request->file('genograma')->store('public/genogramas-psi'),
-                'genograma' => $request->file('genograma')->hashName(),
+                'genograma' => $hashName,
                 'antecedentes_medicos_id' => $antecedentesMedicos->id,
                 'antecedentes_familiares_id' => $antecedentesFamiliares->id,
-                'user_id' => '1', //provisional
+                'user_id' => $idUsuario,
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaPsicologia->save();
@@ -186,7 +188,6 @@ class FichaPsicologiaController extends Controller
     private function rules(Request $request) {
         $rules = [
             'id' => 'required|exists:beneficiarios',
-            'user_id' => 'required|exists:users',
             'motivo_consulta' => 'nullable|max:200',
             'enfermedades_familiares' => 'nullable|max:200',
             'tratamientos_neurologo_nombre' => 'nullable|max:200',

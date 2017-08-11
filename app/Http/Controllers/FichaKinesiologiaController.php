@@ -17,6 +17,7 @@ use App\ValSensorial;
 use App\Beneficiario;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FichaKinesiologiaController extends Controller
 {
@@ -55,13 +56,10 @@ class FichaKinesiologiaController extends Controller
         // Validate Fields
         $this->validate($request, $this->rules($request));
 
-        //obtener el kinesiologo por su sesion
-        /*
         if (Auth::check())
         {
-            $kinesiologo = Kinesiologo::where('rut', Auth::user()->rut);
+            $idUsuario = Auth::user()->id;
         }
-        */
 
         try{
             $antecedentesMorbidos = new AntecedentesMorbidos([
@@ -177,7 +175,7 @@ class FichaKinesiologiaController extends Controller
                 'val_com_cog_id' => $valComCog->id,
                 'val_evaluacion_id' => $valEvaluacion->id,
                 'val_control_esfinter_id' => $valControlEsfinter->id,
-                'user_id' => '1', //provisional
+                'user_id' => $idUsuario,
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaKinesiologia->save();
@@ -188,8 +186,7 @@ class FichaKinesiologiaController extends Controller
 
         }
         $id = $request->input('id');
-        return view('area-medica.ficha-evaluacion-inicial.kinesiologia.create')
-            ->with(compact('id'));
+        return view('home');
     }
 
     /**
@@ -205,6 +202,7 @@ class FichaKinesiologiaController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param $id
      * @return Response
      */
     public function show($id)
@@ -279,7 +277,6 @@ class FichaKinesiologiaController extends Controller
     private function rules(Request $request) {
         $rules = [
             'id' => 'required|exists:beneficiarios',
-            'user_id' => 'required|exists:users',
             'pat_concom' => 'nullable|max:200',
             'alergias' => 'nullable|max:200',
             'medicamentos' => 'nullable|max:200',

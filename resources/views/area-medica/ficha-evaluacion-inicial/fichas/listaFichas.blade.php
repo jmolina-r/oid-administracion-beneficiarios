@@ -60,7 +60,7 @@
                                 <div class='page-header'>
                                     <h1 class='pull-left'>
                                         <i class='fa fa-pencil-square-o'></i>
-                                        <span>Lista de Prestaciones</span>
+                                        <span>Lista de Fichas de Evaluación Inicial</span>
                                     </h1>
                                     <div class='pull-right'>
                                         <ul class='breadcrumb'>
@@ -72,7 +72,7 @@
                         </div>
                         <div class="row">
                             <div class='col-sm-12'>
-                                <td><a class="btn btn-primary btn-block" href="{{route('malla.crearPrestacion')}}">Agregar Nueva Prestación</a></td>
+                                <td><a class="btn btn-primary btn-block" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.create', $id)}}">Agregar Nueva Ficha de Evaluación Inicial</a></td>
                             </div>
                         </div>
                         <hr>
@@ -83,31 +83,63 @@
                                         <thead>
                                         <tr>
                                             <th>
-                                                <h3>Nombre Prestación</h3>
+                                                <h3>Fecha de la Ficha de Evaluacion Inicial</h3>
                                             </th>
                                             <th>
                                                 <h3>Área</h3>
                                             </th>
                                             <th></th>
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($prestaciones as $prestacion)
-                                            <tr>
-                                                <td class="capitalize">{{$prestacion->nombre}}</td>
-                                                <td class="capitalize">{{$prestacion->area}}</td>
-                                                <td><a class="btn btn-primary btn-block btn-xs" href="{{route('malla.confirmarEliminarPrestacion', $prestacion->id)}}">Eliminar</a></td>
-                                            </tr>
-                                        @endforeach
+                                        @if($fichasKinesiologia != null)
+                                            @foreach($fichasKinesiologia as $ficha)
+                                                <tr>
+                                                    <td>{{$ficha->created_at->format('d-m-Y')}}</td>
+                                                    <td>Kinesiología</td>
+                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', $ficha->id)}}">Detalles</a></td>
+                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', $ficha->id)}}">Ver como PDF</a></td>
+                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', $ficha->id)}}">Ficha de Alta</a></td>
+                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', $ficha->id)}}">Ver prestaciones</a></td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                        @if($fichasPsicologia != null)
+                                            @foreach($fichasPsicologia as $ficha)
+                                                <tr>
+                                                    <td>{{$ficha->id}}</td>
+                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('malla.confirmarEliminarPrestacion', $ficha->id)}}">Eliminar</a></td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                        @if($fichasFonoaudiologia != null)
+                                            @foreach($fichasFonoaudiologia as $ficha)
+                                                <tr>
+                                                    <td>{{$ficha->id}}</td>
+                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('malla.confirmarEliminarPrestacion', $ficha->id)}}">Eliminar</a></td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                        @if($fichasTerapiaOcuacional != null)
+                                            @foreach($fichasTerapiaOcuacional as $ficha)
+                                                <tr>
+                                                    <td>{{$ficha->id}}</td>
+                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('malla.confirmarEliminarPrestacion', $ficha->id)}}">Eliminar</a></td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
-            @include('partials.footer')
             </div>
+            @include('partials.footer')
         </section>
     </div>
 @endsection
