@@ -21,13 +21,9 @@ class CreateParienteHogarFonosTable extends Migration
             $table->string('edad')->nullable();
             $table->string('escolaridad')->nullable();
             $table->string('ocupacion')->nullable();
-
-            $table->integer('ficha_fonoaudiologia_id')->unsigned();
         });
 
-        Schema::table('pariente_hogar_fonos', function($table) {
-            $table->foreign('ficha_fonoaudiologia_id')->references('id')->on('ficha_fonoaudiologia');
-        });
+
     }
 
     /**

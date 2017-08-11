@@ -6,12 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ParienteHogarFono extends Model
 {
-    protected $fillable = ['nombre', 'parentesco', 'edad', 'escolaridad', 'ocupacion', 'ficha_fonoaudiologia_id'];
+    protected $fillable = ['observaciones','nombre1', 'parentesco1', 'edad1', 'escolaridad1', 'ocupacion1','nombre2', 'parentesco2', 'edad2', 'escolaridad2', 'ocupacion2','nombre3', 'parentesco3', 'edad3', 'escolaridad3', 'ocupacion3'];
 
-    public function ingresoFonoaudiologia()
-    {
-        return $this->belongsTo(FichaFonoaudiologia::class);
-    }
 
     public function fichaFonoaudiologia()
     {
