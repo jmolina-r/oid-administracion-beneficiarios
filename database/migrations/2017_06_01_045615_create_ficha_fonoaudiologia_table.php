@@ -17,53 +17,58 @@ class CreateFichaFonoaudiologiaTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('motivo_consulta')->nullable();
-            $table->integer('habitos_sino_fono_id')->unsigned();
-            $table->integer('antecedentes_perinatales_fono_id')->unsigned();
-            $table->integer('antecedentes_prenatales_fono_id')->unsigned();
-            $table->integer('desarrollo_psicomotor_edades_id')->unsigned();
+            $table->integer('habitos_si_no_id')->unsigned();
+            $table->integer('antecedentes_peri_fono_id')->unsigned();
+            $table->integer('antecedentes_pre_fono_id')->unsigned();
+            $table->integer('desarrollo_psi_ed_id')->unsigned();
             $table->integer('desarrollo_social_fono_id')->unsigned();
-            $table->integer('antecedentes_morbidos_sino_fono_id')->unsigned();
-            $table->integer('ant_morb_familiares_si_no_fonos_id')->unsigned();
-            $table->integer('antecedentes_postnatales_fonos_id')->unsigned();
-            $table->integer('desarrollo_lenguaje_edades_id')->unsigned();
+            $table->integer('antecedentes_mor_fono_id')->unsigned();
+            $table->integer('antecedentes_mor_fa_fono_id')->unsigned();
+            $table->integer('antecedentes_pos_fono_id')->unsigned();
+            $table->integer('desarrollo_le_ed_id')->unsigned();
+            $table->integer('parientes_hogar_fono_id')->unsigned();
             $table->integer('user_id')->unsigned();
         });
 
 
         Schema::table('ficha_fonoaudiologias', function($table) {
-            $table->foreign('habitos_sino_fono_id')->references('id')->on('habitos_sino_fono');
+            $table->foreign('habitos_si_no_id')->references('id')->on('habitos_sino_fonos');
         });
 
         Schema::table('ficha_fonoaudiologias', function($table) {
-            $table->foreign('antecedentes_perinatales_fono_id')->references('id')->on('antecedentes_perinatales_fono');
+            $table->foreign('antecedentes_peri_fono_id')->references('id')->on('antecedentes_perinatales_fonos');
         });
 
         Schema::table('ficha_fonoaudiologias', function($table) {
-            $table->foreign('antecedentes_prenatales_fono_id')->references('id')->on('antecedentes_prenatales_fono');
+            $table->foreign('antecedentes_pre_fono_id')->references('id')->on('antecedentes_prenatales_fonos');
         });
 
         Schema::table('ficha_fonoaudiologias', function($table) {
-            $table->foreign('desarrollo_psicomotor_edades_id')->references('id')->on('desarrollo_psicomotor_edades');
+            $table->foreign('desarrollo_psi_ed_id')->references('id')->on('desarrollo_psicomotor_edades');
         });
 
         Schema::table('ficha_fonoaudiologias', function($table) {
-            $table->foreign('desarrollo_social_fono_id')->references('id')->on('desarrollo_social_fono');
+            $table->foreign('desarrollo_social_fono_id')->references('id')->on('desarrollo_social_fonos');
         });
 
         Schema::table('ficha_fonoaudiologias', function($table) {
-            $table->foreign('antecedentes_morbidos_sino_fono_id')->references('id')->on('antecedentes_morbidos_sino_fono');
+            $table->foreign('antecedentes_mor_fono_id')->references('id')->on('antecedentes_morbidos_sino_fonos');
         });
 
         Schema::table('ficha_fonoaudiologias', function($table) {
-            $table->foreign('ant_morb_familiares_si_no_fonos_id')->references('id')->on('antecedentes_morbidos_familiares_si_no_fonos');
+            $table->foreign('antecedentes_mor_fa_fono_id')->references('id')->on('antecedentes_morbidos_familiares_si_no_fonos');
         });
 
         Schema::table('ficha_fonoaudiologias', function($table) {
-            $table->foreign('antecedentes_postnatales_fonos_id')->references('id')->on('antecedentes_postnatales_fonos');
+            $table->foreign('antecedentes_pos_fono_id')->references('id')->on('antecedentes_postnatales_fonos');
         });
 
         Schema::table('ficha_fonoaudiologias', function($table) {
-            $table->foreign('desarrollo_lenguaje_edades_id')->references('id')->on('desarrollo_lenguaje_edades');
+            $table->foreign('desarrollo_le_ed_id')->references('id')->on('desarrollo_lenguaje_edades');
+        });
+
+        Schema::table('ficha_fonoaudiologias', function($table) {
+            $table->foreign('parientes_hogar_fono_id')->references('id')->on('pariente_hogar_fonos');
         });
 
         Schema::table('ficha_fonoaudiologias', function($table) {
@@ -79,6 +84,6 @@ class CreateFichaFonoaudiologiaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ficha_fonoaudiologia');
+        Schema::dropIfExists('ficha_fonoaudiologias');
     }
 }

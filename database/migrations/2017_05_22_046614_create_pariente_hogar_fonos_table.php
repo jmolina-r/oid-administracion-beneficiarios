@@ -16,7 +16,7 @@ class CreateParienteHogarFonosTable extends Migration
         Schema::create('pariente_hogar_fonos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('observaciones',200)->nullable();
+            $table->string('observaciones_parientes',200)->nullable();
             $table->string('nombre1',200)->nullable();
             $table->string('parentesco1',200)->nullable();
             $table->string('edad1',200)->nullable();

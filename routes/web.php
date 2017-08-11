@@ -90,10 +90,7 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.postfono'
             ])->middleware('roles:admin|fonoaudiologia');
 
-            Route::post('/agregarpariente', [
-                'uses' => 'FichaFonoaudiologiaController@postAgregarPariente',
-                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.agregarpariente'
-            ])->middleware('roles:admin|fonoaudiologia');
+
 
         });
 
