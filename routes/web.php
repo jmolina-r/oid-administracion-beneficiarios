@@ -138,6 +138,19 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.show'
             ])->middleware('roles:secretaria|admin');
         });
+
+        Route::group(['prefix' => '/fichas'], function (){
+
+            Route::get('/listaFichas/{id}', [
+                'uses' => 'FichasController@listaFichas',
+                'as' => 'area-medica.ficha-evaluacion-inicial.fichas.listaFichas'
+            ]);
+
+            Route::get('/listaPrestacionesRealizadas/{id}', [
+                'uses' => 'FichasController@listaPrestacionesRealizadas',
+                'as' => 'area-medica.ficha-evaluacion-inicial.fichas.listaPrestacionesRealizadas'
+            ]);
+        });
     });
 });
 
