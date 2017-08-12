@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\ActividadesVidaDiaria;
 use App\AntecedentesSalud;
@@ -37,18 +38,10 @@ class FichaTerapiaOcupacionalController extends Controller
         //dd($request->file('genograma'));
         // Validate Fields
         $this->validate($request, $this->rules($request));
-
-
-        //Obtener el beneficiario segun el rut
-        //$beneficiario = Beneficiario::where('rut', $request->input('rut'))->get();
-
-        //obtener el terapeuta ocupacional por su sesion
-        /*
         if (Auth::check())
         {
-            $terapeuta = TerapeutaOcupacional::where('rut', Auth::user()->rut);
+            $idUsuario = Auth::user()->id;
         }
-        */
 
         try{
             $actividadesVidaDiaria = new ActividadesVidaDiaria([
@@ -105,6 +98,11 @@ class FichaTerapiaOcupacionalController extends Controller
             ]);
             $antecedentesSalud->save();
 
+            $hashName = null;
+            if($request->file('genograma') != null){
+                $request->file('genograma')->store('public/genogramas-to');
+                $hashName = $request->file('genograma')->hashName();
+            }
             $antecedentesSocioFamiliares = new AntecedentesSocioFamiliares([
                 'nombre_madre' => $request->input('nombre_madre'),
                 'edad_madre' => $request->input('edad_madre'),
@@ -116,8 +114,7 @@ class FichaTerapiaOcupacionalController extends Controller
                 'ocupacion_padre' => $request->input('ocupacion_padre'),
                 'escolaridad_padre' => $request->input('escolaridad_padre'),
                 'horario_trabajo_padre' => $request->input('horario_trabajo_padre'),
-                $request->file('genograma')->store('public/genogramas-to'),
-                'genograma' => $request->file('genograma')->hashName(),
+                'genograma' => $hashName,
             ]);
             $antecedentesSocioFamiliares->save();
 
@@ -219,7 +216,7 @@ class FichaTerapiaOcupacionalController extends Controller
                 'desarrollo_evolutivo_id' => $desarrolloEvolutivo->id,
                 'habilidades_sociales_id' => $habilidadesSociales->id,
                 'historial_clinico_id' => $historialClinico->id,
-                'user_id' => '1', //provisional
+                'user_id' => $idUsuario,
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaTerapiaOcupacional->save();
@@ -280,7 +277,6 @@ class FichaTerapiaOcupacionalController extends Controller
     private function rules(Request $request) {
         $rules = [
             'id' => 'required|exists:beneficiarios',
-            'user_id' => 'required|exists:users',
             'motivo_consulta' => 'nullable|max:200',
             'derivado_por' => 'nullable|max:200',
             'relacion_paciente' => 'nullable|max:200',
