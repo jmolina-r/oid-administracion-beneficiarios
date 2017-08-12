@@ -298,22 +298,6 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
 
 
 });
-/*
-Route::group(['prefix' => '/docs'], function(){
-
-    Route::get('/pdf', [
-        'uses' => 'PdfController@invoice',
-        'as' => 'pdf'
-    ]);
-
-});
-
-    'uses' => 'ReportabilidadController@showResults',
-    'as' => 'reportabilidad.showEstadistica'
-<<<<<<< HEAD
-    ]);
-});*/
-
 
 Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
     Route::get('/show', [

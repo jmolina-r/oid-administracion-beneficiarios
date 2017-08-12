@@ -2340,25 +2340,6 @@
         },
         {
             "name": "facebook/webdriver",
-<<<<<<< HEAD
-            "version": "1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/facebook/php-webdriver.git",
-                "reference": "1c98108ba3eb435b681655764de11502a0653705"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/1c98108ba3eb435b681655764de11502a0653705",
-                "reference": "1c98108ba3eb435b681655764de11502a0653705",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.19"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.6.*"
-=======
             "version": "1.3.0",
             "source": {
                 "type": "git",
@@ -2382,7 +2363,6 @@
                 "phpunit/phpunit": "4.6.* || ~5.0",
                 "satooshi/php-coveralls": "^1.0",
                 "squizlabs/php_codesniffer": "^2.6"
->>>>>>> developer
             },
             "suggest": {
                 "phpdocumentor/phpdocumentor": "2.*"
@@ -2405,11 +2385,7 @@
                 "selenium",
                 "webdriver"
             ],
-<<<<<<< HEAD
-            "time": "2015-12-31T15:58:49+00:00"
-=======
             "time": "2017-01-13 15:48:08"
->>>>>>> developer
         },
         {
             "name": "fzaninotto/faker",
