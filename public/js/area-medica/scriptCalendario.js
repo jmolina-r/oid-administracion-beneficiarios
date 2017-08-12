@@ -1,6 +1,3 @@
-/**
- * Created by lfgut on 22-07-2017.
- */
 (function() {
     var cal, calendarDate, d, m, y;
 

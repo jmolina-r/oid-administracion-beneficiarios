@@ -1,7 +1,3 @@
-/**
- * Created by pablofb on 22-07-17.
- */
-
 (function() {
 
     var cal, calendarDate, d, m, y;
