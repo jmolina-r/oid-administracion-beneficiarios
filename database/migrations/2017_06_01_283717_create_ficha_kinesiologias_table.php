@@ -17,6 +17,7 @@ class CreateFichaKinesiologiasTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('motivo_consulta', 200)->nullable();
+            $table->string('estado',200)->nullable();
             $table->string('situacion_laboral', 200)->nullable();
             $table->string('situacion_familiar', 200)->nullable();
             $table->string('asiste_centro_rhb', 200)->nullable();

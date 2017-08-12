@@ -207,6 +207,7 @@ class FichaTerapiaOcupacionalController extends Controller
 
             $fichaTerapiaOcupacional = new FichaTerapiaOcupacional([
                 'motivo_consulta' => $request->input('motivo_consulta'),
+                'estado'=>'abierto',
                 'derivado_por' => $request->input('derivado_por'),
                 'relacion_paciente' => $request->input('relacion_paciente'),
                 'observaciones_generales' => $request->input('observaciones_generales'),

@@ -17,6 +17,7 @@ class CreateFichaFonoaudiologiaTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('motivo_consulta')->nullable();
+            $table->string('estado',200)->nullable();
             $table->integer('habitos_si_no_id')->unsigned();
             $table->integer('antecedentes_peri_fono_id')->unsigned();
             $table->integer('antecedentes_pre_fono_id')->unsigned();

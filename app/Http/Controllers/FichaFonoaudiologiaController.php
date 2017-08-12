@@ -206,6 +206,7 @@ class FichaFonoaudiologiaController extends Controller
 
             $fichaFonoaudiologia = new FichaFonoaudiologia([
                 'motivo_consulta' => $request->input('motivo_consulta'),
+                'estado'=>'abierto',
                 'habitos_si_no_id' => $habitosSiNoFono->id,
                 'desarrollo_le_ed_id' => $desarrolloLenguajeEdades->id,
                 'antecedentes_peri_fono_id' => $antecedentesPerinatalesFono->id,
