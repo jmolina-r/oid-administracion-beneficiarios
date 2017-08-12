@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AntecedentesMorbidos;
 use App\AntecedentesMorbidosFamiliaresSiNoFono;
 use App\AntecedentesMorbidosSiNoFono;
 use App\AntecedentesPerinatalesFono;
@@ -13,6 +14,7 @@ use App\DesarrolloSocialFono;
 use App\FichaFonoaudiologia;
 use App\HabitosSiNoFono;
 use App\ParienteHogarFono;
+use App\Beneficiario;
 use Illuminate\Http\Request;
 
 class FichaFonoaudiologiaController extends Controller
@@ -29,7 +31,7 @@ class FichaFonoaudiologiaController extends Controller
             ->with(compact('id'));
     }
 
-    public function postAgregarPariente(Request $request)
+    public function postFono(Request $request)
     {
         $this->validate($request, $this->rules($request));
 
@@ -227,9 +229,50 @@ class FichaFonoaudiologiaController extends Controller
 
         }
         $id = $request->input('id');
-        return view('area-medica.ficha-evaluacion-inicial.fonoaudiologia.create')
-            ->with(compact('id'));
+        //return view('area-medica.ficha-evaluacion-inicial.fonoaudiologia.create')
+            //->with(compact('id'));
+        return view('home');
 
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $fichaFonoaudiologia = FichaFonoaudiologia::find($id);
+
+        if($fichaFonoaudiologia == null){
+            return view('home');
+        }
+
+        $persona = Beneficiario::find($fichaFonoaudiologia->beneficiario_id);
+
+        $habitosSiNoFono = HabitosSiNoFono::find($fichaFonoaudiologia->habitos_si_no_id);
+        $desarrolloLenguajeEdades = DesarrolloLenguajeEdades::find($fichaFonoaudiologia->desarrollo_le_ed_id);
+        $antecedentesPerinatalesFono = AntecedentesPerinatalesFono::find($fichaFonoaudiologia->antecedentes_peri_fono_id);
+        $antecedentesPrenatalesFono = AntecedentesPrenatalesFono::find($fichaFonoaudiologia->antecedentes_pre_fono_id);
+        $desarrolloPsicomotorEdades = ValEvaluacion::find($fichaFonoaudiologia->desarrollo_psi_ed_id);
+        $antecedentesMorbidosSiNoFono = AntecedentesMorbidos::find($fichaFonoaudiologia->antecedentes_mor_fono_id);
+        $antecedentesMorbidosFamiliaresSiNoFono = AntecedentesMorbidosFamiliaresSiNoFono::find($fichaFonoaudiologia->antecedentes_mor_fa_fono_id);
+        $parienteHogarFono = ParienteHogarFono::find($fichaFonoaudiologia->parientes_hogar_fono_id);
+        $antecedentesPostnatalesFono = AntecedentesPostnatalesFono::find($fichaFonoaudiologia->antecedentes_pos_fono_id);
+
+        return view('area-medica.ficha-evaluacion-inicial.fonoaudiologia.show', compact('fichaFonoaudiologia'))
+            ->with(compact('persona'))
+            ->with(compact('habitosSiNoFono'))
+            ->with(compact('desarrolloLenguajeEdades'))
+            ->with(compact('antecedentesPerinatalesFono'))
+            ->with(compact('antecedentesPrenatalesFono'))
+            ->with(compact('desarrolloPsicomotorEdades'))
+            ->with(compact('antecedentesMorbidosSiNoFono'))
+            ->with(compact('antecedentesMorbidosFamiliaresSiNoFono'))
+            ->with(compact('parienteHogarFono'))
+            ->with(compact('antecedentesPostnatalesFono'))
+            ;
     }
 
     private function rules(Request $request) {

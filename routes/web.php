@@ -85,9 +85,9 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.create'
             ])->middleware('roles:admin|fonoaudiologia');
 
-            Route::post('/postfono', [
+            Route::post('/postFono', [
                 'uses' => 'FichaFonoaudiologiaController@postFono',
-                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.postfono'
+                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.postFono'
             ])->middleware('roles:admin|fonoaudiologia');
 
 

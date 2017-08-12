@@ -61,7 +61,6 @@
     <!-- / START - Handler agregar parientes-->
     <script src="{{ asset("/js/area-medica/AgregarPariente.js") }}" type="text/javascript"></script>
     <script src="{{ asset("/js/area-medica/InputsFonoaudiologia.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("/js/area-medica/postFichaFono.js") }}" type="text/javascript"></script>
 @endsection
 
 @section("content")
@@ -148,7 +147,7 @@
                                                     </div>
                                                 @endif
                                                 <hr class='hr-normal'>
-                                                <form id="formulario_registro" class="form" action="" accept-charset="UTF-8" style="margin-bottom: 0;">
+                                                <form role="form" id="formulario_registro"  action="{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.create')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
                                                     <div class='step-content'>
                                                         <!-- STEP 1 -->
                                                         <div class='step-pane active' data-step='1'>
@@ -157,55 +156,54 @@
                                                                 <h3>Antecedentes familiares (¿Con quién vive?)</h3>
                                                                 <hr/>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
-                                                                <label class="col-md-4 control-label" for="nombre">Nombre</label>
-                                                                <div class="col-md-8 controls">
-                                                                    <input class="form-control" id="nombre" name="nombre" value="{{ old('nombre') }}"  placeholder="Nombre" type="text">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-12 form-group">
-                                                                <label class="col-md-4 control-label" for="parentesco">Parentesco</label>
-                                                                <div class="col-md-8 controls">
-                                                                    <input class="form-control" id="parentesco" name="parentesco" value="{{ old('parentesco') }}"  placeholder="Parentesco" type="text">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-12 form-group">
-                                                                <label class="col-md-4 control-label" for="edad">Edad</label>
-                                                                <div class="col-md-8 controls">
-                                                                    <input class="form-control" id="edad" name="edad" value="{{ old('edad') }}"  placeholder="Edad" type="text">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-12 form-group">
-                                                                <label class="col-md-4 control-label" for="escolaridad">Escolaridad</label>
-                                                                <div class="col-md-8 controls">
-                                                                    <input class="form-control" id="escolaridad" name="escolaridad" value="{{ old('escolaridad') }}"  placeholder="Escolaridad" type="text">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-12 form-group">
-                                                                <label class="col-md-4 control-label" for="ocupacion">Ocupación</label>
-                                                                <div class="col-md-8 controls">
-                                                                    <input class="form-control" id="ocupacion" name="ocupacion" value="{{ old('ocupacion') }}"  placeholder="Ocupación" type="text">
-                                                                </div>
-                                                            </div>
                                                             <div class="col-md-12">
-                                                                <button id="boton-agregar-pariente" type="button" class="btn btn-primary enabled pull-right">
-                                                                    Agregar
-                                                                </button>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <table class="table table-striped" id="tabla-parientes">
-                                                                    <thead>
-                                                                    <tr>
-                                                                        <th>Nombre</th>
-                                                                        <th>Parentesco</th>
-                                                                        <th>Edad</th>
-                                                                        <th>Escolaridad</th>
-                                                                        <th>Ocupación</th>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    </tbody>
-                                                                </table>
+                                                                <div class="col-md-3 col-md-offset-3">
+                                                                    <h4>Nombre</h4>
+                                                                </div>
+                                                                <div class="col-md-6 ">
+                                                                    <h4>Parentesco</h4>
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <h4>Edad</h4>
+                                                                </div>
+                                                                <div class="col-md-12 col-md-offset-3">
+                                                                    <h4>Escolaridad</h4>
+                                                                </div>
+                                                                <div class="col-md-15 col-md-offset-3">
+                                                                    <h4>Ocupación</h4>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-3 controls">
+                                                                        <input class="form-control" id="nombre1" name="nombre1" value="{{ old('nombre1') }}"  placeholder="Nombre" type="text">                                                                    </div>
+                                                                    <div class="col-md-6 controls">
+                                                                        <input class="form-control" id="parentesco1" name="parentesco2" value="{{ old('parentesco1') }}"  placeholder="Parentesco" type="text">
+                                                                    </div>
+                                                                    <div class="col-md-9 controls">
+                                                                        <input class="form-control" id="edad1" name="edad1" value="{{ old('edad1') }}"  placeholder="Edad" type="text">
+                                                                    </div>
+                                                                    <div class="col-md-12 controls">
+                                                                        <input class="form-control" id="escolaridad1" name="escolarida1" value="{{ old('escolaridad1') }}"  placeholder="Escolaridad" type="text">
+                                                                    </div>
+                                                                    <div class="col-md-15 controls">
+                                                                        <input class="form-control" id="ocupacion1" name="ocupacion1" value="{{ old('ocupacion1') }}"  placeholder="Ocupación" type="text">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-3 controls">
+                                                                        <input class="form-control" id="nombre2" name="nombre2" value="{{ old('nombre2') }}"  placeholder="Nombre" type="text">                                                                    </div>
+                                                                    <div class="col-md-6 controls">
+                                                                        <input class="form-control" id="parentesco2" name="parentesco2" value="{{ old('parentesco2') }}"  placeholder="Parentesco" type="text">
+                                                                    </div>
+                                                                    <div class="col-md-9 controls">
+                                                                        <input class="form-control" id="edad2" name="edad2" value="{{ old('edad2') }}"  placeholder="Edad" type="text">
+                                                                    </div>
+                                                                    <div class="col-md-12 controls">
+                                                                        <input class="form-control" id="escolaridad2" name="escolarida2" value="{{ old('escolaridad2') }}"  placeholder="Escolaridad" type="text">
+                                                                    </div>
+                                                                    <div class="col-md-15 controls">
+                                                                        <input class="form-control" id="ocupacion2" name="ocupacion2" value="{{ old('ocupacion2') }}"  placeholder="Ocupación" type="text">
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <!-- STEP 2 -->
@@ -915,6 +913,36 @@
                     </div>
                 </div>
                 @include('partials.footer')
+                <div class="modal-custom">
+                    <div class='modal fade' id='confirmation' tabindex='-1'>
+                        <div class='modal-dialog'>
+                            <div class='modal-content'>
+                                <div class='modal-header'>
+                                    <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                                    <h3 class='modal-title' id='myModalLabel'>Confirmación</h3>
+                                </div>
+                                <div class='modal-body'>
+                                    <h5>Ya ha completado la ficha de evaluación inicial de Fonoaudiología. Favor de verificar que los datos que ingresó son los correctos. <br>
+                                        Para guardar pulse el botón Registrar. Si desea realizar un cambio, pulse el botón Volver.</h5>
+                                    <hr>
+                                </div>
+                                <div class='modal-footer'>
+                                    <button class='btn btn-default' data-dismiss='modal' type='button'>Volver</button>
+                                    <button class='btn btn-success' type='button' onclick="enviarFormulario()">Registrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    /**
+                     * Envia el formulario cuando ya fueron revisados todos los datos
+                     */
+                    function enviarFormulario(){
+
+                        $('#formulario_registro').submit();
+                    }
+                </script>
             </div>
         </section>
     </div>
