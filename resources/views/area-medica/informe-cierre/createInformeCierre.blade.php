@@ -137,7 +137,7 @@
                                                     <div class="col-md-12 form-group">
                                                         <label class="col-md-4 control-label" for="fecha_inicio">Fecha de inicio</label>
                                                         <div class="col-md-8 controls">
-                                                            <input id="fecha_inicio" value-date="" name="fecha_inicio" class="form-control" data-format="DD/MM/YYYY" placeholder="Fecha de inicio" type="date" required>
+                                                            <input id="fecha_inicio" value-date="" name="fecha_inicio" class="form-control" data-format="DD/MM/YYYY" placeholder="Fecha de inicio" type="date" min="2014-01-01" max="2017-08-10" required>
                                                             <span class="input-group-addon">
                                                                 <span class="fa fa-calendar"></span>
                                                             </span>
@@ -148,7 +148,7 @@
                                                     <div class="col-md-12 form-group">
                                                         <label class="col-md-4 control-label" for='fecha_termino'>Fecha de termino</label>
                                                         <div class="col-md-8 controls">
-                                                            <input id='fecha_termino' value-date='' name='fecha_termino' class='form-control' data-format='DD/MM/YYYY' placeholder='Fecha de termino' type="date" required>
+                                                            <input id='fecha_termino' value-date='' name='fecha_termino' class='form-control' data-format='DD/MM/YYYY' placeholder='Fecha de termino' type="date" min="2014-01-01" max="2017-08-10" required>
                                                             <span class='input-group-addon'>
                                                                 <span class='fa fa-calendar'></span>
                                                             </span>
