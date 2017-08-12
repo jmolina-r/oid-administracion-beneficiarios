@@ -60,10 +60,10 @@ class FichasController extends Controller
      * @param $id
      * @return Response
      */
-    public function listaPrestacionesRealizadas($idUser, $idBeneficiario)
+    public function listaPrestacionesRealizadas($idUser, $idBeneficiario, $idFicha)
     {
         $prestacionesRealizadas = PrestacionRealizada::where('user_id', $idUser)->where('beneficiario_id', $idBeneficiario)->orderBy('fecha', $direction = 'des')->get();
 
-        return view('malla.listaPrestaciones', compact('prestaciones'));
+        return view('malla.listaPrestaciones', compact('$prestacionesRealizadas'));
     }
 }
