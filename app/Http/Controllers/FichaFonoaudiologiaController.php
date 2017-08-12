@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\AntecedentesMorbidos;
 use App\AntecedentesMorbidosFamiliaresSiNoFono;
 use App\AntecedentesMorbidosSiNoFono;
@@ -33,7 +33,14 @@ class FichaFonoaudiologiaController extends Controller
 
     public function postFono(Request $request)
     {
+
+        //dd($request->all());
         $this->validate($request, $this->rules($request));
+
+        if (Auth::check())
+        {
+            $idUsuario = Auth::user()->id;
+        }
 
         try{
             $habitosSiNoFono = new HabitosSiNoFono([
@@ -58,7 +65,7 @@ class FichaFonoaudiologiaController extends Controller
                 'mira_ojos' => $request->input('mira_ojos'),
                 'mira_labios' => $request->input('mira_labios'),
                 'comunica_palabras' => $request->input('comunica_palabras'),
-                'comunica_jerga' => $request->input('comunica_jerga'),
+                'comunica_jergas' => $request->input('comunica_jergas'),
                 'comunica_palabras_sueltas' => $request->input('comunica_palabras_sueltas'),
                 'comunica_gestos' => $request->input('comunica_gestos'),
                 'entiende_dice' => $request->input('entiende_dice'),
@@ -146,9 +153,9 @@ class FichaFonoaudiologiaController extends Controller
             $antecedentesMorbidosSiNoFono->save();
 
             $antecedentesMorbidosFamiliaresSiNoFono = new AntecedentesMorbidosFamiliaresSiNoFono([
-                'diabetes_sn' => $request->input('diabetes_sn'),
+                'diabetes_sn_mor_fa' => $request->input('diabetes_sn'),
                 'hipertension_sn' => $request->input('hipertension_sn'),
-                'epilepsia_sn' => $request->input('epilepsia_sn'),
+                'epilepsia_sn_mor_fa' => $request->input('epilepsia_sn'),
                 'deficiencia_mental_sn' => $request->input('deficiencia_mental_sn'),
                 'autismo_sn' => $request->input('autismo_sn'),
                 'trast_lenguaje_sn' => $request->input('trast_lenguaje_sn'),
@@ -213,12 +220,13 @@ class FichaFonoaudiologiaController extends Controller
                 'desarrollo_le_ed_id' => $desarrolloLenguajeEdades->id,
                 'antecedentes_peri_fono_id' => $antecedentesPerinatalesFono->id,
                 'antecedentes_pre_fono_id' => $antecedentesPrenatalesFono->id,
+                'desarrollo_social_fono_id' => $desarrolloSocialFono->id,
                 'desarrollo_psi_ed_id' => $desarrolloPsicomotorEdades->id,
                 'antecedentes_mor_fono_id' => $antecedentesMorbidosSiNoFono->id,
                 'antecedentes_mor_fa_fono_id' => $antecedentesMorbidosFamiliaresSiNoFono->id,
                 'parientes_hogar_fono_id' => $parienteHogarFono->id,
                 'antecedentes_pos_fono_id' => $antecedentesPostnatalesFono->id,
-                'user_id' => '1', //provisional
+                'user_id' => $idUsuario,
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaFonoaudiologia->save();
@@ -233,6 +241,16 @@ class FichaFonoaudiologiaController extends Controller
             //->with(compact('id'));
         return view('home');
 
+    }
+
+    /**
+     * Show the form for finding a resourse
+     *
+     * @return Response
+     */
+    public function find()
+    {
+        //
     }
 
     /**
@@ -256,6 +274,7 @@ class FichaFonoaudiologiaController extends Controller
         $antecedentesPerinatalesFono = AntecedentesPerinatalesFono::find($fichaFonoaudiologia->antecedentes_peri_fono_id);
         $antecedentesPrenatalesFono = AntecedentesPrenatalesFono::find($fichaFonoaudiologia->antecedentes_pre_fono_id);
         $desarrolloPsicomotorEdades = ValEvaluacion::find($fichaFonoaudiologia->desarrollo_psi_ed_id);
+        $desarrolloSocialFono = DesarrolloSocialFono::find($fichaFonoaudiologia->desarrollo_social_fono_id);
         $antecedentesMorbidosSiNoFono = AntecedentesMorbidos::find($fichaFonoaudiologia->antecedentes_mor_fono_id);
         $antecedentesMorbidosFamiliaresSiNoFono = AntecedentesMorbidosFamiliaresSiNoFono::find($fichaFonoaudiologia->antecedentes_mor_fa_fono_id);
         $parienteHogarFono = ParienteHogarFono::find($fichaFonoaudiologia->parientes_hogar_fono_id);
@@ -359,9 +378,9 @@ class FichaFonoaudiologiaController extends Controller
             'paralisis_cerebral_sn' => 'nullable|max:200',
             'paralisis_cerebral_desc' => 'nullable|max:200',
             'otros_morbidos' => 'nullable|max:200',
-            'diabetes_sn' => 'nullable|max:200',
+            'diabetes_sn_mor_fa' => 'nullable|max:200',
             'hipertension_sn' => 'nullable|max:200',
-            'epilepsia_sn' => 'nullable|max:200',
+            'epilepsia_sn_mor_fa' => 'nullable|max:200',
             'deficiencia_mental_sn' => 'nullable|max:200',
             'autismo_sn' => 'nullable|max:200',
             'trast_lenguaje_sn' => 'nullable|max:200',

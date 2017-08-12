@@ -24,7 +24,7 @@ class CreateAntecedentesPrenatalesFonoTable extends Migration
             $table->string('consumo_cigarrillo',200)->nullable();
             $table->string('estado_emocional',200)->nullable();
             $table->string('enfermedades_embarazo',200)->nullable();
-            $table->string('otros',200)->nullable();
+            $table->string('otros_prenatales',200)->nullable();
         });
     }
 

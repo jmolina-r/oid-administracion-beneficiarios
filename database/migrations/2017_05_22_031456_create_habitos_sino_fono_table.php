@@ -13,7 +13,7 @@ class CreateHabitosSinoFonoTable extends Migration
      */
     public function up()
     {
-        Schema::create('habitos_sino_fonos', function (Blueprint $table) {
+        Schema::create('habitos_si_no_fonos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->string('mamadera',200)->nullable();
@@ -33,6 +33,6 @@ class CreateHabitosSinoFonoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('habitos_sino_fonos');
+        Schema::dropIfExists('habitos_si_no_fonos');
     }
 }

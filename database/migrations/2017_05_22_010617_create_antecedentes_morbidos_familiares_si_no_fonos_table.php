@@ -16,9 +16,9 @@ class CreateAntecedentesMorbidosFamiliaresSiNoFonosTable extends Migration
         Schema::create('antecedentes_morbidos_familiares_si_no_fonos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('diabetes_sn',200)->nullable();
+            $table->string('diabetes_sn_mor_fa',200)->nullable();
             $table->string('hipertension_sn',200)->nullable();
-            $table->string('epilepsia_sn',200)->nullable();
+            $table->string('epilepsia_sn_mor_fa',200)->nullable();
             $table->string('deficiencia_mental_sn',200)->nullable();
             $table->string('autismo_sn',200)->nullable();
             $table->string('trast_lenguaje_sn',200)->nullable();

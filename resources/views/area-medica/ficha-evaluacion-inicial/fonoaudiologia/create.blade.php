@@ -54,13 +54,13 @@
     <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
     <script src="{{ asset("/assets/javascripts/plugins/validate/additional-methods.js") }}" type="text/javascript"></script>
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/area-medica/IngresoFormulario.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/area-medica/FormularioFonoaudiologia.js') }}" type="text/javascript"></script>
 
     <!-- / END - validaciones-->
 
-    <!-- / START - Handler agregar parientes-->
-    <script src="{{ asset("/js/area-medica/AgregarPariente.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("/js/area-medica/InputsFonoaudiologia.js") }}" type="text/javascript"></script>
+    <!-- / START - Handler step2 y 3-->
+    <script src="{{ asset("/js/area-medica/postFichaFono.js") }}" type="text/javascript"></script>
+
 @endsection
 
 @section("content")
@@ -367,35 +367,7 @@
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-4 control-label" for="enfermedades_embarazo">Enfermedades importantes durante el embarazo</label>
                                                                 <div class="col-md-8 controls">
-                                                                    <div>
-                                                                        <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="" id="check_rubeola">Rubeola
-                                                                        </label>
-                                                                        <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="" id="check_diabetes">Diabetes
-                                                                        </label>
-                                                                        <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="" id="check_renal">Enf. Renal
-                                                                        </label>
-                                                                        <label class="checkbox-inline col-md-3">
-                                                                            <input type="checkbox" value="" id="check_hiper">Hipertensión
-                                                                        </label>
-                                                                    </div>
-                                                                    <br/>
-                                                                    <div>
-                                                                        <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="" id="check_nutri">Nutricionales
-                                                                        </label>
-                                                                        <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="" id="check_trauma">Traumatismos
-                                                                        </label>
-                                                                        <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="" id="check_vene">Venéreas
-                                                                        </label>
-                                                                        <label class="checkbox-inline">
-                                                                            <input type="checkbox" value="" id="check_infecciones">Infecciosas
-                                                                        </label>
-                                                                    </div>
+                                                                    <input class="form-control" id="enfermedades_embarazo" name="enfermedades_embarazo" value="{{ old('enfermedades_embarazo') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group col-md-6">
@@ -454,17 +426,7 @@
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-4 control-label" for="comp_parto">Complicaciones durante el parto</label>
                                                                 <div class="col-md-8 controls">
-                                                                    <div>
-                                                                        <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="" id="check_asfixia">Asfixia perinatal
-                                                                        </label>
-                                                                        <label class="checkbox-inline col-md-3">
-                                                                            <input type="checkbox" value="" id="check_neumo">Neumonía por infecciones
-                                                                        </label>
-                                                                        <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="" id="check_trauma_peri">Traumatismos
-                                                                        </label>
-                                                                    </div>
+                                                                    <input class="form-control" id="comp_parto" name="comp_parto" value="{{ old('comp_parto') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
@@ -495,8 +457,11 @@
                                                                 <div class="col-md-9">
                                                                     <input class="form-control" id="tipo_alimenta" name="tipo_alimenta" value="{{ old('tipo_alimenta') }}"  placeholder="">
                                                                 </div>
-                                                                <div class="col-md-6" name="edad_lactancia">
-                                                                    <input class="form-control" placeholder="¿Hasta qué edad duró la lactancia?" id="limite_edad_alimenta" >
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3 control-label" for="edad_lactancia">¿Hasta qué edad duró la lactancia?</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control" id="edad_lactancia" name="edad_lactancia" value="{{ old('edad_lactancia') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
@@ -524,43 +489,43 @@
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-3" for="control_cabeza">Control cabeza</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="control_cabeza" name="control_cabeza" value="{{ old('control_cabeza') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-3" for="sento">Se sentó</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="sento" name="sento" value="{{ old('sento') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-3" for="gateo">Gateó</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="gateo" name="gateo" value="{{ old('gateo') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-3" for="paro">Se paró</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="paro" name="paro" value="{{ old('paro') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-3" for="camino">Caminó</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="camino" name="camino" value="{{ old('camino') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-3" for="control_esf_diurno">Control esfínter diurno</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="control_esf_diurno" name="control_esf_diurno" value="{{ old('control_esf_diurno') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-3" for="control_esf_nocturno">Control esfínter nocturno</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="control_esf_nocturno" name="control_esf_nocturno" value="{{ old('control_esf_nocturno') }}"  placeholder="">
                                                                 </div>
                                                             </div>
@@ -573,92 +538,92 @@
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-3" for="balbuceo">Balbuceó</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="balbuceo" name="balbuceo" value="{{ old('balbuceo') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-3" for="sonrio">Sonrió</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="sonrio" name="sonrio" value="{{ old('sonrio') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-3" for="primeras_palabras">Dijo sus primeras palabras</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="primeras_palabras" name="primeras_palabras" value="{{ old('primeras_palabras') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-3" for="frases_dos_palabras">Dijo frases de 2 palabras</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="frases_dos_palabras" name="frases_dos_palabras" value="{{ old('frases_dos_palabras') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-3" for="oraciones">Dijo oraciones</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="oraciones" name="oraciones" value="{{ old('oraciones') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-3" for="hablo_espo">Habló espontáneamente</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="hablo_espo" name="hablo_espo" value="{{ old('hablo_espo') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-3" for="siguio_inst">Siguió instrucciones</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="siguio_inst" name="siguio_inst" value="{{ old('siguio_inst') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <br/>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-3" for="mira_ojos">¿El niño (a) mira a los ojos cuando usted lo habla?</label>
-                                                                <div class="col-md-2">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="mira_ojos" name="mira_ojos" value="{{ old('mira_ojos') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-3" for="mira_labios">¿El niño (a) mira a los labios cuando habla?</label>
-                                                                <div class="col-md-2">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="mira_labios" name="mira_labios" value="{{ old('mira_labios') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group" for="comunica_palabras">
                                                                 <label class="col-md-3">¿Intenta comunicarse con palabras?</label>
-                                                                <div class="col-md-2">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="comunica_palabras" name="comunica_palabras" value="{{ old('comunica_palabras') }}"  placeholder="">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12 form-group" for="comunica_jerga">
+                                                            <div class="col-md-12 form-group" for="comunica_jergas">
                                                                 <label class="col-md-3">¿Se comunica con jerga?</label>
-                                                                <div class="col-md-2">
-                                                                    <input class="form-control" id="comunica_jerga" name="comunica_jerga" value="{{ old('comunica_jerga') }}"  placeholder="">
+                                                                <div class="col-md-3">
+                                                                    <input class="form-control" id="comunica_jergas" name="comunica_jergas" value="{{ old('comunica_jergas') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group" for="comunica_palabras_sueltas">
                                                                 <label class="col-md-3">¿Se comunica con palabras sueltas?</label>
-                                                                <div class="col-md-2">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="comunica_palabras_sueltas" name="comunica_palabras_sueltas" value="{{ old('comunica_palabras_sueltas') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group" for="comunica_gestos">
                                                                 <label class="col-md-3">¿Se comunica a través de gestos?</label>
-                                                                <div class="col-md-2">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="comunica_gestos" name="comunica_gestos" value="{{ old('comunica_gestos') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group" for="entiende_dice">
                                                                 <label class="col-md-3">¿Usted entiende lo que dice?</label>
-                                                                <div class="col-md-2">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="entiende_dice" name="entiende_dice" value="{{ old('entiende_dice') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group" for="desconocidos_entienden">
                                                                 <label class="col-md-3">¿Las personas que no lo conocen entienden lo que dice?</label>
-                                                                <div class="col-md-2">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="desconocidos_entienden" name="desconocidos_entienden" value="{{ old('desconocidos_entienden') }}"  placeholder="">
                                                                 </div>
                                                             </div>
@@ -671,63 +636,61 @@
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-3" for="respeta_normas">Respeta normas</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="respeta_normas" name="respeta_normas" value="{{ old('respeta_normas') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group"for="comparte_juguetes">
                                                                 <label class="col-md-3">Comparte juguetes</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="comparte_juguetes" name="comparte_juguetes" value="{{ old('comparte_juguetes') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group"for="juega_otros">
                                                                 <label class="col-md-3">Juega con otros niños</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="juega_otros" name="juega_otros" value="{{ old('juega_otros') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group"for="carinoso">
                                                                 <label class="col-md-3">Cariñoso</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="carinoso" name="carinoso" value="{{ old('carinoso') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group"for="berrinches">
                                                                 <label class="col-md-3">Hace berrinches</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="berrinches" name="berrinches" value="{{ old('berrinches') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group"for="frustra_facil">
                                                                 <label class="col-md-3">Se frustra con facilidad</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="frustra_facil" name="frustra_facil" value="{{ old('frustra_facil') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group"for="irritable">
                                                                 <label class="col-md-3">Irritable</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="irritable" name="irritable" value="{{ old('irritable') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group"for="agresivo">
                                                                 <label class="col-md-3">Agresivo</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="agresivo" name="agresivo" value="{{ old('agresivo') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group"for="peleador">
                                                                 <label class="col-md-3">Peleador</label>
-                                                                <div class="col-md-1">
+                                                                <div class="col-md-3">
                                                                     <input class="form-control" id="peleador" name="peleador" value="{{ old('peleador') }}"  placeholder="">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
-                                                                <label class="col-md-3" for="intereses">Intereses</label>
-                                                                <div class="col-md-5">
-                                                                    <input class="form-control" id="intereses" name="intereses" value="{{ old('intereses') }}"  placeholder="">
-                                                                </div>
+                                                            <div class="col-md-4 form-group">
+                                                                <label class="col-md-3" for="intereses">Intereses:</label>
+                                                                <textarea class="form-control" rows="3" id="intereses"></textarea>
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <label for="observaciones_social">Observaciones:</label>

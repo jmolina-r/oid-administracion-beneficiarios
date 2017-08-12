@@ -33,7 +33,7 @@ class CreateFichaFonoaudiologiaTable extends Migration
 
 
         Schema::table('ficha_fonoaudiologias', function($table) {
-            $table->foreign('habitos_si_no_id')->references('id')->on('habitos_sino_fonos');
+            $table->foreign('habitos_si_no_id')->references('id')->on('habitos_si_no_fonos');
         });
 
         Schema::table('ficha_fonoaudiologias', function($table) {
@@ -53,7 +53,7 @@ class CreateFichaFonoaudiologiaTable extends Migration
         });
 
         Schema::table('ficha_fonoaudiologias', function($table) {
-            $table->foreign('antecedentes_mor_fono_id')->references('id')->on('antecedentes_morbidos_sino_fonos');
+            $table->foreign('antecedentes_mor_fono_id')->references('id')->on('antecedentes_morbidos_si_no_fonos');
         });
 
         Schema::table('ficha_fonoaudiologias', function($table) {

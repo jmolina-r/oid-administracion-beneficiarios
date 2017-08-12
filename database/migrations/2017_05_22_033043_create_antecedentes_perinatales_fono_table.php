@@ -25,7 +25,7 @@ class CreateAntecedentesPerinatalesFonoTable extends Migration
             $table->string('apgar',200)->nullable();
             $table->string('comp_parto',200)->nullable();
             $table->string('hospitalizaciones',200)->nullable();
-            $table->string('otros',200)->nullable();
+            $table->string('otros_perinatales',200)->nullable();
         });
     }
 

@@ -13,7 +13,7 @@ class CreateAntecedentesMorbidosSinoFonoTable extends Migration
      */
     public function up()
     {
-        Schema::create('antecedentes_morbidos_sino_fonos', function (Blueprint $table) {
+        Schema::create('antecedentes_morbidos_si_no_fonos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->string('alergias_sn',200)->nullable();
@@ -47,6 +47,6 @@ class CreateAntecedentesMorbidosSinoFonoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('antecedentes_morbidos_sino_fonos');
+        Schema::dropIfExists('antecedentes_morbidos_si_no_fonos');
     }
 }
