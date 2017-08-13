@@ -86,8 +86,10 @@ class MallaController extends Controller
     {
         $id = Auth::user()->id;
 
+        $usuarios = null;
+
         if(Auth::user()->hasAnyRole(['admin', 'secretaria'])){
-            //get usuarios 
+            $usuarios = User::all();
         }
 
         $contentHeight = 286;
@@ -97,6 +99,7 @@ class MallaController extends Controller
         $slotLabelInterval = 1;
 
         return view('malla.show')
+            ->with(compact('usuarios'))
             ->with(compact('id'))
             ->with(compact('contentHeight'))
             ->with(compact('minTime'))

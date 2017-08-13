@@ -89,16 +89,20 @@
         <section id="content">
             <div class="container">
                 <div class="row" id="content-wrapper">
-                    @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
-                        <input id="id" name="id"  value="{{$id}}">
-                    @else
-                        <input id="id" name="id" type="hidden" value="{{$id}}">
-                    @endif
                     <input id="contentHeight" name="contentHeight" type="hidden" value="{{$contentHeight}}">
                     <input id="minTime" name="minTime" type="hidden" value="{{$minTime}}">
                     <input id="maxTime" name="maxTime" type="hidden" value="{{$maxTime}}">
                     <input id="slotDuration" name="slotDuration" type="hidden" value="{{$slotDuration}}">
                     <input id="slotLabelInterval" name="slotLabelInterval" type="hidden" value="{{$slotLabelInterval}}">
+
+                    @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
+                        <div class="col-xs-12">
+                            
+                        </div>
+                        <input id="id" name="id"  value="{{$id}}">
+                    @else
+                        <input id="id" name="id" type="hidden" value="{{$id}}">
+                    @endif
 
                     <div class='col-xs-12'>
                         <div class='group-header'>
