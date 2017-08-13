@@ -153,75 +153,185 @@
                                                         <div class='step-pane active' data-step='1'>
                                                             <input id="id" name="id" type="hidden" value="{{$id}}">
                                                             <div class="col-md-12">
-                                                                <h3>Antecedentes familiares (¿Con quién vive?)</h3>
+                                                                <h3>Antecedentes Familiares (¿Con quién vive?)</h3>
                                                                 <hr/>
                                                             </div>
                                                             <div class="col-md-12">
-                                                                <div class="col-md-3 col-md-offset-3">
+                                                                <div class="col-md-2 ">
                                                                     <h4>Nombre</h4>
                                                                 </div>
-                                                                <div class="col-md-6 ">
+                                                                <div class="col-md-2 ">
                                                                     <h4>Parentesco</h4>
                                                                 </div>
-                                                                <div class="col-md-9">
+                                                                <div class="col-md-2">
                                                                     <h4>Edad</h4>
                                                                 </div>
-                                                                <div class="col-md-12 col-md-offset-3">
+                                                                <div class="col-md-2">
                                                                     <h4>Escolaridad</h4>
                                                                 </div>
-                                                                <div class="col-md-15 col-md-offset-3">
+                                                                <div class="col-md-2">
                                                                     <h4>Ocupación</h4>
                                                                 </div>
                                                                 <div class="col-md-12">
-                                                                    <div class="col-md-3 controls">
-                                                                        <input class="form-control" id="nombre1" name="nombre1" value="{{ old('nombre1') }}"  placeholder="Nombre" type="text">                                                                    </div>
-                                                                    <div class="col-md-6 controls">
-                                                                        <input class="form-control" id="parentesco1" name="parentesco2" value="{{ old('parentesco1') }}"  placeholder="Parentesco" type="text">
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="nombre1" name="nombre1" value="{{ old('nombre1') }}"  placeholder="Nombre" type="text">
                                                                     </div>
-                                                                    <div class="col-md-9 controls">
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="parentesco1" name="parentesco1" value="{{ old('parentesco1') }}"  placeholder="Parentesco" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
                                                                         <input class="form-control" id="edad1" name="edad1" value="{{ old('edad1') }}"  placeholder="Edad" type="text">
                                                                     </div>
-                                                                    <div class="col-md-12 controls">
-                                                                        <input class="form-control" id="escolaridad1" name="escolarida1" value="{{ old('escolaridad1') }}"  placeholder="Escolaridad" type="text">
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="escolaridad1" name="escolaridad1" value="{{ old('escolaridad1') }}"  placeholder="Escolaridad" type="text">
                                                                     </div>
-                                                                    <div class="col-md-15 controls">
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
                                                                         <input class="form-control" id="ocupacion1" name="ocupacion1" value="{{ old('ocupacion1') }}"  placeholder="Ocupación" type="text">
                                                                     </div>
+                                                                    <div class="help-block with-errors"></div>
                                                                 </div>
                                                                 <div class="col-md-12">
-                                                                    <div class="col-md-3 controls">
-                                                                        <input class="form-control" id="nombre2" name="nombre2" value="{{ old('nombre2') }}"  placeholder="Nombre" type="text">                                                                    </div>
-                                                                    <div class="col-md-6 controls">
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="nombre2" name="nombre2" value="{{ old('nombre2') }}"  placeholder="Nombre" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
                                                                         <input class="form-control" id="parentesco2" name="parentesco2" value="{{ old('parentesco2') }}"  placeholder="Parentesco" type="text">
                                                                     </div>
-                                                                    <div class="col-md-9 controls">
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
                                                                         <input class="form-control" id="edad2" name="edad2" value="{{ old('edad2') }}"  placeholder="Edad" type="text">
                                                                     </div>
-                                                                    <div class="col-md-12 controls">
-                                                                        <input class="form-control" id="escolaridad2" name="escolarida2" value="{{ old('escolaridad2') }}"  placeholder="Escolaridad" type="text">
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="escolaridad2" name="escolaridad2" value="{{ old('escolaridad2') }}"  placeholder="Escolaridad" type="text">
                                                                     </div>
-                                                                    <div class="col-md-15 controls">
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
                                                                         <input class="form-control" id="ocupacion2" name="ocupacion2" value="{{ old('ocupacion2') }}"  placeholder="Ocupación" type="text">
                                                                     </div>
+                                                                    <div class="help-block with-errors"></div>
                                                                 </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="nombre3" name="nombre3" value="{{ old('nombre3') }}"  placeholder="Nombre" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="parentesco3" name="parentesco3" value="{{ old('parentesco3') }}"  placeholder="Parentesco" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="edad3" name="edad3" value="{{ old('edad3') }}"  placeholder="Edad" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="escolaridad3" name="escolaridad3" value="{{ old('escolaridad3') }}"  placeholder="Escolaridad" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="ocupacion3" name="ocupacion3" value="{{ old('ocupacion3') }}"  placeholder="Ocupación" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="nombre4" name="nombre4" value="{{ old('nombre4') }}"  placeholder="Nombre" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="parentesco4" name="parentesco4" value="{{ old('parentesco4') }}"  placeholder="Parentesco" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="edad4" name="edad4" value="{{ old('edad4') }}"  placeholder="Edad" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="escolaridad4" name="escolaridad4" value="{{ old('escolaridad4') }}"  placeholder="Escolaridad" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="ocupacion4" name="ocupacion4" value="{{ old('ocupacion4') }}"  placeholder="Ocupación" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="nombre5" name="nombre5" value="{{ old('nombre5') }}"  placeholder="Nombre" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="parentesco5" name="parentesco5" value="{{ old('parentesco5') }}"  placeholder="Parentesco" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="edad5" name="edad5" value="{{ old('edad5') }}"  placeholder="Edad" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="escolaridad5" name="escolaridad5" value="{{ old('escolaridad5') }}"  placeholder="Escolaridad" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="ocupacion5" name="ocupacion5" value="{{ old('ocupacion5') }}"  placeholder="Ocupación" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="nombre6" name="nombre6" value="{{ old('nombre6') }}"  placeholder="Nombre" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="parentesco6" name="parentesco6" value="{{ old('parentesco6') }}"  placeholder="Parentesco" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="edad6" name="edad6" value="{{ old('edad6') }}"  placeholder="Edad" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="escolaridad6" name="escolaridad6" value="{{ old('escolaridad6') }}"  placeholder="Escolaridad" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                    <div class="col-md-2 controls">
+                                                                        <input class="form-control" id="ocupacion6" name="ocupacion6" value="{{ old('ocupacion6') }}"  placeholder="Ocupación" type="text">
+                                                                    </div>
+                                                                    <div class="help-block with-errors"></div>
+                                                                </div>
+                                                                <div class="col-md-12 form-group">
+                                                                    <label class="col-md-3 control-label" for="observaciones_parientes">Observaciones</label>
+
+                                                                    <div class="col-md-12 form-group">
+                                                                        <div class="col-md-8 controls">
+                                                                            <textarea class="form-control" rows="4" name="observaciones_parientes" id="observaciones_parientes"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
                                                             </div>
                                                         </div>
                                                         <!-- STEP 2 -->
                                                         <div class='step-pane active' data-step='2'>
                                                             <div class="col-md-12">
-                                                                <h3>Antecedentes prenatales</h3>
+                                                                <h3>Antecedentes Prenatales</h3>
                                                                 <hr/>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-4 control-label" for="planificacion_embarazo">Planificación de embarazo</label>
+                                                                <label class="col-md-4 control-label" for="plan_embarazo">Planificación de embarazo</label>
                                                                 <div class="col-md-8 controls">
-                                                                    <input class="form-control" id="planificacion_embarazo" name="planificacion_embarazo" value="{{ old('planificacion_embarazo') }}"  placeholder="">
+                                                                    <input class="form-control" id="plan_embarazo" name="plan_embarazo" value="{{ old('plan_embarazo') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-4 control-label" for="aceptacion_embarazo">Aceptación del embarazo</label>
+                                                                <label class="col-md-4 control-label" for="acept_embarazo">Aceptación del embarazo</label>
                                                                 <div class="col-md-8 controls">
-                                                                    <input class="form-control" id="aceptacion_embarazo" name="aceptacion_embarazo" value="{{ old('aceptacion_embarazo') }}"  placeholder="">
+                                                                    <input class="form-control" id="acept_embarazo" name="acept_embarazo" value="{{ old('acept_embarazo') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
@@ -231,15 +341,15 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-4 control-label" for="ingesta_medicamentos">Ingesta de medicamentos</label>
+                                                                <label class="col-md-4 control-label" for="ingesta_med">Ingesta de medicamentos</label>
                                                                 <div class="col-md-8 controls">
-                                                                    <input class="form-control" id="ingesta_medicamentos" name="ingesta_medicamentos" value="{{ old('ingesta_medicamentos') }}"  placeholder="">
+                                                                    <input class="form-control" id="ingesta_med" name="ingesta_med" value="{{ old('ingesta_med') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-4 control-label" for="ingesta_alcohol_drogas">Ingesta de alcohol/drogas</label>
+                                                                <label class="col-md-4 control-label" for="ingesta_oh_drogas">Ingesta de alcohol/drogas</label>
                                                                 <div class="col-md-8 controls">
-                                                                    <input class="form-control" id="ingesta_alcohol_drogas" name="ingesta_alcohol_drogas" value="{{ old('ingesta_alcohol_drogas') }}"  placeholder="">
+                                                                    <input class="form-control" id="ingesta_oh_drogas" name="ingesta_oh_drogas" value="{{ old('ingesta_oh_drogas') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
@@ -289,14 +399,14 @@
                                                                 </div>
                                                             </div>
                                                             <div class="form-group col-md-6">
-                                                                <label for="otros_prenatal">Otros:</label>
-                                                                <textarea class="form-control" rows="4" name="otros_prenatal" id="otros_prenatal"></textarea>
+                                                                <label for="otros_prenatales">Otros:</label>
+                                                                <textarea class="form-control" rows="4" name="otros_prenatales" id="otros_prenatales"></textarea>
                                                             </div>
                                                         </div>
                                                         <!-- STEP 3 -->
                                                         <div class='step-pane active' data-step='3'>
                                                             <div class="col-md-12">
-                                                                <h3>Antecedentes perinatales</h3>
+                                                                <h3>Antecedentes Perinatales</h3>
                                                                 <hr/>
                                                             </div>
                                                             <div class="col-md-12 form-group">
@@ -306,21 +416,21 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-4 control-label" for="sufrimiento_fetal">Sufrimiento fetal</label>
+                                                                <label class="col-md-4 control-label" for="suf_fetal">Sufrimiento fetal</label>
                                                                 <div class="col-md-8 control-label">
-                                                                    <input class="form-control" id="sufrimiento_fetal" name="sufrimiento_fetal" value="{{ old('sufrimiento_fetal') }}"  placeholder="">
+                                                                    <input class="form-control" id="suf_fetal" name="suf_fetal" value="{{ old('suf_fetal') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-4 control-label" for="edad_gestacional">Edad gestacional</label>
+                                                                <label class="col-md-4 control-label" for="edad_gest">Edad gestacional</label>
                                                                 <div class="col-md-8 control-label">
-                                                                    <input class="form-control" id="edad_gestacional" name="edad_gestacional" value="{{ old('edad_gestacional') }}"  placeholder="">
+                                                                    <input class="form-control" id="edad_gest" name="edad_gest" value="{{ old('edad_gest') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-4 control-label" for="lugar_nacimiento">Lugar de nacimiento</label>
+                                                                <label class="col-md-4 control-label" for="lugar_naci">Lugar de nacimiento</label>
                                                                 <div class="col-md-8 control-label">
-                                                                    <input class="form-control" id="lugar_nacimiento" name="lugar_nacimiento" value="{{ old('lugar_nacimiento') }}"  placeholder="">
+                                                                    <input class="form-control" id="lugar_naci" name="lugar_naci" value="{{ old('lugar_naci') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
@@ -342,7 +452,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-4 control-label" for="complicaciones_parto">Complicaciones durante el parto</label>
+                                                                <label class="col-md-4 control-label" for="comp_parto">Complicaciones durante el parto</label>
                                                                 <div class="col-md-8 controls">
                                                                     <div>
                                                                         <label class="checkbox-inline col-md-2">
@@ -357,111 +467,65 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-4 form-group">
-                                                                <label for="otros_complicaciones">Otras complicaciones:</label>
-                                                                <textarea class="form-control" rows="3" id="otros_complicaciones"></textarea>
-                                                            </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="col-md-4 control-label" for="hospitalizaciones">Hospitalizaciones (¿Por qué?)</label>
                                                                 <div class="col-md-8 control-label">
-                                                                    <input class="form-control" id="hospitalizaciones" name="hospitalizaciones" value="{{ old('hospitalizaciones') }}"  placeholder="">
+                                                                    <textarea class="form-control" rows="3" id="hospitalizaciones"></textarea>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4 form-group">
-                                                                <label for="otros_general">Otros:</label>
-                                                                <textarea class="form-control" rows="3" id="otros_general"></textarea>
+                                                                <label for="otros_perinatales">Otros:</label>
+                                                                <textarea class="form-control" rows="3" id="otros_perinatales"></textarea>
                                                             </div>
                                                         </div>
                                                         <!-- STEP 4 -->
                                                         <div class='step-pane active' data-step='4'>
                                                             <div class="col-md-12">
-                                                                <h3>Antecedentes postnatales</h3>
+                                                                <h3>Antecedentes Postnatales</h3>
                                                                 <hr/>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="conexion_medio">Tratamientos posteriores al parto:</label>
-                                                                <div class="col-md-9 controls">
-                                                                    <div>
-                                                                        <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="">Cianosis
-                                                                        </label>
-                                                                        <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="">Ictericia
-                                                                        </label>
-                                                                        <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="">Infecciones
-                                                                        </label>
-                                                                        <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="">Traumatismos
-                                                                        </label>
-                                                                    </div>
-                                                                    <br/>
-                                                                    <div>
-                                                                        <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="">Aspiración meconio
-                                                                        </label>
-                                                                        <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="">Cardiacas
-                                                                        </label>
-                                                                        <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="">Malformaciones
-                                                                        </label>
-                                                                        <label class="checkbox-inline col-md-2">
-                                                                            <input type="checkbox" value="">Síndromes
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label">Tipo de alimentación</label>
-                                                                <div class="col-md-2 controls">
-                                                                    <div class="radio">
-                                                                        <label><input type="radio" name="optradio" id="radio_lactancia">Lactancia materna</label>
-                                                                    </div>
-                                                                    <div class="radio">
-                                                                        <label><input type="radio" name="optradio" id="radio_relleno">Relleno</label>
-                                                                    </div>
-                                                                    <div class="radio">
-                                                                        <label><input type="radio" name="optradio" id="radio_mixta">Mixta</label>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-2" name="edad_lactancia">
-                                                                    <input class="form-control" placeholder="¿Hasta qué edad?" id="text_lactancia" disabled>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-12 form-group">
-                                                                <label class="col-md-3" for="obs_esp">Observaciones o especificaciones:</label>
+                                                                <label class="col-md-3 control-label" for="trat_post_parto">Tratamientos posteriores al parto:</label>
                                                                 <div class="col-md-9">
-                                                                    <input class="form-control" id="obs_esp" name="obs_esp" value="{{ old('obs_esp') }}"  placeholder="">
+                                                                    <input class="form-control" id="trat_post_parto" name="trat_post_parto" value="{{ old('trat_post_parto') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3" for="op_edad">Operaciones (edad):</label>
+                                                                <label class="col-md-3 control-label" for="tipo_alimenta">Tipo de alimentación</label>
                                                                 <div class="col-md-9">
-                                                                    <input class="form-control" id="op_edad" name="op_edad" value="{{ old('op_edad') }}"  placeholder="">
+                                                                    <input class="form-control" id="tipo_alimenta" name="tipo_alimenta" value="{{ old('tipo_alimenta') }}"  placeholder="">
+                                                                </div>
+                                                                <div class="col-md-6" name="edad_lactancia">
+                                                                    <input class="form-control" placeholder="¿Hasta qué edad duró la lactancia?" id="limite_edad_alimenta" >
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3" for="hosp_edad">Hospitalizaciones (edad):</label>
+                                                                <label class="col-md-3" for="operaciones_edad">Operaciones (edad):</label>
                                                                 <div class="col-md-9">
-                                                                    <input class="form-control" id="hosp_edad" name="hosp_edad" value="{{ old('hosp_edad') }}"  placeholder="">
+                                                                    <input class="form-control" id="operaciones_edad" name="operaciones_edad" value="{{ old('operaciones_edad') }}"  placeholder="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="col-md-3" for="hospitalizaciones_edad">Hospitalizaciones (edad):</label>
+                                                                <div class="col-md-9">
+                                                                    <input class="form-control" id="hospitalizaciones_edad" name="hospitalizaciones_edad" value="{{ old('hospitalizaciones_edad') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4 form-group">
-                                                                <label for="obs_post">Observaciones:</label>
-                                                                <textarea class="form-control" rows="3" id="obs_post"></textarea>
+                                                                <label for="observaciones_postnatales">Observaciones:</label>
+                                                                <textarea class="form-control" rows="3" id="observaciones_postnatales"></textarea>
                                                             </div>
                                                         </div>
                                                         <!-- STEP 5 -->
                                                         <div class="step-pane active" data-step="5">
                                                             <div class="col-md-12">
-                                                                <h3>Desarrollo psicomotor (¿A qué edad?)</h3>
+                                                                <h3>Desarrollo Psicomotor (¿A qué edad?)</h3>
                                                                 <hr/>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3" for="edad_cabeza">Control cabeza</label>
+                                                                <label class="col-md-3" for="control_cabeza">Control cabeza</label>
                                                                 <div class="col-md-1">
-                                                                    <input class="form-control" id="edad_cabeza" name="edad_cabeza" value="{{ old('edad_cabeza') }}"  placeholder="">
+                                                                    <input class="form-control" id="control_cabeza" name="control_cabeza" value="{{ old('control_cabeza') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
@@ -489,15 +553,15 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3" for="esfinter_diurno">Control esfínter diurno</label>
+                                                                <label class="col-md-3" for="control_esf_diurno">Control esfínter diurno</label>
                                                                 <div class="col-md-1">
-                                                                    <input class="form-control" id="esfinter_diurno" name="esfinter_diurno" value="{{ old('esfinter_diurno') }}"  placeholder="">
+                                                                    <input class="form-control" id="control_esf_diurno" name="control_esf_diurno" value="{{ old('control_esf_diurno') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3" for="esfinter_nocturno">Control esfínter nocturno</label>
+                                                                <label class="col-md-3" for="control_esf_nocturno">Control esfínter nocturno</label>
                                                                 <div class="col-md-1">
-                                                                    <input class="form-control" id="esfinter_nocturno" name="esfinter_nocturno" value="{{ old('esfinter_nocturno') }}"  placeholder="">
+                                                                    <input class="form-control" id="control_esf_nocturno" name="control_esf_nocturno" value="{{ old('control_esf_nocturno') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -526,21 +590,21 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3" for="dos_palabras">Dijo frases de 2 palabras</label>
+                                                                <label class="col-md-3" for="frases_dos_palabras">Dijo frases de 2 palabras</label>
                                                                 <div class="col-md-1">
-                                                                    <input class="form-control" id="dos_palabras" name="dos_palabras" value="{{ old('dos_palabras') }}"  placeholder="">
+                                                                    <input class="form-control" id="frases_dos_palabras" name="frases_dos_palabras" value="{{ old('frases_dos_palabras') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3" for="dijo_oraciones">Dijo oraciones</label>
+                                                                <label class="col-md-3" for="oraciones">Dijo oraciones</label>
                                                                 <div class="col-md-1">
-                                                                    <input class="form-control" id="dijo_oraciones" name="dijo_oraciones" value="{{ old('dijo_oraciones') }}"  placeholder="">
+                                                                    <input class="form-control" id="oraciones" name="oraciones" value="{{ old('oraciones') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3" for="hablo_esp">Habló espontáneamente</label>
+                                                                <label class="col-md-3" for="hablo_espo">Habló espontáneamente</label>
                                                                 <div class="col-md-1">
-                                                                    <input class="form-control" id="hablo_esp" name="hablo_esp" value="{{ old('hablo_esp') }}"  placeholder="">
+                                                                    <input class="form-control" id="hablo_espo" name="hablo_espo" value="{{ old('hablo_espo') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
@@ -551,140 +615,123 @@
                                                             </div>
                                                             <br/>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3">¿El niño (a) mira a los ojos cuando usted lo habla?</label>
-                                                                <div class="col-md-3">
-                                                                    <label class="radio-inline"><input type="radio" name="optradio1" id="ojos_si">Sí</label>
-                                                                    <label class="radio-inline"><input type="radio" name="optradio1" id="ojos_no">No</label>
+                                                                <label class="col-md-3" for="mira_ojos">¿El niño (a) mira a los ojos cuando usted lo habla?</label>
+                                                                <div class="col-md-2">
+                                                                    <input class="form-control" id="mira_ojos" name="mira_ojos" value="{{ old('mira_ojos') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3">¿El niño (a) mira a los labios cuando habla?</label>
-                                                                <div class="col-md-3">
-                                                                    <label class="radio-inline"><input type="radio" name="optradio2" id="labios_si">Sí</label>
-                                                                    <label class="radio-inline"><input type="radio" name="optradio2" id="labios_no">No</label>
+                                                                <label class="col-md-3" for="mira_labios">¿El niño (a) mira a los labios cuando habla?</label>
+                                                                <div class="col-md-2">
+                                                                    <input class="form-control" id="mira_labios" name="mira_labios" value="{{ old('mira_labios') }}"  placeholder="">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
+                                                            <div class="col-md-12 form-group" for="comunica_palabras">
                                                                 <label class="col-md-3">¿Intenta comunicarse con palabras?</label>
-                                                                <div class="col-md-3">
-                                                                    <label class="radio-inline"><input type="radio" name="optradio3" id="com_palabras_si">Sí</label>
-                                                                    <label class="radio-inline"><input type="radio" name="optradio3" id="com_palabras_no">No</label>
+                                                                <div class="col-md-2">
+                                                                    <input class="form-control" id="comunica_palabras" name="comunica_palabras" value="{{ old('comunica_palabras') }}"  placeholder="">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
+                                                            <div class="col-md-12 form-group" for="comunica_jerga">
                                                                 <label class="col-md-3">¿Se comunica con jerga?</label>
-                                                                <div class="col-md-3">
-                                                                    <label class="radio-inline"><input type="radio" name="optradio4" id="jerga_si">Sí</label>
-                                                                    <label class="radio-inline"><input type="radio" name="optradio4" id="jerga_no">No</label>
+                                                                <div class="col-md-2">
+                                                                    <input class="form-control" id="comunica_jerga" name="comunica_jerga" value="{{ old('comunica_jerga') }}"  placeholder="">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
+                                                            <div class="col-md-12 form-group" for="comunica_palabras_sueltas">
                                                                 <label class="col-md-3">¿Se comunica con palabras sueltas?</label>
-                                                                <div class="col-md-3">
-                                                                    <label class="radio-inline"><input type="radio" name="optradio5" id="sueltas_si">Sí</label>
-                                                                    <label class="radio-inline"><input type="radio" name="optradio5" id="sueltas_no">No</label>
+                                                                <div class="col-md-2">
+                                                                    <input class="form-control" id="comunica_palabras_sueltas" name="comunica_palabras_sueltas" value="{{ old('comunica_palabras_sueltas') }}"  placeholder="">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
+                                                            <div class="col-md-12 form-group" for="comunica_gestos">
                                                                 <label class="col-md-3">¿Se comunica a través de gestos?</label>
-                                                                <div class="col-md-3">
-                                                                    <label class="radio-inline"><input type="radio" name="optradio6" id="gestos_si">Sí</label>
-                                                                    <label class="radio-inline"><input type="radio" name="optradio6" id="gestos_no">No</label>
+                                                                <div class="col-md-2">
+                                                                    <input class="form-control" id="comunica_gestos" name="comunica_gestos" value="{{ old('comunica_gestos') }}"  placeholder="">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
+                                                            <div class="col-md-12 form-group" for="entiende_dice">
                                                                 <label class="col-md-3">¿Usted entiende lo que dice?</label>
-                                                                <div class="col-md-3">
-                                                                    <label class="radio-inline"><input type="radio" name="optradio7" id="dice_si">Sí</label>
-                                                                    <label class="radio-inline"><input type="radio" name="optradio7" id="dice_no">No</label>
+                                                                <div class="col-md-2">
+                                                                    <input class="form-control" id="entiende_dice" name="entiende_dice" value="{{ old('entiende_dice') }}"  placeholder="">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
+                                                            <div class="col-md-12 form-group" for="desconocidos_entienden">
                                                                 <label class="col-md-3">¿Las personas que no lo conocen entienden lo que dice?</label>
-                                                                <div class="col-md-3">
-                                                                    <label class="radio-inline"><input type="radio" name="optradio8" id="conocen_si">Sí</label>
-                                                                    <label class="radio-inline"><input type="radio" name="optradio8" id="conocen_no">No</label>
+                                                                <div class="col-md-2">
+                                                                    <input class="form-control" id="desconocidos_entienden" name="desconocidos_entienden" value="{{ old('desconocidos_entienden') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <!-- STEP 7 -->
                                                         <div class="step-pane active" data-step="7">
                                                             <div class="col-md-12">
-                                                                <h3>Desarrollo social</h3>
+                                                                <h3>Desarrollo Social</h3>
                                                                 <hr/>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3">Respeta normas</label>
-                                                                <div class="col-md-3">
-                                                                    <label class="radio-inline"><input type="radio" name="optradio21" id="normas_si">Sí</label>
-                                                                    <label class="radio-inline"><input type="radio" name="optradio21" id="normas_no">No</label>
+                                                                <label class="col-md-3" for="respeta_normas">Respeta normas</label>
+                                                                <div class="col-md-1">
+                                                                    <input class="form-control" id="respeta_normas" name="respeta_normas" value="{{ old('respeta_normas') }}"  placeholder="">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
+                                                            <div class="col-md-12 form-group"for="comparte_juguetes">
                                                                 <label class="col-md-3">Comparte juguetes</label>
-                                                                <div class="col-md-3">
-                                                                    <label class="radio-inline"><input type="radio" name="optradio22" id="juguetes_si">Sí</label>
-                                                                    <label class="radio-inline"><input type="radio" name="optradio22" id="juguetes_no">No</label>
+                                                                <div class="col-md-1">
+                                                                    <input class="form-control" id="comparte_juguetes" name="comparte_juguetes" value="{{ old('comparte_juguetes') }}"  placeholder="">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
+                                                            <div class="col-md-12 form-group"for="juega_otros">
                                                                 <label class="col-md-3">Juega con otros niños</label>
-                                                                <div class="col-md-3">
-                                                                    <label class="radio-inline"><input type="radio" name="optradio23" id="otros_ninos_si">Sí</label>
-                                                                    <label class="radio-inline"><input type="radio" name="optradio23" id="otros_ninos_no">No</label>
+                                                                <div class="col-md-1">
+                                                                    <input class="form-control" id="juega_otros" name="juega_otros" value="{{ old('juega_otros') }}"  placeholder="">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
+                                                            <div class="col-md-12 form-group"for="carinoso">
                                                                 <label class="col-md-3">Cariñoso</label>
-                                                                <div class="col-md-3">
-                                                                    <label class="radio-inline"><input type="radio" name="optradio24" id="carinoso_si">Sí</label>
-                                                                    <label class="radio-inline"><input type="radio" name="optradio24" id="carinoso_no">No</label>
+                                                                <div class="col-md-1">
+                                                                    <input class="form-control" id="carinoso" name="carinoso" value="{{ old('carinoso') }}"  placeholder="">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
+                                                            <div class="col-md-12 form-group"for="berrinches">
                                                                 <label class="col-md-3">Hace berrinches</label>
-                                                                <div class="col-md-3">
-                                                                    <label class="radio-inline"><input type="radio" name="optradio25" id="berrinche_si">Sí</label>
-                                                                    <label class="radio-inline"><input type="radio" name="optradio25" id="berrinche_no">No</label>
+                                                                <div class="col-md-1">
+                                                                    <input class="form-control" id="berrinches" name="berrinches" value="{{ old('berrinches') }}"  placeholder="">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
+                                                            <div class="col-md-12 form-group"for="frustra_facil">
                                                                 <label class="col-md-3">Se frustra con facilidad</label>
-                                                                <div class="col-md-3">
-                                                                    <label class="radio-inline"><input type="radio" name="optradio26" id="frustra_si">Sí</label>
-                                                                    <label class="radio-inline"><input type="radio" name="optradio26" id="frustra_no">No</label>
+                                                                <div class="col-md-1">
+                                                                    <input class="form-control" id="frustra_facil" name="frustra_facil" value="{{ old('frustra_facil') }}"  placeholder="">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
+                                                            <div class="col-md-12 form-group"for="irritable">
                                                                 <label class="col-md-3">Irritable</label>
-                                                                <div class="col-md-3">
-                                                                    <label class="radio-inline"><input type="radio" name="optradio27" id="irritable_si">Sí</label>
-                                                                    <label class="radio-inline"><input type="radio" name="optradio27" id="irritable_no">No</label>
+                                                                <div class="col-md-1">
+                                                                    <input class="form-control" id="irritable" name="irritable" value="{{ old('irritable') }}"  placeholder="">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
+                                                            <div class="col-md-12 form-group"for="agresivo">
                                                                 <label class="col-md-3">Agresivo</label>
-                                                                <div class="col-md-3">
-                                                                    <label class="radio-inline"><input type="radio" name="optradio28" id="agresivo_si">Sí</label>
-                                                                    <label class="radio-inline"><input type="radio" name="optradio28" id="agresivo_no">No</label>
+                                                                <div class="col-md-1">
+                                                                    <input class="form-control" id="agresivo" name="agresivo" value="{{ old('agresivo') }}"  placeholder="">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-12 form-group">
+                                                            <div class="col-md-12 form-group"for="peleador">
                                                                 <label class="col-md-3">Peleador</label>
-                                                                <div class="col-md-3">
-                                                                    <label class="radio-inline"><input type="radio" name="optradio29" id="peleador_si">Sí</label>
-                                                                    <label class="radio-inline"><input type="radio" name="optradio29" id="peleador_no">No</label>
+                                                                <div class="col-md-1">
+                                                                    <input class="form-control" id="peleador" name="peleador" value="{{ old('peleador') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3" for="interes_social">Intereses</label>
+                                                                <label class="col-md-3" for="intereses">Intereses</label>
                                                                 <div class="col-md-5">
-                                                                    <input class="form-control" id="interes_social" name="interes_social" value="{{ old('interes_social') }}"  placeholder="">
+                                                                    <input class="form-control" id="intereses" name="intereses" value="{{ old('intereses') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4 form-group">
-                                                                <label for="obs_social">Observaciones:</label>
-                                                                <textarea class="form-control" rows="3" id="obs_social"></textarea>
+                                                                <label for="observaciones_social">Observaciones:</label>
+                                                                <textarea class="form-control" rows="3" id="observaciones_social"></textarea>
                                                             </div>
                                                         </div>
                                                         <!-- STEP 8 -->
