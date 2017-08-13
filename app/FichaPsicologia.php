@@ -23,6 +23,11 @@ class FichaPsicologia extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function psicologo()
+    {
+        return $this->belongsTo(Psicologo::class);
+    }
+
     public function beneficiario()
     {
         return $this->belongsTo(Beneficiario::class);

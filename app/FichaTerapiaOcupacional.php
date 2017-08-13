@@ -43,6 +43,11 @@ class FichaTerapiaOcupacional extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function terapeuta_ocupacional()
+    {
+        return $this->belongsTo(TerapeutaOcupacional::class);
+    }
+
     public function beneficiario()
     {
         return $this->belongsTo(Beneficiario::class);

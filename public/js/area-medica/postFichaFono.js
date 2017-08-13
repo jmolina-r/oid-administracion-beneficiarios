@@ -1,7 +1,3 @@
-/**
- * Created by lfgut on 03-07-2017.
- */
-
 $('#formulario_registro').on("submit", function() {
 
     var enfermedadesPrenatal = "";
@@ -92,4 +88,3 @@ $('#formulario_registro').on("submit", function() {
         }
     });
 });
-
