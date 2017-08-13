@@ -1,6 +1,3 @@
-/**
- * Created by pablofb on 23-05-17.
- */
 $(document).ready(function() {
     /**
      * Acciones al cambiar al step siguiente o al anterior

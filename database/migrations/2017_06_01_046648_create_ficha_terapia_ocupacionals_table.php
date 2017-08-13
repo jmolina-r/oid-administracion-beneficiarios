@@ -61,6 +61,10 @@ class CreateFichaTerapiaOcupacionalsTable extends Migration
         });
 
         Schema::table('ficha_terapia_ocupacionals', function($table) {
+            $table->foreign('terapeuta_ocupacional_id')->references('id')->on('terapeuta_ocupacionals');
+        });
+
+        Schema::table('ficha_terapia_ocupacionals', function($table) {
             $table->foreign('beneficiario_id')->references('id')->on('beneficiarios');
         });
     }

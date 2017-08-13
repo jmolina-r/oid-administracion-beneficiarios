@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ValControlEsfinterTableSeeder extends Seeder
+class TerapeutaOcupacionalTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class ValControlEsfinterTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\ValControlEsfinter::class, 2)->create();
+        factory(App\TerapeutaOcupacional::class, 5)->create();
     }
 }

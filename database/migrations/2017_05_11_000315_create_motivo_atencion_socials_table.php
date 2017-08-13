@@ -18,6 +18,7 @@ class CreateMotivoAtencionSocialsTable extends Migration
             $table->timestamps();
             $table->string('observación');
             $table->date('fecha_visita');
+            $table->string('documento')->nullable();
             
             $table->integer('ficha_atencion_social_id')->unsigned();
             $table->integer('tipo_motivo_social_id')->unsigned();

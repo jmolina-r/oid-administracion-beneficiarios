@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DomicilioTableSeeder::class);
 
 
-
+        $this->call(KinesiologoTableSeeder::class);
         $this->call(AntecedentesMorbidosTableSeeder::class);
         $this->call(ValAutocuidadoTableSeeder::class);
         $this->call(ValComCogTableSeeder::class);
@@ -63,14 +63,16 @@ class DatabaseSeeder extends Seeder
         $this->call(ValSocialTableSeeder::class);
         $this->call(FichaKinesiologiaTableSeeder::class);
 
+        $this->call(PsicologoTableSeeder::class);
 
+        $this->call(TerapeutaOcupacionalTableSeeder::class);
         $this->call(ActividadesVidaDiariaTableSeeder::class);
         $this->call(AntecedentesSocioFamiliaresTableSeeder::class);
         $this->call(AntecedentesSaludTableSeeder::class);
         $this->call(HistorialClinicoTableSeeder::class);
         $this->call(DesarrolloEvolutivoTableSeeder::class);
         $this->call(HabilidadesSocialesTableSeeder::class);
-
+        $this->call(TerapeutaOcupacionalTableSeeder::class);
         $this->call(FichaTerapiaOcupacionalTableSeeder::class);
 
 

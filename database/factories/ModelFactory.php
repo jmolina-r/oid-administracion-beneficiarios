@@ -200,8 +200,29 @@ $factory->define(App\AntecedentesMorbidos::class, function (Faker\Generator $fak
     ];
 });
 
+$factory->define(App\Kinesiologo::class, function (Faker\Generator $faker) {
 
+    return [
+        'rut' => $faker -> regexify('\[1-9]{8,9}\-(k|[0-9])'),
+        'nombres' => $faker -> firstName,
+        'apellidos' => $faker -> lastName,
+        'telefono' => $faker -> regexify('[0-9]{8}'),
+        'fecha_nacimiento' => $faker -> dateTimeBetween('-50 years', '-25 years'),
+        'direccion' => $faker -> address,
+    ];
+});
 
+$factory->define(App\Psicologo::class, function (Faker\Generator $faker) {
+
+    return [
+        'rut' => $faker -> regexify('\[1-9]{8,9}\-(k|[0-9])'),
+        'nombres' => $faker -> firstName,
+        'apellidos' => $faker -> lastName,
+        'telefono' => $faker -> regexify('[0-9]{8}'),
+        'fecha_nacimiento' => $faker -> dateTimeBetween('-50 years', '-25 years'),
+        'direccion' => $faker -> address,
+    ];
+});
 
 
 $factory->define(App\ValAutocuidado::class, function (Faker\Generator $faker) {
@@ -496,6 +517,18 @@ $factory->define(App\HistorialClinico::class, function (Faker\Generator $faker) 
         'medicamentos' => $faker -> regexify('(|Paracetamol|Nefersil|Ninguno|Otros medicamentos)'),
         'efectos_medicamentos' => $faker -> regexify('(|Mareos|Sueño|Nada)'),
         'diagnosticos_previos' => $faker -> regexify('(|Diagnótico previo A|Diagnótico previo B)'),
+    ];
+});
+
+$factory->define(App\TerapeutaOcupacional::class, function (Faker\Generator $faker) {
+
+    return [
+        'rut' => $faker -> regexify('\[1-9]{8,9}\-(k|[0-9])'),
+        'nombres' => $faker -> firstName,
+        'apellidos' => $faker -> lastName,
+        'telefono' => $faker -> regexify('[0-9]{8}'),
+        'fecha_nacimiento' => $faker -> dateTimeBetween('-50 years', '-25 years'),
+        'direccion' => $faker -> address,
     ];
 });
 
