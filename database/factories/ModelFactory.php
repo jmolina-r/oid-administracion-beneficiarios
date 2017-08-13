@@ -553,6 +553,6 @@ $factory->define(App\Funcionario::class, function (Faker\Generator $faker) {
         'telefono' => 123456,
         'fecha_nacimiento' => $faker->dateTimeBetween($startDate = '-60 years', $endDate = '-4 years', $timezone = date_default_timezone_get()),
         'direccion' => $faker->address,
-        'tipo' => $faker->regexify('(kinesiologo|psicologo|terapeuta ocupacional)')
+        'tipo_funcionario_id' => $faker->regexify('[1-4]')
     ];
 });

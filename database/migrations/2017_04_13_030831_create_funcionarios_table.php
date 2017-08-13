@@ -23,8 +23,11 @@ class CreateFuncionariosTable extends Migration
             $table->bigInteger('telefono');
             $table->date('fecha_nacimiento');
             $table->string('direccion');
-            $table->string('tipo');
+            $table->integer('tipo_funcionario_id')->unsigned()->nullable();
 
+        });
+        Schema::table('funcionarios', function($table) {
+            $table->foreign('tipo_funcionario_id')->references('id')->on('tipo_funcionarios');
         });
     }
 
