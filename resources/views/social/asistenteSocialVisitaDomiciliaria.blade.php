@@ -154,7 +154,7 @@
 
                                           @if($i == 1)
                                               <div class="tab-pane active" id=  "{{$tMotivos->id}}"  >
-                                                <form accept-charset="UTF-8" id="formulario_registro" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data">
+                                                <form accept-charset="UTF-8" action="/" id="formularioAsistenciaSocial" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data">
                                                     {!!csrf_field()!!}
                                                     <div class="col-sm-8">
                                                       <fieldset name="tecnico" class="col-sm-12">
@@ -228,11 +228,11 @@
                                               <fieldset>
                                                 <form accept-charset="UTF-8" id="formulario_registro" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data" data-toggle="validator" role="form">
                                                  {!!csrf_field()!!}
-                                                
+
                                                 @foreach($tipoSubmotivoSocial as $sMotivo)
 
                                                     @if($sMotivo->tipo_motivo_social_id == $tMotivos->id)
-                                                         
+
                                                            @if($tMotivos->id == '3')
 
                                                               <div class="box-content " style="margin-top:10px;">
@@ -262,9 +262,9 @@
                                                                 </div>
                                                                 <!--
                                                                 <div class='box-content box-statistic' id="{{$sMotivo->nombre}}">
-                                                                  <div>                                                                   
+                                                                  <div>
                                                                     <textarea name="vdText[]" id="{{$sMotivo->id}}.text" style="width:100%;" rows="4" placeholder="Observacion.."></textarea>
-                                                                  </div>                                                                
+                                                                  </div>
                                                                 </div>
                                                                 -->
                                                                   @endif
@@ -276,7 +276,7 @@
 
                                                               @endif
                                                             @elseif($tMotivos->id == '4')
-                                                              
+
                                                              <div class='controls'>
                                                                  <div class='box-content' id="{{$sMotivo->nombre}}">
                                                                     <label class="radio-inline"> <input type="radio" name="inputSubMotivo[]" onClick="javascript:toggle(this)" id="{{$sMotivo->id}}" value="{{$sMotivo->id}}">{{ucfirst($sMotivo->nombre)}}</label>
@@ -320,7 +320,7 @@
                                                              </div>
                                                             @endif
                                                     @endif
-                                                    
+
                                                 @endforeach
     <!--
                                                     <div class='controls col-sm-12' id="contentVD">
@@ -361,7 +361,7 @@
             </div>
             @include('partials.footer')
             <div class="modal-custom">
-                <div class='modal fade' id='confirmation' tabindex='-1'>
+                <div class='modal fade' id='confirmationformularioAsistenciaSocial' tabindex='-1'>
                     <div class='modal-dialog'>
                         <div class='modal-content'>
                             <div class='modal-header'>
@@ -679,19 +679,10 @@
                     </div>
                 </div>
             </div>
-            <script type="text/javascript">
-                /**
-                 * Envia el formulario cuando ya fueron revisados todos los datos
-                 */
-                function enviarFormulario(){
 
-                    $('#formulario_registro').submit();
-                }
-            </script>
           </div>
         </section>
 
       </div>
 
 @endsection
-
