@@ -265,12 +265,17 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
         'as' => 'reportabilidad.reportabilidadPorProfesional'
     ]);
 
+    Route::get('/reportabilidadGeneral',[
+        'uses'=>'ReportabilidadController@showResults',
+        'as' => 'reportabilidad.reportabilidadGene'
+    ]);
+
     Route::get('/reportabilidadKinesiologia',[
         'uses'=>'ReportabilidadController@showResultKine',
         'as' => 'reportabilidad.reportabilidadKine'
     ]);
 
-    Route::get('/reportabilidadPsiclogia',[
+    Route::get('/reportabilidadPsicologia',[
         'uses'=>'ReportabilidadController@showResultPsico',
         'as' => 'reportabilidad.reportabilidadPsico'
     ]);
@@ -294,9 +299,37 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     Route::get('/reportabilidadHistorica',[
     'uses'=>'ReportabilidadController@showResultHistorica',
     'as' => 'reportabilidad.reportabilidadHistorica'
-    ]); 
+    ]);
 
+    Route::get('/reportabilidadGene',[
+        'uses'=>'ReportabilidadController@showResults',
+        'as' => 'reportabilidad.reporteGene'
+    ]);
 
+    Route::get('/reportabilidadKine',[
+        'uses'=>'ReportabilidadController@showResultKine',
+        'as' => 'reportabilidad.reporteKine'
+    ]);
+
+    Route::get('/reportabilidadPsico',[
+        'uses'=>'ReportabilidadController@showResultPsico',
+        'as' => 'reportabilidad.reportePsico'
+    ]);
+
+    Route::get('/reportabilidadTer',[
+        'uses'=>'ReportabilidadController@showResultTer',
+        'as' => 'reportabilidad.reporteTer'
+    ]);
+
+    Route::get('/reportabilidadSoc',[
+        'uses'=>'ReportabilidadController@showResultSoc',
+        'as' => 'reportabilidad.reporteSoc'
+    ]);
+
+    Route::get('/reportabilidadHist',[
+        'uses'=>'ReportabilidadController@showResultHistorica',
+        'as' => 'reportabilidad.reporteHistorica'
+    ]);
 });
 
 Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){

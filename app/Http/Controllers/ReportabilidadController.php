@@ -188,12 +188,25 @@ class ReportabilidadController extends Controller
             $porcentajeRSTramite=0;
         }
 
-        return view('reportabilidad.createFichaPaciente', compact('cant','porcentajeRSTramite','porcentajeRSTiene', 'porcentajeFemenino', 'porcentajeMasculino', 'ingresoAnual', 'ingresoMensual', 'porcentajeCredencialEntregada', 'porcentajeCredencialTramite' , 'atencionAnual' , 'atencionMensual','porcentajeAdulto', 'porcentajeJoven', 'porcentajeAdultoMayor', 'porcentajeFonasa',
-            'porcentajeFonasaTramoA','porcentajeFonasaTramoB', 'porcentajeFonasaTramoC','porcentajeFonasaTramoD', 'porcentajeIsapre', 'preBasico','basicoIncompleto', 'basicoCompleto',
-            'medioIncompleto', 'medioCompleto', 'tecnicoIncompleto', 'tecnicoCompleto', 'universitarioIncompleto' ,
+        if(isset($_GET['visualGene'])) {
 
-            'universitarioCompleto', 'trabajador','estudiante','duenoCasa','pensionado','cesante', 'isapreCruzBlanca','isapreColmena','isapreMasVida','isapreConsalud','isapreBanmedica','isapreVidaTres','isapreCodelco',
-            'isapreDipreca','isapreCapredena','isapreFerroSalud','isapreOtro'));
+            return view('reportabilidad.createFichaPaciente', compact('cant', 'porcentajeRSTramite', 'porcentajeRSTiene', 'porcentajeFemenino', 'porcentajeMasculino', 'ingresoAnual', 'ingresoMensual', 'porcentajeCredencialEntregada', 'porcentajeCredencialTramite', 'atencionAnual', 'atencionMensual', 'porcentajeAdulto', 'porcentajeJoven', 'porcentajeAdultoMayor', 'porcentajeFonasa',
+                'porcentajeFonasaTramoA', 'porcentajeFonasaTramoB', 'porcentajeFonasaTramoC', 'porcentajeFonasaTramoD', 'porcentajeIsapre', 'preBasico', 'basicoIncompleto', 'basicoCompleto',
+                'medioIncompleto', 'medioCompleto', 'tecnicoIncompleto', 'tecnicoCompleto', 'universitarioIncompleto',
+
+                'universitarioCompleto', 'trabajador', 'estudiante', 'duenoCasa', 'pensionado', 'cesante', 'isapreCruzBlanca', 'isapreColmena', 'isapreMasVida', 'isapreConsalud', 'isapreBanmedica', 'isapreVidaTres', 'isapreCodelco',
+                'isapreDipreca', 'isapreCapredena', 'isapreFerroSalud', 'isapreOtro'));
+        }
+
+        $view =  \View::make('pdf.invoice', compact('cant', 'porcentajeRSTramite', 'porcentajeRSTiene', 'porcentajeFemenino', 'porcentajeMasculino', 'ingresoAnual', 'ingresoMensual', 'porcentajeCredencialEntregada', 'porcentajeCredencialTramite', 'atencionAnual', 'atencionMensual', 'porcentajeAdulto', 'porcentajeJoven', 'porcentajeAdultoMayor', 'porcentajeFonasa',
+            'porcentajeFonasaTramoA', 'porcentajeFonasaTramoB', 'porcentajeFonasaTramoC', 'porcentajeFonasaTramoD', 'porcentajeIsapre', 'preBasico', 'basicoIncompleto', 'basicoCompleto',
+            'medioIncompleto', 'medioCompleto', 'tecnicoIncompleto', 'tecnicoCompleto', 'universitarioIncompleto',
+
+            'universitarioCompleto', 'trabajador', 'estudiante', 'duenoCasa', 'pensionado', 'cesante', 'isapreCruzBlanca', 'isapreColmena', 'isapreMasVida', 'isapreConsalud', 'isapreBanmedica', 'isapreVidaTres', 'isapreCodelco',
+            'isapreDipreca', 'isapreCapredena', 'isapreFerroSalud', 'isapreOtro'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoice');
 
     }
     public function showResultKine(Request $request){
@@ -219,9 +232,11 @@ class ReportabilidadController extends Controller
             ->join('kinesiologos','hora_agendadas.user_id','=','kinesiologos.id')
             ->where('kinesiologos.rut','=',$user_rut)
             ->count();
+
         if(isset($_GET['visualKine'])) {
             return view('reportabilidad.reportabilidadKine', compact('kinesiologo','atencionAnualKine','atencionMensualKine','asistenciaKine','inasistenciaKine'));
         }else {
+
             if (isset($_GET['imprimirReporKine'])) {
                 $view =  \View::make('pdf.invoice1', compact('kinesiologo','atencionAnualKine','atencionMensualKine','asistenciaKine','inasistenciaKine'))->render();
                 $pdf = \App::make('dompdf.wrapper');
@@ -229,6 +244,23 @@ class ReportabilidadController extends Controller
                 return $pdf->stream('invoice1');
             }
         }
+
+        $nombres = $_GET["nombres"];
+        $apellidos = $_GET["apellidos"];
+        $rut = $_GET["rut"];
+        $telefono = $_GET["telefono"];
+        $direccion = $_GET["direccion"];
+        $atencionAnualKine = $_GET["atencionAnualKine"];
+        $atencionMensualKine = $_GET["atencionMensualKine"];
+        $asistenciaKine = $_GET["asistenciaKine"];
+        $inasistenciaKine = $_GET["inasistenciaKine"];
+        $view =  \View::make('pdf.invoice1', compact('nombres','apellidos','direccion','rut','telefono','atencionAnualKine','atencionMensualKine','asistenciaKine','inasistenciaKine'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoice1');
+
+        //return $request->all();
+
 
     }
 
@@ -286,7 +318,7 @@ class ReportabilidadController extends Controller
 
         if(isset($_GET['visualSico'])) {
             return view('reportabilidad.reportabilidadPsico', compact('psicologo','atencionAnualPsico','atencionMensualPsico','asistenciaPsico','inasistenciaPsico'));
-        }else {
+        }/*else {
             if (isset($_GET['imprimirReporSico'])) {
 
                 $view =  \View::make('pdf.invoice2', compact('psicologo','atencionAnualPsico','atencionMensualPsico','asistenciaPsico','inasistenciaPsico'))->render();
@@ -295,7 +327,21 @@ class ReportabilidadController extends Controller
                 return $pdf->stream('invoice2');
 
             }
-        }
+        }*/
+
+        $nombres = $_GET["nombres"];
+        $apellidos = $_GET["apellidos"];
+        $rut = $_GET["rut"];
+        $telefono = $_GET["telefono"];
+        $direccion = $_GET["direccion"];
+        $atencionAnualPsico = $_GET["atencionAnualPsico"];
+        $atencionMensualPsico = $_GET["atencionMensualPsico"];
+        $asistenciaPsico = $_GET["asistenciaPsico"];
+        $inasistenciaPsico = $_GET["inasistenciaPsico"];
+        $view =  \View::make('pdf.invoice2', compact('nombres','apellidos','direccion','rut','telefono','atencionAnualPsico','atencionMensualPsico','asistenciaPsico','inasistenciaPsico'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoice2');
     }
 
     public function showResultTer(Request $request){
@@ -321,7 +367,7 @@ class ReportabilidadController extends Controller
             ->where('terapeuta_ocupacionals.rut','=',$user_rut2)
             ->count();
 
-        return view('reportabilidad.reportabilidadTer', compact('terapeuta','atencionAnualTer','atencionMensualTer','asistenciaTer','inasistenciaTer'));
+        //return view('reportabilidad.reportabilidadTer', compact('terapeuta','atencionAnualTer','atencionMensualTer','asistenciaTer','inasistenciaTer'));
 
         if(isset($_GET['visualTerap'])) {
             return view('reportabilidad.reportabilidadTer', compact('terapeuta','atencionAnualTer','atencionMensualTer','asistenciaTer','inasistenciaTer'));
@@ -335,6 +381,19 @@ class ReportabilidadController extends Controller
 
             }
         }
+        $nombres = $_GET["nombres"];
+        $apellidos = $_GET["apellidos"];
+        $rut = $_GET["rut"];
+        $telefono = $_GET["telefono"];
+        $direccion = $_GET["direccion"];
+        $atencionAnualTer = $_GET["atencionAnualTer"];
+        $atencionMensualTer = $_GET["atencionMensualTer"];
+        $asistenciaTer = $_GET["asistenciaTer"];
+        $inasistenciaTer = $_GET["inasistenciaTer"];
+        $view =  \View::make('pdf.invoice3', compact('nombres','apellidos','direccion','rut','telefono','atencionAnualTer','atencionMensualTer','asistenciaTer','inasistenciaTer'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoice3');
 
     }
 
@@ -346,7 +405,16 @@ class ReportabilidadController extends Controller
         $atencionMensualSocial = FichaAtencionSocial::whereYear('created_at', '=', date('Y'))
             ->whereMonth('created_at', '=', date('m'))
             ->count();
-        return view('reportabilidad.reportabilidadSoc', compact('atencionAnualSocial','atencionMensualSocial'));
+
+        if(isset($_GET['visualSoc'])) {
+            return view('reportabilidad.reportabilidadSoc', compact('atencionAnualSocial','atencionMensualSocial'));
+
+        }
+        $view =  \View::make('pdf.invoice4', compact('atencionAnualSocial','atencionMensualSocial'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoice4');
+
     }
 
     public function showResultGrupal(Request $request){
@@ -401,6 +469,17 @@ class ReportabilidadController extends Controller
 
             }
         }
+        $anio = $request->anio;
+        $mes = $request->mes;
+        $cantUsuarioTotal = $request->cantUsuarioTotal;
+        $cantIngresadosAño = $request->cantIngresadosAño;
+        $cantIngresadosMes = $request->cantIngresadosMes;
+        $atencionAnual = $request->atencionAnual;
+        $atencionMensual = $request->atencionMensual;
+        $view =  \View::make('pdf.invoiceHistoricReport', compact('anio','mes','cantUsuarioTotal','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoiceHistoricReport');
 
     }
 

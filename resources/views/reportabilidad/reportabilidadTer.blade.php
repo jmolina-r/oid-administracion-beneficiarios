@@ -86,6 +86,16 @@
                     </div>
                   </div>
                 </div>
+                  <form action="{{route('reportabilidad.reporteTer')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
+                      <input id="nombres" name="nombres" type="hidden" value="{{$terapeuta->nombres}}">
+                      <input id="apellidos" name="apellidos" type="hidden" value="{{$terapeuta->apellidos}}">
+                      <input id="rut" name="rut" type="hidden" value="{{$terapeuta->rut}}">
+                      <input id="telefono" name="telefono" type="hidden" value="{{$terapeuta->telefono}}">
+                      <input id="direccion" name="direccion" type="hidden" value="{{$terapeuta->direccion}}">
+                      <input id="atencionAnualTer" name="atencionAnualTer" type="hidden" value="{{$atencionAnualTer}}">
+                      <input id="atencionMensualTer" name="atencionMensualTer" type="hidden" value="{{$atencionMensualTer}}">
+                      <input id="asistenciaTer" name="asistenciaTer" type="hidden" value="{{$asistenciaTer}}">
+                      <input id="inasistenciaTer" name="inasistenciaTer" type="hidden" value="{{$inasistenciaTer}}">
                 <div class='row'>
                     <div class='col-sm-12'>
                       <div class='box bordered-box blue-border' style='margin-bottom:0;'>
@@ -140,6 +150,8 @@
       
               </div>
             </div>
+                      <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Vista previa a imprimir</button>
+                  </form>
             @include('partials.footer')
           </div>
         </section>

@@ -185,6 +185,51 @@
                     </div>
                   </div>
                 </div>
+                  <form action="{{route('reportabilidad.reporteGene')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
+                      <input id="cant" name="cant" type="hidden" value="{{$cant}}">
+                      <input id="porcentajeRSTramite" name="porcentajeRSTramite" type="hidden" value="{{$porcentajeRSTramite}}">
+                      <input id="porcentajeFemenino" name="porcentajeFemenino" type="hidden" value="{{$porcentajeFemenino}}">
+                      <input id="porcentajeMasculino" name="porcentajeMasculino" type="hidden" value="{{$porcentajeMasculino}}">
+                      <input id="ingresoAnual" name="ingresoAnual" type="hidden" value="{{$ingresoAnual}}">
+                      <input id="ingresoMensual" name="ingresoMensual" type="hidden" value="{{$ingresoMensual}}">
+                      <input id="porcentajeCredencialEntregada" name="porcentajeCredencialEntregada" type="hidden" value="{{$porcentajeCredencialEntregada}}">
+                      <input id="porcentajeCredencialTramite" name="porcentajeCredencialTramite" type="hidden" value="{{$porcentajeCredencialTramite}}">
+                      <input id="atencionAnual" name="atencionAnual" type="hidden" value="{{$atencionAnual}}">
+                      <input id="atencionMensual" name="atencionMensual" type="hidden" value="{{$atencionMensual}}">
+                      <input id="porcentajeAdulto" name="porcentajeAdulto" type="hidden" value="{{$porcentajeAdulto}}">
+                      <input id="porcentajeJoven" name="porcentajeJoven" type="hidden" value="{{$porcentajeJoven}}">
+                      <input id="porcentajeAdultoMayor" name="porcentajeAdultoMayor" type="hidden" value="{{$porcentajeAdultoMayor}}">
+                      <input id="porcentajeFonasa" name="porcentajeFonasa" type="hidden" value="{{$porcentajeFonasa}}">
+                      <input id="porcentajeFonasaTramoA" name="porcentajeFonasaTramoA" type="hidden" value="{{$porcentajeFonasaTramoA}}">
+                      <input id="porcentajeFonasaTramoB" name="porcentajeFonasaTramoB" type="hidden" value="{{$porcentajeFonasaTramoB}}">
+                      <input id="porcentajeFonasaTramoC" name="porcentajeFonasaTramoC" type="hidden" value="{{$porcentajeFonasaTramoC}}">
+                      <input id="porcentajeFonasaTramoD" name="porcentajeFonasaTramoD" type="hidden" value="{{$porcentajeFonasaTramoD}}">
+                      <input id="porcentajeIsapre" name="porcentajeIsapre" type="hidden" value="{{$porcentajeIsapre}}">
+                      <input id="preBasico" name="preBasico" type="hidden" value="{{$preBasico}}">
+                      <input id="basicoIncompleto" name="basicoIncompleto" type="hidden" value="{{$basicoIncompleto}}">
+                      <input id="basicoCompleto" name="basicoCompleto" type="hidden" value="{{$basicoCompleto}}">
+                      <input id="medioIncompleto" name="medioIncompleto" type="hidden" value="{{$medioIncompleto}}">
+                      <input id="medioCompleto" name="medioCompleto" type="hidden" value="{{$medioCompleto}}">
+                      <input id="tecnicoIncompleto" name="tecnicoIncompleto" type="hidden" value="{{$tecnicoIncompleto}}">
+                      <input id="tecnicoCompleto" name="tecnicoCompleto" type="hidden" value="{{$tecnicoCompleto}}">
+                      <input id="universitarioIncompleto" name="universitarioIncompleto" type="hidden" value="{{$universitarioIncompleto}}">
+                      <input id="universitarioCompleto" name="universitarioCompleto" type="hidden" value="{{$universitarioCompleto}}">
+                      <input id="trabajador" name="trabajador" type="hidden" value="{{$trabajador}}">
+                      <input id="estudiante" name="estudiante" type="hidden" value="{{$estudiante}}">
+                      <input id="duenoCasa" name="duenoCasa" type="hidden" value="{{$duenoCasa}}">
+                      <input id="pensionado" name="pensionado" type="hidden" value="{{$pensionado}}">
+                      <input id="cesante" name="cesante" type="hidden" value="{{$cesante}}">
+                      <input id="isapreCruzBlanca" name="isapreCruzBlanca" type="hidden" value="{{$isapreCruzBlanca}}">
+                      <input id="isapreColmena" name="isapreColmena" type="hidden" value="{{$isapreColmena}}">
+                      <input id="isapreMasVida" name="isapreMasVida" type="hidden" value="{{$isapreMasVida}}">
+                      <input id="isapreConsalud" name="isapreConsalud" type="hidden" value="{{$isapreConsalud}}">
+                      <input id="isapreBanmedica" name="isapreBanmedica" type="hidden" value="{{$isapreBanmedica}}">
+                      <input id="isapreVidaTres" name="isapreVidaTres" type="hidden" value="{{$isapreVidaTres}}">
+                      <input id="isapreCodelco" name="isapreCodelco" type="hidden" value="{{$isapreCodelco}}">
+                      <input id="isapreDipreca" name="isapreDipreca" type="hidden" value="{{$isapreDipreca}}">
+                      <input id="isapreCapredena" name="isapreCapredena" type="hidden" value="{{$isapreCapredena}}">
+                      <input id="isapreFerroSalud" name="isapreFerroSalud" type="hidden" value="{{$isapreFerroSalud}}">
+                      <input id="isapreOtro" name="isapreOtro" type="hidden" value="{{$isapreOtro}}">
                 <div class='row'>
                 <div class='col-sm-12'>
                   <div class='box bordered-box blue-border' style='margin-bottom:0;'>
@@ -325,6 +370,8 @@
                 
               </div>
             </div>
+                      <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Vista previa a imprimir</button>
+                  </form>
             @include('partials.footer')
           </div>
         </section>

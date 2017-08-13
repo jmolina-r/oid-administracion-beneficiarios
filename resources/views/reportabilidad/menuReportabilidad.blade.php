@@ -87,24 +87,30 @@
                                     <div class='box-content box-statistic' >
                                     <h3 class='title text-inside text-center'>Reportabilidad</h3>
                                     </div>
+                        <form action="{{route('reportabilidad.reportabilidadGene')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
                          <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">
                                 <h4>Reportabilidad General</h4>
                             </div>
                             <div class="boton pull-right" style="display:inline-block">
-                                <a href='{{route('reportabilidad.showEstadistica')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
-                                <a href='{{route('reportabilidad.reporteGeneral')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
-                            </div>  
+                                <!--<a href='{{route('reportabilidad.showEstadistica')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
+                                <a href='{{route('reportabilidad.reporteGeneral')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>-->
+                                <button type="submit" id="visualGene" name="visualGene" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
+                            </div>
                         </div>
-                        <div class='box-content box-statistic' >
+                        </form>
+                            <form action="{{route('reportabilidad.reportabilidadGru')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
+                            <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">
                                 <h4>Reportabilidad Grupal</h4>
                             </div>
                             <div class="boton pull-right" style="display:inline-block">
-                                <a href='{{route('reportabilidad.reportabilidadGru')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
-                                <a href='{{route('reportabilidad.reporteGru')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
+                                <!--<a href='{{route('reportabilidad.reportabilidadGru')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
+                                <a href='{{route('reportabilidad.reporteGru')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>-->
+                                <button type="submit" id="visualGene" name="visualGru" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
                             </div>  
                         </div>
+                            </form>
                         </div>
                         <div class='box-content' >
                                     <div class='box-content box-statistic' >
@@ -124,7 +130,7 @@
                                 </select>
                                 <div class="boton pull-right" style="display:inline-block">
                                     <button type="submit" id="visualKine" name="visualKine" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
-                                    <button type="submit" id="imprimirReporKine" name="imprimirReporKine" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>
+                                    <!--<button type="submit" id="imprimirReporKine" name="imprimirReporKine" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>-->
                                     <!--<a href='{{route('reportabilidad.reporteKine')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>-->
                             </div>
                         </div>
@@ -142,7 +148,7 @@
                             </select>
                             <div class="boton pull-right" style="display:inline-block">
                                 <button type="submit" id="visualSico" name="visualSico" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
-                                <button type="submit" id="imprimirReporSico" name="imprimirReporSico" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>
+                                <!--<button type="submit" id="imprimirReporSico" name="imprimirReporSico" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>-->
                             </div>  
                         </div>
                         </form>
@@ -159,19 +165,22 @@
                             </select>
                             <div class="boton pull-right" style="display:inline-block">
                                 <button type="submit" id="visualTerap" name="visualTerap" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
-                                <button type="submit" id="imprimirReporTerap" name="imprimirReporTerap" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>
+                                <!--<button type="submit" id="imprimirReporTerap" name="imprimirReporTerap" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>-->
                             </div>  
                         </div>
                         </form>
+                            <form action="{{route('reportabilidad.reportabilidadSoc')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
                         <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">
                                 <h4>Reportabilidad Social</h4>
                             </div>
                             <div class="boton pull-right" style="display:inline-block">
-                                <a href='{{route('reportabilidad.reportabilidadSoc')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
-                                <a href='{{route('reportabilidad.reporteSoc')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>
+                                <!--<a href='{{route('reportabilidad.reportabilidadSoc')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
+                                <a href='{{route('reportabilidad.reporteSoc')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>-->
+                                <button type="submit" id="visualSoc" name="visualSoc" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
                             </div>  
                         </div>
+                            </form>
                         </div>
                          <div class='row'>
                   <div class='col-sm-12'>
@@ -199,7 +208,7 @@
                             </select>
                             <div class="boton pull-right" style="display:inline-block">
                                 <button type="submit" id="visualHist" name="visualHist" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
-                                <button type="submit" id="imprimirReporHist" name="imprimirReporHist" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>
+                                <!--<button type="submit" id="imprimirReporHist" name="imprimirReporHist" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>-->
                             </div>  
                         </div>
                         </div>

@@ -86,6 +86,9 @@
                     </div>
                   </div>
                 </div>
+                  <form action="{{route('reportabilidad.reporteSoc')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
+                      <input id="atencionAnualSocial" name="atencionAnualSocial" type="hidden" value="{{$atencionAnualSocial}}">
+                      <input id="atencionMensualSocial" name="atencionMensualSocial" type="hidden" value="{{$atencionMensualSocial}}">
                 <div class='row'>
                 <div class='col-sm-12'>
                   <div class='box bordered-box blue-border' style='margin-bottom:0;'>
@@ -109,13 +112,11 @@
                         </div>
                         
               </div>
-              
-               
-                
 
-                
               </div>
             </div>
+                      <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Vista previa a imprimir</button>
+                  </form>
             @include('partials.footer')
           </div>
         </section>

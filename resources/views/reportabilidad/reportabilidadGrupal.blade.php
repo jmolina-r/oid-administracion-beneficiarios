@@ -129,6 +129,15 @@
                     </div>
                   </div>
                 </div>
+                  <form action="{{route('reportabilidad.reporteGru')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
+                      <input id="atencionAnualKines" name="atencionAnualKines" type="hidden" value="{{$atencionAnualKines}}">
+                      <input id="atencionMensualKines" name="atencionMensualKines" type="hidden" value="{{$atencionMensualKines}}">
+                      <input id="atencionAnualFonos" name="atencionAnualFonos" type="hidden" value="{{$atencionAnualFonos}}">
+                      <input id="atencionMensualFonos" name="atencionMensualFonos" type="hidden" value="{{$atencionMensualFonos}}">
+                      <input id="atencionAnualPsicos" name="atencionAnualPsicos" type="hidden" value="{{$atencionAnualPsicos}}">
+                      <input id="atencionMensualPsicos" name="atencionMensualPsicos" type="hidden" value="{{$atencionMensualPsicos}}">
+                      <input id="atencionAnualTers" name="atencionAnualTers" type="hidden" value="{{$atencionAnualTers}}">
+                      <input id="atencionMensualTers" name="atencionMensualTers" type="hidden" value="{{$atencionMensualTers}}">
                 <div class='row'>
                 <div class='col-sm-12'>
                   <div class='box bordered-box blue-border' style='margin-bottom:0;'>
@@ -149,6 +158,8 @@
 
               </div>
             </div>
+                      <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Vista previa a imprimir</button>
+                  </form>
             @include('partials.footer')
           </div>
         </section>

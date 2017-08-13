@@ -86,6 +86,14 @@
                     </div>
                   </div>
                 </div>
+                  <form action="{{route('reportabilidad.reporteHistorica')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
+                      <input id="anio" name="anio" type="hidden" value="{{$anio}}">
+                      <input id="mes" name="mes" type="hidden" value="{{$mes}}">
+                      <input id="cantUsuarioTotal" name="cantUsuarioTotal" type="hidden" value="{{$cantUsuarioTotal}}">
+                      <input id="cantIngresadosAño" name="cantIngresadosAño" type="hidden" value="{{$cantIngresadosAño}}">
+                      <input id="cantIngresadosMes" name="cantIngresadosMes" type="hidden" value="{{$cantIngresadosMes}}">
+                      <input id="atencionAnual" name="atencionAnual" type="hidden" value="{{$atencionAnual}}">
+                      <input id="atencionMensual" name="atencionMensual" type="hidden" value="{{$atencionMensual}}">
                 <div class='row'>
                 <div class='col-sm-12'>
                   <div class='box bordered-box blue-border' style='margin-bottom:0;'>
@@ -121,6 +129,8 @@
               </div>
               </div>
             </div>
+                      <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Vista previa a imprimir</button>
+                  </form>
             @include('partials.footer')
           </div>
         </section>

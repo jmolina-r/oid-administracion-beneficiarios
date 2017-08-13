@@ -46,22 +46,22 @@
         <tr>
             <td>Nombre Completo</td>
             <td></td>
-            <td>{{ $psicologo->nombres }} {{ $psicologo->apellidos }}</td>
+            <td>{{ $nombres }} {{ $apellidos }}</td>
         </tr>
         <tr>
             <td>Rut</td>
             <td></td>
-            <td>{{ $psicologo->rut }}</td>
+            <td>{{ $rut }}</td>
         </tr>
         <tr>
             <td>Telefono</td>
             <td></td>
-            <td>{{ $psicologo->telefono }}</td>
+            <td>{{ $telefono }}</td>
         </tr>
         <tr>
             <td>Dirección</td>
             <td></td>
-            <td>{{ $psicologo->direccion }}</td>
+            <td>{{ $direccion }}</td>
         </tr>
     </table>
     <table>
