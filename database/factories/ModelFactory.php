@@ -23,6 +23,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'password' => $password ?: $password = bcrypt('123456'),
         'status' => 1,
         'remember_token' => str_random(10),
+        'funcionario_id' => $faker->numberBetween($min = 1, $max = 3),
     ];
 });
 
@@ -181,7 +182,7 @@ $factory->define(App\FichaKinesiologia::class, function (Faker\Generator $faker)
         'val_com_cog_id' => $faker -> numberBetween($min = 1, $max = 2),
         'val_evaluacion_id' => $faker -> numberBetween($min = 1, $max = 2),
         'val_control_esfinter_id' => $faker -> numberBetween($min = 1, $max = 2),
-        'user_id' => $faker -> numberBetween($min = 1, $max = 3),
+        'funcionario_id' => $faker -> numberBetween($min = 1, $max = 3),
         'beneficiario_id' => $faker -> numberBetween($min = 1, $max = 150),
     ];
 });
@@ -200,29 +201,9 @@ $factory->define(App\AntecedentesMorbidos::class, function (Faker\Generator $fak
     ];
 });
 
-$factory->define(App\Kinesiologo::class, function (Faker\Generator $faker) {
 
-    return [
-        'rut' => $faker -> regexify('\[1-9]{8,9}\-(k|[0-9])'),
-        'nombres' => $faker -> firstName,
-        'apellidos' => $faker -> lastName,
-        'telefono' => $faker -> regexify('[0-9]{8}'),
-        'fecha_nacimiento' => $faker -> dateTimeBetween('-50 years', '-25 years'),
-        'direccion' => $faker -> address,
-    ];
-});
 
-$factory->define(App\Psicologo::class, function (Faker\Generator $faker) {
 
-    return [
-        'rut' => $faker -> regexify('\[1-9]{8,9}\-(k|[0-9])'),
-        'nombres' => $faker -> firstName,
-        'apellidos' => $faker -> lastName,
-        'telefono' => $faker -> regexify('[0-9]{8}'),
-        'fecha_nacimiento' => $faker -> dateTimeBetween('-50 years', '-25 years'),
-        'direccion' => $faker -> address,
-    ];
-});
 
 
 $factory->define(App\ValAutocuidado::class, function (Faker\Generator $faker) {
@@ -344,7 +325,7 @@ $factory->define(App\FichaTerapiaOcupacional::class, function (Faker\Generator $
         'desarrollo_evolutivo_id' => $faker -> numberBetween($min = 1, $max = 5),
         'habilidades_sociales_id' => $faker -> numberBetween($min = 1, $max = 5),
         'historial_clinico_id' => $faker -> numberBetween($min = 1, $max = 5),
-        'user_id' => $faker -> numberBetween($min = 1, $max = 3),
+        'funcionario_id' => $faker -> numberBetween($min = 1, $max = 3),
         'beneficiario_id' => $faker -> numberBetween($min = 1, $max = 150),
 
     ];
@@ -520,17 +501,7 @@ $factory->define(App\HistorialClinico::class, function (Faker\Generator $faker) 
     ];
 });
 
-$factory->define(App\TerapeutaOcupacional::class, function (Faker\Generator $faker) {
 
-    return [
-        'rut' => $faker -> regexify('\[1-9]{8,9}\-(k|[0-9])'),
-        'nombres' => $faker -> firstName,
-        'apellidos' => $faker -> lastName,
-        'telefono' => $faker -> regexify('[0-9]{8}'),
-        'fecha_nacimiento' => $faker -> dateTimeBetween('-50 years', '-25 years'),
-        'direccion' => $faker -> address,
-    ];
-});
 
 $factory->define(App\Profesional::class, function (Faker\Generator $faker) {
 

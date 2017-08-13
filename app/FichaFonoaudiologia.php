@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FichaFonoaudiologia extends Model
 {
-    protected $fillable = ['motivo_de_consulta','estado','habitos_si_no_id','desarrollo_le_ed_id','antecedentes_peri_fono_id','antecedentes_pre_fono_id','desarrollo_psi_ed_id','desarrollo_social_fono_id','user_id','antecedentes_mor_fono_id','antecedentes_mor_fa_fono_id','parientes_hogar_fono_id','antecedentes_pos_fono_id'];
+    protected $fillable = ['beneficiario_id','motivo_de_consulta','estado','habitos_si_no_id','desarrollo_le_ed_id','antecedentes_peri_fono_id','antecedentes_pre_fono_id','desarrollo_psi_ed_id','desarrollo_social_fono_id','funcionario_id','antecedentes_mor_fono_id','antecedentes_mor_fa_fono_id','parientes_hogar_fono_id','antecedentes_pos_fono_id'];
 
 
     public function habitos_si_no()
@@ -57,5 +57,15 @@ class FichaFonoaudiologia extends Model
     public function parientes_hogar_fono()
     {
         return $this->hasOne(ParienteHogarFono::class);
+    }
+
+    public function funcionario()
+    {
+        return $this->belongsTo(Funcionario::class);
+    }
+
+    public function beneficiario()
+    {
+        return $this->belongsTo(Beneficiario::class);
     }
 }

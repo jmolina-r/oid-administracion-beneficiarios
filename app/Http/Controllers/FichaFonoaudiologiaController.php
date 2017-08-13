@@ -40,6 +40,7 @@ class FichaFonoaudiologiaController extends Controller
         if (Auth::check())
         {
             $idUsuario = Auth::user()->id;
+            $idFuncionario=Auth::user()->funcionario_id;
         }
 
         try{
@@ -226,7 +227,7 @@ class FichaFonoaudiologiaController extends Controller
                 'antecedentes_mor_fa_fono_id' => $antecedentesMorbidosFamiliaresSiNoFono->id,
                 'parientes_hogar_fono_id' => $parienteHogarFono->id,
                 'antecedentes_pos_fono_id' => $antecedentesPostnatalesFono->id,
-                'user_id' => $idUsuario,
+                'funcionario_id' => $idFuncionario,
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaFonoaudiologia->save();
