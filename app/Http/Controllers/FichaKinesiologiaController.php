@@ -59,6 +59,7 @@ class FichaKinesiologiaController extends Controller
         if (Auth::check())
         {
             $idUsuario = Auth::user()->id;
+            $idFuncionario=Auth::user()->funcionario_id;
         }
 
         try{
@@ -176,7 +177,7 @@ class FichaKinesiologiaController extends Controller
                 'val_com_cog_id' => $valComCog->id,
                 'val_evaluacion_id' => $valEvaluacion->id,
                 'val_control_esfinter_id' => $valControlEsfinter->id,
-                'user_id' => $idUsuario,
+                'funcionario_id' => $idFuncionario,
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaKinesiologia->save();

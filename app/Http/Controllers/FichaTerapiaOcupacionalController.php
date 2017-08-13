@@ -41,6 +41,7 @@ class FichaTerapiaOcupacionalController extends Controller
         if (Auth::check())
         {
             $idUsuario = Auth::user()->id;
+            $idFuncionario=Auth::user()->funcionario_id;
         }
 
         try{
@@ -217,7 +218,7 @@ class FichaTerapiaOcupacionalController extends Controller
                 'desarrollo_evolutivo_id' => $desarrolloEvolutivo->id,
                 'habilidades_sociales_id' => $habilidadesSociales->id,
                 'historial_clinico_id' => $historialClinico->id,
-                'user_id' => $idUsuario,
+                'funcionario_id' => $idFuncionario,
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaTerapiaOcupacional->save();

@@ -48,6 +48,7 @@ class FichaPsicologiaController extends Controller
         if (Auth::check())
         {
             $idUsuario = Auth::user()->id;
+            $idFuncionario=Auth::user()->funcionario_id;
         }
 
         try{
@@ -100,7 +101,7 @@ class FichaPsicologiaController extends Controller
                 'genograma' => $hashName,
                 'antecedentes_medicos_id' => $antecedentesMedicos->id,
                 'antecedentes_familiares_id' => $antecedentesFamiliares->id,
-                'user_id' => $idUsuario,
+                'funcionario_id' => $idFuncionario,
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaPsicologia->save();

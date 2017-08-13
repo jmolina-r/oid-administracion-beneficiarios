@@ -28,7 +28,8 @@ class CreateFichaFonoaudiologiaTable extends Migration
             $table->integer('antecedentes_pos_fono_id')->unsigned();
             $table->integer('desarrollo_le_ed_id')->unsigned();
             $table->integer('parientes_hogar_fono_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->integer('funcionario_id')->unsigned();
+            $table->integer('beneficiario_id')->unsigned();
         });
 
 
@@ -73,7 +74,11 @@ class CreateFichaFonoaudiologiaTable extends Migration
         });
 
         Schema::table('ficha_fonoaudiologias', function($table) {
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('funcionario_id')->references('id')->on('funcionarios');
+        });
+
+        Schema::table('ficha_fonoaudiologias', function($table) {
+            $table->foreign('beneficiario_id')->references('id')->on('beneficiarios');
         });
 
     }

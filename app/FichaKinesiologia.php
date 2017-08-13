@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FichaKinesiologia extends Model
 {
-    protected $fillable = ['motivo_consulta','estado', 'situacion_laboral', 'situacion_familiar', 'asiste_centro_rhb', 'antecedentes_morbidos_id' , 'val_motora_id' , 'val_deambulacion_id' , 'val_movilidad_id' , 'val_social_id' , 'val_autocuidado_id' , 'val_sensorial_id' , 'val_com_cog_id' , 'val_evaluacion_id' , 'val_control_esfinter_id' , 'user_id' , 'beneficiario_id'];
+    protected $fillable = ['motivo_consulta','estado', 'situacion_laboral', 'situacion_familiar', 'asiste_centro_rhb', 'antecedentes_morbidos_id' , 'val_motora_id' , 'val_deambulacion_id' , 'val_movilidad_id' , 'val_social_id' , 'val_autocuidado_id' , 'val_sensorial_id' , 'val_com_cog_id' , 'val_evaluacion_id' , 'val_control_esfinter_id' , 'funcionario_id' , 'beneficiario_id'];
 
     public function antecedentes_morbidos()
     {
@@ -58,9 +58,9 @@ class FichaKinesiologia extends Model
         return $this->belongsTo(ValControlEsfinter::class);
     }
 
-    public function user()
+    public function funcionario()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Funcionario::class);
     }
 
     public function beneficiario()
