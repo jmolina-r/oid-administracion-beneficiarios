@@ -193,7 +193,7 @@ class MallaController extends Controller
             array_push($eventos, $e);
         }
 
-        $horasAgendadasSoftdeleted = HoraAgendada::onlyTrashed()->where('user_id', $id)->get();
+        $horasAgendadasSoftdeleted = HoraAgendada::onlyTrashed()->where('user_id', $id)->where('asist_sn', 'si')->get();
 
         foreach ($horasAgendadasSoftdeleted as $horaDeleted) {
 
@@ -233,12 +233,72 @@ class MallaController extends Controller
             array_push($eventos, $f);
         }
 
+        $horasAgendadasInasistencia = HoraAgendada::onlyTrashed()->where('user_id', $id)
+            ->where('asist_sn', 'no')->get();
+
+        foreach ($horasAgendadasInasistencia as $horaDeleted) {
+
+            $beneficiario = Beneficiario::where('id', $horaDeleted->beneficiario_id)->first();
+
+            $horaSeparada = explode(':',$horaDeleted->hora);
+
+            $hora = $horaSeparada[0];
+            $minutos = (int)$horaSeparada[1] + 45;
+
+            if($minutos >= 60){
+                $hora = ((int)$horaSeparada[0] + 1);
+                $minutos = $minutos - 60;
+
+                if($hora < 10){
+                    $hora = '0'.$hora;
+                }
+
+                if($minutos < 10){
+                    $minutos = '0'.$minutos;
+                }
+            }
+
+            $horaEnd = $hora.':'.$minutos;
+
+            $f = array();
+            $f['id'] = $horaDeleted->id;
+            $f['title'] = $beneficiario->nombre . " " . $beneficiario->apellido . " (INASISTENTE)";
+            $f['start'] = $horaDeleted->fecha.'T'.$horaDeleted->hora;
+            $f['end'] = $horaDeleted->fecha.'T'.$horaEnd;
+            $f['allDay'] = false;
+            $f['color'] = "red";
+            $f['realizado'] = true;
+
+
+            // Merge the event array into the return array
+            array_push($eventos, $f);
+        }
         return json_encode($eventos);
     }
 
     public function registroPrestacion($id){
 
         return view('malla.showIngresoPrestacion')->with(compact('id'));
+
+    }
+
+    public function registroInasistencia($id){
+        return view('malla.showIngresoInasistencia')->with(compact('id'));
+    }
+
+    public function storeInasistencia(Request $request){
+
+        $idHora = $request->input('id');
+        $coment = $request->input('comentario');
+
+        $hora = HoraAgendada::where('id', $idHora)->first();
+
+        $hora->asist_sn = 'no';
+        $hora->razon_inasis = $coment;
+        $hora->save();
+        $hora->delete();
+
+        return;
 
     }
 
@@ -305,6 +365,8 @@ class MallaController extends Controller
             $prestacionRealizada->save();
         }
 
+        $horaAgendada->asist_sn = "si";
+        $horaAgendada->save();
         $horaAgendada->delete();
 
         return;

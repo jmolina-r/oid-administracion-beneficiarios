@@ -135,8 +135,15 @@
                 alert("Ya se han asignado prestaciones a esa hora agendada");
                 return;
             }else{
-                calEvent.url = '/registro_prestacion/' + calEvent.id;
-                window.open(calEvent.url, '_self');
+
+                if(confirm("¿El beneficiario registra asistencia?")){
+                    calEvent.url = '/registro_prestacion/' + calEvent.id;
+                    window.open(calEvent.url, '_self');
+                }else{
+                    calEvent.url = '/registro_prestacion/inasistencia/' + calEvent.id;
+                    window.open(calEvent.url, '_self');
+                }
+
             }
             return false;
         },
