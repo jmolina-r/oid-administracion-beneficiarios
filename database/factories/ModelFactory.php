@@ -40,7 +40,7 @@ $factory->define(App\Beneficiario::class, function (Faker\Generator $faker) {
         'apellido' => strtolower($faker->lastName),
         'fecha_nacimiento' => $faker->dateTimeBetween($startDate = '-60 years', $endDate = '-4 years', $timezone = date_default_timezone_get()),
         'sexo' => $faker->regexify('(masculino|femenino)'),
-        'rut' => $faker->unique()->regexify('\[1-9]{8,9}\-(k|[0-9])'),
+        'rut' => $faker->unique()->regexify('\1[0-9]{6}\-(k|[0-9])'),
         'pais_id' => $faker->numberBetween($min = 1, $max = 70),
         'estado_civil_id' => $faker->numberBetween($min = 1, $max = 5),
         'educacion_id' => $faker->numberBetween($min = 1, $max = 9),
@@ -541,5 +541,18 @@ $factory->define(App\Profesional::class, function (Faker\Generator $faker) {
         'fecha_nacimiento' => $faker -> dateTimeBetween('-50 years', '-25 years'),
         'direccion' => $faker -> address,
         'profesion' => $faker -> regexify('(Terapia Ocupacional|Kinesiología|Fonoaudiología|Psicología|Asistencia Social)'),
+    ];
+});
+
+$factory->define(App\Funcionario::class, function (Faker\Generator $faker) {
+
+    return [
+        'rut' => $faker->unique()->regexify('\1[0-9]{6}\-(k|[0-9])'),
+        'nombre' => strtolower($faker->firstName),
+        'apellido' => strtolower($faker->lastName),
+        'telefono' => 123456,
+        'fecha_nacimiento' => $faker->dateTimeBetween($startDate = '-60 years', $endDate = '-4 years', $timezone = date_default_timezone_get()),
+        'direccion' => $faker->address,
+        'tipo' => $faker->regexify('(kinesiologo|psicologo|terapeuta ocupacional)')
     ];
 });
