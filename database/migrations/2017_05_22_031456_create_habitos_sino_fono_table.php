@@ -13,16 +13,16 @@ class CreateHabitosSinoFonoTable extends Migration
      */
     public function up()
     {
-        Schema::create('habitos_sino_fono', function (Blueprint $table) {
+        Schema::create('habitos_si_no_fonos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('mamadera')->nullable();
-            $table->string('chupete')->nullable();
-            $table->string('chupa_dedo')->nullable();
-            $table->string('come_solo_tipo')->nullable();
-            $table->string('viste_solo')->nullable();
-            $table->string('boca_abierta_dia')->nullable();
-            $table->string('boca_abierta_noche')->nullable();
+            $table->string('mamadera',200)->nullable();
+            $table->string('chupete',200)->nullable();
+            $table->string('chupa_dedo',200)->nullable();
+            $table->string('come_solo_tipo',200)->nullable();
+            $table->string('viste_solo',200)->nullable();
+            $table->string('boca_abierta_dia',200)->nullable();
+            $table->string('boca_abierta_noche',200)->nullable();
         });
     }
 
@@ -33,6 +33,6 @@ class CreateHabitosSinoFonoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('habitos_sino_fono');
+        Schema::dropIfExists('habitos_si_no_fonos');
     }
 }

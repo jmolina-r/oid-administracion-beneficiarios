@@ -358,7 +358,8 @@ class MallaController extends Controller
         foreach ($jsonPrestaciones as $prestacionRegistro){
 
             $prestacionRealizada = new PrestacionRealizada([
-               'beneficiario_id' => $horaAgendada->beneficiario_id,
+                'user_id' => $horaAgendada->user_id,
+                'beneficiario_id' => $horaAgendada->beneficiario_id,
                 'prestacions_id' => $prestacionRegistro['id'],
                 'fecha' => date('Y-m-d')
             ]);

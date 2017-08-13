@@ -18,8 +18,13 @@ class CreatePrestacionRealizadasTable extends Migration
             $table->timestamps();
             $table->date('fecha');
 
+            $table->integer('user_id')->unsigned();
             $table->integer('beneficiario_id')->unsigned();
             $table->integer('prestacions_id')->unsigned();
+        });
+
+        Schema::table('prestacion_realizadas', function ($table){
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
         Schema::table('prestacion_realizadas', function ($table){

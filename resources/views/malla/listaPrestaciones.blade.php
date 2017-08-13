@@ -106,9 +106,8 @@
                         </div>
                     </div>
                 </div>
+            @include('partials.footer')
             </div>
-        @include('partials.footer')
-    </div>
-    </section>
+        </section>
     </div>
 @endsection

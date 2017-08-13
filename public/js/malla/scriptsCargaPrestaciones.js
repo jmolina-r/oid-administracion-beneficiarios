@@ -1,6 +1,3 @@
-/**
- * Created by lfgut on 08-08-2017.
- */
 $(document).ready(function () {
 
     $.ajax({

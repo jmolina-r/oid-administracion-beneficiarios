@@ -20,20 +20,23 @@ class UserTableSeeder extends Seeder
         factory(App\User::class)->create([
             // 'name' => 'juan',
             'username' => '17514574-5',
-            'email' => 'juan@juan.com'
+            'email' => 'juan@juan.com',
+            'funcionario_id' => 1
         ]);
 
         factory(App\User::class)->create([
             // 'name' => 'pedro',
             'username' => 'pedro',
             'email' => 'pedro@pedro.com',
-            'status' => 0
+            'status' => 0,
+            'funcionario_id' => 2
         ]);
 
         factory(App\User::class)->create([
             // 'name' => 'diego',
             'username' => 'diego',
-            'email' => 'diego@diego.com'
+            'email' => 'diego@diego.com',
+            'funcionario_id' => 3
         ]);
 
         factory(App\User::class)->create([
