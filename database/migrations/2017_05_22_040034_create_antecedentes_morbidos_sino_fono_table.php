@@ -13,30 +13,30 @@ class CreateAntecedentesMorbidosSinoFonoTable extends Migration
      */
     public function up()
     {
-        Schema::create('antecedentes_morbidos_sino_fono', function (Blueprint $table) {
+        Schema::create('antecedentes_morbidos_sino_fonos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('alergias_sn')->nullable();
-            $table->string('alergias_desc')->nullable();
-            $table->string('obesidad_sn')->nullable();
-            $table->string('obesidad_desc')->nullable();
-            $table->string('otitis_sn')->nullable();
-            $table->string('otitis_desc')->nullable();
-            $table->string('diabetes_sn')->nullable();
-            $table->string('diabetes_desc')->nullable();
-            $table->string('cirugias_sn')->nullable();
-            $table->string('cirugias_desc')->nullable();
-            $table->string('traumatis_sn')->nullable();
-            $table->string('traumatis_desc')->nullable();
-            $table->string('epilepsia_sn')->nullable();
-            $table->string('epilepsia_desc')->nullable();
-            $table->string('deficit_visual_sn')->nullable();
-            $table->string('deficit_visual_desc')->nullable();
-            $table->string('deficit_auditivo_sn')->nullable();
-            $table->string('deficit_auditivo_desc')->nullable();
-            $table->string('paralisis_cerebral_sn')->nullable();
-            $table->string('paralisis_cerebral_desc')->nullable();
-            $table->string('otros')->nullable();
+            $table->string('alergias_sn',200)->nullable();
+            $table->string('alergias_desc',200)->nullable();
+            $table->string('obesidad_sn',200)->nullable();
+            $table->string('obesidad_desc',200)->nullable();
+            $table->string('otitis_sn',200)->nullable();
+            $table->string('otitis_desc',200)->nullable();
+            $table->string('diabetes_sn',200)->nullable();
+            $table->string('diabetes_desc',200)->nullable();
+            $table->string('cirugias_sn',200)->nullable();
+            $table->string('cirugias_desc',200)->nullable();
+            $table->string('traumatis_sn',200)->nullable();
+            $table->string('traumatis_desc',200)->nullable();
+            $table->string('epilepsia_sn',200)->nullable();
+            $table->string('epilepsia_desc',200)->nullable();
+            $table->string('deficit_visual_sn',200)->nullable();
+            $table->string('deficit_visual_desc',200)->nullable();
+            $table->string('deficit_auditivo_sn',200)->nullable();
+            $table->string('deficit_auditivo_desc',200)->nullable();
+            $table->string('paralisis_cerebral_sn',200)->nullable();
+            $table->string('paralisis_cerebral_desc',200)->nullable();
+            $table->string('otros_morbidos',200)->nullable();
         });
     }
 
@@ -47,6 +47,6 @@ class CreateAntecedentesMorbidosSinoFonoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('antecedentes_morbidos_sino_fono');
+        Schema::dropIfExists('antecedentes_morbidos_sino_fonos');
     }
 }

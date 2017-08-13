@@ -16,20 +16,25 @@ class CreateDesarrolloLenguajeEdadesTable extends Migration
         Schema::create('desarrollo_lenguaje_edades', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('balbuceo')->nullable();
-            $table->string('sonrio')->nullable();
-            $table->string('primeras_palabras')->nullable();
-            $table->string('frases_dos_palabras')->nullable();
-            $table->string('oraciones')->nullable();
-            $table->string('hablo_espo')->nullable();
-            $table->string('siguio_inst')->nullable();
+            $table->string('balbuceo',200)->nullable();
+            $table->string('sonrio',200)->nullable();
+            $table->string('primeras_palabras',200)->nullable();
+            $table->string('frases_dos_palabras',200)->nullable();
+            $table->string('oraciones',200)->nullable();
+            $table->string('hablo_espo',200)->nullable();
+            $table->string('siguio_inst',200)->nullable();
+            $table->string('mira_ojos',200)->nullable();
+            $table->string('mira_labios',200)->nullable();
+            $table->string('comunica_palabras',200)->nullable();
+            $table->string('comunica_jergas',200)->nullable();
+            $table->string('comunica_palabras_sueltas',200)->nullable();
+            $table->string('comunica_gestos',200)->nullable();
+            $table->string('entiende_dice',200)->nullable();
+            $table->string('desconocidos_entienden',200)->nullable();
 
-            $table->integer('desarrollo_lenguaje_sino_id')->unsigned();;
         });
 
-        Schema::table('desarrollo_lenguaje_edades', function($table) {
-            $table->foreign('desarrollo_lenguaje_sino_id')->references('id')->on('desarrollo_lenguaje_sino');
-        });
+
     }
 
     /**

@@ -17,6 +17,7 @@ class CreateFichaTerapiaOcupacionalsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('motivo_consulta',200)->nullable();
+            $table->string('estado',200)->nullable();
             $table->string('derivado_por',200)->nullable();
             $table->string('relacion_paciente',200)->nullable();
             $table->string('observaciones_generales',200)->nullable();

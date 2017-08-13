@@ -96,6 +96,7 @@ class FichaPsicologiaController extends Controller
             }
             $fichaPsicologia = new FichaPsicologia([
                 'motivo_consulta' => $request->input('motivo_consulta'),
+                'estado'=>'abierto',
                 'genograma' => $hashName,
                 'antecedentes_medicos_id' => $antecedentesMedicos->id,
                 'antecedentes_familiares_id' => $antecedentesFamiliares->id,

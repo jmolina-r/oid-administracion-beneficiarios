@@ -162,6 +162,7 @@ class FichaKinesiologiaController extends Controller
 
             $fichaKinesiologia = new FichaKinesiologia([
                 'motivo_consulta' => $request->input('motivo_consulta'),
+                'estado'=>'abierto',
                 'situacion_laboral' => $request->input('situacion_laboral'),
                 'situacion_familiar' => $request->input('situacion_familiar'),
                 'asiste_centro_rhb' => $request->input('asiste_centro_rhb'),

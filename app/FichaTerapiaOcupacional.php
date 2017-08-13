@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FichaTerapiaOcupacional extends Model
 {
-    protected $fillable = ['motivo_consulta','derivado_por','relacion_paciente', 'observaciones_generales', 'actividades_vida_diaria_id','antecedentes_salud_id','antecedentes_so_fa_id','desarrollo_evolutivo_id','habilidades_sociales_id' ,'historial_clinico_id' ,'user_id','beneficiario_id'];
+    protected $fillable = ['motivo_consulta','estado','derivado_por','relacion_paciente', 'observaciones_generales', 'actividades_vida_diaria_id','antecedentes_salud_id','antecedentes_so_fa_id','desarrollo_evolutivo_id','habilidades_sociales_id' ,'historial_clinico_id' ,'user_id','beneficiario_id'];
 
     public function actividades_vida_diaria()
     {

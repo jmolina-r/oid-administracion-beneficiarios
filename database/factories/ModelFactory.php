@@ -165,6 +165,7 @@ $factory->define(App\FichaKinesiologia::class, function (Faker\Generator $faker)
 
     return [
         'motivo_consulta' => $faker -> regexify('(Evaluación Movilidad|Evaluación Motora|Evaluación Social)'),
+        'estado' => $faker -> regexify('abierto'),
         'situacion_laboral' => $faker -> regexify('(Desempleado|Estudiante|Trabajando)'),
         'situacion_familiar' => $faker -> regexify('(Normal|Anormal)'),
         'asiste_centro_rhb' => $faker -> regexify('(Si|No)'),
@@ -310,6 +311,7 @@ $factory->define(App\FichaTerapiaOcupacional::class, function (Faker\Generator $
 
     return [
         'motivo_consulta' => $faker -> regexify('(Evaluación Movilidad|Evaluación Motora|Evaluación Social)'),
+        'estado' => $faker -> regexify('abierto'),
         'derivado_por' => $faker -> regexify('(Kinesiologo|Psicologo)'),
         'relacion_paciente' => $faker -> regexify('(Padre|Madre|Cuidador|Abuelo)'),
         'observaciones_generales' => $faker -> regexify('(|Comentarios varios)'),
