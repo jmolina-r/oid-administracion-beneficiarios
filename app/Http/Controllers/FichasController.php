@@ -6,6 +6,7 @@ use App\FichaFonoaudiologia;
 use App\FichaKinesiologia;
 use App\FichaPsicologia;
 use App\FichaTerapiaOcupacional;
+use App\PrestacionRealizada;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,17 +50,19 @@ class FichasController extends Controller
             ->with(compact('fichasPsicologia'))
             ->with(compact('fichasFonoaudiologia'))
             ->with(compact('fichasTerapiaOcuacional'))
-            ->with(compact('id'));
+            ->with(compact('id'))
+            ->with(compact('idUsuario'));
     }
 
     /**
      *
      *
+     * @param $id
      * @return Response
      */
-    public function listaPrestacionesRealizadas()
+    public function listaPrestacionesRealizadas($idUser, $idBeneficiario)
     {
-        $prestaciones = Prestacion::orderBy('area', $direction = 'asc')->get();
+        $prestacionesRealizadas = PrestacionRealizada::where('user_id', $idUser)->where('beneficiario_id', $idBeneficiario)->orderBy('fecha', $direction = 'des')->get();
 
         return view('malla.listaPrestaciones', compact('prestaciones'));
     }

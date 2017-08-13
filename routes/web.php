@@ -141,7 +141,7 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'as' => 'area-medica.ficha-evaluacion-inicial.fichas.listaFichas'
             ]);
 
-            Route::get('/listaPrestacionesRealizadas/{id}', [
+            Route::get('/listaPrestacionesRealizadas/{idUser}/{idBeneficiario}', [
                 'uses' => 'FichasController@listaPrestacionesRealizadas',
                 'as' => 'area-medica.ficha-evaluacion-inicial.fichas.listaPrestacionesRealizadas'
             ]);
