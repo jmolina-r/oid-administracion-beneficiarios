@@ -76,6 +76,13 @@
         ],
 
         select: function(start, end) {
+
+            var date = new Date();
+            if(start <= date){
+                alert("No se puede agendar hora en un día pasado");
+                return;
+            }
+
             return bootbox.prompt("Ingrese rut de beneficiario", function(title) {
                 if(title == ""){
                     alert("El rut no puede quedar en blanco");
