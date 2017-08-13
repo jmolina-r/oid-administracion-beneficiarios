@@ -97,7 +97,7 @@
 
                     @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
                         <div class="col-xs-12">
-                            
+
                         </div>
                         <input id="id" name="id"  value="{{$id}}">
                     @else
