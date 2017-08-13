@@ -64,7 +64,7 @@
     <script src="{{ asset("assets/javascripts/plugins/fullcalendar/fullcalendar.min.js") }}" type="text/javascript"></script>
     <script src="{{ asset("assets/javascripts/plugins/bootbox/bootbox.min.js") }}" type="text/javascript"></script>
 
-    <script src="{{ asset('/js/calendar/Calendar.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/malla/Calendar.js') }}" type="text/javascript"></script>
     <script>
         $("#new-event").on('submit', function(e) {
             var value;
