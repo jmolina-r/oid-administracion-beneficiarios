@@ -11,6 +11,34 @@ use Illuminate\Http\Request;
 class FuncionarioController extends Controller
 {
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('funcionario.create');
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function find()
+    {
+        $funcionarios = Funcionario::get();
+
+        return view('funcionario.find')
+            ->with(compact('funcionarios'));
+    }
+
+    public function funcionarioInfoJson($id)
+    {
+        return Funcionario::find($id);
+    }
+
     private function rules(Request $request)
     {
         $rules = [

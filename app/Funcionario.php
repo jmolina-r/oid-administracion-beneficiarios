@@ -8,6 +8,6 @@ class Funcionario extends Model
 {
     //
 
-    protected $fillable = ['rut', 'nombre', 'apellido', 'telefono', 'fecha_nacimiento', 'direccion', 'tipo_funcionario_id'];
+    protected $fillable = ['rut', 'nombre', 'apellido', 'telefono', 'fecha_nacimiento', 'direccion', 'email', 'tipo_funcionario_id'];
 
 }

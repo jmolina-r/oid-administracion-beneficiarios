@@ -289,12 +289,12 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
 
     'uses'=>'ReportabilidadController@showResultGrupal',
     'as' => 'reportabilidad.reportabilidadGru'
-    ]);  
+    ]);
 
     Route::get('/reportabilidadHistorica',[
     'uses'=>'ReportabilidadController@showResultHistorica',
     'as' => 'reportabilidad.reportabilidadHistorica'
-    ]); 
+    ]);
 
 
 });
@@ -350,7 +350,7 @@ Route::group(['prefix' => 'informecierre', 'middleware' => 'auth'], function(){
         'uses' => 'InformeController@index',
         'as' => 'informe-cierre.informe'
     ]);
-});  
+});
 
 Route::group(['prefix' => '/registro_prestacion', 'middleware' => 'auth'], function (){
     Route::get('/{id}', [
@@ -373,4 +373,46 @@ Route::group(['prefix' => '/registro_prestacion', 'middleware' => 'auth'], funct
     Route::post('/storeprestaciones', [
         'uses' => 'MallaController@storePrestaciones'
     ]);
+});
+
+Route::group(['prefix' => 'funcionario', 'middleware' => 'auth'], function () {
+    Route::get('/registrar', [
+        'uses' => 'FuncionarioController@create',
+        'as' => 'funcionario.create',
+    ])->middleware('roles:admin|secretaria');
+
+    Route::post('/registrar', [
+        'uses' => 'FuncionarioController@store',
+        'as' => 'funcionario.store'
+    ])->middleware('roles:admin|secretaria');
+
+    Route::get('/editar/{id}', [
+        'uses' => 'FuncionarioController@edit',
+        'as' => 'funcionario.edit'
+    ])->middleware('roles:admin|secretaria');
+
+    Route::post('/editar', [
+        'uses' => 'FuncionarioController@update',
+        'as' => 'funcionario.update'
+    ])->middleware('roles:admin|secretaria');
+
+    Route::get('/informacion/{id}', [
+        'uses' => 'FuncionarioController@show',
+        'as' => 'funcionario.show'
+    ])->middleware('roles:admin|secretaria');
+
+    Route::get('/buscar', [
+        'uses' => 'FuncionarioController@find',
+        'as' => 'funcionario.find'
+    ])->middleware('roles:admin|secretaria');
+
+    Route::get('/{id}', [
+        'uses' => 'FuncionarioController@funcionarioInfoJson',
+        'as' => 'funcionario.funcionarioInfoJson'
+    ])->middleware('roles:admin|secretaria');
+
+    // Route::get('/pdf/{id}', [
+    //     'uses' => 'FuncionarioController@generatePDF',
+    //     'as' => 'funcionario.generatePDF'
+    // ]);
 });
