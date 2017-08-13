@@ -147,7 +147,7 @@
                                                     </div>
                                                 @endif
                                                 <hr class='hr-normal'>
-                                                <form role="form" id="formulario_registro"  action="{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.create')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
+                                                <form role="form" id="formulario_registro"  action="{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.postFono')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
                                                     <div class='step-content'>
                                                         <!-- STEP 1 -->
                                                         <div class='step-pane active' data-step='1'>

@@ -64,6 +64,8 @@ class FichasController extends Controller
     {
         $prestacionesRealizadas = PrestacionRealizada::where('user_id', $idUser)->where('beneficiario_id', $idBeneficiario)->orderBy('fecha', $direction = 'des')->get();
 
+        $ficha = PrestacionRealizada::where('user_id', $idUser)->where('beneficiario_id', $idBeneficiario)->orderBy('fecha', $direction = 'des')->get();
+
         return view('malla.listaPrestaciones', compact('$prestacionesRealizadas'));
     }
 }
