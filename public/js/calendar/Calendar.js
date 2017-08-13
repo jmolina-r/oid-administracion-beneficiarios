@@ -77,8 +77,13 @@
 
         select: function(start, end) {
 
-            var date = new Date();
-            if(start <= date){
+            var date = new Date(start);
+            var ahora = new Date();
+
+            var date1 = date.toLocaleDateString();
+            var date2 = ahora.toLocaleDateString();
+
+            if(date1 < date2){
                 alert("No se puede agendar hora en un día pasado");
                 return;
             }
