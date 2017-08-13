@@ -68,6 +68,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 url: 'poblar/',
+                data : {id : $('#id').val()}
             }
         ],
 

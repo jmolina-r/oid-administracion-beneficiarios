@@ -84,13 +84,11 @@ class MallaController extends Controller
      */
     public function show()
     {
-        //obtener el rol por su sesion
-        /*
-        if (Auth::check())
-        {
-            $id = Auth::user()->id;
+        $id = Auth::user()->id;
+
+        if(Auth::user()->hasAnyRole(['admin', 'secretaria'])){
+            //get usuarios 
         }
-        */
 
         $contentHeight = 286;
         $minTime = '08:00:00';
@@ -99,6 +97,7 @@ class MallaController extends Controller
         $slotLabelInterval = 1;
 
         return view('malla.show')
+            ->with(compact('id'))
             ->with(compact('contentHeight'))
             ->with(compact('minTime'))
             ->with(compact('maxTime'))
@@ -155,7 +154,7 @@ class MallaController extends Controller
             $id = Auth::user()->id;
         }
 
-        $horasAgendadas = HoraAgendada::where('user_id', $id)->get();
+        $horasAgendadas = HoraAgendada::where('user_id', $request->id)->get();
 
 
         foreach ($horasAgendadas as $horaAgendada) {
@@ -193,7 +192,7 @@ class MallaController extends Controller
             array_push($eventos, $e);
         }
 
-        $horasAgendadasSoftdeleted = HoraAgendada::onlyTrashed()->where('user_id', $id)->where('asist_sn', 'si')->get();
+        $horasAgendadasSoftdeleted = HoraAgendada::onlyTrashed()->where('user_id', $request->id)->where('asist_sn', 'si')->get();
 
         foreach ($horasAgendadasSoftdeleted as $horaDeleted) {
 
