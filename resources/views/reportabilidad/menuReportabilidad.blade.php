@@ -190,7 +190,6 @@
                                     <div class='box-content box-statistic' >
                                     <h3 class='title text-inside text-center'>Reportabilidad Histórica</h3>
                                     </div>
-                        
                          <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">
                                 <h4>Reportabilidad Histórica</h4>
