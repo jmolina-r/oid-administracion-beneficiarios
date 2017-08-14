@@ -93,13 +93,16 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                         <thead>
                                                                             <tr>
                                                                                 <th>
-                                                                                    Nombre de Funcionario
+                                                                                    Nombre
                                                                                 </th>
                                                                                 <th>
                                                                                     E-mail
                                                                                 </th>
                                                                                 <th>
                                                                                     Telefono
+                                                                                </th>
+                                                                                <th>
+                                                                                    Cargo
                                                                                 </th>
                                                                                 <th>
                                                                                     Acciones
@@ -112,6 +115,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                                 <td class="capitalize">{{ $funcionario->nombre }} {{ $funcionario->apellido }}</td>
                                                                                 <td>{{ $funcionario->email }}</td>
                                                                                 <td>{{ $funcionario->telefono }}</td>
+                                                                                <td class="capitalize">{{ $funcionario->tipo_funcionario->nombre }}</td>
                                                                                 <td>
                                                                                     <div class='text-right'>
                                                                                         <a class='btn btn-success btn-xs' href='#' onclick="getFuncionarioPorId('{{ $funcionario->id }}')">
@@ -156,7 +160,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                 <div class='modal-body'>
                     <h5>A continuación se muestran los datos del funcionario. Para modificar, presione el botón editar.</h5>
                     <div class="row">
-                        <div class="col-sm-12 col-lg-6">
+                        <div class="col-lg-6">
                             <h4>Nombre del Funcionario</h4>
                             <p class="capitalize" id="funcionarioNombre">-</p>
 
@@ -169,11 +173,18 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                             <h4>Dirección Particular</h4>
                             <p class="capitalize" id="funcionarioDireccion">-</p>
 
+                        </div>
+
+                        <div class="col-lg-6">
+
                             <h4>Fecha Nacimiento</h4>
                             <p id="funcionarioFechaNacimiento">-</p>
 
                             <h4>E-mail</h4>
                             <p id="funcionarioEmail">-</p>
+
+                            <h4>Labor en OID</h4>
+                            <p class="capitalize" id="funcionarioTipo">-</p>
                         </div>
                     </div>
                 </div>

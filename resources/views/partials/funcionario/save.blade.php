@@ -44,7 +44,7 @@
 <div class="form-group{{ $errors->has('rut') ? ' has-error' : '' }}">
 
     <div class="controls with-icon-over-input">
-        <input id="rut" type="email" class="form-control" placeholder="Rut del Funcionario" name="rut" value=
+        <input id="rut" type="text" class="form-control" placeholder="Rut del Funcionario" name="rut" value=
         @if(old('rut'))
             "{{ old('rut') }}"
         @elseif(isset($funcionario))
@@ -53,7 +53,7 @@
             ""
         @endif
         @if(isset($funcionario))
-            disabled
+            readonly
         @endif
          required>
 
@@ -86,26 +86,34 @@
     </div>
 </div>
 
+
+
+
 <div class="form-group{{ $errors->has('fecha_nacimiento') ? ' has-error' : '' }}">
-
-    <div class="controls with-icon-over-input">
-        <input id="fecha_nacimiento" type="text" class="form-control" name="fecha_nacimiento" placeholder="Fecha de Nacimiento" value=
-        @if(old('fecha_nacimiento'))
-            "{{ old('fecha_nacimiento') }}"
-        @elseif(isset($funcionario))
-            "{{ $funcionario->fecha_nacimiento }}"
-        @else
-            ""
-        @endif
+    <div class='controls input-group'>
+        <input id='fecha_nacimiento' value-date=
+            @if(old('fecha_nacimiento') != null)
+                "{{ old('fecha_nacimiento') }}"
+            @elseif(isset($funcionario))
+                "{{ $funcionario->fecha_nacimiento }}"
+            @else
+                ""
+            @endif
+            name='fecha_nacimiento' class='form-control' data-format='DD/MM/YYYY' placeholder='Fecha de Nacimiento' type='text'
         required>
-
-        @if ($errors->has('fecha_nacimiento'))
-            <span class="help-block">
-                <strong>{{ $errors->first('fecha_nacimiento') }}</strong>
-            </span>
-        @endif
+        <span class='input-group-addon'>
+            <span class='fa fa-calendar'></span>
+        </span>
     </div>
+    @if ($errors->has('fecha_nacimiento'))
+        <span class="help-block">
+            <strong>{{ $errors->first('fecha_nacimiento') }}</strong>
+        </span>
+    @endif
 </div>
+
+
+
 
 <div class="form-group{{ $errors->has('direccion') ? ' has-error' : '' }}">
 
@@ -150,53 +158,29 @@
 </div>
 
 
-{{--
-<div class="form-group{{ $errors->has('roles') ? ' has-error' : '' }}">
-    <label class='control-label' for='inputText'>Roles</label>
 
-    <select style="width:100%;" name="roles[]" class='form-control select-tag' data-placeholder='Selecciona los beneficios asociados...' multiple='multiple'>
+<div class="form-group{{ $errors->has('tipo_funcionario') ? ' has-error' : '' }}">
+    <label class='control-label' for='inputText'>Cargo en OID</label>
 
-        @foreach($roles as $role)
-            <option value="{{$role->id}}"
-                @if((old('roles') && in_array($role->id, old('roles'))) || (isset($funcionario) && $funcionario->roles != null && count($funcionario->roles) > 0 && count($funcionario->roles->where('id', $role->id)) > 0))
+    <select style="width:100%;" name="tipo_funcionario" class='form-control select-tag' data-placeholder='Cargo en OID'>
+
+        @foreach($tipo_funcionarios as $tipo_funcionario)
+            <option
+                @if((@old('tipo_funcionario') == $tipo_funcionario->id) || (@old('tipo_funcionario') == null && isset($funcionario) && $tipo_funcionario->id == $funcionario->tipo_funcionario->id))
                     selected
                 @endif
-            >{{$role->nombre}}</option>
+            value="{{$tipo_funcionario->id}}">{{$tipo_funcionario->nombre}}</option>
         @endforeach
 
     </select>
 
-    @if ($errors->has('roles'))
+    @if ($errors->has('tipo_funcionario'))
         <span class="help-block">
-            <strong>{{ $errors->first('roles') }}</strong>
+            <strong>{{ $errors->first('tipo_funcionario') }}</strong>
         </span>
     @endif
 </div>
 
-
-<div class="form-group">
-    <label class='control-label'>Estado</label>
-    <div class='col-md-12'>
-        <label style="margin-top: 0px;" class='radio radio-inline'>
-            <input name='status' id="status"
-                @if((old('status') == null && !isset($funcionario)) || (old('status') != null && old('status') != '0') || (old('status') == null && isset($funcionario) && $funcionario->status == "1"))
-                    checked
-                @endif
-            type='radio' value='1' required>
-            Activo
-        </label>
-        <label class='radio radio-inline'>
-            <input name='status' id="status"
-            @if((old('status') != null && old('status') == '0') || (old('status') == null && isset($funcionario) && $funcionario->status == "0"))
-                checked
-            @endif
-            type='radio' value='0' required>
-            Inactivo
-        </label>
-    </div>
-</div>
-
---}}
 
 <br>
 

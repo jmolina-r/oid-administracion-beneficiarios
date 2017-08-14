@@ -386,12 +386,12 @@ Route::group(['prefix' => 'funcionario', 'middleware' => 'auth'], function () {
         'as' => 'funcionario.store'
     ])->middleware('roles:admin|secretaria');
 
-    Route::get('/editar/{id}', [
+    Route::get('/editar/{funcionario}', [
         'uses' => 'FuncionarioController@edit',
         'as' => 'funcionario.edit'
     ])->middleware('roles:admin|secretaria');
 
-    Route::post('/editar/{id}', [
+    Route::post('/editar/{funcionario}', [
         'uses' => 'FuncionarioController@update',
         'as' => 'funcionario.update'
     ])->middleware('roles:admin|secretaria');
