@@ -4,72 +4,72 @@ $('#formulario_registro').on("submit", function() {
     var complicacionesParto = "";
 
     if($('#check_rubeola').is(':checked')){
-        enfermedadesPrenatal = enfermedadesPrenatal + "rubeola ";
+        enfermedadesPrenatal = enfermedadesPrenatal + "Rubeola ";
     }
 
     if($('#check_diabetes').is(':checked')){
-        enfermedadesPrenatal = enfermedadesPrenatal + "diabetes ";
+        enfermedadesPrenatal = enfermedadesPrenatal + "Diabetes ";
     }
 
     if($('#check_renal').is(':checked')){
-        enfermedadesPrenatal = enfermedadesPrenatal + "renal ";
+        enfermedadesPrenatal = enfermedadesPrenatal + "Renal ";
     }
 
     if($('#check_hiper').is(':checked')){
-        enfermedadesPrenatal = enfermedadesPrenatal + "hipertensión ";
+        enfermedadesPrenatal = enfermedadesPrenatal + "Hipertensión ";
     }
 
     if($('#check_nutri').is(':checked')){
-        enfermedadesPrenatal = enfermedadesPrenatal + "nutricionales ";
+        enfermedadesPrenatal = enfermedadesPrenatal + "Nutricionales ";
     }
 
     if($('#check_trauma').is(':checked')){
-        enfermedadesPrenatal = enfermedadesPrenatal + "traumatismos ";
+        enfermedadesPrenatal = enfermedadesPrenatal + "Traumatismos ";
     }
 
     if($('#check_vene').is(':checked')){
-        enfermedadesPrenatal = enfermedadesPrenatal + "venéreas ";
+        enfermedadesPrenatal = enfermedadesPrenatal + "Venéreas ";
     }
 
     if($('#check_infecciones').is(':checked')){
-        enfermedadesPrenatal = enfermedadesPrenatal + "infecciones ";
+        enfermedadesPrenatal = enfermedadesPrenatal + "Infecciones ";
     }
 
     if($('#check_asfixia').is(':checked')){
-        complicacionesParto = complicacionesParto + "asfixia-perinatal ";
+        complicacionesParto = complicacionesParto + "Asfixia-perinatal ";
     }
 
     if($('#check_neumo').is(':checked')){
-        complicacionesParto = complicacionesParto + "neumonia-infecciosa ";
+        complicacionesParto = complicacionesParto + "Neumonia-infecciosa ";
     }
 
     if($('#check_trauma_peri').is(':checked')){
-        complicacionesParto = complicacionesParto + "traumatismos ";
+        complicacionesParto = complicacionesParto + "Traumatismos ";
     }
 
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        url: "/area-medica/ficha-evaluacion-inicial/fonoaudiologia/postfono",
+        url: "/area-medica/ficha-evaluacion-inicial/fonoaudiologia/postFono",
         type: "POST",
         data: {
             //step 2
-            planificacionEmbarazo: $('#planificacion_embarazo').val(),
-            aceptacionEmbarazo: $('#aceptacion_embarazo').val(),
+            planificacionEmbarazo: $('#plan_embarazo').val(),
+            aceptacionEmbarazo: $('#acept_embarazo').val(),
             controlEmbarazo: $('#control_embarazo').val(),
-            ingestaMedicamentos: $('#ingesta_medicamentos').val(),
-            ingestaAlcoholDrogas: $('#ingesta_alcohol_drogas').val(),
+            ingestaMedicamentos: $('#ingesta_med').val(),
+            ingestaAlcoholDrogas: $('#ingesta_oh_drogas').val(),
             consumoCigarrillo: $('#consumo_cigarrillo').val(),
             estadoEmocional: $('#estado_emocional').val(),
             enfermedadesEmbarazo: enfermedadesPrenatal,
-            otrosPrenatal: $('#otros_prenatal').val(),
+            otrosPrenatal: $('#otros_prenatales').val(),
 
             //step 3
             tipoParto: $('#tipo_parto').val(),
-            sufrimientoFatal: $('#sufrimiento_fetal').val(),
-            edadGestacional: $('#edad_gestacional').val(),
-            lugarNacimiento: $('#lugar_nacimiento').val(),
+            sufrimientoFatal: $('#suf_fetal').val(),
+            edadGestacional: $('#edad_gest').val(),
+            lugarNacimiento: $('#lugar_naci').val(),
             peso: $('#peso').val(),
             talla: $('#talla').val(),
             apgar: $('#apgar').val(),

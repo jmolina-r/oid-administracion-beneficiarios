@@ -203,7 +203,7 @@
             </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
+            @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia-ocupacional']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-calendar'></i>
                     <span>Malla</span>
@@ -270,6 +270,25 @@
                                     <i class='fa fa-caret-right'></i>
                                 </div>
                                 <span>Creación Usuario</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+            @endif
+            @if(Auth::user()->hasAnyRole(['admin', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia-ocupacional']))
+                <li class=''>
+                    <a class="dropdown-collapse" href="#"><i class='fa fa-users'></i>
+                        <span>Fichas de Evaluación inicial</span>
+                        <i class='fa fa-angle-down angle-down'></i>
+                    </a>
+                    <ul class='nav nav-stacked'>
+                        <li class=''>
+                            <a href='{{route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas',1)}}'>
+                                <div class='icon'>
+                                    <i class='fa fa-caret-right'></i>
+                                </div>
+                                <span>Lista de Fichas</span>
                             </a>
                         </li>
 

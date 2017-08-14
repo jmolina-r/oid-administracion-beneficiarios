@@ -7,6 +7,7 @@ use App\AntecedentesMedicos;
 use App\FichaPsicologia;
 use App\Beneficiario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FichaPsicologiaController extends Controller
 {
@@ -44,13 +45,11 @@ class FichaPsicologiaController extends Controller
         // Validate Fields
         $this->validate($request, $this->rules($request));
 
-        //obtener el psicologo por su sesion
-        /*
         if (Auth::check())
         {
-            $psicologo = Psicologo::where('rut', Auth::user()->rut);
+            $idUsuario = Auth::user()->id;
+            $idFuncionario=Auth::user()->funcionario_id;
         }
-        */
 
         try{
             $antecedentesMedicos = new AntecedentesMedicos([
@@ -91,14 +90,18 @@ class FichaPsicologiaController extends Controller
             ]);
             $antecedentesFamiliares->save();
 
+            $hashName = null;
+            if($request->file('genograma') != null){
+                $request->file('genograma')->store('public/genogramas-psi');
+                $hashName = $request->file('genograma')->hashName();
+            }
             $fichaPsicologia = new FichaPsicologia([
                 'motivo_consulta' => $request->input('motivo_consulta'),
-                $request->file('genograma')->store('public/genogramas-psi'),
-                'genograma' => $request->file('genograma')->hashName(),
+                'estado'=>'abierto',
+                'genograma' => $hashName,
                 'antecedentes_medicos_id' => $antecedentesMedicos->id,
                 'antecedentes_familiares_id' => $antecedentesFamiliares->id,
-                //'psicologo_id' => $psicologo->id,
-                'profesional_id' => '1', //provisional, profesional no esta implementado
+                'funcionario_id' => $idFuncionario,
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaPsicologia->save();

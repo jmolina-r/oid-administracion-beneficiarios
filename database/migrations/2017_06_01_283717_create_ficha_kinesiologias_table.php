@@ -17,6 +17,7 @@ class CreateFichaKinesiologiasTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('motivo_consulta', 200)->nullable();
+            $table->string('estado',200)->nullable();
             $table->string('situacion_laboral', 200)->nullable();
             $table->string('situacion_familiar', 200)->nullable();
             $table->string('asiste_centro_rhb', 200)->nullable();
@@ -31,9 +32,8 @@ class CreateFichaKinesiologiasTable extends Migration
             $table->integer('val_com_cog_id')->unsigned();
             $table->integer('val_evaluacion_id')->unsigned();
             $table->integer('val_control_esfinter_id')->unsigned();
-            $table->integer('profesional_id')->unsigned();
+            $table->integer('funcionario_id')->unsigned();
             $table->integer('beneficiario_id')->unsigned();
-            $table->integer('kinesiologo_id')->unsigned();
         });
 
         Schema::table('ficha_kinesiologias', function($table) {
@@ -77,11 +77,7 @@ class CreateFichaKinesiologiasTable extends Migration
         });
 
         Schema::table('ficha_kinesiologias', function($table) {
-            $table->foreign('profesional_id')->references('id')->on('profesionals');
-        });
-
-        Schema::table('ficha_kinesiologias', function($table) {
-            $table->foreign('kinesiologo_id')->references('id')->on('kinesiologos');
+            $table->foreign('funcionario_id')->references('id')->on('funcionarios');
         });
 
         Schema::table('ficha_kinesiologias', function($table) {
