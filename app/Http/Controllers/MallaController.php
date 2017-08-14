@@ -429,7 +429,6 @@ class MallaController extends Controller
 
     public function validarUsuario(Request $request)
     {
-
         if (Auth::check())
         {
             $id = Auth::user()->id;
@@ -448,7 +447,32 @@ class MallaController extends Controller
         }
 
         return "false";
+    }
 
+    public function puedeAtender(Request $request)
+    {
+        if (Auth::check())
+        {
+            $id = Auth::user()->id;
+        }
+
+        $usuario = User::where('id', $id)->first();
+
+        $roles = $usuario->roles()->get();
+
+        foreach ($roles as $rol){
+
+            if($rol->nombre == 'psicologia'
+                || $rol->nombre == 'kinesiologia'
+                || $rol->nombre == 'trabajo_social'
+                || $rol->nombre == 'terapia_ocupacional'
+                || $rol->nombre == 'fonoaudiologia'){
+                return "true";
+            }
+
+        }
+
+        return "false";
     }
 
     /**
@@ -479,6 +503,15 @@ class MallaController extends Controller
         $prestaciones = Prestacion::orderBy('area', $direction = 'asc')->get();
 
         return view('malla.listaPrestaciones', compact('prestaciones'));
+    }
+
+    public function eliminarHora(Request $request)
+    {
+        $idHora = $request->input('idHora');
+        $horaAgendada = HoraAgendada::where('id', $idHora)->first();
+        $horaAgendada->forceDelete();
+
+        return;
     }
 
     private function rules(Request $request)
