@@ -282,7 +282,7 @@
                     </ul>
                 </li>
             @endif
-            
+
             @if(Auth::user()->hasAnyRole(['admin', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia-ocupacional']))
                 <li class=''>
                     <a class="dropdown-collapse" href="#"><i class='fa fa-users'></i>
@@ -296,6 +296,35 @@
                                     <i class='fa fa-caret-right'></i>
                                 </div>
                                 <span>Lista de Fichas</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+            @endif
+
+            @if(Auth::user()->hasAnyRole(['admin', 'coordinador_oficina']))
+                <li class=''>
+                    <a class="dropdown-collapse" href="#"><i class='fa fa-building'></i>
+                        <span>Funcionarios</span>
+                        <i class='fa fa-angle-down angle-down'></i>
+                    </a>
+                    <ul class='nav nav-stacked'>
+                        <li class=''>
+                            <a href='{{route('funcionario.find')}}'>
+                                <div class='icon'>
+                                    <i class='fa fa-caret-right'></i>
+                                </div>
+                                <span>Administrar Funcionarios</span>
+                            </a>
+                        </li>
+
+                        <li class=''>
+                            <a href='{{route('funcionario.create')}}'>
+                                <div class='icon'>
+                                    <i class='fa fa-caret-right'></i>
+                                </div>
+                                <span>Creación Funcionarios</span>
                             </a>
                         </li>
 
