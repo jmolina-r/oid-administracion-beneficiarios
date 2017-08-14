@@ -165,6 +165,24 @@
                 return;
             }else{
 
+                if(puedeAsignarHora()){
+                    if(confirm('¿Desea eliminar la hora?')){
+                        eliminarHora(calEvent.id);
+                    }else{
+
+                        if(puedeAtenderHora()){
+                            if(confirm("¿El beneficiario registra asistencia?")){
+                                calEvent.url = '/registro_prestacion/' + calEvent.id;
+                                window.open(calEvent.url, '_self');
+                            }else{
+                                calEvent.url = '/registro_prestacion/inasistencia/' + calEvent.id;
+                                window.open(calEvent.url, '_self');
+                            }
+                        }
+                    }
+                    return;
+                }
+
                 if(confirm("¿El beneficiario registra asistencia?")){
                     calEvent.url = '/registro_prestacion/' + calEvent.id;
                     window.open(calEvent.url, '_self');
@@ -285,5 +303,50 @@
         });
         return respuesta;
     }
+
+    function puedeAtenderHora(){
+        var respuesta = "";
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            async: false,
+            url: "/malla/puedeatender",
+            type: "POST",
+
+            success: function(data, textStatus, jqXHR) {
+                respuesta = data;
+            },
+
+            error: function(jqXHR, textStatus, errorThrown) {
+            }
+        });
+        return respuesta;
+    }
+
+    function eliminarHora(id){
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            async: false,
+            url: "/malla/eliminarhora",
+            type: "POST",
+            data: {
+                idHora: id
+            },
+            success: function(data, textStatus, jqXHR) {
+                alert('La hora se ha eliminado correctamente.');
+                location.reload();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Hubo un error al eliminar la hora. Reintente.');
+            }
+        });
+
+    }
+
+
 
 })();
