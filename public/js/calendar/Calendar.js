@@ -110,6 +110,13 @@
                         return;
                     }
 
+                    var formato = /.[.]./g;
+
+                    if(formato.test(value)){
+                        alert("El formato del rut es incorrecto");
+                        return;
+                    }
+
                     var Fn = {
                         // Valida el rut con su cadena completa "XXXXXXXX-X"
                         validaRut : function (rutCompleto) {
