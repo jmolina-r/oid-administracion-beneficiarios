@@ -147,19 +147,14 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
 
     Route::group(['prefix' => '/informe-cierre'], function (){
 
-        Route::get('/buscarUser', [
-            'uses' => 'ReportabilidadController@createInformeCierre',
-            'as' => 'area-medica.informe-cierre.buscarUser'
+        Route::get('/create/{id}', [
+            'uses' => 'InformeCierreController@create',
+            'as' => 'area-medica.informe-cierre.create'
         ]);
 
-        Route::get('/createInformeCierre', [
-            'uses' => 'ReportabilidadController@showUser',
-            'as' => 'area-medica.informe-cierre.createInformeCierre'
-        ]);
-
-        Route::post('/createInformeCierre',[
-            'uses' => 'ReportabilidadController@postInformeCierre',
-            'as' => 'area-medica.informe-cierre.createInformeCierre'
+        Route::post('/store',[
+            'uses' => 'InformeCierreController@store',
+            'as' => 'area-medica.informe-cierre.store'
         ]);
     });
 });
