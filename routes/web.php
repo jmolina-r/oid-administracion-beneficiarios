@@ -319,6 +319,14 @@ Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
         'uses' => 'MallaController@validarUsuario',
     ]);
 
+    Route::post('/eliminarhora', [
+        'uses' => 'MallaController@eliminarHora',
+    ]);
+
+    Route::post('/puedeatender', [
+        'uses' => 'MallaController@puedeAtender',
+    ]);
+
     Route::post('/store', [
         'uses' => 'MallaController@store',
         'as' => 'malla.store'
@@ -409,12 +417,12 @@ Route::group(['prefix' => 'funcionario', 'middleware' => 'auth'], function () {
         'as' => 'funcionario.store'
     ])->middleware('roles:admin|secretaria');
 
-    Route::get('/editar/{id}', [
+    Route::get('/editar/{funcionario}', [
         'uses' => 'FuncionarioController@edit',
         'as' => 'funcionario.edit'
     ])->middleware('roles:admin|secretaria');
 
-    Route::post('/editar/{id}', [
+    Route::post('/editar/{funcionario}', [
         'uses' => 'FuncionarioController@update',
         'as' => 'funcionario.update'
     ])->middleware('roles:admin|secretaria');
