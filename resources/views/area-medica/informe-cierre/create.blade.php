@@ -56,7 +56,6 @@
     <script src="{{ asset("/assets/javascripts/plugins/validate/additional-methods.js") }}" type="text/javascript"></script>
 
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/area-medica/IngresoFormulario.js') }}" type="text/javascript"></script>
     <!-- / END - validaciones-->
 @endsection
 
@@ -99,9 +98,8 @@
                                                         @endforeach
                                                     </div>
                                                 @endif
-                                                <form role="form" id="formulario_registro" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
-                                                    <input id="idben" name="idben" type="hidden" value="{{$beneficiario->id}}">
-                                                    <input type="hidden" class="form-control" id="ben_id" name="ben_id" value="{{$beneficiario->id}}">
+                                                    <form class='validate-form' method="POST" action="{{ route('area-medica.informe-cierre.store') }}">
+                                                    <input id="id" name="id" type="hidden" value="{{$beneficiario->id}}">
                                                     <div class="col-md-12">
                                                         <h4>Información del beneficiario</h4>
                                                         <hr/>

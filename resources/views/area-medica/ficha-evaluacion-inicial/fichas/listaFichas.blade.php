@@ -72,7 +72,7 @@
                         </div>
                         <div class="row">
                             <div class='col-sm-12'>
-                                <td><a class="btn btn-primary btn-block" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.create', $id)}}">Agregar Nueva Ficha de Evaluación Inicial</a></td>
+                                <td><a class="btn btn-primary btn-block" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.create', $idBeneficiario)}}">Agregar Nueva Ficha de Evaluación Inicial</a></td>
                             </div>
                         </div>
                         <hr>
@@ -101,8 +101,8 @@
                                                     <td>Kinesiología</td>
                                                     <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', $ficha->id)}}">Detalles</a></td>
                                                     <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', $ficha->id)}}">Ver como PDF</a></td>
-                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', $ficha->id)}}">Ficha de Alta</a></td>
-                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', $idUsuario, $id, $ficha->id)}}">Ver prestaciones</a></td>
+                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.informe-cierre.create', ['p1' => $idUsuario, 'p2' => $idBeneficiario, 'p3' => $ficha->id])}}">Ficha de Alta</a></td>
+                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', ['p1' => $idUsuario, 'p2' => $idBeneficiario, 'p3' => $ficha->id])}}">Ver prestaciones</a></td>
                                                 </tr>
                                             @endforeach
                                         @endif

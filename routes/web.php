@@ -147,7 +147,7 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
 
     Route::group(['prefix' => '/informe-cierre'], function (){
 
-        Route::get('/create/{id}', [
+        Route::get('/create/{idUsuario}/{idBeneficiario}/{idFicha}', [
             'uses' => 'InformeCierreController@create',
             'as' => 'area-medica.informe-cierre.create'
         ]);
