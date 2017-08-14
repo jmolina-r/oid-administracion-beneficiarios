@@ -1,4 +1,10 @@
-$(document).ready(function() {})
+$(document).ready(function() {
+    console.log('llego');
+    $('#editar_btn').click(function() {
+        console.log('editando');
+        window.location.href = "/funcionario/editar/" + $('#funcionarioId').val();
+    });
+})
 
 function getFuncionarioPorId(funcionarioId) {
     var promise = $.ajax({
@@ -19,37 +25,9 @@ function getFuncionarioPorId(funcionarioId) {
             $('#funcionarioFechaNacimiento').html(convertDate(funcionario.fecha_nacimiento));
             $('#funcionarioEmail').html(funcionario.email);
             $('#funcionarioTipo').html(funcionario.tipo_funcionario.nombre);
+            $('#editarFuncionarioBtn').attr('href', '/funcionario/editar/' + funcionario.id);
 
-            console.log(funcionario);
-
-            // $('#editar_btn').show();
-            $('#editar_btn').click(function() {
-                window.location.href = "/update/" + $('#funcionarioId').val();
-            });
         },
-        // complete: function() {
-        //     $.ajax({
-        //         type: 'GET',
-        //         url: '/users/' + funcionarioId + "/roles",
-        //         beforeSend: function() {
-        //             // this is where we append a loading image
-        //             //$('#progress').removeClass('hidden');
-        //         },
-        //         success: function(roles){
-        //             var rol = ""
-        //             for(var i in roles) {
-        //                 if(i==0){
-        //                     rol = roles[i].nombre
-        //                 } else {
-        //                     rol = rol + " - " + roles[i].nombre
-        //                 }
-        //             }
-        //             $('#roles').html(rol);
-        //         }, complete: function() {
-        //             $('#profile').modal('show');
-        //         }
-        //     });
-        // },
         error: function(err) {
             console.log(err);
         }
@@ -61,7 +39,9 @@ function getFuncionarioPorId(funcionarioId) {
 }
 
 function convertDate(inputFormat) {
-  function pad(s) { return (s < 10) ? '0' + s : s; }
-  var d = new Date(inputFormat);
-  return [pad(d.getDate()+1), pad(d.getMonth()+1), d.getFullYear()].join('/');
+    function pad(s) {
+        return (s < 10) ? '0' + s : s;
+    }
+    var d = new Date(inputFormat);
+    return [pad(d.getDate() + 1), pad(d.getMonth() + 1), d.getFullYear()].join('/');
 }

@@ -118,7 +118,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                                 <td class="capitalize">{{ $funcionario->tipo_funcionario->nombre }}</td>
                                                                                 <td>
                                                                                     <div class='text-right'>
-                                                                                        <a class='btn btn-success btn-xs' href='#' onclick="getFuncionarioPorId('{{ $funcionario->id }}')">
+                                                                                        <a class='btn btn-success btn-xs' onclick="getFuncionarioPorId('{{ $funcionario->id }}')">
                                                                                             <i class='fa fa-user'></i>
                                                                                         </a>
                                                                                         {{-- <a class='btn btn-danger btn-xs' href='#'>
@@ -190,7 +190,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                 </div>
                 <div class='modal-footer'>
                     <button class='btn btn-default' data-dismiss='modal' type='button'>Volver</button>
-                    <button id="editar_btn" class='btn btn-warning' type='button'>Editar</button>
+                    <a href="/home" id="editarFuncionarioBtn" class='btn btn-warning' >Editar</a>
                     <input id="userId" type="hidden" value="">
                 </div>
             </div>
