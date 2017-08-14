@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class KinesiologoTableSeeder extends Seeder
+class FuncionarioTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class KinesiologoTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Kinesiologo::class, 3)->create();
+        factory(App\Funcionario::class,3)->create();
     }
 }

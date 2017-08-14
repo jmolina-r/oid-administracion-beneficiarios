@@ -70,7 +70,7 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
             Route::get('/show/{id}', [
                 'uses' => 'FichaKinesiologiaController@show',
                 'as' => 'area-medica.ficha-evaluacion-inicial.kinesiologia.show'
-            ])->middleware('roles:secretaria|admin');
+            ])->middleware('roles:admin|kinesiologia');
 
             Route::post('/store', [
                 'uses' => 'FichaKinesiologiaController@store',
@@ -85,15 +85,12 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.create'
             ])->middleware('roles:admin|fonoaudiologia');
 
-            Route::post('/postfono', [
+            Route::post('/postFono', [
                 'uses' => 'FichaFonoaudiologiaController@postFono',
-                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.postfono'
+                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.postFono'
             ])->middleware('roles:admin|fonoaudiologia');
 
-            Route::post('/agregarpariente', [
-                'uses' => 'FichaFonoaudiologiaController@postAgregarPariente',
-                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.agregarpariente'
-            ])->middleware('roles:admin|fonoaudiologia');
+
 
         });
 
@@ -109,16 +106,11 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresando'
             ]);
 
-            //creo q esto esta de mas, era parte de un conflicto de merge
-            Route::get('/mostrar-lista', [
-                'uses' => 'FichaTerapiaOcupacionalController@getMostrarLista',
-                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.mostrar-lista'
-            ])->middleware('roles:admin|terapia_ocupacional');
 
             Route::get('/show/{id}', [
                 'uses' => 'FichaTerapiaOcupacionalController@show',
                 'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.show'
-            ])->middleware('roles:secretaria|admin');
+            ])->middleware('roles:admin|terapia_ocupacional');
         });
 
         Route::group(['prefix' => '/psicologia'], function (){
@@ -138,6 +130,37 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.show'
             ])->middleware('roles:secretaria|admin');
         });
+
+        Route::group(['prefix' => '/fichas'], function (){
+
+            Route::get('/listaFichas/{id}', [
+                'uses' => 'FichasController@listaFichas',
+                'as' => 'area-medica.ficha-evaluacion-inicial.fichas.listaFichas'
+            ]);
+
+            Route::get('/listaPrestacionesRealizadas/{idUser}/{idBeneficiario}/{idFicha}', [
+                'uses' => 'FichasController@listaPrestacionesRealizadas',
+                'as' => 'area-medica.ficha-evaluacion-inicial.fichas.listaPrestacionesRealizadas'
+            ]);
+        });
+    });
+
+    Route::group(['prefix' => '/informe-cierre'], function (){
+
+        Route::get('/buscarUser', [
+            'uses' => 'ReportabilidadController@createInformeCierre',
+            'as' => 'area-medica.informe-cierre.buscarUser'
+        ]);
+
+        Route::get('/createInformeCierre', [
+            'uses' => 'ReportabilidadController@showUser',
+            'as' => 'area-medica.informe-cierre.createInformeCierre'
+        ]);
+
+        Route::post('/createInformeCierre',[
+            'uses' => 'ReportabilidadController@postInformeCierre',
+            'as' => 'area-medica.informe-cierre.createInformeCierre'
+        ]);
     });
 });
 
@@ -188,16 +211,98 @@ Route::group(['prefix' => 'beneficiario', 'middleware' => 'auth'], function () {
 
 Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     Route::get('/createFichaPaciente', [
-    'uses' => 'ReportabilidadController@show',
-    'as' => 'reportabilidad.createFichaPaciente'
+        'uses' => 'ReportabilidadController@show',
+        'as' => 'reportabilidad.createFichaPaciente'
     ])->middleware('roles:admin|jefatura');;
 
     Route::get('/showEstadistica', [
-    'uses' => 'ReportabilidadController@showResults',
-    'as' => 'reportabilidad.showEstadistica'
-    ])->middleware('roles:admin|jefatura');
-});
+        'uses' => 'ReportabilidadController@showResults',
+        'as' => 'reportabilidad.showEstadistica'
+    ]);
 
+    Route::get('/menuReportabilidad', [
+        'uses' => 'ReportabilidadController@index',
+        'as' => 'reportabilidad.menu'
+    ]);
+
+    Route::get('/reporteGeneralOID.pdf', [
+        'uses' => 'PdfController@invoice',
+        'as' => 'reportabilidad.reporteGeneral'
+    ]);
+
+    Route::get('/reporteKinesiologia.pdf', [
+        'uses' => 'PdfController@invoice1',
+        'as' => 'reportabilidad.reporteKine'
+    ]);
+
+    Route::get('/reportePsicologia.pdf', [
+        'uses' => 'PdfController@invoice2',
+        'as' => 'reportabilidad.reportePsico'
+    ]);
+
+    Route::get('/reporteTerapOcupacional.pdf', [
+        'uses' => 'PdfController@invoice3',
+        'as' => 'reportabilidad.reporteTer'
+    ]);
+
+    Route::get('/reporteSocial.pdf', [
+        'uses' => 'PdfController@invoice4',
+        'as' => 'reportabilidad.reporteSoc'
+    ]);
+
+    Route::get('/reporteGrupal.pdf', [
+        'uses' => 'PdfController@invoice5',
+        'as' => 'reportabilidad.reporteGru'
+    ]);
+
+    Route::get('/reporteHistorico.pdf', [
+        'uses' => 'PdfController@invoiceHistoricReport',
+        'as' => 'reportabilidad.reporteHist'
+    ]);
+
+    Route::get('/menu', [
+        'uses' => 'ReportabilidadController@index',
+        'as' => 'reportabilidad.menuReportabilidad'
+    ]);
+
+    Route::get('/profesional',[
+        'uses'=>'ReportabilidadController@porProfesional',
+        'as' => 'reportabilidad.reportabilidadPorProfesional'
+    ]);
+
+    Route::get('/reportabilidadKinesiologia',[
+        'uses'=>'ReportabilidadController@showResultKine',
+        'as' => 'reportabilidad.reportabilidadKine'
+    ]);
+
+    Route::get('/reportabilidadPsiclogia',[
+        'uses'=>'ReportabilidadController@showResultPsico',
+        'as' => 'reportabilidad.reportabilidadPsico'
+    ]);
+
+    Route::get('/reportabilidadTerapiaOcupacional',[
+        'uses'=>'ReportabilidadController@showResultTer',
+        'as' => 'reportabilidad.reportabilidadTer'
+    ]);
+
+    Route::get('/reportabilidadAtencionSocial',[
+        'uses'=>'ReportabilidadController@showResultSoc',
+        'as' => 'reportabilidad.reportabilidadSoc'
+    ]);
+
+    Route::get('/reportabilidadGrupal',[
+
+    'uses'=>'ReportabilidadController@showResultGrupal',
+    'as' => 'reportabilidad.reportabilidadGru'
+    ]);  
+
+    Route::get('/reportabilidadHistorica',[
+    'uses'=>'ReportabilidadController@showResultHistorica',
+    'as' => 'reportabilidad.reportabilidadHistorica'
+    ]); 
+
+
+});
 
 Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
     Route::get('/show', [
@@ -244,6 +349,14 @@ Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
     ]);;
 });
 
+
+Route::group(['prefix' => 'informecierre', 'middleware' => 'auth'], function(){
+    Route::get('/informe', [
+        'uses' => 'InformeController@index',
+        'as' => 'informe-cierre.informe'
+    ]);
+});  
+
 Route::group(['prefix' => '/registro_prestacion', 'middleware' => 'auth'], function (){
     Route::get('/{id}', [
         'uses' => 'MallaController@registroPrestacion',
@@ -275,5 +388,3 @@ Route::group(['prefix' => '/registro_prestacion', 'middleware' => 'auth'], funct
         'uses' => 'MallaController@storePrestaciones'
     ]);
 });
-
-

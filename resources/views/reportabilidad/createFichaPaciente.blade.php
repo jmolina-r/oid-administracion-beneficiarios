@@ -59,7 +59,7 @@
         ]);
 
         var options = {
-          title: 'TRAMOS FONASA'
+          title: 'TRAMOS FONASA',
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -68,7 +68,7 @@
       }
     </script>
     <script type="text/javascript">
-       google.charts.load("current", {packages:["corechart"]});
+      google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
@@ -112,6 +112,35 @@
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('chartthree'));
+        chart.draw(data, options);
+      }
+    </script>
+     <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+        
+          ['Task', 'Hours per Day'],
+          ['Cruz Blanca',<?php echo $isapreCruzBlanca ?>],
+          ['Colmena',<?php echo $isapreColmena ?>],
+          ['Mas vida',<?php echo $isapreMasVida ?>],
+          ['Consalud',<?php echo $isapreConsalud ?>],
+          ['Banmedica',<?php echo $isapreBanmedica ?>],
+          ['Vida Tres',<?php echo $isapreVidaTres ?>],
+          ['Codelco', <?php echo $isapreCodelco ?>],
+          ['Dipreca',<?php echo $isapreDipreca ?>],
+          ['Capredena',<?php echo $isapreCapredena ?>],
+          ['Ferro Salud',<?php echo $isapreFerroSalud ?>],
+          ['Otras',<?php echo $isapreOtro ?>],
+        ]);
+
+        var options = {
+          title: 'TIPOS DE ISAPRE',
+         
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('pieechart'));
         chart.draw(data, options);
       }
     </script>
@@ -194,33 +223,50 @@
                       </div>
                     </div>
                     <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-info'><?php echo $porcentajeFemenino; echo '%'?></h3>
+                          <h3 class='title text-info'><?php echo number_format($porcentajeFemenino,2,'.',''); echo '%'?></h3>
                           <small>INSCRITOS FEMENINOS</small>
                           <div class='text-info fa fa-venus align-left'></div>
                         </div>
                     <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-muted'><?php echo $porcentajeMasculino; echo '%'?></h3>
+                          <h3 class='title text-muted'><?php echo number_format($porcentajeMasculino,2,'.',''); echo '%'?></h3>
+
                           <small>INSCRITOS MASCULINOS</small>
                           <div class='text-muted fa fa-mars align-left'></div>
                      </div>
                       <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-inverse'><?php echo $porcentajeCredencial; echo '%'?></h3>
+
+                          <h3 class='title text-inverse'><?php echo intval($porcentajeCredencialEntregada); echo '%'?></h3>
+
                           <small>CREDENCIAL DE DISCAPACIDAD ENTREGADAS</small>
                           <div class='text-inverse fa fa-credit-card align-left'></div>
                      </div>
+                     <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-inverse'><?php echo intval($porcentajeCredencialTramite); echo '%'?></h3>
+                          <small>CREDENCIAL DE DISCAPACIDAD EN TRÁMITE</small>
+                          <div class='text-inverse fa fa-credit-card align-left'></div>
+                     </div>
+                     <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-info'><?php echo intval($porcentajeRSTiene); echo '%'?></h3>
+                          <small>REGISTRO SOCIAL DE HOGARES</small>
+                          <div class='text-info fa fa-home align-left'></div>
+                     </div>
+                     <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-info'><?php echo intval($porcentajeRSTramite); echo '%'?></h3>
+                          <small>REGISTRO SOCIAL DE HOGARES EN TÁMITE</small>
+                          <div class='text-info fa fa-home align-left'></div>
+                     </div>
                      <div class='col-sm-6 sinpadding'>
-                        <div class='box-content box-statistic text-right'>
-                            <h3 class='title text-error'><br></h3>
-                            <small>SALUD</small>
-                            <div class='text-error fa fa-ambulance align-left'></div>
+                        <div class='box-content'>
+                            <h3 class='title text-error text-center'>SALUD</h3>
+                          
                         </div>
                         <div class='box-content box-statistic text-right'>
-                              <h3 class='title text-error'><?php echo $porcentajeFonasa; echo '%'?></h3>
+                              <h3 class='title text-error'><?php echo intval($porcentajeFonasa); echo '%'?></h3>
                               <small>USUARIOS FONASA</small>
                               <div class='text-error fa fa-ambulance align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
-                              <h3 class='title text-error'><?php echo $porcentajeIsapre; echo '%'?></h3>
+                              <h3 class='title text-error'><?php echo intval($porcentajeIsapre); echo '%'?></h3>
                               <small>USUARIOS ISAPRE</small>
                               <div class='text-error fa fa-ambulance align-left'></div>
                         </div>
@@ -228,18 +274,17 @@
                      <div class='box-content box-statistic col-sm-6 sinpadding'>
                        <div  id="piechart" style="width: 100%; height: 100%;"></div>
                      </div>
+                     <div class='box-content box-statistic col-sm-12 sinpadding'>
+                       <div  id="pieechart" style="width: 100%; height: 100%;"></div>
+                     </div>
                        <div class='box-content box-statistic col-sm-12 text-right'>
-                              <h3 class='title text-error'><br></h3>
-                              <small>NIVEL EDUACIONAL</small>
-                              <div class='text-invisor fa fa-book align-left'></div>
+                              <h3 class='title text-invisor text-center'>NIVEL EDUACIONAL</h3>
                         </div>
                         <div class='box-content box-statistic col-sm-12 sinpadding'>
                        <div  id="donutchart" style="width: 100%; height: 100%;"></div>
                      </div>
                      <div class='box-content box-statistic col-sm-12 text-right'>
-                              <h3 class='title text-error'><br></h3>
-                              <small>SITUACION LABORAL</small>
-                              <div class='text-invisor fa fa-book align-left'></div>
+                              <h3 class='title text-invisor text-center'>SITUACION LABORAL</h3>
                         </div>
                         <div class='box-content box-statistic col-sm-12 sinpadding'>
                        <div  id="chartthree" style="width: 100%; height: 100%;"></div>
@@ -257,8 +302,7 @@
                     <div class='box-header blue-background'>
                       <div class='title'>Atenciones Global</div>
                       <div class='actions'>
-                        <a class="btn box-remove btn-xs btn-link" href="#"><i class='fa fa-times'></i>
-                        </a>
+            
                         <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
                         </a>
                       </div>

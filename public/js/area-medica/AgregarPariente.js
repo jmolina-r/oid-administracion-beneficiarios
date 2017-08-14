@@ -1,7 +1,3 @@
-/**
- * Created by lfgut on 25-05-2017.
- */
-
 $('#boton-agregar-pariente').click(function() {
 
     if(!$('#nombre').val() || !$('#parentesco').val()){
@@ -50,6 +46,3 @@ $('#boton-agregar-pariente').click(function() {
     });
 
 });
-
-
-

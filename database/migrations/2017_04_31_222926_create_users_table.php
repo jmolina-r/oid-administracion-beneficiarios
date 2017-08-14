@@ -22,6 +22,12 @@ class CreateUsersTable extends Migration
             $table->boolean('status');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->integer('funcionario_id')->unsigned()->nullable();
+        });
+
+        Schema::table('users', function($table) {
+            $table->foreign('funcionario_id')->references('id')->on('funcionarios')->onDelete('cascade');
         });
     }
 
