@@ -74,6 +74,11 @@
 
         select: function(start, end) {
 
+            if(puedeAsignarHora() == "false"){
+                alert("No tiene los permisos para agendar horas.");
+                return;
+            }
+
             var date = new Date(start);
             var ahora = new Date();
 
@@ -258,5 +263,26 @@
     $("#id").change(function() {
         location.reload();
     });
+
+    function puedeAsignarHora(){
+
+        var respuesta = "";
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            async: false,
+            url: "/malla/validarusuario",
+            type: "POST",
+
+            success: function(data, textStatus, jqXHR) {
+                respuesta = data;
+            },
+
+            error: function(jqXHR, textStatus, errorThrown) {
+            }
+        });
+        return respuesta;
+    }
 
 })();

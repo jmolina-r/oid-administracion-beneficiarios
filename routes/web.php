@@ -310,6 +310,10 @@ Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
         'as' => 'malla.show'
     ]);;
 
+    Route::post('/validarusuario', [
+        'uses' => 'MallaController@validarUsuario',
+    ]);
+
     Route::post('/store', [
         'uses' => 'MallaController@store',
         'as' => 'malla.store'
