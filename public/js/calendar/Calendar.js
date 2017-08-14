@@ -88,7 +88,19 @@
                 return;
             }
 
-            return bootbox.prompt("Ingrese rut de beneficiario", function(title) {
+            return bootbox.prompt({
+                title: 'Ingrese rut de beneficiario',
+                placeholder: 'El RUT debe tener el formato 12345678-9',
+                buttons: {
+                    confirm: {
+                        label: 'Submit'
+                    }
+                },
+                callback: function(value) {
+                    value && alert('You have entered: ' + value);
+                }
+            });
+            /*return bootbox.prompt("Ingrese rut de beneficiario", function(title) {
                 if(title == ""){
                     alert("El rut no puede quedar en blanco");
                     return;
@@ -133,7 +145,7 @@
                     return cal.fullCalendar('unselect');
                 }
 
-            });
+            });*/
         },
         eventClick: function(calEvent, jsEvent, view) {
             if(calEvent.realizado) {
