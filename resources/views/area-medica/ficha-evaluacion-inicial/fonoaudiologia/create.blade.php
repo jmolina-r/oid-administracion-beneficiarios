@@ -152,6 +152,13 @@
                                                         <!-- STEP 1 -->
                                                         <div class='step-pane active' data-step='1'>
                                                             <input id="id" name="id" type="hidden" value="{{$id}}">
+                                                            <div class="col-md-12 form-group">
+                                                                <label class="control-label" for="motivo_consulta">Motivo consulta</label>
+                                                                <div class="controls">
+                                                                    <textarea name="motivo_consulta" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Motivo Consulta' rows='3' style='margin-bottom:10px;' value="{{ old('motivo_consulta') }}" id="inputDiagnostico" maxlength="200"></textarea>
+                                                                </div>
+                                                                <div class="help-block with-errors"></div>
+                                                            </div>
                                                             <div class="col-md-12">
                                                                 <h3>Antecedentes Familiares (¿Con quién vive?)</h3>
                                                                 <hr/>
