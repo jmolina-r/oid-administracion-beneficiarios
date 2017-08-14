@@ -97,9 +97,19 @@
 
                     @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
                         <div class="col-xs-12">
-
+                            <div class='box'>
+                                <div class='box-content box-padding'>
+                                    <div class="form-group">
+                                        <h3 class='control-label' for='inputText'>Seleccione la malla de desea ver</h3>
+                                        <select style="width:100%;" name='id' class='form-control capitalize select-tag' id='id'>
+                                            @foreach($usuarios as $usuario)
+                                                <option value="{{ $usuario->id }}">{{ $usuario->username }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <input id="id" name="id"  value="{{$id}}">
                     @else
                         <input id="id" name="id" type="hidden" value="{{$id}}">
                     @endif
