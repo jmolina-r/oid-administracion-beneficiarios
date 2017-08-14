@@ -255,4 +255,8 @@
         return nombre_encontrado;
     }
 
+    $("#id").change(function() {
+        location.reload();
+    });
+
 })();
