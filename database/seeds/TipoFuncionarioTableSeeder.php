@@ -30,5 +30,10 @@ class TipoFuncionarioTableSeeder extends Seeder
             'nombre' => 'terapeuta ocupacional'
         ]);
         $tipoFuncionario->save();
+
+        $tipoFuncionario = new \App\TipoFuncionario([
+            'nombre' => 'fonoaudiologo'
+        ]);
+        $tipoFuncionario->save();
     }
 }

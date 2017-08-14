@@ -250,7 +250,8 @@
             data: {
                 fecha: fecha,
                 hora: hora,
-                rut: rut
+                rut: rut,
+                id: $('#id').val()
             },
             error: function(jqXHR, textStatus, errorThrown) {
 

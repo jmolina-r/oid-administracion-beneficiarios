@@ -9,6 +9,7 @@ use App\PrestacionRealizada;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use function MongoDB\BSON\toJSON;
 use Psy\Util\Json;
 
@@ -46,14 +47,10 @@ class MallaController extends Controller
         $fecha = $request->input('fecha');
         $hora = $request->input('hora');
         $rut_beneficiario = $request->input('rut');
+        $id = $request->input('id');
 
         $beneficiario = Beneficiario::where('rut', $rut_beneficiario)->first();
         $id_beneficiario = $beneficiario->id;
-
-        if (Auth::check())
-        {
-            $id = Auth::user()->id;
-        }
 
         $hora_agendada = new HoraAgendada([
             'beneficiario_id' => $id_beneficiario,
@@ -89,7 +86,11 @@ class MallaController extends Controller
         $usuarios = null;
 
         if(Auth::user()->hasAnyRole(['admin', 'secretaria'])){
-            $usuarios = User::all();
+            $usuarios = DB::table('users')
+                ->join('funcionarios', 'users.funcionario_id', '=', 'funcionarios.id')
+                ->join('tipo_funcionarios', 'funcionarios.tipo_funcionario_id', '=', 'tipo_funcionarios.id')
+                ->select('users.id', 'users.username', 'tipo_funcionarios.nombre')
+                ->get();
         }
 
         $contentHeight = 286;
@@ -157,7 +158,7 @@ class MallaController extends Controller
             $id = Auth::user()->id;
         }
 
-        $horasAgendadas = HoraAgendada::where('user_id', $request->id)->get();
+        $horasAgendadas = HoraAgendada::where('user_id', $request->input('id'))->get();
 
 
         foreach ($horasAgendadas as $horaAgendada) {
