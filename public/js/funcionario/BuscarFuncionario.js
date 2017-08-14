@@ -20,6 +20,8 @@ function getFuncionarioPorId(funcionarioId) {
                 $('#funcionarioFechaNacimiento').html(funcionario.fecha_nacimiento);
                 $('#funcionarioEmail').html(funcionario.email);
 
+                console.log(funcionario.tipo_funcionario);
+
                 // $('#editar_btn').show();
                 $('#editar_btn').click(function() {
                     window.location.href = "/update/" + $('#funcionarioId').val();

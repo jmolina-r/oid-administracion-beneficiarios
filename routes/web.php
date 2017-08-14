@@ -391,7 +391,7 @@ Route::group(['prefix' => 'funcionario', 'middleware' => 'auth'], function () {
         'as' => 'funcionario.edit'
     ])->middleware('roles:admin|secretaria');
 
-    Route::post('/editar', [
+    Route::post('/editar/{id}', [
         'uses' => 'FuncionarioController@update',
         'as' => 'funcionario.update'
     ])->middleware('roles:admin|secretaria');

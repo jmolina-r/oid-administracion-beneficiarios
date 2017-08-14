@@ -31,6 +31,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function funcionario()
+    {
+        return $this->belongsTo(Funcionario::class);
+    }
+
     public function hasAnyRole($roles)
     {
         if (is_array($roles)) {

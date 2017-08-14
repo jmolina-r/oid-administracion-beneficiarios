@@ -102,7 +102,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                                     Telefono
                                                                                 </th>
                                                                                 <th>
-
+                                                                                    Acciones
                                                                                 </th>
                                                                             </tr>
                                                                         </thead>
