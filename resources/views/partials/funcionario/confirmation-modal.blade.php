@@ -7,7 +7,7 @@
                     <h3 class='modal-title'>Datos del Funcionario</h3>
                 </div>
                 <div class='modal-body'>
-                    <h5>A continuación se muestran los datos del funcionario. Para modificar, presione el botón editar.</h5>
+                    <h5>A continuación se muestran los datos del funcionario.</h5>
                     <div class="row">
                         <div class="col-lg-6">
                             <h4>Nombre del Funcionario</h4>

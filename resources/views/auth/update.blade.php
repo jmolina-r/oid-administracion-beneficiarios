@@ -3,7 +3,7 @@
 
 <!-- meta atributo title -->
 @section('title')
-    Login - OID
+    Actualizar Usuario - OID
 @endsection
 
 <!-- inyeccion de estilos -->
@@ -57,7 +57,7 @@
     <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/user/reguser.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/auth/RegistrarUser.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/charCount/charCount.js') }}" type="text/javascript"></script>
 @endsection
 
@@ -93,7 +93,7 @@
                         <div class='col-sm-12'>
                             <div class='box'>
                                 <div class='box-content box-padding'>
-                                    <form action='' class='validate-form' method="POST" action="{{ route('update', $user->id) }}">
+                                    <form id='userSaveForm' class='validate-form' method="POST" action="{{ route('update', $user->id) }}">
 
                                         {{ csrf_field() }}
 
@@ -109,4 +109,6 @@
         </div>
     </section>
 </div>
+@include('partials.auth.confirmation-modal')
+
 @endsection

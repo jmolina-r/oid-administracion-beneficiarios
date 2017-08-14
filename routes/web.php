@@ -20,10 +20,9 @@ Auth::routes();
 
 
 // Registration Routes...
-Route::get('update/{id}', 'Auth\UpdateController@showUpdateForm')->name('update');
-Route::post('update/{id}', 'Auth\UpdateController@update');
+Route::get('update/{user}', 'Auth\UpdateController@showUpdateForm')->name('update');
+Route::post('update/{user}', 'Auth\UpdateController@update');
 
-// Registration Routes...
 Route::get('/find', 'Auth\FindController@showSearch')->name('find');
 Route::get('/users/{id}', 'Auth\FindController@userInfoJson');
 Route::get('/users/{id}/roles', 'Auth\FindController@userInfoRolesJson');
