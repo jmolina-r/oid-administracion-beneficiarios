@@ -423,6 +423,31 @@ class MallaController extends Controller
         return view('malla.crearPrestacion');
     }
 
+
+    public function validarUsuario(Request $request)
+    {
+
+        if (Auth::check())
+        {
+            $id = Auth::user()->id;
+        }
+
+        $usuario = User::where('id', $id)->first();
+
+        $roles = $usuario->roles()->get();
+
+        foreach ($roles as $rol){
+
+            if($rol->nombre == 'secretaria'){
+                return "true";
+            }
+
+        }
+
+        return "false";
+
+    }
+
     /**
      *
      *
