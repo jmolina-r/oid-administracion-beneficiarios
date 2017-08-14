@@ -6,6 +6,7 @@ use App\AntecedentesFamiliares;
 use App\AntecedentesMedicos;
 use App\FichaPsicologia;
 use App\Beneficiario;
+use App\Funcionario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -141,7 +142,7 @@ class FichaPsicologiaController extends Controller
         }
 
         $persona = Beneficiario::find($fichaPsicologia->beneficiario_id);
-
+        $funcionario=Funcionario::find($fichaPsicologia->funcionario_id);
         $antecedentesMedicos = AntecedentesMedicos::find($fichaPsicologia->antecedentes_medicos_id);
         $antecedentesFamiliares = AntecedentesFamiliares::find($fichaPsicologia->antecedentes_familiares_id);
 
@@ -151,6 +152,7 @@ class FichaPsicologiaController extends Controller
             ->with(compact('persona'))
             ->with(compact('antecedentesMedicos'))
             ->with(compact('antecedentesFamiliares'))
+            ->with(compact('funcionario'))
             ;
     }
 
