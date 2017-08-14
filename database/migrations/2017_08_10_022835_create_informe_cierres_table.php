@@ -24,14 +24,13 @@ class CreateInformeCierresTable extends Migration
             $table->smallInteger('desercion');
             $table->smallInteger('culmino_proceso');
             $table->string('observacion')->nullable();
+            $table->string('area');
 
             $table->integer('beneficiario_id')->unsigned()->nullable();
-            $table->integer('prestacion_realizada_id')->unsigned()->nullable();
 
         });
         Schema::table('informe_cierres', function ($table){
             $table->foreign('beneficiario_id')->references('id')->on('beneficiarios')->onDelete('cascade');
-            $table->foreign('prestacion_realizada_id')->references('id')->on('prestacion_realizadas')->onDelete('cascade');
         });
     }
 

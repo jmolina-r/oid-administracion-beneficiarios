@@ -64,7 +64,7 @@
     <script src="{{ asset("assets/javascripts/plugins/fullcalendar/fullcalendar.min.js") }}" type="text/javascript"></script>
     <script src="{{ asset("assets/javascripts/plugins/bootbox/bootbox.min.js") }}" type="text/javascript"></script>
 
-    <script src="{{ asset('/js/calendar/Calendar.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/malla/Calendar.js') }}" type="text/javascript"></script>
     <script>
         $("#new-event").on('submit', function(e) {
             var value;
@@ -89,12 +89,32 @@
         <section id="content">
             <div class="container">
                 <div class="row" id="content-wrapper">
-
                     <input id="contentHeight" name="contentHeight" type="hidden" value="{{$contentHeight}}">
                     <input id="minTime" name="minTime" type="hidden" value="{{$minTime}}">
                     <input id="maxTime" name="maxTime" type="hidden" value="{{$maxTime}}">
                     <input id="slotDuration" name="slotDuration" type="hidden" value="{{$slotDuration}}">
                     <input id="slotLabelInterval" name="slotLabelInterval" type="hidden" value="{{$slotLabelInterval}}">
+
+                    @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
+                        <div class="col-xs-12">
+                            <div class='box'>
+                                <div class='box-content box-padding'>
+                                    <div class="form-group">
+                                        <h3 class='control-label' for='inputText'>Seleccione la malla de desea ver</h3>
+                                        <select style="width:100%;" name='id' class='form-control capitalize select-tag' id='id'>
+                                            @foreach($usuarios as $usuario)
+                                                @if($usuario->nombre == "kinesiologo" || $usuario->nombre == "psicologo" || $usuario->nombre == "terapeuta ocupacional" || $usuario->nombre == "fonoaudiologo")
+                                                    <option value="{{ $usuario->id }}">{{ $usuario->username }}    ({{ $usuario->nombre }})</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @else
+                        <input id="id" name="id" type="hidden" value="{{$id}}">
+                    @endif
 
                     <div class='col-xs-12'>
                         <div class='group-header'>

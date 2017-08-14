@@ -70,6 +70,7 @@
                 </ul>
             </li>
             @endif
+
             @if(Auth::user()->hasAnyRole(['admin', 'fonoaudiologia']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-deaf'></i>
@@ -89,6 +90,7 @@
                 </ul>
             </li>
             @endif
+
             @if(Auth::user()->hasAnyRole(['admin', 'psicologia']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-smile-o'></i>
@@ -116,6 +118,7 @@
                 </ul>
             </li>
             @endif
+
             @if(Auth::user()->hasAnyRole(['admin', 'terapia_ocupacional']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-hand-rock-o'></i>
@@ -143,6 +146,7 @@
                 </ul>
             </li>
             @endif
+
             @if(Auth::user()->hasAnyRole(['admin', 'trabajo_social']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-child'></i>
@@ -190,7 +194,7 @@
                         </a>
                     </li>
                 </ul>
-            <!--<ul class='nav nav-stacked'>
+            {{--<ul class='nav nav-stacked'>
                 <li class=''>
                     <a href='{{route('reportabilidad.menu')}}'>
                         <div class='icon'>
@@ -199,11 +203,11 @@
                         <span>Menu reportabilidad</span>
                     </a>
                 </li>
-            </ul>-->
+            </ul>--}}
             </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
+            @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-calendar'></i>
                     <span>Malla</span>
@@ -230,6 +234,7 @@
                 </ul>
             </li>
             @endif
+
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
                     <span>Dar de alta</span>
@@ -248,6 +253,7 @@
 
                 </ul>
             </li>
+
             @if(Auth::user()->hasAnyRole(['admin', 'coordinador_oficina']))
                 <li class=''>
                     <a class="dropdown-collapse" href="#"><i class='fa fa-users'></i>
@@ -276,6 +282,56 @@
                     </ul>
                 </li>
             @endif
+
+            @if(Auth::user()->hasAnyRole(['admin', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional']))
+                <li class=''>
+                    <a class="dropdown-collapse" href="#"><i class='fa fa-users'></i>
+                        <span>Fichas de Evaluación inicial</span>
+                        <i class='fa fa-angle-down angle-down'></i>
+                    </a>
+                    <ul class='nav nav-stacked'>
+                        <li class=''>
+                            <a href='{{route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas',1)}}'>
+                                <div class='icon'>
+                                    <i class='fa fa-caret-right'></i>
+                                </div>
+                                <span>Lista de Fichas</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+            @endif
+
+            @if(Auth::user()->hasAnyRole(['admin', 'coordinador_oficina']))
+                <li class=''>
+                    <a class="dropdown-collapse" href="#"><i class='fa fa-building'></i>
+                        <span>Funcionarios</span>
+                        <i class='fa fa-angle-down angle-down'></i>
+                    </a>
+                    <ul class='nav nav-stacked'>
+                        <li class=''>
+                            <a href='{{route('funcionario.find')}}'>
+                                <div class='icon'>
+                                    <i class='fa fa-caret-right'></i>
+                                </div>
+                                <span>Administrar Funcionarios</span>
+                            </a>
+                        </li>
+
+                        <li class=''>
+                            <a href='{{route('funcionario.create')}}'>
+                                <div class='icon'>
+                                    <i class='fa fa-caret-right'></i>
+                                </div>
+                                <span>Creación Funcionarios</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+            @endif
+
         </ul>
     </div>
 </nav>

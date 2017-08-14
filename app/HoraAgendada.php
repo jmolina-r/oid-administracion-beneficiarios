@@ -23,4 +23,14 @@ class HoraAgendada extends Model
     {
         return $this->hasOne(Beneficiario::class);
     }
+
+    public function setAsisteSNAttribute($valor)
+    {
+        $this->attributes['asist_sn'] = $valor;
+    }
+
+    public function setRazonInasistenciaAttribute($valor)
+    {
+        $this->attributes['razon_inasis'] = $valor;
+    }
 }

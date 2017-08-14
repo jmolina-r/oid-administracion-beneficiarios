@@ -11,6 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(TipoFuncionarioTableSeeder::class);
+        $this->call(FuncionarioTableSeeder::class);
+        $this->call(RoleTableSeeder::class);
+        $this->call(UserTableSeeder::class);
+        $this->call(RoleUserTableSeeder::class);
 
         $this->call(PaisTableSeeder::class);
         $this->call(EstadoCivilTableSeeder::class);
@@ -18,7 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(OcupacionTableSeeder::class);
         $this->call(BeneficiarioTableSeeder::class);
         $this->call(TelefonoBeneficiarioTableSeeder::class);
-        $this->call(ProfesionalTableSeeder::class);
+        //$this->call(ProfesionalTableSeeder::class);
 
         $this->call(PrestacionTableSeeder::class);
 
@@ -46,7 +51,6 @@ class DatabaseSeeder extends Seeder
         $this->call(DomicilioTableSeeder::class);
 
 
-        $this->call(KinesiologoTableSeeder::class);
         $this->call(AntecedentesMorbidosTableSeeder::class);
         $this->call(ValAutocuidadoTableSeeder::class);
         $this->call(ValComCogTableSeeder::class);
@@ -59,21 +63,16 @@ class DatabaseSeeder extends Seeder
         $this->call(ValSocialTableSeeder::class);
         $this->call(FichaKinesiologiaTableSeeder::class);
 
-        $this->call(PsicologoTableSeeder::class);
 
-        $this->call(TerapeutaOcupacionalTableSeeder::class);
         $this->call(ActividadesVidaDiariaTableSeeder::class);
         $this->call(AntecedentesSocioFamiliaresTableSeeder::class);
         $this->call(AntecedentesSaludTableSeeder::class);
         $this->call(HistorialClinicoTableSeeder::class);
         $this->call(DesarrolloEvolutivoTableSeeder::class);
         $this->call(HabilidadesSocialesTableSeeder::class);
-        $this->call(TerapeutaOcupacionalTableSeeder::class);
         $this->call(FichaTerapiaOcupacionalTableSeeder::class);
 
-        $this->call(RoleTableSeeder::class);
-        $this->call(UserTableSeeder::class);
-        $this->call(RoleUserTableSeeder::class);
+
 
 
 

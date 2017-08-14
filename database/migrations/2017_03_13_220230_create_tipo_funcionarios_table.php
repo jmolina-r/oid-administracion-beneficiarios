@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKinesiologosTable extends Migration
+class CreateTipoFuncionariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateKinesiologosTable extends Migration
      */
     public function up()
     {
-        Schema::create('kinesiologos', function (Blueprint $table) {
+        Schema::create('tipo_funcionarios', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('rut');
-            $table->string('nombres');
-            $table->string('apellidos');
-            $table->string('telefono');
-            $table->date('fecha_nacimiento');
-            $table->string('direccion');
+            $table->string('nombre');
+
         });
     }
 
@@ -32,6 +28,6 @@ class CreateKinesiologosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kinesiologos');
+        Schema::dropIfExists('tipo_funcionarios');
     }
 }

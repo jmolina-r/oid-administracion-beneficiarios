@@ -9,7 +9,7 @@ use App\ValControlEsfinter;
 use App\ValEvaluacion;
 use App\ValSocial;
 use App\FichaKinesiologia;
-use App\Profesional;
+use App\User;
 use App\ValDeambulacion;
 use App\ValMotora;
 use App\ValMovilidad;
@@ -17,6 +17,7 @@ use App\ValSensorial;
 use App\Beneficiario;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FichaKinesiologiaController extends Controller
 {
@@ -55,13 +56,11 @@ class FichaKinesiologiaController extends Controller
         // Validate Fields
         $this->validate($request, $this->rules($request));
 
-        //obtener el kinesiologo por su sesion
-        /*
         if (Auth::check())
         {
-            $kinesiologo = Kinesiologo::where('rut', Auth::user()->rut);
+            $idUsuario = Auth::user()->id;
+            $idFuncionario=Auth::user()->funcionario_id;
         }
-        */
 
         try{
             $antecedentesMorbidos = new AntecedentesMorbidos([
@@ -164,6 +163,7 @@ class FichaKinesiologiaController extends Controller
 
             $fichaKinesiologia = new FichaKinesiologia([
                 'motivo_consulta' => $request->input('motivo_consulta'),
+                'estado'=>'abierto',
                 'situacion_laboral' => $request->input('situacion_laboral'),
                 'situacion_familiar' => $request->input('situacion_familiar'),
                 'asiste_centro_rhb' => $request->input('asiste_centro_rhb'),
@@ -177,8 +177,7 @@ class FichaKinesiologiaController extends Controller
                 'val_com_cog_id' => $valComCog->id,
                 'val_evaluacion_id' => $valEvaluacion->id,
                 'val_control_esfinter_id' => $valControlEsfinter->id,
-                //'kinesiologo_id' => $kinesiologo->id,
-                'profesional_id' => '1', //provisional, profesional no esta implementado
+                'funcionario_id' => $idFuncionario,
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaKinesiologia->save();
@@ -189,8 +188,7 @@ class FichaKinesiologiaController extends Controller
 
         }
         $id = $request->input('id');
-        return view('area-medica.ficha-evaluacion-inicial.kinesiologia.create')
-            ->with(compact('id'));
+        return view('home');
     }
 
     /**
@@ -206,6 +204,7 @@ class FichaKinesiologiaController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param $id
      * @return Response
      */
     public function show($id)

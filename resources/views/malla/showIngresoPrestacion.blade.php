@@ -102,7 +102,7 @@
                         Finalizar
                     </button>
                     </button>
-                    <table class="col-md-4 table-striped pull-right" id="tabla-prestaciones">
+                    <table class="col-md-4 responsive-table pull-right" id="tabla-prestaciones">
                         <thead>
                             <tr>
                                 <th>ID</th>
