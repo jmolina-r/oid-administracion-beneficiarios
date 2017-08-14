@@ -170,6 +170,15 @@
                         eliminarHora(calEvent.id);
                     }else{
 
+                        if(puedeAtenderHora()){
+                            if(confirm("¿El beneficiario registra asistencia?")){
+                                calEvent.url = '/registro_prestacion/' + calEvent.id;
+                                window.open(calEvent.url, '_self');
+                            }else{
+                                calEvent.url = '/registro_prestacion/inasistencia/' + calEvent.id;
+                                window.open(calEvent.url, '_self');
+                            }
+                        }
                     }
                     return;
                 }
@@ -295,6 +304,26 @@
         return respuesta;
     }
 
+    function puedeAtenderHora(){
+        var respuesta = "";
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            async: false,
+            url: "/malla/puedeatender",
+            type: "POST",
+
+            success: function(data, textStatus, jqXHR) {
+                respuesta = data;
+            },
+
+            error: function(jqXHR, textStatus, errorThrown) {
+            }
+        });
+        return respuesta;
+    }
+
     function eliminarHora(id){
 
         $.ajax({
@@ -317,5 +346,7 @@
         });
 
     }
+
+
 
 })();
