@@ -40,6 +40,7 @@ class FichaFonoaudiologiaController extends Controller
         if (Auth::check())
         {
             $idUsuario = Auth::user()->id;
+            $idFuncionario=Auth::user()->funcionario_id;
         }
 
         try{
@@ -153,9 +154,9 @@ class FichaFonoaudiologiaController extends Controller
             $antecedentesMorbidosSiNoFono->save();
 
             $antecedentesMorbidosFamiliaresSiNoFono = new AntecedentesMorbidosFamiliaresSiNoFono([
-                'diabetes_sn_mor_fa' => $request->input('diabetes_sn'),
+                'diabetes_sn_mor_fa' => $request->input('diabetes_sn_mor_fa'),
                 'hipertension_sn' => $request->input('hipertension_sn'),
-                'epilepsia_sn_mor_fa' => $request->input('epilepsia_sn'),
+                'epilepsia_sn_mor_fa' => $request->input('epilepsia_sn_mor_fa'),
                 'deficiencia_mental_sn' => $request->input('deficiencia_mental_sn'),
                 'autismo_sn' => $request->input('autismo_sn'),
                 'trast_lenguaje_sn' => $request->input('trast_lenguaje_sn'),
@@ -192,7 +193,7 @@ class FichaFonoaudiologiaController extends Controller
                 'parentesco5' => $request->input('parentesco5'),
                 'edad5' => $request->input('edad5'),
                 'escolaridad5' => $request->input('escolaridad5'),
-                'ocupacion5' => $request->input('ocupacion6'),
+                'ocupacion5' => $request->input('ocupacion5'),
                 'nombre6' => $request->input('nombre6'),
                 'parentesco6' => $request->input('parentesco6'),
                 'edad6' => $request->input('edad6'),
@@ -226,7 +227,7 @@ class FichaFonoaudiologiaController extends Controller
                 'antecedentes_mor_fa_fono_id' => $antecedentesMorbidosFamiliaresSiNoFono->id,
                 'parientes_hogar_fono_id' => $parienteHogarFono->id,
                 'antecedentes_pos_fono_id' => $antecedentesPostnatalesFono->id,
-                'user_id' => $idUsuario,
+                'funcionario_id' => $idFuncionario,
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaFonoaudiologia->save();

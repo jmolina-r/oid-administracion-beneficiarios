@@ -85,38 +85,60 @@
                 return;
             }
 
-            return bootbox.prompt("Ingrese rut de beneficiario", function(title) {
-                if(title == ""){
-                    alert("El rut no puede quedar en blanco");
-                    return;
-                }
-
-                var Fn = {
-                    // Valida el rut con su cadena completa "XXXXXXXX-X"
-                    validaRut : function (rutCompleto) {
-                        if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))
-                            return false;
-                        var tmp 	= rutCompleto.split('-');
-                        var digv	= tmp[1];
-                        var rut 	= tmp[0];
-                        if ( digv == 'K' ) digv = 'k' ;
-                        return (Fn.dv(rut) == digv );
+            return bootbox.prompt({
+                title: 'Ingrese rut de beneficiario',
+                placeholder: 'El RUT debe tener el formato 12345678-9',
+                buttons: {
+                    confirm: {
+                        label: 'Ingresar'
                     },
-                    dv : function(T){
-                        var M=0,S=1;
-                        for(;T;T=Math.floor(T/10))
-                            S=(S+T%10*(9-M++%6))%11;
-                        return S?S-1:'k';
+                    cancel: {
+                        label: 'Cancelar'
                     }
-                }
+                },
+                callback: function(value) {
 
-                if(Fn.validaRut(title) == false){
-                    alert('Debe ingresar un rut válido');
-                    return;
-                }
+                    if(value == null){
+                        return;
+                    }
 
-                if (title !== null) {
-                    var nombre = encontrarNombre(title, start);
+                    if(value == ""){
+                        alert("El rut no puede quedar en blanco");
+                        return;
+                    }
+
+                    var formato = /.[.]./g;
+
+                    if(formato.test(value)){
+                        alert("El formato del rut es incorrecto");
+                        return;
+                    }
+
+                    var Fn = {
+                        // Valida el rut con su cadena completa "XXXXXXXX-X"
+                        validaRut : function (rutCompleto) {
+                            if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))
+                                return false;
+                            var tmp 	= rutCompleto.split('-');
+                            var digv	= tmp[1];
+                            var rut 	= tmp[0];
+                            if ( digv == 'K' ) digv = 'k' ;
+                            return (Fn.dv(rut) == digv );
+                        },
+                        dv : function(T){
+                            var M=0,S=1;
+                            for(;T;T=Math.floor(T/10))
+                                S=(S+T%10*(9-M++%6))%11;
+                            return S?S-1:'k';
+                        }
+                    }
+
+                    if(Fn.validaRut(value) == false){
+                        alert('Debe ingresar un rut válido');
+                        return;
+                    }
+
+                    var nombre = encontrarNombre(value, start);
                     if(nombre == null){
                         alert('El beneficiario no se encuentra en la base de datos');
                         return;
@@ -128,8 +150,8 @@
                     }, true);
                     location.reload();
                     return cal.fullCalendar('unselect');
-                }
 
+                }
             });
         },
         eventClick: function(calEvent, jsEvent, view) {
