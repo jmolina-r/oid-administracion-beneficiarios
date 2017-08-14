@@ -6,6 +6,7 @@ use App\Beneficiario;
 use App\HoraAgendada;
 use App\Prestacion;
 use App\PrestacionRealizada;
+use App\TipoFuncionario;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -315,8 +316,20 @@ class MallaController extends Controller
         $prestacionesConsolidadas = array();
 
         $user = User::where('id', $id)->first();
+        $funcionario = $user->funcionario()->get()->first();
+        $tipo = $funcionario->tipo_funcionario()->get()->first();
 
-        foreach($user->roles()->get() as $rol){
+        if($tipo->nombre == 'secretaria'){
+            return "";
+        }
+
+        $prestacionSegunTipo = Prestacion::where('area', $tipo->nombre)->get();
+
+        foreach ($prestacionSegunTipo as $prestacionTipo){
+            array_push($prestacionesConsolidadas, $prestacionTipo);
+        }
+
+        /*foreach($user->roles()->get() as $rol){
 
             if($rol->nombre == 'admin'){
                 return "";
@@ -333,7 +346,7 @@ class MallaController extends Controller
                 array_push($prestacionesConsolidadas, $prestacionRol);
             }
 
-        }
+        }*/
 
         return json_encode($prestacionesConsolidadas);
     }
