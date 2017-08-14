@@ -329,25 +329,6 @@ class MallaController extends Controller
             array_push($prestacionesConsolidadas, $prestacionTipo);
         }
 
-        /*foreach($user->roles()->get() as $rol){
-
-            if($rol->nombre == 'admin'){
-                return "";
-            }
-
-            if($rol->nombre == 'secretaria'){
-                return "";
-            }
-
-            $nombreRol = $rol->nombre;
-            $prestacionSegunRol = Prestacion::where('area', $nombreRol)->get();
-
-            foreach ($prestacionSegunRol as $prestacionRol){
-                array_push($prestacionesConsolidadas, $prestacionRol);
-            }
-
-        }*/
-
         return json_encode($prestacionesConsolidadas);
     }
 
