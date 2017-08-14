@@ -207,7 +207,7 @@
             </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia-ocupacional']))
+            @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-calendar'></i>
                     <span>Malla</span>
@@ -283,7 +283,7 @@
                 </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia-ocupacional']))
+            @if(Auth::user()->hasAnyRole(['admin', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional']))
                 <li class=''>
                     <a class="dropdown-collapse" href="#"><i class='fa fa-users'></i>
                         <span>Fichas de Evaluación inicial</span>
