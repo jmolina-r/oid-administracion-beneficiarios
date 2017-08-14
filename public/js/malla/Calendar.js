@@ -169,7 +169,6 @@
                     if(confirm('¿Desea eliminar la hora?')){
                         eliminarHora(calEvent.id);
                     }else{
-
                         if(puedeAtenderHora()){
                             if(confirm("¿El beneficiario registra asistencia?")){
                                 calEvent.url = '/registro_prestacion/' + calEvent.id;
