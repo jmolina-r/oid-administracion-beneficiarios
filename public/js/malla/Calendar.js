@@ -165,6 +165,15 @@
                 return;
             }else{
 
+                if(puedeAsignarHora()){
+                    if(confirm('¿Desea eliminar la hora?')){
+                        eliminarHora(calEvent.id);
+                    }else{
+
+                    }
+                    return;
+                }
+
                 if(confirm("¿El beneficiario registra asistencia?")){
                     calEvent.url = '/registro_prestacion/' + calEvent.id;
                     window.open(calEvent.url, '_self');
@@ -284,6 +293,29 @@
             }
         });
         return respuesta;
+    }
+
+    function eliminarHora(id){
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            async: false,
+            url: "/malla/eliminarhora",
+            type: "POST",
+            data: {
+                idHora: id
+            },
+            success: function(data, textStatus, jqXHR) {
+                alert('La hora se ha eliminado correctamente.');
+                location.reload();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Hubo un error al eliminar la hora. Reintente.');
+            }
+        });
+
     }
 
 })();

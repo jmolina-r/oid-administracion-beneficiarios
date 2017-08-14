@@ -314,6 +314,10 @@ Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
         'uses' => 'MallaController@validarUsuario',
     ]);
 
+    Route::post('/eliminarhora', [
+        'uses' => 'MallaController@eliminarHora',
+    ]);
+
     Route::post('/store', [
         'uses' => 'MallaController@store',
         'as' => 'malla.store'

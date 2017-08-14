@@ -481,6 +481,15 @@ class MallaController extends Controller
         return view('malla.listaPrestaciones', compact('prestaciones'));
     }
 
+    public function eliminarHora(Request $request)
+    {
+        $idHora = $request->input('idHora');
+        $horaAgendada = HoraAgendada::where('id', $idHora)->first();
+        $horaAgendada->forceDelete();
+
+        return;
+    }
+
     private function rules(Request $request)
     {
         $rules = [
