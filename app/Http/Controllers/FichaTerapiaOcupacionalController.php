@@ -235,7 +235,7 @@ class FichaTerapiaOcupacionalController extends Controller
         catch(Exception $e){
 
             //procedimiento en caso de reportar errores
-
+            return view('area-medica.ficha-evaluacion-inicial.Error');
         }
         return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('id')));
     }
@@ -260,7 +260,7 @@ class FichaTerapiaOcupacionalController extends Controller
         $fichaTerapiaOcupacional = FichaTerapiaOcupacional::find($id);
 
         if($fichaTerapiaOcupacional == null){
-            return view('home');
+            return view('area-medica.ficha-evaluacion-inicial.Error');
         }
 
         $persona = Beneficiario::find($fichaTerapiaOcupacional->beneficiario_id);
