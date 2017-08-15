@@ -90,6 +90,11 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.postFono'
             ])->middleware('roles:admin|fonoaudiologia');
 
+            Route::get('/show/{id}', [
+                'uses' => 'FichaFonoaudiologiaController@show',
+                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.show'
+            ])->middleware('roles:admin|fonoaudiologia');
+
 
 
         });

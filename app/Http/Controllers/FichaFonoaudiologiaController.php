@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Funcionario;
 use Illuminate\Support\Facades\Auth;
-use App\AntecedentesMorbidos;
 use App\AntecedentesMorbidosFamiliaresSiNoFono;
 use App\AntecedentesMorbidosSiNoFono;
 use App\AntecedentesPerinatalesFono;
@@ -269,14 +269,15 @@ class FichaFonoaudiologiaController extends Controller
         }
 
         $persona = Beneficiario::find($fichaFonoaudiologia->beneficiario_id);
+        $funcionario=Funcionario::find($fichaFonoaudiologia->funcionario_id);
 
         $habitosSiNoFono = HabitosSiNoFono::find($fichaFonoaudiologia->habitos_si_no_id);
         $desarrolloLenguajeEdades = DesarrolloLenguajeEdades::find($fichaFonoaudiologia->desarrollo_le_ed_id);
         $antecedentesPerinatalesFono = AntecedentesPerinatalesFono::find($fichaFonoaudiologia->antecedentes_peri_fono_id);
         $antecedentesPrenatalesFono = AntecedentesPrenatalesFono::find($fichaFonoaudiologia->antecedentes_pre_fono_id);
-        $desarrolloPsicomotorEdades = ValEvaluacion::find($fichaFonoaudiologia->desarrollo_psi_ed_id);
+        $desarrolloPsicomotorEdades = DesarrolloPsicomotorEdades::find($fichaFonoaudiologia->desarrollo_psi_ed_id);
         $desarrolloSocialFono = DesarrolloSocialFono::find($fichaFonoaudiologia->desarrollo_social_fono_id);
-        $antecedentesMorbidosSiNoFono = AntecedentesMorbidos::find($fichaFonoaudiologia->antecedentes_mor_fono_id);
+        $antecedentesMorbidosSiNoFono = AntecedentesMorbidosSiNoFono::find($fichaFonoaudiologia->antecedentes_mor_fono_id);
         $antecedentesMorbidosFamiliaresSiNoFono = AntecedentesMorbidosFamiliaresSiNoFono::find($fichaFonoaudiologia->antecedentes_mor_fa_fono_id);
         $parienteHogarFono = ParienteHogarFono::find($fichaFonoaudiologia->parientes_hogar_fono_id);
         $antecedentesPostnatalesFono = AntecedentesPostnatalesFono::find($fichaFonoaudiologia->antecedentes_pos_fono_id);
@@ -292,6 +293,8 @@ class FichaFonoaudiologiaController extends Controller
             ->with(compact('antecedentesMorbidosFamiliaresSiNoFono'))
             ->with(compact('parienteHogarFono'))
             ->with(compact('antecedentesPostnatalesFono'))
+            ->with(compact('desarrolloSocialFono'))
+            ->with(compact('funcionario'))
             ;
     }
 

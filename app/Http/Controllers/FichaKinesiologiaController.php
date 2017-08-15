@@ -9,7 +9,7 @@ use App\ValControlEsfinter;
 use App\ValEvaluacion;
 use App\ValSocial;
 use App\FichaKinesiologia;
-use App\User;
+use App\Funcionario;
 use App\ValDeambulacion;
 use App\ValMotora;
 use App\ValMovilidad;
@@ -216,6 +216,7 @@ class FichaKinesiologiaController extends Controller
         }
 
         $persona = Beneficiario::find($fichaKinesiologia->beneficiario_id);
+        $funcionario=Funcionario::find($fichaKinesiologia->funcionario_id);
 
         $valSocial = ValSocial::find($fichaKinesiologia->val_social_id);
         $valSensorial = ValSensorial::find($fichaKinesiologia->val_sensorial_id);
@@ -240,6 +241,7 @@ class FichaKinesiologiaController extends Controller
             ->with(compact('valComCog'))
             ->with(compact('valAutocuidado'))
             ->with(compact('antecedentesMorbidos'))
+            ->with(compact('funcionario'))
             ;
     }
 
