@@ -111,4 +111,63 @@ class InformeCierreController extends Controller
         }
         return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('idBeneficiario')));
     }
+
+    public function show($idUsuario, $idBeneficiario, $idFicha) {
+
+        $beneficiario = Beneficiario::find($idBeneficiario);
+
+        $timestamp = strtotime($beneficiario->fecha_nacimiento);
+        $now = strtotime(date("Y-m-d"));
+        $edad = idate('Y', $now) - idate('Y', $timestamp);
+
+        $tipoFuncionario = DB::table('users')
+            ->where('users.id', $idUsuario)
+            ->join('funcionarios', 'users.funcionario_id', '=', 'funcionarios.id')
+            ->join('tipo_funcionarios', 'funcionarios.tipo_funcionario_id', '=', 'tipo_funcionarios.id')
+            ->select('tipo_funcionarios.nombre')
+            ->first();
+
+        if($tipoFuncionario->nombre == "kinesiologo"){
+            $ficha = FichaKinesiologia::find($idFicha);
+        }
+        if($tipoFuncionario->nombre == "psicologo"){
+            $ficha = FichaPsicologia::find($idFicha);
+        }
+        if($tipoFuncionario->nombre == "fonoaudiologo"){
+            $ficha = FichaFonoaudiologia::find($idFicha);
+        }
+        if($tipoFuncionario->nombre == "terapeuta ocupacional"){
+            $ficha = FichaTerapiaOcupacional::find($idFicha);
+        }
+
+        if($ficha->estado == 'cerrado'){
+            return view('home');
+        }
+
+        $motivoAtencion = $ficha->motivo_consulta;
+        $fechaInicio = $ficha->created_at->format('d-m-Y');
+        $fechaTermino = date('d-m-Y');
+
+        $prestacionesRealizadas = DB::table('prestacion_realizadas')
+            ->where('funcionario_id', Auth::user()->funcionario_id)
+            ->where('beneficiario_id', $idBeneficiario)
+            ->where('prestacion_realizadas.created_at', '>=', $ficha->created_at)
+            ->where('prestacion_realizadas.created_at', '<=', date("Y-m-d H:i:s"))
+            ->join('prestacions', 'prestacions.id', '=', 'prestacion_realizadas.prestacions_id')
+            ->select('prestacions.nombre')
+            ->get();
+
+        $ficha = $idFicha;
+        $area = $tipoFuncionario->nombre;
+
+        return view('area-medica.informe-cierre.show')
+            ->with(compact('ficha'))
+            ->with(compact('area'))
+            ->with(compact('beneficiario'))
+            ->with(compact('edad'))
+            ->with(compact('motivoAtencion'))
+            ->with(compact('fechaInicio'))
+            ->with(compact('fechaTermino'))
+            ->with(compact('prestacionesRealizadas'));
+    }
 }
