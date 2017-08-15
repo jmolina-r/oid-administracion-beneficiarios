@@ -42,6 +42,13 @@ class FichaPsicologiaController extends Controller
      */
     public function store(Request $request)
     {
+        $ultimaFicha = FichaPsicologia::where('beneficiario_id', $request->input('id'))->orderBy('created_at', $direction = 'des');
+
+        if($ultimaFicha->first() != null){
+            if($ultimaFicha->first()->estado == 'abierto'){
+                return view('home');
+            }
+        }
 
         // Validate Fields
         $this->validate($request, $this->rules($request));

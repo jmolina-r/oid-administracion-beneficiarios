@@ -6,10 +6,13 @@ use App\FichaFonoaudiologia;
 use App\FichaKinesiologia;
 use App\FichaPsicologia;
 use App\FichaTerapiaOcupacional;
+use App\Funcionario;
 use App\PrestacionRealizada;
+use App\TipoFuncionario;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FichasController extends Controller
 {
@@ -44,7 +47,26 @@ class FichasController extends Controller
             $fichasTerapiaOcuacional = FichaTerapiaOcupacional::where('beneficiario_id', $idBeneficiario)->where('funcionario_id', $idFuncionario)->get()->orderBy('created_at', $direction = 'des')->get();
         }
 
+        $funcionario = Funcionario::find($idFuncionario);
+
+        $tipoFuncionario = TipoFuncionario::find($funcionario->tipo_funcionario_id)->nombre;
+
+        $estado = 'cerrado';
+        if($tipoFuncionario == 'kinesiologo' && $fichasKinesiologia->first() != null){
+                $estado = $fichasKinesiologia->first()->estado;
+        }
+        if($tipoFuncionario == 'psicologo' && $fichasPsicologia->first() != null){
+                $estado = $fichasKinesiologia->first()->estado;
+        }
+        if($tipoFuncionario == 'fonoaudiologo' && $fichasFonoaudiologia->first() != null){
+                $estado = $fichasKinesiologia->first()->estado;
+        }
+        if($tipoFuncionario == 'terapeuta ocupacional' && $fichasTerapiaOcuacional->first() != null){
+                $estado = $fichasKinesiologia->first()->estado;
+        }
+
         return view('area-medica.ficha-evaluacion-inicial.fichas.listaFichas')
+            ->with(compact('estado'))
             ->with(compact('fichasKinesiologia'))
             ->with(compact('fichasPsicologia'))
             ->with(compact('fichasFonoaudiologia'))

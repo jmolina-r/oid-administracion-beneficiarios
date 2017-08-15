@@ -75,7 +75,6 @@
                                     <h1 class="pull-left">
                                         <i class="fa fa-pencil-square-o"></i>
                                         <span>Informe de cierre</span>
-                                        {{$tipoFuncionario->nombre}}
                                     </h1>
                                     <div class="pull-right">
                                         <ul class="breadcrumb">
@@ -99,110 +98,113 @@
                                                         @endforeach
                                                     </div>
                                                 @endif
-                                                    <form class='validate-form' method="POST" action="{{ route('area-medica.informe-cierre.store') }}">
-                                                    <input id="id" name="id" type="hidden" value="{{$beneficiario->id}}">
-                                                    <div class="col-md-12">
-                                                        <h4>Información del beneficiario</h4>
-                                                        <hr/>
+                                                <div class="col-md-12">
+                                                    <h4>Información del Beneficiario</h4>
+                                                    <hr/>
+                                                </div>
+                                                <div class="col-md-12 form-group">
+                                                    <label class="col-md-4 control-label" for="nombre">Nombre</label>
+                                                    <div class="col-md-8 controls">
+                                                        <p>{{ ucfirst($beneficiario->nombre)." ".ucfirst($beneficiario->apellido)}}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 form-group">
+                                                    <label class="col-md-4 control-label" for="edad">Edad</label>
+                                                    <div class="col-md-8 controls">
+                                                        <p>{{ $edad }}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 form-group">
+                                                    <label class="col-md-4 control-label" for="fecha_nacimiento">Fecha de nacimiento</label>
+                                                    <div class="col-md-8 controls">
+                                                        <p>{{ $beneficiario->fecha_nacimiento }}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <h4>Información de Alta</h4>
+                                                    <hr/>
+                                                </div>
+                                                <div class="col-md-12 form-group">
+                                                    <label class="col-md-4 control-label" for="cant_sesiones">Cantidad de sesiones</label>
+                                                    <div class="col-md-8 controls">
+                                                        <p></p>
+                                                        <p>{{ count($prestacionesRealizadas) }}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 form-group">
+                                                    <label class="col-md-4 control-label" for="fecha_inicio">Fecha de inicio</label>
+                                                    <div class="col-md-8 controls">
+                                                        <p>{{ $fechaInicio }}</p>
+                                                    </div>
+                                                    <div class="help-block with-errors">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 form-group">
+                                                    <label class="col-md-4 control-label" for='fecha_termino'>Fecha de termino</label>
+                                                    <div class="col-md-8 controls">
+                                                        <p>{{ $fechaTermino }}</p>
+                                                    </div>
+                                                    <div class="help-block with-errors">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 form-group">
+                                                    <label class="col-md-4 control-label" for="motivo_atencion">Motivo de atención</label>
+                                                    <div class="col-md-8 controls">
+                                                        <p>{{ $motivoAtencion }}</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 form-group">
+                                                    <label class="col-md-4 control-label" for="objetivos_trabajados">Objetivos trabajados</label>
+                                                    <div class="col-md-8 controls">
+                                                        @foreach($prestacionesRealizadas as $prestacion)
+                                                            <p class="capitalize">- {{ $prestacion->nombre }}</p>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <hr/>
+                                                </div>
+                                                <form class='validate-form' method="POST" action="{{ route('area-medica.informe-cierre.store') }}">
+                                                    <input id="idBeneficiario" name="idBeneficiario" type="hidden" value="{{$beneficiario->id}}">
+                                                    <input id="ficha" name="ficha" type="hidden" value="{{$ficha}}">
+                                                    <input id="area" name="area" type="hidden" value="{{$area}}">
+                                                    <div class="col-md-12 form-group">
+                                                        <label class="col-md-4 control-label" for="desercion">Deserción</label>
+                                                        <div class="col-md-8 controls">
+                                                            <label style="margin-top: 0px;" class='radio radio-inline'>
+                                                                <input name='desercion' id="desercion" type='radio' value='si'>
+                                                                Si
+                                                            </label>
+                                                            <label class='radio radio-inline'>
+                                                                <input name='desercion' id="desercion" type='radio' value='no'>
+                                                                No
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="nombre">Nombre</label>
+                                                        <label class="col-md-4 control-label" for="culminar_proceso">Culmina proceso</label>
                                                         <div class="col-md-8 controls">
-                                                            <p>{{ ucfirst($beneficiario->nombre)." ".ucfirst($beneficiario->apellido)}}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="edad">Edad</label>
-                                                        <div class="col-md-8 controls">
-                                                            <p>{{ $edad }}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="fecha_nacimiento">Fecha de nacimiento</label>
-                                                        <div class="col-md-8 controls">
-                                                            <p>{{ $beneficiario->fecha_nacimiento }}</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <h4>Información de alta</h4>
-                                                        <hr/>
-                                                    </div>
-                                                    <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="cant_sesiones">Cantidad de sesiones</label>
-                                                        <div class="col-md-8 controls">
-                                                            <p></p>
-                                                            <input class="form-control" id="cant_sesiones" name="cant_sesiones" placeholder="Cantidad de sesiones">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="fecha_inicio">Fecha de inicio</label>
-                                                        <div class="col-md-8 controls">
-                                                            <input id="fecha_inicio" value-date="" name="fecha_inicio" class="form-control" data-format="DD/MM/YYYY" placeholder="Fecha de inicio" type="date" min="2014-01-01" max="2017-08-10" required>
-                                                            <span class="input-group-addon">
-                                                                <span class="fa fa-calendar"></span>
-                                                            </span>
-                                                        </div>
-                                                        <div class="help-block with-errors">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for='fecha_termino'>Fecha de termino</label>
-                                                        <div class="col-md-8 controls">
-                                                            <input id='fecha_termino' value-date='' name='fecha_termino' class='form-control' data-format='DD/MM/YYYY' placeholder='Fecha de termino' type="date" min="2014-01-01" max="2017-08-10" required>
-                                                            <span class='input-group-addon'>
-                                                                <span class='fa fa-calendar'></span>
-                                                            </span>
-                                                        </div>
-                                                        <div class="help-block with-errors">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="motivo_atencion">Motivo de atención</label>
-                                                        <div class="col-md-8 controls">
-                                                            <input class="form-control" id="motivo_atencion" name="motivo_atencion" placeholder="Motivo de atención">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="objetivos_trabajados">Objetivos trabajados</label>
-                                                        <div class="col-md-8 controls">
-                                                            <input class="form-control" id="objetivos_trabajados" name="objetivos_trabajados" placeholder="Objetivos trabajados">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="desercionar">Deserción (Sí/No)</label>
-                                                        <div class="col-md-8 controls">
-                                                            <select	class="form-control" id="desercionar" name="desercionar">
-                                                                <option value=""></option>
-                                                                <option value="1">Sí</option>
-                                                                <option value="0">No</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="culminar_proceso">Culmina proceso (Sí/No)</label>
-                                                        <div class="col-md-8 controls">
-                                                            <select	class="form-control" id="culminar_proceso" name="culminar_proceso">
-                                                                <option value=""></option>
-                                                                <option value="1">Sí</option>
-                                                                <option value="0">No</option>
-                                                            </select>
-
+                                                            <label style="margin-top: 0px;" class='radio radio-inline'>
+                                                                <input name='culminar_proceso' id="culminar_proceso" type='radio' value='si'>
+                                                                Si
+                                                            </label>
+                                                            <label class='radio radio-inline'>
+                                                                <input name='culminar_proceso' id="culminar_proceso" type='radio' value='no'>
+                                                                No
+                                                            </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 form-group">
                                                         <label class="col-md-4 control-label" for="observaciones_sugerencias">Observacion y sugerencias</label>
                                                         <div class="col-md-8 controls">
-                                                            <input class="form-control" id="observaciones_sugerencias" name="observaciones_sugerencias" placeholder="Observaciones y/o sugerencias">
+                                                            <textarea name="observaciones_sugerencias" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Observaciones y/o sugerencias' rows='3' style='margin-bottom:10px;' id="observaciones_sugerencias" maxlength="200"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class='actions'>
                                                         <button id="continuar_btn" type='submit' class='pull-right btn btn-md btn-success btn-next'>
-                                                            Guardar y visualizar para imprimir
+                                                            Guardar
                                                         </button>
-                                                        <div class="col-md-1 controls">
-                                                        <button class='pull-right btn btn-md btn-prev'>
-                                                            Volver
-                                                        </button>
+                                                        <div class="col-md-2">
                                                         </div>
                                                     </div>
                                                     {{ csrf_field() }}

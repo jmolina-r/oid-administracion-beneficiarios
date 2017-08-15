@@ -24,7 +24,7 @@ class CreatePrestacionRealizadasTable extends Migration
         });
 
         Schema::table('prestacion_realizadas', function ($table){
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('funcionario_id')->references('id')->on('funcionarios')->onDelete('cascade');
         });
 
         Schema::table('prestacion_realizadas', function ($table){

@@ -70,12 +70,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class='col-sm-12'>
-                                <td><a class="btn btn-primary btn-block" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.create', $idBeneficiario)}}">Agregar Nueva Ficha de Evaluación Inicial</a></td>
+                        @if( $estado == 'cerrado')
+                            <div class="row">
+                                <div class='col-sm-12'>
+                                    <td><a class="btn btn-primary btn-block" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.create', $idBeneficiario)}}">Agregar Nueva Ficha de Evaluación Inicial</a></td>
+                                </div>
                             </div>
-                        </div>
-                        <hr>
+                            <hr>
+                        @endif
                         <div class='row'>
                             <div class='col-sm-12'>
                                 <div class='box'>
@@ -83,10 +85,13 @@
                                         <thead>
                                         <tr>
                                             <th>
-                                                <h3>Fecha de la Ficha de Evaluacion Inicial</h3>
+                                                <h3>Fecha</h3>
                                             </th>
                                             <th>
                                                 <h3>Área</h3>
+                                            </th>
+                                            <th>
+                                                <h3>Estado</h3>
                                             </th>
                                             <th></th>
                                             <th></th>
@@ -99,9 +104,14 @@
                                                 <tr>
                                                     <td>{{$ficha->created_at->format('d-m-Y')}}</td>
                                                     <td>Kinesiología</td>
+                                                    <td class="capitalize">{{$ficha->estado}}</td>
                                                     <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', $ficha->id)}}">Detalles</a></td>
                                                     <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', $ficha->id)}}">Ver como PDF</a></td>
-                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.informe-cierre.create', ['p1' => $idUsuario, 'p2' => $idBeneficiario, 'p3' => $ficha->id])}}">Ficha de Alta</a></td>
+                                                    @if($ficha->estado == 'abierto')
+                                                        <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.informe-cierre.create', ['p1' => $idUsuario, 'p2' => $idBeneficiario, 'p3' => $ficha->id])}}">Agregar Ficha de Alta</a></td>
+                                                    @else
+                                                        <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.informe-cierre.create', ['p1' => $idUsuario, 'p2' => $idBeneficiario, 'p3' => $ficha->id])}}">Ver Ficha de Alta</a></td>
+                                                    @endif
                                                     <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', ['p1' => $idUsuario, 'p2' => $idBeneficiario, 'p3' => $ficha->id])}}">Ver prestaciones</a></td>
                                                 </tr>
                                             @endforeach

@@ -36,6 +36,14 @@ class FichaTerapiaOcupacionalController extends Controller
      */
     public function postIngresar(Request $request)
     {
+        $ultimaFicha = FichaTerapiaOcupacional::where('beneficiario_id', $request->input('id'))->orderBy('created_at', $direction = 'des');
+
+        if($ultimaFicha->first() != null){
+            if($ultimaFicha->first()->estado == 'abierto'){
+                return view('home');
+            }
+        }
+
         //dd($request->file('genograma'));
         // Validate Fields
         $this->validate($request, $this->rules($request));

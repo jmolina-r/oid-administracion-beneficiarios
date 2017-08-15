@@ -14,9 +14,9 @@ class PrestacionRealizada extends Model
 
     }
 
-    public function informe_cierre(){
+    public function funcionario(){
 
-        return $this->hasOne(InformeCierre::class);
+        return $this->belongsTo(Funcionario::class);
 
     }
 

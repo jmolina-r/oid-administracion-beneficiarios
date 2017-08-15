@@ -33,6 +33,13 @@ class FichaFonoaudiologiaController extends Controller
 
     public function postFono(Request $request)
     {
+        $ultimaFicha = FichaFonoaudiologia::where('beneficiario_id', $request->input('id'))->orderBy('created_at', $direction = 'des');
+
+        if($ultimaFicha->first() != null){
+            if($ultimaFicha->first()->estado == 'abierto'){
+                return view('home');
+            }
+        }
 
         //dd($request->all());
         $this->validate($request, $this->rules($request));

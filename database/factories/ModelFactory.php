@@ -71,7 +71,7 @@ $factory->define(App\PrestacionRealizada::class, function (Faker\Generator $fake
     return [
         'fecha' => $faker->date('y-m-d','now'),
 
-        'user_id' => $faker->numberBetween($min = 1, $max = 5),
+        'funcionario_id' => $faker->numberBetween($min = 1, $max = 5),
 
         'beneficiario_id' => $faker->numberBetween($min = 1, $max = 150),
 

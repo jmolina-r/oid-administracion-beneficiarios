@@ -52,6 +52,13 @@ class FichaKinesiologiaController extends Controller
      */
     public function store(Request $request)
     {
+        $ultimaFicha = FichaKinesiologia::where('beneficiario_id', $request->input('id'))->orderBy('created_at', $direction = 'des')->first();
+
+        if($ultimaFicha != null){
+            if($ultimaFicha->estado == 'abierto'){
+                return view('home');
+            }
+        }
 
         // Validate Fields
         $this->validate($request, $this->rules($request));
