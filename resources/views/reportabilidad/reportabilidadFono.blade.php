@@ -94,12 +94,12 @@
                           <div class='title'>Datos personales</div>                        
                         </div>
                          <div class="col-sm-6">
-                            <p class="capitalize"><span class="tit">Nombre Completo</span><br></p>
-                            <p class="capitalize"><span class="tit">Rut</span><br></p>
+                            <p class="capitalize"><span class="tit">Nombre Completo</span><br>{{$fonoaudiologo->nombre}} {{$fonoaudiologo->apellido}}</p>
+                            <p class="capitalize"><span class="tit">Rut</span><br>{{$fonoaudiologo->rut}}</p>
                         </div>
                         <div class="col-sm-6">
-                            <p class="capitalize"><span class="tit">Telefono</span><br></p>
-                            <p class="capitalize"><span class="tit">Dirección</span><br></p>
+                            <p class="capitalize"><span class="tit">Telefono</span><br>{{$fonoaudiologo->telefono}}</p>
+                            <p class="capitalize"><span class="tit">Dirección</span><br>{{$fonoaudiologo->direccion}}</p>
                         </div>    
                     </div> 
                   </div>
@@ -125,14 +125,27 @@
                           <small>ATENCIONES MENSUALES</small>
                           <div class='text-warning fa fa-users align-left'></div>
                         </div>
+                         <div class='box-content'>
+                            <h3 class='title text-inside text-center'>ASISTENCIA E INASISTENCIA</h3>                                    
+                        </div>
                         <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-primary'>{{$asistenciaFono}}</h3>
-                          <small>CANTIDAD DE ASISTENCIA DE PACIENTES</small>
+                          <h3 class='title text-primary'>{{$asistenciaFonoAnual}}</h3>
+                          <small>CANTIDAD DE USUARIOS ASISTENTES EN EL AÑO</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-primary'>{{$inasistenciaFono}}</h3>
-                          <small>CANTIDAD DE INASISTENCIA DE PACIENTES</small>
+                          <h3 class='title text-primary'>{{$asistenciaFonoMensual}}</h3>
+                          <small>CANTIDAD DE USUARIOS ASISTENTES EN EL MES</small>
+                          <div class='text-primary fa fa-book align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-primary'>{{$inasistenciaFonoAnual}}</h3>
+                          <small>CANTIDAD DE USUARIOS INASISTENTES EN EL AÑO</small>
+                          <div class='text-primary fa fa-book align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-primary'>{{$inasistenciaFonoMensual}}</h3>
+                          <small>CANTIDAD DE USUARIOS INASISTENTES EN EL MES</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>
                         <div class='box-content'>
