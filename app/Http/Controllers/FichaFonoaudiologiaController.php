@@ -242,6 +242,7 @@ class FichaFonoaudiologiaController extends Controller
         catch(Exception $e){
 
             //procedimiento en caso de reportar errores
+            return view('area-medica.ficha-evaluacion-inicial.Error');
 
         }
         return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('id')));
@@ -269,7 +270,7 @@ class FichaFonoaudiologiaController extends Controller
         $fichaFonoaudiologia = FichaFonoaudiologia::find($id);
 
         if($fichaFonoaudiologia == null){
-            return view('home');
+            return view('area-medica.ficha-evaluacion-inicial.Error');
         }
 
         $persona = Beneficiario::find($fichaFonoaudiologia->beneficiario_id);
