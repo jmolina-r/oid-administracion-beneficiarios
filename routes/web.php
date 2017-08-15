@@ -141,11 +141,6 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'uses' => 'FichasController@listaFichas',
                 'as' => 'area-medica.ficha-evaluacion-inicial.fichas.listaFichas'
             ]);
-
-            Route::get('/listaPrestacionesRealizadas/{idUser}/{idBeneficiario}/{idFicha}', [
-                'uses' => 'FichasController@listaPrestacionesRealizadas',
-                'as' => 'area-medica.ficha-evaluacion-inicial.fichas.listaPrestacionesRealizadas'
-            ]);
         });
     });
 
@@ -159,6 +154,11 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
         Route::post('/store',[
             'uses' => 'InformeCierreController@store',
             'as' => 'area-medica.informe-cierre.store'
+        ]);
+
+        Route::get('/show/{idUsuario}/{idBeneficiario}/{idFicha}', [
+            'uses' => 'InformeCierreController@show',
+            'as' => 'area-medica.informe-cierre.show'
         ]);
     });
 });

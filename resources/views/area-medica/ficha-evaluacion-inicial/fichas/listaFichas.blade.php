@@ -110,9 +110,8 @@
                                                     @if($ficha->estado == 'abierto')
                                                         <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.informe-cierre.create', ['p1' => $idUsuario, 'p2' => $idBeneficiario, 'p3' => $ficha->id])}}">Agregar Ficha de Alta</a></td>
                                                     @else
-                                                        <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.informe-cierre.create', ['p1' => $idUsuario, 'p2' => $idBeneficiario, 'p3' => $ficha->id])}}">Ver Ficha de Alta</a></td>
+                                                        <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.informe-cierre.show', ['p1' => $idUsuario, 'p2' => $idBeneficiario, 'p3' => $ficha->id])}}">Ver Ficha de Alta</a></td>
                                                     @endif
-                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', ['p1' => $idUsuario, 'p2' => $idBeneficiario, 'p3' => $ficha->id])}}">Ver prestaciones</a></td>
                                                 </tr>
                                             @endforeach
                                         @endif

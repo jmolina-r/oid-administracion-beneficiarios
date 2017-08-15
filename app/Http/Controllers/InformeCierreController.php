@@ -77,6 +77,19 @@ class InformeCierreController extends Controller
 
         $this->validate($request, ['desercion' => 'required' ,'culminar_proceso' => 'required']);
 
+        if($request->input('area') == "kinesiologo"){
+            $ficha = FichaKinesiologia::find($request->input('ficha'));
+        }
+        if($request->input('area') == "psicologo"){
+            $ficha = FichaPsicologia::find($request->input('ficha'));
+        }
+        if($request->input('area') == "fonoaudiologo"){
+            $ficha = FichaFonoaudiologia::find($request->input('ficha'));
+        }
+        if($request->input('area') == "terapeuta ocupacional"){
+            $ficha = FichaTerapiaOcupacional::find($request->input('ficha'));
+        }
+
         try{
             $informe_cierre = new InformeCierre([
                 'desercion' => $request->input('desercion'),
@@ -87,22 +100,15 @@ class InformeCierreController extends Controller
                 'beneficiario_id' => $request->input('idBeneficiario')
             ]);
             $informe_cierre->save();
+
+            $ficha->estado = 'cerrado';
+            $ficha->save();
         }
         catch(Exception $e){
 
             //procedimiento en caso de reportar errores
 
         }
-        $informe_cierre = new InformeCierre([
-            'desercion' => $request->input('desercion'),
-            'culmino_proceso' => $request->input('culminar_proceso'),
-            'observacion' => $request->input('observaciones_sugerencias'),
-            'ficha' => $request->input('ficha'),
-            'area' => $request->input('area'),
-            'beneficiario_id' => $request->input('idBeneficiario')
-        ]);
-        $informe_cierre->save();
-
         return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('idBeneficiario')));
     }
 }

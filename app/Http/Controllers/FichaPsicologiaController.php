@@ -119,10 +119,7 @@ class FichaPsicologiaController extends Controller
             //procedimiento en caso de reportar errores
 
         }
-        $id = $request->input('id');
-        //return view('area-medica.ficha-evaluacion-inicial.psicologia.create')
-            //->with(compact('id'));
-        return view('home');
+        return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('id')));
     }
 
     /**

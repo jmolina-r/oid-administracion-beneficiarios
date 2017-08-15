@@ -74,19 +74,4 @@ class FichasController extends Controller
             ->with(compact('idBeneficiario'))
             ->with(compact('idUsuario'));
     }
-
-    /**
-     *
-     *
-     * @param $id
-     * @return Response
-     */
-    public function listaPrestacionesRealizadas($idUser, $idBeneficiario, $idFicha)
-    {
-        $prestacionesRealizadas = PrestacionRealizada::where('user_id', $idUser)->where('beneficiario_id', $idBeneficiario)->orderBy('fecha', $direction = 'des')->get();
-
-        $ficha = PrestacionRealizada::where('user_id', $idUser)->where('beneficiario_id', $idBeneficiario)->orderBy('fecha', $direction = 'des')->get();
-
-        return view('malla.listaPrestaciones', compact('$prestacionesRealizadas'));
-    }
 }
