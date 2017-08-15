@@ -18,31 +18,30 @@ class FichasController extends Controller
      *
      * @return Response
      */
-    public function listaFichas($id)
+    public function listaFichas($idBeneficiario)
     {
-        if (Auth::check())
-        {
-            $idUsuario = Auth::user()->id;
-        }
+        $idUsuario = Auth::user()->id;
+
+        $idFuncionario = Auth::user()->funcionario_id;
 
         $fichasKinesiologia = array();
         if(Auth::user()->hasRole('kinesiologia')){
-            $fichasKinesiologia = FichaKinesiologia::where('beneficiario_id', $id)->where('user_id', $idUsuario)->orderBy('created_at', $direction = 'des')->get();
+            $fichasKinesiologia = FichaKinesiologia::where('beneficiario_id', $idBeneficiario)->where('funcionario_id', $idFuncionario)->orderBy('created_at', $direction = 'des')->get();
         }
 
         $fichasPsicologia = array();
         if(Auth::user()->hasRole('psicologia')){
-            $fichasPsicologia= FichaPsicologia::where('beneficiario_id', $id)->where('user_id', $idUsuario)->get();
+            $fichasPsicologia= FichaPsicologia::where('beneficiario_id', $idBeneficiario)->where('funcionario_id', $idFuncionario)->get()->orderBy('created_at', $direction = 'des')->get();
         }
 
         $fichasFonoaudiologia = array();
         if(Auth::user()->hasRole('fonoaudiologia')){
-            $fichasFonoaudiologia = FichaFonoaudiologia::where('beneficiario_id', $id)->where('user_id', $idUsuario)->get();
+            $fichasFonoaudiologia = FichaFonoaudiologia::where('beneficiario_id', $idBeneficiario)->where('funcionario_id', $idFuncionario)->get()->orderBy('created_at', $direction = 'des')->get();
         }
 
         $fichasTerapiaOcuacional = array();
         if(Auth::user()->hasRole('terapia_ocupacional')){
-            $fichasTerapiaOcuacional = FichaTerapiaOcupacional::where('beneficiario_id', $id)->where('user_id', $idUsuario)->get();
+            $fichasTerapiaOcuacional = FichaTerapiaOcupacional::where('beneficiario_id', $idBeneficiario)->where('funcionario_id', $idFuncionario)->get()->orderBy('created_at', $direction = 'des')->get();
         }
 
         return view('area-medica.ficha-evaluacion-inicial.fichas.listaFichas')
@@ -50,7 +49,7 @@ class FichasController extends Controller
             ->with(compact('fichasPsicologia'))
             ->with(compact('fichasFonoaudiologia'))
             ->with(compact('fichasTerapiaOcuacional'))
-            ->with(compact('id'))
+            ->with(compact('idBeneficiario'))
             ->with(compact('idUsuario'));
     }
 

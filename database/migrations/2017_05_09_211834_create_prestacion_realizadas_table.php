@@ -18,7 +18,7 @@ class CreatePrestacionRealizadasTable extends Migration
             $table->timestamps();
             $table->date('fecha');
 
-            $table->integer('user_id')->unsigned();
+            $table->integer('funcionario_id')->unsigned();
             $table->integer('beneficiario_id')->unsigned();
             $table->integer('prestacions_id')->unsigned();
         });

@@ -11,6 +11,7 @@ use App\DesarrolloEvolutivo;
 use App\FichaTerapiaOcupacional;
 use App\HabilidadesSociales;
 use App\HistorialClinico;
+use App\Funcionario;
 use Illuminate\Http\Request;
 
 class FichaTerapiaOcupacionalController extends Controller
@@ -256,7 +257,7 @@ class FichaTerapiaOcupacionalController extends Controller
         }
 
         $persona = Beneficiario::find($fichaTerapiaOcupacional->beneficiario_id);
-
+        $funcionario=Funcionario::find($fichaTerapiaOcupacional->funcionario_id);
         $actividadesVidaDiaria = ActividadesVidaDiaria::find($fichaTerapiaOcupacional->actividades_vida_diaria_id);
         $antecedentesSalud = AntecedentesSalud::find($fichaTerapiaOcupacional->antecedentes_salud_id);
         $antecedentesSocioFamiliares = AntecedentesSocioFamiliares::find($fichaTerapiaOcupacional->antecedentes_so_fa_id);
@@ -273,6 +274,7 @@ class FichaTerapiaOcupacionalController extends Controller
             ->with(compact('desarrolloEvolutivo'))
             ->with(compact('habilidadesSociales'))
             ->with(compact('historialClinico'))
+            ->with(compact('funcionario'))
             ;
     }
 
