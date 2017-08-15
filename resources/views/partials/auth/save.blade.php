@@ -125,24 +125,24 @@
     <i id="funcionarioUserDataIco" class="fa fa-search-plus fa-lg" aria-hidden="true"></i>
     <br>
 @else
-<div class="form-group{{ $errors->has('roles') ? ' has-error' : '' }}">
+<div class="form-group{{ $errors->has('funcionario') ? ' has-error' : '' }}">
     <label class='control-label' for='inputText'>Asociar Funcionario de OID</label>
 
-    <select id="roleUserSave" style="width:100%;" name="roles[]" class='form-control select-tag' data-placeholder='Seleccione los roles' multiple='multiple'>
-
-        @foreach($roles as $role)
-            <option value="{{$role->id}}"
-                @if((old('roles') && in_array($role->id, old('roles'))) || (isset($user) && $user->roles != null && count($user->roles) > 0 && count($user->roles->where('id', $role->id)) > 0))
+    <select id="funcionarioUserSave" style="width:100%;" name="funcionario_id" class='form-control select-tag'>
+        {{-- <option value="">No tiene</option> --}}
+        @foreach($funcionarios as $funcionario)
+            <option value="{{$funcionario->id}}"
+                @if((@old('funcionario') == $funcionario->id) || (@old('funcionario') == null && isset($user) && $user->funcionario != null && $funcionario->id == $user->funcionario->id))
                     selected
                 @endif
-            >{{$role->nombre}}</option>
+            >{{ $funcionario->nombre }} {{ $funcionario->apellido }}</option>
         @endforeach
 
     </select>
 
-    @if ($errors->has('roles'))
+    @if ($errors->has('funcionario'))
         <span class="help-block">
-            <strong>{{ $errors->first('roles') }}</strong>
+            <strong>{{ $errors->first('funcionario') }}</strong>
         </span>
     @endif
 </div>

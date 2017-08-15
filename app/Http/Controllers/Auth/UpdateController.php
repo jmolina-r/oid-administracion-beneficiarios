@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Role;
+use App\Funcionario;
+
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -39,7 +41,8 @@ class UpdateController extends Controller
             'email' => 'required|string|email|max:255',
             'password' => 'nullable|string|min:6|confirmed',
             'roles' => 'required',
-            'status' => 'required|boolean'
+            'status' => 'required|boolean',
+            'funcionario_id' => 'nullable|exists:funcionarios,id'
         ];
 
         return $rules;
@@ -58,10 +61,17 @@ class UpdateController extends Controller
             'email' => $request['email'],
             'status' => $request['status']
         ];
+
         if($request['password'] != null && $request['password'] != '') {
             $updateArray['password'] = bcrypt($request['password']);
         }
+
+        if($request['funcionario_id'] != null && $request['funcionario_id'] != '') {
+            $updateArray['funcionario_id'] = $request['funcionario_id'];
+        }
+
         $user->update($updateArray);
+
 
         // Role Update
 
@@ -94,8 +104,18 @@ class UpdateController extends Controller
         // Role
         $roles = Role::get();
 
+        // Funcionarios without User account
+        $funcionarios = [];
+
+        foreach (Funcionario::get() as $funcionario) {
+            if ($funcionario->user != null) {
+                $funcionarios[] = $funcionario;
+            }
+        }
+
         return view('auth.update')
             ->with(compact('roles'))
+            ->with(compact('funcionarios'))
             ->with(compact($user, 'user'));
 
     }

@@ -23,7 +23,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'password' => $password ?: $password = bcrypt('123456'),
         'status' => 1,
         'remember_token' => str_random(10),
-        'funcionario_id' => $faker->numberBetween($min = 1, $max = 3),
     ];
 });
 
