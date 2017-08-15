@@ -192,7 +192,7 @@ class FichaKinesiologiaController extends Controller
         catch(Exception $e){
 
             //procedimiento en caso de reportar errores
-
+            return view('area-medica.ficha-evaluacion-inicial.Error');
         }
         return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('id')));
     }
@@ -218,7 +218,7 @@ class FichaKinesiologiaController extends Controller
         $fichaKinesiologia = FichaKinesiologia::find($id);
 
         if($fichaKinesiologia == null){
-            return view('home');
+            return view('area-medica.ficha-evaluacion-inicial.Error');
         }
 
         $persona = Beneficiario::find($fichaKinesiologia->beneficiario_id);
