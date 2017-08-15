@@ -290,6 +290,11 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
         'as' => 'reportabilidad.reportabilidadTer'
     ]);
 
+    Route::get('/reportabilidadFonoaudilogia',[
+        'uses'=>'ReportabilidadController@showResultFono',
+        'as' => 'reportabilidad.reportabilidadFono'
+    ]);
+
     Route::get('/reportabilidadAtencionSocial',[
         'uses'=>'ReportabilidadController@showResultSoc',
         'as' => 'reportabilidad.reportabilidadSoc'
