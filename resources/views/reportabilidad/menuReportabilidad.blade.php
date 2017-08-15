@@ -169,7 +169,7 @@
                             </div>  
                         </div>
                         </form>
-                            <form action="{{route('reportabilidad.reportabilidadTer')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
+                            <form action="{{route('reportabilidad.reportabilidadFono')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
                                 <div class='box-content box-statistic' >
                                     <div class="nombre" style="display:inline-block">
                                         <h4>Reportabilidad Fonoaudiología</h4>
@@ -207,26 +207,101 @@
                                     <div class='box-content box-statistic' >
                                     <h3 class='title text-inside text-center'>Reportabilidad Histórica</h3>
                                     </div>
-                         <div class='box-content box-statistic' >
-                            <div class="nombre" style="display:inline-block">
-                                <h4>Reportabilidad Histórica</h4>
-                            </div>
-                            <span>Seleccionar mes y año:</span>
-                            <select name="mes">
-                                @for ($i = 1; $i < 13; $i++)
-                                   <option value="{{$i}}">{{$i}}</option>
-                                @endfor
+                         <div class='box-content'>
+                    <div class='tabbable'>
+                      <ul class='nav nav-tabs nav-tabs-centered'>
+                        <li class='active'>
+                          <a data-toggle='tab' href='#tabcenter1'>
+                            <i class='fa fa-outdent'></i>
+                            Reportabilidad Mensual
+                          </a>
+                        </li>
+                        <li>
+                          <a data-toggle='tab' href='#tabcenter2'>
+                            <i class='fa fa-pencil-square-o text-red'></i>
+                            Reportabilidad entre meses
+                          </a>
+                        </li>
+                      </ul>
+                      <div class='tab-content'>
+                        <div class='tab-pane active' id='tabcenter1'>
+                          <span class="col-md-2 col-xs-12 ">Seleccionar mes:</span>
+                            <select name="mes" class="col-md-2 col-xs-12 ">
+                                <option value="1">Enero</option>
+                                <option value="2">Febrero</option>
+                                <option value="3">Marzo</option>
+                                <option value="4">Abril</option>
+                                <option value="5">Mayo</option>
+                                <option value="6">Junio</option>
+                                <option value="7">Julio</option>
+                                <option value="8">Agosto</option>
+                                <option value="9">Septiembre</option>
+                                <option value="10">Octubre</option>
+                                <option value="11">Noviembre</option>
+                                <option value="12">Diciembre</option>
                             </select>
-                            <select name="anio">
+                            <span class="col-xs-12 col-md-2  col-md-offset-1">Seleccionar Año:</span>
+                            <select name="anio" class="col-md-2 col-xs-12 ">
                                 @for ($i = 2012; $i <= date('Y'); $i++)
                                    <option value="{{$i}}">{{$i}}</option>
                                 @endfor
                             </select>
-                            <div class="boton pull-right" style="display:inline-block">
+                            <div class="boton">
                                 <button type="submit" id="visualHist" name="visualHist" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
                                 <!--<button type="submit" id="imprimirReporHist" name="imprimirReporHist" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>-->
                             </div>  
                         </div>
+                        <div class='tab-pane' id='tabcenter2'>
+                          <span class="col-md-3 col-xs-12 ">Seleccionar mes inicial:</span>
+                            <select name="mes" class="col-md-2 col-xs-12 ">
+                                <option value="1">Enero</option>
+                                <option value="2">Febrero</option>
+                                <option value="3">Marzo</option>
+                                <option value="4">Abril</option>
+                                <option value="5">Mayo</option>
+                                <option value="6">Junio</option>
+                                <option value="7">Julio</option>
+                                <option value="8">Agosto</option>
+                                <option value="9">Septiembre</option>
+                                <option value="10">Octubre</option>
+                                <option value="11">Noviembre</option>
+                                <option value="12">Diciembre</option>
+                            </select>
+                            <span class="col-xs-12 col-md-2  col-md-offset-1">Seleccionar Año:</span>
+                            <select name="anio" class="col-md-2 col-xs-12 ">
+                                @for ($i = 2012; $i <= date('Y'); $i++)
+                                   <option value="{{$i}}">{{$i}}</option>
+                                @endfor
+                            </select><br><br>
+                            <span class="col-md-3 col-xs-12 ">Seleccionar mes final:</span>
+                            <select name="mes2" class="col-md-2 col-xs-12 ">
+                                <option value="1">Enero</option>
+                                <option value="2">Febrero</option>
+                                <option value="3">Marzo</option>
+                                <option value="4">Abril</option>
+                                <option value="5">Mayo</option>
+                                <option value="6">Junio</option>
+                                <option value="7">Julio</option>
+                                <option value="8">Agosto</option>
+                                <option value="9">Septiembre</option>
+                                <option value="10">Octubre</option>
+                                <option value="11">Noviembre</option>
+                                <option value="12">Diciembre</option>
+                            </select>
+                            <span class="col-xs-12 col-md-2  col-md-offset-1">Seleccionar Año:</span>
+                            <select name="anio2" class="col-md-2 col-xs-12 ">
+                                @for ($i = 2012; $i <= date('Y'); $i++)
+                                   <option value="{{$i}}">{{$i}}</option>
+                                @endfor
+                            </select>
+                            <div class="boton">
+                                <button type="submit" id="visualHist" name="visualHist" class="btn btn-success" />Visualizar</button>
+                                <!--<button type="submit" id="imprimirReporHist" name="imprimirReporHist" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>-->
+                            </div>  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                         </div>
                     </form>
                     </div>

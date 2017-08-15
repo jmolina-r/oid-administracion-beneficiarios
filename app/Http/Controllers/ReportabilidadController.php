@@ -37,6 +37,7 @@ class ReportabilidadController extends Controller
         $psicologos = Funcionario::where('tipo_funcionario_id','=',1)->get();
         $fonoaudiologos = Funcionario::where('tipo_funcionario_id','=',5)->get();
         return view('reportabilidad.menuReportabilidad', compact('kines','terapeutas','psicologos', 'fonoaudiologos'));
+
     }
 
     public function createInformeCierre() {
@@ -94,7 +95,7 @@ class ReportabilidadController extends Controller
         $edad11_20= Beneficiario::whereYear('fecha_nacimiento','<=',(date('Y')-11))->whereYear('fecha_nacimiento','>=',(date('Y')-20))->count();
         $edad21_30= Beneficiario::whereYear('fecha_nacimiento','<=',(date('Y')-21))->whereYear('fecha_nacimiento','>=',(date('Y')-30))->count();
         $edad31_40= Beneficiario::whereYear('fecha_nacimiento','<=',(date('Y')-31))->whereYear('fecha_nacimiento','>=',(date('Y')-40))->count();
-        $edad641_50= Beneficiario::whereYear('fecha_nacimiento','<=',(date('Y')-41))->whereYear('fecha_nacimiento','>=',(date('Y')-50))->count();
+        $edad41_50= Beneficiario::whereYear('fecha_nacimiento','<=',(date('Y')-41))->whereYear('fecha_nacimiento','>=',(date('Y')-50))->count();
         $edad51_60= Beneficiario::whereYear('fecha_nacimiento','<=',(date('Y')-51))->whereYear('fecha_nacimiento','>=',(date('Y')-60))->count();
         $edad61_70= Beneficiario::whereYear('fecha_nacimiento','<=',(date('Y')-61))->whereYear('fecha_nacimiento','>=',(date('Y')-70))->count();
         $edad71_80= Beneficiario::whereYear('fecha_nacimiento','<=',(date('Y')-71))->whereYear('fecha_nacimiento','>=',(date('Y')-80))->count();
@@ -206,7 +207,12 @@ class ReportabilidadController extends Controller
                 'medioIncompleto', 'medioCompleto', 'tecnicoIncompleto', 'tecnicoCompleto', 'universitarioIncompleto',
 
                 'universitarioCompleto', 'trabajador', 'estudiante', 'duenoCasa', 'pensionado', 'cesante', 'isapreCruzBlanca', 'isapreColmena', 'isapreMasVida', 'isapreConsalud', 'isapreBanmedica', 'isapreVidaTres', 'isapreCodelco',
-                'isapreDipreca', 'isapreCapredena', 'isapreFerroSalud', 'isapreOtro','porcentajeParticipaOrgSocial'));
+
+                'isapreDipreca', 'isapreCapredena', 'isapreFerroSalud', 'isapreOtro','porcentajeParticipaOrgSocial',
+                
+                'estimulacionTemprana','edad3_5','edad6_10','edad11_20','edad21_30','edad31_40','edad41_50','edad51_60','edad61_70','edad71_80','edad81_90','edad91_100','edad101_110','edad111_120',
+                
+                'porcentajeParticipaOrgSocial'));
         }
 
         $view =  \View::make('pdf.invoice', compact('cant', 'porcentajeRSTramite', 'porcentajeRSTiene', 'porcentajeFemenino', 'porcentajeMasculino', 'ingresoAnual', 'ingresoMensual', 'porcentajeCredencialEntregada', 'porcentajeCredencialTramite', 'atencionAnual', 'atencionMensual', 'porcentajeAdulto', 'porcentajeJoven', 'porcentajeAdultoMayor', 'porcentajeFonasa',
@@ -224,6 +230,7 @@ class ReportabilidadController extends Controller
         //KINE
         $user_rut=$request->kinesiologos;
         $kinesiologo = Funcionario::where('rut',$request->kinesiologos)->first();
+
         $atencionAnualKine=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
             ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
             ->where('funcionarios.rut','=',$user_rut)
@@ -290,13 +297,14 @@ class ReportabilidadController extends Controller
 
     public function showResultFono(Request $request){
         //FONO
+
         $user_rut=$request->fonoaudiologo;
         $fonoaudiologo = Funcionario::where('rut',$request->fonoaudiologo)->first();
              $atencionAnualFono=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
                  ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
                  ->where('funcionarios.rut','=',$user_rut)
                  ->count();
-             $atencionMensualFono=FichaFonoaudiologia::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
+             $atencionMensualFono=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
                  ->whereMonth('prestacion_realizadas.fecha', '=', date('m'))
                  ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
                  ->where('funcionarios.rut','=',$user_rut)
@@ -392,6 +400,7 @@ class ReportabilidadController extends Controller
     }
 
     public function showResultTer(Request $request){
+
         //terapiaocupacional
         $user_rut=$request->terapeutas;
         $terapeuta = Funcionario::where('rut',$request->terapeutas)->first();
@@ -479,12 +488,13 @@ class ReportabilidadController extends Controller
     }
 
     public function showResultGrupal(Request $request){
-        // area mas trabajadora
+
+       // area mas trabajadora
+
         $atencionAnualKines=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
             ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
             ->where('funcionarios.tipo_funcionario_id','=',2)
             ->count();
-        print $atencionAnualKines;
 
         $atencionMensualKines=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
             ->whereMonth('prestacion_realizadas.fecha', '=', date('m'))
