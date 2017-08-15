@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+    $('#funcionarioUserData, #funcionarioUserDataIco').click(function() {
+        $('#perfilFuncionarioModalOnUser').modal('show')
+    })
+
+
     $('#userSaveFormBtn').click(function(e) {
         e.preventDefault()
 

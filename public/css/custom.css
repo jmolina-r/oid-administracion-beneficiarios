@@ -81,13 +81,13 @@ textarea {
 
 
 /******************************/
-/********* Star app ***********/ 
+/********* Star app ***********/
 /******************************/
 .user-btn{
 	text-transform: capitalize;
 }
 /******************************/
-/********* End app ***********/ 
+/********* End app ***********/
 /******************************/
 
 
@@ -124,7 +124,7 @@ textarea {
 }
 
 .card-frame h4{
-	
+
 }
 
 .card-text{
@@ -164,4 +164,28 @@ textarea {
 
 /***************************/
 /**** End Modal Custom *****/
+/***************************/
+
+
+/***************************/
+/**** User *****************/
+/***************************/
+
+
+#funcionarioUserData {
+	display: inline-block;
+	margin-left: 15px;
+}
+
+#funcionarioUserData,
+#funcionarioUserDataIco:hover {
+	cursor: pointer;
+}
+
+#funcionarioUserDataIco {
+	color: #5D5D5D;
+}
+
+/***************************/
+/**** End User *************/
 /***************************/

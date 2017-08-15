@@ -118,4 +118,34 @@
 
 <br>
 
+@if(isset($user) && $user->funcionario != null)
+    <label class='control-label' for='inputText'>Funcionario de OID Asociado</label>
+    <br>
+    <p id="funcionarioUserData" class="capitalize">{{ $user->funcionario->nombre }} {{ $user->funcionario->apellido }}</p>
+    <i id="funcionarioUserDataIco" class="fa fa-search-plus fa-lg" aria-hidden="true"></i>
+    <br>
+@else
+<div class="form-group{{ $errors->has('roles') ? ' has-error' : '' }}">
+    <label class='control-label' for='inputText'>Asociar Funcionario de OID</label>
+
+    <select id="roleUserSave" style="width:100%;" name="roles[]" class='form-control select-tag' data-placeholder='Seleccione los roles' multiple='multiple'>
+
+        @foreach($roles as $role)
+            <option value="{{$role->id}}"
+                @if((old('roles') && in_array($role->id, old('roles'))) || (isset($user) && $user->roles != null && count($user->roles) > 0 && count($user->roles->where('id', $role->id)) > 0))
+                    selected
+                @endif
+            >{{$role->nombre}}</option>
+        @endforeach
+
+    </select>
+
+    @if ($errors->has('roles'))
+        <span class="help-block">
+            <strong>{{ $errors->first('roles') }}</strong>
+        </span>
+    @endif
+</div>
+@endif
+
 <button id="userSaveFormBtn" class='btn btn-block btn-success'>Guardar Usuario</button>
