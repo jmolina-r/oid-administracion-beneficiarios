@@ -344,6 +344,16 @@
                               <small>PARTICIPACIÓN ORGANIZACIÓN SOCIAL</small>
                               <div class='text-primary fa fa-users align-left'></div>
                         </div>
+                        <div class='box-content box-statistic text-right'>
+                              <h3 class='title text-warning'>{{$porcentajeReahbAnual}}%</h3>
+                              <small>REHABILITACIONES ANUALES</small>
+                              <div class='text-warning fa fa-heart align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                              <h3 class='title text-warning'>{{$porcentajeReahbMensual}}%</h3>
+                              <small>REHABILITACIONES MENSUALES</small>
+                              <div class='text-warning fa fa-heart align-left'></div>
+                        </div>
                      <div class='col-sm-6 sinpadding'>
                         <div class='box-content'>
                             <h3 class='title text-error text-center'>SALUD</h3>

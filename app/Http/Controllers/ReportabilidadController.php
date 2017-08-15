@@ -16,6 +16,7 @@ use App\Funcionario;
 use App\HoraAgendada;
 use App\InformeCierre;
 use App\MotivoAtencionSocial;
+use App\Prestacion;
 use App\PrestacionRealizada;
 use App\RegistroSocialHogar;
 use App\SubMotivoAtencionSocial;
@@ -34,8 +35,9 @@ class ReportabilidadController extends Controller
         $kines = Funcionario::where('tipo_funcionario_id','=',2)->get();
         $terapeutas = Funcionario::where('tipo_funcionario_id','=',4)->get();
         $psicologos = Funcionario::where('tipo_funcionario_id','=',1)->get();
-        $fonos = Funcionario::where('tipo_funcionario_id','=',5)->get();
-        return view('reportabilidad.menuReportabilidad', compact('kines','terapeutas','psicologos', 'fonos'));
+        $fonoaudiologos = Funcionario::where('tipo_funcionario_id','=',5)->get();
+        return view('reportabilidad.menuReportabilidad', compact('kines','terapeutas','psicologos', 'fonoaudiologos'));
+
     }
 
     public function createInformeCierre() {
@@ -169,6 +171,15 @@ class ReportabilidadController extends Controller
         //Participacion en org social
         $participaOrgSocial=DatoSocial::join('dato_social_organizacion_social','dato_socials.id','=','dato_social_organizacion_social.dato_social_id')->count();
 
+        //Rehabilitacion
+        $pacientesReahabAnual=InformeCierre::where('culmino_proceso','=','si')
+            ->whereYear('fecha_termino','=',(date('Y')))
+            ->count();
+        $pacientesReahabMensual=InformeCierre::where('culmino_proceso','=','si')
+            ->whereYear('fecha_termino','=',(date('Y')))
+            ->whereMonth('fecha_termino', '=', date('m'))
+            ->count();
+
         if($cant!=0){
             $porcentajeMasculino = $masculino*100/$cant;
             $porcentajeFemenino=$fem*100/$cant;
@@ -178,6 +189,8 @@ class ReportabilidadController extends Controller
             $porcentajeRSTiene=$registroSocialTiene*100/$cant;
             $porcentajeRSTramite=$registroSocialTramite*100/$cant;
             $porcentajeParticipaOrgSocial=$participaOrgSocial*100/$cant;
+            $porcentajeReahbAnual=$pacientesReahabAnual*100/$cant;
+            $porcentajeReahbMensual=$pacientesReahabMensual*100/$cant;
         }else{
             $porcentajeMasculino =0;
             $porcentajeFemenino=0;
@@ -187,6 +200,8 @@ class ReportabilidadController extends Controller
             $porcentajeRSTiene=0;
             $porcentajeRSTramite=0;
             $porcentajeParticipaOrgSocial=0;
+            $porcentajeReahbAnual=0;
+            $porcentajeReahbMensual=0;
         }
 
         if(isset($_GET['visualGene'])) {
@@ -196,11 +211,14 @@ class ReportabilidadController extends Controller
                 'medioIncompleto', 'medioCompleto', 'tecnicoIncompleto', 'tecnicoCompleto', 'universitarioIncompleto',
 
                 'universitarioCompleto', 'trabajador', 'estudiante', 'duenoCasa', 'pensionado', 'cesante', 'isapreCruzBlanca', 'isapreColmena', 'isapreMasVida', 'isapreConsalud', 'isapreBanmedica', 'isapreVidaTres', 'isapreCodelco',
+
                 'isapreDipreca', 'isapreCapredena', 'isapreFerroSalud', 'isapreOtro','porcentajeParticipaOrgSocial',
                 
                 'estimulacionTemprana','edad3_5','edad6_10','edad11_20','edad21_30','edad31_40','edad41_50','edad51_60','edad61_70','edad71_80','edad81_90','edad91_100','edad101_110','edad111_120',
                 
-                'porcentajeParticipaOrgSocial'));
+                'porcentajeParticipaOrgSocial',
+                
+                'porcentajeReahbMensual','porcentajeReahbAnual'));
         }
 
         $view =  \View::make('pdf.invoice', compact('cant', 'porcentajeRSTramite', 'porcentajeRSTiene', 'porcentajeFemenino', 'porcentajeMasculino', 'ingresoAnual', 'ingresoMensual', 'porcentajeCredencialEntregada', 'porcentajeCredencialTramite', 'atencionAnual', 'atencionMensual', 'porcentajeAdulto', 'porcentajeJoven', 'porcentajeAdultoMayor', 'porcentajeFonasa',
@@ -218,14 +236,15 @@ class ReportabilidadController extends Controller
         //KINE
         $user_rut=$request->kinesiologos;
         $kinesiologo = Funcionario::where('rut',$request->kinesiologos)->first();
-        $atencionAnualKine=FichaKinesiologia::whereYear('ficha_kinesiologias.created_at', '=', date('Y'))
-            ->join('funcionarios','ficha_kinesiologias.funcionario_id','=','funcionarios.id')
+
+        $atencionAnualKine=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
+            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
             ->where('funcionarios.rut','=',$user_rut)
             ->count();
 
-        $atencionMensualKine=FichaKinesiologia::whereYear('ficha_kinesiologias.created_at', '=', date('Y'))
-            ->whereMonth('ficha_kinesiologias.created_at', '=', date('m'))
-            ->join('funcionarios','ficha_kinesiologias.funcionario_id','=','funcionarios.id')
+        $atencionMensualKine=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
+            ->whereMonth('prestacion_realizadas.fecha', '=', date('m'))
+            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
             ->where('funcionarios.rut','=',$user_rut)
             ->count();
         $asistenciaKine =HoraAgendada::where('hora_agendadas.asist_sn','=','si')
@@ -237,8 +256,22 @@ class ReportabilidadController extends Controller
             ->where('funcionarios.rut','=',$user_rut)
             ->count();
 
+        $prestaciones = Prestacion::all();
+        $porcentajePrest=null;
+        $nombrePrest=null;
+        $i=0;
+        foreach ($prestaciones as $p){
+        $nombrePrest[$i]=$p->nombre;
+        $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
+        ->join('prestacion_realizadas','prestacions.id','=','prestacion_realizadas.prestacions_id')
+        ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+        ->where('funcionarios.rut','=',$user_rut)
+        ->count();
+        $i++;
+        }
+
         if(isset($_GET['visualKine'])) {
-            return view('reportabilidad.reportabilidadKine', compact('kinesiologo','atencionAnualKine','atencionMensualKine','asistenciaKine','inasistenciaKine'));
+            return view('reportabilidad.reportabilidadKine', compact('kinesiologo','atencionAnualKine','atencionMensualKine','asistenciaKine','inasistenciaKine','porcentajePrest','nombrePrest'));
         }else {
 
             if (isset($_GET['imprimirReporKine'])) {
@@ -276,7 +309,7 @@ class ReportabilidadController extends Controller
                  ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
                  ->where('funcionarios.rut','=',$user_rut)
                  ->count();
-             $atencionMensualFono=FichaFonoaudiologia::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
+             $atencionMensualFono=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
                  ->whereMonth('prestacion_realizadas.fecha', '=', date('m'))
                  ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
                  ->where('funcionarios.rut','=',$user_rut)
@@ -292,11 +325,11 @@ class ReportabilidadController extends Controller
                        ->count();
         $prestaciones = Prestacion::all();
         $porcentajePrest=null;
+        $nombrePrest=null;
         $i=0;
         foreach ($prestaciones as $p){
-            $j=0;
-            $porcentajePrest[$i][$j]=$p->nombre;
-            $porcentajePrest[$i][$j+1]=Prestacion::where('prestacions.id','=',$p->id)
+            $nombrePrest[$i]=$p->nombre;
+            $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
                 ->join('prestacion_realizadas','prestacions.id','=','prestacion_realizadas.prestacions_id')
                 ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
                 ->where('funcionarios.rut','=',$user_rut)
@@ -304,11 +337,10 @@ class ReportabilidadController extends Controller
             $i++;
         }
 
-        return view('reportabilidad.reportabilidadFono', compact('fonoaudiologo','atencionAnualFono','atencionMensualFono','asistenciaFono','inasistenciaFono'));
+        return view('reportabilidad.reportabilidadFono', compact('fonoaudiologo','atencionAnualFono','atencionMensualFono','asistenciaFono','inasistenciaFono','porcentajePrest','nombrePrest'));
     }
 
     public function showResultPsico(Request $request){
-        //Psico
         //Psico
         $user_rut=$request->psicologos;
         $psicologo = Funcionario::where('rut',$request->psicologos)->first();
@@ -330,9 +362,22 @@ class ReportabilidadController extends Controller
             ->join('funcionarios','hora_agendadas.user_id','=','funcionarios.id')
             ->where('funcionarios.rut','=',$user_rut)
             ->count();
+        $prestaciones = Prestacion::all();
+        $porcentajePrest=null;
+        $nombrePrest=null;
+        $i=0;
+        foreach ($prestaciones as $p){
+            $nombrePrest[$i]=$p->nombre;
+            $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
+                ->join('prestacion_realizadas','prestacions.id','=','prestacion_realizadas.prestacions_id')
+                ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+                ->where('funcionarios.rut','=',$user_rut)
+                ->count();
+            $i++;
+        }
 
         if(isset($_GET['visualSico'])) {
-            return view('reportabilidad.reportabilidadPsico', compact('psicologo','atencionAnualPsico','atencionMensualPsico','asistenciaPsico','inasistenciaPsico'));
+            return view('reportabilidad.reportabilidadPsico', compact('psicologo','atencionAnualPsico','atencionMensualPsico','asistenciaPsico','inasistenciaPsico','porcentajePrest','nombrePrest'));
         }/*else {
             if (isset($_GET['imprimirReporSico'])) {
 
@@ -360,32 +405,47 @@ class ReportabilidadController extends Controller
     }
 
     public function showResultTer(Request $request){
-         //terapiaocupacional
-        $user_rut2=$request->terapeutas;
+
+        //terapiaocupacional
+        $user_rut=$request->terapeutas;
         $terapeuta = Funcionario::where('rut',$request->terapeutas)->first();
         $atencionAnualTer=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
             ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
-            ->where('funcionarios.rut','=',$user_rut2)
+            ->where('funcionarios.rut','=',$user_rut)
             ->count();
         $atencionMensualTer=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
             ->whereMonth('prestacion_realizadas.fecha', '=', date('m'))
             ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
-            ->where('funcionarios.rut','=',$user_rut2)
+            ->where('funcionarios.rut','=',$user_rut)
             ->count();
 
         $asistenciaTer =HoraAgendada::where('hora_agendadas.asist_sn','=','si')
             ->join('funcionarios','hora_agendadas.user_id','=','funcionarios.id')
-            ->where('funcionarios.rut','=',$user_rut2)
+            ->where('funcionarios.rut','=',$user_rut)
             ->count();
         $inasistenciaTer =HoraAgendada::where('hora_agendadas.asist_sn','=','no')
             ->join('funcionarios','hora_agendadas.user_id','=','funcionarios.id')
-            ->where('funcionarios.rut','=',$user_rut2)
+            ->where('funcionarios.rut','=',$user_rut)
             ->count();
+
+        $prestaciones = Prestacion::all();
+        $porcentajePrest=null;
+        $nombrePrest=null;
+        $i=0;
+        foreach ($prestaciones as $p){
+            $nombrePrest[$i]=$p->nombre;
+            $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
+                ->join('prestacion_realizadas','prestacions.id','=','prestacion_realizadas.prestacions_id')
+                ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+                ->where('funcionarios.rut','=',$user_rut)
+                ->count();
+            $i++;
+        }
 
         //return view('reportabilidad.reportabilidadTer', compact('terapeuta','atencionAnualTer','atencionMensualTer','asistenciaTer','inasistenciaTer'));
 
         if(isset($_GET['visualTerap'])) {
-            return view('reportabilidad.reportabilidadTer', compact('terapeuta','atencionAnualTer','atencionMensualTer','asistenciaTer','inasistenciaTer'));
+            return view('reportabilidad.reportabilidadTer', compact('terapeuta','atencionAnualTer','atencionMensualTer','asistenciaTer','inasistenciaTer','porcentajePrest','nombrePrest'));
         }else {
             if (isset($_GET['imprimirReporTerap'])) {
 
@@ -433,12 +493,13 @@ class ReportabilidadController extends Controller
     }
 
     public function showResultGrupal(Request $request){
+
        // area mas trabajadora
+
         $atencionAnualKines=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
             ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
             ->where('funcionarios.tipo_funcionario_id','=',2)
             ->count();
-        print $atencionAnualKines;
 
         $atencionMensualKines=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
             ->whereMonth('prestacion_realizadas.fecha', '=', date('m'))

@@ -135,10 +135,20 @@
                           <small>CANTIDAD DE INASISTENCIA DE PACIENTES</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>
+                        <div class='box-content'>
+                                        <h3 class='title text-inside text-center'>PRESTACIONES</h3>                                    
+                                    </div>
+                                   @for ($i = 0; $i < count($nombrePrest); $i++)
+                                        <div class='box-content box-statistic text-right'>
+                                            <h3 class='title text-info'>{{$porcentajePrest[$i]}}</h3>
+                                            <small>{{$nombrePrest[$i]}}</small>
+                                            <div class='text-info fa fa-wheelchair align-left'></div>
+                                        </div>
+                                    @endfor
               </div>
               </div>
             </div>
-                    <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Vista previa a imprimir</button>
+                    <button type="submit" class="btn btn-success col-md-12" style="margin-bottom:5px" />Vista previa a imprimir</button>
                 
             @include('partials.footer')
           </div>

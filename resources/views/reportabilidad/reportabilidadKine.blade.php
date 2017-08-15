@@ -87,8 +87,8 @@
                         </div>
                     </div>
                     <form action="{{route('reportabilidad.reporteKine')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
-                        <input id="nombres" name="nombres" type="hidden" value="{{$kinesiologo->nombres}}">
-                        <input id="apellidos" name="apellidos" type="hidden" value="{{$kinesiologo->apellidos}}">
+                        <input id="nombres" name="nombres" type="hidden" value="{{$kinesiologo->nombre}}">
+                        <input id="apellidos" name="apellidos" type="hidden" value="{{$kinesiologo->apellido}}">
                         <input id="rut" name="rut" type="hidden" value="{{$kinesiologo->rut}}">
                         <input id="telefono" name="telefono" type="hidden" value="{{$kinesiologo->telefono}}">
                         <input id="direccion" name="direccion" type="hidden" value="{{$kinesiologo->direccion}}">
@@ -142,10 +142,22 @@
                                         <small>CANTIDAD DE INASISTENCIA DE PACIENTES</small>
                                         <div class='text-primary fa fa-book align-left'></div>
                                     </div>
+                                    <div class='box-content'>
+                                        <h3 class='title text-inside text-center'>PRESTACIONES</h3>                                    
+                                    </div>
+                                   @for ($i = 0; $i < count($nombrePrest); $i++)
+                                        <div class='box-content box-statistic text-right'>
+                                            <h3 class='title text-info'>{{$porcentajePrest[$i]}}</h3>
+                                            <small>{{$nombrePrest[$i]}}</small>
+                                            <div class='text-info fa fa-wheelchair align-left'></div>
+                                        </div>
+                                    @endfor
+
+                                    
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Vista previa a imprimir</button>
+                        <button type="submit" class="btn btn-success col-md-12" style="margin-bottom:5px" />Vista previa a imprimir</button>
                     </form>
                 @include('partials.footer')
                 </div>
