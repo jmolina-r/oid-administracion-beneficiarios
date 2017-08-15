@@ -75,6 +75,7 @@
                                     <h1 class="pull-left">
                                         <i class="fa fa-pencil-square-o"></i>
                                         <span>Informe de cierre</span>
+                                        {{$tipoFuncionario->nombre}}
                                     </h1>
                                     <div class="pull-right">
                                         <ul class="breadcrumb">
@@ -129,6 +130,7 @@
                                                     <div class="col-md-12 form-group">
                                                         <label class="col-md-4 control-label" for="cant_sesiones">Cantidad de sesiones</label>
                                                         <div class="col-md-8 controls">
+                                                            <p></p>
                                                             <input class="form-control" id="cant_sesiones" name="cant_sesiones" placeholder="Cantidad de sesiones">
                                                         </div>
                                                     </div>

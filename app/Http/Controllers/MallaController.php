@@ -351,11 +351,12 @@ class MallaController extends Controller
 
         $horaAgendada = HoraAgendada::where('id', $idHora)->first();
 
+        $idFuncionario = Auth::user()->funcionario_id;
 
         foreach ($jsonPrestaciones as $prestacionRegistro){
 
             $prestacionRealizada = new PrestacionRealizada([
-                'user_id' => $horaAgendada->user_id,
+                'funcionario_id' => $idFuncionario,
                 'beneficiario_id' => $horaAgendada->beneficiario_id,
                 'prestacions_id' => $prestacionRegistro['id'],
                 'fecha' => date('Y-m-d')

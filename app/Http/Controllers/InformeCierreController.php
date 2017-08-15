@@ -25,20 +25,22 @@ class InformeCierreController extends Controller
             ->join('funcionarios', 'users.funcionario_id', '=', 'funcionarios.id')
             ->join('tipo_funcionarios', 'funcionarios.tipo_funcionario_id', '=', 'tipo_funcionarios.id')
             ->select('tipo_funcionarios.nombre')
-            ->get();
+            ->first();
 
-        $ficha = null;
-        if($tipoFuncionario == "kinesiologo"){
-            $ficha = FichaKinesiologia::where('beneficiario_id', $idBeneficiario)->where('funcionario_id', Auth::user()->funcionario_id)->orderBy('created_at', $direction = 'des')->first();
+        if($tipoFuncionario->nombre == "kinesiologo"){
+            $ficha = FichaKinesiologia::find($idFicha);
         }
-        if($tipoFuncionario == "psicologo"){
-            $ficha = FichaPsicologia::where('beneficiario_id', $idBeneficiario)->where('funcionario_id', Auth::user()->funcionario_id)->orderBy('created_at', $direction = 'des')->first();
+        if($tipoFuncionario->nombre == "psicologo"){
+            $ficha = FichaPsicologia::find($idFicha);
         }
-        if($tipoFuncionario == "fonoaudiologo"){
-            $ficha = FichaFonoaudiologia::where('beneficiario_id', $idBeneficiario)->where('funcionario_id', Auth::user()->funcionario_id)->orderBy('created_at', $direction = 'des')->first();
+        if($tipoFuncionario->nombre == "fonoaudiologo"){
+            $ficha = FichaFonoaudiologia::find($idFicha);
         }
-        if($tipoFuncionario == "terapeuta ocupacional"){
-            $ficha = FichaTerapiaOcupacional::where('beneficiario_id', $idBeneficiario)->where('funcionario_id', Auth::user()->funcionario_id)->orderBy('created_at', $direction = 'des')->first();
+        if($tipoFuncionario->nombre == "terapeuta ocupacional"){
+            $ficha = FichaTerapiaOcupacional::find($idFicha);
+        }
+        else{
+            return view('home');
         }
 
         if($ficha->estado == 'cerrado'){
@@ -50,18 +52,22 @@ class InformeCierreController extends Controller
         $fechaTermino = date('d-m-Y');
 
         $prestacionesRealizadas = DB::table('prestacion_realizadas')
-            ->where('users.id', $idUsuario)
-            ->join('funcionarios', 'users.funcionario_id', '=', 'funcionarios.id')
-            ->join('tipo_funcionarios', 'funcionarios.tipo_funcionario_id', '=', 'tipo_funcionarios.id')
-            ->select('tipo_funcionarios.nombre')
+            ->where('funcionario_id', Auth::user()->funcionario_id)
+            ->where('beneficiario_id', $idBeneficiario)
+            ->where('created_at', '>=', $ficha->created_at)
+            ->where('created_at', '<=', date("Y-m-d H:i:s"))
             ->get();
-
-        $cantidadSesiones = null;
 
         return view('area-medica.informe-cierre.create')
             ->with(compact('idUsuario'))
             ->with(compact('beneficiario'))
-            ->with(compact('edad'));
+            ->with(compact('edad'))
+            ->with(compact('MotivoAtencion'))
+            ->with(compact('fechaInicio'))
+            ->with(compact('fechaTermino'))
+            ->with(compact('prestacionesRealizadas'))
+
+            ->with(compact('tipoFuncionario'));
     }
 
     public function store(Request $request){
