@@ -86,16 +86,7 @@
                     </div>
                   </div>
                 </div>
-                <form action="{{route('reportabilidad.reportePsico')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
-                <input id="nombres" name="nombres" type="hidden" value="{{$psicologo->nombres}}">
-                <input id="apellidos" name="apellidos" type="hidden" value="{{$psicologo->apellidos}}">
-                <input id="rut" name="rut" type="hidden" value="{{$psicologo->rut}}">
-                <input id="telefono" name="telefono" type="hidden" value="{{$psicologo->telefono}}">
-                <input id="direccion" name="direccion" type="hidden" value="{{$psicologo->direccion}}">
-                <input id="atencionAnualPsico" name="atencionAnualPsico" type="hidden" value="{{$atencionAnualPsico}}">
-                <input id="atencionMensualPsico" name="atencionMensualPsico" type="hidden" value="{{$atencionMensualPsico}}">
-                <input id="asistenciaPsico" name="asistenciaPsico" type="hidden" value="{{$asistenciaPsico}}">
-                <input id="inasistenciaPsico" name="inasistenciaPsico" type="hidden" value="{{$inasistenciaPsico}}">
+              
                       <div class='row'>
                     <div class='col-sm-12'>
                       <div class='box bordered-box blue-border' style='margin-bottom:0;'>
@@ -103,12 +94,12 @@
                           <div class='title'>Datos personales</div>                        
                         </div>
                          <div class="col-sm-6">
-                            <p class="capitalize"><span class="tit">Nombre Completo</span><br>{{ $psicologo->nombres }} {{ $psicologo->apellidos }}</p>
-                            <p class="capitalize"><span class="tit">Rut</span><br>{{ $psicologo->rut }}</p>
+                            <p class="capitalize"><span class="tit">Nombre Completo</span><br></p>
+                            <p class="capitalize"><span class="tit">Rut</span><br></p>
                         </div>
                         <div class="col-sm-6">
-                            <p class="capitalize"><span class="tit">Telefono</span><br>{{ $psicologo->telefono }}</p>
-                            <p class="capitalize"><span class="tit">Dirección</span><br>{{ $psicologo->direccion }}</p>
+                            <p class="capitalize"><span class="tit">Telefono</span><br></p>
+                            <p class="capitalize"><span class="tit">Dirección</span><br></p>
                         </div>    
                     </div> 
                   </div>
@@ -148,7 +139,7 @@
               </div>
             </div>
                     <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Vista previa a imprimir</button>
-                </form>
+                
             @include('partials.footer')
           </div>
             </div>

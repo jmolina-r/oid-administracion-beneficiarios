@@ -270,7 +270,7 @@ class ReportabilidadController extends Controller
 
     public function showResultFono(Request $request){
         //FONO
-        $user_rut=0;
+        $user_rut=$request->fonoaudiologo;
         $fonoaudiologo = Funcionario::where('rut',$request->fonoaudiologo)->first();
              $atencionAnualFono=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
                  ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
