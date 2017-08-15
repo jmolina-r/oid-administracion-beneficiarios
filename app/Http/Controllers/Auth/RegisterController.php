@@ -63,7 +63,7 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'roles' => 'required',
             'status' => 'required|boolean',
-            'funcionario_id' => 'required|exists:funcionarios,id'
+            'funcionario_id' => 'required|exists:funcionarios,id|unique:users,funcionario_id'
         ]);
     }
 

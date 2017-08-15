@@ -42,7 +42,7 @@ class UpdateController extends Controller
             'password' => 'nullable|string|min:6|confirmed',
             'roles' => 'required',
             'status' => 'required|boolean',
-            'funcionario_id' => 'nullable|exists:funcionarios,id'
+            'funcionario_id' => 'nullable|exists:funcionarios,id|unique:users,funcionario_id'
         ];
 
         return $rules;
@@ -108,7 +108,7 @@ class UpdateController extends Controller
         $funcionarios = [];
 
         foreach (Funcionario::get() as $funcionario) {
-            if ($funcionario->user != null) {
+            if ($funcionario->user == null) {
                 $funcionarios[] = $funcionario;
             }
         }
