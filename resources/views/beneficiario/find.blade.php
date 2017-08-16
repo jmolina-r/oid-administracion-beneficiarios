@@ -102,6 +102,9 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                 <thead>
                                                                     <tr>
                                                                         <th>
+                                                                            #
+                                                                        </th>
+                                                                        <th>
                                                                             Nombre
                                                                         </th>
                                                                         <th>
@@ -118,6 +121,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                 </thead>
                                                                 <tbody id="listaBeneficiario">
                                                                     <tr>
+                                                                        <td></td>
                                                                         <td>
                                                                             No hay datos para mostrar.
                                                                         </td>
