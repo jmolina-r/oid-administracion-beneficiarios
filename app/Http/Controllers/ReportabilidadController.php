@@ -651,7 +651,6 @@ class ReportabilidadController extends Controller
     }
     public function showResultHistorica(Request $request)
     {
-
         $anio = $request->anio;
         $mes = $request->mes;
         $cantIngresadosAño = FichaBeneficiario::whereYear('fecha_ingreso', '=', $anio)->wheremonth('fecha_ingreso', '<=', $mes)->count();
@@ -703,7 +702,6 @@ class ReportabilidadController extends Controller
             ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
             ->where('funcionarios.tipo_funcionario_id','=',4)
             ->count();
-        print $atencionTersMes;
 
         if(isset($_GET['visualHistMes'])) {
             return view('reportabilidad.reportabilidadHistorica', compact('anio','mes','cantUsuarioTotal','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual','atencionKines','atencionPsico','atencionFono','atencionTers'));
