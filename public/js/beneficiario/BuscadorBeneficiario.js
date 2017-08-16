@@ -37,14 +37,18 @@ $(document).ready(function() {
         if (beneficiarios && beneficiarios.length > 0) {
             $("#listaBeneficiario").empty();
             beneficiarios.forEach(function(element) {
-                var cardData = 
+                var cardData =
                 "<tr>" +
+                    "<td class='capitalize'>" + element.id + "</td>" +
                     "<td class='capitalize'>" + element.nombre + " " + element.apellido + "</td>" +
                     "<td>" + element.rut + "</td>" +
                     "<td class='capitalize'>" + element.sexo + "</td>" +
                     "<td>" + element.created_at + "</td>" +
                     "<td>" +
                         "<div class='text-right'>" +
+                            "<a class='btn btn-warning btn-xs' href='/area-medica/ficha-evaluacion-inicial/fichas/listaFichas/" + element.id + "'>" +
+                                "<i class='fa fa-heart'></i>" +
+                            "</a>" +
                             "<a class='btn btn-primary btn-xs' href='/beneficiario/informacion/" + element.id + "'>" +
                                 "<i class='fa fa-user'></i>" +
                             "</a>" +
