@@ -85,7 +85,7 @@
                         </a>
                     </li>
                 </ul>
-                <ul class='nav nav-stacked'>
+                {{--<ul class='nav nav-stacked'>
                     <li class=''>
                         <a href='{{route('reportabilidad.reportabilidadPorProfesional')}}'>
                             <div class='icon'>
@@ -94,7 +94,7 @@
                             <span>Visualizar estadísticas por profesional</span>
                         </a>
                     </li>
-                </ul>
+                </ul>--}}
             {{--<ul class='nav nav-stacked'>
                 <li class=''>
                     <a href='{{route('reportabilidad.menu')}}'>

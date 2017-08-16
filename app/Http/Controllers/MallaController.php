@@ -515,7 +515,7 @@ class MallaController extends Controller
 
         foreach ($roles as $rol){
 
-            if($rol->nombre == 'secretaria'){
+            if($rol->nombre == 'secretaria' || $rol->nombre == 'admin'){
                 return "true";
             }
 
