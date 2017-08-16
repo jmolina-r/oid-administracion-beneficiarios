@@ -104,6 +104,29 @@
                           <small>USUARIOS ATENDIDOS EN EL PERIODO</small>
                           <div class='text-error fa fa-users align-left'></div>
                         </div>
+                        <div class='box-content'>
+                            <h3 class='title text-inside text-center'>ATENCIÓN POR ÁREAS</h3>                                    
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-warning'>{{$atencionPsico}}</h3>
+                          <small>PSICOLOGÍA - USUARIOS ATENDIDOS EN EL PERIODO</small>
+                          <div class='text-warning fa fa-smile-o align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-warning'>{{$atencionKines}}</h3>
+                          <small>KINESIOLOGÍA - USUARIOS ATENDIDOS EN EL PERIODO</small>
+                          <div class='text-warning fa fa-wheelchair align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-warning'>{{$atencionFono}}</h3>
+                          <small>FONOAUDIOLOGÍA - USUARIOS ATENDIDOS EN EL PERIODO</small>
+                          <div class='text-warning fa fa-deaf align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-warning'>{{$atencionTers}}</h3>
+                          <small>TERAPIA OCUPACIONAL - USUARIOS ATENDIDOS EN EL PERIODO</small>
+                          <div class='text-warning fa fa-hand-rock-o align-left'></div>
+                        </div>
                         
               </div>
               </div>

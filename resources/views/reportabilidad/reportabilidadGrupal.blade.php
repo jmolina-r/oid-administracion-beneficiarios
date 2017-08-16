@@ -158,7 +158,7 @@
 
               </div>
             </div>
-                      <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Vista previa a imprimir</button>
+                      <button type="submit" class="btn btn-success col-md-12" style="margin-bottom:5px" />Vista previa a imprimir</button>
                   </form>
             @include('partials.footer')
           </div>

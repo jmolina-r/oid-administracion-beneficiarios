@@ -647,7 +647,7 @@ class ReportabilidadController extends Controller
             ->where('funcionarios.tipo_funcionario_id','=',4)
             ->count();
 
-             return view('reportabilidad.reportabilidadHistEntreMes', compact('cantIngresadosAño2','cantAtencionAño2','aniouno','aniodos','mesuno','mesdos'));
+             return view('reportabilidad.reportabilidadHistEntreMes', compact('cantIngresadosAño2','cantAtencionAño2','aniouno','aniodos','mesuno','mesdos','atencionKines','atencionPsico','atencionFono','atencionTers'));
     }
     public function showResultHistorica(Request $request)
     {
@@ -682,7 +682,7 @@ class ReportabilidadController extends Controller
             ->count();
 
         if(isset($_GET['visualHistMes'])) {
-            return view('reportabilidad.reportabilidadHistorica', compact('anio','mes','cantUsuarioTotal','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual'));
+            return view('reportabilidad.reportabilidadHistorica', compact('anio','mes','cantUsuarioTotal','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual','atencionKines','atencionPsico','atencionFono','atencionTers'));
         }else {
             if (isset($_GET['imprimirReporHist'])) {
                 $view =  \View::make('pdf.invoiceHistoricReport', compact('anio','mes','cantUsuarioTotal','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual'))->render();
