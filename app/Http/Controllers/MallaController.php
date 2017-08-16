@@ -11,6 +11,7 @@ use App\Funcionario;
 use App\HoraAgendada;
 use App\Prestacion;
 use App\PrestacionRealizada;
+use App\Role;
 use App\TipoFuncionario;
 use App\User;
 use Illuminate\Http\Request;
@@ -511,15 +512,15 @@ class MallaController extends Controller
 
         $usuario = User::where('id', $id)->first();
 
-        $roles = $usuario->roles()->get();
+        $rol = $usuario->role;
 
-        foreach ($roles as $rol){
 
-            if($rol->nombre == 'secretaria' || $rol->nombre == 'admin'){
-                return "true";
-            }
 
+        if($rol->nombre == 'secretaria' || $rol->nombre == 'admin'){
+            return "true";
         }
+
+
 
         return "false";
     }
@@ -533,19 +534,18 @@ class MallaController extends Controller
 
         $usuario = User::where('id', $id)->first();
 
-        $roles = $usuario->roles()->get();
+        $rol = $usuario->role;
 
-        foreach ($roles as $rol){
 
-            if($rol->nombre == 'psicologia'
-                || $rol->nombre == 'kinesiologia'
-                || $rol->nombre == 'trabajo_social'
-                || $rol->nombre == 'terapia_ocupacional'
-                || $rol->nombre == 'fonoaudiologia'){
-                return "true";
-            }
 
+        if($rol->nombre == 'psicologia'
+            || $rol->nombre == 'kinesiologia'
+            || $rol->nombre == 'trabajo_social'
+            || $rol->nombre == 'terapia_ocupacional'
+            || $rol->nombre == 'fonoaudiologia'){
+            return "true";
         }
+
 
         return "false";
     }
@@ -607,7 +607,7 @@ class MallaController extends Controller
 
         $user = User::where('id', $id)->first();
 
-        return $user->roles()->get()->first()->nombre;
+        return $user->role->nombre;
 
     }
 }
