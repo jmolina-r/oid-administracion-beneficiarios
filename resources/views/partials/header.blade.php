@@ -16,7 +16,7 @@
             </a>
             <ul class='dropdown-menu'>
               <li>
-                <a href='#' onclick="mostrarPerfilUsuario('{{ Auth::user()->username }}', '{{ Auth::user()->email }}', '{{ Auth::user()->status }}')">
+                <a href='#' onclick="mostrarPerfilUsuario('{{ Auth::user()->username }}', '{{ Auth::user()->email }}', '{{ Auth::user()->status }}', '{{ Auth::user()->role->nombre }}')">
                   <i class='fa fa-user'></i>
                   Mi perfil
                 </a>

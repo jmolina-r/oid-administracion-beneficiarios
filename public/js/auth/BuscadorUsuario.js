@@ -34,19 +34,19 @@ function getUsuarioPorId(userId) {
                         //$('#progress').removeClass('hidden');
                     },
                     success: function(roles){
-                        var rol = ""
-                        for(var i in roles) {
-                            if(i==0){
-                                rol = roles[i].nombre
-                            } else {
-                                rol = rol + " - " + roles[i].nombre
-                            }
-                        }
-                        $('#roles').html(rol);
+                        // var rol = ""
+                        // for(var i in roles) {
+                        //     if(i==0){
+                        //         rol = roles[i].nombre
+                        //     } else {
+                        //         rol = rol + " - " + roles[i].nombre
+                        //     }
+                        // }
+                        $('#roles').html(roles.nombre);
                     }, complete: function() {
                         $('#profile').modal('show');
                     }
-                });                
+                });
             },
             error: function(err) {
                 console.log(err);
@@ -54,13 +54,14 @@ function getUsuarioPorId(userId) {
     });
 
     promise.then(function(){
-        
-    });  
+
+    });
 }
 
-function mostrarPerfilUsuario(username, email, status){
+function mostrarPerfilUsuario(username, email, status, role){
     $('#username').html(username);
     $('#email').html(email);
+    $('#roles').html(role);
     if(status == 1){
         $("#estado").removeClass("label-danger");
         $("#estado").addClass("label-success");

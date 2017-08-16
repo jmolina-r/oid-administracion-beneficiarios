@@ -14,7 +14,7 @@
                             <p id="username">-</p>
                             <h4>E-mail</h4>
                             <p id="email">-</p>
-                            <h4>Roles</h4>
+                            <h4>Rol en el Sistema</h4>
                             <p id="roles">-</p>
                             <h4>Estado</h4>
                             <span id="estado" class='label'>-</span>
