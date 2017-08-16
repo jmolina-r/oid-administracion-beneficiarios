@@ -234,26 +234,6 @@
                 </ul>
             </li>
             @endif
-
-            <li class=''>
-                <a class="dropdown-collapse" href="#"><i class='fa fa-pencil-square-o'></i>
-                    <span>Dar de alta</span>
-                    <i class='fa fa-angle-down angle-down'></i>
-                </a>
-
-                <ul class='nav nav-stacked'>
-                    <li class=''>
-                        <a href='{{route('area-medica.informe-cierre.buscarUser')}}'>
-                            <div class='icon'>
-                                <i class='fa fa-caret-right'></i>
-                            </div>
-                            <span>Informe de cierre</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </li>
-
             @if(Auth::user()->hasAnyRole(['admin', 'coordinador_oficina']))
                 <li class=''>
                     <a class="dropdown-collapse" href="#"><i class='fa fa-users'></i>
@@ -283,7 +263,7 @@
                 </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional']))
+            @if(Auth::user()->hasAnyRole(['admin', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapiaocupacional']))
                 <li class=''>
                     <a class="dropdown-collapse" href="#"><i class='fa fa-users'></i>
                         <span>Fichas de Evaluación inicial</span>

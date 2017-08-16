@@ -94,9 +94,16 @@
                 <input id="direccion" name="direccion" type="hidden" value="{{$psicologo->direccion}}">
                 <input id="atencionAnualPsico" name="atencionAnualPsico" type="hidden" value="{{$atencionAnualPsico}}">
                 <input id="atencionMensualPsico" name="atencionMensualPsico" type="hidden" value="{{$atencionMensualPsico}}">
-                <input id="asistenciaPsico" name="asistenciaPsicoAnual" type="hidden" value="{{$asistenciaPsicoAnual}}">
-                <input id="inasistenciaPsico" name="inasistenciaPsicoAnual" type="hidden" value="{{$inasistenciaPsicoAnual}}">
-                      <div class='row'>
+                <input id="asistenciaPsicoAnual" name="asistenciaPsicoAnual" type="hidden" value="{{$asistenciaPsicoAnual}}">
+                <input id="inasistenciaPsicoAnual" name="inasistenciaPsicoAnual" type="hidden" value="{{$inasistenciaPsicoAnual}}">
+                <input id="asistenciaPsicoMensual" name="asistenciaPsicoMensual" type="hidden" value="{{$asistenciaPsicoMensual}}">
+                <input id="inasistenciaPsicoMensual" name="inasistenciaPsicoMensual" type="hidden" value="{{$inasistenciaPsicoMensual}}">
+                @for ($i = 0; $i < count($nombrePrest); $i++)
+                    <input id="nombrePrest" name="nombrePrest[]" type="hidden" value="{{$nombrePrest[$i]}}}">
+                    <input id="porcentajePrest" name="porcentajePrest[]" type="hidden" value="{{$porcentajePrest[$i]}}">
+                @endfor
+
+                    <div class='row'>
                     <div class='col-sm-12'>
                       <div class='box bordered-box blue-border' style='margin-bottom:0;'>
                         <div class='box-header blue-background'>

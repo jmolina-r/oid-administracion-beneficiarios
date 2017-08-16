@@ -11,6 +11,7 @@ use App\DesarrolloEvolutivo;
 use App\FichaTerapiaOcupacional;
 use App\HabilidadesSociales;
 use App\HistorialClinico;
+use App\Funcionario;
 use Illuminate\Http\Request;
 
 class FichaTerapiaOcupacionalController extends Controller
@@ -35,6 +36,14 @@ class FichaTerapiaOcupacionalController extends Controller
      */
     public function postIngresar(Request $request)
     {
+        $ultimaFicha = FichaTerapiaOcupacional::where('beneficiario_id', $request->input('id'))->orderBy('created_at', $direction = 'des');
+
+        if($ultimaFicha->first() != null){
+            if($ultimaFicha->first()->estado == 'abierto'){
+                return view('area-medica.ficha-evaluacion-inicial.Error');
+            }
+        }
+
         //dd($request->file('genograma'));
         // Validate Fields
         $this->validate($request, $this->rules($request));
@@ -42,6 +51,10 @@ class FichaTerapiaOcupacionalController extends Controller
         {
             $idUsuario = Auth::user()->id;
             $idFuncionario=Auth::user()->funcionario_id;
+            if($idFuncionario==null)
+            {
+                return view('area-medica.ficha-evaluacion-inicial.Error');
+            }
         }
 
         try{
@@ -226,10 +239,9 @@ class FichaTerapiaOcupacionalController extends Controller
         catch(Exception $e){
 
             //procedimiento en caso de reportar errores
-
+            return view('area-medica.ficha-evaluacion-inicial.Error');
         }
-        $id = $request->input('id');
-        return view('home');
+        return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('id')));
     }
 
     /**
@@ -252,11 +264,11 @@ class FichaTerapiaOcupacionalController extends Controller
         $fichaTerapiaOcupacional = FichaTerapiaOcupacional::find($id);
 
         if($fichaTerapiaOcupacional == null){
-            return view('home');
+            return view('area-medica.ficha-evaluacion-inicial.Error');
         }
 
         $persona = Beneficiario::find($fichaTerapiaOcupacional->beneficiario_id);
-
+        $funcionario=Funcionario::find($fichaTerapiaOcupacional->funcionario_id);
         $actividadesVidaDiaria = ActividadesVidaDiaria::find($fichaTerapiaOcupacional->actividades_vida_diaria_id);
         $antecedentesSalud = AntecedentesSalud::find($fichaTerapiaOcupacional->antecedentes_salud_id);
         $antecedentesSocioFamiliares = AntecedentesSocioFamiliares::find($fichaTerapiaOcupacional->antecedentes_so_fa_id);
@@ -273,6 +285,7 @@ class FichaTerapiaOcupacionalController extends Controller
             ->with(compact('desarrolloEvolutivo'))
             ->with(compact('habilidadesSociales'))
             ->with(compact('historialClinico'))
+            ->with(compact('funcionario'))
             ;
     }
 

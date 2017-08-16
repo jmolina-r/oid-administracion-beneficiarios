@@ -1,15 +1,35 @@
 $(document).ready(function() {
-    $(".select-tag").select2();
 
-    rellenarFecha("#fecha_nacimiento", "max");
+    $('#submitFuncionario').click(function(e) {
+        e.preventDefault()
+
+        // Fill Modal
+        $('#funcionarioNombre').html($('#nombre').val() + ' ' + $('#apellido').val());
+        $('#funcionarioRut').html($('#rut').val());
+        $('#funcionarioTelefono').html($('#telefono').val());
+        $('#funcionarioDireccion').html($('#direccion').val());
+        $('#funcionarioFechaNacimiento').html($('#fecha_nacimiento').val());
+        $('#funcionarioEmail').html($('#emailFuncionario').val());
+        $('#funcionarioTipo').html($('#tipo_funcionario').find(":selected").text());
+
+        $('#confirmationFuncionarioModal').modal('show');
+    })
+
+    $('#aceptarFuncionarioBtn').click(function() {
+        $('#saveFuncionarioForm').submit()
+    })
+
+    $(".select-tag").select2()
+
+    rellenarFecha("#fecha_nacimiento", "max")
+
 
     /**
-     * Funciona que rellena los campos de fecha
+     * Funcion que rellena los campos de fecha
      */
-    function rellenarFecha(input, restriccionFecha, callback){
-        //Rellena la fecha de nacimiento
+    function rellenarFecha(input, restriccionFecha, callback) {
 
-        var valueDate = $(input).attr('value-date');
+        var valueDate = $(input).attr('value-date')
 
         var options = {
             format: "DD/MM/YYYY",
@@ -21,29 +41,26 @@ $(document).ready(function() {
             locale: 'es'
         }
 
-        if(restriccionFecha == "max") {
-            options.maxDate = "now";
-        } else if(restriccionFecha == "min") {
+        if (restriccionFecha == "max") {
+            options.maxDate = "now"
+        } else if (restriccionFecha == "min") {
             options.minDate = "now"
         }
 
-        if(valueDate != ""){
-
-
-
-            if(valueDate.includes("/")) {
-                valueDateArr = valueDate.split(/\//);
+        if (valueDate != "") {
+            if (valueDate.includes("/")) {
+                valueDateArr = valueDate.split(/\//)
                 // TODO: Algo extranio pasa aca
-                valueDate = valueDateArr[2]  + "-" + valueDate[3]+valueDate[4] + "-" + valueDate[0] + valueDate[1];
+                valueDate = valueDateArr[2] + "-" + valueDate[3] + valueDate[4] + "-" + valueDate[0] + valueDate[1]
             }
 
-            options.date = new Date(valueDate);
+            options.date = new Date(valueDate)
         }
 
-         $(input).datetimepicker(options);
+        $(input).datetimepicker(options)
 
-        if(callback && typeof callback == "function"){
-            callback();
+        if (callback && typeof callback == "function") {
+            callback()
         }
     }
 });

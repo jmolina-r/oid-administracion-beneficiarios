@@ -94,7 +94,7 @@
                         <div class='col-sm-12'>
                             <div class='box'>
                                 <div class='box-content box-padding'>
-                                    <form action='' class='validate-form' method="POST" action="{{ route('funcionario.store') }}">
+                                    <form id="saveFuncionarioForm" class='validate-form' method="POST" action="{{ route('funcionario.store') }}">
 
                                         {{ csrf_field() }}
 
@@ -110,4 +110,6 @@
         </div>
     </section>
 </div>
+
+@include('partials.funcionario.confirmation-modal')
 @endsection

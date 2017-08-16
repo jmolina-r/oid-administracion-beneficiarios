@@ -99,7 +99,6 @@
                           @endif
                           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <form action="{{route('social.asistenteSocial')}}" method="get" accept-charset="utf-8">
-                              {!!csrf_field()!!}
                               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                                 <label for="inputRut">Ingresar rut beneficiario</label>
                                 <input type="text" name="rut" id="inputRut" class="form-control" value="" required pattern="\d{3,8}-[\d|kK]{1}" placeholder="Ingrese rut 12345678-9">

@@ -20,10 +20,9 @@ Auth::routes();
 
 
 // Registration Routes...
-Route::get('update/{id}', 'Auth\UpdateController@showUpdateForm')->name('update');
-Route::post('update/{id}', 'Auth\UpdateController@update');
+Route::get('update/{user}', 'Auth\UpdateController@showUpdateForm')->name('update');
+Route::post('update/{user}', 'Auth\UpdateController@update');
 
-// Registration Routes...
 Route::get('/find', 'Auth\FindController@showSearch')->name('find');
 Route::get('/users/{id}', 'Auth\FindController@userInfoJson');
 Route::get('/users/{id}/roles', 'Auth\FindController@userInfoRolesJson');
@@ -90,6 +89,11 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.postFono'
             ])->middleware('roles:admin|fonoaudiologia');
 
+            Route::get('/show/{id}', [
+                'uses' => 'FichaFonoaudiologiaController@show',
+                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.show'
+            ])->middleware('roles:admin|fonoaudiologia');
+
 
 
         });
@@ -137,29 +141,24 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'uses' => 'FichasController@listaFichas',
                 'as' => 'area-medica.ficha-evaluacion-inicial.fichas.listaFichas'
             ]);
-
-            Route::get('/listaPrestacionesRealizadas/{idUser}/{idBeneficiario}/{idFicha}', [
-                'uses' => 'FichasController@listaPrestacionesRealizadas',
-                'as' => 'area-medica.ficha-evaluacion-inicial.fichas.listaPrestacionesRealizadas'
-            ]);
         });
     });
 
     Route::group(['prefix' => '/informe-cierre'], function (){
 
-        Route::get('/buscarUser', [
-            'uses' => 'ReportabilidadController@createInformeCierre',
-            'as' => 'area-medica.informe-cierre.buscarUser'
+        Route::get('/create/{idFuncionario}/{idBeneficiario}/{idFicha}', [
+            'uses' => 'InformeCierreController@create',
+            'as' => 'area-medica.informe-cierre.create'
         ]);
 
-        Route::get('/createInformeCierre', [
-            'uses' => 'ReportabilidadController@showUser',
-            'as' => 'area-medica.informe-cierre.createInformeCierre'
+        Route::post('/store',[
+            'uses' => 'InformeCierreController@store',
+            'as' => 'area-medica.informe-cierre.store'
         ]);
 
-        Route::post('/createInformeCierre',[
-            'uses' => 'ReportabilidadController@postInformeCierre',
-            'as' => 'area-medica.informe-cierre.createInformeCierre'
+        Route::get('/show/{idFuncionario}/{idBeneficiario}/{idFicha}', [
+            'uses' => 'InformeCierreController@show',
+            'as' => 'area-medica.informe-cierre.show'
         ]);
     });
 });

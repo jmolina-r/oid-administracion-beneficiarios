@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Role;
+use App\Funcionario;
+
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -35,11 +37,12 @@ class UpdateController extends Controller
     {
         $rules = [
             /*'name' => 'required|string|max:255', */
-            /*'username' => 'required|string|max:255|exists:users,username',*/
+            'username' => 'required|string|max:255|exists:users,username',
             'email' => 'required|string|email|max:255',
             'password' => 'nullable|string|min:6|confirmed',
             'roles' => 'required',
-            'status' => 'required|boolean'
+            'status' => 'required|boolean',
+            'funcionario_id' => 'nullable|exists:funcionarios,id|unique:users,funcionario_id'
         ];
 
         return $rules;
@@ -51,18 +54,24 @@ class UpdateController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function update(Request $request, $id)
+    protected function update(Request $request, User $user)
     {
         $this->validate($request, $this->rules($request));
-        $user = User::find($id);
         $updateArray = [
             'email' => $request['email'],
             'status' => $request['status']
         ];
+
         if($request['password'] != null && $request['password'] != '') {
             $updateArray['password'] = bcrypt($request['password']);
         }
-        User::find($id)->update($updateArray);
+
+        if($request['funcionario_id'] != null && $request['funcionario_id'] != '') {
+            $updateArray['funcionario_id'] = $request['funcionario_id'];
+        }
+
+        $user->update($updateArray);
+
 
         // Role Update
 
@@ -82,7 +91,7 @@ class UpdateController extends Controller
         }
 
 
-        return $user;
+        return redirect()->route('find');;
     }
 
     /**
@@ -90,17 +99,24 @@ class UpdateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showUpdateForm($id)
+    public function showUpdateForm(User $user)
     {
         // Role
         $roles = Role::get();
 
-        // User
-        $user = User::find($id);
+        // Funcionarios without User account
+        $funcionarios = [];
+
+        foreach (Funcionario::get() as $funcionario) {
+            if ($funcionario->user == null) {
+                $funcionarios[] = $funcionario;
+            }
+        }
 
         return view('auth.update')
             ->with(compact('roles'))
-            ->with(compact('user'));
+            ->with(compact('funcionarios'))
+            ->with(compact($user, 'user'));
 
     }
 
