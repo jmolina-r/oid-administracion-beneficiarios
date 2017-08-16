@@ -169,7 +169,7 @@ Route::group(['prefix' => 'beneficiario', 'middleware' => 'auth'], function () {
     Route::get('/registrar', [
         'uses' => 'BeneficiarioController@create',
         'as' => 'beneficiario.create',
-    ])->middleware('roles:admin|secretaria');
+    ])->middleware('roles:admin');
 
     Route::post('/registrar', [
         'uses' => 'BeneficiarioController@store',
