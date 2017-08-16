@@ -61,163 +61,83 @@
 
 @section("content")
     @include('partials.header')
-    <div id='wrapper'>
+    <div id='wrapper' class="profile">
         <div id='main-nav-bg'></div>
-    @include('partials.nav')
-    <!-- AQUI VA EL NAVBAR  -->
-        <section id="content">
-            <div class="container">
-                <div class="row" id="content-wrapper">
-                    <div class="col-xs-12">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="page-header">
-                                    <h1 class="pull-left">
-                                        <i class="fa fa-pencil-square-o"></i>
-                                        <span>Informe de cierre</span>
-                                    </h1>
-                                    <div class="pull-right">
-                                        <ul class="breadcrumb">
-                                            <li>
-                                        </ul>
+            @include('partials.nav')
+            <!-- AQUI VA EL NAVBAR  -->
+            <section id="content">
+                <div class="container">
+                    <div class="row" id="content-wrapper">
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="page-header">
+                                        <h1 class="pull-left">
+                                            <i class="fa fa-pencil-square-o"></i>
+                                            <span>Informe de cierre</span>
+                                        </h1>
+                                        <div class="pull-right">
+                                            <ul class="breadcrumb">
+                                                <li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        {{ $ficha }}
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="box">
-                                    <div class='box-content box-padding'>
-                                        <div class='fuelux'>
-                                            <div class='wizard' data-initialize='wizard' id='myWizard'>
-                                                @if(count($errors) > 0)
-                                                    <hr class='hr-normal'>
-                                                    <div class="alert alert-danger">
-                                                        @foreach($errors->all() as $error)
-                                                            <p>{{ $error }}</p>
-                                                        @endforeach
-                                                    </div>
-                                                @endif
-                                                <div class="col-md-12">
-                                                    <h4>Información del Beneficiario</h4>
-                                                    <hr/>
-                                                </div>
-                                                <div class="col-md-12 form-group">
-                                                    <label class="col-md-4 control-label" for="nombre">Nombre</label>
-                                                    <div class="col-md-8 controls">
-                                                        <p>{{ ucfirst($beneficiario->nombre)." ".ucfirst($beneficiario->apellido)}}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12 form-group">
-                                                    <label class="col-md-4 control-label" for="edad">Edad</label>
-                                                    <div class="col-md-8 controls">
-                                                        <p>{{ $edad }}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12 form-group">
-                                                    <label class="col-md-4 control-label" for="fecha_nacimiento">Fecha de nacimiento</label>
-                                                    <div class="col-md-8 controls">
-                                                        <p>{{ $beneficiario->fecha_nacimiento }}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <h4>Información de Alta</h4>
-                                                    <hr/>
-                                                </div>
-                                                <div class="col-md-12 form-group">
-                                                    <label class="col-md-4 control-label" for="cant_sesiones">Cantidad de sesiones</label>
-                                                    <div class="col-md-8 controls">
-                                                        <p></p>
-                                                        <p>{{ count($prestacionesRealizadas) }}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12 form-group">
-                                                    <label class="col-md-4 control-label" for="fecha_inicio">Fecha de inicio</label>
-                                                    <div class="col-md-8 controls">
-                                                        <p>{{ $fechaInicio }}</p>
-                                                    </div>
-                                                    <div class="help-block with-errors">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12 form-group">
-                                                    <label class="col-md-4 control-label" for='fecha_termino'>Fecha de termino</label>
-                                                    <div class="col-md-8 controls">
-                                                        <p>{{ $fechaTermino }}</p>
-                                                    </div>
-                                                    <div class="help-block with-errors">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12 form-group">
-                                                    <label class="col-md-4 control-label" for="motivo_atencion">Motivo de atención</label>
-                                                    <div class="col-md-8 controls">
-                                                        <p>{{ $motivoAtencion }}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12 form-group">
-                                                    <label class="col-md-4 control-label" for="objetivos_trabajados">Objetivos trabajados</label>
-                                                    <div class="col-md-8 controls">
-                                                        @foreach($prestacionesRealizadas as $prestacion)
-                                                            <p class="capitalize">- {{ $prestacion->nombre }}</p>
-                                                        @endforeach
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <hr/>
-                                                </div>
-                                                <form class='validate-form' method="POST" action="{{ route('area-medica.informe-cierre.store') }}">
-                                                    <input id="idBeneficiario" name="idBeneficiario" type="hidden" value="{{$beneficiario->id}}">
-                                                    <input id="ficha" name="ficha" type="hidden" value="{{$ficha}}">
-                                                    <input id="area" name="area" type="hidden" value="{{$area}}">
-                                                    <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="desercion">Deserción</label>
-                                                        <div class="col-md-8 controls">
-                                                            <label style="margin-top: 0px;" class='radio radio-inline'>
-                                                                <input name='desercion' id="desercion" type='radio' value='si'>
-                                                                Si
-                                                            </label>
-                                                            <label class='radio radio-inline'>
-                                                                <input name='desercion' id="desercion" type='radio' value='no'>
-                                                                No
-                                                            </label>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="box">
+                                            <div class='fuelux'>
+                                                <div class='wizard' data-initialize='wizard' id='myWizard'>
+                                                    @if(count($errors) > 0)
+                                                        <hr class='hr-normal'>
+                                                        <div class="alert alert-danger">
+                                                            @foreach($errors->all() as $error)
+                                                                <p>{{ $error }}</p>
+                                                            @endforeach
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="culminar_proceso">Culmina proceso</label>
-                                                        <div class="col-md-8 controls">
-                                                            <label style="margin-top: 0px;" class='radio radio-inline'>
-                                                                <input name='culminar_proceso' id="culminar_proceso" type='radio' value='si'>
-                                                                Si
-                                                            </label>
-                                                            <label class='radio radio-inline'>
-                                                                <input name='culminar_proceso' id="culminar_proceso" type='radio' value='no'>
-                                                                No
-                                                            </label>
+                                                    @endif
+                                                        <div class="col-xs-12">
+                                                            <div class="row">
+                                                                </h2>
+                                                                <h4>Información del Beneficiario</h4>
+                                                                <div class="col-sm-12 col-lg-6">
+                                                                    <p class="capitalize"><span class="tit">Nombre</span><br>{{ ucfirst($beneficiario->nombre)." ".ucfirst($beneficiario->apellido) }}</p>
+                                                                    <p class="capitalize"><span class="tit">Edad</span><br>{{ $edad }}</p>
+                                                                    <p class="capitalize"><span class="tit">Fecha de Nacimiento</span><br>{{ $beneficiario->fecha_nacimiento }}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                </h2>
+                                                                <h4>Información de Alta</h4>
+                                                                <div class="col-md-6">
+                                                                    <p class="capitalize"><span class="tit">Cantidad de Sesiones</span><br>{{ count($prestacionesRealizadas) }}</p>
+                                                                    <p class="capitalize"><span class="tit">Fecha de Inicio</span><br>{{ $fechaInicio }}</p>
+                                                                    <p class="capitalize"><span class="tit">Fecha de Termino</span><br>{{ $fechaTermino }}</p>
+                                                                    <p class="capitalize"><span class="tit">Motivo de Atención</span><br>{{ $motivoAtencion }}</p>
+                                                                    <p class="capitalize"><span class="tit">Objetivos trabajados</span>
+                                                                        @foreach($prestacionesRealizadas as $prestacion)
+                                                                            <br>{{ $prestacion->nombre }}
+                                                                        @endforeach
+                                                                        </p>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <p class="capitalize"><span class="tit">Deserción</span><br>{{ $fichaCierre->desercion }}</p>
+                                                                    <p class="capitalize"><span class="tit">Culmina Proceso</span><br>{{ $fichaCierre->culmino_proceso }}</p>
+                                                                    <p class="capitalize"><span class="tit">Observaciones / Sugerencias</span><br>{{ $fichaCierre->observacion }}</p>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-12 form-group">
-                                                        <label class="col-md-4 control-label" for="observaciones_sugerencias">Observacion y sugerencias</label>
-                                                        <div class="col-md-8 controls">
-                                                            <textarea name="observaciones_sugerencias" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Observaciones y/o sugerencias' rows='3' style='margin-bottom:10px;' id="observaciones_sugerencias" maxlength="200"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class='actions'>
-                                                        <button id="continuar_btn" type='submit' class='pull-right btn btn-md btn-success btn-next'>
-                                                            Guardar
-                                                        </button>
-                                                    </div>
-                                                    {{ csrf_field() }}
-                                                </form>
+                                                </div>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @include('partials.footer')
                 </div>
-                @include('partials.footer')
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
 @endsection

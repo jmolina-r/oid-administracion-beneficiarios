@@ -135,17 +135,17 @@ class InformeCierreController extends Controller
             $fichaInicial = FichaTerapiaOcupacional::find($idFicha);
         }
 
-        $fichaCierre = InformeCierre::where('area', $tipoFuncionario->nombre)->where('ficha', $idFicha)->where('beneficiario_id', $idBeneficiario)->get();
+        $fichaCierre = InformeCierre::where('area', $tipoFuncionario->nombre)->where('ficha', $idFicha)->where('beneficiario_id', $idBeneficiario)->first();
 
         $motivoAtencion = $fichaInicial->motivo_consulta;
         $fechaInicio = $fichaInicial->created_at->format('d-m-Y');
-        $fechaTermino = date('d-m-Y');
+        $fechaTermino = $fichaCierre->created_at->format('d-m-Y');
 
         $prestacionesRealizadas = DB::table('prestacion_realizadas')
             ->where('funcionario_id', Auth::user()->funcionario_id)
             ->where('beneficiario_id', $idBeneficiario)
             ->where('prestacion_realizadas.created_at', '>=', $fichaInicial->created_at)
-            ->where('prestacion_realizadas.created_at', '<=', date("Y-m-d H:i:s"))
+            ->where('prestacion_realizadas.created_at', '<=', $fichaCierre->created_at)
             ->join('prestacions', 'prestacions.id', '=', 'prestacion_realizadas.prestacions_id')
             ->select('prestacions.nombre')
             ->get();
@@ -153,7 +153,7 @@ class InformeCierreController extends Controller
         $ficha = $idFicha;
         $area = $tipoFuncionario->nombre;
 
-        return view('area-medica.informe-cierre.create')
+        return view('area-medica.informe-cierre.show')
             ->with(compact('ficha'))
             ->with(compact('area'))
             ->with(compact('beneficiario'))
@@ -161,6 +161,7 @@ class InformeCierreController extends Controller
             ->with(compact('motivoAtencion'))
             ->with(compact('fechaInicio'))
             ->with(compact('fechaTermino'))
-            ->with(compact('prestacionesRealizadas'));
+            ->with(compact('prestacionesRealizadas'))
+            ->with(compact('fichaCierre'));
     }
 }
