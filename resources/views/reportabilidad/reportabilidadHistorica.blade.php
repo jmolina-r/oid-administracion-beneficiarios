@@ -89,7 +89,6 @@
                   <form action="{{route('reportabilidad.reporteHistorica')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
                       <input id="anio" name="anio" type="hidden" value="{{$anio}}">
                       <input id="mes" name="mes" type="hidden" value="{{$mes}}">
-                      <input id="cantUsuarioTotal" name="cantUsuarioTotal" type="hidden" value="{{$cantUsuarioTotal}}">
                       <input id="cantIngresadosAño" name="cantIngresadosAño" type="hidden" value="{{$cantIngresadosAño}}">
                       <input id="cantIngresadosMes" name="cantIngresadosMes" type="hidden" value="{{$cantIngresadosMes}}">
                       <input id="atencionAnual" name="atencionAnual" type="hidden" value="{{$atencionAnual}}">
@@ -101,11 +100,6 @@
                       <div class='title'>Reportabilidad Histórica</div>
                       <div class='text-right'><span>Fecha: {{$mes}}/{{$anio}}</span></div>
                     </div>
-                         <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-info'><?php echo $cantUsuarioTotal?></h3>
-                          <small>TOTAL DE USUARIOS EN EL AÑO</small>
-                          <div class='text-info fa fa-users align-left'></div>
-                        </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-error'><?php echo $cantIngresadosAño ?></h3>
                           <small>USUARIOS INGRESADOS EN EL AÑO</small>

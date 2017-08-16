@@ -605,15 +605,29 @@ class ReportabilidadController extends Controller
 
         $anio = $request->anio;
         $mes = $request->mes;
-        $cantUsuarioTotal = Beneficiario::count();
-        $cantIngresadosAño = Beneficiario::whereYear('created_at', '=', $anio)->count();
-        $cantIngresadosMes = Beneficiario::whereYear('created_at', '=', $anio)->wheremonth('created_at', '=', $mes)->count();
+        $mes2=$request->mes2;
+        $anio2=$request->anio2;
+
+        $cantIngresadosAño = FichaBeneficiario::whereYear('fecha_ingreso', '=', $anio)->count();
+        $cantIngresadosMes = FichaBeneficiario::whereYear('fecha_ingreso', '=', $anio)->wheremonth('fecha_ingreso', '=', $mes)->count();
         $atencionAnual = PrestacionRealizada::whereYear('fecha', '=', $anio)->count();
         $atencionMensual = PrestacionRealizada::whereYear('fecha', '=',$anio)->whereMonth('fecha', '=', $mes)->count();
 
+        $cantIngresadosAño2 =FichaBeneficiario::whereYear('fecha_ingreso', '>=', $anio)
+            ->whereYear('fecha_ingreso', '<=', $anio2)
+            ->whereMonth('fecha_ingreso', '>=', $mes)
+            ->whereMonth('fecha_ingreso', '<=', $mes2)
+            ->count();
+
+        $cantAtencionAño2=PrestacionRealizada::whereYear('fecha', '>=',$anio)
+            ->whereYear('fecha', '<=',$anio2)
+            ->whereMonth('fecha', '>=', $mes)
+            ->whereMonth('fecha', '<=',$mes2)
+            ->count();
+
 
         if(isset($_GET['visualHist'])) {
-            return view('reportabilidad.reportabilidadHistorica', compact('anio','mes','cantUsuarioTotal','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual'));
+            return view('reportabilidad.reportabilidadHistorica', compact('anio','mes','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual'));
         }else {
             if (isset($_GET['imprimirReporHist'])) {
                 $view =  \View::make('pdf.invoiceHistoricReport', compact('anio','mes','cantUsuarioTotal','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual'))->render();
