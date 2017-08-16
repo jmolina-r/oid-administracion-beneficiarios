@@ -26,4 +26,10 @@ class PrestacionRealizada extends Model
 
     }
 
+    public function ficha_atencion_socials(){
+
+        return $this->hasMany(FichaAtencionSocial::class);
+
+    }
+
 }
