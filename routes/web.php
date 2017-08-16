@@ -311,6 +311,11 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     'as' => 'reportabilidad.reportabilidadHistorica'
     ]);
 
+    Route::get('/reportabilidadHistoricaEntreMeses',[
+    'uses'=>'ReportabilidadController@showResultHistoricaEntreMes',
+    'as' => 'reportabilidad.reportabilidadHistEntreMes'
+    ]);
+
     Route::get('/reportabilidadGene',[
         'uses'=>'ReportabilidadController@showResults',
         'as' => 'reportabilidad.reporteGene'

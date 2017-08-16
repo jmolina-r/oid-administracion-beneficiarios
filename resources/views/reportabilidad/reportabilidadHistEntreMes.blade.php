@@ -86,45 +86,30 @@
                     </div>
                   </div>
                 </div>
-                  <form action="{{route('reportabilidad.reporteHistorica')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
-                      <input id="anio" name="anio" type="hidden" value="{{$anio}}">
-                      <input id="mes" name="mes" type="hidden" value="{{$mes}}">
-                      <input id="cantIngresadosAño" name="cantIngresadosAño" type="hidden" value="{{$cantIngresadosAño}}">
-                      <input id="cantIngresadosMes" name="cantIngresadosMes" type="hidden" value="{{$cantIngresadosMes}}">
-                      <input id="atencionAnual" name="atencionAnual" type="hidden" value="{{$atencionAnual}}">
-                      <input id="atencionMensual" name="atencionMensual" type="hidden" value="{{$atencionMensual}}">
+                  
                 <div class='row'>
                 <div class='col-sm-12'>
                   <div class='box bordered-box blue-border' style='margin-bottom:0;'>
                     <div class='box-header blue-background'>
                       <div class='title'>Reportabilidad Histórica</div>
-                      <div class='text-right'><span>Fecha: {{$mes}}/{{$anio}}</span></div>
+                      <div class='text-right'><span>Periodo: {{$mesuno}}-{{$aniouno}} / {{$mesdos}}-{{$aniodos}}</span></div>
                     </div>
+                         <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-info'>{{$cantIngresadosAño2}}</h3>
+                          <small>USUARIOS INGRESADOS EN EL PERIODO</small>
+                          <div class='text-info fa fa-users align-left'></div>
+                        </div>
                         <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-error'><?php echo $cantIngresadosAño ?></h3>
-                          <small>USUARIOS INGRESADOS EN EL AÑO</small>
+                          <h3 class='title text-error'>{{$cantAtencionAño2}}</h3>
+                          <small>USUARIOS ATENDIDOS EN EL PERIODO</small>
                           <div class='text-error fa fa-users align-left'></div>
                         </div>
-                        <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-warning'><?php echo $cantIngresadosMes ?></h3>
-                          <small>USUARIOS INGRESADOS EN EL MES</small>
-                          <div class='text-warning fa fa-users align-left'></div>
-                        </div>
-                        <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-primary'><?php echo $atencionAnual ?></h3>
-                          <small>ATENCIONES DEL AÑO</small>
-                          <div class='text-primary fa fa-book align-left'></div>
-                        </div>
-                        <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-primary'><?php echo $atencionMensual ?></h3>
-                          <small>ATENCIONES DEL MES</small>
-                          <div class='text-primary fa fa-book align-left'></div>
-                        </div>
+                        
               </div>
               </div>
             </div>
                       <button type="submit" class="btn btn-success col-md-12" style="margin-bottom:5px" />Vista previa a imprimir</button>
-                  </form>
+                  
             @include('partials.footer')
           </div>
         </section>

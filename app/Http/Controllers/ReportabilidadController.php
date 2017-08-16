@@ -600,34 +600,89 @@ class ReportabilidadController extends Controller
             'atencionAnualPsicos','atencionMensualPsicos','atencionAnualTers','atencionMensualTers'));
 
     }
+    public function showResultHistoricaEntreMes(Request $request)
+    {    
+         $aniouno = $request->aniouno;
+          $aniodos = $request->aniodos;
+          $mesuno = $request->mesuno;
+          $mesdos = $request->mesdos;
+          $cantIngresadosAño2 =FichaBeneficiario::whereYear('fecha_ingreso', '>=', $aniouno)
+                ->whereYear('fecha_ingreso', '<=', $aniodos)
+                ->whereMonth('fecha_ingreso', '>=', $mesuno)
+                ->whereMonth('fecha_ingreso', '<=', $mesdos)
+                ->count();
+        
+            $cantAtencionAño2=PrestacionRealizada::whereYear('fecha', '>=',$aniouno)
+                ->whereYear('fecha', '<=',$aniodos)
+                ->whereMonth('fecha', '>=', $mesuno)
+                ->whereMonth('fecha', '<=',$mesdos)
+                ->count();
+        //atenciones realizadas por los funcionarios en tal periodo
+        $atencionKines=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '>=',$aniouno)
+            ->whereYear('prestacion_realizadas.fecha', '<=',$aniodos)
+            ->whereMonth('prestacion_realizadas.fecha', '>=', $mesuno)
+            ->whereMonth('prestacion_realizadas.fecha', '<=', $mesdos)
+            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+            ->where('funcionarios.tipo_funcionario_id','=',2)
+            ->count();
+        $atencionFono=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '>=',$aniouno)
+            ->whereYear('prestacion_realizadas.fecha', '<=',$aniodos)
+            ->whereMonth('prestacion_realizadas.fecha', '>=', $mesuno)
+            ->whereMonth('prestacion_realizadas.fecha', '<=', $mesdos)
+            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+            ->where('funcionarios.tipo_funcionario_id','=',5)
+            ->count();
+        $atencionPsico=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '>=',$aniouno)
+            ->whereYear('prestacion_realizadas.fecha', '<=',$aniodos)
+            ->whereMonth('prestacion_realizadas.fecha', '>=', $mesuno)
+            ->whereMonth('prestacion_realizadas.fecha', '<=', $mesdos)
+            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+            ->where('funcionarios.tipo_funcionario_id','=',1)
+            ->count();
+        $atencionTers=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '>=',$aniouno)
+            ->whereYear('prestacion_realizadas.fecha', '<=',$aniodos)
+            ->whereMonth('prestacion_realizadas.fecha', '>=', $mesuno)
+            ->whereMonth('prestacion_realizadas.fecha', '<=', $mesdos)
+            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+            ->where('funcionarios.tipo_funcionario_id','=',4)
+            ->count();
+
+             return view('reportabilidad.reportabilidadHistEntreMes', compact('cantIngresadosAño2','cantAtencionAño2','aniouno','aniodos','mesuno','mesdos'));
+    }
     public function showResultHistorica(Request $request)
     {
 
         $anio = $request->anio;
         $mes = $request->mes;
-        $mes2=$request->mes2;
-        $anio2=$request->anio2;
-
         $cantIngresadosAño = FichaBeneficiario::whereYear('fecha_ingreso', '=', $anio)->count();
         $cantIngresadosMes = FichaBeneficiario::whereYear('fecha_ingreso', '=', $anio)->wheremonth('fecha_ingreso', '=', $mes)->count();
         $atencionAnual = PrestacionRealizada::whereYear('fecha', '=', $anio)->count();
         $atencionMensual = PrestacionRealizada::whereYear('fecha', '=',$anio)->whereMonth('fecha', '=', $mes)->count();
 
-        $cantIngresadosAño2 =FichaBeneficiario::whereYear('fecha_ingreso', '>=', $anio)
-            ->whereYear('fecha_ingreso', '<=', $anio2)
-            ->whereMonth('fecha_ingreso', '>=', $mes)
-            ->whereMonth('fecha_ingreso', '<=', $mes2)
+        //atenciones realizadas por los funcionarios en tal periodo
+        $atencionKines=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=',$anio)
+            ->whereMonth('prestacion_realizadas.fecha', '=', $mes)
+            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+            ->where('funcionarios.tipo_funcionario_id','=',2)
+            ->count();
+        $atencionFono=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=',$anio)
+            ->whereMonth('prestacion_realizadas.fecha', '=', $mes)
+            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+            ->where('funcionarios.tipo_funcionario_id','=',5)
+            ->count();
+        $atencionPsico=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=',$anio)
+            ->whereMonth('prestacion_realizadas.fecha', '=', $mes)
+            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+            ->where('funcionarios.tipo_funcionario_id','=',1)
+            ->count();
+        $atencionTers=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=',$anio)
+            ->whereMonth('prestacion_realizadas.fecha', '>=', $mes)
+            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+            ->where('funcionarios.tipo_funcionario_id','=',4)
             ->count();
 
-        $cantAtencionAño2=PrestacionRealizada::whereYear('fecha', '>=',$anio)
-            ->whereYear('fecha', '<=',$anio2)
-            ->whereMonth('fecha', '>=', $mes)
-            ->whereMonth('fecha', '<=',$mes2)
-            ->count();
-
-
-        if(isset($_GET['visualHist'])) {
-            return view('reportabilidad.reportabilidadHistorica', compact('anio','mes','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual'));
+        if(isset($_GET['visualHistMes'])) {
+            return view('reportabilidad.reportabilidadHistorica', compact('anio','mes','cantUsuarioTotal','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual'));
         }else {
             if (isset($_GET['imprimirReporHist'])) {
                 $view =  \View::make('pdf.invoiceHistoricReport', compact('anio','mes','cantUsuarioTotal','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual'))->render();
@@ -650,6 +705,7 @@ class ReportabilidadController extends Controller
         return $pdf->stream('invoiceHistoricReport');
 
     }
+
 
 
 }
