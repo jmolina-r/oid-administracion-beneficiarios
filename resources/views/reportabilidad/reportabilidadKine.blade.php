@@ -87,15 +87,20 @@
                         </div>
                     </div>
                     <form action="{{route('reportabilidad.reporteKine')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
-                        <input id="nombres" name="nombres" type="hidden" value="{{$kinesiologo->nombre}}">
-                        <input id="apellidos" name="apellidos" type="hidden" value="{{$kinesiologo->apellido}}">
-                        <input id="rut" name="rut" type="hidden" value="{{$kinesiologo->rut}}">
-                        <input id="telefono" name="telefono" type="hidden" value="{{$kinesiologo->telefono}}">
-                        <input id="direccion" name="direccion" type="hidden" value="{{$kinesiologo->direccion}}">
-                        <input id="atencionAnualKine" name="atencionAnualKine" type="hidden" value="{{$atencionAnualKine}}">
-                        <input id="atencionMensualKine" name="atencionMensualKine" type="hidden" value="{{$atencionMensualKine}}">
-                        <input id="asistenciaKine" name="asistenciaKineAnual" type="hidden" value="{{$asistenciaKineAnual}}">
-                        <input id="inasistenciaKine" name="inasistenciaKineAnual" type="hidden" value="{{$inasistenciaKineAnual}}">
+                        <input id="nombres" name="nombres" type="hidden" value="{{$psicologo->nombre}}">
+                        <input id="apellidos" name="apellidos" type="hidden" value="{{$psicologo->apellido}}">
+                        <input id="rut" name="rut" type="hidden" value="{{$psicologo->rut}}">
+                        <input id="telefono" name="telefono" type="hidden" value="{{$psicologo->telefono}}">
+                        <input id="direccion" name="direccion" type="hidden" value="{{$psicologo->direccion}}">
+                        <input id="atencionAnualPsico" name="atencionAnualPsico" type="hidden" value="{{$atencionAnualPsico}}">
+                        <input id="atencionMensualPsico" name="atencionMensualPsico" type="hidden" value="{{$atencionMensualPsico}}">
+                        <input id="asistenciaPsicoAnual" name="asistenciaPsicoAnual" type="hidden" value="{{$asistenciaPsicoAnual}}">
+                        <input id="inasistenciaPsicoAnual" name="inasistenciaPsicoAnual" type="hidden" value="{{$inasistenciaPsicoAnual}}">
+                        <input id="asistenciaPsicoMensual" name="asistenciaPsicoMensual" type="hidden" value="{{$asistenciaPsicoMensual}}">
+                        <input id="inasistenciaPsicoMensual" name="inasistenciaPsicoMensual" type="hidden" value="{{$inasistenciaPsicoMensual}}">
+                        <input id="porcentajePrest" name="porcentajePrest" type="hidden" value="{{$porcentajePrest}}">
+                        <input id="nombrePrest" name="nombrePrest" type="hidden" value="{{$nombrePrest}}">
+
                         <div class='row'>
                             <div class='col-sm-12'>
                                 <div class='box bordered-box blue-border' style='margin-bottom:0;'>

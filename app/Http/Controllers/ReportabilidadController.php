@@ -227,7 +227,14 @@ class ReportabilidadController extends Controller
             'medioIncompleto', 'medioCompleto', 'tecnicoIncompleto', 'tecnicoCompleto', 'universitarioIncompleto',
 
             'universitarioCompleto', 'trabajador', 'estudiante', 'duenoCasa', 'pensionado', 'cesante', 'isapreCruzBlanca', 'isapreColmena', 'isapreMasVida', 'isapreConsalud', 'isapreBanmedica', 'isapreVidaTres', 'isapreCodelco',
-            'isapreDipreca', 'isapreCapredena', 'isapreFerroSalud', 'isapreOtro','porcentajeParticipaOrgSocial'))->render();
+
+            'isapreDipreca', 'isapreCapredena', 'isapreFerroSalud', 'isapreOtro','porcentajeParticipaOrgSocial',
+
+            'estimulacionTemprana','edad3_5','edad6_10','edad11_20','edad21_30','edad31_40','edad41_50','edad51_60','edad61_70','edad71_80','edad81_90','edad91_100','edad101_110','edad111_120',
+
+            'porcentajeParticipaOrgSocial',
+
+            'porcentajeReahbMensual','porcentajeReahbAnual'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('invoice');
@@ -306,9 +313,14 @@ class ReportabilidadController extends Controller
         $direccion = $_GET["direccion"];
         $atencionAnualKine = $_GET["atencionAnualKine"];
         $atencionMensualKine = $_GET["atencionMensualKine"];
-        $asistenciaKine = $_GET["asistenciaKine"];
-        $inasistenciaKine = $_GET["inasistenciaKine"];
-        $view =  \View::make('pdf.invoice1', compact('nombres','apellidos','direccion','rut','telefono','atencionAnualKine','atencionMensualKine','asistenciaKine','inasistenciaKine'))->render();
+        $asistenciaKineAnual = $_GET["asistenciaKineAnual"];
+        $inasistenciaKineAnual = $_GET["inasistenciaKineAnual"];
+        $asistenciaKineMensual = $_GET["asistenciaKineMensual"];
+        $inasistenciaKineMensual = $_GET["inasistenciaKineMensual"];
+        $porcentajePrest = $_GET["porcentajePrest"];
+        $nombrePrest = $_GET["nombrePrest"];
+
+        $view =  \View::make('pdf.invoice1', compact('nombres','apellidos','direccion','rut','telefono','atencionAnualKine','atencionMensualKine','asistenciaKineAnual','inasistenciaKineAnual','asistenciaKineMensual','inasistenciaKineMensual','porcentajePrest','nombrePrest'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('invoice1');
@@ -444,9 +456,14 @@ class ReportabilidadController extends Controller
         $direccion = $_GET["direccion"];
         $atencionAnualPsico = $_GET["atencionAnualPsico"];
         $atencionMensualPsico = $_GET["atencionMensualPsico"];
-        $asistenciaPsico = $_GET["asistenciaPsico"];
-        $inasistenciaPsico = $_GET["inasistenciaPsico"];
-        $view =  \View::make('pdf.invoice2', compact('nombres','apellidos','direccion','rut','telefono','atencionAnualPsico','atencionMensualPsico','asistenciaPsico','inasistenciaPsico'))->render();
+        $asistenciaPsicoAnual = $_GET["asistenciaPsicoAnual"];
+        $inasistenciaPsicoAnual = $_GET["inasistenciaPsicoAnual"];
+        $asistenciaPsicoMensual = $_GET["asistenciaPsicoMensual"];
+        $inasistenciaPsicoMensual = $_GET["inasistenciaPsicoMensual"];
+        $porcentajePrest = $_GET["porcentajePrest"];
+        $nombrePrest = $_GET["nombrePrest"];
+
+        $view =  \View::make('pdf.invoice2', compact('nombres','apellidos','direccion','rut','telefono','atencionAnualPsico','atencionMensualPsico','asistenciaPsicoAnual','inasistenciaPsicoAnual','asistenciaPsicoMensual','inasistenciaPsicoMensual','porcentajePrest','nombrePrest'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('invoice2');
@@ -556,7 +573,7 @@ class ReportabilidadController extends Controller
 
     public function showResultGrupal(Request $request){
 
-       // area mas trabajadora
+        // area mas trabajadora
 
         $atencionAnualKines=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
             ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')

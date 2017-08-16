@@ -97,7 +97,7 @@
         <tr>
             <td>Fonoaudiología</td>
             <td></td>
-            <td>{{$atencionMensualPsicos}}</td>
+            <td>{{$atencionMensualFonos}}</td>
         </tr>
     </table>
 </div>
