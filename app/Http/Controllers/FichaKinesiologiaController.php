@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use \PDF;
+
 use App\AntecedentesMorbidos;
 use App\ValAutocuidado;
 use App\ValComCog;
@@ -235,7 +237,7 @@ class FichaKinesiologiaController extends Controller
         $valAutocuidado = ValAutocuidado::find($fichaKinesiologia->val_autocuidado_id);
         $antecedentesMorbidos = AntecedentesMorbidos::find($fichaKinesiologia->antecedentes_morbidos_id);
 
-        return view('area-medica.ficha-evaluacion-inicial.kinesiologia.show', compact('fichaKinesiologia'))
+        return view('area-medica.ficha-evaluacion-inicial.kinesiologia.pdf', compact('fichaKinesiologia'))
             ->with(compact('persona'))
             ->with(compact('valSocial'))
             ->with(compact('valSensorial'))
@@ -351,5 +353,15 @@ class FichaKinesiologiaController extends Controller
             'asiste_centro_rhb' => 'nullable|max:200',
         ];
         return $rules;
+    }
+
+    public function generatePDF(Request $request, $id) {
+        $fichaKinesiologia = FichaKinesiologia::find($id);
+
+        if($fichaKinesiologia == null){
+            return view('area-medica.ficha-evaluacion-inicial.Error');
+        }
+        $pdf = PDF::loadView('area-medica.ficha-evaluacion-inicial.kinesiologia.pdf', array('ficha' => $fichaKinesiologia));
+        return $pdf->download('fichaKinesiologia.pdf');
     }
 }

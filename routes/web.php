@@ -75,6 +75,11 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'uses' => 'FichaKinesiologiaController@store',
                 'as' => 'area-medica.ficha-evaluacion-inicial.kinesiologia.store'
             ])->middleware('roles:admin|kinesiologia');
+
+            Route::post('/pdf/{id}', [
+                'uses' => 'FichaKinesiologiaController@generatePDF',
+                'as' => 'area-medica.ficha-evaluacion-inicial.kinesiologia.generatePDF'
+            ])->middleware('roles:admin|kinesiologia');
         });
 
         Route::group(['prefix' => '/fonoaudiologia'], function (){
