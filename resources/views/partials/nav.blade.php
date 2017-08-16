@@ -16,13 +16,14 @@
                 </a>
             </li>
 
-            @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
+            @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional']))
                 <li class=''>
                     <a class="dropdown-collapse" href="#"><i class='fa fa-users'></i>
                         <span>Beneficiarios</span>
                         <i class='fa fa-angle-down angle-down'></i>
                     </a>
                     <ul class='nav nav-stacked'>
+                        @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional']))
                         <li class=''>
                             <a href='{{route('beneficiario.find')}}'>
                                 <div class='icon'>
@@ -31,120 +32,20 @@
                                 <span>Administrar Beneficiarios</span>
                             </a>
                         </li>
-                        <li class=''>
-                            <a href='{{route('beneficiario.create')}}'>
-                                <div class='icon'>
-                                    <i class='fa fa-caret-right'></i>
-                                </div>
-                                <span>Registro Beneficiario</span>
-                            </a>
-                        </li>
+                        @endif
+                            @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
+                            <li class=''>
+                                <a href='{{route('beneficiario.create')}}'>
+                                    <div class='icon'>
+                                        <i class='fa fa-caret-right'></i>
+                                    </div>
+                                    <span>Registro Beneficiario</span>
+                                </a>
+                            </li>
+                            @endif
 
                     </ul>
                 </li>
-            @endif
-
-            @if(Auth::user()->hasAnyRole(['admin', 'kinesiologia']))
-            <li class=''>
-                <a class="dropdown-collapse" href="#"><i class='fa fa-wheelchair'></i>
-                    <span>Kinesiología</span>
-                    <i class='fa fa-angle-down angle-down'></i>
-                </a>
-                <ul class='nav nav-stacked'>
-                    <li class=''>
-                        <a href='{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.create',1)}}'>
-                            <div class='icon'>
-                                <i class='fa fa-caret-right'></i>
-                            </div>
-                            <span>Formulario ingreso kine</span>
-                        </a>
-                    </li>
-                    <li class=''>
-                        <a href='{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show',1)}}'>
-                            <div class='icon'>
-                                <i class='fa fa-caret-right'></i>
-                            </div>
-                            <span>Ver formulario ingreso kine</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            @endif
-
-            @if(Auth::user()->hasAnyRole(['admin', 'fonoaudiologia']))
-            <li class=''>
-                <a class="dropdown-collapse" href="#"><i class='fa fa-deaf'></i>
-                    <span>Fonoaudiología</span>
-                    <i class='fa fa-angle-down angle-down'></i>
-                </a>
-                <ul class='nav nav-stacked'>
-                    <li class=''>
-                        <a href='{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.create',1)}}'>
-                            <div class='icon'>
-                                <i class='fa fa-caret-right'></i>
-                            </div>
-                            <span>Formulario ingreso fono</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </li>
-            @endif
-
-            @if(Auth::user()->hasAnyRole(['admin', 'psicologia']))
-            <li class=''>
-                <a class="dropdown-collapse" href="#"><i class='fa fa-smile-o'></i>
-                    <span>Psicología</span>
-                    <i class='fa fa-angle-down angle-down'></i>
-                </a>
-                <ul class='nav nav-stacked'>
-                    <li class=''>
-                        <a href='{{route('area-medica.ficha-evaluacion-inicial.psicologia.create',1)}}'>
-                            <div class='icon'>
-                                <i class='fa fa-caret-right'></i>
-                            </div>
-                            <span>Formulario ingreso psicología</span>
-                        </a>
-                    </li>
-                    <li class=''>
-                        <a href='{{route('area-medica.ficha-evaluacion-inicial.psicologia.show',1)}}'>
-                            <div class='icon'>
-                                <i class='fa fa-caret-right'></i>
-                            </div>
-                            <span>Ver formulario ingreso psicologia</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </li>
-            @endif
-
-            @if(Auth::user()->hasAnyRole(['admin', 'terapia_ocupacional']))
-            <li class=''>
-                <a class="dropdown-collapse" href="#"><i class='fa fa-hand-rock-o'></i>
-                    <span>Terapia Ocupacional</span>
-                    <i class='fa fa-angle-down angle-down'></i>
-                </a>
-                <ul class='nav nav-stacked'>
-                    <li class=''>
-                        <a href='{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar',1)}}'>
-                            <div class='icon'>
-                                <i class='fa fa-caret-right'></i>
-                            </div>
-                            <span>Formulario Ingreso Terapia Ocupacional</span>
-                        </a>
-                    </li>
-                    <li class=''>
-                        <a href='{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.show',1)}}'>
-                            <div class='icon'>
-                                <i class='fa fa-caret-right'></i>
-                            </div>
-                            <span>Ver formulario ingreso terapia ocupacional</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </li>
             @endif
 
             @if(Auth::user()->hasAnyRole(['admin', 'trabajo_social']))
@@ -184,7 +85,7 @@
                         </a>
                     </li>
                 </ul>
-                <ul class='nav nav-stacked'>
+                {{--<ul class='nav nav-stacked'>
                     <li class=''>
                         <a href='{{route('reportabilidad.reportabilidadPorProfesional')}}'>
                             <div class='icon'>
@@ -193,7 +94,7 @@
                             <span>Visualizar estadísticas por profesional</span>
                         </a>
                     </li>
-                </ul>
+                </ul>--}}
             {{--<ul class='nav nav-stacked'>
                 <li class=''>
                     <a href='{{route('reportabilidad.menu')}}'>
@@ -256,26 +157,6 @@
                                     <i class='fa fa-caret-right'></i>
                                 </div>
                                 <span>Creación Usuario</span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
-            @endif
-
-            @if(Auth::user()->hasAnyRole(['admin', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapiaocupacional']))
-                <li class=''>
-                    <a class="dropdown-collapse" href="#"><i class='fa fa-users'></i>
-                        <span>Fichas de Evaluación inicial</span>
-                        <i class='fa fa-angle-down angle-down'></i>
-                    </a>
-                    <ul class='nav nav-stacked'>
-                        <li class=''>
-                            <a href='{{route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas',1)}}'>
-                                <div class='icon'>
-                                    <i class='fa fa-caret-right'></i>
-                                </div>
-                                <span>Lista de Fichas</span>
                             </a>
                         </li>
 
