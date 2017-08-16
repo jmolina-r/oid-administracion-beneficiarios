@@ -89,6 +89,18 @@
                 <td colspan="2"><?php echo number_format($porcentajeRSTramite,2,'.',''); echo '%'?></td>
             </tr>
             <tr>
+                <td colspan="3">PARTICIPACIÓN ORGANIZACIÓN SOCIAL</td>
+                <td colspan="2"><?php echo number_format($porcentajeParticipaOrgSocial,2,'.',''); echo '%'?></td>
+            </tr>
+            <tr>
+                <td colspan="3">REHABILITACIONES ANUALES</td>
+                <td colspan="2"><?php echo number_format($porcentajeReahbAnual,2,'.',''); echo '%'?></td>
+            </tr>
+            <tr>
+                <td colspan="3">REHABILITACIONES MENSUALES</td>
+                <td colspan="2"><?php echo number_format($porcentajeReahbMensual,2,'.',''); echo '%'?></td>
+            </tr>
+            <tr>
                 <td colspan="1">EDUCACION</td>
                 <td colspan="4"><table>
                         <tr>
@@ -250,7 +262,71 @@
                     </table>
                 </td>
             </tr>
-
+            <tr>
+                <td colspan="1">GRUPO ETARIO</td>
+                <td colspan="4"><table>
+                        <tr>
+                            <th>RANGO</th>
+                            <th>CANTIDAD</th>
+                        </tr>
+                        <tr>
+                            <td>Estimulación temprana</td>
+                            <td><?php echo intval($estimulacionTemprana) ?></td>
+                        </tr>
+                        <tr>
+                            <td>3-5</td>
+                            <td><?php echo intval($edad3_5) ?></td>
+                        </tr>
+                        <tr>
+                            <td>6-10</td>
+                            <td><?php echo intval($edad6_10) ?></td>
+                        </tr>
+                        <tr>
+                            <td>11-20</td>
+                            <td><?php echo intval($edad11_20) ?></td>
+                        </tr>
+                        <tr>
+                            <td>21-30</td>
+                            <td><?php echo intval($edad21_30) ?></td>
+                        </tr>
+                        <tr>
+                            <td>31-40</td>
+                            <td><?php echo intval($edad31_40) ?></td>
+                        </tr>
+                        <tr>
+                            <td>41-50</td>
+                            <td><?php echo intval($edad41_50) ?></td>
+                        </tr>
+                        <tr>
+                            <td>51-60</td>
+                            <td><?php echo intval($edad51_60) ?></td>
+                        </tr>
+                        <tr>
+                            <td>61-70</td>
+                            <td><?php echo intval($edad61_70) ?></td>
+                        </tr>
+                        <tr>
+                            <td>71-80</td>
+                            <td><?php echo intval($edad71_80) ?></td>
+                        </tr>
+                        <tr>
+                            <td>81-90</td>
+                            <td><?php echo intval($edad81_90) ?></td>
+                        </tr>
+                        <tr>
+                            <td>91-100</td>
+                            <td><?php echo intval($edad91_100) ?></td>
+                        </tr>
+                        <tr>
+                            <td>101-110</td>
+                            <td><?php echo intval($edad101_110) ?></td>
+                        </tr>
+                        <tr>
+                            <td>111-120</td>
+                            <td><?php echo intval($edad111_120) ?></td>
+                        </tr>
+                    </table></td>
+            </tr>
 
         </table>
         <br>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PrestacionRealizada extends Model
 {
-    protected $fillable=['fecha', 'beneficiario_id', 'prestacions_id'];
+    protected $fillable=['fecha', 'beneficiario_id', 'prestacions_id', 'funcionario_id'];
 
     public function beneficiario(){
 
@@ -23,6 +23,12 @@ class PrestacionRealizada extends Model
     public function prestacion(){
 
         return $this->hasOne(Prestacion::class);
+
+    }
+
+    public function ficha_atencion_socials(){
+
+        return $this->hasMany(FichaAtencionSocial::class);
 
     }
 

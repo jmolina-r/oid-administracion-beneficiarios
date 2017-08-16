@@ -48,11 +48,13 @@
             <div class='modal-body'>
                 <h5>El error puede ser causado por: <br>
                     <br>
-                    - Un ingreso no autorizado <br>
+                    - Existe una ficha Inicial que no se ha cerrado y se está intentano crear una nueva. <br>
+                    <br>
+                    - Se intentó asignar una ficha inicial a un funcionario incorrecto. <br>
                     <br>
                     - Alguna ficha que desea ver no existe en la base de datos.<br>
                     <br>
-                    - Una averia del sistema.<br>
+                    - Un fallo del sistema.<br>
                     <br>
                     Consulte por servicio técnico.</h5>
                 <hr>
