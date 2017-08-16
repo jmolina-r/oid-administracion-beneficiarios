@@ -261,15 +261,8 @@ class ReportabilidadController extends Controller
 
             return view('reportabilidad.reportabilidadKine', compact('kinesiologo','atencionAnualKine','atencionMensualKine','asistenciaKineAnual','inasistenciaKineAnual','asistenciaKineMensual','inasistenciaKineMensual','porcentajePrest','nombrePrest'));
 
-        }else {
-
-            if (isset($_GET['imprimirReporKine'])) {
-                $view =  \View::make('pdf.invoice1', compact('kinesiologo','atencionAnualKine','atencionMensualKine','asistenciaKine','inasistenciaKine'))->render();
-                $pdf = \App::make('dompdf.wrapper');
-                $pdf->loadHTML($view);
-                return $pdf->stream('invoice1');
-            }
         }
+
 
         $nombres = $_GET["nombres"];
         $apellidos = $_GET["apellidos"];
@@ -289,9 +282,6 @@ class ReportabilidadController extends Controller
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('invoice1');
-
-        //return $request->all();
-
 
     }
 
@@ -345,8 +335,28 @@ class ReportabilidadController extends Controller
                 ->count();
             $i++;
         }
+     //   if(isset($_GET['visualFono'])) {
+            return view('reportabilidad.reportabilidadFono', compact('fonoaudiologo', 'atencionAnualFono', 'atencionMensualFono', 'asistenciaFonoAnual', 'asistenciaFonoMensual', 'inasistenciaFonoAnual', 'inasistenciaFonoMensual', 'porcentajePrest', 'nombrePrest'));
+      //  }
+        $nombres = $_GET["nombres"];
+        $apellidos = $_GET["apellidos"];
+        $rut = $_GET["rut"];
+        $telefono = $_GET["telefono"];
+        $direccion = $_GET["direccion"];
+        $atencionAnualFono = $_GET["atencionAnualFono"];
+        $atencionMensualFono = $_GET["atencionMensualFono"];
+        $asistenciaFonoAnual = $_GET["asistenciaFonoAnual"];
+        $asistenciaFonoMensual = $_GET["asistenciaFonoMensual"];
+        $inasistenciaFonoAnual = $_GET["inasistenciaFonoAnual"];
+        $inasistenciaFonoMensual = $_GET["inasistenciaFonoMensual"];
+        $porcentajePrest = $_GET["porcentajePrest"];
+        $nombrePrest = $_GET["nombrePrest"];
 
-        return view('reportabilidad.reportabilidadFono', compact('fonoaudiologo','atencionAnualFono','atencionMensualFono','asistenciaFonoAnual','asistenciaFonoMensual','inasistenciaFonoAnual','inasistenciaFonoMensual','porcentajePrest','nombrePrest'));
+        $view =  \View::make('pdf.invoiceFono', compact('nombres','apellidos','direccion','rut','telefono','atencionAnualFono','atencionMensualFono','asistenciaFonoAnual','asistenciaFonoMensual','inasistenciaFonoAnual','inasistenciaFonoMensual','porcentajePrest','nombrePrest'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoiceFono');
+
     }
 
     public function showResultPsico(Request $request){
@@ -403,16 +413,7 @@ class ReportabilidadController extends Controller
 
         if(isset($_GET['visualSico'])) {
             return view('reportabilidad.reportabilidadPsico', compact('psicologo','atencionAnualPsico','atencionMensualPsico','asistenciaPsicoAnual','asistenciaPsicoMensual','inasistenciaPsicoAnual','inasistenciaPsicoMensual','porcentajePrest','nombrePrest'));
-        }/*else {
-            if (isset($_GET['imprimirReporSico'])) {
-
-                $view =  \View::make('pdf.invoice2', compact('psicologo','atencionAnualPsico','atencionMensualPsico','asistenciaPsico','inasistenciaPsico'))->render();
-                $pdf = \App::make('dompdf.wrapper');
-                $pdf->loadHTML($view);
-                return $pdf->stream('invoice2');
-
-            }
-        }*/
+        }
 
         $nombres = $_GET["nombres"];
         $apellidos = $_GET["apellidos"];
@@ -486,19 +487,9 @@ class ReportabilidadController extends Controller
             $i++;
         }
 
-        //return view('reportabilidad.reportabilidadTer', compact('terapeuta','atencionAnualTer','atencionMensualTer','asistenciaTer','inasistenciaTer'));
 
         if(isset($_GET['visualTerap'])) {
             return view('reportabilidad.reportabilidadTer', compact('terapeuta','atencionAnualTer','atencionMensualTer','asistenciaTerAnual','asistenciaTerMensual','inasistenciaTerAnual','inasistenciaTerMensual','porcentajePrest','nombrePrest'));
-        }else {
-            if (isset($_GET['imprimirReporTerap'])) {
-
-                $view =  \View::make('pdf.invoice3', compact('terapeuta','atencionAnualTer','atencionMensualTer','asistenciaTer','inasistenciaTer'))->render();
-                $pdf = \App::make('dompdf.wrapper');
-                $pdf->loadHTML($view);
-                return $pdf->stream('invoice3');
-
-            }
         }
         $nombres = $_GET["nombres"];
         $apellidos = $_GET["apellidos"];
@@ -507,9 +498,12 @@ class ReportabilidadController extends Controller
         $direccion = $_GET["direccion"];
         $atencionAnualTer = $_GET["atencionAnualTer"];
         $atencionMensualTer = $_GET["atencionMensualTer"];
-        $asistenciaTer = $_GET["asistenciaTer"];
-        $inasistenciaTer = $_GET["inasistenciaTer"];
-        $view =  \View::make('pdf.invoice3', compact('nombres','apellidos','direccion','rut','telefono','atencionAnualTer','atencionMensualTer','asistenciaTer','inasistenciaTer'))->render();
+        $asistenciaTerAnual = $_GET["asistenciaTerAnual"];
+        $asistenciaTerMensual = $_GET["asistenciaTerMensual"];
+        $inasistenciaTerAnual = $_GET["inasistenciaTerAnual"];
+        $inasistenciaTerMensual = $_GET["inasistenciaTerMensual"];
+
+        $view =  \View::make('pdf.invoice3', compact('nombres','apellidos','direccion','rut','telefono','atencionAnualTer','atencionMensualTer','asistenciaTerAnual','asistenciaTerMensual','inasistenciaTerAnual','inasistenciaTerMensual','porcentajePrest','nombrePrest'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('invoice3');
@@ -629,7 +623,11 @@ class ReportabilidadController extends Controller
             ->where('funcionarios.tipo_funcionario_id','=',4)
             ->count();
 
+
              return view('reportabilidad.reportabilidadHistEntreMes', compact('cantIngresadosAño2','cantAtencionAño2','aniouno','aniodos','mesuno','mesdos','atencionKines','atencionPsico','atencionFono','atencionTers'));
+
+
+
     }
     public function showResultHistorica(Request $request)
     {
@@ -686,24 +684,24 @@ class ReportabilidadController extends Controller
             ->count();
 
         if(isset($_GET['visualHistMes'])) {
-            return view('reportabilidad.reportabilidadHistorica', compact('anio','mes','cantUsuarioTotal','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual','atencionKines','atencionPsico','atencionFono','atencionTers','atencionKinesMes','atencionPsicoMes','atencionFonoMes','atencionTersMes'));
-        }else {
-            if (isset($_GET['imprimirReporHist'])) {
-                $view =  \View::make('pdf.invoiceHistoricReport', compact('anio','mes','cantUsuarioTotal','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual'))->render();
-                $pdf = \App::make('dompdf.wrapper');
-                $pdf->loadHTML($view);
-                return $pdf->stream('invoiceHistoricReport');
-
-            }
+            return view('reportabilidad.reportabilidadHistorica', compact('anio','mes','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual','atencionKines','atencionPsico','atencionFono','atencionTers','atencionKinesMes','atencionPsicoMes','atencionFonoMes','atencionTersMes'));
         }
         $anio = $request->anio;
         $mes = $request->mes;
-        $cantUsuarioTotal = $request->cantUsuarioTotal;
         $cantIngresadosAño = $request->cantIngresadosAño;
         $cantIngresadosMes = $request->cantIngresadosMes;
         $atencionAnual = $request->atencionAnual;
         $atencionMensual = $request->atencionMensual;
-        $view =  \View::make('pdf.invoiceHistoricReport', compact('anio','mes','cantUsuarioTotal','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual'))->render();
+        $atencionPsico = $request->atencionPsico;
+        $atencionKine = $request->atencionKines;
+        $atencionTers=$request->atencionTers;
+        $atencionFono=$request->atencionFono;
+        $atencionKinesMes=$request->atencionKinesMes;
+        $atencionPsicoMes=$request->atencionPsicoMes;
+        $atencionFonoMes=$request->atencionFonoMes;
+        $atencionTersMes=$request->atencionTersMes;
+
+        $view =  \View::make('pdf.invoiceHistoricReport', compact('anio','mes','cantIngresadosAño','cantIngresadosMes','atencionAnual','atencionMensual','atencionKine','atencionPsico','atencionFono','atencionTers','atencionKinesMes','atencionPsicoMes','atencionFonoMes','atencionTersMes'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('invoiceHistoricReport');

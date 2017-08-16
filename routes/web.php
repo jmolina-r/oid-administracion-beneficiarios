@@ -238,6 +238,10 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
         'uses' => 'PdfController@invoice2',
         'as' => 'reportabilidad.reportePsico'
     ]);
+    Route::get('/reporteFonoaudiologia.pdf', [
+        'uses' => 'PdfController@invoiceFono',
+        'as' => 'reportabilidad.reporteFono'
+    ]);
 
     Route::get('/reporteTerapOcupacional.pdf', [
         'uses' => 'PdfController@invoice3',

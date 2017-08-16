@@ -86,7 +86,23 @@
                     </div>
                   </div>
                 </div>
-              
+                  <form action="{{route('reportabilidad.reporteFono')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
+                      <input id="nombres" name="nombres" type="hidden" value="{{$fonoaudiologo->nombre}}">
+                      <input id="apellidos" name="apellidos" type="hidden" value="{{$fonoaudiologo->apellido}}">
+                      <input id="rut" name="rut" type="hidden" value="{{$fonoaudiologo->rut}}">
+                      <input id="telefono" name="telefono" type="hidden" value="{{$fonoaudiologo->telefono}}">
+                      <input id="direccion" name="direccion" type="hidden" value="{{$fonoaudiologo->direccion}}">
+                      <input id="atencionAnualFono" name="atencionAnualFono" type="hidden" value="{{$atencionAnualFono}}">
+                      <input id="atencionMensualFono" name="atencionMensualFono" type="hidden" value="{{$atencionMensualFono}}">
+                      <input id="asistenciaFonoAnual" name="asistenciaFonoAnual" type="hidden" value="{{$asistenciaFonoAnual}}">
+                      <input id="asistenciaFonoMensual" name="asistenciaFonoMensual" type="hidden" value="{{$asistenciaFonoMensual}}">
+                      <input id="inasistenciaFonoAnual" name="inasistenciaFonoAnual" type="hidden" value="{{$inasistenciaFonoAnual}}">
+                      <input id="inasistenciaFonoMensual" name="inasistenciaFonoMensual" type="hidden" value="{{$inasistenciaFonoMensual}}">
+                      @for ($i = 0; $i < count($nombrePrest); $i++)
+                          <input id="nombrePrest" name="nombrePrest[]" type="hidden" value="{{$nombrePrest[$i]}}}">
+                          <input id="porcentajePrest" name="porcentajePrest[]" type="hidden" value="{{$porcentajePrest[$i]}}">
+                      @endfor
+
                       <div class='row'>
                     <div class='col-sm-12'>
                       <div class='box bordered-box blue-border' style='margin-bottom:0;'>
@@ -162,7 +178,7 @@
               </div>
             </div>
                     <button type="submit" class="btn btn-success col-md-12" style="margin-bottom:5px" />Vista previa a imprimir</button>
-                
+                  </form>
             @include('partials.footer')
           </div>
             </div>

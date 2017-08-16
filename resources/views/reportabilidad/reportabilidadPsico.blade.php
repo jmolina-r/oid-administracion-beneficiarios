@@ -87,8 +87,8 @@
                   </div>
                 </div>
                 <form action="{{route('reportabilidad.reportePsico')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
-                <input id="nombres" name="nombres" type="hidden" value="{{$psicologo->nombres}}">
-                <input id="apellidos" name="apellidos" type="hidden" value="{{$psicologo->apellidos}}">
+                <input id="nombres" name="nombres" type="hidden" value="{{$psicologo->nombre}}">
+                <input id="apellidos" name="apellidos" type="hidden" value="{{$psicologo->apellido}}">
                 <input id="rut" name="rut" type="hidden" value="{{$psicologo->rut}}">
                 <input id="telefono" name="telefono" type="hidden" value="{{$psicologo->telefono}}">
                 <input id="direccion" name="direccion" type="hidden" value="{{$psicologo->direccion}}">

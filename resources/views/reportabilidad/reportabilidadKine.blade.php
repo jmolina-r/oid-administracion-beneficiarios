@@ -94,8 +94,14 @@
                             <input id="direccion" name="direccion" type="hidden" value="{{$kinesiologo->direccion}}">
                             <input id="atencionAnualKine" name="atencionAnualKine" type="hidden" value="{{$atencionAnualKine}}">
                             <input id="atencionMensualKine" name="atencionMensualKine" type="hidden" value="{{$atencionMensualKine}}">
-                            <input id="asistenciaKine" name="asistenciaKineAnual" type="hidden" value="{{$asistenciaKineAnual}}">
-                            <input id="inasistenciaKine" name="inasistenciaKineAnual" type="hidden" value="{{$inasistenciaKineAnual}}">
+                            <input id="asistenciaKineAnual" name="asistenciaKineAnual" type="hidden" value="{{$asistenciaKineAnual}}">
+                            <input id="asistenciaKineMensual" name="asistenciaKineMensual" type="hidden" value="{{$asistenciaKineMensual}}">
+                            <input id="inasistenciaKineAnual" name="inasistenciaKineAnual" type="hidden" value="{{$inasistenciaKineAnual}}">
+                            <input id="inasistenciaKineMensual" name="inasistenciaKineMensual" type="hidden" value="{{$inasistenciaKineMensual}}">
+                            @for ($i = 0; $i < count($nombrePrest); $i++)
+                                <input id="nombrePrest" name="nombrePrest[]" type="hidden" value="{{$nombrePrest[$i]}}}">
+                                <input id="porcentajePrest" name="porcentajePrest[]" type="hidden" value="{{$porcentajePrest[$i]}}">
+                            @endfor
                             <div class='row'>
                                 <div class='col-sm-12'>
                                     <div class='box bordered-box blue-border' style='margin-bottom:0;'>

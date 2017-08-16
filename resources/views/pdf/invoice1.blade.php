@@ -81,14 +81,24 @@
             <td>{{$atencionMensualKine}}</td>
         </tr>
         <tr>
-            <td>CANTIDAD DE ASISTENCIA DE PACIENTES</td>
+            <td>CANTIDAD DE ASISTENCIA DE PACIENTES ANUAL</td>
             <td></td>
-            <td>{{$asistenciaKine}}</td>
+            <td>{{$asistenciaKineAnual}}</td>
         </tr>
         <tr>
-            <td>CANTIDAD DE INASISTENCIA DE PACIENTES</td>
+            <td>CANTIDAD DE ASISTENCIA DE PACIENTES MENSUAL</td>
             <td></td>
-            <td>{{$inasistenciaKine}}</td>
+            <td>{{$asistenciaKineMensual}}</td>
+        </tr>
+        <tr>
+            <td>CANTIDAD DE INASISTENCIA DE PACIENTES ANUAL</td>
+            <td></td>
+            <td>{{$inasistenciaKineAnual}}</td>
+        </tr>
+        <tr>
+            <td>CANTIDAD DE INASISTENCIA DE PACIENTES MENSUAL</td>
+            <td></td>
+            <td>{{$inasistenciaKineMensual}}</td>
         </tr>
     </table>
 </div>
