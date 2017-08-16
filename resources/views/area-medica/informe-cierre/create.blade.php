@@ -1,7 +1,7 @@
 @extends("layouts.master")
 
 @section("title")
-    Informe de cierre - OID
+    Ficha de Cierre - OID
 @endsection
 
 @section("styles_before")
@@ -84,6 +84,7 @@
                                 </div>
                             </div>
                         </div>
+                        {{ $ficha }}
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="box">
@@ -204,8 +205,6 @@
                                                         <button id="continuar_btn" type='submit' class='pull-right btn btn-md btn-success btn-next'>
                                                             Guardar
                                                         </button>
-                                                        <div class="col-md-2">
-                                                        </div>
                                                     </div>
                                                     {{ csrf_field() }}
                                                 </form>
