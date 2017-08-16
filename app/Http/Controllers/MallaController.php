@@ -351,7 +351,14 @@ class MallaController extends Controller
 
         $horaAgendada = HoraAgendada::where('id', $idHora)->first();
 
-        $idFuncionario = Auth::user()->funcionario_id;
+        if (Auth::check())
+        {
+            $id = Auth::user()->id;
+        }
+
+        $user = User::where('id', $id)->first();
+        $funcionario = $user->funcionario()->get()->first();
+        $idFuncionario = $funcionario->id;
 
         foreach ($jsonPrestaciones as $prestacionRegistro){
 
