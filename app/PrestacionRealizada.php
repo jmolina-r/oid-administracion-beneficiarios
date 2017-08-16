@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PrestacionRealizada extends Model
 {
-    protected $fillable=['fecha', 'beneficiario_id', 'prestacions_id'];
+    protected $fillable=['fecha', 'beneficiario_id', 'prestacions_id', 'funcionario_id'];
 
     public function beneficiario(){
 
@@ -14,9 +14,9 @@ class PrestacionRealizada extends Model
 
     }
 
-    public function informe_cierre(){
+    public function funcionario(){
 
-        return $this->hasOne(InformeCierre::class);
+        return $this->belongsTo(Funcionario::class);
 
     }
 

@@ -155,7 +155,7 @@
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="motivo_consulta">Motivo consulta</label>
                                                                 <div class="controls">
-                                                                    <textarea name="motivo_consulta" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Motivo Consulta' rows='3' style='margin-bottom:10px;' value="{{ old('motivo_consulta') }}" id="inputDiagnostico" maxlength="200"></textarea>
+                                                                    <textarea name="motivo_consulta" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Motivo Consulta' rows='3' style='margin-bottom:10px;' value="{{ old('motivo_consulta') }}" id="motivo_consulta" maxlength="200"></textarea>
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
@@ -316,7 +316,7 @@
 
                                                                     <div class="col-md-12 form-group">
                                                                         <div class="col-md-8 controls">
-                                                                            <textarea class="form-control" rows="4" name="observaciones_parientes" id="observaciones_parientes"></textarea>
+                                                                            <textarea class="form-control" rows="4" name="observaciones_parientes" id="observaciones_parientes"placeholder="Observaciones"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -925,7 +925,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3"for="trast_psiquiatricos_sn">Trastornos psiquiaátricos</label>
+                                                                <label class="col-md-3"for="trast_psiquiatricos_sn">Trastornos psiquiátricos</label>
                                                                 <div class="col-md-3">
                                                                     <input class="form-control" id="trast_psiquiatricos_sn" name="trast_psiquiatricos_sn" value="{{ old('trast_psiquiatricos_sn') }}"  placeholder="Si/No">
                                                                 </div>

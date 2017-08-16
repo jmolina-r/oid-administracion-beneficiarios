@@ -40,7 +40,7 @@ class UserTableSeeder extends Seeder
             // 'name' => 'secretaria',
             'username' => 'secretaria',
             'email' => 'secretaria@oid.cl',
-            'funcionario_id' => 10
+            'funcionario_id' => 3
 
         ]);
 

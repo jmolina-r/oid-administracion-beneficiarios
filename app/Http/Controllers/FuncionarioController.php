@@ -111,7 +111,7 @@ class FuncionarioController extends Controller
             'tipo_funcionario' => 'required|exists:tipo_funcionarios,id',
             'email' => 'required|email',
             'fecha_nacimiento' => 'required|date_format:"d/m/Y"|before:"today"',
-            'telefono' => 'nullable|numeric',
+            'telefono' => 'required|numeric',
             'direccion' => 'required'
         ];
         return $rules;

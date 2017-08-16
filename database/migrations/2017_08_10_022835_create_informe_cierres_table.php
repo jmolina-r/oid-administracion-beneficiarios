@@ -16,14 +16,10 @@ class CreateInformeCierresTable extends Migration
         Schema::create('informe_cierres', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('cant_sesiones');
-            $table->date('fecha_inicio');
-            $table->date('fecha_termino');
-            $table->string('motivo_atencion');
-            $table->string('objetivos_trabajados');
-            $table->smallInteger('desercion');
-            $table->smallInteger('culmino_proceso');
+            $table->string('desercion');
+            $table->string('culmino_proceso');
             $table->string('observacion')->nullable();
+            $table->string('ficha');
             $table->string('area');
 
             $table->integer('beneficiario_id')->unsigned()->nullable();

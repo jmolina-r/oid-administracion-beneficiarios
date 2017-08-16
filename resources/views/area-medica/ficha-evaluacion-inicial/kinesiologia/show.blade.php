@@ -64,6 +64,9 @@
                             <div class="col-sm-12 col-lg-12">
                                 <h1 class="capitalize">Paciente: {{ $persona->nombre }} {{ $persona->apellido }}</h1>
                             </div>
+                            <div class="col-sm-12 col-lg-12">
+                                <h1 class="capitalize">Tratante: {{ $funcionario->nombre }} {{ $funcionario->apellido }}</h1>
+                            </div>
                         </div>
                         <div class="col-xs-12">
                             <div class="row">

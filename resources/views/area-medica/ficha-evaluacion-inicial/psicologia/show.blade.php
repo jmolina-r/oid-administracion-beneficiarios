@@ -64,6 +64,9 @@
                             <div class="col-sm-12 col-lg-12">
                                 <h1 class="capitalize">Paciente: {{ $persona->nombre }} {{ $persona->apellido }}</h1>
                             </div>
+                            <div class="col-sm-12 col-lg-12">
+                                <h1 class="capitalize">Tratante: {{ $funcionario->nombre }} {{ $funcionario->apellido }}</h1>
+                            </div>
                         </div>
                         <div class="col-xs-12">
                             <div class="row">
@@ -95,11 +98,11 @@
                                     <p>{{ $antecedentesFamiliares->observaciones_madre }}</p>
                                     <p class="tit">Fecha nacimiento Madre</p>
                                     <p>{{ $antecedentesFamiliares->fecha_nacimiento_madre }}</p>
-                                    <p class="tit">Nombre de la Padre</p>
+                                    <p class="tit">Nombre del Padre</p>
                                     <p>{{ $antecedentesFamiliares->nombre_padre }}</p>
-                                    <p class="tit">Rut de la Padre</p>
+                                    <p class="tit">Rut del Padre</p>
                                     <p>{{ $antecedentesFamiliares->rut_padre }}</p>
-                                    <p class="tit">Edad de la Padre</p>
+                                    <p class="tit">Edad del Padre</p>
                                     <p>{{ $antecedentesFamiliares->edad_padre }}</p>
                                     <p class="tit">Ocupación del Padre</p>
                                     <p>{{ $antecedentesFamiliares->ocupacion_padre }}</p>

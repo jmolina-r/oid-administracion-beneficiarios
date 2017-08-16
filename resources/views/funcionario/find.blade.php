@@ -56,6 +56,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
 <!-- Contenido del body -->
 @section('content')
 @include('partials.header')
+
 <div id='wrapper'>
     <div id='main-nav-bg'></div>
     @include('partials.nav')
@@ -68,7 +69,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                             <div class='page-header'>
                                 <h1 class='pull-left'>
                                     <i class='fa fa-pencil-square-o'></i>
-                                    <span>Buscador de Funcionarios</span>
+                                    <span>Buscador de Usuario</span>
                                 </h1>
                                 <div class='pull-right'>
                                     <ul class='breadcrumb'>
@@ -80,64 +81,57 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                         </div>
                         <div class='row'>
                             <div class='col-sm-12'>
-                                <div class='box'>
-                                    <div class='box-content box-padding'>
-                                        <div class="container">
-                                            <div class='row'>
-                                                <div class='col-sm-12'>
-                                                    <div class='box bordered-box orange-border' style='margin-bottom:0;'>
-                                                        <div class='box-content box-no-padding'>
-                                                            <div class='responsive-table'>
-                                                                <div class='scrollable-area'>
-                                                                    <table class='data-table table table-bordered table-striped' style='margin-bottom:0;'>
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th>
-                                                                                    Nombre
-                                                                                </th>
-                                                                                <th>
-                                                                                    E-mail
-                                                                                </th>
-                                                                                <th>
-                                                                                    Telefono
-                                                                                </th>
-                                                                                <th>
-                                                                                    Cargo
-                                                                                </th>
-                                                                                <th>
-                                                                                    Acciones
-                                                                                </th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            @foreach($funcionarios as $funcionario)
-                                                                            <tr>
-                                                                                <td class="capitalize">{{ $funcionario->nombre }} {{ $funcionario->apellido }}</td>
-                                                                                <td>{{ $funcionario->email }}</td>
-                                                                                <td>{{ $funcionario->telefono }}</td>
-                                                                                <td class="capitalize">{{ $funcionario->tipo_funcionario->nombre }}</td>
-                                                                                <td>
-                                                                                    <div class='text-right'>
-                                                                                        <a class='btn btn-success btn-xs' href='#' onclick="getFuncionarioPorId('{{ $funcionario->id }}')">
-                                                                                            <i class='fa fa-user'></i>
-                                                                                        </a>
-                                                                                        {{-- <a class='btn btn-danger btn-xs' href='#'>
-                                                                                            <i class='fa fa-times'></i>
-                                                                                        </a> --}}
-                                                                                    </div>
-                                                                                </td>
-                                                                            </tr>
-                                                                            @endforeach
-                                                                        </tbody>
-                                                                    </table>
+
+                                <div class='box bordered-box orange-border' style='margin-bottom:0;'>
+                                    <div class='box-content box-no-padding'>
+                                        <div class='responsive-table'>
+                                            <div class='scrollable-area'>
+                                                <table class='data-table table table-bordered table-striped' style='margin-bottom:0;'>
+                                                    <thead>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    Nombre
+                                                                </th>
+                                                                <th>
+                                                                    E-mail
+                                                                </th>
+                                                                <th>
+                                                                    Telefono
+                                                                </th>
+                                                                <th>
+                                                                    Cargo
+                                                                </th>
+                                                                <th>
+                                                                    Acciones
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach($funcionarios as $funcionario)
+                                                        <tr>
+                                                            <td class="capitalize">{{ $funcionario->nombre }} {{ $funcionario->apellido }}</td>
+                                                            <td>{{ $funcionario->email }}</td>
+                                                            <td>{{ $funcionario->telefono }}</td>
+                                                            <td class="capitalize">{{ $funcionario->tipo_funcionario->nombre }}</td>
+                                                            <td>
+                                                                <div class='text-right'>
+                                                                    <a class='btn btn-success btn-xs' onclick="getFuncionarioPorId('{{ $funcionario->id }}')">
+                                                                        <i class='fa fa-user'></i>
+                                                                    </a>
+                                                                    {{-- <a class='btn btn-danger btn-xs' href='#'>
+                                                                        <i class='fa fa-times'></i>
+                                                                    </a> --}}
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -148,6 +142,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
         </div>
     </section>
 </div>
+
 
 <div class="modal-custom">
     <div class='modal fade' id='perfilFuncionarioModal' tabindex='-1'>
@@ -190,7 +185,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                 </div>
                 <div class='modal-footer'>
                     <button class='btn btn-default' data-dismiss='modal' type='button'>Volver</button>
-                    <button id="editar_btn" class='btn btn-warning' type='button'>Editar</button>
+                    <a href="/home" id="editarFuncionarioBtn" class='btn btn-warning' >Editar</a>
                     <input id="userId" type="hidden" value="">
                 </div>
             </div>
