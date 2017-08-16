@@ -212,13 +212,13 @@
                       <ul class='nav nav-tabs nav-tabs-centered'>
                         <li class='active'>
                           <a data-toggle='tab' href='#tabcenter1'>
-                            <i class='fa fa-outdent'></i>
+                            <i class='fa fa-calendar'></i>
                             Reportabilidad Mensual
                           </a>
                         </li>
                         <li>
                           <a data-toggle='tab' href='#tabcenter2'>
-                            <i class='fa fa-pencil-square-o text-red'></i>
+                            <i class='fa fa-calendar text-red'></i>
                             Reportabilidad entre meses
                           </a>
                         </li>

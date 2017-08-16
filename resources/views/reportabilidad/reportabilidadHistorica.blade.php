@@ -143,6 +143,26 @@
                           <small>TERAPIA OCUPACIONAL - USUARIOS ATENDIDOS EN EL AÑO</small>
                           <div class='text-warning fa fa-hand-rock-o align-left'></div>
                         </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-info'>{{$atencionPsicoMes}}</h3>
+                          <small>PSICOLOGÍA - USUARIOS ATENDIDOS EN EL MES</small>
+                          <div class='text-info fa fa-smile-o align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-info'>{{$atencionKinesMes}}</h3>
+                          <small>KINESIOLOGÍA - USUARIOS ATENDIDOS EN EL MES</small>
+                          <div class='text-info fa fa-wheelchair align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-info'>{{$atencionFonoMes}}</h3>
+                          <small>FONOAUDIOLOGÍA - USUARIOS ATENDIDOS EN EL MES</small>
+                          <div class='text-info fa fa-deaf align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-info'>{{$atencionTersMes}}</h3>
+                          <small>TERAPIA OCUPACIONAL - USUARIOS ATENDIDOS EN EL MES</small>
+                          <div class='text-info fa fa-hand-rock-o align-left'></div>
+                        </div>
               </div>
               </div>
             </div>
