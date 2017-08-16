@@ -103,7 +103,7 @@
                                             <div class='title'>Datos personales</div>
                                         </div>
                                         <div class="col-sm-6">
-                                            <p class="capitalize"><span class="tit">Nombre Completo</span><br>{{ $kinesiologo->nombres }} {{ $kinesiologo->apellidos }}</p>
+                                            <p class="capitalize"><span class="tit">Nombre Completo</span><br>{{ $kinesiologo->nombre }} {{ $kinesiologo->apellido }}</p>
                                             <p class="capitalize"><span class="tit">Rut</span><br>{{ $kinesiologo->rut }}</p>
                                         </div>
                                         <div class="col-sm-6">
