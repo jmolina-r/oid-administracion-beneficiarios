@@ -122,17 +122,17 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
             Route::get('/create/{id}', [
                 'uses' => 'FichaPsicologiaController@create',
                 'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.create'
-            ])->middleware('roles:admin|psicologia');
+            ]);
 
             Route::post('/store', [
                 'uses' => 'FichaPsicologiaController@store',
                 'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.store'
-            ])->middleware('roles:admin|psicologia');
+            ]);
 
             Route::get('/show/{id}', [
                 'uses' => 'FichaPsicologiaController@show',
                 'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.show'
-            ])->middleware('roles:secretaria|admin');
+            ]);
         });
 
         Route::group(['prefix' => '/fichas'], function (){
@@ -189,18 +189,18 @@ Route::group(['prefix' => 'beneficiario', 'middleware' => 'auth'], function () {
     Route::get('/informacion/{id}', [
         'uses' => 'BeneficiarioController@show',
         'as' => 'beneficiario.show'
-    ])->middleware('roles:admin|secretaria');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
 
     // El buscador de beneficiarios no tiene restriccion de roles
     Route::get('/buscar', [
         'uses' => 'BeneficiarioController@find',
         'as' => 'beneficiario.find'
-    ])->middleware('roles:admin|secretaria');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
 
     Route::get('/buscar-json', [
         'uses' => 'BeneficiarioController@findLikeNombreApellidoRutJson',
         'as' => 'beneficiario.findLikeNombreApellidoRutJson'
-    ])->middleware('roles:admin|secretaria');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
 
     Route::get('/pdf/{id}', [
         'uses' => 'BeneficiarioController@generatePDF',
@@ -432,6 +432,10 @@ Route::group(['prefix' => '/registro_prestacion', 'middleware' => 'auth'], funct
 
     Route::post('/getnombrecompleto', [
         'uses' => 'MallaController@getNombreCompleto'
+    ]);
+
+    Route::post('/checkfichaactiva', [
+        'uses' => 'MallaController@checkFicha'
     ]);
 
     Route::post('/getarea', [

@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Beneficiario;
+use App\FichaFonoaudiologia;
+use App\FichaKinesiologia;
+use App\FichaPsicologia;
+use App\FichaTerapiaOcupacional;
+use App\Funcionario;
 use App\HoraAgendada;
 use App\Prestacion;
 use App\PrestacionRealizada;
@@ -91,6 +96,9 @@ class MallaController extends Controller
                 ->join('funcionarios', 'users.funcionario_id', '=', 'funcionarios.id')
                 ->join('tipo_funcionarios', 'funcionarios.tipo_funcionario_id', '=', 'tipo_funcionarios.id')
                 ->select('users.id', 'users.username', 'tipo_funcionarios.nombre')
+                ->where('tipo_funcionarios.nombre', '!=', 'secretaria')
+                ->where('tipo_funcionarios.nombre', '!=', 'asistente social')
+                ->where('tipo_funcionarios.nombre', '!=', 'otro')
                 ->get();
         }
 
@@ -197,7 +205,7 @@ class MallaController extends Controller
             array_push($eventos, $e);
         }
 
-        $horasAgendadasSoftdeleted = HoraAgendada::onlyTrashed()->where('user_id', $request->id)->where('asist_sn', 'si')->get();
+        $horasAgendadasSoftdeleted = HoraAgendada::onlyTrashed()->where('user_id', $request->input('id'))->where('asist_sn', 'si')->get();
 
         foreach ($horasAgendadasSoftdeleted as $horaDeleted) {
 
@@ -237,7 +245,7 @@ class MallaController extends Controller
             array_push($eventos, $f);
         }
 
-        $horasAgendadasInasistencia = HoraAgendada::onlyTrashed()->where('user_id', $id)
+        $horasAgendadasInasistencia = HoraAgendada::onlyTrashed()->where('user_id', $request->input('id'))
             ->where('asist_sn', 'no')->get();
 
         foreach ($horasAgendadasInasistencia as $horaDeleted) {
@@ -428,6 +436,71 @@ class MallaController extends Controller
         return view('malla.crearPrestacion');
     }
 
+    public function checkFicha(Request $request)
+    {
+        $idHora = $request->input('idHora');
+        $hora = HoraAgendada::where('id', $idHora)->first();
+        $idBeneficiario = $hora->beneficiario_id;
+
+        $user = User::find($hora->user_id);
+        $funcionario = Funcionario::find($user->funcionario_id);
+        $tipo = TipoFuncionario::find($funcionario->tipo_funcionario_id);
+
+        $nombreTipo = $tipo->nombre;
+
+        if($nombreTipo == "kinesiologo"){
+
+            $fichasKine = FichaKinesiologia::where('beneficiario_id', $idBeneficiario)
+                ->where('funcionario_id', $funcionario->id)
+                ->where('estado', "abierto")->get();
+
+            if(count($fichasKine) == 0){
+                return "false";
+            }else{
+                return "true";
+            }
+
+        }
+
+        if($nombreTipo == "psicologo"){
+            $fichasPsico = FichaPsicologia::where('beneficiario_id', $idBeneficiario)
+                ->where('funcionario_id', $funcionario->id)
+                ->where('estado', "abierto")->get();
+
+            if(count($fichasPsico) == 0){
+                return "false";
+            }else{
+                return "true";
+            }
+        }
+
+        if($nombreTipo == "fonoaudiologo"){
+            $fichasFono = FichaFonoaudiologia::where('beneficiario_id', $idBeneficiario)
+                ->where('funcionario_id', $funcionario->id)
+                ->where('estado', "abierto")->get();
+
+            if(count($fichasFono) == 0){
+                return "false";
+            }else{
+                return "true";
+            }
+        }
+
+        if($nombreTipo == "terapeuta ocupacional"){
+            $fichasTo = FichaTerapiaOcupacional::where('beneficiario_id', $idBeneficiario)
+                ->where('funcionario_id', $funcionario->id)
+                ->where('estado', "abierto")->get();
+
+            if(count($fichasTo) == 0){
+                return "false";
+            }else{
+                return "true";
+            }
+        }
+
+        return "false";
+
+    }
 
     public function validarUsuario(Request $request)
     {

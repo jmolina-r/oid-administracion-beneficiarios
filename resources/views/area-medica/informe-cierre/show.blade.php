@@ -98,6 +98,8 @@
                                                         </div>
                                                     @endif
                                                         <div class="col-xs-12">
+                                                            <td><a class="btn btn-primary btn-block btn-xs" href="">Ver como PDF</a></td>
+                                                            <hr>
                                                             <div class="row">
                                                                 </h2>
                                                                 <h4>Información del Beneficiario</h4>
@@ -111,7 +113,7 @@
                                                                 </h2>
                                                                 <h4>Información de Alta</h4>
                                                                 <div class="col-md-6">
-                                                                    <p class="capitalize"><span class="tit">Cantidad de Sesiones</span><br>{{ count($prestacionesRealizadas) }}</p>
+                                                                    <p class="capitalize"><span class="tit">Cantidad de Prestaciones</span><br>{{ count($prestacionesRealizadas) }}</p>
                                                                     <p class="capitalize"><span class="tit">Fecha de Inicio</span><br>{{ $fechaInicio }}</p>
                                                                     <p class="capitalize"><span class="tit">Fecha de Termino</span><br>{{ $fechaTermino }}</p>
                                                                     <p class="capitalize"><span class="tit">Motivo de Atención</span><br>{{ $motivoAtencion }}</p>

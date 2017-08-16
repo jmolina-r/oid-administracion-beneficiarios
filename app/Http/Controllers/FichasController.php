@@ -28,10 +28,10 @@ class FichasController extends Controller
         $idFuncionario = Auth::user()->funcionario_id;
 
         if(Auth::user()->hasRole('admin')) {
-            $fichasKinesiologia = FichaKinesiologia::where('beneficiario_id', $idBeneficiario)->where('funcionario_id', $idFuncionario)->orderBy('created_at', $direction = 'des')->get();
-            $fichasPsicologia= FichaPsicologia::where('beneficiario_id', $idBeneficiario)->where('funcionario_id', $idFuncionario)->orderBy('created_at', $direction = 'des')->get();
-            $fichasFonoaudiologia = FichaFonoaudiologia::where('beneficiario_id', $idBeneficiario)->where('funcionario_id', $idFuncionario)->orderBy('created_at', $direction = 'des')->get();
-            $fichasTerapiaOcuacional = FichaTerapiaOcupacional::where('beneficiario_id', $idBeneficiario)->where('funcionario_id', $idFuncionario)->orderBy('created_at', $direction = 'des')->get();
+            $fichasKinesiologia = FichaKinesiologia::where('beneficiario_id', $idBeneficiario)->orderBy('created_at', $direction = 'des')->get();
+            $fichasPsicologia= FichaPsicologia::where('beneficiario_id', $idBeneficiario)->orderBy('created_at', $direction = 'des')->get();
+            $fichasFonoaudiologia = FichaFonoaudiologia::where('beneficiario_id', $idBeneficiario)->orderBy('created_at', $direction = 'des')->get();
+            $fichasTerapiaOcuacional = FichaTerapiaOcupacional::where('beneficiario_id', $idBeneficiario)->orderBy('created_at', $direction = 'des')->get();
         }
         else{
             $fichasKinesiologia = array();
@@ -65,17 +65,17 @@ class FichasController extends Controller
             $tipoFuncionario = TipoFuncionario::find($funcionario->tipo_funcionario_id)->nombre;
 
             $estado = 'cerrado';
-            if($tipoFuncionario == 'kinesiologo' && $fichasKinesiologia != null){
+            if($tipoFuncionario == 'kinesiologo' && count($fichasKinesiologia) > 0){
                 $estado = $fichasKinesiologia->first()->estado;
             }
-            if($tipoFuncionario == 'psicologo' && $fichasPsicologia != null){
-                $estado = $fichasKinesiologia->first()->estado;
+            if($tipoFuncionario == 'psicologo' && count($fichasPsicologia) > 0){
+                $estado = $fichasPsicologia->first()->estado;
             }
-            if($tipoFuncionario == 'fonoaudiologo' && $fichasFonoaudiologia != null){
-                $estado = $fichasKinesiologia->first()->estado;
+            if($tipoFuncionario == 'fonoaudiologo' && count($fichasFonoaudiologia) > 0){
+                $estado = $fichasFonoaudiologia->first()->estado;
             }
-            if($tipoFuncionario == 'terapeuta ocupacional' && $fichasTerapiaOcuacional != null){
-                $estado = $fichasKinesiologia->first()->estado;
+            if($tipoFuncionario == 'terapeuta ocupacional' && count($fichasTerapiaOcuacional) > 0){
+                $estado = $fichasTerapiaOcuacional->first()->estado;
             }
         }
 
