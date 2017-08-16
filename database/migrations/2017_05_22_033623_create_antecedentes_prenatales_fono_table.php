@@ -13,18 +13,18 @@ class CreateAntecedentesPrenatalesFonoTable extends Migration
      */
     public function up()
     {
-        Schema::create('antecedentes_prenatales_fono', function (Blueprint $table) {
+        Schema::create('antecedentes_prenatales_fonos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('plan_embarazo')->nullable();
-            $table->string('acept_embarazo')->nullable();
-            $table->string('control_embarazo')->nullable();
-            $table->string('ingesta_med')->nullable();
-            $table->string('ingesta_oh_drogas')->nullable();
-            $table->string('consumo_cigarrillo')->nullable();
-            $table->string('estado_emocional')->nullable();
-            $table->string('enfermedades_embarazo')->nullable();
-            $table->string('otros')->nullable();
+            $table->string('plan_embarazo',200)->nullable();
+            $table->string('acept_embarazo',200)->nullable();
+            $table->string('control_embarazo',200)->nullable();
+            $table->string('ingesta_med',200)->nullable();
+            $table->string('ingesta_oh_drogas',200)->nullable();
+            $table->string('consumo_cigarrillo',200)->nullable();
+            $table->string('estado_emocional',200)->nullable();
+            $table->string('enfermedades_embarazo',200)->nullable();
+            $table->string('otros_prenatales',200)->nullable();
         });
     }
 
@@ -35,6 +35,6 @@ class CreateAntecedentesPrenatalesFonoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('antecedentes_prenatales_fono');
+        Schema::dropIfExists('antecedentes_prenatales_fonos');
     }
 }

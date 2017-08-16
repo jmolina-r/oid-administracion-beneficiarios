@@ -1,7 +1,3 @@
-/**
- * Created by pablofb on 22-07-17.
- */
-
 (function() {
 
     var cal, calendarDate, d, m, y;
@@ -72,42 +68,82 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 url: 'poblar/',
+                data : {id : $('#id').val()}
             }
         ],
 
         select: function(start, end) {
-            return bootbox.prompt("Ingrese rut de beneficiario", function(title) {
-                if(title == ""){
-                    alert("El rut no puede quedar en blanco");
-                    return;
-                }
 
-                var Fn = {
-                    // Valida el rut con su cadena completa "XXXXXXXX-X"
-                    validaRut : function (rutCompleto) {
-                        if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))
-                            return false;
-                        var tmp 	= rutCompleto.split('-');
-                        var digv	= tmp[1];
-                        var rut 	= tmp[0];
-                        if ( digv == 'K' ) digv = 'k' ;
-                        return (Fn.dv(rut) == digv );
+            if(puedeAsignarHora() == "false"){
+                alert("No tiene los permisos para agendar horas.");
+                return;
+            }
+
+            var date = new Date(start);
+            var ahora = new Date();
+
+            var date1 = date.toLocaleDateString();
+            var date2 = ahora.toLocaleDateString();
+
+            if(date1 < date2){
+                alert("No se puede agendar hora en un día pasado");
+                return;
+            }
+
+            return bootbox.prompt({
+                title: 'Ingrese rut de beneficiario',
+                placeholder: 'El RUT debe tener el formato 12345678-9',
+                buttons: {
+                    confirm: {
+                        label: 'Ingresar'
                     },
-                    dv : function(T){
-                        var M=0,S=1;
-                        for(;T;T=Math.floor(T/10))
-                            S=(S+T%10*(9-M++%6))%11;
-                        return S?S-1:'k';
+                    cancel: {
+                        label: 'Cancelar'
                     }
-                }
+                },
+                callback: function(value) {
 
-                if(Fn.validaRut(title) == false){
-                    alert('Debe ingresar un rut válido');
-                    return;
-                }
+                    if(value == null){
+                        return;
+                    }
 
-                if (title !== null) {
-                    var nombre = encontrarNombre(title, start);
+                    if(value == ""){
+                        alert("El rut no puede quedar en blanco");
+                        return;
+                    }
+
+                    var formato = /.[.]./g;
+
+                    if(formato.test(value)){
+                        alert("El formato del rut es incorrecto");
+                        return;
+                    }
+
+                    var Fn = {
+                        // Valida el rut con su cadena completa "XXXXXXXX-X"
+                        validaRut : function (rutCompleto) {
+                            if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))
+                                return false;
+                            var tmp 	= rutCompleto.split('-');
+                            var digv	= tmp[1];
+                            var rut 	= tmp[0];
+                            if ( digv == 'K' ) digv = 'k' ;
+                            return (Fn.dv(rut) == digv );
+                        },
+                        dv : function(T){
+                            var M=0,S=1;
+                            for(;T;T=Math.floor(T/10))
+                                S=(S+T%10*(9-M++%6))%11;
+                            return S?S-1:'k';
+                        }
+                    }
+
+                    if(Fn.validaRut(value) == false){
+                        alert('Debe ingresar un rut válido');
+                        return;
+                    }
+
+                    var nombre = encontrarNombre(value, start);
                     if(nombre == null){
                         alert('El beneficiario no se encuentra en la base de datos');
                         return;
@@ -119,8 +155,8 @@
                     }, true);
                     location.reload();
                     return cal.fullCalendar('unselect');
-                }
 
+                }
             });
         },
         eventClick: function(calEvent, jsEvent, view) {
@@ -128,8 +164,32 @@
                 alert("Ya se han asignado prestaciones a esa hora agendada");
                 return;
             }else{
-                calEvent.url = '/registro_prestacion/' + calEvent.id;
-                window.open(calEvent.url, '_self');
+
+                if(puedeAsignarHora()=="true"){
+                    if(confirm('¿Desea eliminar la hora?')){
+                        eliminarHora(calEvent.id);
+                    }else{
+                        if(puedeAtenderHora()=="true"){
+                            if(confirm("¿El beneficiario registra asistencia?")){
+                                calEvent.url = '/registro_prestacion/' + calEvent.id;
+                                window.open(calEvent.url, '_self');
+                            }else{
+                                calEvent.url = '/registro_prestacion/inasistencia/' + calEvent.id;
+                                window.open(calEvent.url, '_self');
+                            }
+                        }
+                    }
+                    return;
+                }
+
+                if(confirm("¿El beneficiario registra asistencia?")){
+                    calEvent.url = '/registro_prestacion/' + calEvent.id;
+                    window.open(calEvent.url, '_self');
+                }else{
+                    calEvent.url = '/registro_prestacion/inasistencia/' + calEvent.id;
+                    window.open(calEvent.url, '_self');
+                }
+
             }
             return false;
         },
@@ -207,7 +267,8 @@
             data: {
                 fecha: fecha,
                 hora: hora,
-                rut: rut
+                rut: rut,
+                id: $('#id').val()
             },
             error: function(jqXHR, textStatus, errorThrown) {
 
@@ -216,5 +277,75 @@
 
         return nombre_encontrado;
     }
+
+    $("#id").change(function() {
+        location.reload();
+    });
+
+    function puedeAsignarHora(){
+
+        var respuesta = "";
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            async: false,
+            url: "/malla/validarusuario",
+            type: "POST",
+
+            success: function(data, textStatus, jqXHR) {
+                respuesta = data;
+            },
+
+            error: function(jqXHR, textStatus, errorThrown) {
+            }
+        });
+        return respuesta;
+    }
+
+    function puedeAtenderHora(){
+        var respuesta = "";
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            async: false,
+            url: "/malla/puedeatender",
+            type: "POST",
+
+            success: function(data, textStatus, jqXHR) {
+                respuesta = data;
+            },
+
+            error: function(jqXHR, textStatus, errorThrown) {
+            }
+        });
+        return respuesta;
+    }
+
+    function eliminarHora(id){
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            async: false,
+            url: "/malla/eliminarhora",
+            type: "POST",
+            data: {
+                idHora: id
+            },
+            success: function(data, textStatus, jqXHR) {
+                alert('La hora se ha eliminado correctamente.');
+                location.reload();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Hubo un error al eliminar la hora. Reintente.');
+            }
+        });
+
+    }
+
+
 
 })();

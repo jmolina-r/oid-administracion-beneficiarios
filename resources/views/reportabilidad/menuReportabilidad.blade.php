@@ -125,7 +125,7 @@
                             <span>Seleccionar Profesional:</span>
                             <select name="kinesiologos">
                                  @foreach($kines as $kine)
-                            <option value="{{$kine->rut}}">{{$kine->nombres}} {{$kine->apellidos}}</option>
+                            <option value="{{$kine->rut}}">{{$kine->nombre}} {{$kine->apellido}}</option>
                                  @endforeach
                                 </select>
                                 <div class="boton pull-right" style="display:inline-block">
@@ -143,7 +143,7 @@
                             <span>Seleccionar Profesional:</span>
                              <select name="psicologos">
                                  @foreach($psicologos as $psicologo)
-                                    <option value="{{$psicologo->rut}}">{{$psicologo->nombres}} {{$psicologo->apellidos}}</option>
+                                    <option value="{{$psicologo->rut}}">{{$psicologo->nombre}} {{$psicologo->apellido}}</option>
                                  @endforeach
                             </select>
                             <div class="boton pull-right" style="display:inline-block">
@@ -160,7 +160,7 @@
                             <span>Seleccionar Profesional:</span>
                             <select name="terapeutas">
                                  @foreach($terapeutas as $terapeuta)
-                                    <option value="{{$terapeuta->rut}}">{{$terapeuta->nombres}} {{$terapeuta->apellidos}}</option>
+                                    <option value="{{$terapeuta->rut}}">{{$terapeuta->nombre}} {{$terapeuta->apellido}}</option>
                                  @endforeach
                             </select>
                             <div class="boton pull-right" style="display:inline-block">
@@ -169,6 +169,23 @@
                             </div>  
                         </div>
                         </form>
+                            <form action="{{route('reportabilidad.reportabilidadFono')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
+                                <div class='box-content box-statistic' >
+                                    <div class="nombre" style="display:inline-block">
+                                        <h4>Reportabilidad Fonoaudiología</h4>
+                                    </div>
+                                    <span>Seleccionar Profesional:</span>
+                                    <select name="fonoaudiologo">
+                                        @foreach($fonoaudiologos as $fonoaudiologo)
+                                            <option value="{{$fonoaudiologo->rut}}">{{$fonoaudiologo->nombre}} {{$fonoaudiologo->apellido}}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="boton pull-right" style="display:inline-block">
+                                        <button type="submit" id="visualTerap" name="visualTerap" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
+                                        <!--<button type="submit" id="imprimirReporTerap" name="imprimirReporTerap" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>-->
+                                    </div>
+                                </div>
+                            </form>
                             <form action="{{route('reportabilidad.reportabilidadSoc')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
                         <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">
@@ -185,33 +202,115 @@
                          <div class='row'>
                   <div class='col-sm-12'>
                     <div class='box'>
-                       <form action="{{route('reportabilidad.reportabilidadHistorica')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
+                       
                         <div class='box-content' >
                                     <div class='box-content box-statistic' >
                                     <h3 class='title text-inside text-center'>Reportabilidad Histórica</h3>
                                     </div>
-                         <div class='box-content box-statistic' >
-                            <div class="nombre" style="display:inline-block">
-                                <h4>Reportabilidad Histórica</h4>
-                            </div>
-                            <span>Seleccionar mes y año:</span>
-                            <select name="mes">
-                                @for ($i = 1; $i < 13; $i++)
-                                   <option value="{{$i}}">{{$i}}</option>
-                                @endfor
+                         <div class='box-content' style="height:150px;">
+                    <div class='tabbable'>
+                      <ul class='nav nav-tabs nav-tabs-centered'>
+                        <li class='active'>
+                          <a data-toggle='tab' href='#tabcenter1'>
+                            <i class='fa fa-calendar'></i>
+                            Reportabilidad Mensual
+                          </a>
+                        </li>
+                        <li>
+                          <a data-toggle='tab' href='#tabcenter2'>
+                            <i class='fa fa-calendar text-red'></i>
+                            Reportabilidad entre meses
+                          </a>
+                        </li>
+                      </ul>
+                     
+                      <div class='tab-content'>
+                        <div class='tab-pane active' id='tabcenter1'>
+                             <form action="{{route('reportabilidad.reportabilidadHistorica')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
+                          <span class="col-md-2 col-xs-12 ">Seleccionar mes:</span>
+                            <select name="mes" class="col-md-2 col-xs-12 ">
+                                <option value="1">Enero</option>
+                                <option value="2">Febrero</option>
+                                <option value="3">Marzo</option>
+                                <option value="4">Abril</option>
+                                <option value="5">Mayo</option>
+                                <option value="6">Junio</option>
+                                <option value="7">Julio</option>
+                                <option value="8">Agosto</option>
+                                <option value="9">Septiembre</option>
+                                <option value="10">Octubre</option>
+                                <option value="11">Noviembre</option>
+                                <option value="12">Diciembre</option>
                             </select>
-                            <select name="anio">
+                            <span class="col-xs-12 col-md-2  col-md-offset-1">Seleccionar Año:</span>
+                            <select name="anio" class="col-md-2 col-xs-12 ">
                                 @for ($i = 2012; $i <= date('Y'); $i++)
                                    <option value="{{$i}}">{{$i}}</option>
                                 @endfor
                             </select>
-                            <div class="boton pull-right" style="display:inline-block">
-                                <button type="submit" id="visualHist" name="visualHist" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
+                            <div class="boton pull-right">
+                                <button type="submit" id="visualHistMes" name="visualHistMes" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
                                 <!--<button type="submit" id="imprimirReporHist" name="imprimirReporHist" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>-->
                             </div>  
                         </div>
+                        </form>
+                        
+                        <div class='tab-pane' id='tabcenter2'>
+                            <form action="{{route('reportabilidad.reportabilidadHistEntreMes')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
+                          <span class="col-md-3 col-xs-12 ">Seleccionar mes inicial:</span>
+                            <select name="mesuno" class="col-md-2 col-xs-12 ">
+                                <option value="1">Enero</option>
+                                <option value="2">Febrero</option>
+                                <option value="3">Marzo</option>
+                                <option value="4">Abril</option>
+                                <option value="5">Mayo</option>
+                                <option value="6">Junio</option>
+                                <option value="7">Julio</option>
+                                <option value="8">Agosto</option>
+                                <option value="9">Septiembre</option>
+                                <option value="10">Octubre</option>
+                                <option value="11">Noviembre</option>
+                                <option value="12">Diciembre</option>
+                            </select>
+                            <span class="col-xs-12 col-md-2  col-md-offset-1">Seleccionar Año:</span>
+                            <select name="aniouno" class="col-md-2 col-xs-12 ">
+                                @for ($i = 2012; $i <= date('Y'); $i++)
+                                   <option value="{{$i}}">{{$i}}</option>
+                                @endfor
+                            </select><br><br>
+                            <span class="col-md-3 col-xs-12 ">Seleccionar mes final:</span>
+                            <select name="mesdos" class="col-md-2 col-xs-12 ">
+                                <option value="1">Enero</option>
+                                <option value="2">Febrero</option>
+                                <option value="3">Marzo</option>
+                                <option value="4">Abril</option>
+                                <option value="5">Mayo</option>
+                                <option value="6">Junio</option>
+                                <option value="7">Julio</option>
+                                <option value="8">Agosto</option>
+                                <option value="9">Septiembre</option>
+                                <option value="10">Octubre</option>
+                                <option value="11">Noviembre</option>
+                                <option value="12">Diciembre</option>
+                            </select>
+                            <span class="col-xs-12 col-md-2  col-md-offset-1">Seleccionar Año:</span>
+                            <select name="aniodos" class="col-md-2 col-xs-12 ">
+                                @for ($i = 2012; $i <= date('Y'); $i++)
+                                   <option value="{{$i}}">{{$i}}</option>
+                                @endfor
+                            </select>
+                            <div class="boton pull-right">
+                                <button type="submit" id="visualHist" name="visualHist" class="btn btn-success" />Visualizar</button>
+                                <!--<button type="submit" id="imprimirReporHist" name="imprimirReporHist" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>-->
+                            </div>
+                            </form>  
                         </div>
-                    </form>
+                        
+                      </div>
+                    </div>
+                  </div>
+                        </div>
+                    
                     </div>
                   </div>
                 </div>

@@ -94,8 +94,8 @@
                       <input id="direccion" name="direccion" type="hidden" value="{{$terapeuta->direccion}}">
                       <input id="atencionAnualTer" name="atencionAnualTer" type="hidden" value="{{$atencionAnualTer}}">
                       <input id="atencionMensualTer" name="atencionMensualTer" type="hidden" value="{{$atencionMensualTer}}">
-                      <input id="asistenciaTer" name="asistenciaTer" type="hidden" value="{{$asistenciaTer}}">
-                      <input id="inasistenciaTer" name="inasistenciaTer" type="hidden" value="{{$inasistenciaTer}}">
+                      <input id="asistenciaTer" name="asistenciaTerAnual" type="hidden" value="{{$asistenciaTerAnual}}">
+                      <input id="inasistenciaTer" name="inasistenciaTerAnual" type="hidden" value="{{$inasistenciaTerAnual}}">
                 <div class='row'>
                     <div class='col-sm-12'>
                       <div class='box bordered-box blue-border' style='margin-bottom:0;'>
@@ -103,7 +103,7 @@
                           <div class='title'>Datos personales</div>                        
                         </div>
                          <div class="col-sm-6">
-                            <p class="capitalize"><span class="tit">Nombre Completo</span><br>{{ $terapeuta->nombres }} {{ $terapeuta->apellidos }}</p>
+                            <p class="capitalize"><span class="tit">Nombre Completo</span><br>{{ $terapeuta->nombre }} {{ $terapeuta->apellido }}</p>
                             <p class="capitalize"><span class="tit">Rut</span><br>{{ $terapeuta->rut }}</p>
                         </div>
                         <div class="col-sm-6">
@@ -136,21 +136,44 @@
                           <small>ATENCIONES MENSUALES</small>
                           <div class='text-warning fa fa-users align-left'></div>
                         </div>
+                        <div class='box-content'>
+                            <h3 class='title text-inside text-center'>ASISTENCIA E INASISTENCIA</h3>                                    
+                        </div>
                         <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-primary'><?php  echo $asistenciaTer ?></h3>
-                          <small>CANTIDAD DE ASISTENCIA DE PACIENTES</small>
+                          <h3 class='title text-primary'>{{$asistenciaTerAnual}}</h3>
+                          <small>CANTIDAD DE USUARIOS ASISTENTES EN EL AÑO</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-primary'><?php  echo $inasistenciaTer ?></h3>
-                          <small>CANTIDAD DE INASISTENCIA DE PACIENTES</small>
+                          <h3 class='title text-primary'>{{$asistenciaTerMensual}}</h3>
+                          <small>CANTIDAD DE USUARIOS ASISTENTES EN EL MES</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-primary'>{{$inasistenciaTerAnual}}</h3>
+                          <small>CANTIDAD DE USUARIOS INASISTENTES EN EL AÑO</small>
+                          <div class='text-primary fa fa-book align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-primary'>{{$inasistenciaTerMensual}}</h3>
+                          <small>CANTIDAD DE USUARIOS INASISTENTES EN EL MES</small>
+                          <div class='text-primary fa fa-book align-left'></div>
+                        </div>
+                        <div class='box-content'>
+                                        <h3 class='title text-inside text-center'>PRESTACIONES</h3>                                    
+                                    </div>
+                                   @for ($i = 0; $i < count($nombrePrest); $i++)
+                                        <div class='box-content box-statistic text-right'>
+                                            <h3 class='title text-info'>{{$porcentajePrest[$i]}}</h3>
+                                            <small>{{$nombrePrest[$i]}}</small>
+                                            <div class='text-info fa fa-wheelchair align-left'></div>
+                                        </div>
+                                    @endfor
               </div>
       
               </div>
             </div>
-                      <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Vista previa a imprimir</button>
+                      <button type="submit" class="btn btn-success col-md-12" style="margin-bottom:5px" />Vista previa a imprimir</button>
                   </form>
             @include('partials.footer')
           </div>

@@ -1,7 +1,3 @@
-/**
- * Created by lfgut on 21-06-2017.
- */
-
 $('#radio_lactancia').click(function () {
     $('#text_lactancia').removeAttr("disabled");
 });

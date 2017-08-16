@@ -16,12 +16,13 @@ class CreateDesarrolloPsicomotorEdadesTable extends Migration
         Schema::create('desarrollo_psicomotor_edades', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('control_cabeza')->nullable();
-            $table->string('sento')->nullable();
-            $table->string('paro')->nullable();
-            $table->string('camino')->nullable();
-            $table->string('control_esf_diurno')->nullable();
-            $table->string('control_esf_nocturno')->nullable();
+            $table->string('control_cabeza',200)->nullable();
+            $table->string('sento',200)->nullable();
+            $table->string('paro',200)->nullable();
+            $table->string('gateo',200)->nullable();
+            $table->string('camino',200)->nullable();
+            $table->string('control_esf_diurno',200)->nullable();
+            $table->string('control_esf_nocturno',200)->nullable();
         });
     }
 
