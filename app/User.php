@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function roles() {
+    public function role() {
         return $this->belongsTo(Role::class);
     }
 
@@ -55,7 +55,7 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         //if ($this->roles()->where('nombre', $role)->first()) {
-        if ($this->roles()->nombre = $role) {
+        if ($this->role->nombre == $role) {
             return true;
         }
         return false;
