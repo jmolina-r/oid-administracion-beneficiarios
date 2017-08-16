@@ -46,7 +46,7 @@ class FichaPsicologiaController extends Controller
 
         if($ultimaFicha->first() != null){
             if($ultimaFicha->first()->estado == 'abierto'){
-                return view('home');
+                return view('area-medica.ficha-evaluacion-inicial.Error');
             }
         }
 
@@ -57,6 +57,10 @@ class FichaPsicologiaController extends Controller
         {
             $idUsuario = Auth::user()->id;
             $idFuncionario=Auth::user()->funcionario_id;
+            if($idFuncionario==null)
+            {
+                return view('area-medica.ficha-evaluacion-inicial.Error');
+            }
         }
 
         try{
