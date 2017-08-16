@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        /*'name',*/'username', 'email', 'password', 'status', 'funcionario_id'
+        /*'name',*/'username', 'email', 'password', 'status', 'funcionario_id', 'role_id'
     ];
 
     /**
@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
 
     public function roles() {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
     public function funcionario()
@@ -54,7 +54,8 @@ class User extends Authenticatable
 
     public function hasRole($role)
     {
-        if ($this->roles()->where('nombre', $role)->first()) {
+        //if ($this->roles()->where('nombre', $role)->first()) {
+        if ($this->roles()->nombre = $role) {
             return true;
         }
         return false;
