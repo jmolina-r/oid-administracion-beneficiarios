@@ -75,11 +75,12 @@
 <div class="form-group{{ $errors->has('roles') ? ' has-error' : '' }}">
     <label class='control-label' for='inputText'>Roles</label>
 
-    <select id="roleUserSave" style="width:100%;" name="roles[]" class='form-control select-tag' data-placeholder='Seleccione los roles' multiple='multiple'>
+    <select id="roleUserSave" style="width:100%;" name="roles" class='form-control select-tag'>
 
         @foreach($roles as $role)
             <option value="{{$role->id}}"
-                @if((old('roles') && in_array($role->id, old('roles'))) || (isset($user) && $user->roles != null && count($user->roles) > 0 && count($user->roles->where('id', $role->id)) > 0))
+                @if((@old('roles') == $role->id) || (@old('roles') == null && isset($user) && $user->role != null && $role->id == $user->role->id))
+                    {{-- (old('roles') && in_array($role->id, old('roles'))) || (isset($user) && $user->roles != null && count($user->roles) > 0 && count($user->roles->where('id', $role->id)) > 0)) --}}
                     selected
                 @endif
             >{{$role->nombre}}</option>
