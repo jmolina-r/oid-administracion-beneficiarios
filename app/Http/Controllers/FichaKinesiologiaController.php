@@ -237,7 +237,7 @@ class FichaKinesiologiaController extends Controller
         $valAutocuidado = ValAutocuidado::find($fichaKinesiologia->val_autocuidado_id);
         $antecedentesMorbidos = AntecedentesMorbidos::find($fichaKinesiologia->antecedentes_morbidos_id);
 
-        return view('area-medica.ficha-evaluacion-inicial.kinesiologia.pdf', compact('fichaKinesiologia'))
+        return view('area-medica.ficha-evaluacion-inicial.kinesiologia.show', compact('fichaKinesiologia'))
             ->with(compact('persona'))
             ->with(compact('valSocial'))
             ->with(compact('valSensorial'))
@@ -361,7 +361,7 @@ class FichaKinesiologiaController extends Controller
         if($fichaKinesiologia == null){
             return view('area-medica.ficha-evaluacion-inicial.Error');
         }
-        $pdf = PDF::loadView('area-medica.ficha-evaluacion-inicial.kinesiologia.pdf', array('ficha' => $fichaKinesiologia));
+        $pdf = PDF::loadView('area-medica.ficha-evaluacion-inicial.kinesiologia.pdf', compact('fichaKinesiologia'));
         return $pdf->download('fichaKinesiologia.pdf');
     }
 }

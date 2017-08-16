@@ -4,8 +4,6 @@
         <meta charset="utf-8">
         <title></title>
 
-        <link href="{{ asset('/assets/stylesheets/bootstrap/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
-
         <style media="screen">
 
             body{
@@ -135,9 +133,54 @@
 
             th{
                 color: #3c3c3c;
+                width: 30px;
             }
 
             td{
+                color: #7C7C7C;
+            }
+
+            .table{
+                margin-left: 15px;
+                width: 100px;
+            }
+
+            .tabla{
+                margin-left: 15px;
+                width: 450px;
+            }
+
+            .tabla .cabecera{
+                border-bottom: 1px solid #CCC;
+                border-top: 1px solid #CCC;
+                color: #3c3c3c;
+                height: 18px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                width: 448px;
+            }
+
+            .tabla .encabezado, .dato{
+                display: inline-block;
+                width: 145px;
+            }
+
+            .especial{
+                border-bottom: 1px solid #CCC;
+                border-top: 1px solid #CCC;
+                color: #3c3c3c;
+                height: 35px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                width: 448px;
+            }
+
+            .cuerpo{
+                margin-top: 5px;
+                width: 448px;
+            }
+
+            .dato{
                 color: #7C7C7C;
             }
         </style>
@@ -146,15 +189,15 @@
         <div class="panel-izquierdo">
 
             <div class="logo">
-                <img src="../../../../images/logo.png" alt="">
+                <img src="images/logo.png" alt="">
             </div>
 
             <div class="nombre">
-                <h1>{{ $persona->nombre }} {{$persona->apellido }}</h1>
+                <h1>{{ $fichaKinesiologia->beneficiario->nombre }} {{$fichaKinesiologia->beneficiario->apellido }}</h1>
             </div>
 
             <div class="rut">
-                <h2>{{ $persona->rut }}</h2>
+                <h2>{{ $fichaKinesiologia->beneficiario->rut }}</h2>
             </div>
 
             <!-- TRATANTE-->
@@ -164,7 +207,7 @@
 
                 <div class="info-group">
                     <span class="label">Médico Tratante: </span>
-                    <h3>{{ $funcionario->nombre }} {{ $funcionario->apellido }}</h3>
+                    <h3>{{ $fichaKinesiologia->funcionario->nombre }} {{ $fichaKinesiologia->funcionario->apellido }}</h3>
                 </div>
 
             </div>
@@ -176,22 +219,22 @@
 
                 <div class="info-group">
                     <span class="label">Género: </span>
-                    <h3>{{ $persona->sexo }}</h3>                    
+                    <h3>{{ $fichaKinesiologia->beneficiario->sexo }}</h3>                    
                 </div>
 
                 <div class="info-group">
                     <span class="label">Fecha de Nacimiento: </span>
-                    <h3>{{ date('d/m/Y', strtotime($persona->fecha_nacimiento)) }}</h3>
+                    <h3>{{ date('d/m/Y', strtotime($fichaKinesiologia->beneficiario->fecha_nacimiento)) }}</h3>
                 </div>
 
                 <div class="info-group">
                     <span class="label">País: </span>
-                    <h3>{{ $persona->pais->nombre }}</h3>
+                    <h3>{{ $fichaKinesiologia->beneficiario->pais->nombre }}</h3>
                 </div>
 
                 <div class="info-group">
                     <span class="label">Situación Civil: </span>
-                    <h3>{{ $persona->estado_civil->nombre }}</h3>
+                    <h3>{{ $fichaKinesiologia->beneficiario->estado_civil->nombre }}</h3>
                 </div>
 
             </div>
@@ -201,33 +244,33 @@
                 <span class="title">Contacto</span>
 
                 <!-- Domicilio -->
-                @isset($persona->domicilio->calle)
+                @isset($fichaKinesiologia->beneficiario->domicilio->calle)
                 <div class="info-group">
                     <span class="label">Domicilio: </span><br>
                     <h3>
-                        {{$persona->domicilio->calle}}
+                        {{$fichaKinesiologia->beneficiario->domicilio->calle}}
 
-                        @isset($persona->domicilio->numero)
-                            {{$persona->domicilio->numero}}
+                        @isset($fichaKinesiologia->beneficiario->domicilio->numero)
+                            {{$fichaKinesiologia->beneficiario->domicilio->numero}}
                         @endisset
-                        @isset($persona->domicilio->numero_depto)
-                            , dpto. {{$persona->domicilio->numero_depto}}
+                        @isset($fichaKinesiologia->beneficiario->domicilio->numero_depto)
+                            , dpto. {{$fichaKinesiologia->beneficiario->domicilio->numero_depto}}
                         @endisset
-                        @isset($persona->domicilio->bloque)
-                            , block {{$persona->domicilio->bloque}}
+                        @isset($fichaKinesiologia->beneficiario->domicilio->bloque)
+                            , block {{$fichaKinesiologia->beneficiario->domicilio->bloque}}
                         @endisset
-                        @isset($persona->domicilio->pobl_vill)
-                            , población {{$persona->domicilio->pobl_vill}}
+                        @isset($fichaKinesiologia->beneficiario->domicilio->pobl_vill)
+                            , población {{$fichaKinesiologia->beneficiario->domicilio->pobl_vill}}
                         @endisset
                     </h3>
                 </div>
                 @endisset
 
                 <!-- Telefonos -->
-                @if(@isset($persona->telefonos))
+                @if(@isset($fichaKinesiologia->beneficiario->telefonos))
                 <div class="info-group">
-                    @isset($persona->telefonos)
-                        @foreach ($persona->telefonos as $telefono)
+                    @isset($fichaKinesiologia->beneficiario->telefonos)
+                        @foreach ($fichaKinesiologia->beneficiario->telefonos as $telefono)
                             <span class="label">{{ $telefono->tipo == "fijo" ? "Teléfono Fijo: " : "Teléfono Móvil: " }}</span><br>
                             <h3>{{ $telefono->tipo == "fijo" ? "+56" : "+56 9" }} {{$telefono->numero}}</h3><br>
                         @endforeach
@@ -236,10 +279,10 @@
                 @endif
 
                 <!-- E-mail -->
-                @isset($persona->email)
+                @isset($fichaKinesiologia->beneficiario->email)
                 <div class="info-group">
                     <span class="label">E-mail: </span><br>
-                    <h3>{{$persona->email}}</h3>
+                    <h3>{{$fichaKinesiologia->beneficiario->email}}</h3>
                 </div>
                 @endisset
             </div>
@@ -252,41 +295,41 @@
                 
                 <div class="pd_info-group">
                     <span class="pd_subtitle">Patologías Concomitantes</span>
-                    <span class="pd_valor">{{ $antecedentesMorbidos->pat_concom }}</span>
+                    <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->pat_concom }}</span>
                 </div>
                 <div class="pd_info-group">
                     <span class="pd_subtitle">Alergias</span>
-                    <span class="pd_valor">{{ $antecedentesMorbidos->alergias }}</span>
+                    <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->alergias }}</span>
                 </div>
 
                 <div class="pd_info-group">
                     <span class="pd_subtitle">Medicamentos</span>
-                    <span class="pd_valor">{{ $antecedentesMorbidos->medicamentos }}</span>
+                    <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->medicamentos }}</span>
                 </div>
 
                 <div class="pd_info-group">
                     <span class="pd_subtitle">Antecedentes Quirúrgicos</span>
-                    <span class="pd_valor">{{ $antecedentesMorbidos->ant_quir }}</span>
+                    <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->ant_quir }}</span>
                 </div>
 
                 <div class="pd_info-group">
                     <span class="pd_subtitle">Aparatos</span>
-                    <span class="pd_valor">{{ $antecedentesMorbidos->aparatos }}</span>
+                    <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->aparatos }}</span>
                 </div>
 
                 <div class="pd_info-group">
                     <span class="pd_subtitle">¿Fuma?</span>
-                    <span class="pd_valor">{{ $antecedentesMorbidos->fuma_sn }}</span>
+                    <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->fuma_sn }}</span>
                 </div>
 
                 <div class="pd_info-group">
                     <span class="pd_subtitle">¿Bebe OH?</span>
-                    <span class="pd_valor">{{ $antecedentesMorbidos->alcohol_sn }}</span>
+                    <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->alcohol_sn }}</span>
                 </div>
 
                 <div class="pd_info-group">
                     <span class="pd_subtitle">Actividad Física</span>
-                    <span class="pd_valor">{{ $antecedentesMorbidos->act_fisica_sn }}</span>
+                    <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->act_fisica_sn }}</span>
                 </div>
 
             </div>
@@ -317,175 +360,151 @@
 
             <div class="ant_morbidos">
                 <span class="pd_title">Escala de Valoración Funcional</span>
-
-                <table class='table' style='margin-bottom:0;'>
-                    <thead>
-                        <tr>
-                            <th>
-                                CATEGORÍA
-                            </th>
-                            <th>
-                                PUNTAJE
-                            </th>
-                            <th>
-                                COMENTARIOS
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="pd_subtitle">AUTOCUIDADO</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Alimentación</td>
-                            <td>{{ $valAutocuidado->puntaje_alimentacion }}</td>
-                            <td>{{ $valAutocuidado->coment_alimentacion }}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Arreglo Personal</td>
-                            <td>{{ $valAutocuidado->puntaje_arreglo_pers }}</td>
-                            <td>{{ $valAutocuidado->coment_arreglo_pers }}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Baño</td>
-                            <td>{{ $valAutocuidado->puntaje_bano }}</td>
-                            <td>{{ $valAutocuidado->coment_bano }}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Vestuario Superior</td>
-                            <td>{{ $valAutocuidado->puntaje_vest_sup }}</td>
-                            <td>{{ $valAutocuidado->coment_vest_sup }}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Vestuario Inferior</td>
-                            <td>{{ $valAutocuidado->puntaje_vest_inf }}</td>
-                            <td>{{ $valAutocuidado->coment_vest_inf }}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Aseo Personal</td>
-                            <td>{{ $valAutocuidado->puntaje_aseo_pers }}</td>
-                            <td>{{ $valAutocuidado->coment_aseo_pers }}</td>
-                        </tr>
-
-                        <tr>
-                            <td class="pd_subtitle">Control de Esfínteres</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Control de Vejiga</td>
-                            <td>{{ $valControlEsfinter->puntaje_contro_vejiga }}</td>
-                            <td>{{ $valControlEsfinter->coment_control_vejiga }}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Control de Instestino</td>
-                            <td>{{ $valControlEsfinter->puntaje_control_intestino }}</td>
-                            <td>{{ $valControlEsfinter->coment_control_intestino }}</td>
-                        </tr>
-
-                        <tr>
-                            <td class="pd_subtitle">Movilidad</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Transferencia cama-silla</td>
-                            <td>{{ $valMovilidad->puntaje_trans_cama_silla }}</td>
-                            <td>{{ $valMovilidad->coment_trans_cama_silla }}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Traslado baño</td>
-                            <td>{{ $valMovilidad->puntaje_traslado_bano }}</td>
-                            <td>{{ $valMovilidad->coment_traslado_bano }}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Traslado ducha</td>
-                            <td>{{ $valMovilidad->puntaje_traslado_ducha }}</td>
-                            <td>{{ $valMovilidad->coment_traslado_ducha }}</td>
-                        </tr>
-
-                        <tr>
-                            <td class="pd_subtitle">Deambulación</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Desplazarse caminando/sr</td>
-                            <td>{{ $valDeambulacion->puntaje_desp_caminando }}</td>
-                            <td>{{ $valDeambulacion->coment_desp_caminando }}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Subir y bajar escaleras</td>
-                            <td>{{ $valDeambulacion->puntaje_escaleras }}</td>
-                            <td>{{ $valDeambulacion->coment_escaleras }}</td>
-                        </tr>
-
-                        <tr>
-                            <td class="pd_subtitle">Comunicación/Cognitivo</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Expresión</td>
-                            <td>{{ $valComCog->puntaje_expresion }}</td>
-                            <td>{{ $valComCog->coment_expresion }}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Comprensión</td>
-                            <td>{{ $valComCog->puntaje_comprension }}</td>
-                            <td>{{ $valComCog->coment_comprension }}</td>
-                        </tr>
-
-                        <tr>
-                            <td class="pd_subtitle">Social</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Interacción social</td>
-                            <td>{{ $valSocial->puntaje_int_social }}</td>
-                            <td>{{ $valSocial->coment_int_social }}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Solución de problemas</td>
-                            <td>{{ $valSocial->puntaje_sol_problemas }}</td>
-                            <td>{{ $valSocial->coment_sol_problemas }}</td>
-                        </tr>
-
-                        <tr>
-                            <td>Memoria</td>
-                            <td>{{ $valSocial->puntaje_memoria }}</td>
-                            <td>{{ $valSocial->coment_memoria }}</td>
-                        </tr>
+                <div class="tabla">
+                    <div class="cabecera">
+                        <div class="encabezado">
+                            CATEGORÍA
+                        </div>
+                        <div class="encabezado">
+                            PUNTAJE
+                        </div>
+                        <div class="encabezado">
+                            COMENTARIOS
+                        </div>
+                    </div>
+                    <div class="cabecera">
+                        <div class="encabezado">
+                            AUTOCUIDADO
+                        </div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Alimentación</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->puntaje_alimentacion }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->coment_alimentacion }}</div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Arreglo Personal</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->puntaje_arreglo_pers }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->coment_arreglo_pers }}</div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Baño</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->puntaje_bano }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->coment_bano }}</div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Vestuario Superior</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->puntaje_vest_sup }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->coment_vest_sup }}</div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Vestuario Inferior</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->puntaje_vest_inf }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->coment_vest_inf }}</div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Aseo Personal</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->puntaje_aseo_pers }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->coment_aseo_pers }}</div>
+                    </div>
+                    <div class="especial">
+                        <div class="encabezado">
+                            CONTROL DE ESFÍNTERES
+                        </div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Control de Vejiga</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_control_esfinter->puntaje_control_vejiga }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_control_esfinter->coment_control_vejiga }}</div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Control de Intestino</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_control_esfinter->puntaje_control_intestino }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_control_esfinter->coment_control_intestino }}</div>
+                    </div>
+                    <div class="cabecera">
+                        <div class="especial">
+                            MOVILIDAD
+                        </div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Transferencia cama-silla</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_movilidad->puntaje_trans_cama_silla }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_movilidad->coment_trans_cama_silla }}</div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Traslado baño</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_movilidad->puntaje_traslado_bano }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_movilidad->coment_traslado_bano }}</div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Traslado ducha</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_movilidad->puntaje_traslado_ducha }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_movilidad->coment_traslado_ducha }}</div>
+                    </div>
+                    <div class="cabecera">
+                        <div class="encabezado">
+                            DEAMBULACIÓN
+                        </div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Desplazarse caminando/sr</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_deambulacion->puntaje_desp_caminando }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_deambulacion->coment_desp_caminando }}</div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Subir y bajar escaleras</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_deambulacion->puntaje_escaleras }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_deambulacion->coment_escaleras }}</div>
+                    </div>
+                    <div class="cabecera">
+                        <div class="encabezado">
+                            COMUNICACIÓN/COGNITIVO
+                        </div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Expresión</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_com_cog->puntaje_expresion }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_com_cog->coment_expresion }}</div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Comprensión</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_com_cog->puntaje_comprension }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_com_cog->coment_comprension }}</div>
+                    </div>
+                    <div class="cabecera">
+                        <div class="encabezado">
+                            SOCIAL
+                        </div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Interacción social</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_social->puntaje_int_social }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_social->coment_int_social }}</div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Solución de problemas</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_social->puntaje_sol_problemas }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_social->coment_sol_problemas }}</div>
+                    </div>
+                    <div class="cuerpo">
+                        <div class="dato">Memoria</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_social->puntaje_memoria }}</div>
+                        <div class="dato">{{ $fichaKinesiologia->val_social->coment_memoria }}</div>
+                    </div>
+                </div>                            
                         
-                    </tbody>
-                </table>
-
                 <div class="evaluacion">
                     <span class="pd_title">Evaluación General</span>
                     
                     <div class="pd_info-group">
                         <span class="pd_subtitle">Conexión con el medio</span>
-                        <span class="pd_valor">{{ $valEvaluacion->conexion_medio }}</span>
+                        <span class="pd_valor">{{ $fichaKinesiologia->val_evaluacion->conexion_medio }}</span>
                     </div>
 
                     <div class="pd_info-group">
                         <span class="pd_subtitle">Nivel cognitivo aparente</span>
-                        <span class="pd_valor">{{ $valEvaluacion->nivel_cognitivo_apar }}</span>
+                        <span class="pd_valor">{{ $fichaKinesiologia->val_evaluacion->nivel_cognitivo_apar }}</span>
                     </div>
                    
                 </div>
@@ -495,27 +514,27 @@
                     
                     <div class="pd_info-group">
                         <span class="pd_subtitle">Visual</span>
-                        <span class="pd_valor">{{ $valSensorial->visual }}</span>
+                        <span class="pd_valor">{{ $fichaKinesiologia->val_sensorial->visual }}</span>
                     </div>
 
                     <div class="pd_info-group">
                         <span class="pd_subtitle">Auditivo</span>
-                        <span class="pd_valor">{{ $valSensorial->auditivo }}</span>
+                        <span class="pd_valor">{{ $fichaKinesiologia->val_sensorial->auditivo }}</span>
                     </div>
 
                     <div class="pd_info-group">
                         <span class="pd_subtitle">Táctil</span>
-                        <span class="pd_valor">{{ $valSensorial->tactil }}</span>
+                        <span class="pd_valor">{{ $fichaKinesiologia->val_sensorial->tactil }}</span>
                     </div>
 
                     <div class="pd_info-group">
                         <span class="pd_subtitle">Propioceptivo</span>
-                        <span class="pd_valor">{{ $valSensorial->propioceptivo }}</span>
+                        <span class="pd_valor">{{ $fichaKinesiologia->val_sensorial->propioceptivo }}</span>
                     </div>
 
                     <div class="pd_info-group">
                         <span class="pd_subtitle">Vestibular</span>
-                        <span class="pd_valor">{{ $valSensorial->vestibular }}</span>
+                        <span class="pd_valor">{{ $fichaKinesiologia->val_sensorial->vestibular }}</span>
                     </div>
                    
                 </div>
@@ -525,37 +544,37 @@
                     
                     <div class="pd_info-group">
                         <span class="pd_subtitle">Tono</span>
-                        <span class="pd_valor">{{ $valMotora->tono }}</span>
+                        <span class="pd_valor">{{ $fichaKinesiologia->val_motora->tono }}</span>
                     </div>
 
                     <div class="pd_info-group">
                         <span class="pd_subtitle">ROM</span>
-                        <span class="pd_valor">{{ $valMotora->rom }}</span>
+                        <span class="pd_valor">{{ $fichaKinesiologia->val_motora->rom }}</span>
                     </div>
 
                     <div class="pd_info-group">
                         <span class="pd_subtitle">Dolor</span>
-                        <span class="pd_valor">{{ $valMotora->dolor }}</span>
+                        <span class="pd_valor">{{ $fichaKinesiologia->val_motora->dolor }}</span>
                     </div>
 
                     <div class="pd_info-group">
                         <span class="pd_subtitle">Fuerza Muscular</span>
-                        <span class="pd_valor">{{ $valMotora->fm }}</span>
+                        <span class="pd_valor">{{ $fichaKinesiologia->val_motora->fm }}</span>
                     </div>
 
                     <div class="pd_info-group">
                         <span class="pd_subtitle">Habilidades Motrices</span>
-                        <span class="pd_valor">{{ $valMotora->hab_motrices }}</span>
+                        <span class="pd_valor">{{ $fichaKinesiologia->val_motora->hab_motrices }}</span>
                     </div>
 
                     <div class="pd_info-group">
                         <span class="pd_subtitle">Coordinación</span>
-                        <span class="pd_valor">{{ $valMotora->coordinacion }}</span>
+                        <span class="pd_valor">{{ $fichaKinesiologia->val_motora->coordinacion }}</span>
                     </div>
 
                     <div class="pd_info-group">
                         <span class="pd_subtitle">Equilibrio</span>
-                        <span class="pd_valor">{{ $valMotora->equilibrio }}</span>
+                        <span class="pd_valor">{{ $fichaKinesiologia->val_motora->equilibrio }}</span>
                     </div>
                    
                 </div>

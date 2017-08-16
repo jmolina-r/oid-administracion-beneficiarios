@@ -76,7 +76,7 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'as' => 'area-medica.ficha-evaluacion-inicial.kinesiologia.store'
             ])->middleware('roles:admin|kinesiologia');
 
-            Route::post('/pdf/{id}', [
+            Route::get('/pdf/{id}', [
                 'uses' => 'FichaKinesiologiaController@generatePDF',
                 'as' => 'area-medica.ficha-evaluacion-inicial.kinesiologia.generatePDF'
             ])->middleware('roles:admin|kinesiologia');
