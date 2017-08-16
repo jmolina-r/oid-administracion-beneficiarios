@@ -78,6 +78,7 @@ $factory->define(App\PrestacionRealizada::class, function (Faker\Generator $fake
     ];
 });
 
+/*
 $factory->define(App\FichaAtencionSocial::class, function (Faker\Generator $faker) {
 
     return [
@@ -86,7 +87,7 @@ $factory->define(App\FichaAtencionSocial::class, function (Faker\Generator $fake
 
         'prestacion_realizadas_id' => $faker->numberBetween($min = 1, $max = 100)
     ];
-});
+});*/
 /*
 $factory->define(App\TipoSubmotivoSocial::class, function (Faker\Generator $faker) {
 

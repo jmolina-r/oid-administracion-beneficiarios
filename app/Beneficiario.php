@@ -61,4 +61,10 @@ class Beneficiario extends Model
     {
         return $this->hasMany(InformeCierre::class);
     }
+
+    public function ficha_atencion_socials(){
+
+        return $this->hasMany(FichaAtencionSocial::class);
+
+    }
 }

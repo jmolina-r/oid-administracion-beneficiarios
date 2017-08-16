@@ -62,7 +62,7 @@
                     <div class='page-header'>
                       <h1 class='pull-left'>
                         <i class='fa fa-pencil-square-o'></i>
-                        <span>Reportabilidad Atención Social</span>
+                        <span>Reportabilidad Histórica</span>
                       </h1>
                       <div class='pull-right'>
                         <ul class='breadcrumb'>
@@ -86,37 +86,53 @@
                     </div>
                   </div>
                 </div>
-                  <form action="{{route('reportabilidad.reporteSoc')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
-                      <input id="atencionAnualSocial" name="atencionAnualSocial" type="hidden" value="{{$atencionAnualSocial}}">
-                      <input id="atencionMensualSocial" name="atencionMensualSocial" type="hidden" value="{{$atencionMensualSocial}}">
+                  
                 <div class='row'>
                 <div class='col-sm-12'>
                   <div class='box bordered-box blue-border' style='margin-bottom:0;'>
                     <div class='box-header blue-background'>
-                      <div class='title'>Atención Social</div>
-                      <div class='actions'>
-                        <a class="btn box-collapse btn-xs btn-link" href="#"><i></i>
-                        </a>
-                      </div>
+                      <div class='title'>Reportabilidad Histórica</div>
+                      <div class='text-right'><span>Periodo: {{$mesuno}}-{{$aniouno}} / {{$mesdos}}-{{$aniodos}}</span></div>
                     </div>
-  
-                        <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-error'><?php echo $atencionAnualSocial ?></h3>
-                          <small>ATENCIONES ANUALES</small>
-                          <div class='text-error fa fa-users align-left'></div>
+                         <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-info'>{{$cantIngresadosAño2}}</h3>
+                          <small>USUARIOS INGRESADOS EN EL PERIODO</small>
+                          <div class='text-info fa fa-users align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
-                          <h3 class='title text-warning'><?php echo $atencionMensualSocial ?></h3>
-                          <small>ATENCIONES MENSUALES</small>
-                          <div class='text-warning fa fa-users align-left'></div>
+                          <h3 class='title text-error'>{{$cantAtencionAño2}}</h3>
+                          <small>USUARIOS ATENDIDOS EN EL PERIODO</small>
+                          <div class='text-error fa fa-users align-left'></div>
+                        </div>
+                        <div class='box-content'>
+                            <h3 class='title text-inside text-center'>ATENCIÓN POR ÁREAS</h3>                                    
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-warning'>{{$atencionPsico}}</h3>
+                          <small>PSICOLOGÍA - USUARIOS ATENDIDOS EN EL PERIODO</small>
+                          <div class='text-warning fa fa-smile-o align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-warning'>{{$atencionKines}}</h3>
+                          <small>KINESIOLOGÍA - USUARIOS ATENDIDOS EN EL PERIODO</small>
+                          <div class='text-warning fa fa-wheelchair align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-warning'>{{$atencionFono}}</h3>
+                          <small>FONOAUDIOLOGÍA - USUARIOS ATENDIDOS EN EL PERIODO</small>
+                          <div class='text-warning fa fa-deaf align-left'></div>
+                        </div>
+                        <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-warning'>{{$atencionTers}}</h3>
+                          <small>TERAPIA OCUPACIONAL - USUARIOS ATENDIDOS EN EL PERIODO</small>
+                          <div class='text-warning fa fa-hand-rock-o align-left'></div>
                         </div>
                         
               </div>
-
               </div>
             </div>
-                      <button type="submit" class="btn btn-success" style="margin-bottom:5px" />Vista previa a imprimir</button>
-                  </form>
+                      <button type="submit" class="btn btn-success col-md-12" style="margin-bottom:5px" />Vista previa a imprimir</button>
+                  
             @include('partials.footer')
           </div>
         </section>

@@ -1,7 +1,7 @@
 @extends("layouts.master")
 
 @section("title")
-    Informe de cierre - OID
+    Ficha de Cierre - OID
 @endsection
 
 @section("styles_before")
@@ -105,7 +105,7 @@
                                                 <div class="col-md-12 form-group">
                                                     <label class="col-md-4 control-label" for="nombre">Nombre</label>
                                                     <div class="col-md-8 controls">
-                                                        <p>{{ ucfirst($beneficiario->nombre)." ".ucfirst($beneficiario->apellido)}}</p>
+                                                        <p class="capitalize">{{ ucfirst($beneficiario->nombre)." ".ucfirst($beneficiario->apellido)}}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 form-group">
@@ -150,7 +150,7 @@
                                                 <div class="col-md-12 form-group">
                                                     <label class="col-md-4 control-label" for="motivo_atencion">Motivo de atención</label>
                                                     <div class="col-md-8 controls">
-                                                        <p>{{ $motivoAtencion }}</p>
+                                                        <p class="capitalize">{{ $motivoAtencion }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 form-group">
@@ -197,15 +197,13 @@
                                                     <div class="col-md-12 form-group">
                                                         <label class="col-md-4 control-label" for="observaciones_sugerencias">Observacion y sugerencias</label>
                                                         <div class="col-md-8 controls">
-                                                            <textarea name="observaciones_sugerencias" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Observaciones y/o sugerencias' rows='3' style='margin-bottom:10px;' id="observaciones_sugerencias" maxlength="200"></textarea>
+                                                            <textarea name="observaciones_sugerencias" class='form-control' data-char-allowed='191' data-char-warning='10' placeholder='Observaciones y/o sugerencias' rows='3' style='margin-bottom:10px;' id="observaciones_sugerencias" maxlength="191"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class='actions'>
                                                         <button id="continuar_btn" type='submit' class='pull-right btn btn-md btn-success btn-next'>
                                                             Guardar
                                                         </button>
-                                                        <div class="col-md-2">
-                                                        </div>
                                                     </div>
                                                     {{ csrf_field() }}
                                                 </form>

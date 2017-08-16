@@ -46,22 +46,22 @@
         <tr>
             <td>Nombre Completo</td>
             <td></td>
-            <td>{{ $psicologo->nombres }} {{ $psicologo->apellidos }}</td>
+            <td>{{ $nombres }} {{ $apellidos }}</td>
         </tr>
         <tr>
             <td>Rut</td>
             <td></td>
-            <td>{{ $psicologo->rut }}</td>
+            <td>{{ $rut }}</td>
         </tr>
         <tr>
             <td>Telefono</td>
             <td></td>
-            <td>{{ $psicologo->telefono }}</td>
+            <td>{{ $telefono }}</td>
         </tr>
         <tr>
             <td>Dirección</td>
             <td></td>
-            <td>{{ $psicologo->direccion }}</td>
+            <td>{{ $direccion }}</td>
         </tr>
     </table>
     <table>
@@ -81,15 +81,26 @@
             <td>{{$atencionMensualPsico}}</td>
         </tr>
         <tr>
-            <td>CANTIDAD DE ASISTENCIA DE PACIENTES</td>
+            <td>CANTIDAD DE USUARIOS ASISTENTES EN EL AÑO</td>
             <td></td>
-            <td>{{$asistenciaPsico}}</td>
+            <td>{{$asistenciaPsicoAnual}}</td>
         </tr>
         <tr>
-            <td>CANTIDAD DE INASISTENCIA DE PACIENTES</td>
+            <td>CANTIDAD DE USUARIOS ASISTENTES EN EL MES</td>
             <td></td>
-            <td>{{$inasistenciaPsico}}</td>
+            <td>{{$asistenciaPsicoMensual}}</td>
         </tr>
+        <tr>
+            <td>CANTIDAD DE USUARIOS INASISTENTES EN EL AÑO</td>
+            <td></td>
+            <td>{{$inasistenciaPsicoAnual}}</td>
+        </tr>
+        <tr>
+            <td>CANTIDAD DE USUARIOS INASISTENTES EN EL MES</td>
+            <td></td>
+            <td>{{$inasistenciaPsicoMensual}}</td>
+        </tr>
+
     </table>
 </div>
 <br>

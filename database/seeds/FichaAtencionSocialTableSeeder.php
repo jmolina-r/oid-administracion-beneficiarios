@@ -11,7 +11,7 @@ class FichaAtencionSocialTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\FichaAtencionSocial::class,100)->create();
+        //factory(App\FichaAtencionSocial::class,100)->create();
 
     }
 }

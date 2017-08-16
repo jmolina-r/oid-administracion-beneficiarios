@@ -97,7 +97,7 @@
                                             <div class="row">
                                                 <div class="form-group">
                                                     <label class='control-label' for='inputText'>Nombre de la Prestación</label>
-                                                    <input id="nombre" type="text" class="form-control" name="nombre" placeholder="Nombre de la Prestación" required>
+                                                    <input id="nombre" type="text" class="form-control" name="nombre" placeholder="Nombre de la Prestación" required maxlength="191">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class='control-label' for='inputText'>Área de la Prestación</label>
