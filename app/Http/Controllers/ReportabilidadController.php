@@ -575,6 +575,7 @@ class ReportabilidadController extends Controller
         return view('reportabilidad.reportabilidadGrupal', compact('atencionAnualKines','atencionMensualKines','atencionAnualFonos','atencionMensualFonos',
             'atencionAnualPsicos','atencionMensualPsicos','atencionAnualTers','atencionMensualTers'));
 
+
     }
     public function showResultHistoricaEntreMes(Request $request)
     {    
@@ -625,7 +626,21 @@ class ReportabilidadController extends Controller
 
 
              return view('reportabilidad.reportabilidadHistEntreMes', compact('cantIngresadosAño2','cantAtencionAño2','aniouno','aniodos','mesuno','mesdos','atencionKines','atencionPsico','atencionFono','atencionTers'));
+        $aniouno = $request->aniouno;
+        $aniodos = $request->aniodos;
+        $mesuno = $request->mesuno;
+        $mesdos = $request->mesdos;
+        $cantIngresadosAño2 = $request->cantIngresadosAño2;
+        $cantAtencionAño2 = $request->cantAtencionAño2;
+        $atencionKines = $request->atencionKines;
+        $atencionFono = $request->atencionFono;
+        $atencionPsico = $request->atencionPsico;
+        $atencionTers=$request->$atencionTers;
 
+        $view =  \View::make('pdf.invoiceHistoricoPorMeses', compact('cantIngresadosAño2','cantAtencionAño2','aniouno','aniodos','mesuno','mesdos','atencionKines','atencionPsico','atencionFono','atencionTers'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoiceHistoricoPorMeses');
 
 
     }
