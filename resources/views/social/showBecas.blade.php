@@ -75,7 +75,7 @@
                                 <div class="col-md-12">
                                     <div class="col-md-4">
                                         <h3>Becas</h3>
-                                        @if(count($becas==0)
+                                        @if(count($becas)==0)
                                             <p class="capitalize">el usuario no necesita una visita domiciliaria</p>
                                         @else
                                              @foreach($becas as $b)
@@ -91,7 +91,7 @@
                                          @if($observacionBecas == null)
                                             <p class="capitalize">no existe observación</p>
                                         @else
-                                            <p class="capitalize">{{$observacionBecas}}</p>
+                                            <p class="capitalize">{{$observacionBecas->observacion}}</p>
                                              
                                         @endif
                                     </div>
