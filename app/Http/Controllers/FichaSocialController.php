@@ -77,7 +77,7 @@ class FichaSocialController extends Controller
             for($i=0;$i<count($motivoVisita);$i++){
 Esto lo hizo el bryan
 */
-               
+
 
                 //Se valida que vd sea requerido
                 $this->validate($request, ['vd' => 'required',]);
