@@ -182,6 +182,7 @@
 
             .dato{
                 color: #7C7C7C;
+                height: 35px;
             }
         </style>
     </head>
@@ -402,13 +403,17 @@
                     @endif
                     @if(isset($fichaKinesiologia->val_autocuidado->puntaje_arreglo_pers) || isset($fichaKinesiologia->val_autocuidado->coment_arreglo_pers))
                     <div class="cuerpo">
-                        <div class="dato">Arreglo Personal</div>
+                        <div class="dato">Arreglo Personal</div>                        
+                        <div class="dato">
                         @isset($fichaKinesiologia->val_autocuidado->puntaje_arreglo_pers)
-                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->puntaje_arreglo_pers }}</div>
+                            {{ $fichaKinesiologia->val_autocuidado->puntaje_arreglo_pers }}
                         @endisset
+                        </div>
+                        <div class="dato">
                         @isset($fichaKinesiologia->val_autocuidado->coment_arreglo_pers)
-                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->coment_arreglo_pers }}</div>
+                            {{ $fichaKinesiologia->val_autocuidado->coment_arreglo_pers }}
                         @endisset
+                        </div>                        
                     </div>
                     @endif
                     @if(isset($fichaKinesiologia->val_autocuidado->puntaje_bano) || isset($fichaKinesiologia->val_autocuidado->coment_bano))
