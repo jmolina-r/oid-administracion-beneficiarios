@@ -18,13 +18,17 @@ class FichaSocialController extends Controller
 
     public function show(Request $request){
 
-        $this->validate($request, ['rut' => 'required|exists:beneficiarios,rut']);
+      
         $beneficiario = Beneficiario::where('rut',$request->input('rut'))->first();
 
         $tipoMotivoSocial = TipoMotivoSocial::get();
         $tipoSubmotivoSocial = TipoSubmotivoSocial::get();
         $tipoAyudaTecnicoSocial = TipoAyudaTecnicoSocial::get();
         return view('social.asistenteSocialVisitaDomiciliaria', compact('tipoMotivoSocial','tipoSubmotivoSocial','tipoAyudaTecnicoSocial','beneficiario'));   
+    }
+    public function showFicha(Request $request){
+
+        return view('social.show'); 
     }
 
  
@@ -34,7 +38,7 @@ class FichaSocialController extends Controller
             Buscar que panel esta activo para poder rescatar los datos de este, depues se hace un switch por cada tab para generar 
             el envio de datos a la base de datos por cada uno.
          */
-
+        return $request->all();
         $now = new \DateTime();
         $obsIt = 'N/A';
 

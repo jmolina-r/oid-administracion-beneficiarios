@@ -44,7 +44,7 @@ Route::group(['prefix' => 'areasocial', 'middleware' => 'auth'], function(){
     'as' => 'social.asistenteSocialBeneficiario'
     ])->middleware('roles:admin|trabajo_social');
 
-    Route::get('/asistentesocial/menu', [
+    Route::get('/asistentesocial/ingresar/{id}', [
     'uses' => 'FichaSocialController@show',
     'as' => 'social.asistenteSocial'
     ])->middleware('roles:admin|trabajo_social');
@@ -54,6 +54,11 @@ Route::group(['prefix' => 'areasocial', 'middleware' => 'auth'], function(){
     'uses' => 'FichaSocialController@post',
     'as' => 'social.asistentesocial'
     ])->middleware('roles:admin|trabajo_social');
+
+    Route::get('/asistentesocial/show/{id}', [
+    'uses' => 'FichaSocialController@showFicha',
+    'as' => 'social.show'
+    ])->middleware('roles:secretaria|admin');
 });
 
 Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
