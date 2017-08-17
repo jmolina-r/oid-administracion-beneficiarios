@@ -107,19 +107,32 @@ class FichaSocialController extends Controller
         }
         return view('social.showFichas', compact('ficha','fichaTipo')); 
     }
- 
+
     public function post(Request $request){
-        
-        return $request->all();
+
+        /*
+            Buscar que panel esta activo para poder rescatar los datos de este, depues se hace un switch por cada tab para generar
+            el envio de datos a la base de datos por cada uno.
+         */
+
         $now = new \DateTime();
         $obsIt = 'N/A';
 
         if (isset($_POST["visita_domiciliaria_btn"])) {
             //En caso de que se ingrese una visita domiciliaria
-      
+
             $this->validate($request, ['vd' => 'required']);
             $motivoVisita = $request -> input('vd');
             $obsVisita = $request -> input('observacion3');
+
+
+            $ficha_atencion_socials = new \App\FichaAtencionSocial([
+
+                'numero' => '0',
+                'descripcion' => 'N/A',
+                'beneficiario_id' => $request -> input('ben_id')
+            ]);
+            $ficha_atencion_socials->save();
 
             for($i=0;$i<count($motivoVisita);$i++){
 
@@ -130,7 +143,20 @@ class FichaSocialController extends Controller
                     //Si se lleno el campo, este sustituye el N/A
                     $obsIt = $obsVisita;
                 }
-            
+                /*if($obsVisita[$textPos]!=NULL){
+                    //Si se lleno el campo, este sustituye el N/A
+                    $obsIt = $obsVisita[$textPos];
+                }*/
+
+                /*Esto lo hizo el bryan
+                            if($request -> input('observacionVisita') != ''){
+                                    $obsIt = $request -> input('observacionVisita');
+                            }
+
+                            for($i=0;$i<count($motivoVisita);$i++){
+                Esto lo hizo el bryan
+                */
+
 
                 //Se valida que vd sea requerido
                 $this->validate($request, ['vd' => 'required',]);
@@ -144,39 +170,48 @@ class FichaSocialController extends Controller
                     'observación' => $obsIt,
                     'documento' => $archivo,
                     'fecha_visita' => $now->format('Y-m-d H:i:s'),
-                    'ficha_atencion_social_id' => '1',
+                    'ficha_atencion_social_id' => $ficha_atencion_socials->id,
                     'tipo_motivo_social_id' => '3',
                     'tipo_submotivo_id' => $motivoVisita[$i],
                     'tipo_ayuda_id' => NULL
                 ]);
                 $motivoSocial->save();
                 $obsIt = 'N/A';
+
             }
             return back()->with('info','Se ha ingresado con éxito la visita');
 
         } elseif(isset($_POST["ayudas_btn"])) {
             //En caso de que se ingrese una ayuda
-            
+
             $this->validate($request, ['tipoAyudaSocial' => 'required_without_all:tipoAyudaTecnica',
-                                         'tipoAyudaTecnica' => 'required_without_all:tipoAyudaSocial',]);
+                'tipoAyudaTecnica' => 'required_without_all:tipoAyudaSocial',]);
             $motivoAyudaTecnica = $request -> input('tipoAyudaTecnica');
             $motivoAyudaSocial = $request -> input('tipoAyudaSocial');
             if($request -> input('observacionAyuda') != ''){
                 $obsIt = $request -> input('observacionAyuda');
             }
 
+            $ficha_atencion_socials = new \App\FichaAtencionSocial([
+
+                'numero' => '0',
+                'descripcion' => 'N/A',
+                'beneficiario_id' => $request -> input('ben_id')
+            ]);
+            $ficha_atencion_socials->save();
+
             for($i=0;$i<count($motivoAyudaTecnica);$i++){
 
-                    $motivoSocial = new \App\MotivoAtencionSocial([
+                $motivoSocial = new \App\MotivoAtencionSocial([
 
-                        'observación' => $obsIt,
-                        'fecha_visita' => $now->format('Y-m-d H:i:s'),
-                        'ficha_atencion_social_id' => '1',
-                        'tipo_motivo_social_id' => '1',
-                        'tipo_submotivo_id' => NULL,
-                        'tipo_ayuda_id' => $motivoAyudaTecnica[$i]
-                    ]);
-                    $motivoSocial->save();
+                    'observación' => $obsIt,
+                    'fecha_visita' => $now->format('Y-m-d H:i:s'),
+                    'ficha_atencion_social_id' => $ficha_atencion_socials->id,
+                    'tipo_motivo_social_id' => '1',
+                    'tipo_submotivo_id' => NULL,
+                    'tipo_ayuda_id' => $motivoAyudaTecnica[$i]
+                ]);
+                $motivoSocial->save();
 
             }
 
@@ -202,6 +237,7 @@ class FichaSocialController extends Controller
 
             $subMotivos = $request -> input('inputSubMotivo');
             $obsVisita = $request -> input('observacion4');
+
             if($obsVisita!=NULL){
                 //Si se lleno el campo, este sustituye el N/A
                 $obsIt = $obsVisita;
@@ -224,11 +260,19 @@ class FichaSocialController extends Controller
                 }
 
             }
+            $ficha_atencion_socials = new \App\FichaAtencionSocial([
+
+                'numero' => '0',
+                'descripcion' => 'N/A',
+                'beneficiario_id' => $request -> input('ben_id')
+            ]);
+            $ficha_atencion_socials->save();
+
             $motivoSocial = new \App\MotivoAtencionSocial([
 
                 'observación' => $obsIt,
                 'fecha_visita' => $now->format('Y-m-d H:i:s'),
-                'ficha_atencion_social_id' => '1',
+                'ficha_atencion_social_id' => $ficha_atencion_socials->id,
                 'tipo_motivo_social_id' => '1',
                 'tipo_submotivo_id' => $subMotivos[0],
                 'tipo_ayuda_id' => NULL
@@ -246,13 +290,22 @@ class FichaSocialController extends Controller
                 //Si se lleno el campo, este sustituye el N/A
                 $obsIt = $obsVisita;
             }
+
+            $ficha_atencion_socials = new \App\FichaAtencionSocial([
+
+                'numero' => '0',
+                'descripcion' => 'N/A',
+                'beneficiario_id' => $request -> input('ben_id')
+            ]);
+            $ficha_atencion_socials->save();
+
             for($i=0;$i<count($subMotivos);$i++){
 
                 $motivoSocial = new \App\MotivoAtencionSocial([
 
                     'observación' => $obsIt,
                     'fecha_visita' => $now->format('Y-m-d H:i:s'),
-                    'ficha_atencion_social_id' => '1',
+                    'ficha_atencion_social_id' => $ficha_atencion_socials->id,
                     'tipo_motivo_social_id' => '2',
                     'tipo_submotivo_id' => $subMotivos[$i],
                     'tipo_ayuda_id' => NULL
