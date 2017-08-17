@@ -17,8 +17,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        /*
+        * Rut Validation
+        */
+        \Validator::extendImplicit('rut', function ($attribute, $value, $parameters, $validator) {
+            return \RUT::check($value);
+        });
 
         Schema::defaultStringLength(191);
+
     }
 
     /**
