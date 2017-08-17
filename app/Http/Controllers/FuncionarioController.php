@@ -109,7 +109,7 @@ class FuncionarioController extends Controller
             'apellido' => 'required|max:200',
             'nombre' => 'required|max:200',
             'tipo_funcionario' => 'required|exists:tipo_funcionarios,id',
-            'email' => 'required|email',
+            'email' => 'required|string|email',
             'fecha_nacimiento' => 'required|date_format:"d/m/Y"|before:"today"',
             'telefono' => 'required|numeric',
             'direccion' => 'required'
