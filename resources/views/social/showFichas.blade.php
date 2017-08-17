@@ -73,7 +73,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                             <div class='page-header'>
                                 <h1 class='pull-left'>
                                     <i class='fa fa-pencil-square-o'></i>
-                                    <span>Buscador de Beneficiario</span>
+                                    <span>Fichas Sociales del Beneficiario</span>
                                 </h1>
                                 <div class='pull-right'>
                                     <ul class='breadcrumb'>
@@ -85,60 +85,59 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                             </div>
                         </div>
                         <div class='row'>
-                            <div class='col-sm-12'>
-                                <div class='box'>
-                                    <div class='box-content box-padding'>
-                                        <div class="container">
-                                            <div class='col-md-12 form-group'>
-                                                <label class='control-label' for='inputBuscador'>Ingrese beneficiario</label>
-                                                <div class='controls'>
-                                                    <input class='form-control' id='inputBuscador' placeholder='Ingrese nombre, apellido o rut' type='text' maxlength="200">
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                <div class='box bordered-box green-border' style='margin-bottom:0;'>
-                                                    <div class='box-content box-no-padding'>
-                                                        <div class='responsive-table'>
-                                                            <table class='table table-bordered table-hover table-striped' style='margin-bottom:0;'>
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>
-                                                                            Nombre
-                                                                        </th>
-                                                                        <th>
-                                                                            Rut
-                                                                        </th>
-                                                                        <th>
-                                                                            Género
-                                                                        </th>
-                                                                        <th>
-                                                                            Registrado
-                                                                        </th>
-                                                                        <th>Acciones</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody id="listaBeneficiario">
-                                                                    <tr>
-                                                                        <td>
-                                                                            No hay datos para mostrar.
-                                                                        </td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
+                <div class='col-sm-12'>
+                  <div class='box bordered-box blue-border' style='margin-bottom:0;'>
+                    
+                    <div class='box-content box-no-padding'>
+                      <div class='responsive-table'>
+                        <div class='scrollable-area'>
+                          <table class='table' style='margin-bottom:0;'>
+                            <thead>
+                              <tr>
+                                <th>
+                                  Id 
+                                </th>
+                                <th>
+                                  Número
+                                </th>
+                                <th>
+                                  Fecha
+                                </th>
+                                <th>
+                                  Descripción
+                                </th>
+                                <th>
+                                  Tipo
+                                </th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                             @for ($i = 0; $i < count($ficha); $i++)
+                              <tr>
+                                <td>{{$ficha[$i]->id}}</td>
+                                <td>{{$ficha[$i]->numero}}</td>
+                                <td>{{$ficha[$i]->created_at}}</td>
+                                <td>{{$ficha[$i]->descripcion}}</td>
+                                <td>{{$fichaTipo[$i]}}</td>
+                                <td>
+                                  <div class='text-right'>
+                                    <a class='btn btn-success btn-xs' href='/areasocial/asistentesocial/show{{$fichaTipo[$i]}}/{{$ficha[$i]->id}}'>
+                                      <i class='fa fa-eye'></i>
+                                    </a>
+                                  </div>
+                                </td>
+                              </tr>
+                            @endfor
+                            </tbody>
+                          </table>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                        
                     </div>
                 </div>
             </div>

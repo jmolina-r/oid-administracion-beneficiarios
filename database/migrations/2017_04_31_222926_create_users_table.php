@@ -24,10 +24,16 @@ class CreateUsersTable extends Migration
             $table->timestamps();
 
             $table->integer('funcionario_id')->unsigned()->nullable();
+            $table->integer('role_id')->unsigned();
+
         });
 
         Schema::table('users', function($table) {
             $table->foreign('funcionario_id')->references('id')->on('funcionarios')->onDelete('cascade');
+        });
+
+        Schema::table('users', function($table) {
+            $table->foreign('role_id')->references('id')->on('roles');
         });
     }
 

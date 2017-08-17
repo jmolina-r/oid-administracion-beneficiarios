@@ -50,7 +50,7 @@ class InformeCierreController extends Controller
         $fechaTermino = date('d-m-Y');
 
         $prestacionesRealizadas = DB::table('prestacion_realizadas')
-            ->where('funcionario_id', Auth::user()->funcionario_id)
+            ->where('funcionario_id', $idFuncionario)
             ->where('beneficiario_id', $idBeneficiario)
             ->where('prestacion_realizadas.created_at', '>=', $ficha->created_at)
             ->where('prestacion_realizadas.created_at', '<=', date("Y-m-d H:i:s"))
@@ -142,7 +142,7 @@ class InformeCierreController extends Controller
         $fechaTermino = $fichaCierre->created_at->format('d-m-Y');
 
         $prestacionesRealizadas = DB::table('prestacion_realizadas')
-            ->where('funcionario_id', Auth::user()->funcionario_id)
+            ->where('funcionario_id', $idFuncionario)
             ->where('beneficiario_id', $idBeneficiario)
             ->where('prestacion_realizadas.created_at', '>=', $fichaInicial->created_at)
             ->where('prestacion_realizadas.created_at', '<=', $fichaCierre->created_at)

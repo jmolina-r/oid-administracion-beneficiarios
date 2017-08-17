@@ -90,7 +90,7 @@
                         </div>
                     </div>
                     <div class='row'>
-                        <div class='col-sm-12'>
+                        <div class='col-sm-6'>
                             <div class='box'>
                                 <div class='box-content box-padding'>
                                     <form id='userSaveForm' class='validate-form' method="POST" action="{{ route('register') }}">
@@ -101,6 +101,186 @@
                                     </form>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-sm-6 box">
+
+
+
+
+                            <h4 class="text-center">¿Qué Permite cada Rol?</h4>
+
+
+
+
+
+                            <div class='accordion accordion-blue panel-group' id='accordion1' style='margin-bottom:0;'>
+
+                                <div class='panel panel-default'>
+                                  <div class='panel-heading'>
+                                    <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseSix-accordion1'>
+                                      Coordinador oficina
+                                    </a>
+                                  </div>
+                                  <div class='panel-collapse collapse in' id='collapseSix-accordion1'>
+                                    <div class='panel-body'>
+                                        <ul>
+                                            <li>Administrar todo de usuarios y funcionarios</li>
+                                        </ul>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class='panel panel-default'>
+                                  <div class='panel-heading'>
+                                    <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseNine-accordion1'>
+                                      Admin
+                                    </a>
+                                  </div>
+                                  <div class='panel-collapse collapse' id='collapseNine-accordion1'>
+                                    <div class='panel-body'>
+                                        <ul>
+                                            <li>Todo menos ingresar prestaciones y fichas iniciales</li>
+                                        </ul>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              <div class='panel panel-default'>
+                                <div class='panel-heading'>
+                                  <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseOne-accordion1'>
+                                    Kinesiología
+                                  </a>
+                                </div>
+                                <div class='panel-collapse collapse' id='collapseOne-accordion1'>
+                                  <div class='panel-body'>
+                                      <ul>
+                                          <li>Ver malla</li>
+                                          <li>Ver datos de beneficiarios</li>
+                                          <li>Ver fichas de beneficiarios</li>
+                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de su area</li>
+                                          <li>Registrar prestaciones de su area en su malla</li>
+                                          <li>Estadisticas de su area</li>
+                                      </ul>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class='panel panel-default'>
+                                <div class='panel-heading'>
+                                  <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseTwo-accordion1'>
+                                    Psicología
+                                  </a>
+                                </div>
+                                <div class='panel-collapse collapse' id='collapseTwo-accordion1'>
+                                  <div class='panel-body'>
+                                      <ul>
+                                          <li>Ver malla</li>
+                                          <li>Ver datos de beneficiarios</li>
+                                          <li>Ver fichas de beneficiarios</li>
+                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de su area</li>
+                                          <li>Registrar prestaciones de su area en su malla</li>
+                                          <li>Estadisticas de su area</li>
+                                      </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class='panel panel-default'>
+                                <div class='panel-heading'>
+                                  <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseThree-accordion1'>
+                                    Fonoaudiología
+                                  </a>
+                                </div>
+                                <div class='panel-collapse collapse' id='collapseThree-accordion1'>
+                                  <div class='panel-body'>
+                                      <ul>
+                                          <li>Ver malla</li>
+                                          <li>Ver datos de beneficiarios</li>
+                                          <li>Ver fichas de beneficiarios</li>
+                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de su area</li>
+                                          <li>Registrar prestaciones de su area en su malla</li>
+                                          <li>Estadisticas de su area</li>
+                                      </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class='panel panel-default'>
+                                <div class='panel-heading'>
+                                  <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseFour-accordion1'>
+                                    Teraia Ocupacional
+                                  </a>
+                                </div>
+                                <div class='panel-collapse collapse' id='collapseFour-accordion1'>
+                                  <div class='panel-body'>
+                                      <ul>
+                                          <li>Ver malla</li>
+                                          <li>Ver datos de beneficiarios</li>
+                                          <li>Ver fichas de beneficiarios</li>
+                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de su area</li>
+                                          <li>Registrar prestaciones de su area en su malla</li>
+                                          <li>Estadisticas de su area</li>
+                                      </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class='panel panel-default'>
+                                <div class='panel-heading'>
+                                  <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseFive-accordion1'>
+                                    Secretaria
+                                  </a>
+                                </div>
+                                <div class='panel-collapse collapse' id='collapseFive-accordion1'>
+                                  <div class='panel-body'>
+                                      <ul>
+                                          <li>Ver mallas</li>
+                                          <li>Agendar y eliminar horas</li>
+                                          <li>Todas las estadisticas</li>
+                                          <li>Registrar beneficiario</li>
+                                          <li>Administrar todo de beneficiarios</li>
+                                      </ul>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class='panel panel-default'>
+                                <div class='panel-heading'>
+                                  <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseSeven-accordion1'>
+                                    Asistente Social
+                                  </a>
+                                </div>
+                                <div class='panel-collapse collapse' id='collapseSeven-accordion1'>
+                                  <div class='panel-body'>
+                                      <ul>
+                                          <li>Ver malla</li>
+                                          <li>Ver datos de beneficiarios</li>
+                                          <li>Ver fichas de beneficiarios</li>
+                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de su area</li>
+                                      </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class='panel panel-default'>
+                                <div class='panel-heading'>
+                                  <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseEight-accordion1'>
+                                    Jefatura
+                                  </a>
+                                </div>
+                                <div class='panel-collapse collapse' id='collapseEight-accordion1'>
+                                  <div class='panel-body'>
+                                      <ul>
+                                          <li>Reportabilidad</li>
+                                          <li>Crear y eliminar prestaciones (tipos)</li>
+                                      </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+
+
+
+
+
+
                         </div>
                     </div>
                 </div>

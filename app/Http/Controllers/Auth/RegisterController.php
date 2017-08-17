@@ -61,7 +61,7 @@ class RegisterController extends Controller
             'username' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'roles' => 'required',
+            'roles' => 'required|exists:roles,id',
             'status' => 'required|boolean',
             'funcionario_id' => 'required|exists:funcionarios,id|unique:users,funcionario_id'
         ]);
@@ -81,20 +81,21 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'status' => $data['status'],
-            'funcionario_id' => $data['funcionario_id']
+            'funcionario_id' => $data['funcionario_id'],
+            'role_id' => $data['roles']
         ]);
 
-        // Role Save
-        if ($data['roles']) {
-            foreach ($data['roles'] as $key => $val) {
-                if (is_numeric($val)) {
-                    $role = Role::find($val);
-                    if ($role) {
-                        $user->roles()->save($role);
-                    }
-                }
-            }
-        }
+        // // Role Save
+        // if ($data['roles']) {
+        //     foreach ($data['roles'] as $key => $val) {
+        //         if (is_numeric($val)) {
+        //             $role = Role::find($val);
+        //             if ($role) {
+        //                 $user->roles()->save($role);
+        //             }
+        //         }
+        //     }
+        // }
 
         return $user;
     }
