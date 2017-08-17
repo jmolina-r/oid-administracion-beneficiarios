@@ -45,9 +45,9 @@ $(document).ready(function() {
                     "<td>" + element.created_at + "</td>" +
                     "<td>" +
                         "<div class='text-right'>" +
-                            "<a class='btn btn-primary btn-xs' href='/areasocial/asistentesocial/show/" + element.id + "'>" +
+                            "<a class='btn btn-primary btn-xs' href='/areasocial/asistentesocial/showFichas/" + element.id + "'>" +
                                 "<i class='fa fa-user'></i>" +
-                            "</a>" +
+                            "</a></button>" +
                             "<a class='btn btn-warning btn-xs' href='/areasocial/asistentesocial/ingresar/" + element.id +"'>" +
                                 "<i class='fa fa-pencil-square-o'></i>" +
                             "</a>" +

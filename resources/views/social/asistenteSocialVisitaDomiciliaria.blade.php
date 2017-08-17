@@ -113,6 +113,7 @@
                                             <a href="{{route("social.asistenteSocialGet")}}">
                                                 <button type="submit" href=""  class="pull-right btn ">Terminar Visita</button>
                                             </a>
+
                                             @if(count($errors) > 0)
                                                 <hr class='hr-normal controls'>
                                                 <div class="alert alert-danger">
@@ -139,31 +140,26 @@
                                                             @endif
                                                         @endforeach
                                                     </ul>
-                                                    <div class='fuelux'>
-                                                        <div class='wizard' data-initialize='wizard' id='myWizard'>
                                                             <div class="tab-content">
                                                                 <?php $i = 1; ?>
                                                                 @foreach($tipoMotivoSocial as $tMotivos)
 
                                                                     @if($i == 1)
-                                                                        <div class="tab-pane active" id=  "{{$tMotivos->id}}"  >
-                                                                            <form accept-charset="UTF-8" action="/" id="formularioAsistenciaSocial" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data">
+                                                                        <div class="tab-pane active" id="{{$tMotivos->id}}"  >
+                                                                            <form accept-charset="UTF-8" action="{{route('social.asistentesocial')}}" id="formularioAsistenciaSocial" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data">
                                                                                 {!!csrf_field()!!}
+                                                                                <input type="hidden" class="form-control" id="ben_id" name="ben_id" value="{{$beneficiario->id}}">
                                                                                 <div class="col-sm-8">
                                                                                     <fieldset name="tecnico" class="col-sm-12">
                                                                                         <label class='control-label' for='inputText'>Ayuda Técnica</label>
                                                                                         <div class="funkyradio">
                                                                                         @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
                                                                                             @if ($tipoAyuda->tipo=='tecnico')
-                                                                                                <!--<div class='funkyradio-primary col-sm-12'>
-                                                                      <input type="radio" name="tipoAyudaTecnica[]" id="{{$tipoAyuda->id}}.t" value="{{$tipoAyuda->id}}">
-                                                                      <label for="{{$tipoAyuda->id}}.t">{{$tipoAyuda->nombre}}</label>
-                                                                  </div>
-                                                                  -->
                                                                                                     <div class="box-content" style="margin-top:10px;">
+                                                                                                        <input value="{{ucfirst($tipoAyuda->nombre)}}" name="tipoAyudaSocialVer[]" id="{{$tipoAyuda->id}}.t" type="hidden">
                                                                                                         <input class='make-switch checkStyle' value="{{$tipoAyuda->id}}" name="tipoAyudaSocial[]" id="{{$tipoAyuda->id}}.t"
                                                                                                                data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>'
-                                                                                                               type='checkbox' onchange="javascript:showContent('{{$tipoAyuda->nombre}}','{{$tipoAyuda->id}}.t')" >
+                                                                                                               type='checkbox'>
                                                                                                         <p id="hverificacion"> {{ucfirst($tipoAyuda->nombre)}} </p>
                                                                                                     </div>
                                                                                                 @endif
@@ -176,29 +172,17 @@
                                                                                         <div class="funkyradio">
                                                                                         @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
                                                                                             @if ($tipoAyuda->tipo=='social')
-                                                                                                <!--<div class='funkyradio-warning col-sm-12'>
-                                                                      <input type="radio" name="tipoAyudaSocial[]" id="{{$tipoAyuda->id}}.t" value="{{$tipoAyuda->id}}">
-                                                                      <label for="{{$tipoAyuda->id}}.t">{{$tipoAyuda->nombre}}</label>
-                                                                  </div>
-                                                                  -->
                                                                                                     <div class="box-content" style="margin-top:10px;">
+                                                                                                        <input value="{{ucfirst($tipoAyuda->nombre)}}" name="tipoAyudaSocialVer[]" id="{{$tipoAyuda->id}}.t" type="hidden">
                                                                                                         <input class='make-switch' value="{{$tipoAyuda->id}}" name="tipoAyudaSocial[]" id="{{$tipoAyuda->id}}.t"
                                                                                                                data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>'
-                                                                                                               type='checkbox' onchange="javascript:showContent('{{$tipoAyuda->nombre}}','{{$tipoAyuda->id}}.t')" >
+                                                                                                               type='checkbox'>
                                                                                                         <p id="hverificacion"> {{ucfirst($tipoAyuda->nombre)}} </p>
                                                                                                     </div>
                                                                                                 @endif
                                                                                             @endforeach
                                                                                         </div>
-                                                                                        <!--
-                                                                                          <div class='controls col-sm-12' id="contentVD">
-                                                                                                  <div style="display: inline;">
-                                                                                                     <br>
-                                                                                                          <label for="inputText" style="display:block;">Observación</label>
-                                                                                                          <textarea name="observacionAyuda" id="observacionAyuda" cols="80" rows="4"></textarea>
-                                                                                                  </div>
-                                                                                            </div>-->
-                                                                                        <div class='box-content' id="observacionAyuda">
+                                                                                        <div class='box-content'>
                                                                                             <div>
                                                                                                 <textarea name="observacionAyuda" id="observacionAyuda" style="width:100%;" rows="4" placeholder="Observacion.."></textarea>
                                                                                             </div>
@@ -215,17 +199,20 @@
                                                                     @else
                                                                         <div class="tab-pane" id= "{{$tMotivos->id}}">
                                                                             <fieldset>
-                                                                                <form accept-charset="UTF-8" id="formulario_registro" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data" data-toggle="validator" role="form">
+                                                                                <!--<form accept-charset="UTF-8" id="formulario_registro" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data" data-toggle="validator" role="form">-->
+                                                                                <form accept-charset="UTF-8" action="{{route('social.asistentesocial')}}" id="formularioAsistenciaSocial{{$tMotivos->id}}" class="form" style="margin-bottom: 0;" method="post" enctype="multipart/form-data" data-toggle="validator" role="form">
                                                                                     {!!csrf_field()!!}
+                                                                                    <input type="hidden" class="form-control" id="ben_id" name="ben_id" value="{{$beneficiario->id}}">
                                                                                     @foreach($tipoSubmotivoSocial as $sMotivo)
                                                                                         @if($sMotivo->tipo_motivo_social_id == $tMotivos->id)
                                                                                             @if($tMotivos->id == '3')
                                                                                                 <div class="box-content " style="margin-top:10px;">
+                                                                                                    <input value="{{ucfirst($sMotivo->nombre)}}" name="vdVer[]" id="vdVer" type="hidden">
                                                                                                     <input class='make-switch' value="{{$sMotivo->id}}" name="vd[]" id="{{$sMotivo->id}}.vd" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox'><p id="hverificacion"> {{ucfirst($sMotivo->nombre)}} </p>
                                                                                                 </div>
                                                                                                 <div class="help-block with-errors"></div>
                                                                                                 <div class='controls' id="{{$sMotivo->nombre}}" style="display:none">
-                                                                  @if($sMotivo->id == '8')
+                                                                                                @if($sMotivo->id == '8')
                                                                                                     <input type="file" name="avatar"></input>
                                                                                                 @endif -->
                                                                                                     <div>
@@ -234,11 +221,12 @@
                                                                                                 </div>
                                                                                                 @if($sMotivo->id == '10')
                                                                                                     <div>
-                                                                                                        <input data-file-input data-show-upload="false" data-show-preview='false' title='Search for a file to add' type='file'name="document">
+                                                                                                        <input data-file-input data-show-upload="false" data-show-preview='false' title='Busque el archivo que desea agregar' type='file'name="document">
                                                                                                     </div>
                                                                                                 @endif
                                                                                             @elseif($tMotivos->id == '2')
                                                                                                 <div class="box-content" style="margin-top:10px;">
+                                                                                                    <input value="{{ucfirst($sMotivo->nombre)}}" name="inputSubMotivoVer[]" id="inputSubMotivoVer" type="hidden">
                                                                                                     <input class='make-switch' value="{{$sMotivo->id}}" id="inputSubMotivo" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}')"  name="inputSubMotivo[]"><p id="hverificacion">{{ucfirst($sMotivo->nombre)}}</p>
                                                                                                 </div>
                                                                                                 @if($sMotivo->id == '6')
@@ -248,13 +236,13 @@
 
                                                                                                 <div class='controls'>
                                                                                                     <div class='box-content' id="{{$sMotivo->nombre}}">
-                                                                                                        <label class="radio-inline"> <input type="radio" name="inputSubMotivo[]" onClick="javascript:toggle(this)" id="{{$sMotivo->id}}" value="{{$sMotivo->id}}">{{ucfirst($sMotivo->nombre)}}</label>
-
+                                                                                                        <input value="{{ucfirst($sMotivo->nombre)}}" name="inputSubMotivoVer[]" id="inputSubMotivoVer" type="hidden">
+                                                                                                        <label class="radio-inline"> <input type="radio" name="inputSubMotivo[]" onClick="javascript:toggle(this)" id="inputSubMotivo" value="{{$sMotivo->id}}">{{ucfirst($sMotivo->nombre)}}</label>
                                                                                                         @if($sMotivo->id == '12')
                                                                                                             <div class='controls' id="uno" style="display:none">
                                                                                                                 <div>
                                                                                                                     <label for="inputText"style="display:block;">Año postulación (1990-2017)</label>
-                                                                                                                    <input data-format="DD/MM/YYYY" type="date" value-date="" name="postAT[]" id="añoPostulacion.text" min="1990-01-01" max="{{ date('d-m-Y') }}" required></input>
+                                                                                                                    <input type="number" value-date="" name="postAT[]" id="añoPostulacion.text" min="1990" max="{{ date('Y') }}" required></input>
                                                                                                                 </div>
                                                                                                                 <div>
                                                                                                                     <label for="inputText"style="display:block;">Tipo ayuda</label>
@@ -262,7 +250,6 @@
                                                                                                                     <div class="help-block with-errors"></div>
                                                                                                                 </div>
                                                                                                                 <div>
-
                                                                                                                     <label for="inputText"style="display:block;">Resultado</label>
                                                                                                                     <select	id="resultado" name="resultado" onChange="javascript: mostrar(this.value);">
                                                                                                                         <option value="1">Aprobado</option>
@@ -293,11 +280,11 @@
                                                                                 @endforeach
                                                                                     <div class='box-content ' id="{{$sMotivo->nombre}}">
                                                                                         <div>
-                                                                                            <textarea name="observacion{{$tMotivos->id}}" id="observacion.text" style="width:100%;" rows="4" placeholder="Observacion.."></textarea>
+                                                                                            <textarea name="observacion{{$tMotivos->id}}" id="observacion{{$tMotivos->id}}" style="width:100%;" rows="4" placeholder="Observacion.."></textarea>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-12 col-offset-2">
-                                                                                        <button type="submit" name="{{$tMotivos->nombre}}.btn" class="pull-right btn btn-success" onclick="javascript:checkButton(this)">Aceptar</button>
+                                                                                        <button type="submit" name="{{$tMotivos->nombre}}.btn" class="pull-right btn btn-success" >Aceptar</button>
                                                                                     </div>
                                                                                 </form>
 
@@ -307,8 +294,7 @@
                                                                 @endforeach
 
                                                             </div>
-                                                        </div>
-                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -334,23 +320,120 @@
                                 <div class="row">
                                     <div class="col-sm-12 col-lg-6">
                                         <h4>Motivo de la atención</h4>
-                                        <p id="pat_concom_confirmation">Orientación</p>
-                                        <h4>Especificación</h4>
-                                        <p id="alergias_confirmation">Silla eléctrica</p>
+                                        <p id="mot_atent_confirmation">-</p>
+                                        <h4>Ud ha escogido las siguientes ayudas:</h4>
+                                        <p id="submot_atent_confirmation">-</p>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
                                         <h4>Observación</h4>
-                                        <p id="medicamentos_confirmation">El beneficiario recibe ayuda por primera vez</p>
+                                        <p id="obs_confirmation">-</p>
                                     </div>
                                 </div>
                             <div class='modal-footer'>
                                 <button class='btn btn-default' data-dismiss='modal' type='button'>Volver</button>
-                                <button class='btn btn-success' type='button' onclick="enviarFormulario()">Registrar</button>
+                                <button class='btn btn-success' type='button' onclick="enviarFormulario()">Ingresar</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-    </div>
+        </div>
+            <div class="modal-custom">
+                <div class='modal fade' id='confirmationformularioAsistenciaSocial2' tabindex='-1'>
+                    <div class='modal-dialog'>
+                        <div class='modal-content'>
+                            <div class='modal-header'>
+                                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                                <h3 class='modal-title' id='myModalLabel'>Confirmación</h3>
+                            </div>
+                            <div class='modal-body'>
+                                <h5>A continuación se muestra el motivo y las observaciones ingresadas en el formulario de atención social. Favor leer detalladamente y confirmar con el botón registrar. De lo contrario, vuelva y modifique los datos que sean necesarios.</h5>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-12 col-lg-6">
+                                        <h4>Motivo de la atención</h4>
+                                        <p id="mot_atent_confirmation2">-</p>
+                                        <h4>Ud ha escogido las siguientes ayudas:</h4>
+                                        <p id="submot_atent_confirmation2">-</p>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <h4>Observación</h4>
+                                        <p id="obs_confirmation2">-</p>
+                                    </div>
+                                </div>
+                                <div class='modal-footer'>
+                                    <button class='btn btn-default' data-dismiss='modal' type='button'>Volver</button>
+                                    <button class='btn btn-success' type='button' onclick="enviarFormulario2()">Ingresar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-custom">
+                <div class='modal fade' id='confirmationformularioAsistenciaSocial3' tabindex='-1'>
+                    <div class='modal-dialog'>
+                        <div class='modal-content'>
+                            <div class='modal-header'>
+                                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                                <h3 class='modal-title' id='myModalLabel'>Confirmación</h3>
+                            </div>
+                            <div class='modal-body'>
+                                <h5>A continuación se muestra el motivo y las observaciones ingresadas en el formulario de atención social. Favor leer detalladamente y confirmar con el botón registrar. De lo contrario, vuelva y modifique los datos que sean necesarios.</h5>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-12 col-lg-6">
+                                        <h4>Motivo de la atención</h4>
+                                        <p id="mot_atent_confirmation3">-</p>
+                                        <h4>Ud ha escogido las siguientes ayudas:</h4>
+                                        <p id="submot_atent_confirmation3">-</p>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <h4>Observación</h4>
+                                        <p id="obs_confirmation3">-</p>
+                                    </div>
+                                </div>
+                                <div class='modal-footer'>
+                                    <button class='btn btn-default' data-dismiss='modal' type='button'>Volver</button>
+                                    <button class='btn btn-success' type='button' onclick="enviarFormulario3()">Registrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-custom">
+                <div class='modal fade' id='confirmationformularioAsistenciaSocial4' tabindex='-1'>
+                    <div class='modal-dialog'>
+                        <div class='modal-content'>
+                            <div class='modal-header'>
+                                <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                                <h3 class='modal-title' id='myModalLabel'>Confirmación</h3>
+                            </div>
+                            <div class='modal-body'>
+                                <h5>A continuación se muestra el motivo y las observaciones ingresadas en el formulario de atención social. Favor leer detalladamente y confirmar con el botón registrar. De lo contrario, vuelva y modifique los datos que sean necesarios.</h5>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-12 col-lg-6">
+                                        <h4>Motivo de la atención</h4>
+                                        <p id="mot_atent_confirmation4">-</p>
+                                        <h4>Ud ha escogido las siguientes ayudas:</h4>
+                                        <p id="submot_atent_confirmation4">-</p>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <h4>Observación</h4>
+                                        <p id="obs_confirmation4">-</p>
+                                    </div>
+                                </div>
+                                <div class='modal-footer'>
+                                    <button class='btn btn-default' data-dismiss='modal' type='button'>Volver</button>
+                                    <button class='btn btn-success' type='button' onclick="enviarFormulario4()">Registrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </section>
 
     </div>

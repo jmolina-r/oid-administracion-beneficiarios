@@ -23,7 +23,7 @@ class CreateFichaPsicologiasTable extends Migration
             $table->integer('antecedentes_medicos_id')->unsigned();
             $table->integer('antecedentes_familiares_id')->unsigned();
             $table->integer('funcionario_id')->unsigned();
-           $table->integer('beneficiario_id')->unsigned();
+            $table->integer('beneficiario_id')->unsigned();
         });
 
         Schema::table('ficha_psicologias', function($table) {

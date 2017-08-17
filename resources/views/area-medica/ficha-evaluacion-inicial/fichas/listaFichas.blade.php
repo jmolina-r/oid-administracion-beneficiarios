@@ -70,12 +70,25 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class='col-sm-12'>
-                                <td><a class="btn btn-primary btn-block" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.create', $id)}}">Agregar Nueva Ficha de Evaluación Inicial</a></td>
+                        @if( $estado == 'cerrado')
+                            <div class="row">
+                                <div class='col-sm-12'>
+                                    @if($tipoFuncionario == 'kinesiologo')
+                                        <td><a class="btn btn-primary btn-block" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.create', $idBeneficiario)}}">Agregar Nueva Ficha de Evaluación Inicial de Kinesiología</a></td>
+                                    @endif
+                                    @if($tipoFuncionario == 'fonoaudiologo')
+                                        <td><a class="btn btn-primary btn-block" href="{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.create', $idBeneficiario)}}">Agregar Nueva Ficha de Evaluación Inicial de Fonoaudiología</a></td>
+                                    @endif
+                                    @if($tipoFuncionario == 'psicologo')
+                                        <td><a class="btn btn-primary btn-block" href="{{route('area-medica.ficha-evaluacion-inicial.psicologia.create', $idBeneficiario)}}">Agregar Nueva Ficha de Evaluación Inicial de Psicología</a></td>
+                                    @endif
+                                    @if($tipoFuncionario == 'terapeuta ocupacional')
+                                        <td><a class="btn btn-primary btn-block" href="{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar', $idBeneficiario)}}">Agregar Nueva Ficha de Evaluación Inicial de Terapia Ocupacional</a></td>
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-                        <hr>
+                            <hr>
+                        @endif
                         <div class='row'>
                             <div class='col-sm-12'>
                                 <div class='box'>
@@ -83,10 +96,13 @@
                                         <thead>
                                         <tr>
                                             <th>
-                                                <h3>Fecha de la Ficha de Evaluacion Inicial</h3>
+                                                <h3>Fecha</h3>
                                             </th>
                                             <th>
                                                 <h3>Área</h3>
+                                            </th>
+                                            <th>
+                                                <h3>Estado</h3>
                                             </th>
                                             <th></th>
                                             <th></th>
@@ -99,10 +115,14 @@
                                                 <tr>
                                                     <td>{{$ficha->created_at->format('d-m-Y')}}</td>
                                                     <td>Kinesiología</td>
+                                                    <td class="capitalize">{{$ficha->estado}}</td>
                                                     <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', $ficha->id)}}">Detalles</a></td>
                                                     <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', $ficha->id)}}">Ver como PDF</a></td>
-                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', $ficha->id)}}">Ficha de Alta</a></td>
-                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', $idUsuario, $id, $ficha->id)}}">Ver prestaciones</a></td>
+                                                    @if($ficha->estado == 'abierto')
+                                                        <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.informe-cierre.create', ['p1' => $ficha->funcionario_id, 'p2' => $idBeneficiario, 'p3' => $ficha->id])}}">Agregar Ficha de Cierre</a></td>
+                                                    @else
+                                                        <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.informe-cierre.show', ['p1' => $ficha->funcionario_id, 'p2' => $idBeneficiario, 'p3' => $ficha->id])}}">Ver Ficha de Cierre</a></td>
+                                                    @endif
                                                 </tr>
                                             @endforeach
                                         @endif

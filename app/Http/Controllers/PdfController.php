@@ -243,29 +243,46 @@ class PdfController extends Controller
 
     public function invoice5()
     {
-        // El que mas ha trabajado
-        $atencionAnualKines=FichaKinesiologia::whereYear('ficha_kinesiologias.created_at', '=', date('Y'))
+        // area mas trabajadora
+
+        $atencionAnualKines=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
+            ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
+            ->where('funcionarios.tipo_funcionario_id','=',2)
             ->count();
-        $atencionMensualKines=FichaKinesiologia::whereYear('ficha_kinesiologias.created_at', '=', date('Y'))
-            ->whereMonth('ficha_kinesiologias.created_at', '=', date('m'))
+
+        $atencionMensualKines=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
+            ->whereMonth('prestacion_realizadas.fecha', '=', date('m'))
+            ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
+            ->where('funcionarios.tipo_funcionario_id','=',2)
             ->count();
-        $atencionAnualFonos=0;
-        $atencionMensualFonos=0;
-        /*   $atencionAnualFonos=FichaFonoaudiologia::whereYear('created_at', '=', date('Y'))
-               ->count();
-           $atencionMensualFonos=FichaFonoaudiologia::whereYear('created_at', '=', date('Y'))
-               ->whereMonth('ficha_kinesiologias.created_at', '=', date('m'))
-               ->count(); */
-        $atencionAnualPsicos=FichaPsicologia::whereYear('created_at', '=', date('Y'))
+        $atencionAnualFonos=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
+            ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
+            ->where('funcionarios.tipo_funcionario_id','=',5)
             ->count();
-        $atencionMensualPsicos=FichaPsicologia::whereYear('created_at', '=', date('Y'))
-            ->whereMonth('created_at', '=', date('m'))
+        $atencionMensualFonos=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
+            ->whereMonth('prestacion_realizadas.fecha', '=', date('m'))
+            ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
+            ->where('funcionarios.tipo_funcionario_id','=',5)
             ->count();
-        $atencionAnualTers=FichaTerapiaOcupacional::whereYear('created_at', '=', date('Y'))
+        $atencionAnualPsicos=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
+            ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
+            ->where('funcionarios.tipo_funcionario_id','=',1)
             ->count();
-        $atencionMensualTers=FichaTerapiaOcupacional::whereYear('created_at', '=', date('Y'))
-            ->whereMonth('created_at', '=', date('m'))
+        $atencionMensualPsicos=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
+            ->whereMonth('prestacion_realizadas.fecha', '=', date('m'))
+            ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
+            ->where('funcionarios.tipo_funcionario_id','=',1)
             ->count();
+        $atencionAnualTers=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
+            ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
+            ->where('funcionarios.tipo_funcionario_id','=',4)
+            ->count();
+        $atencionMensualTers=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
+            ->whereMonth('prestacion_realizadas.fecha', '=', date('m'))
+            ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
+            ->where('funcionarios.tipo_funcionario_id','=',4)
+            ->count();
+
         $view =  \View::make('pdf.invoice5', compact('atencionAnualKines','atencionMensualKines','atencionAnualFonos','atencionMensualFonos',
             'atencionAnualPsicos','atencionMensualPsicos','atencionAnualTers','atencionMensualTers'))->render();
         $pdf = \App::make('dompdf.wrapper');

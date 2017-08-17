@@ -36,10 +36,10 @@
 </head>
 <body>
 <div class="div1">
-    <h1>Reporte Terapías</h1>
+    <h1>Reporte Fonoaudiología</h1>
     <table>
         <tr >
-            <th class="th1">Datos Personales Terapeuta</th>
+            <th class="th1">Datos Personales Fonoaudiologo(a)</th>
             <th class="th1"></th>
             <th class="th1"></th>
         </tr>
@@ -66,40 +66,41 @@
     </table>
     <table>
         <tr >
-            <th class="th1">Terapías</th>
+            <th class="th1">Fonoaudiología</th>
             <th class="th1"></th>
             <th class="th1"></th>
         </tr>
         <tr>
             <td>ATENCIONES ANUALES</td>
             <td></td>
-            <td>{{$atencionAnualTer}}</td>
+            <td>{{$atencionAnualFono}}</td>
         </tr>
         <tr>
             <td>ATENCIONES MENSUALES</td>
             <td></td>
-            <td>{{$atencionMensualTer}}</td>
+            <td>{{$atencionMensualFono}}</td>
         </tr>
         <tr>
-            <td>CANTIDAD DE ASISTENCIA DE PACIENTES ANUAL</td>
+            <td>CANTIDAD DE USUARIOS ASISTENTES EN EL AÑO</td>
             <td></td>
-            <td>{{$asistenciaTerAnual}}</td>
+            <td>{{$asistenciaFonoAnual}}</td>
         </tr>
         <tr>
-            <td>CANTIDAD DE ASISTENCIA DE PACIENTES MENSUAL</td>
+            <td>CANTIDAD DE USUARIOS ASISTENTES EN EL MES</td>
             <td></td>
-            <td>{{$asistenciaTerMensual}}</td>
+            <td>{{$asistenciaFonoMensual}}</td>
         </tr>
         <tr>
-            <td>CANTIDAD DE INASISTENCIA DE PACIENTES ANUAL</td>
+            <td>CANTIDAD DE USUARIOS INASISTENTES EN EL AÑO</td>
             <td></td>
-            <td>{{$inasistenciaTerAnual}}</td>
+            <td>{{$inasistenciaFonoAnual}}</td>
         </tr>
         <tr>
-            <td>CANTIDAD DE INASISTENCIA DE PACIENTES MENSUAL</td>
+            <td>CANTIDAD DE USUARIOS INASISTENTES EN EL MES</td>
             <td></td>
-            <td>{{$inasistenciaTerMensual}}</td>
+            <td>{{$inasistenciaFonoMensual}}</td>
         </tr>
+
     </table>
 </div>
 <br>

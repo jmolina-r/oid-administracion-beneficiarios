@@ -9,7 +9,7 @@ use App\ValControlEsfinter;
 use App\ValEvaluacion;
 use App\ValSocial;
 use App\FichaKinesiologia;
-use App\User;
+use App\Funcionario;
 use App\ValDeambulacion;
 use App\ValMotora;
 use App\ValMovilidad;
@@ -52,14 +52,25 @@ class FichaKinesiologiaController extends Controller
      */
     public function store(Request $request)
     {
+        $ultimaFicha = FichaKinesiologia::where('beneficiario_id', $request->input('id'))->orderBy('created_at', $direction = 'des')->first();
+
+        if($ultimaFicha != null){
+            if($ultimaFicha->estado == 'abierto'){
+                return view('area-medica.ficha-evaluacion-inicial.Error');
+            }
+        }
 
         // Validate Fields
         $this->validate($request, $this->rules($request));
 
         if (Auth::check())
         {
-            $idUsuario = Auth::user()->id;
+            
             $idFuncionario=Auth::user()->funcionario_id;
+            if($idFuncionario==null)
+            {
+                return view('area-medica.ficha-evaluacion-inicial.Error');
+            }
         }
 
         try{
@@ -185,10 +196,9 @@ class FichaKinesiologiaController extends Controller
         catch(Exception $e){
 
             //procedimiento en caso de reportar errores
-
+            return view('area-medica.ficha-evaluacion-inicial.Error');
         }
-        $id = $request->input('id');
-        return view('home');
+        return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('id')));
     }
 
     /**
@@ -212,10 +222,11 @@ class FichaKinesiologiaController extends Controller
         $fichaKinesiologia = FichaKinesiologia::find($id);
 
         if($fichaKinesiologia == null){
-            return view('home');
+            return view('area-medica.ficha-evaluacion-inicial.Error');
         }
 
         $persona = Beneficiario::find($fichaKinesiologia->beneficiario_id);
+        $funcionario=Funcionario::find($fichaKinesiologia->funcionario_id);
 
         $valSocial = ValSocial::find($fichaKinesiologia->val_social_id);
         $valSensorial = ValSensorial::find($fichaKinesiologia->val_sensorial_id);
@@ -240,6 +251,7 @@ class FichaKinesiologiaController extends Controller
             ->with(compact('valComCog'))
             ->with(compact('valAutocuidado'))
             ->with(compact('antecedentesMorbidos'))
+            ->with(compact('funcionario'))
             ;
     }
 

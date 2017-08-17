@@ -23,7 +23,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'password' => $password ?: $password = bcrypt('123456'),
         'status' => 1,
         'remember_token' => str_random(10),
-        'funcionario_id' => $faker->numberBetween($min = 1, $max = 3),
     ];
 });
 
@@ -71,7 +70,7 @@ $factory->define(App\PrestacionRealizada::class, function (Faker\Generator $fake
     return [
         'fecha' => $faker->date('y-m-d','now'),
 
-        'user_id' => $faker->numberBetween($min = 1, $max = 5),
+        'funcionario_id' => $faker->numberBetween($min = 1, $max = 5),
 
         'beneficiario_id' => $faker->numberBetween($min = 1, $max = 150),
 
@@ -79,6 +78,7 @@ $factory->define(App\PrestacionRealizada::class, function (Faker\Generator $fake
     ];
 });
 
+/*
 $factory->define(App\FichaAtencionSocial::class, function (Faker\Generator $faker) {
 
     return [
@@ -87,7 +87,7 @@ $factory->define(App\FichaAtencionSocial::class, function (Faker\Generator $fake
 
         'prestacion_realizadas_id' => $faker->numberBetween($min = 1, $max = 100)
     ];
-});
+});*/
 /*
 $factory->define(App\TipoSubmotivoSocial::class, function (Faker\Generator $faker) {
 

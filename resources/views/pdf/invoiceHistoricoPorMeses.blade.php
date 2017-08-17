@@ -36,69 +36,48 @@
 </head>
 <body>
 <div class="div1">
-    <h1>Reporte Terapías</h1>
+    <h1>Reporte Histórico</h1>
     <table>
         <tr >
-            <th class="th1">Datos Personales Terapeuta</th>
+            <th class="th1">Fecha: {{$mesuno}}/{{$aniouno}}  -  {{$mesdos}}/{{$aniodos}}</th>
             <th class="th1"></th>
             <th class="th1"></th>
         </tr>
         <tr>
-            <td>Nombre Completo</td>
+            <td>USUARIOS INGRESADOS EN EL PERIODO</td>
             <td></td>
-            <td>{{ $nombres }} {{ $apellidos }}</td>
+            <td>{{ $cantIngresadosAño2 }}</td>
         </tr>
-        <tr>
-            <td>Rut</td>
+            <td>USUARIOS ATENDIDOS EN EL PERIODO</td>
             <td></td>
-            <td>{{ $rut }}</td>
-        </tr>
-        <tr>
-            <td>Telefono</td>
-            <td></td>
-            <td>{{ $telefono }}</td>
-        </tr>
-        <tr>
-            <td>Dirección</td>
-            <td></td>
-            <td>{{ $direccion }}</td>
+            <td>{{ $cantAtencionAño2 }}</td>
         </tr>
     </table>
     <table>
         <tr >
-            <th class="th1">Terapías</th>
+            <th class="th1">ATENCIÓN POR ÁREAS</th>
             <th class="th1"></th>
             <th class="th1"></th>
         </tr>
-        <tr>
-            <td>ATENCIONES ANUALES</td>
+         <tr>
+            <td>PSICOLOGÍA USUARIOS ATENDIDOS EN EL PERIODO</td>
             <td></td>
-            <td>{{$atencionAnualTer}}</td>
+            <td>{{ $atencionPsico }}</td>
         </tr>
         <tr>
-            <td>ATENCIONES MENSUALES</td>
+            <td>KINESIOLOGÍA USUARIOS ATENDIDOS EN EL PERIODO</td>
             <td></td>
-            <td>{{$atencionMensualTer}}</td>
+            <td>{{ $atencionKines }}</td>
         </tr>
         <tr>
-            <td>CANTIDAD DE ASISTENCIA DE PACIENTES ANUAL</td>
+            <td>FONOAUDIOLOGÍA USUARIOS ATENDIDOS EN EL PERIODO</td>
             <td></td>
-            <td>{{$asistenciaTerAnual}}</td>
+            <td>{{ $atencionFono }}</td>
         </tr>
         <tr>
-            <td>CANTIDAD DE ASISTENCIA DE PACIENTES MENSUAL</td>
+            <td>TERAPIA OCUPACIONAL USUARIOS ATENDIDOS EN EL PERIODO</td>
             <td></td>
-            <td>{{$asistenciaTerMensual}}</td>
-        </tr>
-        <tr>
-            <td>CANTIDAD DE INASISTENCIA DE PACIENTES ANUAL</td>
-            <td></td>
-            <td>{{$inasistenciaTerAnual}}</td>
-        </tr>
-        <tr>
-            <td>CANTIDAD DE INASISTENCIA DE PACIENTES MENSUAL</td>
-            <td></td>
-            <td>{{$inasistenciaTerMensual}}</td>
+            <td>{{ $atencionTers }}</td>
         </tr>
     </table>
 </div>

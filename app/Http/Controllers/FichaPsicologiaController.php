@@ -6,6 +6,7 @@ use App\AntecedentesFamiliares;
 use App\AntecedentesMedicos;
 use App\FichaPsicologia;
 use App\Beneficiario;
+use App\Funcionario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,6 +42,13 @@ class FichaPsicologiaController extends Controller
      */
     public function store(Request $request)
     {
+        $ultimaFicha = FichaPsicologia::where('beneficiario_id', $request->input('id'))->orderBy('created_at', $direction = 'des');
+
+        if($ultimaFicha->first() != null){
+            if($ultimaFicha->first()->estado == 'abierto'){
+                return view('area-medica.ficha-evaluacion-inicial.Error');
+            }
+        }
 
         // Validate Fields
         $this->validate($request, $this->rules($request));
@@ -49,6 +57,10 @@ class FichaPsicologiaController extends Controller
         {
             $idUsuario = Auth::user()->id;
             $idFuncionario=Auth::user()->funcionario_id;
+            if($idFuncionario==null)
+            {
+                return view('area-medica.ficha-evaluacion-inicial.Error');
+            }
         }
 
         try{
@@ -109,12 +121,9 @@ class FichaPsicologiaController extends Controller
         catch(Exception $e){
 
             //procedimiento en caso de reportar errores
-
+            return view('area-medica.ficha-evaluacion-inicial.Error');
         }
-        $id = $request->input('id');
-        //return view('area-medica.ficha-evaluacion-inicial.psicologia.create')
-            //->with(compact('id'));
-        return view('home');
+        return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('id')));
     }
 
     /**
@@ -137,11 +146,11 @@ class FichaPsicologiaController extends Controller
         $fichaPsicologia = FichaPsicologia::find($id);
 
         if($fichaPsicologia == null){
-            return view('home');
+            return view('area-medica.ficha-evaluacion-inicial.Error');
         }
 
         $persona = Beneficiario::find($fichaPsicologia->beneficiario_id);
-
+        $funcionario=Funcionario::find($fichaPsicologia->funcionario_id);
         $antecedentesMedicos = AntecedentesMedicos::find($fichaPsicologia->antecedentes_medicos_id);
         $antecedentesFamiliares = AntecedentesFamiliares::find($fichaPsicologia->antecedentes_familiares_id);
 
@@ -151,6 +160,7 @@ class FichaPsicologiaController extends Controller
             ->with(compact('persona'))
             ->with(compact('antecedentesMedicos'))
             ->with(compact('antecedentesFamiliares'))
+            ->with(compact('funcionario'))
             ;
     }
 

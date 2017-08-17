@@ -44,11 +44,6 @@
             <th class="th1"></th>
         </tr>
         <tr>
-            <td>TOTAL DE USUARIOS EN EL AÑO</td>
-            <td></td>
-            <td>{{ $cantUsuarioTotal }}</td>
-        </tr>
-        <tr>
             <td>USUARIOS INGRESADOS EN EL AÑO</td>
             <td></td>
             <td>{{ $cantIngresadosAño }}</td>
@@ -67,6 +62,53 @@
             <td>ATENCIONES DEL MES</td>
             <td></td>
             <td>{{ $atencionMensual }}</td>
+        </tr>
+    </table>
+    <table>
+        <tr >
+            <th class="th1">ATENCION POR ÁREAS</th>
+            <th class="th1"></th>
+            <th class="th1"></th>
+        </tr>
+        <tr>
+            <td>PSICOLOGÍA USUARIOS ATENDIDOS EN EL AÑO</td>
+            <td></td>
+            <td>{{ $atencionPsico }}</td>
+        </tr>
+        <tr>
+            <td>KINESIOLOGÍA USUARIOS ATENDIDOS EN EL AÑO</td>
+            <td></td>
+            <td>{{ $atencionKine }}</td>
+        </tr>
+        <tr>
+            <td>FONOAUDIOLOGÍA USUARIOS ATENDIDOS EN EL AÑO</td>
+            <td></td>
+            <td>{{ $atencionFono }}</td>
+        </tr>
+        <tr>
+            <td>TERAPIA OCUPACIONAL USUARIOS ATENDIDOS EN EL AÑO</td>
+            <td></td>
+            <td>{{ $atencionTers }}</td>
+        </tr>
+        <tr>
+            <td>PSICOLOGÍA USUARIOS ATENDIDOS EN EL MES</td>
+            <td></td>
+            <td>{{ $atencionPsicoMes }}</td>
+        </tr>
+        <tr>
+            <td>KINESIOLOGÍA USUARIOS ATENDIDOS EN EL MES</td>
+            <td></td>
+            <td>{{ $atencionKinesMes }}</td>
+        </tr>
+        <tr>
+            <td>FONOAUDIOLOGÍA USUARIOS ATENDIDOS EN EL MES</td>
+            <td></td>
+            <td>{{ $atencionFonoMes }}</td>
+        </tr>
+        <tr>
+            <td>TERAPIA OCUPACIONAL USUARIOS ATENDIDOS EN EL MES</td>
+            <td></td>
+            <td>{{ $atencionTersMes }}</td>
         </tr>
     </table>
 </div>

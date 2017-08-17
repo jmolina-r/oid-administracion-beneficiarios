@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class InformeCierre extends Model
 {
-    protected $fillable = ['cant_sesiones', 'fecha_inicio', 'fecha_termino', 'motivo_atencion', 'objetivos_trabajados',  'desercion', 'culmino_proceso', 'observacion', 'area'];
+    protected $fillable = ['desercion', 'culmino_proceso', 'observacion', 'area', 'ficha', 'beneficiario_id'];
 
     public function beneficiario()
     {

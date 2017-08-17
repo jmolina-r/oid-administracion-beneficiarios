@@ -61,8 +61,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-12 col-lg-12">
-                                <h1 class="capitalize">Paciente:</h1>
+                            <div class="col-sm-6 col-lg-6">
+                                <h1 class="capitalize">Paciente: {{$beneficiario->nombre}} {{$beneficiario->apellido}}</h1>
+                            </div>
+                            <div class="col-sm-6 col-lg-6">
+                                <h1 class="capitalize">ID de la ficha: {{$id}}</h1>
                             </div>
                         </div>
                         <div class="col-xs-12">
@@ -72,48 +75,45 @@
                                 <div class="col-md-12">
                                     <div class="col-md-4">
                                         <h3>Ayudas Técnicas</h3>
-                                        <p class="capitalize">no ha solicitado ayuda tecnica</p>
+                                        @if(count($ayudas)==0)
+                                            <p class="capitalize">no existe observación</p>
+                                        @else
+                                             @foreach($ayudas as $ayuda)
+                                                @if($ayuda->tipo = 'tecnico')
+                                                <p class="capitalize">{{$ayuda->nombre}}</p>
+                                                @endif
+                                             @endforeach
+                                        @endif
+                                       
                                     </div>
                                     <div class="col-md-4">
                                         <h3>Ayudas Sociales</h3>
-                                        <p class="capitalize">no ha solicitado ayuda social</p>
+                                        @if(count($ayudas)==0)
+                                            <p class="capitalize">el usuario no ha pedido ayuda social</p>
+                                        @else
+                                             @foreach($ayudas as $ayuda)
+                                                @if($ayuda->tipo = 'social')
+                                                <p class="capitalize">{{$ayuda->nombre}}</p>
+                                                @endif
+                                             @endforeach
+                                        @endif
                                     </div>
                                     <div class="col-md-4">
                                         <h3>Observación</h3>
-                                        <p class="capitalize">no ha solicitado ningun tipo de ayuda</p>
+                                         @if($observacionAyuda == null)
+                                            <p class="capitalize">el usuario no ha pedido ayudas</p>
+                                        @else
+                                            <p class="capitalize">{{$observacionAyuda}}</p>
+                                             
+                                        @endif
                                     </div>
                                 </div>
                                 
-                            </div>
-                            <div class="row">
-                                <h4>Antecedentes Visita Domiciliaria</h4>
-                                <div class="col-sm-12 col-lg-12">
-                                    <p class="tit">1. Situación Familiar</p>
-                                    <p></p>
-                                  
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <h4>Antecedentes de Orientación</h4>
-                                <div class="col-md-12">
-                                    
-                                </div>
-                                
-       
                             </div>
                             
-                            <div class="row">
-                                <h4>Antecedentes Becas</h4>
-                                <div class="col-sm-12 col-lg-6">
-                                    <div class="col-sm-12 col-lg-12">
-                                        <p class="capitalize"><span class="tit">1. Conexión con el medio</span><br></p>
-                                        
-                                    </div>
-                                    
-                                </div>
-                               
-                            </div>
+                            
+                            
+                            
                         </div>
                     </div>
                 </div>
