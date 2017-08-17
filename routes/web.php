@@ -314,7 +314,7 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     'as' => 'reportabilidad.reportabilidadHistorica'
     ]);
 
-    Route::get('/reportabilidadHistoricaEntreMeses',[
+    Route::get('/reportabilidadHistoricaEntreMes',[
     'uses'=>'ReportabilidadController@showResultHistoricaEntreMes',
     'as' => 'reportabilidad.reportabilidadHistEntreMes'
     ]);
