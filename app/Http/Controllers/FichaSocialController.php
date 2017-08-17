@@ -31,6 +31,40 @@ class FichaSocialController extends Controller
  
     public function post(Request $request){
 
+
+        $ayudas=TipoAyudaTecnicoSocial::join('motivo_atencion_socials','tipo_ayuda_tecnico_socials.tipo_motivo_social_id','=','motivo_atencion_socials.tipo_motivo_social_id')
+            ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$IDFICHA)
+            ->where('motivo_atencion_socials.tipo_motivo_social_id','=',1)
+            ->where('motivo_atencion_socials.tipo_ayuda_id','=','tipo_ayuda_tecnico_socials.id')->get();
+
+        $observacionAyuda=MotivoAtencionSocial::where('ficha_atencion_social_id','=',$IDFICHA)
+            ->where('tipo_motivo_social_id','=',1)->get();
+
+
+        $orientacion=TipoSubmotivoSocial::where('tipo_submotivo_socials.tipo_motivo_social_id','=',2)
+            ->join('motivo_atencion_socials','tipo_submotivo_socials.tipo_motivo_social_id','=','motivo_atencion_socials.tipo_motivo_social_id')
+            ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$IDFICHA)
+            ->get();
+
+        $observacionOrientacion=MotivoAtencionSocial::where('ficha_atencion_social_id','=',$IDFICHA)
+            ->where('tipo_motivo_social_id','=',2)->select('observacion')->first();
+
+        $visitaDom=TipoSubmotivoSocial::where('tipo_submotivo_socials.tipo_motivo_social_id','=',3)
+            ->join('motivo_atencion_socials','tipo_submotivo_socials.tipo_motivo_social_id','=','motivo_atencion_socials.tipo_motivo_social_id')
+            ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$IDFICHA)
+            ->get();
+        $observacionVisitaDom=MotivoAtencionSocial::where('ficha_atencion_social_id','=',$IDFICHA)
+            ->where('tipo_motivo_social_id','=',3)->select('observacion')->first();
+
+        $becas=TipoSubmotivoSocial::where('tipo_submotivo_socials.tipo_motivo_social_id','=',4)
+            ->join('motivo_atencion_socials','tipo_submotivo_socials.tipo_motivo_social_id','=','motivo_atencion_socials.tipo_motivo_social_id')
+            ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$IDFICHA)
+            ->get();
+        $observacionBecas=MotivoAtencionSocial::where('ficha_atencion_social_id','=',$IDFICHA)
+            ->where('tipo_motivo_social_id','=',4)->select('observacion')->first();
+
+        $benefi=Beneficiario::join('ficha_atencion_socials','beneficiarios.id','=','ficha_atencion_socials.beneficiario_id')->get();
+
         /*
             Buscar que panel esta activo para poder rescatar los datos de este, depues se hace un switch por cada tab para generar 
             el envio de datos a la base de datos por cada uno.
