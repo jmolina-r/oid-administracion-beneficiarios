@@ -16,7 +16,7 @@ class CreateMotivoAtencionSocialsTable extends Migration
         Schema::create('motivo_atencion_socials', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('observación');
+            $table->string('observacion');
             $table->date('fecha_visita');
             $table->string('documento')->nullable();
             
