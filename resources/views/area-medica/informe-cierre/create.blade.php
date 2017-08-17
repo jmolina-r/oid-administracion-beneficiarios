@@ -125,7 +125,7 @@
                                                     <hr/>
                                                 </div>
                                                 <div class="col-md-12 form-group">
-                                                    <label class="col-md-4 control-label" for="cant_sesiones">Cantidad de sesiones</label>
+                                                    <label class="col-md-4 control-label" for="cant_sesiones">Cantidad de Prestaciones</label>
                                                     <div class="col-md-8 controls">
                                                         <p></p>
                                                         <p>{{ count($prestacionesRealizadas) }}</p>

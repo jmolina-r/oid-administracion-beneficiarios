@@ -55,6 +55,8 @@
         slotEventOverlap: false,
         locale: 'es',
         allDaySlot: false,
+        slotLabelFormat: 'H:mm',
+        timeFormat: 'H:mm',
 
         contentHeight: parseInt(document.getElementById("contentHeight").value),
         minTime: document.getElementById("minTime").value,
@@ -160,6 +162,44 @@
             });
         },
         eventClick: function(calEvent, jsEvent, view) {
+
+            var idHoraAgendada = calEvent.id;
+
+            var existeFicha = "";
+
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "/registro_prestacion/checkfichaactiva",
+                type: "POST",
+                data: {
+                    idHora: idHoraAgendada
+                },
+                async: false,
+                success: function(data, textStatus, jqXHR) {
+                    existeFicha = data;
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    return;
+                }
+            });
+
+            if(puedeAsignarHora()=="false"){
+                if(existeFicha == "false"){
+                    if(confirm("El beneficiario no tiene ficha inicial activa. Presione Cancelar para marcar la inasistencia.")){
+                        return;
+                    }else{
+                        calEvent.url = '/registro_prestacion/inasistencia/' + calEvent.id;
+                        window.open(calEvent.url, '_self');
+                    }
+
+
+
+                }
+            }
+
+
             if(calEvent.realizado) {
                 alert("Ya se han asignado prestaciones a esa hora agendada");
                 return;
@@ -170,7 +210,7 @@
                         eliminarHora(calEvent.id);
                     }else{
                         if(puedeAtenderHora()=="true"){
-                            if(confirm("¿El beneficiario registra asistencia?")){
+                            if(confirm("¿El beneficiario registra asistencia? o presione Cancelar para marcar la inasistencia.")){
                                 calEvent.url = '/registro_prestacion/' + calEvent.id;
                                 window.open(calEvent.url, '_self');
                             }else{

@@ -40,7 +40,7 @@ class UpdateController extends Controller
             'username' => 'required|string|max:255|exists:users,username',
             'email' => 'required|string|email|max:255',
             'password' => 'nullable|string|min:6|confirmed',
-            'roles' => 'required',
+            'roles' => 'required|exists:roles,id',
             'status' => 'required|boolean',
             'funcionario_id' => 'nullable|exists:funcionarios,id|unique:users,funcionario_id'
         ];
@@ -59,7 +59,8 @@ class UpdateController extends Controller
         $this->validate($request, $this->rules($request));
         $updateArray = [
             'email' => $request['email'],
-            'status' => $request['status']
+            'status' => $request['status'],
+            'role_id' => $request['roles']
         ];
 
         if($request['password'] != null && $request['password'] != '') {
@@ -73,22 +74,22 @@ class UpdateController extends Controller
         $user->update($updateArray);
 
 
-        // Role Update
-
-        foreach ($user->roles as $role) {
-            $role->pivot->delete();
-        }
-
-        if ($request['roles']) {
-            foreach ($request['roles'] as $key => $val) {
-                if (is_numeric($val)) {
-                    $role = Role::find($val);
-                    if ($role) {
-                        $user->roles()->save($role);
-                    }
-                }
-            }
-        }
+        // // Role Update
+        //
+        // foreach ($user->roles as $role) {
+        //     $role->pivot->delete();
+        // }
+        //
+        // if ($request['roles']) {
+        //     foreach ($request['roles'] as $key => $val) {
+        //         if (is_numeric($val)) {
+        //             $role = Role::find($val);
+        //             if ($role) {
+        //                 $user->roles()->save($role);
+        //             }
+        //         }
+        //     }
+        // }
 
 
         return redirect()->route('find');;

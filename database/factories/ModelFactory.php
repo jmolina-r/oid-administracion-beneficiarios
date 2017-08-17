@@ -22,6 +22,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('123456'),
         'status' => 1,
+        'role_id' => $faker->regexify('[1-9]'),
         'remember_token' => str_random(10),
     ];
 });
@@ -40,7 +41,7 @@ $factory->define(App\Beneficiario::class, function (Faker\Generator $faker) {
         'apellido' => strtolower($faker->lastName),
         'fecha_nacimiento' => $faker->dateTimeBetween($startDate = '-60 years', $endDate = '-4 years', $timezone = date_default_timezone_get()),
         'sexo' => $faker->regexify('(masculino|femenino)'),
-        'rut' => $faker->unique()->regexify('\1[0-9]{6}\-(k|[0-9])'),
+        'rut' => $faker->unique()->regexify('\1?[0-9]{6}\-(k|[0-9])'),
         'pais_id' => $faker->numberBetween($min = 1, $max = 70),
         'estado_civil_id' => $faker->numberBetween($min = 1, $max = 5),
         'educacion_id' => $faker->numberBetween($min = 1, $max = 9),

@@ -3,7 +3,7 @@
 
 <!-- meta atributo title -->
 @section('title')
-Registro de Beneficiario - OID
+Administrar Beneficiarios - OID
 @endsection
 
 <!-- inyeccion de estilos -->
@@ -102,6 +102,9 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                 <thead>
                                                                     <tr>
                                                                         <th>
+                                                                            #
+                                                                        </th>
+                                                                        <th>
                                                                             Nombre
                                                                         </th>
                                                                         <th>
@@ -118,6 +121,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                 </thead>
                                                                 <tbody id="listaBeneficiario">
                                                                     <tr>
+                                                                        <td></td>
                                                                         <td>
                                                                             No hay datos para mostrar.
                                                                         </td>
@@ -139,9 +143,8 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                         </div>
                     </div>
                 </div>
+                @include('partials.footer')
             </div>
-            @include('partials.footer')
-        </div>
     </section>
 </div>
 @endsection
