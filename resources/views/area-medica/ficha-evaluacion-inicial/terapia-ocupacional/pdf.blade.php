@@ -705,7 +705,7 @@
         <div class="tabla">
             <div class="cabecera">
                 <div class="encabezado">
-                    CATEGORÍA
+                    ACTIVIDAD
                 </div>
                 <div class="encabezado">
                     PUNTAJE
@@ -714,78 +714,104 @@
                     COMENTARIOS
                 </div>
             </div>
-            <div class="cabecera">
+            <div class="especial">
                 <div class="encabezado">
-                    AUTOCUIDADO
+                    CUIDADOS PERSONALES
                 </div>
             </div>
-            @if(isset($fichaTerapiaOcupacional->val_autocuidado->puntaje_alimentacion) || isset($fichaTerapiaOcupacional->val_autocuidado->coment_alimentacion))
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->alimentacion) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_alimen))
                 <div class="cuerpo">
                     <div class="dato">Alimentación</div>
-                    @isset($fichaTerapiaOcupacional->val_autocuidado->puntaje_alimentacion)
-                    <div class="dato">{{ $fichaTerapiaOcupacional->val_autocuidado->puntaje_alimentacion }}</div>
+                    <div class="dato">
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->alimentacion)
+                        {{ $fichaTerapiaOcupacional->actividades_vida_diaria->alimentacion }}
                     @endisset
-                    @isset($fichaTerapiaOcupacional->val_autocuidado->coment_alimentacion)
-                    <div class="dato">{{ $fichaTerapiaOcupacional->val_autocuidado->coment_alimentacion }}</div>
+                    </div>
+                    <div class="dato">
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_alimen)
+                        {{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_alimen }}
                     @endisset
+                    </div>
                 </div>
             @endif
-            @if(isset($fichaTerapiaOcupacional->val_autocuidado->puntaje_arreglo_pers) || isset($fichaTerapiaOcupacional->val_autocuidado->coment_arreglo_pers))
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->arreglo_personal) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_arreglo))
                 <div class="cuerpo">
                     <div class="dato">Arreglo Personal</div>
                     <div class="dato">
-                        @isset($fichaTerapiaOcupacional->val_autocuidado->puntaje_arreglo_pers)
-                        {{ $fichaTerapiaOcupacional->val_autocuidado->puntaje_arreglo_pers }}
+                        @isset($fichaTerapiaOcupacional->actividades_vida_diaria->arreglo_personal)
+                        {{ $fichaTerapiaOcupacional->actividades_vida_diaria->arreglo_personal }}
                         @endisset
                     </div>
                     <div class="dato">
-                        @isset($fichaTerapiaOcupacional->val_autocuidado->coment_arreglo_pers)
-                        {{ $fichaTerapiaOcupacional->val_autocuidado->coment_arreglo_pers }}
+                        @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_arreglo)
+                        {{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_arreglo }}
                         @endisset
                     </div>
                 </div>
             @endif
-            @if(isset($fichaTerapiaOcupacional->val_autocuidado->puntaje_bano) || isset($fichaTerapiaOcupacional->val_autocuidado->coment_bano))
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->banio) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_banio))
                 <div class="cuerpo">
                     <div class="dato">Baño</div>
-                    @isset($fichaTerapiaOcupacional->val_autocuidado->puntaje_bano)
-                    <div class="dato">{{ $fichaTerapiaOcupacional->val_autocuidado->puntaje_bano }}</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->banio)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->banio }}</div>
                     @endisset
-                    @isset($fichaTerapiaOcupacional->val_autocuidado->coment_bano)
-                    <div class="dato">{{ $fichaTerapiaOcupacional->val_autocuidado->coment_bano }}</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_banio)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_banio }}</div>
                     @endisset
                 </div>
             @endif
-            @if(isset($fichaTerapiaOcupacional->val_autocuidado->puntaje_vest_sup) || isset($fichaTerapiaOcupacional->val_autocuidado->coment_vest_sup))
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->vestuario_superior) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_superior))
                 <div class="cuerpo">
                     <div class="dato">Vestuario Superior</div>
-                    @isset($fichaTerapiaOcupacional->val_autocuidado->puntaje_vest_sup)
-                    <div class="dato">{{ $fichaTerapiaOcupacional->val_autocuidado->puntaje_vest_sup }}</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->vestuario_superior)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->vestuario_superior }}</div>
                     @endisset
-                    @isset($fichaTerapiaOcupacional->val_autocuidado->coment_vest_sup)
-                    <div class="dato">{{ $fichaTerapiaOcupacional->val_autocuidado->coment_vest_sup }}</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_superior)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_superior }}</div>
                     @endisset
                 </div>
             @endif
-            @if(isset($fichaTerapiaOcupacional->val_autocuidado->puntaje_vest_inf) || isset($fichaTerapiaOcupacional->val_autocuidado->coment_vest_inf))
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->vestuario_inferior) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_inferior))
                 <div class="cuerpo">
                     <div class="dato">Vestuario Inferior</div>
-                    @isset($fichaTerapiaOcupacional->val_autocuidado->puntaje_vest_inf)
-                    <div class="dato">{{ $fichaTerapiaOcupacional->val_autocuidado->puntaje_vest_inf }}</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->vestuario_inferior)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->vestuario_inferior }}</div>
                     @endisset
-                    @isset($fichaTerapiaOcupacional->val_autocuidado->coment_vest_inf)
-                    <div class="dato">{{ $fichaTerapiaOcupacional->val_autocuidado->coment_vest_inf }}</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_inferior)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_inferior }}</div>
                     @endisset
                 </div>
             @endif
-            @if(isset($fichaTerapiaOcupacional->val_autocuidado->puntaje_aseo_pers) || isset($fichaTerapiaOcupacional->val_autocuidado->coment_aseo_pers))
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->ponerse_zapatos) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_zapatos))
                 <div class="cuerpo">
-                    <div class="dato">Aseo Personal</div>
-                    @isset($fichaTerapiaOcupacional->val_autocuidado->puntaje_aseo_pers)
-                    <div class="dato">{{ $fichaTerapiaOcupacional->val_autocuidado->puntaje_aseo_pers }}</div>
+                    <div class="dato">Zapatos (Amarre)</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->ponerse_zapatos)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->ponerse_zapatos }}</div>
                     @endisset
-                    @isset($fichaTerapiaOcupacional->val_autocuidado->coment_aseo_pers)
-                    <div class="dato">{{ $fichaTerapiaOcupacional->val_autocuidado->coment_aseo_pers }}</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_zapatos)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_zapatos }}</div>
+                    @endisset
+                </div>
+            @endif
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->aseo_perianal) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_aseo))
+                <div class="cuerpo">
+                    <div class="dato">Aseo perianal</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->aseo_perianal)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->aseo_perianal }}</div>
+                    @endisset
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_aseo)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_aseo }}</div>
+                    @endisset
+                </div>
+            @endif
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->lavado_dental) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_dental))
+                <div class="cuerpo">
+                    <div class="dato">Lavar los dientes</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->lavado_dental)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->lavado_dental }}</div>
+                    @endisset
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_dental)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_dental }}</div>
                     @endisset
                 </div>
             @endif
@@ -794,244 +820,356 @@
                     CONTROL DE ESFÍNTERES
                 </div>
             </div>
-            <div class="cuerpo">
-                <div class="dato">Control de Vejiga</div>
-                @isset($fichaTerapiaOcupacional->val_control_esfinter->puntaje_control_vejiga)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_control_esfinter->puntaje_control_vejiga }}</div>
-                @endisset
-                @isset($fichaTerapiaOcupacional->val_control_esfinter->coment_control_vejiga)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_control_esfinter->coment_control_vejiga }}</div>
-                @endisset
-            </div>
-            <div class="cuerpo">
-                <div class="dato">Control de Intestino</div>
-                @isset($fichaTerapiaOcupacional->val_control_esfinter->puntaje_control_intestino)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_control_esfinter->puntaje_control_intestino }}</div>
-                @endisset
-                @isset($fichaTerapiaOcupacional->val_control_esfinter->coment_control_intestino)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_control_esfinter->coment_control_intestino }}</div>
-                @endisset
-            </div>
-
-            <div class="cabecera">
-                <div class="especial">
-                    MOVILIDAD
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->manejo_vesical) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_vesical))
+                <div class="cuerpo">
+                    <div class="dato">Manejo vesical</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->manejo_vesical)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->manejo_vesical }}</div>
+                    @endisset
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_vesical)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_vesical }}</div>
+                    @endisset
                 </div>
-            </div>
-            <div class="cuerpo">
-                <div class="dato">Transferencia cama-silla</div>
-                @isset( $fichaTerapiaOcupacional->val_movilidad->puntaje_trans_cama_silla)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_movilidad->puntaje_trans_cama_silla }}</div>
-                @endisset
-                @isset( $fichaTerapiaOcupacional->val_movilidad->coment_trans_cama_silla)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_movilidad->coment_trans_cama_silla }}</div>
-                @endisset
-            </div>
-            <div class="cuerpo">
-                <div class="dato">Traslado baño</div>
-                @isset( $fichaTerapiaOcupacional->val_movilidad->puntaje_traslado_bano)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_movilidad->puntaje_traslado_bano }}</div>
-                @endisset
-                @isset( $fichaTerapiaOcupacional->val_movilidad->coment_traslado_bano)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_movilidad->coment_traslado_bano }}</div>
-                @endisset
-            </div>
-            <div class="cuerpo">
-                <div class="dato">Traslado ducha</div>
-                @isset( $fichaTerapiaOcupacional->val_movilidad->puntaje_traslado_ducha)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_movilidad->puntaje_traslado_ducha }}</div>
-                @endisset
-                @isset( $fichaTerapiaOcupacional->val_movilidad->coment_traslado_ducha)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_movilidad->coment_traslado_ducha }}</div>
-                @endisset
-            </div>
-            <div class="cabecera">
+            @endif
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->manejo_anal) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_anal))
+                <div class="cuerpo">
+                    <div class="dato">Manejo anal</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->manejo_anal)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->manejo_anal }}</div>
+                    @endisset
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_anal)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_anal }}</div>
+                    @endisset
+                </div>
+            @endif
+            <div class="especial">
                 <div class="encabezado">
-                    DEAMBULACIÓN
+                    LABORES COTIDIANAS
                 </div>
             </div>
-            <div class="cuerpo">
-                <div class="dato">Desplazarse caminando/sr</div>
-                @isset($fichaTerapiaOcupacional->val_deambulacion->puntaje_desp_caminando)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_deambulacion->puntaje_desp_caminando }}</div>
-                @endisset
-                @isset($fichaTerapiaOcupacional->val_deambulacion->coment_desp_caminando)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_deambulacion->coment_desp_caminando }}</div>
-                @endisset
-            </div>
-            <div class="cuerpo">
-                <div class="dato">Subir y bajar escaleras</div>
-                @isset($fichaTerapiaOcupacional->val_deambulacion->puntaje_escaleras)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_deambulacion->puntaje_escaleras }}</div>
-                @endisset
-                @isset($fichaTerapiaOcupacional->val_deambulacion->coment_escaleras)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_deambulacion->coment_escaleras }}</div>
-                @endisset
-            </div>
-            <div class="cabecera">
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->preparar_comida) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_comida))
+                <div class="cuerpo">
+                    <div class="dato">Prepararse algo de comer</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->preparar_comida)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->preparar_comida }}</div>
+                    @endisset
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_comida)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_comida }}</div>
+                    @endisset
+                </div>
+            @endif
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->poner_mesa) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_mesa))
+                <div class="cuerpo">
+                    <div class="dato">Poner la mesa</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->poner_mesa)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->poner_mesa }}</div>
+                    @endisset
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_mesa)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_mesa }}</div>
+                    @endisset
+                </div>
+            @endif
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->limpieza_ligera) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_ligera))
+                <div class="cuerpo">
+                    <div class="dato">Limpieza ligera (barrer,sacudir)</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->limpieza_ligera)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->limpieza_ligera }}</div>
+                    @endisset
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_ligera)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_ligera }}</div>
+                    @endisset
+                </div>
+            @endif
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->espacio_ordenado) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_orden))
+                <div class="cuerpo">
+                    <div class="dato">Mantener su espacio en orden</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->espacio_ordenado)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->espacio_ordenado }}</div>
+                    @endisset
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_orden)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_orden }}</div>
+                    @endisset
+                </div>
+            @endif
+            <div class="especial">
                 <div class="encabezado">
-                    COMUNICACIÓN/COGNITIVO
+                    ACTIVIDADES INSTRUMENTALES
                 </div>
             </div>
-            <div class="cuerpo">
-                <div class="dato">Expresión</div>
-                @isset($fichaTerapiaOcupacional->val_com_cog->puntaje_expresion)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_com_cog->puntaje_expresion }}</div>
-                @endisset
-                @isset($fichaTerapiaOcupacional->val_com_cog->coment_expresion)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_com_cog->coment_expresion }}</div>
-                @endisset
-            </div>
-            <div class="cuerpo">
-                <div class="dato">Comprensión</div>
-                @isset($fichaTerapiaOcupacional->val_com_cog->puntaje_comprension)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_com_cog->puntaje_comprension }}</div>
-                @endisset
-                @isset($fichaTerapiaOcupacional->val_com_cog->coment_comprension)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_com_cog->coment_comprension }}</div>
-                @endisset
-            </div>
-            <div class="cabecera">
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->manejo_dinero) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_dinero))
+                <div class="cuerpo">
+                    <div class="dato">Manejo del dinero</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->manejo_dinero)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->manejo_dinero }}</div>
+                    @endisset
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_dinero)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_dinero }}</div>
+                    @endisset
+                </div>
+            @endif
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->ir_compras) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_compras))
+                <div class="cuerpo">
+                    <div class="dato">Ir de compras</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->ir_compras)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->ir_compras }}</div>
+                    @endisset
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_compras)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_compras }}</div>
+                    @endisset
+                </div>
+            @endif
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->locomocion) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_locomocion))
+                <div class="cuerpo">
+                    <div class="dato">Locomoción</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->locomocion)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->locomocion }}</div>
+                    @endisset
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_locomocion)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_locomocion }}</div>
+                    @endisset
+                </div>
+            @endif
+            <div class="especial">
                 <div class="encabezado">
-                    SOCIAL
+                    HABILIDADES SOCIALES
                 </div>
             </div>
-            <div class="cuerpo">
-                <div class="dato">Interacción social</div>
-                @isset($fichaTerapiaOcupacional->val_social->puntaje_int_social)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_social->puntaje_int_social }}</div>
-                @endisset
-                @isset($fichaTerapiaOcupacional->val_social->coment_int_social)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_social->coment_int_social }}</div>
-                @endisset
-            </div>
-            <div class="cuerpo">
-                <div class="dato">Solución de problemas</div>
-                @isset($fichaTerapiaOcupacional->val_social->puntaje_sol_problemas)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_social->puntaje_sol_problemas }}</div>
-                @endisset
-                @isset($fichaTerapiaOcupacional->val_social->coment_sol_problemas)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_social->coment_sol_problemas }}</div>
-                @endisset
-            </div>
-            <div class="cuerpo">
-                <div class="dato">Memoria</div>
-                @isset($fichaTerapiaOcupacional->val_social->puntaje_memoria)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_social->puntaje_memoria }}</div>
-                @endisset
-                @isset($fichaTerapiaOcupacional->val_social->coment_memoria)
-                <div class="dato">{{ $fichaTerapiaOcupacional->val_social->coment_memoria }}</div>
-                @endisset
-            </div>
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->resolver_problemas) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_problemas))
+                <div class="cuerpo">
+                    <div class="dato">Resolución de problemas</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->resolver_problemas)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->resolver_problemas }}</div>
+                    @endisset
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_problemas)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_problemas }}</div>
+                    @endisset
+                </div>
+            @endif
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->adecuacion_social) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_adecuacion))
+                <div class="cuerpo">
+                    <div class="dato">Adecuación social</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->adecuacion_social)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->adecuacion_social }}</div>
+                    @endisset
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_adecuacion)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_adecuacion }}</div>
+                    @endisset
+                </div>
+            @endif
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->seguir_instrucciones) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_instrucciones))
+                <div class="cuerpo">
+                    <div class="dato">Seguir instrucciones</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->seguir_instrucciones)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->seguir_instrucciones }}</div>
+                    @endisset
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_instrucciones)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_instrucciones }}</div>
+                    @endisset
+                </div>
+            @endif
+            @if(isset($fichaTerapiaOcupacional->actividades_vida_diaria->expresar_necesidades) || isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_necesidades))
+                <div class="cuerpo">
+                    <div class="dato">Expresar necesidades básicas</div>
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->expresar_necesidades)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->expresar_necesidades }}</div>
+                    @endisset
+                    @isset($fichaTerapiaOcupacional->actividades_vida_diaria->comentario_necesidades)
+                    <div class="dato">{{ $fichaTerapiaOcupacional->actividades_vida_diaria->comentario_necesidades }}</div>
+                    @endisset
+                </div>
+            @endif
         </div>
     </div>
 
-    <div class="evaluacion_general">
-        <span class="pd_title">Evaluación General</span>
+    <div class="hab_sociales">
+        <span class="pd_title">Habilidades Sociales</span>
 
         <div class="pd_info-group">
-            <span class="pd_subtitle">Conexión con el medio</span>
-            @isset($fichaTerapiaOcupacional->val_evaluacion->conexion_medio)
-            <span class="pd_valor">{{ $fichaTerapiaOcupacional->val_evaluacion->conexion_medio }}</span>
+            <span class="pd_subtitle">Contacto Visual</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->contacto_visual)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->contacto_visual }}</span>
             @endisset
         </div>
 
         <div class="pd_info-group">
-            <span class="pd_subtitle">Nivel cognitivo aparente</span>
-            @isset($fichaTerapiaOcupacional->val_evaluacion->nivel_cognitivo_apar)
-            <span class="pd_valor">{{ $fichaTerapiaOcupacional->val_evaluacion->nivel_cognitivo_apar }}</span>
-            @endisset
-        </div>
-    </div>
-
-    <div class="evaluacion_sensorial">
-        <span class="pd_title">Evaluación Sensorial</span>
-
-        <div class="pd_info-group">
-            <span class="pd_subtitle">Visual</span>
-            @isset($fichaTerapiaOcupacional->val_sensorial->visual)
-            <span class="pd_valor">{{ $fichaTerapiaOcupacional->val_sensorial->visual }}</span>
+            <span class="pd_subtitle">Sonrisa social</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->sonrisa_social)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->sonrisa_social }}</span>
             @endisset
         </div>
 
         <div class="pd_info-group">
-            <span class="pd_subtitle">Auditivo</span>
-            @isset($fichaTerapiaOcupacional->val_sensorial->auditivo)
-            <span class="pd_valor">{{ $fichaTerapiaOcupacional->val_sensorial->auditivo }}</span>
+            <span class="pd_subtitle">Seguimiento visual a personas</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->seguimiento_personas)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->seguimiento_personas }}</span>
             @endisset
         </div>
 
         <div class="pd_info-group">
-            <span class="pd_subtitle">Táctil</span>
-            @isset($fichaTerapiaOcupacional->val_sensorial->tactil)
-            <span class="pd_valor">{{ $fichaTerapiaOcupacional->val_sensorial->tactil }}</span>
+            <span class="pd_subtitle">Seguimiento visual a objetos</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->seguimiento_objetos)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->seguimiento_objetos }}</span>
             @endisset
         </div>
 
         <div class="pd_info-group">
-            <span class="pd_subtitle">Propioceptivo</span>
-            @isset($fichaTerapiaOcupacional->val_sensorial->propioceptivo)
-            <span class="pd_valor">{{ $fichaTerapiaOcupacional->val_sensorial->propioceptivo }}</span>
+            <span class="pd_subtitle">Investigación visual</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->investigacion_visual)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->investigacion_visual }}</span>
             @endisset
         </div>
 
         <div class="pd_info-group">
-            <span class="pd_subtitle">Vestibular</span>
-            @isset($fichaTerapiaOcupacional->val_sensorial->vestibular)
-            <span class="pd_valor">{{ $fichaTerapiaOcupacional->val_sensorial->vestibular }}</span>
-            @endisset
-        </div>
-    </div>
-
-    <div class="evaluacion_motora">
-        <span class="pd_title">Evaluación Motora</span>
-
-        <div class="pd_info-group">
-            <span class="pd_subtitle">Tono</span>
-            @isset($fichaTerapiaOcupacional->val_motora->tono)
-            <span class="pd_valor">{{ $fichaTerapiaOcupacional->val_motora->tono }}</span>
+            <span class="pd_subtitle">Investigación motora(Hurga)</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->investigacion_motora)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->investigacion_motora }}</span>
             @endisset
         </div>
 
         <div class="pd_info-group">
-            <span class="pd_subtitle">ROM</span>
-            @isset($fichaTerapiaOcupacional->val_motora->rom)
-            <span class="pd_valor">{{ $fichaTerapiaOcupacional->val_motora->rom }}</span>
+            <span class="pd_subtitle">Atención conjunta</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->atencion_conjunta)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->atencion_conjunta }}</span>
             @endisset
         </div>
 
         <div class="pd_info-group">
-            <span class="pd_subtitle">Dolor</span>
-            @isset($fichaTerapiaOcupacional->val_motora->dolor)
-            <span class="pd_valor">{{ $fichaTerapiaOcupacional->val_motora->dolor }}</span>
+            <span class="pd_subtitle">Imitación gestual</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->imitacion_gestual)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->imitacion_gestual }}</span>
             @endisset
         </div>
 
         <div class="pd_info-group">
-            <span class="pd_subtitle">Fuerza Muscular</span>
-            @isset($fichaTerapiaOcupacional->val_motora->fm)
-            <span class="pd_valor">{{ $fichaTerapiaOcupacional->val_motora->fm }}</span>
+            <span class="pd_subtitle">Imitación vocal</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->imitacion_vocal)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->imitacion_vocal }}</span>
             @endisset
         </div>
 
         <div class="pd_info-group">
-            <span class="pd_subtitle">Habilidades Motrices</span>
-            @isset($fichaTerapiaOcupacional->val_motora->hab_motrices)
-            <span class="pd_valor">{{ $fichaTerapiaOcupacional->val_motora->hab_motrices }}</span>
+            <span class="pd_subtitle">Imitación motora</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->imitacion_motora)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->imitacion_motora }}</span>
             @endisset
         </div>
 
         <div class="pd_info-group">
-            <span class="pd_subtitle">Coordinación</span>
-            @isset($fichaTerapiaOcupacional->val_motora->coordinacion)
-            <span class="pd_valor">{{ $fichaTerapiaOcupacional->val_motora->coordinacion }}</span>
+            <span class="pd_subtitle">Acepta situaciones repetitivas</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->situaciones_repetidas)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->situaciones_repetidas }}</span>
             @endisset
         </div>
 
         <div class="pd_info-group">
-            <span class="pd_subtitle">Equilibrio</span>
-            @isset($fichaTerapiaOcupacional->val_motora->equilibrio)
-            <span class="pd_valor">{{ $fichaTerapiaOcupacional->val_motora->equilibrio }}</span>
+            <span class="pd_subtitle">Acepta situaciones nuevas</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->situaciones_nuevas)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->situaciones_nuevas }}</span>
+            @endisset
+        </div>
+
+        <div class="pd_info-group">
+            <span class="pd_subtitle">Intención comunicacional</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->intencion_comunicacional)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->intencion_comunicacional }}</span>
+            @endisset
+        </div>
+
+        <div class="pd_info-group">
+            <span class="pd_subtitle">Cariñoso</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->carinioso)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->carinioso }}</span>
+            @endisset
+        </div>
+
+        <div class="pd_info-group">
+            <span class="pd_subtitle">Juego solitario</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->juego_solitario)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->juego_solitario }}</span>
+            @endisset
+        </div>
+
+        <div class="pd_info-group">
+            <span class="pd_subtitle">Juego paralelo</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->juego_paralelo)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->juego_paralelo }}</span>
+            @endisset
+        </div>
+
+        <div class="pd_info-group">
+            <span class="pd_subtitle">Juego interactivo</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->juego_interactivo)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->juego_interactivo }}</span>
+            @endisset
+        </div>
+
+        <div class="pd_info-group">
+            <span class="pd_subtitle">Usa gestos adecuados para comunicarse</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->gestos_adecuados)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->gestos_adecuados }}</span>
+            @endisset
+        </div>
+
+        <div class="pd_info-group">
+            <span class="pd_subtitle">Inicia coneversación</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->inicia_conversacion)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->inicia_conversacion }}</span>
+            @endisset
+        </div>
+
+        <div class="pd_info-group">
+            <span class="pd_subtitle">Formula peticiones</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->formula_peticiones)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->formula_peticiones }}</span>
+            @endisset
+        </div>
+
+        <div class="pd_info-group">
+            <span class="pd_subtitle">Pide aclaración de dudas</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->aclarar_dudas)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->aclarar_dudas }}</span>
+            @endisset
+        </div>
+
+        <div class="pd_info-group">
+            <span class="pd_subtitle">Alterna roles emisor/receptor</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->emisor_receptor)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->emisor_receptor }}</span>
+            @endisset
+        </div>
+
+        <div class="pd_info-group">
+            <span class="pd_subtitle">¿Juega con niños de su edad?</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->ninios_edad)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->ninios_edad }}</span>
+            @endisset
+        </div>
+
+        <div class="pd_info-group">
+            <span class="pd_subtitle">¿Tiene preferencias por cierto sexo, edad o tipos de personas?</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->preferencia_tipo_persona)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->preferencia_tipo_persona }}</span>
+            @endisset
+        </div>
+
+        <div class="pd_info-group">
+            <span class="pd_subtitle">¿Cuáles son sus mayores intereses?</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->mayores_intereses)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->mayores_intereses }}</span>
+            @endisset
+        </div>
+
+        <div class="pd_info-group">
+            <span class="pd_subtitle">¿Qué actividades o cosas no le gustan?</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->cosas_no_gustan)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->cosas_no_gustan }}</span>
+            @endisset
+        </div>
+
+        <div class="pd_info-group">
+            <span class="pd_subtitle">¿A qué juega?</span>
+            @isset($fichaTerapiaOcupacional->habilidades_sociales->juegos)
+            <span class="pd_valor">{{ $fichaTerapiaOcupacional->habilidades_sociales->juegos }}</span>
             @endisset
         </div>
     </div>
