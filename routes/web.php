@@ -42,7 +42,7 @@ Route::group(['prefix' => 'areasocial', 'middleware' => 'auth'], function(){
 
     Route::post('/asistentesocial/beneficiario', [
     'uses' => 'FichaSocialController@store',
-    'as' => 'social.asistenteSocialBeneficiario'
+    'as' => 'social.asistenteSocialBeneficiar   io'
     ])->middleware('roles:admin|trabajo_social');
 
     Route::get('/asistentesocial/ingresar/{id}', [
@@ -59,27 +59,27 @@ Route::group(['prefix' => 'areasocial', 'middleware' => 'auth'], function(){
     Route::get('/asistentesocial/showAyuda/{id}', [
     'uses' => 'FichaSocialController@showFicha',
     'as' => 'social.showAyuda'
-    ])->middleware('roles:secretaria|admin');
+    ])->middleware('roles:secretaria|admin|trabajo_social');
 
     Route::get('/asistentesocial/showVisita/{id}', [
     'uses' => 'FichaSocialController@showFicha',
     'as' => 'social.showVisita'
-    ])->middleware('roles:secretaria|admin');
+    ])->middleware('roles:secretaria|admin|trabajo_social');
 
     Route::get('/asistentesocial/showBecas/{id}', [
     'uses' => 'FichaSocialController@showFicha',
     'as' => 'social.showBecas'
-    ])->middleware('roles:secretaria|admin');
+    ])->middleware('roles:secretaria|admin|trabajo_social');
 
     Route::get('/asistentesocial/showOrientacion/{id}', [
     'uses' => 'FichaSocialController@showFicha',
     'as' => 'social.showOrientacion'
-    ])->middleware('roles:secretaria|admin');
+    ])->middleware('roles:secretaria|admin|trabajo_social');
 
     Route::get('/asistentesocial/showFichas/{id}', [
     'uses' => 'FichaSocialController@showFichas',
     'as' => 'social.showFichas'
-    ])->middleware('roles:secretaria|admin');
+    ])->middleware('roles:secretaria|admin|trabajo_social');
 });
 
 Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){

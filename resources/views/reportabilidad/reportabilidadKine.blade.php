@@ -59,18 +59,29 @@
                     <div class='col-xs-12'>
                         <div class='row'>
                             <div class='col-sm-12'>
-
-                                <div class='box bordered-box blue-border' style='margin-bottom:0;'>
-                                    <div class='box-header blue-background'>
-                                        <div class='title'>Datos personales</div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <p class="capitalize"><span class="tit">Nombre Completo</span><br>{{ $kinesiologo->nombre }} {{ $kinesiologo->apellido }}</p>
-                                        <p class="capitalize"><span class="tit">Rut</span><br>{{ $kinesiologo->rut }}</p>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <p class="capitalize"><span class="tit">Telefono</span><br>{{ $kinesiologo->telefono }}</p>
-                                        <p class="capitalize"><span class="tit">Dirección</span><br>{{ $kinesiologo->direccion }}</p>
+                                <div class='page-header'>
+                                    <h1 class='pull-left'>
+                                        <i class='fa fa-pencil-square-o'></i>
+                                        <span>Reportabilidad Kinesiología</span>
+                                    </h1>
+                                    <div class='pull-right'>
+                                        <ul class='breadcrumb'>
+                                            <li>
+                                                <a href='index.html'>
+                                                    <i class='fa fa-bar-chart-o'></i>
+                                                </a>
+                                            </li>
+                                            <li class='separator'>
+                                                <i class='fa fa-angle-right'></i>
+                                            </li>
+                                            <li>
+                                                Reportabilidad
+                                            </li>
+                                            <li class='separator'>
+                                                <i class='fa fa-angle-right'></i>
+                                            </li>
+                                            <li class='active'>Estadísticas</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
