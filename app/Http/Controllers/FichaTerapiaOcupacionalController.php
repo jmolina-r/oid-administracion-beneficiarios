@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use \PDF;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\ActividadesVidaDiaria;
@@ -427,5 +430,25 @@ class FichaTerapiaOcupacionalController extends Controller
             'genograma' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
         return $rules;
+    }
+
+    public function generatePDF(Request $request, $id) {
+        $fichaTerapiaOcupacional = FichaTerapiaOcupacional::find($id);
+
+        if($fichaTerapiaOcupacional == null){
+            return view('area-medica.ficha-evaluacion-inicial.Error');
+        }
+        $persona = Beneficiario::find($fichaTerapiaOcupacional->beneficiario_id);
+        $funcionario=Funcionario::find($fichaTerapiaOcupacional->funcionario_id);
+        $actividadesVidaDiaria = ActividadesVidaDiaria::find($fichaTerapiaOcupacional->actividades_vida_diaria_id);
+        $antecedentesSalud = AntecedentesSalud::find($fichaTerapiaOcupacional->antecedentes_salud_id);
+        $antecedentesSocioFamiliares = AntecedentesSocioFamiliares::find($fichaTerapiaOcupacional->antecedentes_so_fa_id);
+        $desarrolloEvolutivo = DesarrolloEvolutivo::find($fichaTerapiaOcupacional->desarrollo_evolutivo_id);
+        $habilidadesSociales = HabilidadesSociales::find($fichaTerapiaOcupacional->habilidades_sociales_id);
+        $historialClinico = HistorialClinico::find($fichaTerapiaOcupacional->historial_clinico_id);
+        $pdf = PDF::loadView('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.pdf', compact('fichaTerapiaOcupacional',
+            'persona','actividadesVidaDiaria','antecedentesSalud','antecedentesSocioFamiliares','desarrolloEvolutivo',
+            'habilidadesSociales','historialClinico','funcionario'));
+        return $pdf->stream('fichaTerapiaOcupacional.pdf');
     }
 }

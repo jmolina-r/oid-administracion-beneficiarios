@@ -118,10 +118,14 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresando'
             ]);
 
-
             Route::get('/show/{id}', [
                 'uses' => 'FichaTerapiaOcupacionalController@show',
                 'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.show'
+            ])->middleware('roles:admin|terapia_ocupacional');
+
+            Route::get('/pdf/{id}', [
+                'uses' => 'FichaTerapiaOcupacionalController@generatePDF',
+                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.generatePDF'
             ])->middleware('roles:admin|terapia_ocupacional');
         });
 
