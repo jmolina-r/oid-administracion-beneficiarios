@@ -635,7 +635,7 @@ class ReportabilidadController extends Controller
         $atencionKines = $request->atencionKines;
         $atencionFono = $request->atencionFono;
         $atencionPsico = $request->atencionPsico;
-        $atencionTers=$request->$atencionTers;
+        $atencionTers=$request->atencionTers;
 
         $view =  \View::make('pdf.invoiceHistoricoPorMeses', compact('cantIngresadosAño2','cantAtencionAño2','aniouno','aniodos','mesuno','mesdos','atencionKines','atencionPsico','atencionFono','atencionTers'))->render();
         $pdf = \App::make('dompdf.wrapper');
