@@ -1022,6 +1022,80 @@
                             </div>
                         @endif
                     </div>   
+                </div>
+
+                <div class="ant_morb_familiares">
+                    <span class="pd_title">Antecedentes Mórbidos Familiares</span>
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->diabetes_sn_mor_fa)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Diabetes</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->diabetes_sn_mor_fa }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->hipertension_sn)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Hipertensión</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->hipertension_sn }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->epilepsia_sn_mor_fa)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Epilepsia</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->epilepsia_sn_mor_fa }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->deficiencia_mental_sn)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Deficiencia Mental</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->deficiencia_mental_sn }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->autismo_sn)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Autismo</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->autismo_sn }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_lenguaje_sn)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Trastornos del Lenguaje</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_lenguaje_sn }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_aprendizaje_sn)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Trastornos de aprendizaje</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_aprendizaje_sn }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_visuales_sn)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Trastornos visuales</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_visuales_sn }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_auditivos_sn)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Trastornos auditivos</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_auditivos_sn }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_psiquiatricos_sn)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Trastornos psiquiátricos</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_psiquiatricos_sn }}</span>
+                    </div>
+                    @endisset
                 </div>    
             </div>                    
         </div>
