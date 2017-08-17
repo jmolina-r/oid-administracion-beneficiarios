@@ -68,7 +68,7 @@
             </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin', 'jefatura']))
+            @if(Auth::user()->hasAnyRole(['admin', 'jefatura', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional', 'trabajo_social']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-bar-chart'></i>
                     <span>Reportabilidad</span>
@@ -108,7 +108,7 @@
             </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional']))
+            @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional', 'jefatura']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-calendar'></i>
                     <span>Malla</span>
@@ -116,6 +116,7 @@
                 </a>
 
                 <ul class='nav nav-stacked'>
+                    @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional']))
                     <li class=''>
                         <a href='{{route('malla.show')}}'>
                             <div class='icon'>
@@ -124,6 +125,8 @@
                             <span>Mostrar malla</span>
                         </a>
                     </li>
+                    @endif
+                    @if(Auth::user()->hasAnyRole(['admin', 'jefatura']))
                     <li class=''>
                         <a href='{{route('malla.listaPrestaciones')}}'>
                             <div class='icon'>
@@ -132,6 +135,7 @@
                             <span>Prestaciones</span>
                         </a>
                     </li>
+                    @endif
                 </ul>
             </li>
             @endif
