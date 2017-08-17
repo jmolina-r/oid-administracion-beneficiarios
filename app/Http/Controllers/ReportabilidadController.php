@@ -138,11 +138,12 @@ class ReportabilidadController extends Controller
 
         //Rehabilitacion
         $pacientesReahabAnual=InformeCierre::where('culmino_proceso','=','si')
-            ->whereYear('fecha_termino','=',(date('Y')))
+            ->whereYear('created_at','=',(date('Y')))
             ->count();
+
         $pacientesReahabMensual=InformeCierre::where('culmino_proceso','=','si')
-            ->whereYear('fecha_termino','=',(date('Y')))
-            ->whereMonth('fecha_termino', '=', date('m'))
+            ->whereYear('created_at','=',(date('Y')))
+            ->whereMonth('created_at', '=', date('m'))
             ->count();
 
         if($cant!=0){
@@ -250,9 +251,12 @@ class ReportabilidadController extends Controller
         foreach ($prestaciones as $p){
         $nombrePrest[$i]=$p->nombre;
         $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
+            ->where('prestacions.area','=','kinesiologo')
         ->join('prestacion_realizadas','prestacions.id','=','prestacion_realizadas.prestacions_id')
         ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
         ->where('funcionarios.rut','=',$user_rut)
+        ->whereYear('prestacion_realizadas.fecha','=',date('Y'))
+            ->whereMonth('prestacion_realizadas.fecha','=',date('m'))
         ->count();
         $i++;
         }
@@ -329,9 +333,12 @@ class ReportabilidadController extends Controller
         foreach ($prestaciones as $p){
             $nombrePrest[$i]=$p->nombre;
             $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
+                ->where('prestacions.area','=','fonoaudiologo')
                 ->join('prestacion_realizadas','prestacions.id','=','prestacion_realizadas.prestacions_id')
                 ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
                 ->where('funcionarios.rut','=',$user_rut)
+                ->whereYear('prestacion_realizadas.fecha','=',date('Y'))
+                ->whereMonth('prestacion_realizadas.fecha','=',date('m'))
                 ->count();
             $i++;
         }
@@ -404,9 +411,12 @@ class ReportabilidadController extends Controller
         foreach ($prestaciones as $p){
             $nombrePrest[$i]=$p->nombre;
             $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
+                ->where('prestacions.area','=','psicologo')
                 ->join('prestacion_realizadas','prestacions.id','=','prestacion_realizadas.prestacions_id')
                 ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
                 ->where('funcionarios.rut','=',$user_rut)
+                ->whereYear('prestacion_realizadas.fecha','=',date('Y'))
+                ->whereMonth('prestacion_realizadas.fecha','=',date('m'))
                 ->count();
             $i++;
         }
@@ -480,9 +490,12 @@ class ReportabilidadController extends Controller
         foreach ($prestaciones as $p){
             $nombrePrest[$i]=$p->nombre;
             $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
+                ->where('prestacions.area','=','terapeuta ocupacional')
                 ->join('prestacion_realizadas','prestacions.id','=','prestacion_realizadas.prestacions_id')
                 ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
                 ->where('funcionarios.rut','=',$user_rut)
+                ->whereYear('prestacion_realizadas.fecha','=',date('Y'))
+                ->whereMonth('prestacion_realizadas.fecha','=',date('m'))
                 ->count();
             $i++;
         }
