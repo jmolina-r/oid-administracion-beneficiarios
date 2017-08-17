@@ -91,7 +91,7 @@
                                          @if($observacionVisitaDom == null)
                                             <p class="capitalize">no existe observación</p>
                                         @else
-                                            <p class="capitalize">{{$observacionVisitaDom}}</p>
+                                            <p class="capitalize">{{$observacionVisitaDom->observacion}}</p>
                                              
                                         @endif
                                     </div>

@@ -91,7 +91,7 @@
                                          @if($observacionOrientacion== null)
                                             <p class="capitalize">no existe observación</p>
                                         @else
-                                            <p class="capitalize">{{$observacionOrientacion}}</p>
+                                            <p class="capitalize">{{$observacionOrientacion->observacion}}</p>
                                              
                                         @endif
                                     </div>
