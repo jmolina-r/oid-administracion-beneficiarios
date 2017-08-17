@@ -485,7 +485,7 @@
                     </div>
 
                     <div class="cabecera">
-                        <div class="especial">
+                        <div class="encabezado">
                             MOVILIDAD
                         </div>
                     </div>
