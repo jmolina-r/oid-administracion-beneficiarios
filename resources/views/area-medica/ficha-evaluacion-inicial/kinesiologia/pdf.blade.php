@@ -293,49 +293,49 @@
 
             <div class="ant_morbidos">
                 <span class="pd_title">Antecedentes Mórbidos</span>
-                @isset($fichaKinesiologica->antecedentes_morbidos->pat_concom)
+                @isset($fichaKinesiologia->antecedentes_morbidos->pat_concom)
                 <div class="pd_info-group">
                     <span class="pd_subtitle">Patologías Concomitantes</span>
                     <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->pat_concom }}</span>
                 </div>
                 @endisset
-                @isset($fichaKinesiologica->antecedentes_morbidos->alergias)
+                @isset($fichaKinesiologia->antecedentes_morbidos->alergias)
                 <div class="pd_info-group">
                     <span class="pd_subtitle">Alergias</span>
                     <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->alergias }}</span>
                 </div>
                 @endisset
-                @isset($fichaKinesiologica->antecedentes_morbidos->medicamentos)
+                @isset($fichaKinesiologia->antecedentes_morbidos->medicamentos)
                 <div class="pd_info-group">
                     <span class="pd_subtitle">Medicamentos</span>
                     <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->medicamentos }}</span>
                 </div>
                 @endisset
-                @isset($fichaKinesiologica->antecedentes_morbidos->ant_quir)
+                @isset($fichaKinesiologia->antecedentes_morbidos->ant_quir)
                 <div class="pd_info-group">
                     <span class="pd_subtitle">Antecedentes Quirúrgicos</span>
                     <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->ant_quir }}</span>
                 </div>
                 @endisset
-                @isset($fichaKinesiologica->antecedentes_morbidos->aparatos)
+                @isset($fichaKinesiologia->antecedentes_morbidos->aparatos)
                 <div class="pd_info-group">
                     <span class="pd_subtitle">Aparatos</span>
                     <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->aparatos }}</span>
                 </div>
                 @endisset
-                @isset($fichaKinesiologica->antecedentes_morbidos->fuma_sn)
+                @isset($fichaKinesiologia->antecedentes_morbidos->fuma_sn)
                 <div class="pd_info-group">
                     <span class="pd_subtitle">¿Fuma?</span>
                     <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->fuma_sn }}</span>
                 </div>
                 @endisset
-                @isset($fichaKinesiologica->antecedentes_morbidos->alcohol_sn)
+                @isset($fichaKinesiologia->antecedentes_morbidos->alcohol_sn)
                 <div class="pd_info-group">
                     <span class="pd_subtitle">¿Bebe OH?</span>
                     <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->alcohol_sn }}</span>
                 </div>
                 @endisset
-                @isset($fichaKinesiologica->antecedentes_morbidos->act_fisica_sn)
+                @isset($fichaKinesiologia->antecedentes_morbidos->act_fisica_sn)
                 <div class="pd_info-group">
                     <span class="pd_subtitle">Actividad Física</span>
                     <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->act_fisica_sn }}</span>
@@ -345,25 +345,25 @@
 
             <div class="otros_antecedentes">
                 <span class="pd_title">Otros Antecedentes</span>
-                @isset($fichaKinesilogia->situacion_familiar)
+                @isset($fichaKinesiologia->situacion_familiar)
                 <div class="pd_info-group">
                     <span class="pd_subtitle">Situación Familiar</span>
                     <span class="pd_valor">{{ $fichaKinesiologia->situacion_familiar }}</span>
                 </div>
                 @endisset
-                @isset($fichaKinesilogia->situacion_laboral)
+                @isset($fichaKinesiologia->situacion_laboral)
                 <div class="pd_info-group">
                     <span class="pd_subtitle">Situación Laboral</span>
                     <span class="pd_valor">{{ $fichaKinesiologia->situacion_laboral }}</span>
                 </div>
                 @endisset
-                @isset($fichaKinesilogia->asiste_centro_rhb)
+                @isset($fichaKinesiologia->asiste_centro_rhb)
                 <div class="pd_info-group">
                     <span class="pd_subtitle">¿Asisten a algún centro de RHB?</span>
                     <span class="pd_valor">{{ $fichaKinesiologia->asiste_centro_rhb }}</span>
                 </div>
                 @endisset
-                @isset($fichaKinesilogia->motivo_consulta)
+                @isset($fichaKinesiologia->motivo_consulta)
                 <div class="pd_info-group">
                     <span class="pd_subtitle">Motivo de consulta</span>
                     <span class="pd_valor">{{ $fichaKinesiologia->motivo_consulta }}</span>

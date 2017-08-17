@@ -194,11 +194,11 @@
             </div>
 
             <div class="nombre">
-                <h1>{{ $fichaKinesiologia->beneficiario->nombre }} {{$fichaKinesiologia->beneficiario->apellido }}</h1>
+                <h1>{{ $fichaPsicologia->beneficiario->nombre }} {{$fichaPsicologia->beneficiario->apellido }}</h1>
             </div>
 
             <div class="rut">
-                <h2>{{ $fichaKinesiologia->beneficiario->rut }}</h2>
+                <h2>{{ $fichaPsicologia->beneficiario->rut }}</h2>
             </div>
 
             <!-- TRATANTE-->
@@ -208,7 +208,7 @@
 
                 <div class="info-group">
                     <span class="label">Médico Tratante: </span>
-                    <h3>{{ $fichaKinesiologia->funcionario->nombre }} {{ $fichaKinesiologia->funcionario->apellido }}</h3>
+                    <h3>{{ $fichaPsicologia->funcionario->nombre }} {{ $fichaPsicologia->funcionario->apellido }}</h3>
                 </div>
 
             </div>
@@ -220,22 +220,22 @@
 
                 <div class="info-group">
                     <span class="label">Género: </span>
-                    <h3>{{ $fichaKinesiologia->beneficiario->sexo }}</h3>                    
+                    <h3>{{ $fichaPsicologia->beneficiario->sexo }}</h3>                    
                 </div>
 
                 <div class="info-group">
                     <span class="label">Fecha de Nacimiento: </span>
-                    <h3>{{ date('d/m/Y', strtotime($fichaKinesiologia->beneficiario->fecha_nacimiento)) }}</h3>
+                    <h3>{{ date('d/m/Y', strtotime($fichaPsicologia->beneficiario->fecha_nacimiento)) }}</h3>
                 </div>
 
                 <div class="info-group">
                     <span class="label">País: </span>
-                    <h3>{{ $fichaKinesiologia->beneficiario->pais->nombre }}</h3>
+                    <h3>{{ $fichaPsicologia->beneficiario->pais->nombre }}</h3>
                 </div>
 
                 <div class="info-group">
                     <span class="label">Situación Civil: </span>
-                    <h3>{{ $fichaKinesiologia->beneficiario->estado_civil->nombre }}</h3>
+                    <h3>{{ $fichaPsicologia->beneficiario->estado_civil->nombre }}</h3>
                 </div>
 
             </div>
@@ -245,33 +245,33 @@
                 <span class="title">Contacto</span>
 
                 <!-- Domicilio -->
-                @isset($fichaKinesiologia->beneficiario->domicilio->calle)
+                @isset($fichaPsicologia->beneficiario->domicilio->calle)
                 <div class="info-group">
                     <span class="label">Domicilio: </span><br>
                     <h3>
-                        {{$fichaKinesiologia->beneficiario->domicilio->calle}}
+                        {{$fichaPsicologia->beneficiario->domicilio->calle}}
 
-                        @isset($fichaKinesiologia->beneficiario->domicilio->numero)
-                            {{$fichaKinesiologia->beneficiario->domicilio->numero}}
+                        @isset($fichaPsicologia->beneficiario->domicilio->numero)
+                            {{$fichaPsicologia->beneficiario->domicilio->numero}}
                         @endisset
-                        @isset($fichaKinesiologia->beneficiario->domicilio->numero_depto)
-                            , dpto. {{$fichaKinesiologia->beneficiario->domicilio->numero_depto}}
+                        @isset($fichaPsicologia->beneficiario->domicilio->numero_depto)
+                            , dpto. {{$fichaPsicologia->beneficiario->domicilio->numero_depto}}
                         @endisset
-                        @isset($fichaKinesiologia->beneficiario->domicilio->bloque)
-                            , block {{$fichaKinesiologia->beneficiario->domicilio->bloque}}
+                        @isset($fichaPsicologia->beneficiario->domicilio->bloque)
+                            , block {{$fichaPsicologia->beneficiario->domicilio->bloque}}
                         @endisset
-                        @isset($fichaKinesiologia->beneficiario->domicilio->pobl_vill)
-                            , población {{$fichaKinesiologia->beneficiario->domicilio->pobl_vill}}
+                        @isset($fichaPsicologia->beneficiario->domicilio->pobl_vill)
+                            , población {{$fichaPsicologia->beneficiario->domicilio->pobl_vill}}
                         @endisset
                     </h3>
                 </div>
                 @endisset
 
                 <!-- Telefonos -->
-                @if(@isset($fichaKinesiologia->beneficiario->telefonos))
+                @if(@isset($fichaPsicologia->beneficiario->telefonos))
                 <div class="info-group">
-                    @isset($fichaKinesiologia->beneficiario->telefonos)
-                        @foreach ($fichaKinesiologia->beneficiario->telefonos as $telefono)
+                    @isset($fichaPsicologia->beneficiario->telefonos)
+                        @foreach ($fichaPsicologia->beneficiario->telefonos as $telefono)
                             <span class="label">{{ $telefono->tipo == "fijo" ? "Teléfono Fijo: " : "Teléfono Móvil: " }}</span><br>
                             <h3>{{ $telefono->tipo == "fijo" ? "+56" : "+56 9" }} {{$telefono->numero}}</h3><br>
                         @endforeach
@@ -280,10 +280,10 @@
                 @endif
 
                 <!-- E-mail -->
-                @isset($fichaKinesiologia->beneficiario->email)
+                @isset($fichaPsicologia->beneficiario->email)
                 <div class="info-group">
                     <span class="label">E-mail: </span><br>
-                    <h3>{{$fichaKinesiologia->beneficiario->email}}</h3>
+                    <h3>{{$fichaPsicologia->beneficiario->email}}</h3>
                 </div>
                 @endisset
             </div>
@@ -291,420 +291,255 @@
 
         <div class="panel-derecho">
 
-            <div class="ant_morbidos">
-                <span class="pd_title">Antecedentes Mórbidos</span>
-                @isset($fichaKinesiologica->antecedentes_morbidos->pat_concom)
+            <div class="motivo">
+                <span class="pd_title">Datos Ficha</span>
+                @isset($fichaPsicologia->motivo_consulta)
                 <div class="pd_info-group">
-                    <span class="pd_subtitle">Patologías Concomitantes</span>
-                    <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->pat_concom }}</span>
+                    <span class="pd_subtitle">Motivo Consulta</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->motivo_consulta }}</span>
                 </div>
                 @endisset
-                @isset($fichaKinesiologica->antecedentes_morbidos->alergias)
+            </div>
+
+            <div class="antecedentes_familiares">
+                <span class="pd_title">Antecedentes Familiares</span>
+
+                @isset($fichaPsicologia->antecedentes_familiares->nombre_madre)
                 <div class="pd_info-group">
-                    <span class="pd_subtitle">Alergias</span>
-                    <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->alergias }}</span>
+                    <span class="pd_subtitle">Nombre de la Madre</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_familiares->nombre_madre }}</span>
                 </div>
                 @endisset
-                @isset($fichaKinesiologica->antecedentes_morbidos->medicamentos)
+
+                @isset($fichaPsicologia->antecedentes_familiares->rut_madre)
+                <div class="pd_info-group">
+                    <span class="pd_subtitle">Rut de la Madre</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_familiares->rut_madre }}</span>
+                </div>
+                @endisset
+
+                @isset($fichaPsicologia->antecedentes_familiares->edad_madre)
+                <div class="pd_info-group">
+                    <span class="pd_subtitle">Edad de la Madre</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_familiares->edad_madre }}</span>
+                </div>
+                @endisset
+
+                @isset($fichaPsicologia->antecedentes_familiares->ocupacion_madre)
+                <div class="pd_info-group">
+                    <span class="pd_subtitle">Ocupación de la Madre</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_familiares->ocupacion_madre }}</span>
+                </div>
+                @endisset
+
+                @isset($fichaPsicologia->antecedentes_familiares->escolaridad_madre)
+                <div class="pd_info-group">
+                    <span class="pd_subtitle">Escolaridad Madre</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_familiares->escolaridad_madre }}</span>
+                </div>
+                @endisset
+
+                @isset($fichaPsicologia->antecedentes_familiares->telefono_madre)
+                <div class="pd_info-group">
+                    <span class="pd_subtitle">Teléfono Madre</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_familiares->telefono_madre }}</span>
+                </div>
+                @endisset
+
+                @isset($fichaPsicologia->antecedentes_familiares->observaciones_madre)
+                <div class="pd_info-group">
+                    <span class="pd_subtitle">Observaciones Madre</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_familiares->observaciones_madre }}</span>
+                </div>
+                @endisset
+
+                @isset($fichaPsicologia->antecedentes_familiares->fecha_nacimiento_madre)
+                <div class="pd_info-group">
+                    <span class="pd_subtitle">Fecha nacimiento Madre</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_familiares->fecha_nacimiento_madre }}</span>
+                </div>
+                @endisset
+
+                @isset($fichaPsicologia->antecedentes_familiares->nombre_padre)
+                <div class="pd_info-group">
+                    <span class="pd_subtitle">Nombre del Padre</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_familiares->nombre_padre }}</span>
+                </div>
+                @endisset
+
+                @isset($fichaPsicologia->antecedentes_familiares->rut_padre)
+                <div class="pd_info-group">
+                    <span class="pd_subtitle">Rut del Padre</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_familiares->rut_padre }}</span>
+                </div>
+                @endisset
+
+                @isset($fichaPsicologia->antecedentes_familiares->edad_padre)
+                <div class="pd_info-group">
+                    <span class="pd_subtitle">Edad del Padre</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_familiares->edad_padre }}</span>
+                </div>
+                @endisset
+
+                @isset($fichaPsicologia->antecedentes_familiares->ocupacion_padre)
+                <div class="pd_info-group">
+                    <span class="pd_subtitle">Ocupación del Padre</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_familiares->ocupacion_padre }}</span>
+                </div>
+                @endisset
+
+                @isset($fichaPsicologia->antecedentes_familiares->escolaridad_padre)
+                <div class="pd_info-group">
+                    <span class="pd_subtitle">Escolaridad Padre</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_familiares->escolaridad_padre }}</span>
+                </div>
+                @endisset
+
+                @isset($fichaPsicologia->antecedentes_familiares->telefono_padre)
+                <div class="pd_info-group">
+                    <span class="pd_subtitle">Teléfono Padre</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_familiares->telefono_padre }}</span>
+                </div>
+                @endisset
+
+                @isset($fichaPsicologia->antecedentes_familiares->observaciones_padre)
+                <div class="pd_info-group">
+                    <span class="pd_subtitle">Observaciones Padre</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_familiares->observaciones_padre }}</span>
+                </div>
+                @endisset
+
+                @isset($fichaPsicologia->antecedentes_familiares->fecha_nacimiento_padre)
+                <div class="pd_info-group">
+                    <span class="pd_subtitle">Fecha nacimiento Padre</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_familiares->fecha_nacimiento_padre }}</span>
+                </div>
+                @endisset
+
+            </div>
+
+            <div class="ant_medicos">
+                <span class="pd_title">Antecedentes Médicos</span>
+                @isset($fichaPsicologia->antecedentes_medicos->enfermedades_familiares)
+                <div class="pd_info-group">
+                    <span class="pd_subtitle">Enfermedades Familiares</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_medicos->enfermedades_familiares }}</span>
+                </div>
+                @endisset
+
+                @isset($fichaPsicologia->antecedentes_medicos->medicamentos)
                 <div class="pd_info-group">
                     <span class="pd_subtitle">Medicamentos</span>
-                    <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->medicamentos }}</span>
-                </div>
-                @endisset
-                @isset($fichaKinesiologica->antecedentes_morbidos->ant_quir)
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Antecedentes Quirúrgicos</span>
-                    <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->ant_quir }}</span>
-                </div>
-                @endisset
-                @isset($fichaKinesiologica->antecedentes_morbidos->aparatos)
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Aparatos</span>
-                    <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->aparatos }}</span>
-                </div>
-                @endisset
-                @isset($fichaKinesiologica->antecedentes_morbidos->fuma_sn)
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">¿Fuma?</span>
-                    <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->fuma_sn }}</span>
-                </div>
-                @endisset
-                @isset($fichaKinesiologica->antecedentes_morbidos->alcohol_sn)
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">¿Bebe OH?</span>
-                    <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->alcohol_sn }}</span>
-                </div>
-                @endisset
-                @isset($fichaKinesiologica->antecedentes_morbidos->act_fisica_sn)
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Actividad Física</span>
-                    <span class="pd_valor">{{ $fichaKinesiologia->antecedentes_morbidos->act_fisica_sn }}</span>
+                    <span class="pd_valor">{{ $fichaPsicologia->antecedentes_medicos->medicamentos }}</span>
                 </div>
                 @endisset
             </div>
 
-            <div class="otros_antecedentes">
-                <span class="pd_title">Otros Antecedentes</span>
-                @isset($fichaKinesilogia->situacion_familiar)
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Situación Familiar</span>
-                    <span class="pd_valor">{{ $fichaKinesiologia->situacion_familiar }}</span>
-                </div>
-                @endisset
-                @isset($fichaKinesilogia->situacion_laboral)
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Situación Laboral</span>
-                    <span class="pd_valor">{{ $fichaKinesiologia->situacion_laboral }}</span>
-                </div>
-                @endisset
-                @isset($fichaKinesilogia->asiste_centro_rhb)
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">¿Asisten a algún centro de RHB?</span>
-                    <span class="pd_valor">{{ $fichaKinesiologia->asiste_centro_rhb }}</span>
-                </div>
-                @endisset
-                @isset($fichaKinesilogia->motivo_consulta)
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Motivo de consulta</span>
-                    <span class="pd_valor">{{ $fichaKinesiologia->motivo_consulta }}</span>
-                </div>
-                @endisset
-            </div>
-
-            <div class="ant_morbidos">
-                <span class="pd_title">Escala de Valoración Funcional</span>
+            <div class="ant_medicos_2">
+                <span class="pd_title">Tratamiento con especialistas</span>
                 <div class="tabla">
                     <div class="cabecera">
                         <div class="encabezado">
-                            CATEGORÍA
+                            ESPECIALIDAD
                         </div>
                         <div class="encabezado">
-                            PUNTAJE
+                            NOMBRE
                         </div>
                         <div class="encabezado">
-                            COMENTARIOS
+                            SESIONES
                         </div>
                     </div>
-                    <div class="cabecera">
-                        <div class="encabezado">
-                            AUTOCUIDADO
-                        </div>
-                    </div>
-                    @if(isset($fichaKinesiologia->val_autocuidado->puntaje_alimentacion) || isset($fichaKinesiologia->val_autocuidado->coment_alimentacion))
+                    @if(isset($fichaPsicologia->antecedentes_medicos->tratamientos_neurologo_nombre) || isset($fichaPsicologia->antecedentes_medicos->tratamientos_neurologo_sesiones))
                     <div class="cuerpo">
-                        <div class="dato">Alimentación</div>
-                        @isset($fichaKinesiologia->val_autocuidado->puntaje_alimentacion)
-                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->puntaje_alimentacion }}</div>
-                        @endisset
-                        @isset($fichaKinesiologia->val_autocuidado->coment_alimentacion)
-                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->coment_alimentacion }}</div>
-                        @endisset
-                    </div>
-                    @endif
-                    @if(isset($fichaKinesiologia->val_autocuidado->puntaje_arreglo_pers) || isset($fichaKinesiologia->val_autocuidado->coment_arreglo_pers))
-                    <div class="cuerpo">
-                        <div class="dato">Arreglo Personal</div>                        
+                        <div class="dato">Neurólogo</div>
                         <div class="dato">
-                        @isset($fichaKinesiologia->val_autocuidado->puntaje_arreglo_pers)
-                            {{ $fichaKinesiologia->val_autocuidado->puntaje_arreglo_pers }}
-                        @endisset
+                            @isset($fichaPsicologia->antecedentes_medicos->tratamientos_neurologo_nombre)
+                            {{ $fichaPsicologia->antecedentes_medicos->tratamientos_neurologo_nombre }}
+                            @endisset
                         </div>
                         <div class="dato">
-                        @isset($fichaKinesiologia->val_autocuidado->coment_arreglo_pers)
-                            {{ $fichaKinesiologia->val_autocuidado->coment_arreglo_pers }}
-                        @endisset
-                        </div>                        
-                    </div>
-                    @endif
-                    @if(isset($fichaKinesiologia->val_autocuidado->puntaje_bano) || isset($fichaKinesiologia->val_autocuidado->coment_bano))
-                    <div class="cuerpo">
-                        <div class="dato">Baño</div>
-                        @isset($fichaKinesiologia->val_autocuidado->puntaje_bano)
-                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->puntaje_bano }}</div>
-                        @endisset
-                        @isset($fichaKinesiologia->val_autocuidado->coment_bano)
-                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->coment_bano }}</div>
-                        @endisset
-                    </div>
-                    @endif
-                    @if(isset($fichaKinesiologia->val_autocuidado->puntaje_vest_sup) || isset($fichaKinesiologia->val_autocuidado->coment_vest_sup))
-                    <div class="cuerpo">
-                        <div class="dato">Vestuario Superior</div>
-                        @isset($fichaKinesiologia->val_autocuidado->puntaje_vest_sup)
-                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->puntaje_vest_sup }}</div>
-                        @endisset
-                        @isset($fichaKinesiologia->val_autocuidado->coment_vest_sup)
-                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->coment_vest_sup }}</div>
-                        @endisset
-                    </div>
-                    @endif
-                    @if(isset($fichaKinesiologia->val_autocuidado->puntaje_vest_inf) || isset($fichaKinesiologia->val_autocuidado->coment_vest_inf))
-                    <div class="cuerpo">
-                        <div class="dato">Vestuario Inferior</div>
-                        @isset($fichaKinesiologia->val_autocuidado->puntaje_vest_inf)
-                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->puntaje_vest_inf }}</div>
-                        @endisset
-                        @isset($fichaKinesiologia->val_autocuidado->coment_vest_inf)
-                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->coment_vest_inf }}</div>
-                        @endisset
-                    </div>
-                    @endif
-                    @if(isset($fichaKinesiologia->val_autocuidado->puntaje_aseo_pers) || isset($fichaKinesiologia->val_autocuidado->coment_aseo_pers))
-                    <div class="cuerpo">
-                        <div class="dato">Aseo Personal</div>
-                        @isset($fichaKinesiologia->val_autocuidado->puntaje_aseo_pers)
-                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->puntaje_aseo_pers }}</div>
-                        @endisset
-                        @isset($fichaKinesiologia->val_autocuidado->coment_aseo_pers)
-                        <div class="dato">{{ $fichaKinesiologia->val_autocuidado->coment_aseo_pers }}</div>
-                        @endisset
-                    </div>
-                    @endif
-                    <div class="especial">
-                        <div class="encabezado">
-                            CONTROL DE ESFÍNTERES
+                            @isset($fichaPsicologia->antecedentes_medicos->tratamientos_neurologo_sesiones)
+                            {{ $fichaPsicologia->antecedentes_medicos->tratamientos_neurologo_sesiones }}
+                            @endisset
                         </div>
                     </div>
+                    @endif
+                    @if(isset($fichaPsicologia->antecedentes_medicos->tratamientos_psiquiatra_nombre) || isset($fichaPsicologia->antecedentes_medicos->tratamientos_psiquiatra_sesiones))
                     <div class="cuerpo">
-                        <div class="dato">Control de Vejiga</div>
-                        @isset($fichaKinesiologia->val_control_esfinter->puntaje_control_vejiga)
-                        <div class="dato">{{ $fichaKinesiologia->val_control_esfinter->puntaje_control_vejiga }}</div>
-                        @endisset
-                        @isset($fichaKinesiologia->val_control_esfinter->coment_control_vejiga)
-                        <div class="dato">{{ $fichaKinesiologia->val_control_esfinter->coment_control_vejiga }}</div>
-                        @endisset
-                    </div>
-                    <div class="cuerpo">
-                        <div class="dato">Control de Intestino</div>
-                        @isset($fichaKinesiologia->val_control_esfinter->puntaje_control_intestino)
-                        <div class="dato">{{ $fichaKinesiologia->val_control_esfinter->puntaje_control_intestino }}</div>
-                        @endisset
-                        @isset($fichaKinesiologia->val_control_esfinter->coment_control_intestino)
-                        <div class="dato">{{ $fichaKinesiologia->val_control_esfinter->coment_control_intestino }}</div>
-                        @endisset
-                    </div>
-
-                    <div class="cabecera">
-                        <div class="especial">
-                            MOVILIDAD
+                        <div class="dato">Psiquiatra</div>
+                        <div class="dato">
+                            @isset($fichaPsicologia->antecedentes_medicos->tratamientos_psiquiatra_nombre)
+                            {{ $fichaPsicologia->antecedentes_medicos->tratamientos_psiquiatra_nombre }}
+                            @endisset
+                        </div>
+                        <div class="dato">
+                            @isset($fichaPsicologia->antecedentes_medicos->tratamientos_psiquiatra_sesiones)
+                            {{ $fichaPsicologia->antecedentes_medicos->tratamientos_psiquiatra_sesiones }}
+                            @endisset
                         </div>
                     </div>
+                    @endif
+                    @if(isset($fichaPsicologia->antecedentes_medicos->tratamientos_fonoaudiologo_nombre) || isset($fichaPsicologia->antecedentes_medicos->tratamientos_fonoaudiologo_sesiones))
                     <div class="cuerpo">
-                        <div class="dato">Transferencia cama-silla</div>
-                        @isset( $fichaKinesiologia->val_movilidad->puntaje_trans_cama_silla)
-                        <div class="dato">{{ $fichaKinesiologia->val_movilidad->puntaje_trans_cama_silla }}</div>
-                        @endisset
-                        @isset( $fichaKinesiologia->val_movilidad->coment_trans_cama_silla)
-                        <div class="dato">{{ $fichaKinesiologia->val_movilidad->coment_trans_cama_silla }}</div>
-                        @endisset
-                    </div>
-                    <div class="cuerpo">
-                        <div class="dato">Traslado baño</div>
-                        @isset( $fichaKinesiologia->val_movilidad->puntaje_traslado_bano)
-                        <div class="dato">{{ $fichaKinesiologia->val_movilidad->puntaje_traslado_bano }}</div>
-                        @endisset
-                        @isset( $fichaKinesiologia->val_movilidad->coment_traslado_bano)
-                        <div class="dato">{{ $fichaKinesiologia->val_movilidad->coment_traslado_bano }}</div>
-                        @endisset
-                    </div>
-                    <div class="cuerpo">
-                        <div class="dato">Traslado ducha</div>
-                        @isset( $fichaKinesiologia->val_movilidad->puntaje_traslado_ducha)
-                        <div class="dato">{{ $fichaKinesiologia->val_movilidad->puntaje_traslado_ducha }}</div>
-                        @endisset
-                        @isset( $fichaKinesiologia->val_movilidad->coment_traslado_ducha)
-                        <div class="dato">{{ $fichaKinesiologia->val_movilidad->coment_traslado_ducha }}</div>
-                        @endisset
-                    </div>
-                    <div class="cabecera">
-                        <div class="encabezado">
-                            DEAMBULACIÓN
+                        <div class="dato">Fonoaudiólogo</div>
+                        <div class="dato">
+                            @isset($fichaPsicologia->antecedentes_medicos->tratamientos_fonoaudiologo_nombre)
+                            {{ $fichaPsicologia->antecedentes_medicos->tratamientos_fonoaudiologo_nombre }}
+                            @endisset
+                        </div>
+                        <div class="dato">
+                            @isset($fichaPsicologia->antecedentes_medicos->tratamientos_fonoaudiologo_sesiones)
+                            {{ $fichaPsicologia->antecedentes_medicos->tratamientos_fonoaudiologo_sesiones }}
+                            @endisset
                         </div>
                     </div>
+                    @endif
+                    @if(isset($fichaPsicologia->antecedentes_medicos->tratamientos_ocupacional_nombre) || isset($fichaPsicologia->antecedentes_medicos->tratamientos_ocupacional_sesiones))
                     <div class="cuerpo">
-                        <div class="dato">Desplazarse caminando/sr</div>
-                        @isset($fichaKinesiologia->val_deambulacion->puntaje_desp_caminando)
-                        <div class="dato">{{ $fichaKinesiologia->val_deambulacion->puntaje_desp_caminando }}</div>
-                        @endisset
-                        @isset($fichaKinesiologia->val_deambulacion->coment_desp_caminando)
-                        <div class="dato">{{ $fichaKinesiologia->val_deambulacion->coment_desp_caminando }}</div>
-                        @endisset
-                    </div>
-                    <div class="cuerpo">
-                        <div class="dato">Subir y bajar escaleras</div>
-                        @isset($fichaKinesiologia->val_deambulacion->puntaje_escaleras)
-                        <div class="dato">{{ $fichaKinesiologia->val_deambulacion->puntaje_escaleras }}</div>
-                        @endisset
-                        @isset($fichaKinesiologia->val_deambulacion->coment_escaleras)
-                        <div class="dato">{{ $fichaKinesiologia->val_deambulacion->coment_escaleras }}</div>
-                        @endisset
-                    </div>
-                    <div class="cabecera">
-                        <div class="encabezado">
-                            COMUNICACIÓN/COGNITIVO
+                        <div class="dato">Terapeuta Ocupacional</div>
+                        <div class="dato">
+                            @isset($fichaPsicologia->antecedentes_medicos->tratamientos_ocupacional_nombre)
+                            {{ $fichaPsicologia->antecedentes_medicos->tratamientos_ocupacional_nombre }}
+                            @endisset
+                        </div>
+                        <div class="dato">
+                            @isset($fichaPsicologia->antecedentes_medicos->tratamientos_ocupacional_sesiones)
+                            {{ $fichaPsicologia->antecedentes_medicos->tratamientos_ocupacional_sesiones }}
+                            @endisset
                         </div>
                     </div>
+                    @endif
+                    @if(isset($fichaPsicologia->antecedentes_medicos->tratamientos_kinesiologo_nombre) || isset($fichaPsicologia->antecedentes_medicos->tratamientos_kinesiologo_sesiones))
                     <div class="cuerpo">
-                        <div class="dato">Expresión</div>
-                        @isset($fichaKinesiologia->val_com_cog->puntaje_expresion)
-                        <div class="dato">{{ $fichaKinesiologia->val_com_cog->puntaje_expresion }}</div>
-                        @endisset
-                        @isset($fichaKinesiologia->val_com_cog->coment_expresion)
-                        <div class="dato">{{ $fichaKinesiologia->val_com_cog->coment_expresion }}</div>
-                        @endisset
-                    </div>
-                    <div class="cuerpo">
-                        <div class="dato">Comprensión</div>
-                        @isset($fichaKinesiologia->val_com_cog->puntaje_comprension)
-                        <div class="dato">{{ $fichaKinesiologia->val_com_cog->puntaje_comprension }}</div>
-                        @endisset
-                        @isset($fichaKinesiologia->val_com_cog->coment_comprension)
-                        <div class="dato">{{ $fichaKinesiologia->val_com_cog->coment_comprension }}</div>
-                        @endisset
-                    </div>
-                    <div class="cabecera">
-                        <div class="encabezado">
-                            SOCIAL
+                        <div class="dato">Kinesiólogo</div>
+                        <div class="dato">
+                            @isset($fichaPsicologia->antecedentes_medicos->tratamientos_kinesiologo_nombre)
+                            {{ $fichaPsicologia->antecedentes_medicos->tratamientos_kinesiologo_nombre }}
+                            @endisset
+                        </div>
+                        <div class="dato">
+                            @isset($fichaPsicologia->antecedentes_medicos->tratamientos_kinesiologo_sesiones)
+                            {{ $fichaPsicologia->antecedentes_medicos->tratamientos_kinesiologo_sesiones }}
+                            @endisset
                         </div>
                     </div>
+                    @endif
+                    @if(isset($fichaPsicologia->antecedentes_medicos->tratamientos_psicologo_nombre) || isset($fichaPsicologia->antecedentes_medicos->tratamientos_psicologo_sesiones))
                     <div class="cuerpo">
-                        <div class="dato">Interacción social</div>
-                        @isset($fichaKinesiologia->val_social->puntaje_int_social)
-                        <div class="dato">{{ $fichaKinesiologia->val_social->puntaje_int_social }}</div>
-                        @endisset
-                        @isset($fichaKinesiologia->val_social->coment_int_social)
-                        <div class="dato">{{ $fichaKinesiologia->val_social->coment_int_social }}</div>
-                        @endisset
+                        <div class="dato">Psicólogo</div>
+                        <div class="dato">
+                            @isset($fichaPsicologia->antecedentes_medicos->tratamientos_psicologo_nombre)
+                            {{ $fichaPsicologia->antecedentes_medicos->tratamientos_psicologo_nombre }}
+                            @endisset
+                        </div>
+                        <div class="dato">
+                            @isset($fichaPsicologia->antecedentes_medicos->tratamientos_psicologo_sesiones)
+                            {{ $fichaPsicologia->antecedentes_medicos->tratamientos_psicologo_sesiones }}
+                            @endisset
+                        </div>
                     </div>
-                    <div class="cuerpo">
-                        <div class="dato">Solución de problemas</div>
-                        @isset($fichaKinesiologia->val_social->puntaje_sol_problemas)
-                        <div class="dato">{{ $fichaKinesiologia->val_social->puntaje_sol_problemas }}</div>
-                        @endisset
-                        @isset($fichaKinesiologia->val_social->coment_sol_problemas)
-                        <div class="dato">{{ $fichaKinesiologia->val_social->coment_sol_problemas }}</div>
-                        @endisset
-                    </div>
-                    <div class="cuerpo">
-                        <div class="dato">Memoria</div>
-                        @isset($fichaKinesiologia->val_social->puntaje_memoria)
-                        <div class="dato">{{ $fichaKinesiologia->val_social->puntaje_memoria }}</div>
-                        @endisset
-                        @isset($fichaKinesiologia->val_social->coment_memoria)
-                        <div class="dato">{{ $fichaKinesiologia->val_social->coment_memoria }}</div>
-                        @endisset
-                    </div>
+                    @endif
                 </div>   
-            </div>                         
-                        
-            <div class="evaluacion_general">
-                <span class="pd_title">Evaluación General</span>
-                
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Conexión con el medio</span>
-                    @isset($fichaKinesiologia->val_evaluacion->conexion_medio)
-                    <span class="pd_valor">{{ $fichaKinesiologia->val_evaluacion->conexion_medio }}</span>
-                    @endisset
-                </div>
-
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Nivel cognitivo aparente</span>
-                    @isset($fichaKinesiologia->val_evaluacion->nivel_cognitivo_apar)
-                    <span class="pd_valor">{{ $fichaKinesiologia->val_evaluacion->nivel_cognitivo_apar }}</span>
-                    @endisset
-                </div>
-            </div>
-
-            <div class="evaluacion_sensorial">
-                <span class="pd_title">Evaluación Sensorial</span>
-                
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Visual</span>
-                    @isset($fichaKinesiologia->val_sensorial->visual)
-                    <span class="pd_valor">{{ $fichaKinesiologia->val_sensorial->visual }}</span>
-                    @endisset
-                </div>
-
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Auditivo</span>
-                    @isset($fichaKinesiologia->val_sensorial->auditivo)
-                    <span class="pd_valor">{{ $fichaKinesiologia->val_sensorial->auditivo }}</span>
-                    @endisset
-                </div>
-
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Táctil</span>
-                    @isset($fichaKinesiologia->val_sensorial->tactil)
-                    <span class="pd_valor">{{ $fichaKinesiologia->val_sensorial->tactil }}</span>
-                    @endisset
-                </div>
-
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Propioceptivo</span>
-                    @isset($fichaKinesiologia->val_sensorial->propioceptivo)
-                    <span class="pd_valor">{{ $fichaKinesiologia->val_sensorial->propioceptivo }}</span>
-                    @endisset
-                </div>
-
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Vestibular</span>
-                    @isset($fichaKinesiologia->val_sensorial->vestibular)
-                    <span class="pd_valor">{{ $fichaKinesiologia->val_sensorial->vestibular }}</span>
-                    @endisset
-                </div>
-            </div>
-
-            <div class="evaluacion_motora">
-                <span class="pd_title">Evaluación Motora</span>
-                
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Tono</span>
-                    @isset($fichaKinesiologia->val_motora->tono)
-                    <span class="pd_valor">{{ $fichaKinesiologia->val_motora->tono }}</span>
-                    @endisset
-                </div>
-
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">ROM</span>
-                    @isset($fichaKinesiologia->val_motora->rom)
-                    <span class="pd_valor">{{ $fichaKinesiologia->val_motora->rom }}</span>
-                    @endisset
-                </div>
-
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Dolor</span>
-                    @isset($fichaKinesiologia->val_motora->dolor)
-                    <span class="pd_valor">{{ $fichaKinesiologia->val_motora->dolor }}</span>
-                    @endisset
-                </div>
-
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Fuerza Muscular</span>
-                    @isset($fichaKinesiologia->val_motora->fm)
-                    <span class="pd_valor">{{ $fichaKinesiologia->val_motora->fm }}</span>
-                    @endisset
-                </div>
-
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Habilidades Motrices</span>
-                    @isset($fichaKinesiologia->val_motora->hab_motrices)
-                    <span class="pd_valor">{{ $fichaKinesiologia->val_motora->hab_motrices }}</span>
-                    @endisset
-                </div>
-
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Coordinación</span>
-                    @isset($fichaKinesiologia->val_motora->coordinacion)
-                    <span class="pd_valor">{{ $fichaKinesiologia->val_motora->coordinacion }}</span>
-                    @endisset
-                </div>
-
-                <div class="pd_info-group">
-                    <span class="pd_subtitle">Equilibrio</span>
-                    @isset($fichaKinesiologia->val_motora->equilibrio)
-                    <span class="pd_valor">{{ $fichaKinesiologia->val_motora->equilibrio }}</span>
-                    @endisset
-                </div>                   
             </div>
         </div>
     </body>
