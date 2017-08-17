@@ -123,6 +123,11 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'uses' => 'FichaTerapiaOcupacionalController@show',
                 'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.show'
             ])->middleware('roles:admin|terapia_ocupacional');
+
+            Route::get('/pdf/{id}', [
+                'uses' => 'FichaTerapiaOcupacionalController@generatePDF',
+                'as' => 'area-medica.ficha-evaluacion-inicial.terapia-ocupacional.generatePDF'
+            ])->middleware('roles:admin|terapia_ocupacional');
         });
 
         Route::group(['prefix' => '/psicologia'], function (){
@@ -141,6 +146,11 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'uses' => 'FichaPsicologiaController@show',
                 'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.show'
             ])->middleware('roles:secretaria|admin');
+
+            Route::get('/pdf/{id}', [
+                'uses' => 'FichaPsicologiaController@generatePDF',
+                'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.generatePDF'
+            ])->middleware('roles:admin|psicologia');
         });
 
         Route::group(['prefix' => '/fichas'], function (){

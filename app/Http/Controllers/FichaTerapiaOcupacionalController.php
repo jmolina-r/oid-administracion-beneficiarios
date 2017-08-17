@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use \PDF;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\ActividadesVidaDiaria;
@@ -427,5 +430,16 @@ class FichaTerapiaOcupacionalController extends Controller
             'genograma' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
         return $rules;
+    }
+
+    public function generatePDF(Request $request, $id) {
+        $fichaTerapiaOcupacional = FichaTerapiaOcupacional::find($id);
+
+        if($fichaTerapiaOcupacional == null){
+            return view('area-medica.ficha-evaluacion-inicial.Error');
+        }
+
+        $pdf = PDF::loadView('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.pdf', compact('fichaTerapiaOcupacional'));
+        return $pdf->download('fichaTerapiaOcupacional.pdf');
     }
 }

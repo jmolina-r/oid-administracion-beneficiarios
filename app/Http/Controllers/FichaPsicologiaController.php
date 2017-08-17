@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use \PDF;
+
 use App\AntecedentesFamiliares;
 use App\AntecedentesMedicos;
 use App\FichaPsicologia;
@@ -234,5 +236,16 @@ class FichaPsicologiaController extends Controller
             'genograma' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
         return $rules;
+    }
+
+    public function generatePDF(Request $request, $id) {
+        $fichaPsicologia = FichaPsicologia::find($id);
+
+        if($fichaPsicologia == null){
+            return view('area-medica.ficha-evaluacion-inicial.Error');
+        }
+
+        $pdf = PDF::loadView('area-medica.ficha-evaluacion-inicial.psicologia.pdf', compact('fichaPsicologia'));
+        return $pdf->download('fichaPsicologia.pdf');
     }
 }
