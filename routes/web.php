@@ -26,6 +26,8 @@ Route::post('update/{user}', 'Auth\UpdateController@update');
 Route::get('/find', 'Auth\FindController@showSearch')->name('find');
 Route::get('/users/{id}', 'Auth\FindController@userInfoJson');
 Route::get('/users/{id}/roles', 'Auth\FindController@userInfoRolesJson');
+Route::get('/users/{id}/funcionario', 'Auth\FindController@userInfoFuncionarioJson');
+
 
 
 
@@ -525,5 +527,5 @@ Route::group(['prefix' => 'funcionario', 'middleware' => 'auth'], function () {
         'as' => 'funcionario.funcionarioInfoJson'
     ])->middleware('roles:admin|coordinador_oficina');
 
-    
+
 });
