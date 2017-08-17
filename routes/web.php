@@ -145,6 +145,11 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'uses' => 'FichaPsicologiaController@show',
                 'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.show'
             ])->middleware('roles:secretaria|admin');
+
+            Route::get('/pdf/{id}', [
+                'uses' => 'FichaPsicologiaController@generatePDF',
+                'as' => 'area-medica.ficha-evaluacion-inicial.psicologia.generatePDF'
+            ])->middleware('roles:admin|psicologia');
         });
 
         Route::group(['prefix' => '/fichas'], function (){

@@ -397,7 +397,7 @@
                 @endisset-->  
                 --}}
 
-                <div class="datos_ficha">
+                <div class="ant_prenatales">
                     <span class="pd_title">Antecedentes Prenatales</span>
                     @isset($fichaFonoaudiologia->antecedentes_pre_fono->plan_embarazo)
                     <div class="pd_info-group">
@@ -405,8 +405,698 @@
                         <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_pre_fono->plan_embarazo }}</span>
                     </div>
                     @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_pre_fono->acept_embarazo)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Aceptación del embarazo</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_pre_fono->acept_embarazo }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_pre_fono->control_embarazo)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Control de embarazo</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_pre_fono->control_embarazo }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_pre_fono->ingesta_med)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Ingesta de medicamentos</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_pre_fono->ingesta_med }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_pre_fono->ingesta_oh_drogas)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Ingesta de alcohol/drogas</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_pre_fono->ingesta_oh_drogas }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_pre_fono->consumo_cigarrillo)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Consumo de cigarrillo</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_pre_fono->consumo_cigarrillo }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_pre_fono->estado_emocional)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Estado emocional</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_pre_fono->estado_emocional }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_pre_fono->enfermedades_embarazo)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Enfermedades importantes durante el embarazo</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_pre_fono->enfermedades_embarazo }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_pre_fono->otros_prenatales)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Otros</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_pre_fono->otros_prenatales }}</span>
+                    </div>
+                    @endisset
                 </div>
 
+                <div class="ant_perinatales">
+                    <span class="pd_title">Antecedentes Perinatales</span>
+
+                    @isset($fichaFonoaudiologia->antecedentes_peri_fono->tipo_parto)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle"></span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_peri_fono->tipo_parto }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_peri_fono->suf_fetal)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Sufrimiento fetal</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_peri_fono->suf_fetal }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_peri_fono->edad_gest)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Edad gestacional</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_peri_fono->edad_gest }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_peri_fono->lugar_naci)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Lugar de nacimiento</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_peri_fono->lugar_naci }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_peri_fono->peso)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Peso</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_peri_fono->peso }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_peri_fono->talla)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Talla</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_peri_fono->talla }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_peri_fono->apgar)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">APGAR</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_peri_fono->apgar }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_peri_fono->comp_parto)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Complicaciones durante el parto</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_peri_fono->comp_parto }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_peri_fono->hospitalizaciones)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Hospitalizaciones (¿Por qué?)</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_peri_fono->hospitalizaciones }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_peri_fono->otros_perinatales)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Otros</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_peri_fono->otros_perinatales }}</span>
+                    </div>
+                    @endisset
+                </div>
+
+                <div class="ant_postnatales">
+                    <span class="pd_title">Antecedentes Postnatales</span>
+
+                    @isset($fichaFonoaudiologia->antecedentes_pos_fono->trat_post_parto)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Tratamientos posteriores al parto</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_pos_fono->trat_post_parto }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_pos_fono->tipo_alimenta)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Tipo de alimentación</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_pos_fono->tipo_alimenta }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_pos_fono->edad_lactancia)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">¿Hasta qué edad duró la lactancia?</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_pos_fono->edad_lactancia }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_pos_fono->operaciones_edad)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Operaciones (edad)</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_pos_fono->operaciones_edad }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_pos_fono->hospitalizaciones_edad)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Hospitalizaciones (edad)</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_pos_fono->hospitalizaciones_edad }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_pos_fono->observaciones_postnatales)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Observaciones</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_pos_fono->observaciones_postnatales }}</span>
+                    </div>
+                    @endisset
+                </div>
+
+                <div class="desa_psicomotor">
+                    <span class="pd_title">Desarrollo Psicomotor (¿A qué edad?)</span>
+
+                    @isset($fichaFonoaudiologia->desarrollo_psi_ed->control_cabeza)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Control cabeza</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_psi_ed->control_cabeza }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_psi_ed->sento)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Se sentó</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_psi_ed->sento }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_psi_ed->gateo)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Gateó</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_psi_ed->gateo }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_psi_ed->paro)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Se paró</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_psi_ed->paro }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_psi_ed->camino)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Caminó</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_psi_ed->camino }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_psi_ed->control_esf_diurno)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Control esfínter diurno</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_psi_ed->control_esf_diurno }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_psi_ed->control_esf_nocturno)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Control esfínter nocturnosento</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_psi_ed->control_esf_nocturno }}</span>
+                    </div>
+                    @endisset
+                </div>
+
+                <div class="desa_lenguaje">
+                    <span class="pd_title">Desarrollo del lenguaje (¿A qué edad?)</span>
+
+                    @isset($fichaFonoaudiologia->desarrollo_le_ed->balbuceo)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Balbuceó</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_le_ed->balbuceo }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_le_ed->sonrio)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Sonrió</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_le_ed->sonrio }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_le_ed->primeras_palabras)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Dijo sus primeras palabras</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_le_ed->primeras_palabras }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_le_ed->frases_dos_palabras)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Dijo frases de 2 palabras</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_le_ed->frases_dos_palabras }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_le_ed->oraciones)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Dijo oraciones</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_le_ed->oraciones }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_le_ed->hablo_espo)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Habló espontáneamente</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_le_ed->hablo_espo }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_le_ed->siguio_inst)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Siguió instrucciones</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_le_ed->siguio_inst }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_le_ed->mira_ojos)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">¿El niño (a) mira a los ojos cuando usted lo habla?</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_le_ed->mira_ojos }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_le_ed->mira_labios)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">¿El niño (a) mira a los labios cuando habla?</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_le_ed->mira_labios }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_le_ed->comunica_palabras)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">¿Intenta comunicarse con palabras?</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_le_ed->comunica_palabras }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_le_ed->comunica_jergas)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">¿Se comunica con jerga?</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_le_ed->comunica_jergas }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_le_ed->comunica_palabras_sueltas)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">¿Se comunica con palabras sueltas?</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_le_ed->comunica_palabras_sueltas }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_le_ed->comunica_gestos)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">¿Se comunica a través de gestos?</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_le_ed->comunica_gestos }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_le_ed->entiende_dice)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">¿Usted entiende lo que dice?</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_le_ed->entiende_dice }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_le_ed->desconocidos_entienden)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">¿Las personas que no lo conocen entienden lo que dice?</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_le_ed->desconocidos_entienden }}</span>
+                    </div>
+                    @endisset
+                </div>
+
+                <div class="des_social">
+                    <span class="pd_title">Desarrollo Social</span>
+
+                    @isset($fichaFonoaudiologia->desarrollo_so_fono->respeta_normas)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Respeta Normas</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_so_fono->respeta_normas }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_so_fono->comparte_juguetes)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Comparte Juguetes</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_so_fono->comparte_juguetes }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_so_fono->juega_otros)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Juega con otros niños</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_so_fono->juega_otros }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_so_fono->carinoso)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Cariñoso</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_so_fono->carinoso }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_so_fono->berrinches)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Hace berrinches</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_so_fono->berrinches }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_so_fono->frustra_facil)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Se frustra con facilidad</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_so_fono->frustra_facil }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_so_fono->irritable)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Irritable</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_so_fono->irritable }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_so_fono->agresivo)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Agresivo</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_so_fono->agresivo }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_so_fono->peleador)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Peleador</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_so_fono->peleador }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_so_fono->intereses)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Intereses</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_so_fono->intereses }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->desarrollo_so_fono->observaciones_social)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Observaciones</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->desarrollo_so_fono->observaciones_social }}</span>
+                    </div>
+                    @endisset
+                </div>
+                <div class="habitos">
+                    <span class="pd_title">Hábitos</span>
+
+                    @isset($fichaFonoaudiologia->habitos_si_no->mamadera)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">¿Usa mamadera?</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->habitos_si_no->mamadera }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->habitos_si_no->chupete)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">¿Usa Chupete?</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->habitos_si_no->chupete }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->habitos_si_no->chupa_dedo)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">¿Se chupa el dedo?</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->habitos_si_no->chupa_dedo }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->habitos_si_no->come_solo_tipo)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">¿Come solo?</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->habitos_si_no->come_solo_tipo }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->habitos_si_no->viste_solo)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">¿Se viste solo?</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->habitos_si_no->viste_solo }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->habitos_si_no->boca_abierta_dia)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">¿Permanece con la boca abierta durante el día?</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->habitos_si_no->boca_abierta_dia }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->habitos_si_no->boca_abierta_noche)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">¿Permanece con la boca abierta durante la noche?</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->habitos_si_no->boca_abierta_noche }}</span>
+                    </div>
+                    @endisset
+                </div>
+
+                <div class="ant_morbidos">
+                    <span class="pd_title">Antecedentes mórbidos del niño (a)</span>
+                    <div class="tabla">
+                        <div class="cabecera">
+                            <div class="encabezado">
+                                ANTECEDENTE
+                            </div>
+                            <div class="encabezado">
+                                PRESENCIA
+                            </div>
+                            <div class="encabezado">
+                                DESCRIPCION
+                            </div>
+                        </div>
+
+                        @if(isset($fichaKinesiologia->antecedentes_mor_fono->alergias_sn) || isset($fichaKinesiologia->antecedentes_mor_fono->alergias_desc))
+                            <div class="cuerpo">
+                                <div class="dato">Alergia</div>
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->alergias_sn)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->alergias_sn }}</div>
+                                @endisset
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->alergias_desc)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->alergias_desc }}</div>
+                                @endisset
+                            </div>
+                        @endif
+
+                        @if(isset($fichaKinesiologia->antecedentes_mor_fono->otitis_sn) || isset($fichaKinesiologia->antecedentes_mor_fono->otitis_desc))
+                            <div class="cuerpo">
+                                <div class="dato">Otitis</div>
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->otitis_sn)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->otitis_sn }}</div>
+                                @endisset
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->otitis_desc)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->otitis_desc }}</div>
+                                @endisset
+                            </div>
+                        @endif
+
+                        @if(isset($fichaKinesiologia->antecedentes_mor_fono->obesidad_sn) || isset($fichaKinesiologia->antecedentes_mor_fono->obesidad_desc))
+                            <div class="cuerpo">
+                                <div class="dato">Obesidad</div>
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->obesidad_sn)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->obesidad_sn }}</div>
+                                @endisset
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->obesidad_desc)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->obesidad_desc }}</div>
+                                @endisset
+                            </div>
+                        @endif
+
+                        @if(isset($fichaKinesiologia->antecedentes_mor_fono->diabetes_sn) || isset($fichaKinesiologia->antecedentes_mor_fono->diabetes_desc))
+                            <div class="cuerpo">
+                                <div class="dato">Diabetes</div>
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->diabetes_sn)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->diabetes_sn }}</div>
+                                @endisset
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->diabetes_desc)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->diabetes_desc }}</div>
+                                @endisset
+                            </div>
+                        @endif
+
+                        @if(isset($fichaKinesiologia->antecedentes_mor_fono->cirugias_sn) || isset($fichaKinesiologia->antecedentes_mor_fono->cirugias_desc))
+                            <div class="cuerpo">
+                                <div class="dato">Cirugías</div>
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->cirugias_sn)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->cirugias_sn }}</div>
+                                @endisset
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->cirugias_desc)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->cirugias_desc }}</div>
+                                @endisset
+                            </div>
+                        @endif
+
+                        @if(isset($fichaKinesiologia->antecedentes_mor_fono->traumatis_sn) || isset($fichaKinesiologia->antecedentes_mor_fono->traumatis_desc))
+                            <div class="cuerpo">
+                                <div class="dato">Traumatismos</div>
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->traumatis_sn)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->traumatis_sn }}</div>
+                                @endisset
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->traumatis_desc)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->traumatis_desc }}</div>
+                                @endisset
+                            </div>
+                        @endif
+
+                        @if(isset($fichaKinesiologia->antecedentes_mor_fono->epilepsia_sn) || isset($fichaKinesiologia->antecedentes_mor_fono->epilepsia_desc))
+                            <div class="cuerpo">
+                                <div class="dato">Epilepsia</div>
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->epilepsia_sn)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->epilepsia_sn }}</div>
+                                @endisset
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->epilepsia_desc)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->epilepsia_desc }}</div>
+                                @endisset
+                            </div>
+                        @endif
+
+                        @if(isset($fichaKinesiologia->antecedentes_mor_fono->deficit_visual_sn) || isset($fichaKinesiologia->antecedentes_mor_fono->deficit_visual_desc))
+                            <div class="cuerpo">
+                                <div class="dato">Déficit visual</div>
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->deficit_visual_sn)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->deficit_visual_sn }}</div>
+                                @endisset
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->deficit_visual_desc)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->deficit_visual_desc }}</div>
+                                @endisset
+                            </div>
+                        @endif
+
+                        @if(isset($fichaKinesiologia->antecedentes_mor_fono->deficit_auditivo_sn) || isset($fichaKinesiologia->antecedentes_mor_fono->deficit_auditivo_desc))
+                            <div class="cuerpo">
+                                <div class="dato">Déficit auditivo</div>
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->deficit_auditivo_sn)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->deficit_auditivo_sn }}</div>
+                                @endisset
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->deficit_auditivo_desc)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->deficit_auditivo_desc }}</div>
+                                @endisset
+                            </div>
+                        @endif
+
+                        @if(isset($fichaKinesiologia->antecedentes_mor_fono->paralisis_cerebral_sn) || isset($fichaKinesiologia->antecedentes_mor_fono->paralisis_cerebral_desc))
+                            <div class="cuerpo">
+                                <div class="dato">Parálisis cerebral</div>
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->paralisis_cerebral_sn)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->paralisis_cerebral_sn }}</div>
+                                @endisset
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->paralisis_cerebral_desc)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->paralisis_cerebral_desc }}</div>
+                                @endisset
+                            </div>
+                        @endif
+
+                        @if(isset($fichaKinesiologia->antecedentes_mor_fono->otros_morbidos))
+                            <div class="cuerpo">
+                                <div class="dato">Otros</div>
+                                @isset($fichaKinesiologia->antecedentes_mor_fono->otros_morbidos)
+                                <div class="dato">{{ $fichaKinesiologia->antecedentes_mor_fono->otros_morbidos }}</div>
+                                @endisset
+                            </div>
+                        @endif
+                    </div>   
+                </div>
+
+                <div class="ant_morb_familiares">
+                    <span class="pd_title">Antecedentes Mórbidos Familiares</span>
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->diabetes_sn_mor_fa)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Diabetes</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->diabetes_sn_mor_fa }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->hipertension_sn)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Hipertensión</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->hipertension_sn }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->epilepsia_sn_mor_fa)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Epilepsia</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->epilepsia_sn_mor_fa }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->deficiencia_mental_sn)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Deficiencia Mental</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->deficiencia_mental_sn }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->autismo_sn)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Autismo</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->autismo_sn }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_lenguaje_sn)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Trastornos del Lenguaje</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_lenguaje_sn }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_aprendizaje_sn)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Trastornos de aprendizaje</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_aprendizaje_sn }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_visuales_sn)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Trastornos visuales</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_visuales_sn }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_auditivos_sn)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Trastornos auditivos</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_auditivos_sn }}</span>
+                    </div>
+                    @endisset
+
+                    @isset($fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_psiquiatricos_sn)
+                    <div class="pd_info-group">
+                        <span class="pd_subtitle">Trastornos psiquiátricos</span>
+                        <span class="pd_valor">{{ $fichaFonoaudiologia->antecedentes_mor_fa_fono->trast_psiquiatricos_sn }}</span>
+                    </div>
+                    @endisset
+                </div>    
             </div>                    
         </div>
     </body>

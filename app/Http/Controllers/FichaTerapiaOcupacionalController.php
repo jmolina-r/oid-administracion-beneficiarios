@@ -438,6 +438,7 @@ class FichaTerapiaOcupacionalController extends Controller
         if($fichaTerapiaOcupacional == null){
             return view('area-medica.ficha-evaluacion-inicial.Error');
         }
+
         $persona = Beneficiario::find($fichaTerapiaOcupacional->beneficiario_id);
         $funcionario=Funcionario::find($fichaTerapiaOcupacional->funcionario_id);
         $actividadesVidaDiaria = ActividadesVidaDiaria::find($fichaTerapiaOcupacional->actividades_vida_diaria_id);
@@ -450,5 +451,6 @@ class FichaTerapiaOcupacionalController extends Controller
             'persona','actividadesVidaDiaria','antecedentesSalud','antecedentesSocioFamiliares','desarrolloEvolutivo',
             'habilidadesSociales','historialClinico','funcionario'));
         return $pdf->stream('fichaTerapiaOcupacional.pdf');
+
     }
 }
