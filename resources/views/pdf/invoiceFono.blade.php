@@ -107,15 +107,13 @@
             <th class="th1"></th>
             <th class="th1"></th>
         </tr>
-        <?php
-        for ($i = 0; $i < count($nombrePrest); $i++){?>
+        @for ($i = 0; $i < count($nombrePrest); $i++)
         <tr>
             <td> {{$nombrePrest[$i]}}</td>
             <td></td>
             <td>{{$porcentajePrest[$i]}}</td>
         </tr>
-        <?php }
-        ?>
+        @endfor
     </table>
 </div>
 <br>

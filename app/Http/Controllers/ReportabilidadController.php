@@ -342,9 +342,9 @@ class ReportabilidadController extends Controller
                 ->count();
             $i++;
         }
-     //   if(isset($_GET['visualFono'])) {
+     if(isset($_GET['visualFono'])) {
             return view('reportabilidad.reportabilidadFono', compact('fonoaudiologo', 'atencionAnualFono', 'atencionMensualFono', 'asistenciaFonoAnual', 'asistenciaFonoMensual', 'inasistenciaFonoAnual', 'inasistenciaFonoMensual', 'porcentajePrest', 'nombrePrest'));
-      //  }
+     }
         $nombres = $_GET["nombres"];
         $apellidos = $_GET["apellidos"];
         $rut = $_GET["rut"];
@@ -359,8 +359,7 @@ class ReportabilidadController extends Controller
         $porcentajePrest = $_GET["porcentajePrest"];
         $nombrePrest = $_GET["nombrePrest"];
 
-        $view =  \View::make('pdf.invoiceFono', compact('nombres','apellidos','direccion','rut','telefono','atencionAnualFono','atencionMensualFono','asistenciaFonoAnual','asistenciaFonoMensual','inasistenciaFonoAnual','inasistenciaFonoMensual','porcentajePrest','nombrePrest'))->render();
-        $pdf = \App::make('dompdf.wrapper');
+        $view =  \View::make('pdf.invoiceFono', compact('nombres','apellidos','direccion','rut','telefono','atencionAnualFono','atencionMensualFono','asistenciaFonoAnual','asistenciaFonoMensual','inasistenciaFonoAnual','inasistenciaFonoMensual','porcentajePrest','nombrePrest'))->render();        $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('invoiceFono');
 

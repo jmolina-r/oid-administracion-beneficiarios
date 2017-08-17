@@ -181,7 +181,7 @@
                                         @endforeach
                                     </select>
                                     <div class="boton pull-right" style="display:inline-block">
-                                        <button type="submit" id="visualTerap" name="visualTerap" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
+                                        <button type="submit" id="visualFono" name="visualFono" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
                                         <!--<button type="submit" id="imprimirReporTerap" name="imprimirReporTerap" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>-->
                                     </div>
                                 </div>

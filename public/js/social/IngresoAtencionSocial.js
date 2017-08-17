@@ -229,14 +229,15 @@ $(document).ready(function() {
 
 
 function enviarFormulario(){
-    $('#formularioAsistenciaSocial').submit();
+    //alert($('#formularioAsistenciaSocial').attr('id'));
+    $("#formularioAsistenciaSocial").submit();
 }
 function enviarFormulario2(){
-    $('#formularioAsistenciaSocial2').submit();
+    $("#formularioAsistenciaSocial2").submit();
 }
 function enviarFormulario3(){
-    $('#formularioAsistenciaSocial3').submit();
+    $("#formularioAsistenciaSocial3").submit();
 }
 function enviarFormulario4(){
-    $('#formularioAsistenciaSocial4').submit();
+    $("#formularioAsistenciaSocial4").submit();
 }

@@ -99,7 +99,7 @@
                       <input id="inasistenciaFonoAnual" name="inasistenciaFonoAnual" type="hidden" value="{{$inasistenciaFonoAnual}}">
                       <input id="inasistenciaFonoMensual" name="inasistenciaFonoMensual" type="hidden" value="{{$inasistenciaFonoMensual}}">
                       @for ($i = 0; $i < count($nombrePrest); $i++)
-                          <input id="nombrePrest" name="nombrePrest[]" type="hidden" value="{{$nombrePrest[$i]}}}">
+                          <input id="nombrePrest" name="nombrePrest[]" type="hidden" value="{{$nombrePrest[$i]}}">
                           <input id="porcentajePrest" name="porcentajePrest[]" type="hidden" value="{{$porcentajePrest[$i]}}">
                       @endfor
 
