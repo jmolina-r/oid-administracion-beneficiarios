@@ -143,9 +143,8 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                         </div>
                     </div>
                 </div>
+                @include('partials.footer')
             </div>
-            @include('partials.footer')
-        </div>
     </section>
 </div>
 @endsection
