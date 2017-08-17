@@ -130,9 +130,7 @@ class FichaSocialController extends Controller
                     //Si se lleno el campo, este sustituye el N/A
                     $obsIt = $obsVisita;
                 }
-               
-
-               
+            
 
                 //Se valida que vd sea requerido
                 $this->validate($request, ['vd' => 'required',]);

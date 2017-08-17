@@ -87,8 +87,8 @@
                   </div>
                 </div>
                   <form action="{{route('reportabilidad.reporteTer')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
-                      <input id="nombres" name="nombres" type="hidden" value="{{$terapeuta->nombres}}">
-                      <input id="apellidos" name="apellidos" type="hidden" value="{{$terapeuta->apellidos}}">
+                      <input id="nombres" name="nombres" type="hidden" value="{{$terapeuta->nombre}}">
+                      <input id="apellidos" name="apellidos" type="hidden" value="{{$terapeuta->apellido}}">
                       <input id="rut" name="rut" type="hidden" value="{{$terapeuta->rut}}">
                       <input id="telefono" name="telefono" type="hidden" value="{{$terapeuta->telefono}}">
                       <input id="direccion" name="direccion" type="hidden" value="{{$terapeuta->direccion}}">
@@ -102,9 +102,6 @@
                           <input id="nombrePrest" name="nombrePrest[]" type="hidden" value="{{$nombrePrest[$i]}}}">
                           <input id="porcentajePrest" name="porcentajePrest[]" type="hidden" value="{{$porcentajePrest[$i]}}">
                       @endfor
-
-
-
                 <div class='row'>
                     <div class='col-sm-12'>
                       <div class='box bordered-box blue-border' style='margin-bottom:0;'>

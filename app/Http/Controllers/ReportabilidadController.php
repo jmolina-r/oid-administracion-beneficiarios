@@ -138,11 +138,12 @@ class ReportabilidadController extends Controller
 
         //Rehabilitacion
         $pacientesReahabAnual=InformeCierre::where('culmino_proceso','=','si')
-            ->whereYear('fecha_termino','=',(date('Y')))
+            ->whereYear('created_at','=',(date('Y')))
             ->count();
+
         $pacientesReahabMensual=InformeCierre::where('culmino_proceso','=','si')
-            ->whereYear('fecha_termino','=',(date('Y')))
-            ->whereMonth('fecha_termino', '=', date('m'))
+            ->whereYear('created_at','=',(date('Y')))
+            ->whereMonth('created_at', '=', date('m'))
             ->count();
 
         if($cant!=0){
@@ -250,9 +251,12 @@ class ReportabilidadController extends Controller
         foreach ($prestaciones as $p){
         $nombrePrest[$i]=$p->nombre;
         $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
+            ->where('prestacions.area','=','kinesiologo')
         ->join('prestacion_realizadas','prestacions.id','=','prestacion_realizadas.prestacions_id')
         ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
         ->where('funcionarios.rut','=',$user_rut)
+        ->whereYear('prestacion_realizadas.fecha','=',date('Y'))
+            ->whereMonth('prestacion_realizadas.fecha','=',date('m'))
         ->count();
         $i++;
         }
@@ -329,15 +333,18 @@ class ReportabilidadController extends Controller
         foreach ($prestaciones as $p){
             $nombrePrest[$i]=$p->nombre;
             $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
+                ->where('prestacions.area','=','fonoaudiologo')
                 ->join('prestacion_realizadas','prestacions.id','=','prestacion_realizadas.prestacions_id')
                 ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
                 ->where('funcionarios.rut','=',$user_rut)
+                ->whereYear('prestacion_realizadas.fecha','=',date('Y'))
+                ->whereMonth('prestacion_realizadas.fecha','=',date('m'))
                 ->count();
             $i++;
         }
-     //   if(isset($_GET['visualFono'])) {
+     if(isset($_GET['visualFono'])) {
             return view('reportabilidad.reportabilidadFono', compact('fonoaudiologo', 'atencionAnualFono', 'atencionMensualFono', 'asistenciaFonoAnual', 'asistenciaFonoMensual', 'inasistenciaFonoAnual', 'inasistenciaFonoMensual', 'porcentajePrest', 'nombrePrest'));
-      //  }
+     }
         $nombres = $_GET["nombres"];
         $apellidos = $_GET["apellidos"];
         $rut = $_GET["rut"];
@@ -352,8 +359,7 @@ class ReportabilidadController extends Controller
         $porcentajePrest = $_GET["porcentajePrest"];
         $nombrePrest = $_GET["nombrePrest"];
 
-        $view =  \View::make('pdf.invoiceFono', compact('nombres','apellidos','direccion','rut','telefono','atencionAnualFono','atencionMensualFono','asistenciaFonoAnual','asistenciaFonoMensual','inasistenciaFonoAnual','inasistenciaFonoMensual','porcentajePrest','nombrePrest'))->render();
-        $pdf = \App::make('dompdf.wrapper');
+        $view =  \View::make('pdf.invoiceFono', compact('nombres','apellidos','direccion','rut','telefono','atencionAnualFono','atencionMensualFono','asistenciaFonoAnual','asistenciaFonoMensual','inasistenciaFonoAnual','inasistenciaFonoMensual','porcentajePrest','nombrePrest'))->render();        $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('invoiceFono');
 
@@ -404,9 +410,12 @@ class ReportabilidadController extends Controller
         foreach ($prestaciones as $p){
             $nombrePrest[$i]=$p->nombre;
             $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
+                ->where('prestacions.area','=','psicologo')
                 ->join('prestacion_realizadas','prestacions.id','=','prestacion_realizadas.prestacions_id')
                 ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
                 ->where('funcionarios.rut','=',$user_rut)
+                ->whereYear('prestacion_realizadas.fecha','=',date('Y'))
+                ->whereMonth('prestacion_realizadas.fecha','=',date('m'))
                 ->count();
             $i++;
         }
@@ -480,9 +489,12 @@ class ReportabilidadController extends Controller
         foreach ($prestaciones as $p){
             $nombrePrest[$i]=$p->nombre;
             $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
+                ->where('prestacions.area','=','terapeuta ocupacional')
                 ->join('prestacion_realizadas','prestacions.id','=','prestacion_realizadas.prestacions_id')
                 ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
                 ->where('funcionarios.rut','=',$user_rut)
+                ->whereYear('prestacion_realizadas.fecha','=',date('Y'))
+                ->whereMonth('prestacion_realizadas.fecha','=',date('m'))
                 ->count();
             $i++;
         }
@@ -578,17 +590,36 @@ class ReportabilidadController extends Controller
 
     }
     public function showResultHistoricaEntreMes(Request $request)
-    {    
-         $aniouno = $request->aniouno;
+    {
+
+        $aniouno = $request->aniouno;
+
           $aniodos = $request->aniodos;
           $mesuno = $request->mesuno;
           $mesdos = $request->mesdos;
+
+          if($aniodos < $aniouno){
+
+              return view('reportabilidad.error');
+
+          }
+
+        if($aniodos == $aniouno){
+
+              if($mesuno <= $mesdos){
+
+                  return view('reportabilidad.error');
+
+              }
+        }
+
+
           $cantIngresadosAño2 =FichaBeneficiario::whereYear('fecha_ingreso', '>=', $aniouno)
                 ->whereYear('fecha_ingreso', '<=', $aniodos)
                 ->whereMonth('fecha_ingreso', '>=', $mesuno)
                 ->whereMonth('fecha_ingreso', '<=', $mesdos)
                 ->count();
-        
+
             $cantAtencionAño2=PrestacionRealizada::whereYear('fecha', '>=',$aniouno)
                 ->whereYear('fecha', '<=',$aniodos)
                 ->whereMonth('fecha', '>=', $mesuno)

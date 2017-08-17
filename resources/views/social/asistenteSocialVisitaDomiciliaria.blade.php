@@ -17,6 +17,7 @@
     <link href="{{ asset('/css/social/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset('assets/stylesheets/plugins/fileinput/bootstrap-fileinput.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+
 @endsection
 
 <!-- Atributos del body -->
@@ -59,7 +60,8 @@
     <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>
     <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
-    <script src="{{ asset('/js/social/IngresoAtencionSocial.js') }}" type="text/javascript"></script>
+    <!--<script src="{{ asset('/js/social/IngresoAtencionSocial.js') }}" type="text/javascript"></script>-->
+
 
 @endsection
 
@@ -191,9 +193,10 @@
                                                                                 </div>
 
                                                                                 <div class="col-sm-12 col-offset-2">
-                                                                                    <button type="submit" name="{{$tMotivos->nombre}}.btn" class="pull-right btn btn-success">Aceptar</button>
+                                                                                    <button type="submit" onClick="javascript: return confirm('¿Esta seguro? Los datos se ingresan de forma permanente');" name="{{$tMotivos->nombre}}.btn" class="pull-right btn btn-success">Aceptar</button>
                                                                                 </div>
                                                                             </form>
+
                                                                         </div>
                                                                         <?php $i = 2; ?>
                                                                     @else
@@ -284,7 +287,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-sm-12 col-offset-2">
-                                                                                        <button type="submit" name="{{$tMotivos->nombre}}.btn" class="pull-right btn btn-success" >Aceptar</button>
+                                                                                        <button type="submit" onClick="javascript: return confirm('¿Esta seguro? Los datos se ingresan de forma permanente');" name="{{$tMotivos->nombre}}.btn" class="pull-right btn btn-success" >Aceptar</button>
                                                                                     </div>
                                                                                 </form>
 

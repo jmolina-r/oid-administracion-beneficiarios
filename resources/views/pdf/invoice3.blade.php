@@ -101,6 +101,22 @@
             <td>{{$inasistenciaTerMensual}}</td>
         </tr>
     </table>
+    <table>
+        <tr>
+            <th class="th1">Prestaciones Realizadas</th>
+            <th class="th1"></th>
+            <th class="th1"></th>
+        </tr>
+        <?php
+        for ($i = 0; $i < count($nombrePrest); $i++){?>
+        <tr>
+            <td> {{$nombrePrest[$i]}}</td>
+            <td></td>
+            <td>{{$porcentajePrest[$i]}}</td>
+        </tr>
+        <?php }
+        ?>
+    </table>
 </div>
 <br>
 <footer><h6 align="left">© 2017 Oficina para la Integración de personas con Discapacidad - Fecha {{ date('d-m-Y') }}</h6> </footer>
