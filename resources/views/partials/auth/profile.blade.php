@@ -37,8 +37,6 @@
                             <h4>Telefono</h4>
                             <p id="funcionarioTelefonoProfileHeader">-</p>
 
-                            <h4>Dirección Particular</h4>
-                            <p class="capitalize" id="funcionarioDireccionProfileHeader">-</p>
 
                         </div>
 
@@ -49,6 +47,9 @@
 
                             <h4>E-mail</h4>
                             <p id="funcionarioEmailProfileHeader">-</p>
+
+                            <h4>Dirección Particular</h4>
+                            <p class="capitalize" id="funcionarioDireccionProfileHeader">-</p>
 
                             {{-- <h4>Labor en OID</h4>
                             <p class="capitalize" id="funcionarioTipoProfileHeader">-</p> --}}
