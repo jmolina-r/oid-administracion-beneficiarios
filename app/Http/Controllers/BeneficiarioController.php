@@ -106,7 +106,7 @@ class BeneficiarioController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'rut' => 'required|unique:beneficiarios'
+            'rut' => 'required|unique:beneficiarios,rut|rut'
         ], $this->messages($request));
 
         // Validate Fields
@@ -397,7 +397,7 @@ class BeneficiarioController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'rut' => 'required|exists:beneficiarios,rut'
+            'rut' => 'required|exists:beneficiarios,rut|rut'
         ], $this->messages($request));
 
         // Validate Fields

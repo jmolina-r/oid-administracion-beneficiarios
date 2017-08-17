@@ -53,9 +53,6 @@
     <script src="{{ asset('/assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
     <!-- / END - datepicker-->
     <!-- / START - Validaciones-->
-    <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/auth/RegistrarUser.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/charCount/charCount.js') }}" type="text/javascript"></script>
@@ -124,13 +121,13 @@
                                   <div class='panel-collapse collapse in' id='collapseSix-accordion1'>
                                     <div class='panel-body'>
                                         <ul>
-                                            <li>Administrar todo de usuarios y funcionarios</li>
+                                            <li>Administrar usuarios y funcionarios</li>
                                         </ul>
                                     </div>
                                   </div>
                                 </div>
 
-                                <div class='panel panel-default'>
+                                {{-- <div class='panel panel-default'>
                                   <div class='panel-heading'>
                                     <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseNine-accordion1'>
                                       Admin
@@ -143,7 +140,7 @@
                                         </ul>
                                     </div>
                                   </div>
-                                </div>
+                                </div> --}}
 
                               <div class='panel panel-default'>
                                 <div class='panel-heading'>
@@ -154,12 +151,11 @@
                                 <div class='panel-collapse collapse' id='collapseOne-accordion1'>
                                   <div class='panel-body'>
                                       <ul>
-                                          <li>Ver malla</li>
+                                          <li>Administrar malla de Kinesiología</li>
                                           <li>Ver datos de beneficiarios</li>
                                           <li>Ver fichas de beneficiarios</li>
-                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de su area</li>
-                                          <li>Registrar prestaciones de su area en su malla</li>
-                                          <li>Estadisticas de su area</li>
+                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de Kinesiología</li>
+                                          <li>Estadisticas de Kinesiología</li>
                                       </ul>
                                   </div>
                                 </div>
@@ -174,12 +170,11 @@
                                 <div class='panel-collapse collapse' id='collapseTwo-accordion1'>
                                   <div class='panel-body'>
                                       <ul>
-                                          <li>Ver malla</li>
+                                          <li>Administrar malla de Psicología</li>
                                           <li>Ver datos de beneficiarios</li>
                                           <li>Ver fichas de beneficiarios</li>
-                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de su area</li>
-                                          <li>Registrar prestaciones de su area en su malla</li>
-                                          <li>Estadisticas de su area</li>
+                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de Psicología</li>
+                                          <li>Estadisticas de Psicología</li>
                                       </ul>
                                   </div>
                                 </div>
@@ -193,12 +188,11 @@
                                 <div class='panel-collapse collapse' id='collapseThree-accordion1'>
                                   <div class='panel-body'>
                                       <ul>
-                                          <li>Ver malla</li>
+                                          <li>Administrar malla de Fonoaudiología</li>
                                           <li>Ver datos de beneficiarios</li>
                                           <li>Ver fichas de beneficiarios</li>
-                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de su area</li>
-                                          <li>Registrar prestaciones de su area en su malla</li>
-                                          <li>Estadisticas de su area</li>
+                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de Fonoaudiología</li>
+                                          <li>Estadisticas de Fonoaudiología</li>
                                       </ul>
                                   </div>
                                 </div>
@@ -212,12 +206,11 @@
                                 <div class='panel-collapse collapse' id='collapseFour-accordion1'>
                                   <div class='panel-body'>
                                       <ul>
-                                          <li>Ver malla</li>
+                                          <li>Administrar malla de Teraia Ocupacional</li>
                                           <li>Ver datos de beneficiarios</li>
                                           <li>Ver fichas de beneficiarios</li>
-                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de su area</li>
-                                          <li>Registrar prestaciones de su area en su malla</li>
-                                          <li>Estadisticas de su area</li>
+                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de Teraia Ocupacional</li>
+                                          <li>Estadisticas de Teraia Ocupacional</li>
                                       </ul>
                                   </div>
                                 </div>
@@ -234,8 +227,7 @@
                                           <li>Ver mallas</li>
                                           <li>Agendar y eliminar horas</li>
                                           <li>Todas las estadisticas</li>
-                                          <li>Registrar beneficiario</li>
-                                          <li>Administrar todo de beneficiarios</li>
+                                          <li>Administrar beneficiarios</li>
                                       </ul>
                                   </div>
                                 </div>
@@ -268,18 +260,12 @@
                                   <div class='panel-body'>
                                       <ul>
                                           <li>Reportabilidad</li>
-                                          <li>Crear y eliminar prestaciones (tipos)</li>
+                                          <li>Crear y eliminar tipos de prestaciones</li>
                                       </ul>
                                   </div>
                                 </div>
                               </div>
                             </div>
-
-
-
-
-
-
 
                         </div>
                     </div>

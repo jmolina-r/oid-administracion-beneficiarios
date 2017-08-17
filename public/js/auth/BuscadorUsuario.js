@@ -45,7 +45,38 @@ function getUsuarioPorId(userId) {
                     $('#roles').html(roles.nombre);
                 },
                 complete: function() {
-                    $('#profile').modal('show');
+
+
+
+
+
+                    $.ajax({
+                        type: 'GET',
+                        url: '/users/' + userId + "/funcionario",
+                        beforeSend: function() {
+                            // this is where we append a loading image
+                            //$('#progress').removeClass('hidden');
+                        },
+                        success: function(funcionario) {
+                            $('#funcionarioNombreProfileHeader').html(funcionario.nombre + ' ' + funcionario.apellido);
+                            $('#funcionarioRutProfileHeader').html(funcionario.rut);
+                            $('#funcionarioTelefonoProfileHeader').html(funcionario.telefono);
+                            $('#funcionarioDireccionProfileHeader').html(funcionario.direccion);
+                            $('#funcionarioFechaNacimientoProfileHeader').html(convertDate(funcionario.fecha_nacimiento));
+                            $('#funcionarioEmailProfileHeader').html(funcionario.email);
+                        },
+                        complete: function() {
+                            $('#profile').modal('show');
+                        }
+                    });
+
+
+
+
+
+
+
+                    //$('#profile').modal('show');
                 }
             });
         },
