@@ -11,10 +11,6 @@ class TipoFuncionarioTableSeeder extends Seeder
      */
     public function run()
     {
-        $tipoFuncionario = new \App\TipoFuncionario([
-            'nombre' => 'psicologo'
-        ]);
-        $tipoFuncionario->save();
 
         $tipoFuncionario = new \App\TipoFuncionario([
             'nombre' => 'kinesiologo'
@@ -22,7 +18,12 @@ class TipoFuncionarioTableSeeder extends Seeder
         $tipoFuncionario->save();
 
         $tipoFuncionario = new \App\TipoFuncionario([
-            'nombre' => 'secretaria'
+            'nombre' => 'psicologo'
+        ]);
+        $tipoFuncionario->save();
+
+        $tipoFuncionario = new \App\TipoFuncionario([
+            'nombre' => 'fonoaudiologo'
         ]);
         $tipoFuncionario->save();
 
@@ -32,7 +33,12 @@ class TipoFuncionarioTableSeeder extends Seeder
         $tipoFuncionario->save();
 
         $tipoFuncionario = new \App\TipoFuncionario([
-            'nombre' => 'fonoaudiologo'
+            'nombre' => 'trabajador social'
+        ]);
+        $tipoFuncionario->save();
+
+        $tipoFuncionario = new \App\TipoFuncionario([
+            'nombre' => 'secretaria'
         ]);
         $tipoFuncionario->save();
 
