@@ -300,7 +300,7 @@
                                 @endfor
                             </select>
                             <div class="boton pull-right">
-                                <button type="submit" id="visualHist" name="visualHist" class="btn btn-success" />Visualizar</button>
+                                <button type="submit" id="visualHistEntreMes" name="visualHistEntreMes" class="btn btn-success" />Visualizar</button>
                                 <!--<button type="submit" id="imprimirReporHist" name="imprimirReporHist" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>-->
                             </div>
                             </form>  

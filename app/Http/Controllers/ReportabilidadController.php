@@ -637,8 +637,11 @@ class ReportabilidadController extends Controller
             ->where('funcionarios.tipo_funcionario_id','=',4)
             ->count();
 
+        if(isset($_GET['visualHist'])) {
+            return view('reportabilidad.reportabilidadHistEntreMes', compact('cantIngresadosAño2','cantAtencionAño2','aniouno','aniodos','mesuno','mesdos','atencionKines','atencionPsico','atencionFono','atencionTers'));
 
-             return view('reportabilidad.reportabilidadHistEntreMes', compact('cantIngresadosAño2','cantAtencionAño2','aniouno','aniodos','mesuno','mesdos','atencionKines','atencionPsico','atencionFono','atencionTers'));
+        }
+
         $aniouno = $request->aniouno;
         $aniodos = $request->aniodos;
         $mesuno = $request->mesuno;
