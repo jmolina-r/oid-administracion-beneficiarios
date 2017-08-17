@@ -59,7 +59,7 @@ function getUsuarioPorId(userId) {
     });
 }
 
-function mostrarPerfilUsuario(username, email, status, role) {
+function mostrarPerfilUsuario(username, email, status, role, funcionario) {
     $('#username').html(username);
     $('#email').html(email);
     $('#roles').html(role);
@@ -75,5 +75,34 @@ function mostrarPerfilUsuario(username, email, status, role) {
 
     $('#editar_btn').hide();
 
+    // preserve newlines, etc - use valid JSON
+    funcionario = funcionario.replace(/\\n/g, "\\n")
+                   .replace(/\\'/g, "\\'")
+                   .replace(/\\"/g, '\\"')
+                   .replace(/\\&/g, "\\&")
+                   .replace(/\\r/g, "\\r")
+                   .replace(/\\t/g, "\\t")
+                   .replace(/\\b/g, "\\b")
+                   .replace(/\\f/g, "\\f");
+    // remove non-printable and other non-valid JSON chars
+    funcionario = funcionario.replace(/[\u0000-\u0019]+/g,"")
+    funcionario = jQuery.parseJSON(funcionario)
+
+    $('#funcionarioNombreProfileHeader').html(funcionario.nombre + ' ' + funcionario.apellido);
+    $('#funcionarioRutProfileHeader').html(funcionario.rut);
+    $('#funcionarioTelefonoProfileHeader').html(funcionario.telefono);
+    $('#funcionarioDireccionProfileHeader').html(funcionario.direccion);
+    $('#funcionarioFechaNacimientoProfileHeader').html(convertDate(funcionario.fecha_nacimiento));
+    $('#funcionarioEmailProfileHeader').html(funcionario.email);
+
+
     $('#profile').modal('show');
+}
+
+function convertDate(inputFormat) {
+    function pad(s) {
+        return (s < 10) ? '0' + s : s;
+    }
+    var d = new Date(inputFormat);
+    return [pad(d.getDate() + 1), pad(d.getMonth() + 1), d.getFullYear()].join('/');
 }
