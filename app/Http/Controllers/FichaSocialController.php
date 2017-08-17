@@ -50,7 +50,7 @@ class FichaSocialController extends Controller
            $ficha_atencion_socials = new \App\FichaAtencionSocial([
 
                 'numero' => '0',
-                'descripcion' => 'N/A',
+                'descripcion' => 'Ficha del tipo visita domiciliaria',
                'beneficiario_id' => $request -> input('ben_id')
             ]);
             $ficha_atencion_socials->save();
@@ -116,7 +116,7 @@ Esto lo hizo el bryan
             $ficha_atencion_socials = new \App\FichaAtencionSocial([
 
                 'numero' => '0',
-                'descripcion' => 'N/A',
+                'descripcion' => 'Ficha del tipo ayuda',
                 'beneficiario_id' => $request -> input('ben_id')
             ]);
             $ficha_atencion_socials->save();
@@ -184,7 +184,7 @@ Esto lo hizo el bryan
             $ficha_atencion_socials = new \App\FichaAtencionSocial([
 
                 'numero' => '0',
-                'descripcion' => 'N/A',
+                'descripcion' => 'Ficha del tipo beca',
                 'beneficiario_id' => $request -> input('ben_id')
             ]);
             $ficha_atencion_socials->save();
@@ -215,7 +215,7 @@ Esto lo hizo el bryan
             $ficha_atencion_socials = new \App\FichaAtencionSocial([
 
                 'numero' => '0',
-                'descripcion' => 'N/A',
+                'descripcion' => 'Ficha de tipo orientacion',
                 'beneficiario_id' => $request -> input('ben_id')
             ]);
             $ficha_atencion_socials->save();
