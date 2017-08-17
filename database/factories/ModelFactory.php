@@ -183,8 +183,8 @@ $factory->define(App\FichaKinesiologia::class, function (Faker\Generator $faker)
         'val_com_cog_id' => $faker -> numberBetween($min = 1, $max = 2),
         'val_evaluacion_id' => $faker -> numberBetween($min = 1, $max = 2),
         'val_control_esfinter_id' => $faker -> numberBetween($min = 1, $max = 2),
-        'funcionario_id' => $faker -> numberBetween($min = 1, $max = 3),
-        'beneficiario_id' => $faker -> numberBetween($min = 1, $max = 150),
+        'funcionario_id' => $faker -> numberBetween($min = 1, $max = 1),
+        'beneficiario_id' => $faker -> numberBetween($min = 4, $max = 6),
     ];
 });
 
@@ -326,8 +326,8 @@ $factory->define(App\FichaTerapiaOcupacional::class, function (Faker\Generator $
         'desarrollo_evolutivo_id' => $faker -> numberBetween($min = 1, $max = 5),
         'habilidades_sociales_id' => $faker -> numberBetween($min = 1, $max = 5),
         'historial_clinico_id' => $faker -> numberBetween($min = 1, $max = 5),
-        'funcionario_id' => $faker -> numberBetween($min = 1, $max = 3),
-        'beneficiario_id' => $faker -> numberBetween($min = 1, $max = 150),
+        'funcionario_id' => $faker -> numberBetween($min = 4, $max = 4),
+        'beneficiario_id' => $faker -> numberBetween($min = 1, $max = 3),
 
     ];
 });

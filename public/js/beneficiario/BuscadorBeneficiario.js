@@ -43,7 +43,7 @@ $(document).ready(function() {
                     "<td class='capitalize'>" + element.nombre + " " + element.apellido + "</td>" +
                     "<td>" + element.rut + "</td>" +
                     "<td class='capitalize'>" + element.sexo + "</td>" +
-                    "<td>" + element.created_at + "</td>" +
+                    "<td>" + convertDate(element.created_at) + "</td>" +
                     "<td>" +
                         "<div class='text-right'>" +
                             "<a class='btn btn-warning btn-xs' href='/area-medica/ficha-evaluacion-inicial/fichas/listaFichas/" + element.id + "'>" +
@@ -65,3 +65,11 @@ $(document).ready(function() {
         }
     }
 });
+
+function convertDate(inputFormat) {
+    function pad(s) {
+        return (s < 10) ? '0' + s : s;
+    }
+    var d = new Date(inputFormat);
+    return [pad(d.getDate() + 1), pad(d.getMonth() + 1), d.getFullYear()].join('/');
+}

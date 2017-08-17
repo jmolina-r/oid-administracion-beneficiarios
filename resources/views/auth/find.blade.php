@@ -92,6 +92,9 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                 E-mail
                                                             </th>
                                                             <th>
+                                                                Rol
+                                                            </th>
+                                                            <th>
                                                                 Estado
                                                             </th>
                                                             <th>
@@ -104,6 +107,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                         <tr>
                                                             <td>{{$user->username}} </td>
                                                             <td>{{$user->email}}</td>
+                                                            <td>{{$user->role->nombre}}</td>
                                                             <td>
                                                                 <span class='label
                                                                 @if($user->status == 1)
