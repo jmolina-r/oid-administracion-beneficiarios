@@ -36,10 +36,10 @@
 </head>
 <body>
 <div class="div1">
-    <h1>Reporte Psicología</h1>
+    <h1>Reporte Fonoaudiología</h1>
     <table>
         <tr >
-            <th class="th1">Datos Personales Psicólogo(a)</th>
+            <th class="th1">Datos Personales Fonoaudiologo(a)</th>
             <th class="th1"></th>
             <th class="th1"></th>
         </tr>
@@ -66,39 +66,39 @@
     </table>
     <table>
         <tr >
-            <th class="th1">Psicología</th>
+            <th class="th1">Fonoaudiología</th>
             <th class="th1"></th>
             <th class="th1"></th>
         </tr>
         <tr>
             <td>ATENCIONES ANUALES</td>
             <td></td>
-            <td>{{$atencionAnualPsico}}</td>
+            <td>{{$atencionAnualFono}}</td>
         </tr>
         <tr>
             <td>ATENCIONES MENSUALES</td>
             <td></td>
-            <td>{{$atencionMensualPsico}}</td>
+            <td>{{$atencionMensualFono}}</td>
         </tr>
         <tr>
             <td>CANTIDAD DE USUARIOS ASISTENTES EN EL AÑO</td>
             <td></td>
-            <td>{{$asistenciaPsicoAnual}}</td>
+            <td>{{$asistenciaFonoAnual}}</td>
         </tr>
         <tr>
             <td>CANTIDAD DE USUARIOS ASISTENTES EN EL MES</td>
             <td></td>
-            <td>{{$asistenciaPsicoMensual}}</td>
+            <td>{{$asistenciaFonoMensual}}</td>
         </tr>
         <tr>
             <td>CANTIDAD DE USUARIOS INASISTENTES EN EL AÑO</td>
             <td></td>
-            <td>{{$inasistenciaPsicoAnual}}</td>
+            <td>{{$inasistenciaFonoAnual}}</td>
         </tr>
         <tr>
             <td>CANTIDAD DE USUARIOS INASISTENTES EN EL MES</td>
             <td></td>
-            <td>{{$inasistenciaPsicoMensual}}</td>
+            <td>{{$inasistenciaFonoMensual}}</td>
         </tr>
     </table>
     <table>
@@ -107,17 +107,13 @@
             <th class="th1"></th>
             <th class="th1"></th>
         </tr>
-
-        <?php
-        for ($i = 0; $i < count($nombrePrest); $i++){?>
+        @for ($i = 0; $i < count($nombrePrest); $i++)
         <tr>
             <td> {{$nombrePrest[$i]}}</td>
             <td></td>
             <td>{{$porcentajePrest[$i]}}</td>
         </tr>
-        <?php }
-        ?>
-
+        @endfor
     </table>
 </div>
 <br>

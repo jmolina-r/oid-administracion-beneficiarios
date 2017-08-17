@@ -181,7 +181,8 @@ return [
 
         Barryvdh\Debugbar\ServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
-       
+        Malahierba\ChileRut\ChileRutServiceProvider::class,
+
 
 
     ],
@@ -234,6 +235,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'RUT' => Malahierba\ChileRut\Facades\ChileRut::class,
 
     ],
 

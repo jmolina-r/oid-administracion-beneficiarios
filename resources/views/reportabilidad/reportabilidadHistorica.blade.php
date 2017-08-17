@@ -93,6 +93,18 @@
                       <input id="cantIngresadosMes" name="cantIngresadosMes" type="hidden" value="{{$cantIngresadosMes}}">
                       <input id="atencionAnual" name="atencionAnual" type="hidden" value="{{$atencionAnual}}">
                       <input id="atencionMensual" name="atencionMensual" type="hidden" value="{{$atencionMensual}}">
+
+                      <input id="atencionPsico" name="atencionPsico" type="hidden" value="{{$atencionPsico}}">
+                      <input id="atencionKines" name="atencionKines" type="hidden" value="{{$atencionKines}}">
+                      <input id="atencionFono" name="atencionFono" type="hidden" value="{{$atencionFono}}">
+
+                      <input id="atencionTers" name="atencionTers" type="hidden" value="{{$atencionTers}}">
+                      <input id="atencionPsicoMes" name="atencionPsicoMes" type="hidden" value="{{$atencionPsicoMes}}">
+                      <input id="atencionKinesMes" name="atencionKinesMes" type="hidden" value="{{$atencionKinesMes}}">
+                      <input id="atencionFonoMes" name="atencionFonoMes" type="hidden" value="{{$atencionFonoMes}}">
+                      <input id="atencionTersMes" name="atencionTersMes" type="hidden" value="{{$atencionTersMes}}">
+
+
                 <div class='row'>
                 <div class='col-sm-12'>
                   <div class='box bordered-box blue-border' style='margin-bottom:0;'>
@@ -169,6 +181,8 @@
                       <button type="submit" class="btn btn-success col-md-12" style="margin-bottom:5px" />Vista previa a imprimir</button>
                   </form>
             @include('partials.footer')
+          </div>
+            </div>
           </div>
         </section>
 

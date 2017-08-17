@@ -88,25 +88,23 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                             <div class='scrollable-area'>
                                                 <table class='data-table table table-bordered table-striped' style='margin-bottom:0;'>
                                                     <thead>
-                                                        <thead>
-                                                            <tr>
-                                                                <th>
-                                                                    Nombre
-                                                                </th>
-                                                                <th>
-                                                                    E-mail
-                                                                </th>
-                                                                <th>
-                                                                    Telefono
-                                                                </th>
-                                                                <th>
-                                                                    Cargo
-                                                                </th>
-                                                                <th>
-                                                                    Acciones
-                                                                </th>
-                                                            </tr>
-                                                        </thead>
+                                                        <tr>
+                                                            <th>
+                                                                Nombre
+                                                            </th>
+                                                            <th>
+                                                                E-mail
+                                                            </th>
+                                                            <th>
+                                                                Telefono
+                                                            </th>
+                                                            <th>
+                                                                Cargo
+                                                            </th>
+                                                            <th>
+                                                                Acciones
+                                                            </th>
+                                                        </tr>
                                                     </thead>
                                                     <tbody>
                                                         @foreach($funcionarios as $funcionario)
@@ -120,9 +118,6 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                     <a class='btn btn-success btn-xs' onclick="getFuncionarioPorId('{{ $funcionario->id }}')">
                                                                         <i class='fa fa-user'></i>
                                                                     </a>
-                                                                    {{-- <a class='btn btn-danger btn-xs' href='#'>
-                                                                        <i class='fa fa-times'></i>
-                                                                    </a> --}}
                                                                 </div>
                                                             </td>
                                                         </tr>

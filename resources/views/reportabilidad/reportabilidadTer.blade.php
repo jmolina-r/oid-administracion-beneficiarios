@@ -87,15 +87,21 @@
                   </div>
                 </div>
                   <form action="{{route('reportabilidad.reporteTer')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
-                      <input id="nombres" name="nombres" type="hidden" value="{{$terapeuta->nombres}}">
-                      <input id="apellidos" name="apellidos" type="hidden" value="{{$terapeuta->apellidos}}">
+                      <input id="nombres" name="nombres" type="hidden" value="{{$terapeuta->nombre}}">
+                      <input id="apellidos" name="apellidos" type="hidden" value="{{$terapeuta->apellido}}">
                       <input id="rut" name="rut" type="hidden" value="{{$terapeuta->rut}}">
                       <input id="telefono" name="telefono" type="hidden" value="{{$terapeuta->telefono}}">
                       <input id="direccion" name="direccion" type="hidden" value="{{$terapeuta->direccion}}">
                       <input id="atencionAnualTer" name="atencionAnualTer" type="hidden" value="{{$atencionAnualTer}}">
                       <input id="atencionMensualTer" name="atencionMensualTer" type="hidden" value="{{$atencionMensualTer}}">
-                      <input id="asistenciaTer" name="asistenciaTerAnual" type="hidden" value="{{$asistenciaTerAnual}}">
-                      <input id="inasistenciaTer" name="inasistenciaTerAnual" type="hidden" value="{{$inasistenciaTerAnual}}">
+                      <input id="asistenciaTerAnual" name="asistenciaTerAnual" type="hidden" value="{{$asistenciaTerAnual}}">
+                      <input id="asistenciaTerMensual" name="asistenciaTerMensual" type="hidden" value="{{$asistenciaTerMensual}}">
+                      <input id="inasistenciaTerAnual" name="inasistenciaTerAnual" type="hidden" value="{{$inasistenciaTerAnual}}">
+                      <input id="inasistenciaTerMensual" name="inasistenciaTerMensual" type="hidden" value="{{$inasistenciaTerMensual}}">
+                      @for ($i = 0; $i < count($nombrePrest); $i++)
+                          <input id="nombrePrest" name="nombrePrest[]" type="hidden" value="{{$nombrePrest[$i]}}}">
+                          <input id="porcentajePrest" name="porcentajePrest[]" type="hidden" value="{{$porcentajePrest[$i]}}">
+                      @endfor
                 <div class='row'>
                     <div class='col-sm-12'>
                       <div class='box bordered-box blue-border' style='margin-bottom:0;'>
@@ -176,6 +182,8 @@
                       <button type="submit" class="btn btn-success col-md-12" style="margin-bottom:5px" />Vista previa a imprimir</button>
                   </form>
             @include('partials.footer')
+          </div>
+            </div>
           </div>
         </section>
 

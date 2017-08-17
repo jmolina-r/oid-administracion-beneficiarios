@@ -49,7 +49,7 @@
         <div class="form-group{{ $errors->has('rut') ? ' has-error' : '' }}">
 
             <div class="controls with-icon-over-input">
-                <input id="rut" type="text" class="form-control" placeholder="Rut del Funcionario" name="rut" value=
+                <input id="rut" type="text" class="form-control onlyrut" placeholder="Rut del Funcionario" name="rut" value=
                 @if(old('rut'))
                     "{{ old('rut') }}"
                 @elseif(isset($funcionario))

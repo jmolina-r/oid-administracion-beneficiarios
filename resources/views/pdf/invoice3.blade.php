@@ -81,15 +81,41 @@
             <td>{{$atencionMensualTer}}</td>
         </tr>
         <tr>
-            <td>CANTIDAD DE ASISTENCIA DE PACIENTES</td>
+            <td>CANTIDAD DE ASISTENCIA DE PACIENTES ANUAL</td>
             <td></td>
-            <td>{{$asistenciaTer}}</td>
+            <td>{{$asistenciaTerAnual}}</td>
         </tr>
         <tr>
-            <td>CANTIDAD DE INASISTENCIA DE PACIENTES</td>
+            <td>CANTIDAD DE ASISTENCIA DE PACIENTES MENSUAL</td>
             <td></td>
-            <td>{{$inasistenciaTer}}</td>
+            <td>{{$asistenciaTerMensual}}</td>
         </tr>
+        <tr>
+            <td>CANTIDAD DE INASISTENCIA DE PACIENTES ANUAL</td>
+            <td></td>
+            <td>{{$inasistenciaTerAnual}}</td>
+        </tr>
+        <tr>
+            <td>CANTIDAD DE INASISTENCIA DE PACIENTES MENSUAL</td>
+            <td></td>
+            <td>{{$inasistenciaTerMensual}}</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th class="th1">Prestaciones Realizadas</th>
+            <th class="th1"></th>
+            <th class="th1"></th>
+        </tr>
+        <?php
+        for ($i = 0; $i < count($nombrePrest); $i++){?>
+        <tr>
+            <td> {{$nombrePrest[$i]}}</td>
+            <td></td>
+            <td>{{$porcentajePrest[$i]}}</td>
+        </tr>
+        <?php }
+        ?>
     </table>
 </div>
 <br>

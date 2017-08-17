@@ -11,8 +11,29 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
+
         $role = new \App\Role([
-            'nombre' => 'admin'
+            'nombre' => 'kinesiologia'
+        ]);
+        $role->save();
+
+        $role = new \App\Role([
+            'nombre' => 'psicologia'
+        ]);
+        $role->save();
+
+        $role = new \App\Role([
+            'nombre' => 'fonoaudiologia'
+        ]);
+        $role->save();
+
+        $role = new \App\Role([
+            'nombre' => 'terapia_ocupacional'
+        ]);
+        $role->save();
+
+        $role = new \App\Role([
+            'nombre' => 'trabajo_social'
         ]);
         $role->save();
 
@@ -31,28 +52,9 @@ class RoleTableSeeder extends Seeder
         ]);
         $role->save();
 
-        $role = new \App\Role([
-            'nombre' => 'psicologia'
-        ]);
-        $role->save();
 
         $role = new \App\Role([
-            'nombre' => 'kinesiologia'
-        ]);
-        $role->save();
-
-        $role = new \App\Role([
-            'nombre' => 'trabajo_social'
-        ]);
-        $role->save();
-
-        $role = new \App\Role([
-            'nombre' => 'terapia_ocupacional'
-        ]);
-        $role->save();
-
-        $role = new \App\Role([
-            'nombre' => 'fonoaudiologia'
+            'nombre' => 'admin'
         ]);
         $role->save();
     }

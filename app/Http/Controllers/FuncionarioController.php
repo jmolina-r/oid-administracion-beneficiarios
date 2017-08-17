@@ -28,8 +28,14 @@ class FuncionarioController extends Controller
     }
 
     public function store(Request $request) {
+        // if (\RUT::check('18507182-6'))
+        //   return 'es verdadero';
+        // else
+        //   return 'es falso';
+
+
         $this->validate($request, [
-            'rut' => 'required|unique:funcionarios'
+            'rut' => 'required|unique:funcionarios,rut|rut'
         ]);
 
         // Validate Fields
@@ -83,7 +89,7 @@ class FuncionarioController extends Controller
     public function update(Request $request, Funcionario $funcionario)
     {
         $this->validate($request, [
-            'rut' => 'required|exists:funcionarios,rut'
+            'rut' => 'required|exists:funcionarios,rut|rut'
         ]);
 
         // Validate Fields
@@ -109,7 +115,7 @@ class FuncionarioController extends Controller
             'apellido' => 'required|max:200',
             'nombre' => 'required|max:200',
             'tipo_funcionario' => 'required|exists:tipo_funcionarios,id',
-            'email' => 'required|email',
+            'email' => 'required|string|email',
             'fecha_nacimiento' => 'required|date_format:"d/m/Y"|before:"today"',
             'telefono' => 'required|numeric',
             'direccion' => 'required'

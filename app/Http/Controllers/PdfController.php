@@ -246,42 +246,43 @@ class PdfController extends Controller
         // area mas trabajadora
 
         $atencionAnualKines=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
-            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+            ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
             ->where('funcionarios.tipo_funcionario_id','=',2)
             ->count();
 
         $atencionMensualKines=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
             ->whereMonth('prestacion_realizadas.fecha', '=', date('m'))
-            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+            ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
             ->where('funcionarios.tipo_funcionario_id','=',2)
             ->count();
         $atencionAnualFonos=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
-            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+            ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
             ->where('funcionarios.tipo_funcionario_id','=',5)
             ->count();
         $atencionMensualFonos=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
             ->whereMonth('prestacion_realizadas.fecha', '=', date('m'))
-            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+            ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
             ->where('funcionarios.tipo_funcionario_id','=',5)
             ->count();
         $atencionAnualPsicos=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
-            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+            ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
             ->where('funcionarios.tipo_funcionario_id','=',1)
             ->count();
         $atencionMensualPsicos=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
             ->whereMonth('prestacion_realizadas.fecha', '=', date('m'))
-            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+            ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
             ->where('funcionarios.tipo_funcionario_id','=',1)
             ->count();
         $atencionAnualTers=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
-            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+            ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
             ->where('funcionarios.tipo_funcionario_id','=',4)
             ->count();
         $atencionMensualTers=PrestacionRealizada::whereYear('prestacion_realizadas.fecha', '=', date('Y'))
             ->whereMonth('prestacion_realizadas.fecha', '=', date('m'))
-            ->join('funcionarios','prestacion_realizadas.user_id','=','funcionarios.id')
+            ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
             ->where('funcionarios.tipo_funcionario_id','=',4)
             ->count();
+
         $view =  \View::make('pdf.invoice5', compact('atencionAnualKines','atencionMensualKines','atencionAnualFonos','atencionMensualFonos',
             'atencionAnualPsicos','atencionMensualPsicos','atencionAnualTers','atencionMensualTers'))->render();
         $pdf = \App::make('dompdf.wrapper');
