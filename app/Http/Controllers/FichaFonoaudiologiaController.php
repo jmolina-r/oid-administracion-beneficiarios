@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use \PDF;
+
 use App\Funcionario;
 use Illuminate\Support\Facades\Auth;
 use App\AntecedentesMorbidosFamiliaresSiNoFono;
@@ -442,6 +445,15 @@ class FichaFonoaudiologiaController extends Controller
         return $rules;
     }
 
+    public function generatePDF(Request $request, $id) {
+        $fichaFonoaudiologia = FichaFonoaudiologia::find($id);
 
+        if($fichaFonoaudiologia == null){
+            return view('area-medica.ficha-evaluacion-inicial.Error');
+        }
+
+        $pdf = PDF::loadView('area-medica.ficha-evaluacion-inicial.fonoaudiologia.pdf', compact('fichaFonoaudiologia'));
+        return $pdf->download('FichaFonoaudiologia.pdf');
+    }
 
 }

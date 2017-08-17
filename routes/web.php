@@ -99,7 +99,10 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
                 'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.show'
             ])->middleware('roles:admin|fonoaudiologia');
 
-
+            Route::get('/pdf/{id}', [
+                'uses' => 'FichaFonoaudiologiaController@generatePDF',
+                'as' => 'area-medica.ficha-evaluacion-inicial.fonoaudiologia.generatePDF'
+            ])->middleware('roles:admin|fonoaudiologia');
 
         });
 
