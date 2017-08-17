@@ -86,7 +86,17 @@
                     </div>
                   </div>
                 </div>
-                  
+                  <form action="{{route('reportabilidad.reporteHistEntreMes')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
+                      <input id="mesuno" name="mesuno" type="hidden" value="{{$mesuno}}">
+                      <input id="aniouno" name="aniouno" type="hidden" value="{{$aniouno}}">
+                      <input id="mesdos" name="mesdos" type="hidden" value="{{$mesdos}}">
+                      <input id="aniodos" name="aniodos" type="hidden" value="{{$aniodos}}">
+                      <input id="cantIngresadosAño2" name="cantIngresadosAño2" type="hidden" value="{{$cantIngresadosAño2}}">
+                      <input id="cantAtencionAño2" name="cantAtencionAño2" type="hidden" value="{{$cantAtencionAño2}}">
+                      <input id="atencionPsico" name="atencionPsico" type="hidden" value="{{$atencionPsico}}">
+                      <input id="atencionKines" name="atencionKines" type="hidden" value="{{$atencionKines}}">
+                      <input id="atencionFono" name="atencionFono" type="hidden" value="{{$atencionFono}}">
+                      <input id="atencionTers" name="atencionTers" type="hidden" value="{{$atencionTers}}">
                 <div class='row'>
                 <div class='col-sm-12'>
                   <div class='box bordered-box blue-border' style='margin-bottom:0;'>
@@ -131,8 +141,9 @@
               </div>
               </div>
             </div>
+
                       <button type="submit" class="btn btn-success col-md-12" style="margin-bottom:5px" />Vista previa a imprimir</button>
-                  
+                  </form>
             @include('partials.footer')
           </div>
         </section>

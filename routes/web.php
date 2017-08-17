@@ -348,6 +348,11 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
         'uses'=>'ReportabilidadController@showResultHistorica',
         'as' => 'reportabilidad.reporteHistorica'
     ]);
+
+    Route::get('/reportabilidadHistoricaEntreMeses',[
+        'uses'=>'ReportabilidadController@showResultHistoricaEntreMes',
+        'as' => 'reportabilidad.reporteHistEntreMes'
+    ]);
 });
 
 Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){

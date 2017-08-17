@@ -48,14 +48,14 @@
             <td></td>
             <td>{{ $cantIngresadosAño2 }}</td>
         </tr>
-            <td>ATENCIONES EN EL PERIODO</td>
+            <td>USUARIOS ATENDIDOS EN EL PERIODO</td>
             <td></td>
             <td>{{ $cantAtencionAño2 }}</td>
         </tr>
     </table>
     <table>
         <tr >
-            <th class="th1">ATENCION POR ÁREAS</th>
+            <th class="th1">ATENCIÓN POR ÁREAS</th>
             <th class="th1"></th>
             <th class="th1"></th>
         </tr>
