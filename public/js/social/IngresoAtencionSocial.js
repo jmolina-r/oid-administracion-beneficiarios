@@ -6,7 +6,6 @@ $(document).ready(function() {
 
     $('#formularioAsistenciaSocial').submit(function(e) {
         e.preventDefault();
-
         //Confirmacion Patologías Concomitantes
         $('#mot_atent_confirmation').html("Ayudas");
 
@@ -230,7 +229,8 @@ $(document).ready(function() {
 
 function enviarFormulario(){
     //alert($('#formularioAsistenciaSocial').attr('id'));
-    $("#formularioAsistenciaSocial").submit();
+    //$("#formularioAsistenciaSocial").submit();
+    document.formularioAsistenciaSocial.submit();
 }
 function enviarFormulario2(){
     $("#formularioAsistenciaSocial2").submit();

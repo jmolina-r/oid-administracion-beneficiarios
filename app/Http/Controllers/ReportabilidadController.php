@@ -590,17 +590,36 @@ class ReportabilidadController extends Controller
 
     }
     public function showResultHistoricaEntreMes(Request $request)
-    {    
-         $aniouno = $request->aniouno;
+    {
+
+        $aniouno = $request->aniouno;
+
           $aniodos = $request->aniodos;
           $mesuno = $request->mesuno;
           $mesdos = $request->mesdos;
+
+          if($aniodos < $aniouno){
+
+              return view('reportabilidad.error');
+
+          }
+
+        if($aniodos == $aniouno){
+
+              if($mesuno <= $mesdos){
+
+                  return view('reportabilidad.error');
+
+              }
+        }
+
+
           $cantIngresadosAño2 =FichaBeneficiario::whereYear('fecha_ingreso', '>=', $aniouno)
                 ->whereYear('fecha_ingreso', '<=', $aniodos)
                 ->whereMonth('fecha_ingreso', '>=', $mesuno)
                 ->whereMonth('fecha_ingreso', '<=', $mesdos)
                 ->count();
-        
+
             $cantAtencionAño2=PrestacionRealizada::whereYear('fecha', '>=',$aniouno)
                 ->whereYear('fecha', '<=',$aniodos)
                 ->whereMonth('fecha', '>=', $mesuno)

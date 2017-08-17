@@ -87,6 +87,15 @@
                                     <div class='box-content box-statistic' >
                                     <h3 class='title text-inside text-center'>Reportabilidad</h3>
                                     </div>
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                         <form action="{{route('reportabilidad.reportabilidadGene')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
                          <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">
@@ -122,6 +131,7 @@
                                 <h4>Reportabilidad Kinesiologia</h4>
 
                             </div>
+                            @if($kines->count()>0)
                             <span>Seleccionar Profesional:</span>
                             <select name="kinesiologos">
                                  @foreach($kines as $kine)
@@ -133,6 +143,9 @@
                                     <!--<button type="submit" id="imprimirReporKine" name="imprimirReporKine" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>-->
                                     <!--<a href='{{route('reportabilidad.reporteKine')}}'><input type="button" value="Vista previa a imprimir" class="btn btn-primary" style="margin-bottom:5px" /></a>-->
                             </div>
+                            @else
+                                <span>Actualmente no se encuentran trabajando kinesiólogos</span>
+                            @endif
                         </div>
                         </form>
                         <form action="{{route('reportabilidad.reportabilidadPsico')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
@@ -140,6 +153,7 @@
                             <div class="nombre" style="display:inline-block">
                                 <h4>Reportabilidad Psicología</h4>
                             </div>
+                            @if($psicologos->count()>0)
                             <span>Seleccionar Profesional:</span>
                              <select name="psicologos">
                                  @foreach($psicologos as $psicologo)
@@ -149,7 +163,10 @@
                             <div class="boton pull-right" style="display:inline-block">
                                 <button type="submit" id="visualSico" name="visualSico" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
                                 <!--<button type="submit" id="imprimirReporSico" name="imprimirReporSico" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>-->
-                            </div>  
+                            </div>
+                            @else
+                                <span>Actualmente no se encuentran trabajando psicólogos</span>
+                            @endif
                         </div>
                         </form>
                         <form action="{{route('reportabilidad.reportabilidadTer')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
@@ -157,6 +174,7 @@
                             <div class="nombre" style="display:inline-block">
                                 <h4>Reportabilidad Terapeuta</h4>
                             </div>
+                            @if($terapeutas->count()>0)
                             <span>Seleccionar Profesional:</span>
                             <select name="terapeutas">
                                  @foreach($terapeutas as $terapeuta)
@@ -166,7 +184,10 @@
                             <div class="boton pull-right" style="display:inline-block">
                                 <button type="submit" id="visualTerap" name="visualTerap" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
                                 <!--<button type="submit" id="imprimirReporTerap" name="imprimirReporTerap" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>-->
-                            </div>  
+                            </div>
+                            @else
+                                <span>Actualmente no se encuentran trabajando terapeutas ocupacionales</span>
+                            @endif
                         </div>
                         </form>
                             <form action="{{route('reportabilidad.reportabilidadFono')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
@@ -174,6 +195,7 @@
                                     <div class="nombre" style="display:inline-block">
                                         <h4>Reportabilidad Fonoaudiología</h4>
                                     </div>
+                                    @if($fonoaudiologos->count()>0)
                                     <span>Seleccionar Profesional:</span>
                                     <select name="fonoaudiologo">
                                         @foreach($fonoaudiologos as $fonoaudiologo)
@@ -184,6 +206,9 @@
                                         <button type="submit" id="visualFono" name="visualFono" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
                                         <!--<button type="submit" id="imprimirReporTerap" name="imprimirReporTerap" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>-->
                                     </div>
+                                    @else
+                                        <span>Actualmente no se encuentran trabajando fonoaudiologos</span>
+                                    @endif
                                 </div>
                             </form>
                             <form action="{{route('reportabilidad.reportabilidadSoc')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
