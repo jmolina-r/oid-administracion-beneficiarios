@@ -3,7 +3,7 @@
 
 <!-- meta atributo title -->
 @section('title')
-Lista de Usuarios - OID
+Lista de Funcionarios - OID
 @endsection
 
 <!-- inyeccion de estilos -->
@@ -69,7 +69,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                             <div class='page-header'>
                                 <h1 class='pull-left'>
                                     <i class='fa fa-pencil-square-o'></i>
-                                    <span>Buscador de Usuario</span>
+                                    <span>Buscador de Funcionarios</span>
                                 </h1>
                                 <div class='pull-right'>
                                     <ul class='breadcrumb'>
