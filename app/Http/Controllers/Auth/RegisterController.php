@@ -114,7 +114,7 @@ class RegisterController extends Controller
         $funcionarios = [];
 
         foreach (Funcionario::get() as $funcionario) {
-            if ($funcionario->user != null) {
+            if ($funcionario->user == null) {
                 $funcionarios[] = $funcionario;
             }
         }
