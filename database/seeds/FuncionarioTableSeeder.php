@@ -70,5 +70,23 @@ class FuncionarioTableSeeder extends Seeder
             'email' => 'oid@oid.cl',
             'tipo_funcionario_id' => '1'
         ]);
+
+        factory(App\Funcionario::class)->create([
+            'rut' => '16364173-9',
+            'email' => 'juano@oid.cl',
+            'tipo_funcionario_id' => '7'
+        ]);
+
+        factory(App\Funcionario::class)->create([
+            'rut' => '18103888-8',
+            'email' => 'joana@oid.cl',
+            'tipo_funcionario_id' => '7'
+        ]);
+
+        factory(App\Funcionario::class)->create([
+            'rut' => '17290567-6',
+            'email' => 'caro@oid.cl',
+            'tipo_funcionario_id' => '7'
+        ]);
     }
 }
