@@ -3,7 +3,7 @@
 
 <!-- meta atributo title -->
 @section('title')
-Registro de Beneficiario - OID
+Administrar Beneficiarios - OID
 @endsection
 
 <!-- inyeccion de estilos -->
