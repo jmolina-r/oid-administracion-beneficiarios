@@ -75,6 +75,10 @@ textarea {
 	font-size: 16px;
 }
 
+.profile a:hover{
+	text-decoration: none;
+}
+
 /******************************/
 /***** End Person Profile *****/
 /******************************/
