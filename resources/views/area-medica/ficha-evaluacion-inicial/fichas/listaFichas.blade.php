@@ -171,8 +171,6 @@
                                                     @else
                                                         <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.informe-cierre.show', ['p1' => $ficha->funcionario_id, 'p2' => $idBeneficiario, 'p3' => $ficha->id])}}">Detalles Ficha de Cierre</a></td>
                                                     @endif
-                                                    <td>{{$ficha->id}}</td>
-                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('malla.confirmarEliminarPrestacion', $ficha->id)}}">Eliminar</a></td>
                                                 </tr>
                                             @endforeach
                                         @endif

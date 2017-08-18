@@ -98,9 +98,6 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                   Id 
                                 </th>
                                 <th>
-                                  Número
-                                </th>
-                                <th>
                                   Fecha
                                 </th>
                                 <th>
@@ -116,7 +113,6 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                              @for ($i = 0; $i < count($ficha); $i++)
                               <tr>
                                 <td>{{$ficha[$i]->id}}</td>
-                                <td>{{$ficha[$i]->numero}}</td>
                                 <td>{{$ficha[$i]->created_at}}</td>
                                 <td>{{$ficha[$i]->descripcion}}</td>
                                 <td>{{$fichaTipo[$i]}}</td>
