@@ -3,7 +3,7 @@
 
 <!-- meta atributo title -->
 @section('title')
-    Login - OID
+    Registrar Usuario - OID
 @endsection
 
 <!-- inyeccion de estilos -->
@@ -53,11 +53,8 @@
     <script src="{{ asset('/assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
     <!-- / END - datepicker-->
     <!-- / START - Validaciones-->
-    <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/user/reguser.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/auth/RegistrarUser.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/charCount/charCount.js') }}" type="text/javascript"></script>
 @endsection
 
@@ -90,10 +87,10 @@
                         </div>
                     </div>
                     <div class='row'>
-                        <div class='col-sm-12'>
+                        <div class='col-sm-6'>
                             <div class='box'>
                                 <div class='box-content box-padding'>
-                                    <form action='' class='validate-form' method="POST" action="{{ route('login') }}">
+                                    <form id='userSaveForm' class='validate-form' method="POST" action="{{ route('register') }}">
 
                                         {{ csrf_field() }}
 
@@ -102,6 +99,175 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-6 box">
+
+
+
+
+                            <h4 class="text-center">¿Qué Permite cada Rol?</h4>
+
+
+
+
+
+                            <div class='accordion accordion-blue panel-group' id='accordion1' style='margin-bottom:0;'>
+
+                                <div class='panel panel-default'>
+                                  <div class='panel-heading'>
+                                    <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseSix-accordion1'>
+                                      Coordinador oficina
+                                    </a>
+                                  </div>
+                                  <div class='panel-collapse collapse in' id='collapseSix-accordion1'>
+                                    <div class='panel-body'>
+                                        <ul>
+                                            <li>Administrar usuarios y funcionarios</li>
+                                        </ul>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                {{-- <div class='panel panel-default'>
+                                  <div class='panel-heading'>
+                                    <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseNine-accordion1'>
+                                      Admin
+                                    </a>
+                                  </div>
+                                  <div class='panel-collapse collapse' id='collapseNine-accordion1'>
+                                    <div class='panel-body'>
+                                        <ul>
+                                            <li>Todo menos ingresar prestaciones y fichas iniciales</li>
+                                        </ul>
+                                    </div>
+                                  </div>
+                                </div> --}}
+
+                              <div class='panel panel-default'>
+                                <div class='panel-heading'>
+                                  <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseOne-accordion1'>
+                                    Kinesiología
+                                  </a>
+                                </div>
+                                <div class='panel-collapse collapse' id='collapseOne-accordion1'>
+                                  <div class='panel-body'>
+                                      <ul>
+                                          <li>Administrar malla de Kinesiología</li>
+                                          <li>Ver datos de beneficiarios</li>
+                                          <li>Ver fichas de beneficiarios</li>
+                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de Kinesiología</li>
+                                          <li>Estadisticas de Kinesiología</li>
+                                      </ul>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class='panel panel-default'>
+                                <div class='panel-heading'>
+                                  <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseTwo-accordion1'>
+                                    Psicología
+                                  </a>
+                                </div>
+                                <div class='panel-collapse collapse' id='collapseTwo-accordion1'>
+                                  <div class='panel-body'>
+                                      <ul>
+                                          <li>Administrar malla de Psicología</li>
+                                          <li>Ver datos de beneficiarios</li>
+                                          <li>Ver fichas de beneficiarios</li>
+                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de Psicología</li>
+                                          <li>Estadisticas de Psicología</li>
+                                      </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class='panel panel-default'>
+                                <div class='panel-heading'>
+                                  <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseThree-accordion1'>
+                                    Fonoaudiología
+                                  </a>
+                                </div>
+                                <div class='panel-collapse collapse' id='collapseThree-accordion1'>
+                                  <div class='panel-body'>
+                                      <ul>
+                                          <li>Administrar malla de Fonoaudiología</li>
+                                          <li>Ver datos de beneficiarios</li>
+                                          <li>Ver fichas de beneficiarios</li>
+                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de Fonoaudiología</li>
+                                          <li>Estadisticas de Fonoaudiología</li>
+                                      </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class='panel panel-default'>
+                                <div class='panel-heading'>
+                                  <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseFour-accordion1'>
+                                    Teraia Ocupacional
+                                  </a>
+                                </div>
+                                <div class='panel-collapse collapse' id='collapseFour-accordion1'>
+                                  <div class='panel-body'>
+                                      <ul>
+                                          <li>Administrar malla de Teraia Ocupacional</li>
+                                          <li>Ver datos de beneficiarios</li>
+                                          <li>Ver fichas de beneficiarios</li>
+                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de Teraia Ocupacional</li>
+                                          <li>Estadisticas de Teraia Ocupacional</li>
+                                      </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class='panel panel-default'>
+                                <div class='panel-heading'>
+                                  <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseFive-accordion1'>
+                                    Secretaria
+                                  </a>
+                                </div>
+                                <div class='panel-collapse collapse' id='collapseFive-accordion1'>
+                                  <div class='panel-body'>
+                                      <ul>
+                                          <li>Ver mallas</li>
+                                          <li>Agendar y eliminar horas</li>
+                                          <li>Todas las estadisticas</li>
+                                          <li>Administrar beneficiarios</li>
+                                      </ul>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class='panel panel-default'>
+                                <div class='panel-heading'>
+                                  <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseSeven-accordion1'>
+                                    Asistente Social
+                                  </a>
+                                </div>
+                                <div class='panel-collapse collapse' id='collapseSeven-accordion1'>
+                                  <div class='panel-body'>
+                                      <ul>
+                                          <li>Ver malla</li>
+                                          <li>Ver datos de beneficiarios</li>
+                                          <li>Ver fichas de beneficiarios</li>
+                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de su area</li>
+                                      </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class='panel panel-default'>
+                                <div class='panel-heading'>
+                                  <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseEight-accordion1'>
+                                    Jefatura
+                                  </a>
+                                </div>
+                                <div class='panel-collapse collapse' id='collapseEight-accordion1'>
+                                  <div class='panel-body'>
+                                      <ul>
+                                          <li>Reportabilidad</li>
+                                          <li>Crear y eliminar tipos de prestaciones</li>
+                                      </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -109,4 +275,6 @@
         </div>
     </section>
 </div>
+
+@include('partials.auth.confirmation-modal')
 @endsection

@@ -67,7 +67,7 @@ class TipoSubmotivoSocialTableSeeder extends Seeder
         $tipoSubmotivoSocial->save();
 
         $tipoSubmotivoSocial = new \App\TipoSubmotivoSocial([
-            'nombre' => 't senadis',
+            'nombre' => 'ayuda técnica senadis',
             'tipo_motivo_social_id' => '3'
         ]);
         $tipoSubmotivoSocial->save();

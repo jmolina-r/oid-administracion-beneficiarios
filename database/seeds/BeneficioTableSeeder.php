@@ -11,6 +11,7 @@ class BeneficioTableSeeder extends Seeder
      */
     public function run()
     {
+        // sin abreviaciones.
         $beneficio = new \App\Beneficio([
             'nombre' => 'subsidio discapacidad mental'
         ]);

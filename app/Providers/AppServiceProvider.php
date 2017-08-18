@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Laravel\Dusk\DuskServiceProvider;
 use Illuminate\Support\Facades\Schema;
 
+
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -15,7 +17,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        /*
+        * Rut Validation
+        */
+        \Validator::extendImplicit('rut', function ($attribute, $value, $parameters, $validator) {
+            return \RUT::check($value);
+        });
+
         Schema::defaultStringLength(191);
+
     }
 
     /**

@@ -3,7 +3,7 @@
 
 <!-- meta atributo title -->
 @section('title')
-    Login - OID
+    Actualizar Usuario - OID
 @endsection
 
 <!-- inyeccion de estilos -->
@@ -53,11 +53,8 @@
     <script src="{{ asset('/assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
     <!-- / END - datepicker-->
     <!-- / START - Validaciones-->
-    <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/user/reguser.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/auth/RegistrarUser.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/charCount/charCount.js') }}" type="text/javascript"></script>
 @endsection
 
@@ -93,7 +90,7 @@
                         <div class='col-sm-12'>
                             <div class='box'>
                                 <div class='box-content box-padding'>
-                                    <form action='' class='validate-form' method="POST" action="{{ route('update', $user->id) }}">
+                                    <form id='userSaveForm' class='validate-form' method="POST" action="{{ route('update', $user->id) }}">
 
                                         {{ csrf_field() }}
 
@@ -109,4 +106,56 @@
         </div>
     </section>
 </div>
+@include('partials.auth.confirmation-modal')
+
+@if(isset($user) && $user->funcionario != null)
+    <div class="modal-custom">
+        <div class='modal fade' id='perfilFuncionarioModalOnUser' tabindex='-1'>
+            <div class='modal-dialog'>
+                <div class='modal-content'>
+                    <div class='modal-header'>
+                        <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
+                        <h3 class='modal-title'>Datos del Funcionario</h3>
+                    </div>
+                    <div class='modal-body'>
+                        <h5>A continuación se muestran los datos del funcionario. Para modificar, presione el botón editar.</h5>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h4>Nombre del Funcionario</h4>
+                                <p class="capitalize" id="funcionarioNombre">{{ $user->funcionario->nombre }} {{ $user->funcionario->apellido }}</p>
+
+                                <h4>Rut</h4>
+                                <p id="funcionarioRut">{{ $user->funcionario->rut }}</p>
+
+                                <h4>Telefono</h4>
+                                <p id="funcionarioTelefono">{{ $user->funcionario->telefono }}</p>
+
+                                <h4>Dirección Particular</h4>
+                                <p class="capitalize" id="funcionarioDireccion">{{ $user->funcionario->direccion }}</p>
+
+                            </div>
+
+                            <div class="col-lg-6">
+
+                                <h4>Fecha Nacimiento</h4>
+                                <p id="funcionarioFechaNacimiento">{{ $user->funcionario->fecha_nacimiento }}</p>
+
+                                <h4>E-mail</h4>
+                                <p id="funcionarioEmail">{{ $user->funcionario->email }}</p>
+
+                                <h4>Labor en OID</h4>
+                                <p class="capitalize" id="funcionarioTipo">{{ $user->funcionario->tipo_funcionario->nombre }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='modal-footer'>
+                        <button class='btn btn-default' data-dismiss='modal' type='button'>Volver</button>
+                        <a href="{{ route('funcionario.edit', $user->funcionario) }}" id="editarFuncionarioBtn" class='btn btn-warning'>Editar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endif
+
 @endsection

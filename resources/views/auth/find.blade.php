@@ -77,68 +77,63 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                         </div>
                         <div class='row'>
                             <div class='col-sm-12'>
-                                <div class='box'>
-                                    <div class='box-content box-padding'>
-                                        <div class="container">
-                                            <div class='row'>
-                                                <div class='col-sm-12'>
-                                                    <div class='box bordered-box orange-border' style='margin-bottom:0;'>
-                                                        <div class='box-content box-no-padding'>
-                                                            <div class='responsive-table'>
-                                                                <div class='scrollable-area'>
-                                                                    <table class='data-table table table-bordered table-striped' style='margin-bottom:0;'>
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th>
-                                                                                    Nombre de Usuario
-                                                                                </th>
-                                                                                <th>
-                                                                                    E-mail
-                                                                                </th>
-                                                                                <th>
-                                                                                    Estado
-                                                                                </th>
-                                                                                <th>
 
-                                                                                </th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            @foreach($users as $user)
-                                                                            <tr>
-                                                                                <td>{{$user->username}} </td>
-                                                                                <td>{{$user->email}}</td>
-                                                                                <td>
-                                                                                    <span class='label
-                                                                                    @if($user->status == 1)
-                                                                                        label-success'>Activo
-                                                                                    @else
-                                                                                        label-danger'>Inactivo
-                                                                                    @endif
-                                                                                    </span>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <div class='text-right'>
-                                                                                        <a class='btn btn-success btn-xs' href='#' onclick="getUsuarioPorId('{{$user->id}}')">
-                                                                                            <i class='fa fa-user'></i>
-                                                                                        </a>
-                                                                                        {{-- <a class='btn btn-danger btn-xs' href='#'>
-                                                                                            <i class='fa fa-times'></i>
-                                                                                        </a> --}}
-                                                                                    </div>
-                                                                                </td>
-                                                                            </tr>
-                                                                            @endforeach
-                                                                        </tbody>
-                                                                    </table>
+                                <div class='box bordered-box orange-border' style='margin-bottom:0;'>
+                                    <div class='box-content box-no-padding'>
+                                        <div class='responsive-table'>
+                                            <div class='scrollable-area'>
+                                                <table class='data-table table table-bordered table-striped' style='margin-bottom:0;'>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                Nombre de Usuario
+                                                            </th>
+                                                            <th>
+                                                                E-mail
+                                                            </th>
+                                                            <th>
+                                                                Rol
+                                                            </th>
+                                                            <th>
+                                                                Estado
+                                                            </th>
+                                                            <th>
+
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach($users as $user)
+                                                        <tr>
+                                                            <td>{{$user->username}} </td>
+                                                            <td>{{$user->email}}</td>
+                                                            <td>{{$user->role->nombre}}</td>
+                                                            <td>
+                                                                <span class='label
+                                                                @if($user->status == 1)
+                                                                    label-success'>Activo
+                                                                @else
+                                                                    label-danger'>Inactivo
+                                                                @endif
+                                                                </span>
+                                                            </td>
+                                                            <td>
+                                                                <div class='text-right'>
+                                                                    <a class='btn btn-success btn-xs' href='#' onclick="getUsuarioPorId('{{$user->id}}')">
+                                                                        <i class='fa fa-user'></i>
+                                                                    </a>
+                                                                    {{-- <a class='btn btn-danger btn-xs' href='#'>
+                                                                        <i class='fa fa-times'></i>
+                                                                    </a> --}}
                                                                 </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>

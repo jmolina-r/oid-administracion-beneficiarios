@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Role;
+use App\Funcionario;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -32,7 +33,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/find';
+
 
     /**
      * Create a new controller instance.
@@ -59,8 +61,9 @@ class RegisterController extends Controller
             'username' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'roles' => 'required',
-            'status' => 'required|boolean'
+            'roles' => 'required|exists:roles,id',
+            'status' => 'required|boolean',
+            'funcionario_id' => 'required|exists:funcionarios,id|unique:users,funcionario_id'
         ]);
     }
 
@@ -77,20 +80,22 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'status' => $data['status']
+            'status' => $data['status'],
+            'funcionario_id' => $data['funcionario_id'],
+            'role_id' => $data['roles']
         ]);
 
-        // Role Save
-        if ($data['roles']) {
-            foreach ($data['roles'] as $key => $val) {
-                if (is_numeric($val)) {
-                    $role = Role::find($val);
-                    if ($role) {
-                        $user->roles()->save($role);
-                    }
-                }
-            }
-        }
+        // // Role Save
+        // if ($data['roles']) {
+        //     foreach ($data['roles'] as $key => $val) {
+        //         if (is_numeric($val)) {
+        //             $role = Role::find($val);
+        //             if ($role) {
+        //                 $user->roles()->save($role);
+        //             }
+        //         }
+        //     }
+        // }
 
         return $user;
     }
@@ -105,8 +110,19 @@ class RegisterController extends Controller
         //Role
         $roles = Role::get();
 
+        // Funcionarios without User account
+        $funcionarios = [];
+
+        foreach (Funcionario::get() as $funcionario) {
+            if ($funcionario->user == null) {
+                $funcionarios[] = $funcionario;
+            }
+        }
+
+
         return view('auth.register')
-            ->with(compact('roles'));
+            ->with(compact('roles'))
+            ->with(compact('funcionarios'));
     }
 
     /**

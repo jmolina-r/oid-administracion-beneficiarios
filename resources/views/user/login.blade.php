@@ -37,7 +37,7 @@
     <script src="assets/javascripts/plugins/retina/retina.js" type="text/javascript"></script>
     <!-- / theme file [required] -->
     <script src="assets/javascripts/theme.js" type="text/javascript"></script>
-    
+
     <!-- / START - page related files and scripts [optional] -->
     <script src="assets/javascripts/plugins/validate/jquery.validate.min.js" type="text/javascript"></script>
     <script src="assets/javascripts/plugins/validate/additional-methods.js" type="text/javascript"></script>
@@ -83,7 +83,7 @@
                     </form>
                     <div class='text-center'>
                       <hr class='hr-normal'>
-                      <a href='forgot_password.html'>¿Olvidaste tu contraseña?</a>
+                      {{-- <a href='forgot_password.html'>¿Olvidaste tu contraseña?</a> --}}
                     </div>
                   </div>
                 </div>

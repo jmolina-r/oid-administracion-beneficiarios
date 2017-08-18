@@ -9,7 +9,7 @@ use App\ValControlEsfinter;
 use App\ValEvaluacion;
 use App\ValSocial;
 use App\FichaKinesiologia;
-use App\Kinesiologo;
+use App\Funcionario;
 use App\ValDeambulacion;
 use App\ValMotora;
 use App\ValMovilidad;
@@ -17,6 +17,7 @@ use App\ValSensorial;
 use App\Beneficiario;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FichaKinesiologiaController extends Controller
 {
@@ -51,17 +52,26 @@ class FichaKinesiologiaController extends Controller
      */
     public function store(Request $request)
     {
+        $ultimaFicha = FichaKinesiologia::where('beneficiario_id', $request->input('id'))->orderBy('created_at', $direction = 'des')->first();
+
+        if($ultimaFicha != null){
+            if($ultimaFicha->estado == 'abierto'){
+                return view('area-medica.ficha-evaluacion-inicial.Error');
+            }
+        }
 
         // Validate Fields
         $this->validate($request, $this->rules($request));
 
-        //obtener el kinesiologo por su sesion
-        /*
         if (Auth::check())
         {
-            $kinesiologo = Kinesiologo::where('rut', Auth::user()->rut);
+            
+            $idFuncionario=Auth::user()->funcionario_id;
+            if($idFuncionario==null)
+            {
+                return view('area-medica.ficha-evaluacion-inicial.Error');
+            }
         }
-        */
 
         try{
             $antecedentesMorbidos = new AntecedentesMorbidos([
@@ -93,7 +103,7 @@ class FichaKinesiologiaController extends Controller
             $valAutocuidado->save();
 
             $valComCog = new ValComCog([
-                'puntae_expresion' => $request->input('puntaje_expresion'),
+                'puntaje_expresion' => $request->input('puntaje_expresion'),
                 'coment_expresion' => $request->input('coment_expresion'),
                 'puntaje_comprension' => $request->input('puntaje_comprension'),
                 'coment_comprension' => $request->input('coment_comprension'),
@@ -111,7 +121,7 @@ class FichaKinesiologiaController extends Controller
             $valDeambulacion = new ValDeambulacion([
                 'puntaje_desp_caminando' => $request->input('puntaje_desp_caminando'),
                 'coment_desp_caminando' => $request->input('coment_desp_caminando'),
-                'puntae_escaleras' => $request->input('puntaje_escaleras'),
+                'puntaje_escaleras' => $request->input('puntaje_escaleras'),
                 'coment_escaleras' => $request->input('coment_escaleras'),
             ]);
             $valDeambulacion->save();
@@ -164,6 +174,7 @@ class FichaKinesiologiaController extends Controller
 
             $fichaKinesiologia = new FichaKinesiologia([
                 'motivo_consulta' => $request->input('motivo_consulta'),
+                'estado'=>'abierto',
                 'situacion_laboral' => $request->input('situacion_laboral'),
                 'situacion_familiar' => $request->input('situacion_familiar'),
                 'asiste_centro_rhb' => $request->input('asiste_centro_rhb'),
@@ -177,8 +188,7 @@ class FichaKinesiologiaController extends Controller
                 'val_com_cog_id' => $valComCog->id,
                 'val_evaluacion_id' => $valEvaluacion->id,
                 'val_control_esfinter_id' => $valControlEsfinter->id,
-                //'kinesiologo_id' => $kinesiologo->id,
-                'kinesiologo_id' => '1', //provisional, kinesiologo no esta implementado
+                'funcionario_id' => $idFuncionario,
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaKinesiologia->save();
@@ -186,11 +196,9 @@ class FichaKinesiologiaController extends Controller
         catch(Exception $e){
 
             //procedimiento en caso de reportar errores
-
+            return view('area-medica.ficha-evaluacion-inicial.Error');
         }
-        $id = $request->input('id');
-        return view('area-medica.ficha-evaluacion-inicial.kinesiologia.create')
-            ->with(compact('id'));
+        return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('id')));
     }
 
     /**
@@ -206,11 +214,45 @@ class FichaKinesiologiaController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param $id
      * @return Response
      */
-    public function show()
+    public function show($id)
     {
-        //
+        $fichaKinesiologia = FichaKinesiologia::find($id);
+
+        if($fichaKinesiologia == null){
+            return view('area-medica.ficha-evaluacion-inicial.Error');
+        }
+
+        $persona = Beneficiario::find($fichaKinesiologia->beneficiario_id);
+        $funcionario=Funcionario::find($fichaKinesiologia->funcionario_id);
+
+        $valSocial = ValSocial::find($fichaKinesiologia->val_social_id);
+        $valSensorial = ValSensorial::find($fichaKinesiologia->val_sensorial_id);
+        $valMovilidad = ValMovilidad::find($fichaKinesiologia->val_movilidad_id);
+        $valMotora = ValMotora::find($fichaKinesiologia->val_motora_id);
+        $valEvaluacion = ValEvaluacion::find($fichaKinesiologia->val_evaluacion_id);
+        $valDeambulacion = ValDeambulacion::find($fichaKinesiologia->val_deambulacion_id);
+        $valControlEsfinter = ValControlEsfinter::find($fichaKinesiologia->val_control_esfinter_id);
+        $valComCog = ValComCog::find($fichaKinesiologia->val_com_cog_id);
+        $valAutocuidado = ValAutocuidado::find($fichaKinesiologia->val_autocuidado_id);
+        $antecedentesMorbidos = AntecedentesMorbidos::find($fichaKinesiologia->antecedentes_morbidos_id);
+
+        return view('area-medica.ficha-evaluacion-inicial.kinesiologia.show', compact('fichaKinesiologia'))
+            ->with(compact('persona'))
+            ->with(compact('valSocial'))
+            ->with(compact('valSensorial'))
+            ->with(compact('valMovilidad'))
+            ->with(compact('valMotora'))
+            ->with(compact('valEvaluacion'))
+            ->with(compact('valDeambulacion'))
+            ->with(compact('valControlEsfinter'))
+            ->with(compact('valComCog'))
+            ->with(compact('valAutocuidado'))
+            ->with(compact('antecedentesMorbidos'))
+            ->with(compact('funcionario'))
+            ;
     }
 
     /**

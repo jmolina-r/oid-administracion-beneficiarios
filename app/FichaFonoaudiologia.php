@@ -6,55 +6,66 @@ use Illuminate\Database\Eloquent\Model;
 
 class FichaFonoaudiologia extends Model
 {
-    protected $fillable = ['motivo_de_consulta'];
+    protected $fillable = ['beneficiario_id','motivo_consulta','estado','habitos_si_no_id','desarrollo_le_ed_id','antecedentes_peri_fono_id','antecedentes_pre_fono_id','desarrollo_psi_ed_id','desarrollo_social_fono_id','funcionario_id','antecedentes_mor_fono_id','antecedentes_mor_fa_fono_id','parientes_hogar_fono_id','antecedentes_pos_fono_id'];
 
-    public function parienteHogar()
+
+    public function habitos_si_no()
     {
-        return $this->hasMany(ParienteHogarFono::class);
+        return $this->hasOne(HabitosSiNoFono::class);
     }
 
-    public function habitosSiNo()
+    public function desarrollo_le_ed()
     {
-        return $this->belongsTo(HabitosSiNoFono::class);
+        return $this->hasOne(DesarrolloLenguajeEdades::class);
     }
 
-    public function desarrolloLenguajeEdad()
+    public function antecedentes_peri_fono()
     {
-        return $this->belongsTo(DesarrolloLenguajeEdades::class);
+        return $this->hasOne(AntecedentesPerinatalesFono::class);
     }
 
-    public function antecedentesPerinatales()
+    public function antecedentes_pre_fono()
     {
-        return $this->belongsTo(AntecedentesPerinatalesFono::class);
+        return $this->hasOne(AntecedentesPrenatalesFono::class);
     }
 
-    public function antecedentesPrenatales()
+    public function antecedentes_pos_fono()
     {
-        return $this->belongsTo(AntecedentesPrenatalesFono::class);
+        return $this->hasOne(AntecedentesPostnatalesFono::class);
     }
 
-    public function desarrolloPsicomotor()
+    public function desarrollo_psi_ed()
     {
-        return $this->belongsTo(DesarrolloPsicomotorEdades::class);
+        return $this->hasOne(DesarrolloPsicomotorEdades::class);
     }
 
-    public function desarrolloSocial()
+    public function desarrollo_so_fono()
     {
-        return $this->belongsTo(DesarrolloSocial::class);
+        return $this->hasOne(DesarrolloSocialFono::class);
     }
 
-    public function antecedentesMorbidos()
+    public function antecedentes_mor_fono()
     {
-        return $this->belongsTo(AntecedentesMorbidosSiNoFono::class);
+        return $this->hasOne(AntecedentesMorbidosSiNoFono::class);
     }
 
-    public function antecedentesMorbidosFamiliares()
+    public function antecedentes_mor_fa_fono()
     {
-        return $this->belongsTo(AntecedentesMorbidosFamiliaresSiNoFono::class);
+        return $this->hasOne(AntecedentesMorbidosFamiliaresSiNoFono::class);
     }
 
-    public function parientesHogarFono()
+    public function parientes_hogar_fono()
     {
-        return $this->hasMany(ParienteHogarFono::class);
+        return $this->hasOne(ParienteHogarFono::class);
+    }
+
+    public function funcionario()
+    {
+        return $this->belongsTo(Funcionario::class);
+    }
+
+    public function beneficiario()
+    {
+        return $this->belongsTo(Beneficiario::class);
     }
 }

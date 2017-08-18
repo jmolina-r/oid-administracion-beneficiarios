@@ -13,75 +13,84 @@ class UserTableSeeder extends Seeder
     {
         factory(App\User::class)->create([
             // 'name' => 'juan',
-            'username' => 'admin',
-            'email' => 'admin@admin.com'
+            'username' => '11819322-9',
+            'email' => 'paola@oid.cl',
+            'role_id' => '1',
+            'funcionario_id' => '1',
         ]);
 
         factory(App\User::class)->create([
             // 'name' => 'juan',
             'username' => '17514574-5',
-            'email' => 'juan@juan.com'
+            'email' => 'durrutia@oid.cl',
+            'role_id' => '2',
+            'funcionario_id' => '2',
         ]);
 
         factory(App\User::class)->create([
             // 'name' => 'pedro',
-            'username' => 'pedro',
-            'email' => 'pedro@pedro.com',
-            'status' => 0
+            'username' => '18508182-6',
+            'email' => 'lufe__Xx@oid.cl',
+            'status' => 0,
+            'role_id' => '3',
+            'funcionario_id' => '3',
         ]);
 
         factory(App\User::class)->create([
             // 'name' => 'diego',
-            'username' => 'diego',
-            'email' => 'diego@diego.com'
+            'username' => '19034687-0',
+            'email' => 'johnCitooX_EmmoxXxito._-x@oid.cl',
+            'role_id' => '4',
+            'funcionario_id' => '4',
         ]);
 
         factory(App\User::class)->create([
             // 'name' => 'secretaria',
-            'username' => 'secretaria',
-            'email' => 'secretaria@oid.cl'
+            'username' => '18312277-0',
+            'email' => 'priscila@oid.cl',
+            'role_id' => '5',
+            'funcionario_id' => '5',
         ]);
 
         factory(App\User::class)->create([
             // 'name' => 'coordinador_oficina',
-            'username' => 'coordinador_oficina',
-            'email' => 'coordinador_oficina@oid.cl'
+            'username' => '17725104-6',
+            'email' => 'alfredo@oid.cl',
+            'role_id' => '6',
+            'funcionario_id' => '6',
         ]);
 
         factory(App\User::class)->create([
             // 'name' => 'jefatura',
-            'username' => 'jefatura',
-            'email' => 'jefatura@oid.cl'
+            'username' => '13014491-8',
+            'email' => 'durrutia@nuc.cl',
+            'role_id' => '7',
+            'funcionario_id' => '7',
         ]);
 
         factory(App\User::class)->create([
             // 'name' => 'psicologia',
-            'username' => 'psicologia',
-            'email' => 'psicologia@oid.cl'
+            'username' => '18218164-1',
+            'email' => 'cat@oid.cl',
+            'role_id' => '8',
+            'funcionario_id' => '8',
         ]);
 
         factory(App\User::class)->create([
             // 'name' => 'kinesiologia',
-            'username' => 'kinesiologia',
-            'email' => 'kinesiologia@oid.cl'
-        ]);
-
-        factory(App\User::class)->create([
-            // 'name' => 'trabajo_social',
-            'username' => 'trabajo_social',
-            'email' => 'trabajo_social@oid.cl'
+            'username' => '10180773-8',
+            'email' => 'lira@oid.cl',
+            'role_id' => '9',
+            'funcionario_id' => '9',
         ]);
 
         factory(App\User::class)->create([
             // 'name' => 'terapia_ocupacional',
-            'username' => 'terapia_ocupacional',
-            'email' => 'terapia_ocupacional@oid.cl'
+            'username' => 'admin',
+            'email' => 'oid@oid.cl',
+            'role_id' => '9',
+            'funcionario_id' => '10',
         ]);
 
-        factory(App\User::class)->create([
-            // 'name' => 'fonoaudiologia',
-            'username' => 'fonoaudiologia',
-            'email' => 'fonoaudiologia@oid.cl'
-        ]);
     }
 }

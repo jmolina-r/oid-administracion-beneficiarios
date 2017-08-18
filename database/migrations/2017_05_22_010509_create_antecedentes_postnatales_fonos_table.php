@@ -16,12 +16,12 @@ class CreateAntecedentesPostnatalesFonosTable extends Migration
         Schema::create('antecedentes_postnatales_fonos', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('trat_post_parto')->nullable();
-            $table->string('tipo_alimenta')->nullable();
-            $table->string('limite_edad_alimenta')->nullable();
-            $table->string('observaciones')->nullable();
-            $table->string('operaciones_edad')->nullable();
-            $table->string('hospitalizaciones_edad')->nullable();
+            $table->string('trat_post_parto',200)->nullable();
+            $table->string('tipo_alimenta',200)->nullable();
+            $table->string('limite_edad_alimenta',200)->nullable();
+            $table->string('observaciones_postnatales',200)->nullable();
+            $table->string('operaciones_edad',200)->nullable();
+            $table->string('hospitalizaciones_edad',200)->nullable();
         });
     }
 
