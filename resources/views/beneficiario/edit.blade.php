@@ -84,7 +84,7 @@ class='contrast-red'
                             <div class='page-header'>
                                 <h1 class='pull-left'>
                                     <i class='fa fa-pencil-square-o'></i>
-                                    <span>Edición de Usuario</span>
+                                    <span>Edición de Beneficiario</span>
                                 </h1>
                                 <div class='pull-right'>
                                     <ul class='breadcrumb'>
