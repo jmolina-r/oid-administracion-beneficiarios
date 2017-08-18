@@ -351,7 +351,7 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     Route::get('/reportabilidadGene',[
         'uses'=>'ReportabilidadController@showResults',
         'as' => 'reportabilidad.reporteGene'
-    ]);
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
 
     Route::get('/reportabilidadKine',[
         'uses'=>'ReportabilidadController@showResultKine',
@@ -371,7 +371,7 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     Route::get('/reportabilidadFono',[
         'uses'=>'ReportabilidadController@showResultFono',
         'as' => 'reportabilidad.reporteFono'
-    ]);
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
 
     Route::get('/reportabilidadSoc',[
         'uses'=>'ReportabilidadController@showResultSoc',
@@ -382,7 +382,7 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
         'uses'=>'ReportabilidadController@showResultHistorica',
         'as' => 'reportabilidad.reporteHistorica'
 
-    ]);
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
 
     Route::get('/reportabilidadHistoricaEntreMeses',[
         'uses'=>'ReportabilidadController@showResultHistoricaEntreMes',

@@ -169,7 +169,7 @@ $factory->define(App\FichaKinesiologia::class, function (Faker\Generator $faker)
 
     return [
         'motivo_consulta' => $faker -> regexify('(Evaluación Movilidad|Evaluación Motora|Evaluación Social)'),
-        'estado' => $faker -> regexify('abierto'),
+        'estado' => $faker -> regexify('cerrado'),
         'situacion_laboral' => $faker -> regexify('(Desempleado|Estudiante|Trabajando)'),
         'situacion_familiar' => $faker -> regexify('(Normal|Anormal)'),
         'asiste_centro_rhb' => $faker -> regexify('(Si|No)'),
