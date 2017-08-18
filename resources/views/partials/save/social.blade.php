@@ -23,7 +23,7 @@
         @include('partials.save.social.sistema-proteccion')
     </div>
 
-    <div class='col-lg-12'>
+    <div class='col-md-12 col-lg-12'>
         @include('partials.save.social.organizaciones-sociales')
     </div>
 
