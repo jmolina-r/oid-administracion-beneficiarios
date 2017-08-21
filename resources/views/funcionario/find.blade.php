@@ -77,9 +77,6 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                         </ul>
                                     </div>
                                 </div>
-                                <h1 class="pull-right ayuda_btn">
-                                    <a style="text-decoration:none;" href="#" title="" onclick="$('#video').modal('show');">Ayuda <i class='fa fa-life-ring'></i></a>
-                                </h1>
                             </div>
                         </div>
                         <div class='row'>
@@ -190,5 +187,4 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
         </div>
     </div>
 </div>
-@include('partials.video', ['url' => 'MP9juk6c4rI', 'titulo' => 'Administración de Funcionarios'])
 @endsection
