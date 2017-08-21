@@ -159,7 +159,7 @@
                     @endif
                      </div>
                      <div class='box-content box-statistic col-sm-12 sinpadding'>
-                     @if( $totalAnual == 0)
+                     @if( $totalMensual == 0)
                          <p>No existen atenciones mensuales actualmente</p>
                      @else
                          <div  id="piesschart" style="width: 100%; height: 100%;"></div>
