@@ -32,7 +32,6 @@ class FichaSocialController extends Controller
 
         $Tipo=TipoMotivoSocial::join('motivo_atencion_socials','tipo_motivo_socials.id','=','motivo_atencion_socials.tipo_motivo_social_id')
             ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$id)->get();
-        print $Tipo;
 
         if($Tipo[0]->tipo_motivo_social_id == "1"){
 
