@@ -584,8 +584,11 @@ class ReportabilidadController extends Controller
             ->where('funcionarios.tipo_funcionario_id','=',4)
             ->count();
 
+        $totalAnual = $atencionAnualKines +  $atencionAnualFonos + $atencionAnualPsicos + $atencionAnualTers;
+        $totalMensual = $atencionMensualKines +  $atencionMensualFonos + $atencionMensualPsicos + $atencionMensualTers;
+
         return view('reportabilidad.reportabilidadGrupal', compact('atencionAnualKines','atencionMensualKines','atencionAnualFonos','atencionMensualFonos',
-            'atencionAnualPsicos','atencionMensualPsicos','atencionAnualTers','atencionMensualTers'));
+            'atencionAnualPsicos','atencionMensualPsicos','atencionAnualTers','atencionMensualTers','totalAnual','totalMensual'));
 
 
     }
