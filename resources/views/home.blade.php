@@ -25,8 +25,8 @@ class='contrast-red'
 @endsection
 
 <!-- Inyeccion de scripts
-     No importa que vayan antes del body, en el master layout se estan insertando alfinal.
-   -->
+No importa que vayan antes del body, en el master layout se estan insertando alfinal.
+-->
 @section('scripts')
 <!-- / jquery [required] -->
 <script src="{{ asset('/assets/javascripts/jquery/jquery.min.js') }}" type="text/javascript"></script>
@@ -45,7 +45,7 @@ class='contrast-red'
 <!-- / theme file [required] -->
 <script src="{{ asset('/assets/javascripts/theme.js') }}" type="text/javascript"></script>
 <!-- / START - page related files and scripts [optional] -->
-<script src="{{ asset('/assets/javascripts/plugins/fuelux/wizard.js') }}" type="text/javascript"></script>
+<link href="assets/stylesheets/jquery/jquery_ui.css" rel="stylesheet" type="text/css" media="all" />
 <!-- / END - page related files and scripts [optional] -->
 <!-- / Beneficiario select tag -->
 <script src="{{ asset('assets/javascripts/plugins/select2/select2.js') }}" type="text/javascript"></script>
@@ -69,34 +69,30 @@ class='contrast-red'
 @section('content')
 @include('partials.header')
 <div id='wrapper'>
-  <div id='main-nav-bg'></div>
-  @include('partials.nav')
-  <section id='content'>
-    <div class='container'>
-      <div class='row' id='content-wrapper'>
-        <div class='col-xs-12'>
-          <div class='row'>
-            <div class='col-sm-12'>
-              <div class='page-header'>
-                <h1 class='pull-left'>
-                  <i class='fa fa-pencil-square-o'></i>
-                  <span>Home</span>
-                </h1>
-                <div class='pull-right'>
-                  <ul class='breadcrumb'>
-                    <li>
-                  </ul>
-
-
-
-
+    <div id='main-nav-bg'></div>
+    @include('partials.nav')
+    <section id='content'>
+        <div class='container'>
+            <div class='row' id='content-wrapper'>
+                <div class='col-xs-12'>
+                    <div class='row'>
+                        <div class='col-sm-12'>
+                            <div class='page-header'>
+                                <h1 class='pull-left'>
+                                    <i class='fa fa-pencil-square-o'></i>
+                                    <span>Home</span>
+                                </h1>
+                                <div class='pull-right'>
+                                    <ul class='breadcrumb'>
+                                        <li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-      </div>
-  </div>
-  @include('partials.footer')
-  </div>
-  <section>
-  </div>
+            @include('partials.footer')
+        </div>
+    <section>
+</div>

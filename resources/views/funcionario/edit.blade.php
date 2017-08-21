@@ -110,5 +110,4 @@
 </div>
 
 @include('partials.funcionario.confirmation-modal')
-
 @endsection

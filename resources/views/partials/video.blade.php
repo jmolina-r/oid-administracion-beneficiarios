@@ -1,21 +1,5 @@
-<div class="modal-custom">
-    <div class='modal fade' id='video' tabindex='-1'>
-        <div class='modal-dialog'>
-            <div class='modal-content'>
-                <div class='modal-header'>
-                    <button aria-hidden='true' class='close' data-dismiss='modal' type='button'>×</button>
-                    <h3 class='modal-title' id='myModalLabel'>Video Tutorial - {{$titulo}}</h3>
-                </div>
-                <div class='modal-body'>
-                    <div id="ytplayer"></div>
-                </div>
-                <div class='modal-footer'>
-                    <span class="pull-left">Para detener, haga clic sobre el video</span>                    
-                    <button class='btn btn-default' data-dismiss='modal' type='button'>Salir</button>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div id="{{$url}}"></div>
 </div>
 
 
@@ -31,7 +15,7 @@
     // YouTube player after the API code downloads.
     var player;
     function onYouTubePlayerAPIReady() {
-        player = new YT.Player('ytplayer', {
+        player = new YT.Player('{{$url}}', {
             height: '320',
             width: '100%',
             videoId: '{{$url}}',

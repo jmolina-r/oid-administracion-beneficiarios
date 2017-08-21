@@ -91,9 +91,10 @@ class='contrast-red'
                                       <li>
                                     </ul>
                                 </div>
-                                <h1 class="pull-right ayuda_btn">
+                                <!-- Boton video de ayuda -->
+                                <!-- <h1 class="pull-right ayuda_btn">
                                     <a style="text-decoration:none;" href="#" title="" onclick="$('#video').modal('show');">Ayuda <i class='fa fa-life-ring'></i></a>
-                                </h1>
+                                </h1> -->
                             </div>
                         </div>
                     </div>
@@ -166,7 +167,6 @@ class='contrast-red'
             </div>
             @include('partials.footer')
             @include('partials.confirmation')
-            @include('partials.video', ['url' => 'D4TuCQu5JTg', 'titulo' => 'Registro de Usuario'])
         </div>
     </section>
 </div>
