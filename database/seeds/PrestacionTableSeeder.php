@@ -11,6 +11,28 @@ class PrestacionTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Prestacion::class,3)->create();
+        $prestacion = new \App\Prestacion([
+            'nombre' => 'Inicial fonoaudiologia',
+            'area' => 'fonoaudiologo',
+        ]);
+        $prestacion->save();
+
+        $prestacion = new \App\Prestacion([
+            'nombre' => 'Inicial kinesiologia',
+            'area' => 'kinesiologo',
+        ]);
+        $prestacion->save();
+        $prestacion = new \App\Prestacion([
+            'nombre' => 'Inicial terapia ocupacional',
+            'area' => 'terapeuta ocupacional',
+        ]);
+        $prestacion->save();
+        $prestacion = new \App\Prestacion([
+            'nombre' => 'Inicial psicologia',
+            'area' => 'psicologo',
+        ]);
+        $prestacion->save();
+
     }
 }
+

@@ -58,13 +58,6 @@ $factory->define(App\TelefonoBeneficiario::class, function (Faker\Generator $fak
     ];
 });
 
-$factory->define(App\Prestacion::class, function (Faker\Generator $faker) {
-
-    return [
-        'nombre' => $faker->word(),
-        'area' => $faker->word(),
-    ];
-});
 
 $factory->define(App\PrestacionRealizada::class, function (Faker\Generator $faker) {
 
