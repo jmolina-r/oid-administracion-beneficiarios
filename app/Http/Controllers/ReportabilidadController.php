@@ -191,15 +191,10 @@ class ReportabilidadController extends Controller
         $view =  \View::make('pdf.invoice', compact('cant', 'porcentajeRSTramite', 'porcentajeRSTiene', 'porcentajeFemenino', 'porcentajeMasculino', 'ingresoAnual', 'ingresoMensual', 'porcentajeCredencialEntregada', 'porcentajeCredencialTramite', 'atencionAnual', 'atencionMensual', 'porcentajeAdulto', 'porcentajeJoven', 'porcentajeAdultoMayor', 'porcentajeFonasa',
             'porcentajeFonasaTramoA', 'porcentajeFonasaTramoB', 'porcentajeFonasaTramoC', 'porcentajeFonasaTramoD', 'porcentajeIsapre', 'preBasico', 'basicoIncompleto', 'basicoCompleto',
             'medioIncompleto', 'medioCompleto', 'tecnicoIncompleto', 'tecnicoCompleto', 'universitarioIncompleto',
-
             'universitarioCompleto', 'trabajador', 'estudiante', 'duenoCasa', 'pensionado', 'cesante', 'isapreCruzBlanca', 'isapreColmena', 'isapreMasVida', 'isapreConsalud', 'isapreBanmedica', 'isapreVidaTres', 'isapreCodelco',
-
             'isapreDipreca', 'isapreCapredena', 'isapreFerroSalud', 'isapreOtro','porcentajeParticipaOrgSocial',
-
             'estimulacionTemprana','edad3_5','edad6_10','edad11_20','edad21_30','edad31_40','edad41_50','edad51_60','edad61_70','edad71_80','edad81_90','edad91_100','edad101_110','edad111_120',
-
             'porcentajeParticipaOrgSocial',
-
             'porcentajeReahbMensual','porcentajeReahbAnual'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
@@ -609,7 +604,7 @@ class ReportabilidadController extends Controller
 
         if($aniodos == $aniouno){
 
-              if($mesuno <= $mesdos){
+              if($mesuno >= $mesdos){
 
                   return view('reportabilidad.error');
 
@@ -658,7 +653,7 @@ class ReportabilidadController extends Controller
             ->where('funcionarios.tipo_funcionario_id','=',4)
             ->count();
 
-        if(isset($_GET['visualHist'])) {
+        if(isset($_GET['visualHistEntreMes'])) {
             return view('reportabilidad.reportabilidadHistEntreMes', compact('cantIngresadosAño2','cantAtencionAño2','aniouno','aniodos','mesuno','mesdos','atencionKines','atencionPsico','atencionFono','atencionTers'));
 
         }

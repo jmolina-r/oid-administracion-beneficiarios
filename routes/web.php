@@ -265,7 +265,8 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
         'uses' => 'PdfController@invoice2',
         'as' => 'reportabilidad.reportePsico'
 
-    ]);
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+
     Route::get('/reporteFonoaudiologia.pdf', [
         'uses' => 'PdfController@invoiceFono',
         'as' => 'reportabilidad.reporteFono'
