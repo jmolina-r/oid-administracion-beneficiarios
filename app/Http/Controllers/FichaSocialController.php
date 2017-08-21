@@ -32,6 +32,7 @@ class FichaSocialController extends Controller
 
         $Tipo=TipoMotivoSocial::join('motivo_atencion_socials','tipo_motivo_socials.id','=','motivo_atencion_socials.tipo_motivo_social_id')
             ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$id)->get();
+        print $Tipo;
 
         if($Tipo[0]->tipo_motivo_social_id == "1"){
 
@@ -71,13 +72,13 @@ class FichaSocialController extends Controller
 
             return view('social.showVisita', compact('visitaDom','observacionVisitaDom','beneficiario','id'));
 
-        }else{
-            $becas=TipoSubmotivoSocial::join('motivo_atencion_socials','motivo_atencion_socials.tipo_submotivo_id','=','tipo_submotivo_socials.id')
-                ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$id)
-                ->where('motivo_atencion_socials.tipo_motivo_social_id','=',4)
-                ->get();
-            $observacionBecas=MotivoAtencionSocial::where('ficha_atencion_social_id','=',$id)
-                ->where('tipo_motivo_social_id','=',4)->select('observacion')->first();
+        }elseif($Tipo[0]->tipo_motivo_social_id == "4"){
+        $becas = TipoSubmotivoSocial::join('motivo_atencion_socials', 'motivo_atencion_socials.tipo_submotivo_id', '=', 'tipo_submotivo_socials.id')
+            ->where('motivo_atencion_socials.ficha_atencion_social_id', '=', $id)
+            ->where('motivo_atencion_socials.tipo_motivo_social_id', '=', 4)
+            ->get();
+        $observacionBecas = MotivoAtencionSocial::where('ficha_atencion_social_id', '=', $id)
+            ->where('tipo_motivo_social_id', '=', 4)->select('observacion')->first();
 
             return view('social.showBecas', compact('becas','observacionBecas','beneficiario','id'));
 
@@ -102,7 +103,7 @@ class FichaSocialController extends Controller
                 $fichaTipo[$i]="Orientacion";
             }elseif($tipo->tipo_motivo_social_id == "3"){
                 $fichaTipo[$i]="Visita";
-            }else{
+            }elseif($tipo->tipo_motivo_social_id == "4"){
                 $fichaTipo[$i]="Becas";
 
             }
@@ -279,7 +280,7 @@ class FichaSocialController extends Controller
                 'observacion' => $obsIt,
                 'fecha_visita' => $now->format('Y-m-d H:i:s'),
                 'ficha_atencion_social_id' => $ficha_atencion_socials->id,
-                'tipo_motivo_social_id' => '1',
+                'tipo_motivo_social_id' => '4',
                 'tipo_submotivo_id' => $subMotivos[0],
                 'tipo_ayuda_id' => NULL
             ]);
