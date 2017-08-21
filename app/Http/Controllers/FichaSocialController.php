@@ -94,16 +94,17 @@ class FichaSocialController extends Controller
         $i=0;
         foreach ($fichasSociales as $fs){
             $ficha[$i]=$fs;
-            $Tipo=TipoMotivoSocial::join('motivo_atencion_socials','tipo_motivo_socials.id','=','motivo_atencion_socials.tipo_motivo_social_id')
-                ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$ficha[$i]->id)->get();
-            if($Tipo[0]->tipo_motivo_social_id == "1"){
+            $tipo=MotivoAtencionSocial::where('ficha_atencion_social_id','=',$fs->id)->first();
+
+            if($tipo->tipo_motivo_social_id == "1"){
                 $fichaTipo[$i]="Ayuda";
-            }elseif($Tipo[0]->tipo_motivo_social_id == "2"){
+            }elseif($tipo->tipo_motivo_social_id == "2"){
                 $fichaTipo[$i]="Orientacion";
-            }elseif($Tipo[0]->tipo_motivo_social_id == "3"){
+            }elseif($tipo->tipo_motivo_social_id == "3"){
                 $fichaTipo[$i]="Visita";
             }else{
                 $fichaTipo[$i]="Becas";
+
             }
 
             $i++;
@@ -226,7 +227,7 @@ class FichaSocialController extends Controller
 
                     'observacion' => $obsIt,
                     'fecha_visita' => $now->format('Y-m-d H:i:s'),
-                    'ficha_atencion_social_id' => '1',
+                    'ficha_atencion_social_id' => $ficha_atencion_socials->id,
                     'tipo_motivo_social_id' => '1',
                     'tipo_submotivo_id' => NULL,
                     'tipo_ayuda_id' => $motivoAyudaSocial[$i]
