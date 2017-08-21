@@ -33,6 +33,7 @@ Route::get('/users/{id}/funcionario', 'Auth\FindController@userInfoFuncionarioJs
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/ayuda', 'AyudaController@index')->name('ayuda');
 
 Route::group(['prefix' => 'areasocial', 'middleware' => 'auth'], function(){
     Route::get('/asistentesocial', [

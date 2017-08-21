@@ -195,6 +195,13 @@
                     </ul>
                 </li>
             @endif
+            <li class=''>
+                <a href='/ayuda'>
+                    <i class='fa fa-life-ring'></i>
+                    <span>Ayuda en línea</span>
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>
