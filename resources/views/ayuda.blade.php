@@ -298,7 +298,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                             <div class='panel panel-default'>
                                                 <div class='panel-heading'>
                                                     <a class='accordion-toggle' data-parent='#accordion4' data-toggle='collapse' href='#collapseDos-accordion4'>
-                                                        ¿Cómo tender una hora?
+                                                        ¿Cómo atender una hora?
                                                     </a>
                                                 </div>
                                                 <div class='panel-collapse collapse' id='collapseDos-accordion4'>
