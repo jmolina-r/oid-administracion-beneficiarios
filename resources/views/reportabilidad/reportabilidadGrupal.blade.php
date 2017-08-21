@@ -138,6 +138,8 @@
                       <input id="atencionMensualPsicos" name="atencionMensualPsicos" type="hidden" value="{{$atencionMensualPsicos}}">
                       <input id="atencionAnualTers" name="atencionAnualTers" type="hidden" value="{{$atencionAnualTers}}">
                       <input id="atencionMensualTers" name="atencionMensualTers" type="hidden" value="{{$atencionMensualTers}}">
+                      <input id="totalAnual" name="totalAnual" type="hidden" value="{{$totalAnual}}">
+                      <input id="totalMensual" name="totalMensual" type="hidden" value="{{$totalMensual}}">
                 <div class='row'>
                 <div class='col-sm-12'>
                   <div class='box bordered-box blue-border' style='margin-bottom:0;'>
@@ -148,14 +150,22 @@
                         </a>
                       </div>
                     </div>
+
                     <div class='box-content box-statistic col-sm-12 sinpadding'>
-                       <div  id="pieschart" style="width: 100%; height: 100%;"></div>
+                    @if( $totalAnual == 0)
+                            <p>No existen atenciones anuales actualmente</p>
+                    @else
+                        <div  id="pieschart" style="width: 100%; height: 100%;"></div>
+                    @endif
                      </div>
                      <div class='box-content box-statistic col-sm-12 sinpadding'>
-                       <div  id="piesschart" style="width: 100%; height: 100%;"></div>
+                     @if( $totalAnual == 0)
+                         <p>No existen atenciones mensuales actualmente</p>
+                     @else
+                         <div  id="piesschart" style="width: 100%; height: 100%;"></div>
+                     @endif
                      </div>
               </div>
-
               </div>
             </div>
                       <button type="submit" class="btn btn-success col-md-12" style="margin-bottom:5px" />Vista previa a imprimir</button>

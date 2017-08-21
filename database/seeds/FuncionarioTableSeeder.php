@@ -56,7 +56,7 @@ class FuncionarioTableSeeder extends Seeder
         factory(App\Funcionario::class)->create([
             'rut' => '18218164-1',
             'email' => 'cat@oid.cl',
-            'tipo_funcionario_id' => '7'
+            'tipo_funcionario_id' => '6'
         ]);
 
         factory(App\Funcionario::class)->create([
