@@ -72,12 +72,12 @@ class FichaSocialController extends Controller
             return view('social.showVisita', compact('visitaDom','observacionVisitaDom','beneficiario','id'));
 
         }elseif($Tipo[0]->tipo_motivo_social_id == "4"){
-        $becas = TipoSubmotivoSocial::join('motivo_atencion_socials', 'motivo_atencion_socials.tipo_submotivo_id', '=', 'tipo_submotivo_socials.id')
-            ->where('motivo_atencion_socials.ficha_atencion_social_id', '=', $id)
-            ->where('motivo_atencion_socials.tipo_motivo_social_id', '=', 4)
-            ->get();
-        $observacionBecas = MotivoAtencionSocial::where('ficha_atencion_social_id', '=', $id)
-            ->where('tipo_motivo_social_id', '=', 4)->select('observacion')->first();
+            $becas = TipoSubmotivoSocial::join('motivo_atencion_socials', 'motivo_atencion_socials.tipo_submotivo_id', '=', 'tipo_submotivo_socials.id')
+                ->where('motivo_atencion_socials.ficha_atencion_social_id', '=', $id)
+                ->where('motivo_atencion_socials.tipo_motivo_social_id', '=', 4)
+                ->get();
+            $observacionBecas = MotivoAtencionSocial::where('ficha_atencion_social_id', '=', $id)
+                ->where('tipo_motivo_social_id', '=', 4)->select('observacion')->first();
 
             return view('social.showBecas', compact('becas','observacionBecas','beneficiario','id'));
 
