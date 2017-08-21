@@ -240,7 +240,6 @@ class ReportabilidadController extends Controller
             ->count();
 
         $prestaciones = Prestacion::where('prestacions.area','=','kinesiologo')->get();
-        print $prestaciones;
         $porcentajePrest=null;
         $nombrePrest=null;
         $i=0;
