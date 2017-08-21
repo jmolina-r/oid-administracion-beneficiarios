@@ -85,6 +85,9 @@
                                       <li>
                                     </ul>
                                 </div>
+                                <h1 class="pull-right ayuda_btn">
+                                    <a style="text-decoration:none;" href="#" title="" onclick="$('#video').modal('show');">Ayuda <i class='fa fa-life-ring'></i></a>
+                                </h1>
                             </div>
                         </div>
                     </div>
@@ -110,5 +113,5 @@
 </div>
 
 @include('partials.funcionario.confirmation-modal')
-
+@include('partials.video', ['url' => 'MP9juk6c4rI', 'titulo' => 'Administración de Funcionarios'])
 @endsection

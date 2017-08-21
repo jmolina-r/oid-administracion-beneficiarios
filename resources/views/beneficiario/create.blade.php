@@ -166,7 +166,7 @@ class='contrast-red'
             </div>
             @include('partials.footer')
             @include('partials.confirmation')
-            @include('partials.video', ['url' => 'D4TuCQu5JTg', 'titulo' => 'Registro de Usuario'])
+            @include('partials.video-modal', ['url' => 'D4TuCQu5JTg', 'titulo' => 'Registro de Beneficiario'])
         </div>
     </section>
 </div>

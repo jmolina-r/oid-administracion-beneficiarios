@@ -196,6 +196,22 @@
                     </ul>
                 </li>
             @endif
+            <li class=''>
+                <a class="dropdown-collapse" href="#"><i class='fa fa-life-ring'></i>
+                    <span>Ayuda de Sección</span>
+                    <i class='fa fa-angle-down angle-down'></i>
+                </a>
+                <ul class='nav nav-stacked'>
+                    <li class=''>
+                        <a href='#' onclick="$('#video').modal('show');">
+                            <div class='icon'>
+                                <i class='fa fa-caret-right'></i>
+                            </div>
+                            <span>Video de ayuda</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
         </ul>
     </div>
