@@ -239,7 +239,7 @@ class ReportabilidadController extends Controller
             ->where('funcionarios.rut','=',$user_rut)
             ->count();
 
-        $prestaciones = Prestacion::all();
+        $prestaciones = Prestacion::where('prestacions.area','=','kinesiologo')->get();
         $porcentajePrest=null;
         $nombrePrest=null;
         $i=0;
@@ -321,7 +321,7 @@ class ReportabilidadController extends Controller
             ->where('funcionarios.rut','=',$user_rut)
             ->count();
 
-        $prestaciones = Prestacion::all();
+        $prestaciones = Prestacion::where('prestacions.area','=','fonoaudiologo')->get();
         $porcentajePrest=null;
         $nombrePrest=null;
         $i=0;
@@ -398,7 +398,7 @@ class ReportabilidadController extends Controller
             ->count();
 
 
-        $prestaciones = Prestacion::all();
+        $prestaciones = Prestacion::where('prestacions.area','=','psicologo')->get();
         $porcentajePrest=null;
         $nombrePrest=null;
         $i=0;
@@ -477,7 +477,7 @@ class ReportabilidadController extends Controller
             ->where('funcionarios.rut','=',$user_rut)
             ->count();
 
-        $prestaciones = Prestacion::all();
+        $prestaciones = Prestacion::where('prestacions.area','=','terapeuta ocupacional')->get();
         $porcentajePrest=null;
         $nombrePrest=null;
         $i=0;

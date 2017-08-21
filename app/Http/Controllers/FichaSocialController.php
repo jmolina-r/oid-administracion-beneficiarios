@@ -71,13 +71,13 @@ class FichaSocialController extends Controller
 
             return view('social.showVisita', compact('visitaDom','observacionVisitaDom','beneficiario','id'));
 
-        }else{
-            $becas=TipoSubmotivoSocial::join('motivo_atencion_socials','motivo_atencion_socials.tipo_submotivo_id','=','tipo_submotivo_socials.id')
-                ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$id)
-                ->where('motivo_atencion_socials.tipo_motivo_social_id','=',4)
+        }elseif($Tipo[0]->tipo_motivo_social_id == "4"){
+            $becas = TipoSubmotivoSocial::join('motivo_atencion_socials', 'motivo_atencion_socials.tipo_submotivo_id', '=', 'tipo_submotivo_socials.id')
+                ->where('motivo_atencion_socials.ficha_atencion_social_id', '=', $id)
+                ->where('motivo_atencion_socials.tipo_motivo_social_id', '=', 4)
                 ->get();
-            $observacionBecas=MotivoAtencionSocial::where('ficha_atencion_social_id','=',$id)
-                ->where('tipo_motivo_social_id','=',4)->select('observacion')->first();
+            $observacionBecas = MotivoAtencionSocial::where('ficha_atencion_social_id', '=', $id)
+                ->where('tipo_motivo_social_id', '=', 4)->select('observacion')->first();
 
             return view('social.showBecas', compact('becas','observacionBecas','beneficiario','id'));
 
@@ -95,15 +95,16 @@ class FichaSocialController extends Controller
         foreach ($fichasSociales as $fs){
             $ficha[$i]=$fs;
             $tipo=MotivoAtencionSocial::where('ficha_atencion_social_id','=',$fs->id)->first();
-echo $tipo->tipo_motivo_social_id;
+
             if($tipo->tipo_motivo_social_id == "1"){
                 $fichaTipo[$i]="Ayuda";
             }elseif($tipo->tipo_motivo_social_id == "2"){
                 $fichaTipo[$i]="Orientacion";
             }elseif($tipo->tipo_motivo_social_id == "3"){
                 $fichaTipo[$i]="Visita";
-            }else{
+            }elseif($tipo->tipo_motivo_social_id == "4"){
                 $fichaTipo[$i]="Becas";
+
             }
 
             $i++;
@@ -184,7 +185,7 @@ echo $tipo->tipo_motivo_social_id;
                 $obsIt = 'N/A';
 
             }
-            return back()->with('info','Se ha ingresado con éxito la asistencia social');
+            return back()->with('info','Se ha ingresado con éxito la visita');
 
         } elseif(isset($_POST["ayudas_btn"])) {
             //En caso de que se ingrese una ayuda
@@ -235,7 +236,7 @@ echo $tipo->tipo_motivo_social_id;
 
             }
 
-            return back()->with('info','Se ha ingresado con éxito la asistencia social');
+            return back()->with('info','Se ha ingresado con éxito la visita');
 
         } elseif(isset($_POST["becas_btn"])){
             //En caso de que se ingrese beca como motivo
@@ -283,7 +284,7 @@ echo $tipo->tipo_motivo_social_id;
                 'tipo_ayuda_id' => NULL
             ]);
             $motivoSocial->save();
-            return back()->with('info','Se ha ingresado con éxito la asistencia social');
+            return back()->with('info','Se ha ingresado con éxito la visita');
         } else{
 
             //Orientacion
@@ -317,7 +318,7 @@ echo $tipo->tipo_motivo_social_id;
                 ]);
                 $motivoSocial->save();
             }
-            return back()->with('info','Se ha ingresado con éxito la asistencia social');
+            return back()->with('info','Se ha ingresado con éxito la visita');
         }
 
         //return $request->all();

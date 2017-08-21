@@ -343,6 +343,9 @@
             </div>
             @include('partials.footer')
           </div>
+              </div>
+            </div>
+          </div>
         </section>
       </div>
 
