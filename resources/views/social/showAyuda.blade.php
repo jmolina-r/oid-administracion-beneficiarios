@@ -76,7 +76,7 @@
                                     <div class="col-md-4">
                                         <h3>Ayudas Técnicas</h3>
                                         @if(count($ayudas)==0)
-                                            <p class="capitalize">no existe observación</p>
+                                            <p class="capitalize">El usuario no ha pedido ayuda técnica</p>
                                         @else
                                             <?php $countTecn = 0; ?>
                                              @foreach($ayudas as $ayuda)

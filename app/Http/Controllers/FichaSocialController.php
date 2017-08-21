@@ -19,31 +19,31 @@ class FichaSocialController extends Controller
 
     public function show($id){
 
-      
+
         $beneficiario = Beneficiario::where('id',$id)->first();
 
         $tipoMotivoSocial = TipoMotivoSocial::get();
         $tipoSubmotivoSocial = TipoSubmotivoSocial::get();
         $tipoAyudaTecnicoSocial = TipoAyudaTecnicoSocial::get();
-        return view('social.asistenteSocialVisitaDomiciliaria', compact('tipoMotivoSocial','tipoSubmotivoSocial','tipoAyudaTecnicoSocial','beneficiario'));   
+        return view('social.asistenteSocialVisitaDomiciliaria', compact('tipoMotivoSocial','tipoSubmotivoSocial','tipoAyudaTecnicoSocial','beneficiario'));
     }
     public function showFicha($id){
-         $beneficiario=Beneficiario::join('ficha_atencion_socials','beneficiarios.id','=','ficha_atencion_socials.beneficiario_id')->first();
+        $beneficiario=Beneficiario::join('ficha_atencion_socials','beneficiarios.id','=','ficha_atencion_socials.beneficiario_id')->first();
 
-         $Tipo=TipoMotivoSocial::join('motivo_atencion_socials','tipo_motivo_socials.id','=','motivo_atencion_socials.tipo_motivo_social_id')
-                ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$id)->get();
+        $Tipo=TipoMotivoSocial::join('motivo_atencion_socials','tipo_motivo_socials.id','=','motivo_atencion_socials.tipo_motivo_social_id')
+            ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$id)->get();
 
         if($Tipo[0]->tipo_motivo_social_id == "1"){
-           
+
             $ayudas=TipoAyudaTecnicoSocial::join('motivo_atencion_socials','motivo_atencion_socials.tipo_ayuda_id','=','tipo_ayuda_tecnico_socials.id')
-            ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$id)
-            ->where('motivo_atencion_socials.tipo_motivo_social_id','=',1)
-            ->get();
+                ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$id)
+                ->where('motivo_atencion_socials.tipo_motivo_social_id','=',1)
+                ->get();
 
             $observacionAyuda=MotivoAtencionSocial::where('ficha_atencion_social_id','=',$id)
-            ->where('tipo_motivo_social_id','=',1)->first();
+                ->where('tipo_motivo_social_id','=',1)->first();
             return view('social.showAyuda', compact('ayudas','observacionAyuda','beneficiario','id'));
-                
+
         }elseif($Tipo[0]->tipo_motivo_social_id == "2"){
             //orientacion
             $orientacion=TipoSubmotivoSocial::join('motivo_atencion_socials','motivo_atencion_socials.tipo_submotivo_id','=','tipo_submotivo_socials.id')
@@ -51,39 +51,39 @@ class FichaSocialController extends Controller
                 ->where('motivo_atencion_socials.tipo_motivo_social_id','=',2)
                 ->get();
 
-           $observacionOrientacion=MotivoAtencionSocial::where('ficha_atencion_social_id','=',$id)
-            ->where('tipo_motivo_social_id','=',2)->select('observacion')->first();
+            $observacionOrientacion=MotivoAtencionSocial::where('ficha_atencion_social_id','=',$id)
+                ->where('tipo_motivo_social_id','=',2)->select('observacion')->first();
 
-            return view('social.showOrientacion', compact('orientacion','observacionOrientacion','beneficiario','id')); 
-                
+            return view('social.showOrientacion', compact('orientacion','observacionOrientacion','beneficiario','id'));
+
         }elseif($Tipo[0]->tipo_motivo_social_id == "3"){
-             /*$visitaDom=TipoSubmotivoSocial::where('tipo_submotivo_socials.tipo_motivo_social_id','=',3)
-            ->join('motivo_atencion_socials','tipo_submotivo_socials.tipo_motivo_social_id','=','motivo_atencion_socials.tipo_motivo_social_id')
-             ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$id)
-                 ->join('motivo_atencion_socials','tipo_submotivo_socials.id','=','motivo_atencion_socials.tipo_submotivo_id')*/
+            /*$visitaDom=TipoSubmotivoSocial::where('tipo_submotivo_socials.tipo_motivo_social_id','=',3)
+           ->join('motivo_atencion_socials','tipo_submotivo_socials.tipo_motivo_social_id','=','motivo_atencion_socials.tipo_motivo_social_id')
+            ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$id)
+                ->join('motivo_atencion_socials','tipo_submotivo_socials.id','=','motivo_atencion_socials.tipo_submotivo_id')*/
             $visitaDom=TipoSubmotivoSocial::join('motivo_atencion_socials','motivo_atencion_socials.tipo_submotivo_id','=','tipo_submotivo_socials.id')
                 ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$id)
                 ->where('motivo_atencion_socials.tipo_motivo_social_id','=',3)
                 ->get();
 
             $observacionVisitaDom=MotivoAtencionSocial::where('ficha_atencion_social_id','=',$id)
-            ->where('tipo_motivo_social_id','=',3)->select('observacion')->first();
+                ->where('tipo_motivo_social_id','=',3)->select('observacion')->first();
 
             return view('social.showVisita', compact('visitaDom','observacionVisitaDom','beneficiario','id'));
-                
+
         }else{
             $becas=TipoSubmotivoSocial::join('motivo_atencion_socials','motivo_atencion_socials.tipo_submotivo_id','=','tipo_submotivo_socials.id')
                 ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$id)
                 ->where('motivo_atencion_socials.tipo_motivo_social_id','=',4)
                 ->get();
             $observacionBecas=MotivoAtencionSocial::where('ficha_atencion_social_id','=',$id)
-            ->where('tipo_motivo_social_id','=',4)->select('observacion')->first();
+                ->where('tipo_motivo_social_id','=',4)->select('observacion')->first();
 
-            return view('social.showBecas', compact('becas','observacionBecas','beneficiario','id')); 
-                 
+            return view('social.showBecas', compact('becas','observacionBecas','beneficiario','id'));
+
         }
-        
-       
+
+
     }
     public function showFichas($id){
 
@@ -94,23 +94,23 @@ class FichaSocialController extends Controller
         $i=0;
         foreach ($fichasSociales as $fs){
             $ficha[$i]=$fs;
-            $Tipo=TipoMotivoSocial::join('motivo_atencion_socials','tipo_motivo_socials.id','=','motivo_atencion_socials.tipo_motivo_social_id')
-                ->where('motivo_atencion_socials.ficha_atencion_social_id','=',$ficha[$i]->id)->get();
-            if($Tipo[0]->tipo_motivo_social_id == "1"){
+            $tipo=MotivoAtencionSocial::where('ficha_atencion_social_id','=',$fs->id)->first();
+echo $tipo->tipo_motivo_social_id;
+            if($tipo->tipo_motivo_social_id == "1"){
                 $fichaTipo[$i]="Ayuda";
-            }elseif($Tipo[0]->tipo_motivo_social_id == "2"){
+            }elseif($tipo->tipo_motivo_social_id == "2"){
                 $fichaTipo[$i]="Orientacion";
-            }elseif($Tipo[0]->tipo_motivo_social_id == "3"){
-                 $fichaTipo[$i]="Visita";
+            }elseif($tipo->tipo_motivo_social_id == "3"){
+                $fichaTipo[$i]="Visita";
             }else{
-                 $fichaTipo[$i]="Becas";
+                $fichaTipo[$i]="Becas";
             }
 
             $i++;
 
         }
 
-        return view('social.showFichas', compact('ficha','fichaTipo')); 
+        return view('social.showFichas', compact('ficha','fichaTipo'));
     }
 
     public function post(Request $request){
@@ -184,7 +184,7 @@ class FichaSocialController extends Controller
                 $obsIt = 'N/A';
 
             }
-            return back()->with('info','Se ha ingresado con éxito la visita');
+            return back()->with('info','Se ha ingresado con éxito la asistencia social');
 
         } elseif(isset($_POST["ayudas_btn"])) {
             //En caso de que se ingrese una ayuda
@@ -226,7 +226,7 @@ class FichaSocialController extends Controller
 
                     'observacion' => $obsIt,
                     'fecha_visita' => $now->format('Y-m-d H:i:s'),
-                    'ficha_atencion_social_id' => '1',
+                    'ficha_atencion_social_id' => $ficha_atencion_socials->id,
                     'tipo_motivo_social_id' => '1',
                     'tipo_submotivo_id' => NULL,
                     'tipo_ayuda_id' => $motivoAyudaSocial[$i]
@@ -235,7 +235,7 @@ class FichaSocialController extends Controller
 
             }
 
-            return back()->with('info','Se ha ingresado con éxito la visita');
+            return back()->with('info','Se ha ingresado con éxito la asistencia social');
 
         } elseif(isset($_POST["becas_btn"])){
             //En caso de que se ingrese beca como motivo
@@ -278,12 +278,12 @@ class FichaSocialController extends Controller
                 'observacion' => $obsIt,
                 'fecha_visita' => $now->format('Y-m-d H:i:s'),
                 'ficha_atencion_social_id' => $ficha_atencion_socials->id,
-                'tipo_motivo_social_id' => '1',
+                'tipo_motivo_social_id' => '4',
                 'tipo_submotivo_id' => $subMotivos[0],
                 'tipo_ayuda_id' => NULL
             ]);
             $motivoSocial->save();
-            return back()->with('info','Se ha ingresado con éxito la visita');
+            return back()->with('info','Se ha ingresado con éxito la asistencia social');
         } else{
 
             //Orientacion
@@ -317,7 +317,7 @@ class FichaSocialController extends Controller
                 ]);
                 $motivoSocial->save();
             }
-            return back()->with('info','Se ha ingresado con éxito la visita');
+            return back()->with('info','Se ha ingresado con éxito la asistencia social');
         }
 
         //return $request->all();
@@ -350,6 +350,6 @@ class FichaSocialController extends Controller
         }*/
 
     }
-    
+
 
 }
