@@ -54,7 +54,6 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
 <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
 <!-- / END - validaciones-->
 <!-- / START AJAX para busqueda -->
-<script src="{{ asset('/js/beneficiario/BuscadorBeneficiario.js') }}" type="text/javascript"></script>
 <!-- / END  -->
 @endsection
 
@@ -83,64 +82,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                 </div>
                             </div>
                         </div>
-                        <div class='row'>
-                            <div class='col-sm-12'>
-                                <div class='box'>
-                                    <div class='box-content box-padding'>
-                                        <div class="container">
-                                            <div class='col-md-12 form-group'>
-                                                <label class='control-label' for='inputBuscador'>Ingrese beneficiario</label>
-                                                <div class='controls'>
-                                                    <input class='form-control' id='inputBuscador' placeholder='Ingrese nombre, apellido o rut' type='text' maxlength="200">
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                <div class='box bordered-box green-border' style='margin-bottom:0;'>
-                                                    <div class='box-content box-no-padding'>
-                                                        <div class='responsive-table'>
-                                                            <table class='table table-bordered table-hover table-striped' style='margin-bottom:0;'>
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>
-                                                                            #
-                                                                        </th>
-                                                                        <th>
-                                                                            Nombre
-                                                                        </th>
-                                                                        <th>
-                                                                            Rut
-                                                                        </th>
-                                                                        <th>
-                                                                            Género
-                                                                        </th>
-                                                                        <th>
-                                                                            Registrado
-                                                                        </th>
-                                                                        <th>Acciones</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody id="listaBeneficiario">
-                                                                    <tr>
-                                                                        <td></td>
-                                                                        <td>
-                                                                            No hay datos para mostrar.
-                                                                        </td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                        <td></td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <lista-beneficiarios></lista-beneficiarios>
                     </div>
                 </div>
                 @include('partials.footer')

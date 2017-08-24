@@ -16,6 +16,8 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('lista-beneficiarios', require('./components/ListaBeneficiarios.vue'));
+
 
 const app = new Vue({
     el: '#app'

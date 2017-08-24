@@ -24,10 +24,13 @@
     </head>
     <body @yield('body-attr')>
         <!-- Este yield tiene relacion al contenido de la pagina -->
-        @yield('content')
+        <div id="app">
+            @yield('content')
+        </div>
 
         <!-- Con este yield se inyectan los scripts -->
         @yield('scripts')
+        <script src="{{ asset('/js/app.js') }}" type="text/javascript"></script>
         {{-- <script type="text/javascript" src="{{ asset('/js/general.js') }}"></script> --}}
         <!-- / START AJAX para busqueda -->
         <script src="{{ asset('/js/auth/BuscadorUsuario.js') }}" type="text/javascript"></script>
