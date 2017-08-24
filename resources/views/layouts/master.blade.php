@@ -9,8 +9,10 @@
 
         @yield('styles_before')
 
-        <link href="{{ asset('/assets/stylesheets/bootstrap/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
+        {{-- <link href="{{ asset('/assets/stylesheets/bootstrap/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" /> --}}
         <!-- / theme file [required] -->
+        <link href="{{ asset('/css/app.css') }}" rel="stylesheet" type="text/css" />
+
         <link href="{{ asset('/assets/stylesheets/light-theme.css') }}" rel="stylesheet" type="text/css" media="all" id="color-settings-body-color" />
         <!-- / coloring file [optional] (if you are going to use custom contrast color) -->
         <link href="{{ asset('/assets/stylesheets/theme-colors.css') }}" rel="stylesheet" type="text/css" media="all" />
@@ -28,9 +30,9 @@
             @yield('content')
         </div>
 
+        <script src="{{ asset('/js/app.js') }}" type="text/javascript"></script>
         <!-- Con este yield se inyectan los scripts -->
         @yield('scripts')
-        <script src="{{ asset('/js/app.js') }}" type="text/javascript"></script>
         {{-- <script type="text/javascript" src="{{ asset('/js/general.js') }}"></script> --}}
         <!-- / START AJAX para busqueda -->
         <script src="{{ asset('/js/auth/BuscadorUsuario.js') }}" type="text/javascript"></script>

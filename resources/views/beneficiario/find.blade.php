@@ -29,7 +29,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
 -->
 @section('scripts')
 <!-- / jquery [required] -->
-<script src="{{ asset('/assets/javascripts/jquery/jquery.min.js') }}" type="text/javascript"></script>
+{{-- <script src="{{ asset('/assets/javascripts/jquery/jquery.min.js') }}" type="text/javascript"></script> --}}
 <!-- / jquery mobile (for touch events) -->
 <script src="{{ asset('/assets/javascripts/jquery/jquery.mobile.custom.min.js') }}" type="text/javascript"></script>
 <!-- / jquery ui -->
@@ -37,7 +37,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
 <!-- / jQuery UI Touch Punch -->
 <script src="{{ asset('/assets/javascripts/jquery/jquery.ui.touch-punch.min.js') }}" type="text/javascript"></script>
 <!-- / bootstrap [required] -->
-<script src="{{ asset('/assets/javascripts/bootstrap/bootstrap.js') }}" type="text/javascript"></script>
+{{-- <script src="{{ asset('/assets/javascripts/bootstrap/bootstrap.js') }}" type="text/javascript"></script> --}}
 <!-- / modernizr -->
 <script src="{{ asset('/assets/javascripts/plugins/modernizr/modernizr.min.js') }}" type="text/javascript"></script>
 <!-- / retina -->
