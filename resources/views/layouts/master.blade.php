@@ -12,10 +12,12 @@
         {{-- <link href="{{ asset('/assets/stylesheets/bootstrap/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" /> --}}
         <!-- / theme file [required] -->
         <link href="{{ asset('/css/app.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" />
 
-        <link href="{{ asset('/assets/stylesheets/light-theme.css') }}" rel="stylesheet" type="text/css" media="all" id="color-settings-body-color" />
+
+        {{-- <link href="{{ asset('/assets/stylesheets/light-theme.css') }}" rel="stylesheet" type="text/css" media="all" id="color-settings-body-color" /> --}}
         <!-- / coloring file [optional] (if you are going to use custom contrast color) -->
-        <link href="{{ asset('/assets/stylesheets/theme-colors.css') }}" rel="stylesheet" type="text/css" media="all" />
+        {{-- <link href="{{ asset('/assets/stylesheets/theme-colors.css') }}" rel="stylesheet" type="text/css" media="all" /> --}}
 
 
         <!-- meta tributo title -->

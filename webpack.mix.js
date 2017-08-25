@@ -14,6 +14,7 @@ const { mix } = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js')
 
 mix.sass('resources/assets/sass/app.scss', 'public/css');
-// mix.styles([
-//     'resources/assets/vendor/assets/stylesheets/bootstrap/bootstrap.css'
-// ], 'public/css/app.css');
+mix.styles([
+    'resources/assets/vendor/assets/stylesheets/light-theme.css',
+    'resources/assets/vendor/assets/stylesheets/theme-colors.css',
+], 'public/css/custom.css');
