@@ -1,31 +1,25 @@
 $(document).ready(function() {
-    console.log('llego');
-    $('#editar_btn').click(function() {
-        console.log('editando');
-        window.location.href = "/funcionario/editar/" + $('#funcionarioId').val();
-    });
+
 })
 
-function getFuncionarioPorId(funcionarioId) {
+function findFuncionarioPerfilFuncionarioModalShow(funcionarioId) {
     var promise = $.ajax({
         type: 'GET',
         url: '/funcionario/' + funcionarioId,
         beforeSend: function() {
-            // this is where we append a loading image
-            //$('#progress').removeClass('hidden');
+
         },
         success: function(funcionario) {
-            $('#perfilFuncionarioModal').modal('show');
-
-            $('#funcionarioId').val(funcionario.id);
-            $('#funcionarioNombre').html(funcionario.nombre + ' ' + funcionario.apellido);
-            $('#funcionarioRut').html(funcionario.rut);
-            $('#funcionarioTelefono').html(funcionario.telefono);
-            $('#funcionarioDireccion').html(funcionario.direccion);
-            $('#funcionarioFechaNacimiento').html(convertDate(funcionario.fecha_nacimiento));
-            $('#funcionarioEmail').html(funcionario.email);
-            $('#funcionarioTipo').html(funcionario.tipo_funcionario.nombre);
-            $('#editarFuncionarioBtn').attr('href', '/funcionario/editar/' + funcionario.id);
+            $('#findFuncionarioPerfilFuncionarioModal').modal('show');
+            $('#findFuncionarioFuncionarioId').val(funcionario.id);
+            $('#findFuncionarioFuncionarioNombre').html(funcionario.nombre + ' ' + funcionario.apellido);
+            $('#findFuncionarioFuncionarioRut').html(funcionario.rut);
+            $('#findFuncionarioFuncionarioTelefono').html(funcionario.telefono);
+            $('#findFuncionarioFuncionarioDireccion').html(funcionario.direccion);
+            $('#findFuncionarioFuncionarioFechaNacimiento').html(convertDate(funcionario.fecha_nacimiento));
+            $('#findFuncionarioFuncionarioEmail').html(funcionario.email);
+            $('#findFuncionarioFuncionarioTipo').html(funcionario.tipo_funcionario.nombre);
+            $('#findFuncionarioEditarFuncionarioBtn').attr('href', '/funcionario/editar/' + funcionario.id);
 
         },
         error: function(err) {

@@ -529,5 +529,10 @@ Route::group(['prefix' => 'funcionario', 'middleware' => 'auth'], function () {
         'as' => 'funcionario.funcionarioInfoJson'
     ])->middleware('roles:admin|coordinador_oficina');
 
+    Route::get('/', [
+        'uses' => 'FuncionarioController@funcionariosAll',
+        'as' => 'funcionarios'
+    ])->middleware('roles:admin|coordinador_oficina');
+
 
 });

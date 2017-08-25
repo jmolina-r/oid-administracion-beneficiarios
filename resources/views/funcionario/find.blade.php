@@ -12,7 +12,6 @@ Lista de Funcionarios - OID
 @endsection
 
 @section('styles')
-<link href='{{ asset('/assets/images/meta_icons/apple-touch-icon-precomposed.png') }}' rel='apple-touch-icon-precomposed'>
 <link href="{{ asset('assets/stylesheets/plugins/datatables/datatables.css') }}" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
@@ -25,7 +24,7 @@ class='contrast-red'
 No importa que vayan antes del body, en el master layout se estan insertando alfinal.
 -->
 @section('scripts')
-<script src="{{ asset('assets/javascripts/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>
+{{-- <script src="{{ asset('assets/javascripts/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script> --}}
 
 <script src="{{ asset('js/funcionario/BuscarFuncionario.js') }}" type="text/javascript"></script>
 
@@ -59,7 +58,6 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                         </div>
                         <div class='row'>
                             <div class='col-sm-12'>
-
                                 <div class='box bordered-box orange-border' style='margin-bottom:0;'>
                                     <div class='box-content box-no-padding'>
                                         <div class='responsive-table'>
@@ -93,7 +91,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                             <td class="capitalize">{{ $funcionario->tipo_funcionario->nombre }}</td>
                                                             <td>
                                                                 <div class='text-right'>
-                                                                    <a class='btn btn-success btn-xs' onclick="getFuncionarioPorId('{{ $funcionario->id }}')">
+                                                                    <a class='btn btn-success btn-xs' onclick="findFuncionarioShowPerfilFuncionarioModal('{{ $funcionario->id }}')">
                                                                         <i class='fa fa-user'></i>
                                                                     </a>
                                                                 </div>
@@ -105,10 +103,10 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                             </div>
                                         </div>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
             @include('partials.footer')
@@ -118,7 +116,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
 
 
 <div class="modal-custom">
-    <div class='modal fade' id='perfilFuncionarioModal' tabindex='-1'>
+    <div class='modal fade' id='findFuncionarioPerfilFuncionarioModal' tabindex='-1'>
         <div class='modal-dialog'>
             <div class='modal-content'>
                 <div class='modal-header'>
@@ -130,36 +128,35 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                     <div class="row">
                         <div class="col-lg-6">
                             <h4>Nombre del Funcionario</h4>
-                            <p class="capitalize" id="funcionarioNombre">-</p>
+                            <p class="capitalize" id="findFuncionarioFuncionarioNombre">-</p>
 
                             <h4>Rut</h4>
-                            <p id="funcionarioRut">-</p>
+                            <p id="findFuncionarioFuncionarioRut">-</p>
 
                             <h4>Telefono</h4>
-                            <p id="funcionarioTelefono">-</p>
+                            <p id="findFuncionarioFuncionarioTelefono">-</p>
 
                             <h4>Dirección Particular</h4>
-                            <p class="capitalize" id="funcionarioDireccion">-</p>
+                            <p class="capitalize" id="findFuncionarioFuncionarioDireccion">-</p>
 
                         </div>
 
                         <div class="col-lg-6">
 
                             <h4>Fecha Nacimiento</h4>
-                            <p id="funcionarioFechaNacimiento">-</p>
+                            <p id="findFuncionarioFuncionarioFechaNacimiento">-</p>
 
                             <h4>E-mail</h4>
-                            <p id="funcionarioEmail">-</p>
+                            <p id="findFuncionarioFuncionarioEmail">-</p>
 
                             <h4>Labor en OID</h4>
-                            <p class="capitalize" id="funcionarioTipo">-</p>
+                            <p class="capitalize" id="findFuncionarioFuncionarioTipo">-</p>
                         </div>
                     </div>
                 </div>
                 <div class='modal-footer'>
                     <button class='btn btn-default' data-dismiss='modal' type='button'>Volver</button>
-                    <a href="/home" id="editarFuncionarioBtn" class='btn btn-warning' >Editar</a>
-                    <input id="userId" type="hidden" value="">
+                    <a href="/home" id="findFuncionarioEditarFuncionarioBtn" class='btn btn-warning' >Editar</a>
                 </div>
             </div>
         </div>

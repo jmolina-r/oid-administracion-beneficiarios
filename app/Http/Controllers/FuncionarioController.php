@@ -122,4 +122,9 @@ class FuncionarioController extends Controller
         ];
         return $rules;
     }
+
+    public function funcionariosAll()
+    {
+        return response()->json(['data' => Funcionario::with('tipo_funcionario')->get()]);
+    }
 }

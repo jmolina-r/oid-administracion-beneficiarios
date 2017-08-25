@@ -9,6 +9,7 @@ require('./bootstrap');
 // require("css!../vendor/assets/stylesheets/bootstrap/bootstrap.css");
 
 window.Vue = require('vue');
+require('vue-resource');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -18,6 +19,8 @@ window.Vue = require('vue');
 
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('lista-beneficiarios', require('./components/ListaBeneficiarios.vue'));
+Vue.component('lista-funcionarios', require('./components/ListaFuncionarios.vue'));
+
 
 
 const app = new Vue({

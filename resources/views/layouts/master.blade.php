@@ -12,7 +12,7 @@
         {{-- <link href="{{ asset('/assets/stylesheets/bootstrap/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" /> --}}
         <!-- / theme file [required] -->
         <link href="{{ asset('/css/app.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('/css/all.css') }}" rel="stylesheet" type="text/css" />
 
 
         {{-- <link href="{{ asset('/assets/stylesheets/light-theme.css') }}" rel="stylesheet" type="text/css" media="all" id="color-settings-body-color" /> --}}
@@ -37,9 +37,6 @@
 
         <!-- Con este yield se inyectan los scripts -->
         @yield('scripts')
-        {{-- <script type="text/javascript" src="{{ asset('/js/general.js') }}"></script> --}}
-        <!-- / START AJAX para busqueda -->
         <script src="{{ asset('/js/auth/BuscadorUsuario.js') }}" type="text/javascript"></script>
-        <!-- / END  -->
     </body>
 </html>
