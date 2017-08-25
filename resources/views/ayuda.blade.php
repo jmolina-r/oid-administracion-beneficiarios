@@ -16,7 +16,7 @@ Ayuda en Línea - OID
 <link href="{{ asset('/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css" media="all" />
 <link href='{{ asset('/assets/images/meta_icons/apple-touch-icon-precomposed.png') }}' rel='apple-touch-icon-precomposed'>
 <link href="{{ asset('/assets/stylesheets/plugins/select2/select2.css') }}" rel="stylesheet" type="text/css" media="all" />
-<link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+{{-- <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" /> --}}
 @endsection
 
 <!-- Atributos del body -->
@@ -29,7 +29,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
 -->
 @section('scripts')
 <!-- / jquery [required] -->
-<script src="{{ asset('/assets/javascripts/jquery/jquery.min.js') }}" type="text/javascript"></script>
+{{-- <script src="{{ asset('/assets/javascripts/jquery/jquery.min.js') }}" type="text/javascript"></script>
 <!-- / jquery mobile (for touch events) -->
 <script src="{{ asset('/assets/javascripts/jquery/jquery.mobile.custom.min.js') }}" type="text/javascript"></script>
 <!-- / jquery ui -->
@@ -43,7 +43,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
 <!-- / retina -->
 <script src="{{ asset('/assets/javascripts/plugins/retina/retina.js') }}" type="text/javascript"></script>
 <!-- / theme file [required] -->
-<script src="{{ asset('/assets/javascripts/theme.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/assets/javascripts/theme.js') }}" type="text/javascript"></script> --}}
 <!-- / START - page related files and scripts [optional] -->
 <link href="assets/stylesheets/jquery/jquery_ui.css" rel="stylesheet" type="text/css" media="all" />
 <!-- / END - page related files and scripts [optional] -->
@@ -89,7 +89,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <span>Para comenzar, puedes ver los videos de ayuda para cada una de las secciones.</span>   
+                                <span>Para comenzar, puedes ver los videos de ayuda para cada una de las secciones.</span>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                 <div class='col-lg-12 box'>
@@ -207,7 +207,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                             </div>
                                         </div>
                                     </div>
-                                </div>                           
+                                </div>
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                                 <div class='col-lg-12 box'>
@@ -339,7 +339,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                             </div>
                                         </div>
                                     </div>
-                                </div>                                
+                                </div>
                             </div>
                         </div>
                     </div>

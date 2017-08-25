@@ -14,7 +14,6 @@ Lista de Funcionarios - OID
 @section('styles')
 <link href='{{ asset('/assets/images/meta_icons/apple-touch-icon-precomposed.png') }}' rel='apple-touch-icon-precomposed'>
 <link href="{{ asset('assets/stylesheets/plugins/datatables/datatables.css') }}" rel="stylesheet" type="text/css" media="all" />
-<link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
 <!-- Atributos del body -->
@@ -26,28 +25,7 @@ class='contrast-red'
 No importa que vayan antes del body, en el master layout se estan insertando alfinal.
 -->
 @section('scripts')
-<!-- / jquery [required] -->
-<script src="{{ asset('/assets/javascripts/jquery/jquery.min.js') }}" type="text/javascript"></script>
-<!-- / jquery mobile (for touch events) -->
-<script src="{{ asset('/assets/javascripts/jquery/jquery.mobile.custom.min.js') }}" type="text/javascript"></script>
-<!-- / jquery ui -->
-<script src="{{ asset('/assets/javascripts/jquery/jquery-ui.min.js') }}" type="text/javascript"></script>
-<!-- / jQuery UI Touch Punch -->
-<script src="{{ asset('/assets/javascripts/jquery/jquery.ui.touch-punch.min.js') }}" type="text/javascript"></script>
-<!-- / bootstrap [required] -->
-<script src="{{ asset('/assets/javascripts/bootstrap/bootstrap.js') }}" type="text/javascript"></script>
-<!-- / modernizr -->
-<script src="{{ asset('/assets/javascripts/plugins/modernizr/modernizr.min.js') }}" type="text/javascript"></script>
-<!-- / retina -->
-<script src="{{ asset('/assets/javascripts/plugins/retina/retina.js') }}" type="text/javascript"></script>
-<!-- / theme file [required] -->
-<script src="{{ asset('/assets/javascripts/theme.js') }}" type="text/javascript"></script>
-<!-- / START - page related files and scripts [optional] -->
-
-<!-- / END - page related files and scripts [optional] -->
-<!-- / START - Validaciones-->
 <script src="{{ asset('assets/javascripts/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>
-<!-- / END - validaciones-->
 
 <script src="{{ asset('js/funcionario/BuscarFuncionario.js') }}" type="text/javascript"></script>
 

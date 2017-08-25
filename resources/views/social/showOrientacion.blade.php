@@ -13,7 +13,7 @@
     <link href="{{ asset("/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css") }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset("/assets/images/meta_icons/apple-touch-icon-precomposed.png") }}" rel="apple-touch-icon-precomposed">
     <link href="{{ asset('/assets/stylesheets/plugins/select2/select2.css') }}" rel="stylesheet" type="text/css" media="all" />
-    <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+    {{-- <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" /> --}}
 @endsection
 
 @section("body-attr")
@@ -21,7 +21,7 @@
 @endsection
 
 @section("scripts")
-    <script src="{{ asset('/assets/javascripts/jquery/jquery.min.js') }}" type="text/javascript"></script>
+    {{-- <script src="{{ asset('/assets/javascripts/jquery/jquery.min.js') }}" type="text/javascript"></script>
     <!-- / jquery mobile (for touch events) -->
     <script src="{{ asset('/assets/javascripts/jquery/jquery.mobile.custom.min.js') }}" type="text/javascript"></script>
     <!-- / jquery ui -->
@@ -35,7 +35,7 @@
     <!-- / retina -->
     <script src="{{ asset('/assets/javascripts/plugins/retina/retina.js') }}" type="text/javascript"></script>
     <!-- / theme file [required] -->
-    <script src="{{ asset('/assets/javascripts/theme.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/assets/javascripts/theme.js') }}" type="text/javascript"></script> --}}
 
     <script src="https://use.fontawesome.com/3574066f0b.js"></script>
 @endsection
@@ -79,12 +79,12 @@
                                             <p class="capitalize">el usuario no necesita una visita domiciliaria</p>
                                         @else
                                              @foreach($orientacion as $orienta)
-                                                
+
                                                 <p class="capitalize">{{$orienta->nombre}}</p>
-                                            
+
                                              @endforeach
                                         @endif
-                                       
+
                                     </div>
                                     <div class="col-md-4">
                                         <h3>Observación</h3>
@@ -92,16 +92,16 @@
                                             <p class="capitalize">no existe observación</p>
                                         @else
                                             <p class="capitalize">{{$observacionOrientacion->observacion}}</p>
-                                             
+
                                         @endif
                                     </div>
                                 </div>
-                                
+
                             </div>
-                            
-                            
-                            
-                            
+
+
+
+
                         </div>
                     </div>
                 </div>

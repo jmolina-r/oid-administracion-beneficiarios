@@ -8,7 +8,7 @@
 
 <!-- inyeccion de estilos -->
 @section('styles')
-  <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+  {{-- <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" /> --}}
 @endsection
 
 <!-- Atributos del body -->
@@ -18,7 +18,7 @@
 
 @section('scripts')
     <!-- / jquery [required] -->
-    <script src="assets/javascripts/jquery/jquery.min.js" type="text/javascript"></script>
+    {{-- <script src="assets/javascripts/jquery/jquery.min.js" type="text/javascript"></script>
     <!-- / jquery mobile (for touch events) -->
     <script src="assets/javascripts/jquery/jquery.mobile.custom.min.js" type="text/javascript"></script>
     <!-- / jquery ui -->
@@ -32,7 +32,7 @@
     <!-- / retina -->
     <script src="assets/javascripts/plugins/retina/retina.js" type="text/javascript"></script>
     <!-- / theme file [required] -->
-    <script src="assets/javascripts/theme.js" type="text/javascript"></script>
+    <script src="assets/javascripts/theme.js" type="text/javascript"></script> --}}
 
     <!-- / START - page related files and scripts [optional] -->
     <script src="assets/javascripts/plugins/validate/jquery.validate.min.js" type="text/javascript"></script>

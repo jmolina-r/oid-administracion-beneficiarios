@@ -16,7 +16,7 @@
     <link href="{{ asset('/assets/stylesheets/plugins/bootstrap_switch/bootstrap-switch.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset('/css/social/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset('assets/stylesheets/plugins/fileinput/bootstrap-fileinput.css') }}" rel="stylesheet" type="text/css" media="all" />
-    <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+    {{-- <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" /> --}}
 
 @endsection
 
@@ -30,7 +30,7 @@
 -->
 @section('scripts')
     <!-- / jquery [required] -->
-    <script src="{{ asset('/assets/javascripts/jquery/jquery.min.js') }}" type="text/javascript"></script>
+    {{-- <script src="{{ asset('/assets/javascripts/jquery/jquery.min.js') }}" type="text/javascript"></script>
     <!-- / jquery mobile (for touch events) -->
     <script src="{{ asset('/assets/javascripts/jquery/jquery.mobile.custom.min.js') }}" type="text/javascript"></script>
     <!-- / jquery ui -->
@@ -44,7 +44,7 @@
     <!-- / retina -->
     <script src="{{ asset('/assets/javascripts/plugins/retina/retina.js') }}" type="text/javascript"></script>
     <!-- / theme file [required] -->
-    <script src="{{ asset('/assets/javascripts/theme.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/assets/javascripts/theme.js') }}" type="text/javascript"></script> --}}
 
     <!-- / START - page related files and scripts [optional] -->
     <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
