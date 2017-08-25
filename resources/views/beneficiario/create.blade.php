@@ -139,11 +139,11 @@ class='contrast-red'
                                             <form role="form" id="formulario-registro" action="{{route('beneficiario.store')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
                                                 <div class='step-content'>
                                                     <!-- STEP 1 -->
-                                                    @include('partials.save.general')
+                                                    @include('beneficiario.partials.save.general')
                                                     <!-- STEP 2 -->
-                                                    @include('partials.save.social')
+                                                    @include('beneficiario.partials.save.social')
                                                     <!-- STEP 3 -->
-                                                    @include('partials.save.discapacidad')
+                                                    @include('beneficiario.partials.save.discapacidad')
                                                 </div>
                                                 {{ csrf_field() }}
                                             </form>

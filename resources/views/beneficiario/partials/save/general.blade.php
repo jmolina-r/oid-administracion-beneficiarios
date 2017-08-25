@@ -1,51 +1,51 @@
 <div class='step-pane active' data-step='1'>
     <div class="col-md-12">
-        @include('partials.save.general.nombre')
+        @include('beneficiario.partials.save.general.nombre')
     </div>
 
     <div class="col-md-12">
-        @include('partials.save.general.apellido')
+        @include('beneficiario.partials.save.general.apellido')
     </div>
 
     <div class="col-md-12">
-        @include('partials.save.general.rut')
+        @include('beneficiario.partials.save.general.rut')
     </div>
 
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        @include('partials.save.general.nacionalidad')
+        @include('beneficiario.partials.save.general.nacionalidad')
     </div>
 
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        @include('partials.save.general.fecha-nacimiento')
+        @include('beneficiario.partials.save.general.fecha-nacimiento')
     </div>
 
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        @include('partials.save.general.sexo')
+        @include('beneficiario.partials.save.general.sexo')
     </div>
 
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        @include('partials.save.general.situacion-civil')
+        @include('beneficiario.partials.save.general.situacion-civil')
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        @include('partials.save.general.domicilio')
+        @include('beneficiario.partials.save.general.domicilio')
     </div>
 
     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-        @include('partials.save.general.contacto')
+        @include('beneficiario.partials.save.general.contacto')
     </div>
 
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        @include('partials.save.general.credencial-discapacidad')
+        @include('beneficiario.partials.save.general.credencial-discapacidad')
     </div>
 
     <!-- Falta aqui manejar la subida de archivo para agregar la credencial -->
 
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        @include('partials.save.general.registro-social-hogares')
+        @include('beneficiario.partials.save.general.registro-social-hogares')
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        @include('partials.save.general.tutor')
+        @include('beneficiario.partials.save.general.tutor')
     </div>
 </div>
