@@ -20,6 +20,7 @@ mix.scripts([
     'resources/assets/vendor/assets/javascripts/plugins/modernizr/modernizr.min.js',
     'resources/assets/vendor/assets/javascripts/plugins/retina/retina.js',
     'resources/assets/vendor/assets/javascripts/theme.js',
+
 ], 'public/js/all.js')
 
 mix.sass('resources/assets/sass/app.scss', 'public/css');
@@ -27,4 +28,5 @@ mix.styles([
     'resources/assets/vendor/assets/stylesheets/light-theme.css',
     'resources/assets/vendor/assets/stylesheets/theme-colors.css',
     'resources/assets/vendor/assets/javascripts/jquery/jquery.mobile.custom.min.js',
+    'resources/assets/vendor/assets/images/meta_icons/apple-touch-icon-precomposed.png',
 ], 'public/css/custom.css');
