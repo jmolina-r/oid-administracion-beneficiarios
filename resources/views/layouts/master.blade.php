@@ -33,6 +33,8 @@
         </div>
 
         <script src="{{ asset('/js/app.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('/js/all.js') }}" type="text/javascript"></script>
+
         <!-- Con este yield se inyectan los scripts -->
         @yield('scripts')
         {{-- <script type="text/javascript" src="{{ asset('/js/general.js') }}"></script> --}}

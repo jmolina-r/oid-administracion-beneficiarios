@@ -16,7 +16,7 @@ Registro de Beneficiario - OID
 <link href="{{ asset('/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css" media="all" />
 <link href='{{ asset('/assets/images/meta_icons/apple-touch-icon-precomposed.png') }}' rel='apple-touch-icon-precomposed'>
 <link href="{{ asset('/assets/stylesheets/plugins/select2/select2.css') }}" rel="stylesheet" type="text/css" media="all" />
-<link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+{{-- <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" /> --}}
 @endsection
 
 <!-- Atributos del body -->
@@ -29,7 +29,7 @@ class='contrast-red'
    -->
 @section('scripts')
 <!-- / jquery [required] -->
-<script src="{{ asset('/assets/javascripts/jquery/jquery.min.js') }}" type="text/javascript"></script>
+{{-- <script src="{{ asset('/assets/javascripts/jquery/jquery.min.js') }}" type="text/javascript"></script>
 <!-- / jquery mobile (for touch events) -->
 <script src="{{ asset('/assets/javascripts/jquery/jquery.mobile.custom.min.js') }}" type="text/javascript"></script>
 <!-- / jquery ui -->
@@ -43,7 +43,7 @@ class='contrast-red'
 <!-- / retina -->
 <script src="{{ asset('/assets/javascripts/plugins/retina/retina.js') }}" type="text/javascript"></script>
 <!-- / theme file [required] -->
-<script src="{{ asset('/assets/javascripts/theme.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/assets/javascripts/theme.js') }}" type="text/javascript"></script> --}}
 <!-- / START - page related files and scripts [optional] -->
 <script src="{{ asset('/assets/javascripts/plugins/fuelux/wizard.js') }}" type="text/javascript"></script>
 <!-- / END - page related files and scripts [optional] -->

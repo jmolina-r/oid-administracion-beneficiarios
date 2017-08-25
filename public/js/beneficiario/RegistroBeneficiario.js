@@ -210,7 +210,7 @@ $(document).ready(function() {
             //Confirmacion Participacion en Organizaciones Sociales
             $('#organizaciones_confirmation').html($("#organizaciones_sociales option:selected").text());
 
-            $('#confirmation').modal('show');
+            $('#confirmationBeneficarioRegistro').modal('show');
         }
     });
 
@@ -335,4 +335,8 @@ $(document).ready(function() {
             callback();
         }
     }
+
+    $('#confirmationBeneficarioRegistroBtn').click(function(){
+        $('#formulario-registro').submit();
+    })
 });

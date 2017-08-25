@@ -10,7 +10,7 @@
 <!-- inyeccion de estilos -->
 @section('styles')
     <link href='{{ asset('/assets/images/meta_icons/apple-touch-icon-precomposed.png') }}' rel='apple-touch-icon-precomposed'>
-    <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+    {{-- <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" /> --}}
 @endsection
 
 <!-- Atributos del body -->
@@ -22,7 +22,7 @@
 No importa que vayan antes del body, en el master layout se estan insertando alfinal.
 -->
 @section('scripts')
-    <script src="{{ asset('/assets/javascripts/jquery/jquery.min.js') }}" type="text/javascript"></script>
+    {{-- <script src="{{ asset('/assets/javascripts/jquery/jquery.min.js') }}" type="text/javascript"></script>
     <!-- / jquery mobile (for touch events) -->
     <script src="{{ asset('/assets/javascripts/jquery/jquery.mobile.custom.min.js') }}" type="text/javascript"></script>
     <!-- / jquery ui -->
@@ -36,7 +36,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
     <!-- / retina -->
     <script src="{{ asset('/assets/javascripts/plugins/retina/retina.js') }}" type="text/javascript"></script>
     <!-- / theme file [required] -->
-    <script src="{{ asset('/assets/javascripts/theme.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/assets/javascripts/theme.js') }}" type="text/javascript"></script> --}}
 
     <script src="https://use.fontawesome.com/3574066f0b.js"></script>
 @endsection

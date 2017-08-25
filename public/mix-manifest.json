@@ -3,5 +3,7 @@
   "/css/app.css": "/css/app.css",
   "/app.css": "/app.css",
   "/css/propios.css": "/css/propios.css",
-  "/css/custom.css": "/css/custom.css"
+  "/css/custom.css": "/css/custom.css",
+  "/js/jquery.mobile.custom.min.js": "/js/jquery.mobile.custom.min.js",
+  "/js/all.js": "/js/all.js"
 }

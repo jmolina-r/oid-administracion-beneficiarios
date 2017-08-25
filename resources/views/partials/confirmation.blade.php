@@ -1,5 +1,5 @@
 <div class="modal-custom">
-    <div class='modal fade' id='confirmation' tabindex='-1'>
+    <div class='modal fade' id='confirmationBeneficarioRegistro' tabindex='-1'>
         <div class='modal-dialog'>
             <div class='modal-content'>
                 <div class='modal-header'>
@@ -97,14 +97,14 @@
                 </div>
                 <div class='modal-footer'>
                     <button class='btn btn-default' data-dismiss='modal' type='button'>Volver</button>
-                    <button class='btn btn-success' type='button' onclick="enviarFormulario()">Registrar</button>
+                    <button class='btn btn-success' id="confirmationBeneficarioRegistroBtn" type='button'>Registrar</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     /**
      * Envia el formulario cuando ya fueron revisados todos los datos
      */
@@ -112,4 +112,4 @@
 
         $('#formulario-registro').submit();
     }
-</script>
+</script> --}}
