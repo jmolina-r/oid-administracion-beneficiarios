@@ -1,44 +1,14 @@
-<!-- Extiende el master layout -->
+{{-- Extiende el master layout --}}
 @extends('layouts.master')
 
-<!-- meta atributo title -->
+{{-- Meta atributo title --}}
 @section('title')
 Inicio - OID
 @endsection
 
-@section('styles')
-<link href="{{ asset('/assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css') }}" rel="stylesheet" type="text/css" media="all" />
-<link href="{{ asset('/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css" media="all" />
-<link href='{{ asset('/assets/images/meta_icons/apple-touch-icon-precomposed.png') }}' rel='apple-touch-icon-precomposed'>
-@endsection
-
-<!-- Atributos del body -->
+{{-- Atributos del body --}}
 @section('body-attr')
 class='contrast-red'
-@endsection
-
-<!-- Inyeccion de scripts
-No importa que vayan antes del body, en el master layout se estan insertando alfinal.
--->
-@section('scripts')
-    <!-- / jquery [required] -->
-    {{-- <script src="{{ asset('/assets/javascripts/jquery/jquery.min.js') }}" type="text/javascript"></script> --}}
-    <!-- / jquery mobile (for touch events) -->
-    {{-- <script src="{{ asset('/assets/javascripts/jquery/jquery.mobile.custom.min.js') }}" type="text/javascript"></script> --}}
-    <!-- / jquery ui -->
-    {{-- <script src="{{ asset('/assets/javascripts/jquery/jquery-ui.min.js') }}" type="text/javascript"></script> --}}
-    <!-- / jQuery UI Touch Punch -->
-    {{-- <script src="{{ asset('/assets/javascripts/jquery/jquery.ui.touch-punch.min.js') }}" type="text/javascript"></script> --}}
-    <!-- / bootstrap [required] -->
-    {{-- <script src="{{ asset('/assets/javascripts/bootstrap/bootstrap.js') }}" type="text/javascript"></script> --}}
-    <!-- / modernizr -->
-    {{-- <script src="{{ asset('/assets/javascripts/plugins/modernizr/modernizr.min.js') }}" type="text/javascript"></script> --}}
-    <!-- / retina -->
-    {{-- <script src="{{ asset('/assets/javascripts/plugins/retina/retina.js') }}" type="text/javascript"></script> --}}
-    <!-- / theme file [required] -->
-    {{-- <script src="{{ asset('/assets/javascripts/theme.js') }}" type="text/javascript"></script> --}}
-    <!-- / START - page related files and scripts [optional] -->
-
 @endsection
 
 @section('content')
