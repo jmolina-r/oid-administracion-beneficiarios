@@ -9,7 +9,6 @@
 
 <!-- inyeccion de estilos -->
 @section('styles')
-    <link href='{{ asset('/assets/images/meta_icons/apple-touch-icon-precomposed.png') }}' rel='apple-touch-icon-precomposed'>
     {{-- <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" /> --}}
 @endsection
 

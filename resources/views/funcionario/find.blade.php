@@ -12,7 +12,7 @@ Lista de Funcionarios - OID
 @endsection
 
 @section('styles')
-<link href="{{ asset('assets/stylesheets/plugins/datatables/datatables.css') }}" rel="stylesheet" type="text/css" media="all" />
+{{-- <link href="{{ asset('assets/stylesheets/plugins/datatables/datatables.css') }}" rel="stylesheet" type="text/css" media="all" /> --}}
 @endsection
 
 <!-- Atributos del body -->
@@ -26,7 +26,9 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
 @section('scripts')
 {{-- <script src="{{ asset('assets/javascripts/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script> --}}
 
-<script src="{{ asset('js/funcionario/BuscarFuncionario.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/buscarFuncionario.js') }}" type="text/javascript"></script>
+{{-- <script src="{{ asset('js/funcionario/BuscarFuncionario.js') }}" type="text/javascript"></script> --}}
+
 
 @endsection
 
@@ -91,7 +93,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                             <td class="capitalize">{{ $funcionario->tipo_funcionario->nombre }}</td>
                                                             <td>
                                                                 <div class='text-right'>
-                                                                    <a class='btn btn-success btn-xs' onclick="findFuncionarioShowPerfilFuncionarioModal('{{ $funcionario->id }}')">
+                                                                    <a funcionario-id="{{$funcionario->id}}" class='btn btn-success btn-xs clickable-modal'>
                                                                         <i class='fa fa-user'></i>
                                                                     </a>
                                                                 </div>

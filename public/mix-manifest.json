@@ -6,5 +6,7 @@
   "/css/custom.css": "/css/custom.css",
   "/js/jquery.mobile.custom.min.js": "/js/jquery.mobile.custom.min.js",
   "/js/all.js": "/js/all.js",
-  "/css/all.css": "/css/all.css"
+  "/css/all.css": "/css/all.css",
+  "/js/buscarFuncionario.js": "/js/buscarFuncionario.js",
+  "/mix.js": "/mix.js"
 }
