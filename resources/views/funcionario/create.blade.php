@@ -12,10 +12,10 @@
 @endsection
 
 @section('styles')
-<link href="{{ asset('/assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css') }}" rel="stylesheet" type="text/css" media="all" />
+{{-- <link href="{{ asset('/assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css') }}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{ asset('/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css" media="all" />
 <link href='{{ asset('/assets/images/meta_icons/apple-touch-icon-precomposed.png') }}' rel='apple-touch-icon-precomposed'>
-<link href="{{ asset('/assets/stylesheets/plugins/select2/select2.css') }}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{ asset('/assets/stylesheets/plugins/select2/select2.css') }}" rel="stylesheet" type="text/css" media="all" /> --}}
 @endsection
 
 <!-- Atributos del body -->
@@ -24,7 +24,7 @@
 @endsection
 
 @section('scripts')
-    <!-- / START - page related files and scripts [optional] -->
+    {{-- <!-- / START - page related files and scripts [optional] -->
     <script src="{{ asset('/assets/javascripts/plugins/fuelux/wizard.js') }}" type="text/javascript"></script>
     <!-- / END - page related files and scripts [optional] -->
     <!-- / Beneficiario select tag -->
@@ -36,10 +36,12 @@
     <!-- / START - datepicker-->
     <script src="{{ asset('/assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js') }}" type="text/javascript"></script>
     <!-- / END - datepicker-->
+    <script src="{{ asset('/assets/javascripts/plugins/charCount/charCount.js') }}" type="text/javascript"></script> --}}
     <!-- / START - Validaciones-->
+    <script src="{{ asset('js/app/funcionario/save.js') }}" type="text/javascript"></script>
+
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/funcionario/RegistrarFuncionario.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/assets/javascripts/plugins/charCount/charCount.js') }}" type="text/javascript"></script>
+    {{-- <script src="{{ asset('/js/funcionario/RegistrarFuncionario.js') }}" type="text/javascript"></script> --}}
 @endsection
 
 <!-- Contenido del body -->

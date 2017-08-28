@@ -6,15 +6,6 @@
 Lista de Funcionarios - OID
 @endsection
 
-<!-- inyeccion de estilos -->
-@section('styles_before')
-
-@endsection
-
-@section('styles')
-{{-- <link href="{{ asset('assets/stylesheets/plugins/datatables/datatables.css') }}" rel="stylesheet" type="text/css" media="all" /> --}}
-@endsection
-
 <!-- Atributos del body -->
 @section('body-attr')
 class='contrast-red'
@@ -24,11 +15,8 @@ class='contrast-red'
 No importa que vayan antes del body, en el master layout se estan insertando alfinal.
 -->
 @section('scripts')
-{{-- <script src="{{ asset('assets/javascripts/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script> --}}
 
-<script src="{{ asset('js/buscarFuncionario.js') }}" type="text/javascript"></script>
-{{-- <script src="{{ asset('js/funcionario/BuscarFuncionario.js') }}" type="text/javascript"></script> --}}
-
+<script src="{{ asset('js/app/funcionario/find.js') }}" type="text/javascript"></script>
 
 @endsection
 

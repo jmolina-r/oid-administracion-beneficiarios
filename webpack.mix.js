@@ -27,7 +27,11 @@ const { mix } = require('laravel-mix');
 });
 
 mix.js('resources/assets/js/app.js', 'public/js')
-mix.js('resources/assets/js/generals/buscarFuncionario.js', 'public/js')
+
+mix.js('resources/assets/js/app/funcionario/find.js', 'public/js/app/funcionario')
+   .js('resources/assets/js/app/funcionario/save.js', 'public/js/app/funcionario')
+
+
 mix.scripts([
     'resources/assets/vendor/assets/javascripts/jquery/jquery.mobile.custom.min.js',
     'resources/assets/vendor/assets/javascripts/jquery/jquery-ui.min.js',
@@ -40,6 +44,5 @@ mix.sass('resources/assets/sass/app.scss', 'public/css');
 mix.styles([
     'resources/assets/vendor/assets/stylesheets/light-theme.css',
     'resources/assets/vendor/assets/stylesheets/theme-colors.css',
-    'resources/assets/vendor/assets/javascripts/jquery/jquery.mobile.custom.min.js',
     'resources/assets/vendor/assets/images/meta_icons/apple-touch-icon-precomposed.png',
 ], 'public/css/all.css');

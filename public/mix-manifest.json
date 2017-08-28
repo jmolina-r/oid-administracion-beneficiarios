@@ -8,5 +8,8 @@
   "/js/all.js": "/js/all.js",
   "/css/all.css": "/css/all.css",
   "/js/buscarFuncionario.js": "/js/buscarFuncionario.js",
-  "/mix.js": "/mix.js"
+  "/mix.js": "/mix.js",
+  "/js/funcionario/find.js": "/js/funcionario/find.js",
+  "/js/app/funcionario/find.js": "/js/app/funcionario/find.js",
+  "/js/app/funcionario/save.js": "/js/app/funcionario/save.js"
 }

@@ -1,7 +1,7 @@
-import 'script-loader!../../vendor/assets/javascripts/plugins/datatables/datatables.min.js'
-import 'style-loader!../../vendor/assets/stylesheets/plugins/datatables/datatables.css'
+import 'script-loader!../../../vendor/assets/javascripts/plugins/datatables/datatables.min.js'
+import 'style-loader!../../../vendor/assets/stylesheets/plugins/datatables/datatables.css'
 
-var utils = require('./utils')
+var utils = require('../generals/utils')
 
 $(document).ready(function() {
     $('table').on('click', '.clickable-modal', e => ShowPerfilFuncionarioModal($(e.currentTarget).attr('funcionario-id')))
