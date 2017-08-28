@@ -12,15 +12,19 @@ const { mix } = require('laravel-mix');
  */
 
  mix.webpackConfig({
-         module: {
-             rules: [
-                 {
-                     test: /\.css$/,
-                     loaders: ['style-loader', 'css-loader']
-                 }
-             ]
-         }
-    });
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                loaders: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.exec\.js$/,
+                use: [ 'script-loader' ]
+            }
+        ]
+    }
+});
 
 mix.js('resources/assets/js/app.js', 'public/js')
 mix.js('resources/assets/js/generals/buscarFuncionario.js', 'public/js')
@@ -31,7 +35,6 @@ mix.scripts([
     'resources/assets/vendor/assets/javascripts/plugins/modernizr/modernizr.min.js',
     'resources/assets/vendor/assets/javascripts/plugins/retina/retina.js',
     'resources/assets/vendor/assets/javascripts/theme.js',
-    'resources/assets/vendor/assets/javascripts/plugins/datatables/datatables.min.js',
 ], 'public/js/all.js')
 mix.sass('resources/assets/sass/app.scss', 'public/css');
 mix.styles([

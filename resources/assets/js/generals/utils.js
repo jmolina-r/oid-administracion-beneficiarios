@@ -1,4 +1,4 @@
-module.exports = function formatDate(inputFormat) {
+exports.formatDate = function(inputFormat) {
     function pad(s) {
         return (s < 10) ? '0' + s : s;
     }
