@@ -11,6 +11,6 @@ class FichaTerapiaOcupacionalTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\FichaTerapiaOcupacional::class, 5)->create();
+        // factory(App\FichaTerapiaOcupacional::class, 5)->create();
     }
 }

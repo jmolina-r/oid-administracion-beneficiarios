@@ -11,6 +11,6 @@ class ValAutocuidadoTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\ValAutocuidado::class, 2)->create();
+        // factory(App\ValAutocuidado::class, 2)->create();
     }
 }

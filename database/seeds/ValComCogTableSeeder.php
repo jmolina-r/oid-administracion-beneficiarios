@@ -11,6 +11,6 @@ class ValComCogTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\ValComCog::class, 2)->create();
+        // factory(App\ValComCog::class, 2)->create();
     }
 }

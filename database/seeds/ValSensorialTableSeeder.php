@@ -11,6 +11,6 @@ class ValSensorialTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\ValSensorial::class, 2)->create();
+        // factory(App\ValSensorial::class, 2)->create();
     }
 }

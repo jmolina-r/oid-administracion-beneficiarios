@@ -11,6 +11,6 @@ class ProfesionalTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Profesional::class, 5)->create();
+        // factory(App\Profesional::class, 5)->create();
     }
 }

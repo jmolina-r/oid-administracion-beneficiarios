@@ -11,6 +11,10 @@ class TelefonoBeneficiarioTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\TelefonoBeneficiario::class, 200)->create();
+        factory(App\TelefonoBeneficiario::class)->create([
+            'numero' => 1111111,
+            'tipo' => 'fijo',
+            'beneficiario_id' => '1'
+        ]);
     }
 }

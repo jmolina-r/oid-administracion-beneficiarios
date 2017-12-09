@@ -11,6 +11,6 @@ class ValMotoraTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\ValMotora::class, 2)->create();
+        // factory(App\ValMotora::class, 2)->create();
     }
 }

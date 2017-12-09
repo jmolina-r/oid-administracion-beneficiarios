@@ -11,6 +11,10 @@ class TutorTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Tutor::class, 150)->create();
+        factory(App\Tutor::class)->create([
+            'nombre' => 'ignacio donald',
+            'apellido' => 'rodríguez salazar',
+            'beneficiario_id' => '1'
+        ]);
     }
 }

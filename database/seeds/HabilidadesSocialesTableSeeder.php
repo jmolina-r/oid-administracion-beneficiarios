@@ -11,6 +11,6 @@ class HabilidadesSocialesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\HabilidadesSociales::class, 5)->create();
+        // factory(App\HabilidadesSociales::class, 5)->create();
     }
 }

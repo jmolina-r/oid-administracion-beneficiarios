@@ -11,6 +11,6 @@ class DesarrolloEvolutivoTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\DesarrolloEvolutivo::class, 5)->create();
+        // factory(App\DesarrolloEvolutivo::class, 5)->create();
     }
 }

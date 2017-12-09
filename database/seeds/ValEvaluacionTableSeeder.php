@@ -11,6 +11,6 @@ class ValEvaluacionTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\ValEvaluacion::class, 2)->create();
+        // factory(App\ValEvaluacion::class, 2)->create();
     }
 }

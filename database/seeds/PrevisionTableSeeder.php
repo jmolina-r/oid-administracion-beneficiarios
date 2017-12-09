@@ -13,7 +13,7 @@ class PrevisionTableSeeder extends Seeder
     {
         $prevision = new \App\Prevision([
             //'nombre' => 'bansander',
-            'nombre' => 'Bansander',
+            'nombre' => 'bansander',
         ]);
         $prevision->save();
 

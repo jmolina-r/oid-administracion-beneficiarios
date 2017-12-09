@@ -11,6 +11,6 @@ class ValMovilidadTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\ValMovilidad::class, 2)->create();
+        // factory(App\ValMovilidad::class, 2)->create();
     }
 }

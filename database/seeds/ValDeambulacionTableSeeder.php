@@ -11,6 +11,6 @@ class ValDeambulacionTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\ValDeambulacion::class, 2)->create();
+        // factory(App\ValDeambulacion::class, 2)->create();
     }
 }

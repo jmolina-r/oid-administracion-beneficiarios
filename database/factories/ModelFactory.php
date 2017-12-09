@@ -27,6 +27,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+// Fue reemplazado por la creación manual en PaisTableSeeder
 $factory->define(App\Pais::class, function (Faker\Generator $faker) {
 
     return [
@@ -34,6 +35,7 @@ $factory->define(App\Pais::class, function (Faker\Generator $faker) {
     ];
 });
 
+// Fue reemplazado por la creación manual en BeneficiarioTableSeeder
 $factory->define(App\Beneficiario::class, function (Faker\Generator $faker) {
 
     return [
@@ -49,6 +51,7 @@ $factory->define(App\Beneficiario::class, function (Faker\Generator $faker) {
     ];
 });
 
+// Fue reemplazado por la creación manual en TelefonoBeneficiario
 $factory->define(App\TelefonoBeneficiario::class, function (Faker\Generator $faker) {
 
     return [
@@ -58,16 +61,13 @@ $factory->define(App\TelefonoBeneficiario::class, function (Faker\Generator $fak
     ];
 });
 
-
+// Fue reemplazado por la creación manual en PrestacionRealizada
 $factory->define(App\PrestacionRealizada::class, function (Faker\Generator $faker) {
 
     return [
         'fecha' => $faker->date('y-m-d','now'),
-
         'funcionario_id' => $faker->numberBetween($min = 1, $max = 5),
-
         'beneficiario_id' => $faker->numberBetween($min = 1, $max = 150),
-
         'prestacions_id' => $faker->numberBetween($min = 1, $max = 3)
     ];
 });
@@ -114,6 +114,8 @@ $factory->define(App\SubMotivoAtencionSocial::class, function (Faker\Generator $
     ];
 });
 */
+
+// Fue reemplazado por la creación manual en TutorTableSeeder
 $factory->define(App\Tutor::class, function (Faker\Generator $faker) {
     return [
         'nombre' => $faker->firstName,
@@ -122,7 +124,7 @@ $factory->define(App\Tutor::class, function (Faker\Generator $faker) {
     ];
 });
 
-
+// Fue reemplazado por la creación manual en CredencialDiscapacidad
 $factory->define(App\CredencialDiscapacidad::class, function (Faker\Generator $faker) {
     return [
         'fecha_vencimiento' => $faker->dateTimeBetween($startDate = 'now', $endDate = '+5 years', $timezone = date_default_timezone_get()),
@@ -130,13 +132,18 @@ $factory->define(App\CredencialDiscapacidad::class, function (Faker\Generator $f
     ];
 });
 
+// Fue reemplazado por la creación manual en DatoSocial
 $factory->define(App\DatoSocial::class, function (Faker\Generator $faker) {
     return [
         'observacion' => $faker->text,
-        'beneficiario_id' => $faker->unique()->numberBetween($min = 1, $max = 150)
     ];
 });
 
+$factory->define(App\Domicilio::class, function (Faker\Generator $faker) {
+    return [
+
+    ];
+});
 
 /*
 

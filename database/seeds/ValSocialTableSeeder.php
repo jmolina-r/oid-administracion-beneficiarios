@@ -11,6 +11,6 @@ class ValSocialTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\ValSocial::class, 2)->create();
+        // factory(App\ValSocial::class, 2)->create();
     }
 }

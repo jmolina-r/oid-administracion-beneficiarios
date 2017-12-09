@@ -11,6 +11,6 @@ class FichaPsicologiaTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\FichaPsicologia::class, 5)->create();
+        // factory(App\FichaPsicologia::class, 5)->create();
     }
 }

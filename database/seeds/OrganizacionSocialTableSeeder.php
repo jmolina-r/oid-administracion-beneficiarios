@@ -12,17 +12,7 @@ class OrganizacionSocialTableSeeder extends Seeder
     public function run(Faker\Generator $faker)
     {
         $organizacionSocial = new \App\OrganizacionSocial([
-            'nombre' => 'La de mi casa',
-            'descripcion' => $faker->text
-        ]);
-        $organizacionSocial->save();
-        $organizacionSocial = new \App\OrganizacionSocial([
-            'nombre' => 'La de mi abuelita',
-            'descripcion' => $faker->text
-        ]);
-        $organizacionSocial->save();
-        $organizacionSocial = new \App\OrganizacionSocial([
-            'nombre' => 'La de mi padre',
+            'nombre' => 'Junta nacional de discapacidad',
             'descripcion' => $faker->text
         ]);
         $organizacionSocial->save();

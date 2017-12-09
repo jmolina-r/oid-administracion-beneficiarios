@@ -11,6 +11,6 @@ class FichaKinesiologiaTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\FichaKinesiologia::class, 5)->create();
+        // factory(App\FichaKinesiologia::class, 5)->create();
     }
 }
