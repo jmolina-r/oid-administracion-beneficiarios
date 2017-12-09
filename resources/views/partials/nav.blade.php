@@ -18,7 +18,7 @@
 
             @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional']))
                 <li class=''>
-                    <a class="dropdown-collapse" href="#"><i class='fa fa-users'></i>
+                    <a class="dropdown-collapse" href="#"><i class='fa fa-male'></i>
                         <span>Beneficiarios</span>
                         <i class='fa fa-angle-down angle-down'></i>
                     </a>
@@ -48,7 +48,7 @@
                 </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin', 'trabajo_social']))
+            {{-- @if(Auth::user()->hasAnyRole(['admin', 'trabajo_social']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-child'></i>
                     <span>Area Social</span>
@@ -66,9 +66,9 @@
 
                 </ul>
             </li>
-            @endif
+            @endif --}}
 
-            @if(Auth::user()->hasAnyRole(['admin', 'jefatura', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional', 'trabajo_social']))
+            {{-- @if(Auth::user()->hasAnyRole(['admin', 'jefatura', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional', 'trabajo_social']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-bar-chart'></i>
                     <span>Reportabilidad</span>
@@ -105,10 +105,10 @@
                     </a>
                 </li>
             </ul>--}}
-            </li>
-            @endif
+            {{--</li>
+            @endif --}}
 
-            @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional', 'jefatura']))
+            {{-- @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional', 'jefatura']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-calendar'></i>
                     <span>Malla</span>
@@ -138,7 +138,8 @@
                     @endif
                 </ul>
             </li>
-            @endif
+            @endif --}}
+
             @if(Auth::user()->hasAnyRole(['admin', 'coordinador_oficina']))
                 <li class=''>
                     <a class="dropdown-collapse" href="#"><i class='fa fa-users'></i>
