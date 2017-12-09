@@ -90,6 +90,7 @@ class UserTableSeeder extends Seeder
             'email' => 'oid@oid.cl',
             'role_id' => '9',
             'funcionario_id' => '1',
+            'password' => bcrypt('oid-sw2-oid-s1-2017')
         ]);
 
     }
