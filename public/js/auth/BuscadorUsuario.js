@@ -116,6 +116,7 @@ function mostrarPerfilUsuario(username, email, status, role, funcionario) {
                    .replace(/\\b/g, "\\b")
                    .replace(/\\f/g, "\\f");
     // remove non-printable and other non-valid JSON chars
+    console.log(funcionario);
     funcionario = funcionario.replace(/[\u0000-\u0019]+/g,"")
     funcionario = jQuery.parseJSON(funcionario)
 
