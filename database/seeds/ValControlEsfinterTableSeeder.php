@@ -11,6 +11,6 @@ class ValControlEsfinterTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\ValControlEsfinter::class, 2)->create();
+        //factory(App\ValControlEsfinter::class, 2)->create();
     }
 }

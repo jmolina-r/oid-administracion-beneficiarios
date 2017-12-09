@@ -175,7 +175,7 @@ $factory->define(App\FichaKinesiologia::class, function (Faker\Generator $faker)
         'val_sensorial_id' => $faker -> numberBetween($min = 1, $max = 2),
         'val_com_cog_id' => $faker -> numberBetween($min = 1, $max = 2),
         'val_evaluacion_id' => $faker -> numberBetween($min = 1, $max = 2),
-        'val_control_esfinter_id' => $faker -> numberBetween($min = 1, $max = 2),
+        // 'val_control_esfinter_id' => $faker -> numberBetween($min = 1, $max = 2),
         'funcionario_id' => $faker -> numberBetween($min = 1, $max = 1),
         'beneficiario_id' => $faker -> numberBetween($min = 4, $max = 6),
     ];

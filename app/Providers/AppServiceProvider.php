@@ -24,7 +24,6 @@ class AppServiceProvider extends ServiceProvider
             return \RUT::check($value);
         });
 
-        Schema::defaultStringLength(191);
 
     }
 

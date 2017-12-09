@@ -31,7 +31,7 @@ class CreateFichaKinesiologiasTable extends Migration
             $table->integer('val_sensorial_id')->unsigned();
             $table->integer('val_com_cog_id')->unsigned();
             $table->integer('val_evaluacion_id')->unsigned();
-            $table->integer('val_control_esfinter_id')->unsigned();
+            // $table->integer('val_control_esfinter_id')->unsigned();
             $table->integer('funcionario_id')->unsigned();
             $table->integer('beneficiario_id')->unsigned();
         });
@@ -72,9 +72,9 @@ class CreateFichaKinesiologiasTable extends Migration
             $table->foreign('val_evaluacion_id')->references('id')->on('val_evaluacions');
         });
 
-        Schema::table('ficha_kinesiologias', function($table) {
-            $table->foreign('val_control_esfinter_id')->references('id')->on('val_control_esfinters');
-        });
+        // Schema::table('ficha_kinesiologias', function($table) {
+        //     $table->foreign('val_control_esfinter_id')->references('id')->on('val_control_esfinters');
+        // });
 
         Schema::table('ficha_kinesiologias', function($table) {
             $table->foreign('funcionario_id')->references('id')->on('funcionarios');
