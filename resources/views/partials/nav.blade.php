@@ -48,7 +48,7 @@
                 </li>
             @endif
 
-            {{-- @if(Auth::user()->hasAnyRole(['admin', 'trabajo_social']))
+            @if(Auth::user()->hasAnyRole(['admin', 'trabajo_social']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-child'></i>
                     <span>Area Social</span>
@@ -66,9 +66,9 @@
 
                 </ul>
             </li>
-            @endif --}}
+            @endif
 
-            {{-- @if(Auth::user()->hasAnyRole(['admin', 'jefatura', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional', 'trabajo_social']))
+            @if(Auth::user()->hasAnyRole(['admin', 'jefatura', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional', 'trabajo_social']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-bar-chart'></i>
                     <span>Reportabilidad</span>
@@ -85,7 +85,7 @@
                         </a>
                     </li>
                 </ul>
-                {{--<ul class='nav nav-stacked'>
+                <ul class='nav nav-stacked'>
                     <li class=''>
                         <a href='{{route('reportabilidad.reportabilidadPorProfesional')}}'>
                             <div class='icon'>
@@ -94,8 +94,8 @@
                             <span>Visualizar estadísticas por profesional</span>
                         </a>
                     </li>
-                </ul>--}}
-            {{--<ul class='nav nav-stacked'>
+                </ul>
+            <ul class='nav nav-stacked'>
                 <li class=''>
                     <a href='{{route('reportabilidad.menu')}}'>
                         <div class='icon'>
@@ -104,11 +104,11 @@
                         <span>Menu reportabilidad</span>
                     </a>
                 </li>
-            </ul>--}}
-            {{--</li>
-            @endif --}}
+            </ul>
+            </li>
+            @endif
 
-            {{-- @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional', 'jefatura']))
+             @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional', 'jefatura']))
             <li class=''>
                 <a class="dropdown-collapse" href="#"><i class='fa fa-calendar'></i>
                     <span>Malla</span>
@@ -138,7 +138,7 @@
                     @endif
                 </ul>
             </li>
-            @endif --}}
+            @endif
 
             @if(Auth::user()->hasAnyRole(['admin', 'coordinador_oficina']))
                 <li class=''>
