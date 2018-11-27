@@ -11,6 +11,6 @@ class AntecedentesSocioFamiliaresTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\AntecedentesSocioFamiliares::class, 5)->create();
+        //factory(App\AntecedentesSocioFamiliares::class, 5)->create();
     }
 }

@@ -9,13 +9,13 @@ class CredencialDiscapacidadTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker\Generator $faker)
+    public function run()
     {
-        factory(App\CredencialDiscapacidad::class)->create([
-            'fecha_vencimiento' => $faker->dateTimeBetween($startDate = 'now', $endDate = '+5 years', $timezone = date_default_timezone_get()),
-            'en_tramite' => 0,
-            'beneficiario_id' => '1'
-        ]);
+        //factory(App\CredencialDiscapacidad::class)->create([
+        //    'fecha_vencimiento' => $faker->dateTimeBetween($startDate = 'now', $endDate = '+5 years', $timezone = date_default_timezone_get()),
+        //    'en_tramite' => 0,
+        //    'beneficiario_id' => '1'
+        //]);
         // $faker->unique($reset = true);
         // for ($i=0; $i < 120; $i++) {
         //     $IdsCredencialDisc[] = $faker->unique()->numberBetween($min = 1, $max = 150);

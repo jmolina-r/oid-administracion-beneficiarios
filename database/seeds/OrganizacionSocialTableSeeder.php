@@ -9,12 +9,12 @@ class OrganizacionSocialTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker\Generator $faker)
+    public function run()
     {
-        $organizacionSocial = new \App\OrganizacionSocial([
-            'nombre' => 'Junta nacional de discapacidad',
-            'descripcion' => $faker->text
-        ]);
-        $organizacionSocial->save();
+        //$organizacionSocial = new \App\OrganizacionSocial([
+        //    'nombre' => 'Junta nacional de discapacidad',
+        //    'descripcion' => $faker->text
+        //]);
+        //$organizacionSocial->save();
     }
 }

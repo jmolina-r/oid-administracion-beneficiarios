@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
@@ -84,12 +85,12 @@ class UserTableSeeder extends Seeder
         //     'funcionario_id' => '9',
         // ]);
 
-        factory(App\User::class)->create([
+        User::create([
             // 'name' => 'terapia_ocupacional',
             'username' => 'admin',
             'email' => 'oid@oid.cl',
+            'status' =>'1',
             'role_id' => '9',
-            'funcionario_id' => '1',
             'password' => bcrypt('oid-sw2-oid-s1-2017')
         ]);
 

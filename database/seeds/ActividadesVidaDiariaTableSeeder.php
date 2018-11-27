@@ -11,6 +11,6 @@ class ActividadesVidaDiariaTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\ActividadesVidaDiaria::class, 5)->create();
+        //factory(App\ActividadesVidaDiaria::class, 5)->create();
     }
 }

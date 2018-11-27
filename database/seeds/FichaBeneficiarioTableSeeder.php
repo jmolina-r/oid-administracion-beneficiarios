@@ -9,13 +9,13 @@ class FichaBeneficiarioTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker\Generator $faker)
+    public function run()
     {
-        $fichaBeneficiario = new App\FichaBeneficiario([
-            'fecha_ingreso' => $faker->date('y-m-d','now'),
-            'beneficiario_id' => '1'
-        ]);
-        $fichaBeneficiario->save();
+        //$fichaBeneficiario = new App\FichaBeneficiario([
+        //    'fecha_ingreso' => $faker->date('y-m-d','now'),
+        //    'beneficiario_id' => '1'
+        //]);
+        //$fichaBeneficiario->save();
         // for ($i=1; $i <= 150; $i++) {
         //     $fichaBeneficiario = new \App\FichaBeneficiario([
         //         //'numero' => $i,

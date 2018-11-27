@@ -28,6 +28,10 @@ host('46.101.153.219')
     ->set('deploy_path', '/var/www/OID-Administracion/html');
 
 // Tasks
+task('artisan:db:seed', function() {
+    cd('{{release_path}}');
+    run("php artisan db:seed");
+});
 
 task('build', function () {
     run('cd {{release_path}} && build');
@@ -38,5 +42,5 @@ after('deploy:failed', 'deploy:unlock');
 
 // Migrate database before symlink new release.
 
-//before('deploy:symlink', 'artisan:migrate');
+before('deploy:symlink', 'artisan:migrate');
 

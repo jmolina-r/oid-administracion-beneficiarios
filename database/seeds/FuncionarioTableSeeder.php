@@ -65,16 +65,16 @@ class FuncionarioTableSeeder extends Seeder
         //     'tipo_funcionario_id' => '7'
         // ]);
 
-        factory(App\Funcionario::class)->create([
-            'rut' => '18508182-6',
-            'nombre' => 'josé patricio',
-            'apellido' => 'valdebenito pertierra',
-            'telefono' => '957904489',
-            'fecha_nacimiento' => '1993-12-17',
-            'direccion' => 'Oficina Paposo 227',
-            'email' => 'jose@sodired.cl',
-            'tipo_funcionario_id' => '7'
-        ]);
+        //factory(App\Funcionario::class)->create([
+        //    'rut' => '18508182-6',
+        //    'nombre' => 'josé patricio',
+        //    'apellido' => 'valdebenito pertierra',
+        //    'telefono' => '957904489',
+        //    'fecha_nacimiento' => '1993-12-17',
+        //    'direccion' => 'Oficina Paposo 227',
+         //   'email' => 'jose@sodired.cl',
+         //   'tipo_funcionario_id' => '7'
+        //]);
 
         // factory(App\Funcionario::class)->create([
         //     'rut' => '16364173-9',

@@ -9,14 +9,14 @@ class RegistroSocialHogarTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker\Generator $faker)
+    public function run()
     {
-        $registroSocialHogar = new \App\RegistroSocialHogar([
-            'porcentaje' => 15,
-            'en_tramite' => 0,
-            'beneficiario_id' => 1
-        ]);
-        $registroSocialHogar->save();
+        //$registroSocialHogar = new \App\RegistroSocialHogar([
+        //    'porcentaje' => 15,
+        //    'en_tramite' => 0,
+        //    'beneficiario_id' => 1
+        //]);
+        //$registroSocialHogar->save();
 
         // $faker->unique($reset = true);
         // for ($i=0; $i < 60; $i++) {

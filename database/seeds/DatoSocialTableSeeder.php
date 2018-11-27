@@ -9,17 +9,17 @@ class DatoSocialTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker\Generator $faker)
+    public function run()
     {
 
-        factory(App\DatoSocial::class)->create([
-            'observacion' => 'Este beneficiario es una prueba para el sistema, no tomar en cuenta',
-            'ficha_beneficiario_id' => '1',
-            'isapre_id' => '1',
-            'fonasa_id' => null,
-            'sistema_proteccion_id' => '1',
-            'prevision_id' => null,
-        ]);
+        //factory(App\DatoSocial::class)->create([
+        //    'observacion' => 'Este beneficiario es una prueba para el sistema, no tomar en cuenta',
+        //    'ficha_beneficiario_id' => '1',
+        //    'isapre_id' => '1',
+        //    'fonasa_id' => null,
+        //    'sistema_proteccion_id' => '1',
+        //    'prevision_id' => null,
+        //]);
         // for ($i=1; $i <= 150; $i++) {
         //     $isFonasa = $faker->boolean;
         //     if($isFonasa == true) {
