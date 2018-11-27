@@ -11,6 +11,6 @@ class AntecedentesFamiliaresTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\AntecedentesFamiliares::class, 5)->create();
+        //factory(App\AntecedentesFamiliares::class, 5)->create();
     }
 }

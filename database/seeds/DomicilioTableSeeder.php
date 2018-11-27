@@ -9,14 +9,14 @@ class DomicilioTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker\Generator $faker)
+    public function run()
     {
 
-        factory(App\Domicilio::class)->create([
-            'pobl_vill' => 'lautaro',
-            'calle' => 'punta arenas',
-            'numero' => '123',
-            'beneficiario_id' => '1'
-        ]);
+        //factory(App\Domicilio::class)->create([
+        //    'pobl_vill' => 'lautaro',
+        //    'calle' => 'punta arenas',
+        //    'numero' => '123',
+        //    'beneficiario_id' => '1'
+        //]);
     }
 }

@@ -11,6 +11,6 @@ class AntecedentesMedicosTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\AntecedentesMedicos::class, 5)->create();
+        //factory(App\AntecedentesMedicos::class, 5)->create();
     }
 }
