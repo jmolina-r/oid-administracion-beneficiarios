@@ -13,64 +13,65 @@ class BeneficioTableSeeder extends Seeder
     {
         // sin abreviaciones.
         $beneficio = new \App\Beneficio([
-            'nombre' => 'subsidio discapacidad mental'
+            'nombre' => 'Subsidio discapacidad mental'
         ]);
         $beneficio->save();
 
         $beneficio = new \App\Beneficio([
-            'nombre' => 'pensión básica solidaria de invalidez'
+            'nombre' => 'Pensión básica solidaria de invalidez'
         ]);
         $beneficio->save();
 
         $beneficio = new \App\Beneficio([
-            'nombre' => 'subsidio agua potable'
+            'nombre' => 'Subsidio agua potable'
         ]);
         $beneficio->save();
 
         $beneficio = new \App\Beneficio([
-            'nombre' => 'pensión básica solidaria de vejez'
+            'nombre' => 'Pensión básica solidaria de vejez'
         ]);
         $beneficio->save();
 
         $beneficio = new \App\Beneficio([
-            'nombre' => 'subsidio maternal'
+            'nombre' => 'Subsidio maternal'
         ]);
         $beneficio->save();
 
         $beneficio = new \App\Beneficio([
-            'nombre' => 'subsidio familiar'
+            'nombre' => 'Subsidio familiar'
         ]);
         $beneficio->save();
 
         $beneficio = new \App\Beneficio([
-            'nombre' => 'bono protección social'
+            'nombre' => 'Bono protección social'
         ]);
         $beneficio->save();
 
         $beneficio = new \App\Beneficio([
-            'nombre' => 'asignacion social'
+            'nombre' => 'Asignacion social'
         ]);
         $beneficio->save();
 
         $beneficio = new \App\Beneficio([
-            'nombre' => 'becas'
+            'nombre' => 'Becas'
         ]);
         $beneficio->save();
 
         $beneficio = new \App\Beneficio([
-            'nombre' => 'jubilacion afp'
+            'nombre' => 'Jubilacion afp'
         ]);
         $beneficio->save();
 
         $beneficio = new \App\Beneficio([
-            'nombre' => 'asignacion familiar'
+            'nombre' => 'Asignacion familiar'
         ]);
         $beneficio->save();
 
         $beneficio = new \App\Beneficio([
-            'nombre' => 'aporte previsional solidario'
+            'nombre' => 'Aporte previsional solidario'
         ]);
         $beneficio->save();
 
     }
 }
+

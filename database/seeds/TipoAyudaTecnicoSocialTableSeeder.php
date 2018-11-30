@@ -12,169 +12,169 @@ class TipoAyudaTecnicoSocialTableSeeder extends Seeder
     public function run()
     {
        $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
-            'nombre' => 'silla electrica',
+            'tipo'=> 'Tecnico',
+            'nombre' => 'Silla electrica',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
-            'nombre' => 'silla estandar',
+            'tipo'=> 'Tecnico',
+            'nombre' => 'Silla estandar',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
-            'nombre' => 'silla neurológica',
+            'tipo'=> 'Tecnico',
+            'nombre' => 'Silla neurológica',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
-            'nombre' => 'silla activa',
+            'tipo'=> 'Tecnico',
+            'nombre' => 'Silla activa',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
-            'nombre' => 'bastones',
+            'tipo'=> 'Tecnico',
+            'nombre' => 'Bastones',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
+            'tipo'=> 'Tecnico',
             'nombre' => 'muletas',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
-            'nombre' => 'carro andador',
+            'tipo'=> 'Tecnico',
+            'nombre' => 'Carro andador',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
-            'nombre' => 'cojin ae',
+            'tipo'=> 'Tecnico',
+            'nombre' => 'Cojin ae',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
-            'nombre' => 'colchon ar',
+            'tipo'=> 'Tecnico',
+            'nombre' => 'Colchon ar',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
-            'nombre' => 'baño portatil',
+            'tipo'=> 'Tecnico',
+            'nombre' => 'Baño portatil',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
-            'nombre' => 'silla de ducha',
+            'tipo'=> 'Tecnico',
+            'nombre' => 'Silla de ducha',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
-            'nombre' => 'banqueta de tina',
+            'tipo'=> 'Tecnico',
+            'nombre' => 'Banqueta de tina',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
-            'nombre' => 'sitting',
+            'tipo'=> 'Tecnico',
+            'nombre' => 'Sitting',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
-            'nombre' => 'elementos para alimentación',
+            'tipo'=> 'Tecnico',
+            'nombre' => 'Elementos para alimentación',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
-            'nombre' => 'elementos para vestuario',
+            'tipo'=> 'Tecnico',
+            'nombre' => 'Elementos para vestuario',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
-            'nombre' => 'audifonos',
+            'tipo'=> 'Tecnico',
+            'nombre' => 'Audifonos',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
-            'nombre' => 'equipos computacionales',
+            'tipo'=> 'Tecnico',
+            'nombre' => 'Equipos computacionales',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'tecnico',
-            'nombre' => 'otros',
+            'tipo'=> 'Tecnico',
+            'nombre' => 'Otros',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'social',
-            'nombre' => 'pañales',
+            'tipo'=> 'Social',
+            'nombre' => 'Pañales',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'social',
-            'nombre' => 'medicamentos',
+            'tipo'=> 'Social',
+            'nombre' => 'Medicamentos',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'social',
-            'nombre' => 'leche',
+            'tipo'=> 'Social',
+            'nombre' => 'Leche',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'social',
-            'nombre' => 'canasta de alimentos',
+            'tipo'=> 'Social',
+            'nombre' => 'Canasta de alimentos',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'social',
-            'nombre' => 'coaportes',
+            'tipo'=> 'Social',
+            'nombre' => 'Coaportes',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();
 
         $tipoAyudaTecnicoSocial = new \App\TipoAyudaTecnicoSocial([
-            'tipo'=> 'social',
-            'nombre' => 'otras',
+            'tipo'=> 'Social',
+            'nombre' => 'Otras',
             'tipo_motivo_social_id' => '1'
         ]);
         $tipoAyudaTecnicoSocial->save();

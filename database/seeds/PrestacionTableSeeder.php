@@ -13,23 +13,23 @@ class PrestacionTableSeeder extends Seeder
     {
         $prestacion = new \App\Prestacion([
             'nombre' => 'Inicial fonoaudiologia',
-            'area' => 'fonoaudiologo',
+            'area' => 'Fonoaudiologo',
         ]);
         $prestacion->save();
 
         $prestacion = new \App\Prestacion([
             'nombre' => 'Inicial kinesiologia',
-            'area' => 'kinesiologo',
+            'area' => 'Kinesiologo',
         ]);
         $prestacion->save();
         $prestacion = new \App\Prestacion([
             'nombre' => 'Inicial terapia ocupacional',
-            'area' => 'terapeuta ocupacional',
+            'area' => 'Terapeuta ocupacional',
         ]);
         $prestacion->save();
         $prestacion = new \App\Prestacion([
             'nombre' => 'Inicial psicologia',
-            'area' => 'psicologo',
+            'area' => 'Psicologo',
         ]);
         $prestacion->save();
 

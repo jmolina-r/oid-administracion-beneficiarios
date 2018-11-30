@@ -12,27 +12,27 @@ class EstadoCivilTableSeeder extends Seeder
     public function run()
     {
         $estadoCivil = new \App\EstadoCivil([
-            'nombre' => 'soltero'
+            'nombre' => 'Soltero'
         ]);
         $estadoCivil->save();
 
         $estadoCivil = new \App\EstadoCivil([
-            'nombre' => 'casado'
+            'nombre' => 'Casado'
         ]);
         $estadoCivil->save();
 
         $estadoCivil = new \App\EstadoCivil([
-            'nombre' => 'conviviente'
+            'nombre' => 'Conviviente'
         ]);
         $estadoCivil->save();
 
         $estadoCivil = new \App\EstadoCivil([
-            'nombre' => 'separado'
+            'nombre' => 'Separado'
         ]);
         $estadoCivil->save();
 
         $estadoCivil = new \App\EstadoCivil([
-            'nombre' => 'viudo'
+            'nombre' => 'Viudo'
         ]);
         $estadoCivil->save();
     }

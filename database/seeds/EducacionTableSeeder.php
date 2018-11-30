@@ -12,47 +12,47 @@ class EducacionTableSeeder extends Seeder
     public function run()
     {
         $educacion = new \App\Educacion([
-            'nombre' => 'pre básico'
+            'nombre' => 'Pre básico'
         ]);
         $educacion->save();
 
         $educacion = new \App\Educacion([
-            'nombre' => 'básico incompleto'
+            'nombre' => 'Básico incompleto'
         ]);
         $educacion->save();
 
         $educacion = new \App\Educacion([
-            'nombre' => 'básico completo'
+            'nombre' => 'Básico completo'
         ]);
         $educacion->save();
 
         $educacion = new \App\Educacion([
-            'nombre' => 'medio incompleto'
+            'nombre' => 'Medio incompleto'
         ]);
         $educacion->save();
 
         $educacion = new \App\Educacion([
-            'nombre' => 'medio completo'
+            'nombre' => 'Medio completo'
         ]);
         $educacion->save();
 
         $educacion = new \App\Educacion([
-            'nombre' => 'técnico incompleto'
+            'nombre' => 'Técnico incompleto'
         ]);
         $educacion->save();
 
         $educacion = new \App\Educacion([
-            'nombre' => 'técnico completo'
+            'nombre' => 'Técnico completo'
         ]);
         $educacion->save();
 
         $educacion = new \App\Educacion([
-            'nombre' => 'universitario incompleto'
+            'nombre' => 'Universitario incompleto'
         ]);
         $educacion->save();
 
         $educacion = new \App\Educacion([
-            'nombre' => 'universitario completo'
+            'nombre' => 'Universitario completo'
         ]);
         $educacion->save();
     }

@@ -12,32 +12,32 @@ class OcupacionTableSeeder extends Seeder
     public function run()
     {
         $ocupacion = new \App\Ocupacion([
-            'nombre' => 'trabajador'
+            'nombre' => 'Trabajador'
         ]);
         $ocupacion->save();
 
         $ocupacion = new \App\Ocupacion([
-            'nombre' => 'estudiante'
+            'nombre' => 'Estudiante'
         ]);
         $ocupacion->save();
 
         $ocupacion = new \App\Ocupacion([
-            'nombre' => 'dueño de casa'
+            'nombre' => 'Dueño de casa'
         ]);
         $ocupacion->save();
 
         $ocupacion = new \App\Ocupacion([
-            'nombre' => 'pensionado'
+            'nombre' => 'Pensionado'
         ]);
         $ocupacion->save();
 
         $ocupacion = new \App\Ocupacion([
-            'nombre' => 'cesante'
+            'nombre' => 'Cesante'
         ]);
         $ocupacion->save();
 
         $ocupacion = new \App\Ocupacion([
-            'nombre' => 'otros'
+            'nombre' => 'Otros'
         ]);
         $ocupacion->save();
 
