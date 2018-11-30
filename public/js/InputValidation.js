@@ -20,10 +20,10 @@ $('.onlynumbers').bind('keyup blur',function(){
     }
 );
 
-//Input que contiene solo numeros
+//Input que contiene solo numeros, letra k y -.
 $('.onlyrut').bind('keyup blur',function(){
     var node = $(this);
-    regRuts = /[A-Za-jl-z…„´≠”“÷¬∞¢¿·ºª"~!@#$%^&*\(\)_=`{}\[\]\|\\:;'<>,\.\/\?"]/g
+    regRuts = /[A-JL-Za-jl-z…„´≠”“÷¬∞¢¿·ºª"~!@#$%^&*\(\)_=`{}\[\]\|\\:;'<>,\.\/\?"]/g
     if(node.val().match(regRuts)) {
         node.val(node.val().replace(regRuts,'') ); }
     }
