@@ -12,43 +12,43 @@ class IsapreTableSeeder extends Seeder
     public function run()
     {
         $isapre = new \App\Isapre([
-            'organizacion' => 'cruz blanca'
+            'organizacion' => 'Cruz blanca'
         ]);
         $isapre->save();
         $isapre = new \App\Isapre([
-            'organizacion' => 'colmena'
+            'organizacion' => 'Colmena'
         ]);
         $isapre->save();
         $isapre = new \App\Isapre([
-            'organizacion' => 'más vida'
+            'organizacion' => 'Más vida'
         ]);
         $isapre->save();
         $isapre = new \App\Isapre([
-            'organizacion' => 'consalud'
+            'organizacion' => 'Consalud'
         ]);
         $isapre->save();
         $isapre = new \App\Isapre([
-            'organizacion' => 'banmedica'
+            'organizacion' => 'Banmedica'
         ]);
         $isapre->save();
         $isapre = new \App\Isapre([
-            'organizacion' => 'vida tres'
+            'organizacion' => 'Vida tres'
         ]);
         $isapre->save();
         $isapre = new \App\Isapre([
-            'organizacion' => 'codelco'
+            'organizacion' => 'Codelco'
         ]);
         $isapre->save();
         $isapre = new \App\Isapre([
-            'organizacion' => 'dipreca'
+            'organizacion' => 'Dipreca'
         ]);
         $isapre->save();
         $isapre = new \App\Isapre([
-            'organizacion' => 'capredena'
+            'organizacion' => 'Capredena'
         ]);
         $isapre->save();
         $isapre = new \App\Isapre([
-            'organizacion' => 'ferrosalud'
+            'organizacion' => 'Ferrosalud'
         ]);
         $isapre->save();
     }

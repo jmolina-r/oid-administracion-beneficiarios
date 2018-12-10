@@ -13,73 +13,73 @@ class TipoSubmotivoSocialTableSeeder extends Seeder
     {
 
         $tipoSubmotivoSocial = new \App\TipoSubmotivoSocial([
-            'nombre' => 'credencial de discapacidad',
+            'nombre' => 'Credencial de discapacidad',
             'tipo_motivo_social_id' => '2'
         ]);
         $tipoSubmotivoSocial->save();
 
         $tipoSubmotivoSocial = new \App\TipoSubmotivoSocial([
-            'nombre' => 'subsidios',
+            'nombre' => 'Subsidios',
             'tipo_motivo_social_id' => '2'
         ]);
         $tipoSubmotivoSocial->save();
 
         $tipoSubmotivoSocial = new \App\TipoSubmotivoSocial([
-            'nombre' => 'beneficios sociales',
+            'nombre' => 'Beneficios sociales',
             'tipo_motivo_social_id' => '2'
         ]);
         $tipoSubmotivoSocial->save();
 
         $tipoSubmotivoSocial = new \App\TipoSubmotivoSocial([
-            'nombre' => 'tribunales de familia',
+            'nombre' => 'Tribunales de familia',
             'tipo_motivo_social_id' => '2'
         ]);
         $tipoSubmotivoSocial->save();
 
         $tipoSubmotivoSocial = new \App\TipoSubmotivoSocial([
-            'nombre' => 'activación de red',
+            'nombre' => 'Activación de red',
             'tipo_motivo_social_id' => '2'
         ]);
         $tipoSubmotivoSocial->save();
 
         $tipoSubmotivoSocial = new \App\TipoSubmotivoSocial([
-            'nombre' => 'becas',
+            'nombre' => 'Becas',
             'tipo_motivo_social_id' => '2'
         ]);
         $tipoSubmotivoSocial->save();
 
         $tipoSubmotivoSocial = new \App\TipoSubmotivoSocial([
-            'nombre' => 'verificación de domicilio',
+            'nombre' => 'Verificación de domicilio',
             'tipo_motivo_social_id' => '3'
         ]);
         $tipoSubmotivoSocial->save();
 
         $tipoSubmotivoSocial = new \App\TipoSubmotivoSocial([
-            'nombre' => 'elaboración de informe social',
+            'nombre' => 'Elaboración de informe social',
             'tipo_motivo_social_id' => '3'
         ]);
         $tipoSubmotivoSocial->save();
 
         $tipoSubmotivoSocial = new \App\TipoSubmotivoSocial([
-            'nombre' => 'entrega de ayuda social',
+            'nombre' => 'Entrega de ayuda social',
             'tipo_motivo_social_id' => '3'
         ]);
         $tipoSubmotivoSocial->save();
 
         $tipoSubmotivoSocial = new \App\TipoSubmotivoSocial([
-            'nombre' => 'ayuda técnica senadis',
+            'nombre' => 'Ayuda técnica senadis',
             'tipo_motivo_social_id' => '3'
         ]);
         $tipoSubmotivoSocial->save();
 
         $tipoSubmotivoSocial = new \App\TipoSubmotivoSocial([
-            'nombre' => 'beca municipal',
+            'nombre' => 'Beca municipal',
             'tipo_motivo_social_id' => '4'
         ]);
         $tipoSubmotivoSocial->save();
 
         $tipoSubmotivoSocial = new \App\TipoSubmotivoSocial([
-            'nombre' => 'postulación ayuda técnica senadis',
+            'nombre' => 'Postulación ayuda técnica senadis',
             'tipo_motivo_social_id' => '4'
         ]);
         $tipoSubmotivoSocial->save();

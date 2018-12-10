@@ -103,7 +103,7 @@
                                         <h3 class='control-label' for='inputText'>Seleccione la malla de desea ver</h3>
                                         <select style="width:100%;" name='id' class='form-control capitalize select-tag' id='id'>
                                             @foreach($usuarios as $usuario)
-                                                @if($usuario->nombre == "kinesiologo" || $usuario->nombre == "psicologo" || $usuario->nombre == "terapeuta ocupacional" || $usuario->nombre == "fonoaudiologo")
+                                                @if($usuario->nombre == "Kinesiologo" || $usuario->nombre == "Psicologo" || $usuario->nombre == "Terapeuta ocupacional" || $usuario->nombre == "Fonoaudiologo")
                                                     <option value="{{ $usuario->id }}">{{ $usuario->username }}    ({{ $usuario->nombre }})</option>
                                                 @endif
                                             @endforeach

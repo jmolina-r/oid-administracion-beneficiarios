@@ -13,27 +13,27 @@ class SistemaProteccionTableSeeder extends Seeder
     {
         // Cambiar a mayusculas.
         $sistemaProteccion = new \App\SistemaProteccion([
-            'nombre' => 'chisol/sof'
+            'nombre' => 'Chisol/sof'
         ]);
         $sistemaProteccion->save();
 
         $sistemaProteccion = new \App\SistemaProteccion([
-            'nombre' => 'vinculos'
+            'nombre' => 'Vinculos'
         ]);
         $sistemaProteccion->save();
 
         $sistemaProteccion = new \App\SistemaProteccion([
-            'nombre' => 'calle'
+            'nombre' => 'Calle'
         ]);
         $sistemaProteccion->save();
 
         $sistemaProteccion = new \App\SistemaProteccion([
-            'nombre' => 'chile crece contigo'
+            'nombre' => 'Chile crece contigo'
         ]);
         $sistemaProteccion->save();
 
         $sistemaProteccion = new \App\SistemaProteccion([
-            'nombre' => 'otros'
+            'nombre' => 'Otros'
         ]);
         $sistemaProteccion->save();
     }

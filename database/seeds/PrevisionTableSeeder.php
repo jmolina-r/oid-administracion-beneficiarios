@@ -13,49 +13,49 @@ class PrevisionTableSeeder extends Seeder
     {
         $prevision = new \App\Prevision([
             //'nombre' => 'bansander',
-            'nombre' => 'bansander',
+            'nombre' => 'Bansander',
         ]);
         $prevision->save();
 
         $prevision = new \App\Prevision([
             //'nombre' => 'cuprum ',
-            'nombre' => 'cuprum ',
+            'nombre' => 'Cuprum ',
         ]);
         $prevision->save();
 
 
         $prevision = new \App\Prevision([
-            'nombre' => 'habitad',
+            'nombre' => 'Habitad',
         ]);
         $prevision->save();
 
 
         $prevision = new \App\Prevision([
-            'nombre' => 'plan vital',
+            'nombre' => 'Plan vital',
         ]);
         $prevision->save();
 
 
         $prevision = new \App\Prevision([
-            'nombre' => 'próvida',
+            'nombre' => 'Próvida',
         ]);
         $prevision->save();
 
 
         $prevision = new \App\Prevision([
-            'nombre' => 'santa maria',
+            'nombre' => 'Santa maria',
         ]);
         $prevision->save();
 
 
         $prevision = new \App\Prevision([
-            'nombre' => 'modelo',
+            'nombre' => 'Modelo',
         ]);
         $prevision->save();
 
 
         $prevision = new \App\Prevision([
-            'nombre' => 'capital',
+            'nombre' => 'Capital',
         ]);
         $prevision->save();
 
@@ -65,7 +65,7 @@ class PrevisionTableSeeder extends Seeder
         $prevision->save();
 
         $prevision = new \App\Prevision([
-            'nombre' => 'otros',
+            'nombre' => 'Otros',
         ]);
         $prevision->save();
 

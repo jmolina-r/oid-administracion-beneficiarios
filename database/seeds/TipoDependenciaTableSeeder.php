@@ -12,17 +12,22 @@ class TipoDependenciaTableSeeder extends Seeder
     public function run()
     {
         $tipoDependencia = new \App\TipoDependencia([
-            'nombre' => 'permanente'
+            'nombre' => 'Permanente'
         ]);
         $tipoDependencia->save();
 
         $tipoDependencia = new \App\TipoDependencia([
-            'nombre' => 'intermitente'
+            'nombre' => 'Intermitente'
         ]);
         $tipoDependencia->save();
 
         $tipoDependencia = new \App\TipoDependencia([
-            'nombre' => 'ocacional'
+            'nombre' => 'Ocacional'
+        ]);
+        $tipoDependencia->save();
+
+        $tipoDependencia = new \App\TipoDependencia([
+            'nombre' => 'Independiente'
         ]);
         $tipoDependencia->save();
     }

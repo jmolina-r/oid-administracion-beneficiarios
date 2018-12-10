@@ -12,21 +12,21 @@ class TipoMotivoSocialTableSeeder extends Seeder
     public function run()
     {
         $tipoMotivoSocial = new \App\TipoMotivoSocial([
-            'nombre' => 'ayudas'
+            'nombre' => 'Ayudas'
         ]);
         $tipoMotivoSocial->save();
         $tipoMotivoSocial = new \App\TipoMotivoSocial([
-            'nombre' => 'orientación'
-        ]);
-        $tipoMotivoSocial->save();
-
-        $tipoMotivoSocial = new \App\TipoMotivoSocial([
-            'nombre' => 'visita domiciliaria'
+            'nombre' => 'Orientación'
         ]);
         $tipoMotivoSocial->save();
 
         $tipoMotivoSocial = new \App\TipoMotivoSocial([
-            'nombre' => 'becas'
+            'nombre' => 'Visita domiciliaria'
+        ]);
+        $tipoMotivoSocial->save();
+
+        $tipoMotivoSocial = new \App\TipoMotivoSocial([
+            'nombre' => 'Becas'
         ]);
         $tipoMotivoSocial->save();
     }

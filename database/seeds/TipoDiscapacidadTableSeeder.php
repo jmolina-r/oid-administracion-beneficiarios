@@ -12,32 +12,32 @@ class TipoDiscapacidadTableSeeder extends Seeder
     public function run()
     {
         $tipoDiscapacidad = new \App\TipoDiscapacidad([
-            'nombre' => 'física'
+            'nombre' => 'Física'
         ]);
         $tipoDiscapacidad->save();
 
         $tipoDiscapacidad = new \App\TipoDiscapacidad([
-            'nombre' => 'cognitiva'
+            'nombre' => 'Cognitiva'
         ]);
         $tipoDiscapacidad->save();
 
         $tipoDiscapacidad = new \App\TipoDiscapacidad([
-            'nombre' => 'psiquica'
+            'nombre' => 'Psíquica'
         ]);
         $tipoDiscapacidad->save();
 
         $tipoDiscapacidad = new \App\TipoDiscapacidad([
-            'nombre' => 'sensorial visual'
+            'nombre' => 'Sensorial visual'
         ]);
         $tipoDiscapacidad->save();
 
         $tipoDiscapacidad = new \App\TipoDiscapacidad([
-            'nombre' => 'sensorial auditiva'
+            'nombre' => 'Sensorial auditiva'
         ]);
         $tipoDiscapacidad->save();
 
         $tipoDiscapacidad = new \App\TipoDiscapacidad([
-            'nombre' => 'social y de la comunicación'
+            'nombre' => 'Social y de la comunicación'
         ]);
         $tipoDiscapacidad->save();
     }
