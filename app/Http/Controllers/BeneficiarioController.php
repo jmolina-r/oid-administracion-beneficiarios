@@ -27,6 +27,7 @@ use App\TelefonoTutor;
 use App\TipoDependencia;
 use App\TipoDiscapacidad;
 use App\Tutor;
+use \Validator;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -105,10 +106,17 @@ class BeneficiarioController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'rut' => 'required|unique:beneficiarios,rut|rut'
-        ], $this->messages($request));
+        //$this->validate($request, [
+        //    'rut' => 'required|unique:beneficiarios,rut'
+        //], $this->messages($request));
 
+        $validar =Validator::make($request->all(),[
+            'rut'   => 'unique:beneficiarios',
+        ]);
+
+        if($validar ->fails()){
+            return redirect()->back()->withInput()->withErrors($validar->errors());
+        }
         // Validate Fields
         $this->validate($request, $this->rules($request), $this->messages($request));
 
@@ -354,14 +362,15 @@ class BeneficiarioController extends Controller
         //Dependencias del paciente
         $dependencias = TipoDependencia::get();
 
+        //tramos de fonasa
         $fonasa = Fonasa::get();
-
+        //organizaciones isapre
         $isapre = Isapre::get();
 
         $tipo_discapacidades = TipoDiscapacidad::get();
 
         $previsiones = Prevision::get();
-
+        //sistemas de protección: chisol/sof, vehiculos, calle, chile crece contigo
         $datos_sociales = SistemaProteccion::get();
 
         $organizaciones_sociales = OrganizacionSocial::get();
@@ -369,6 +378,11 @@ class BeneficiarioController extends Controller
         $beneficios = Beneficio::get();
 
         $persona = Beneficiario::find($id);
+
+        $infoSocial = DatoSocial::find($id);
+
+        //carga datos de la tabla datos_sociales para beneficiario a editar.
+
 
 
         return view('beneficiario.edit')
@@ -384,7 +398,8 @@ class BeneficiarioController extends Controller
             ->with(compact('datos_sociales'))
             ->with(compact('organizaciones_sociales'))
             ->with(compact('beneficios'))
-            ->with(compact('persona'));
+            ->with(compact('persona'))
+            ->with(compact('infoSocial'));
 
     }
 
@@ -396,9 +411,9 @@ class BeneficiarioController extends Controller
      */
     public function update(Request $request)
     {
-        $this->validate($request, [
-            'rut' => 'required|exists:beneficiarios,rut|rut'
-        ], $this->messages($request));
+        //$this->validate($request, [
+        //    'rut' => 'required|exists:beneficiarios,rut|rut'
+        //], $this->messages($request));
 
         // Validate Fields
         $this->validate($request, $this->rules($request), $this->messages($request));
@@ -604,6 +619,19 @@ class BeneficiarioController extends Controller
 
         $arrDatoSocial['prevision_id'] = $request->input('prevision');
         $arrDatoSocial['sistema_proteccion_id'] = $request->input('sistema_proteccion');
+
+        //$arrDatoSocial['ficha_beneficiario_id'] = $fichaBeneficiario->id;
+        //$arrDatoSocial['observacion'] = $request->input('observacion_general');
+
+        if ($request->input('sistema_salud') && $request->input('sistema_salud') == 'fonasa') {
+            $arrDatoSocial['fonasa_id'] = $request->input('fonasa');
+            $arrDatoSocial['isapre_id'] = null;
+        } elseif ($request->input('sistema_salud') && $request->input('sistema_salud') == 'isapre') {
+            $arrDatoSocial['isapre_id'] = $request->input('isapre');
+            $arrDatoSocial['fonasa_id'] = null;
+        }
+
+
 
         $beneficiario->ficha_beneficiario->dato_social->update($arrDatoSocial);
 

@@ -44,12 +44,12 @@
 
         //Se define el sistema escogido para rellenar el select
         var sistemaEscogido;
-        if(tipoSistema=='Fonasa'){
+        if(tipoSistema=='fonasa'){
             sistemaEscogido = sistemas.fonasa;
-            $('#sistemaSaludSelec').attr('name', 'Fonasa')
+            $('#sistemaSaludSelec').attr('name', 'fonasa')
         }else{
             sistemaEscogido = sistemas.isapre;
-            $('#sistemaSaludSelec').attr('name', 'Isapre')
+            $('#sistemaSaludSelec').attr('name', 'isapre')
         }
 
         llenarSelect(sistemaEscogido, select);

@@ -41,4 +41,15 @@ class DatoSocial extends Model
     {
         return $this->belongsTo(Prevision::class);
     }
+
+
+    public function is_fonasa()
+    {
+        if($this->isapre_id == null & $this->fonasa_id!=null ){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
