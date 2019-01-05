@@ -13,6 +13,11 @@ class SistemaProteccionTableSeeder extends Seeder
     {
         // Cambiar a mayusculas.
         $sistemaProteccion = new \App\SistemaProteccion([
+            'nombre' => 'No tiene'
+        ]);
+        $sistemaProteccion->save();
+
+        $sistemaProteccion = new \App\SistemaProteccion([
             'nombre' => 'Chisol/sof'
         ]);
         $sistemaProteccion->save();

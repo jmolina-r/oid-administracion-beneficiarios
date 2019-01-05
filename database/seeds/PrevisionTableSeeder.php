@@ -12,6 +12,11 @@ class PrevisionTableSeeder extends Seeder
     public function run()
     {
         $prevision = new \App\Prevision([
+            'nombre' => 'No tiene',
+        ]);
+        $prevision->save();
+
+        $prevision = new \App\Prevision([
             //'nombre' => 'bansander',
             'nombre' => 'Bansander',
         ]);
