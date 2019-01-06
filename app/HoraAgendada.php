@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class HoraAgendada extends Model
 {
 
-    use SoftDeletes;
-
-    protected $fillable = ['beneficiario_id', 'asist_sn', 'hora', 'fecha', 'razon_inasis', 'user_id'];
+    protected $fillable = ['tipo','asist_sn', 'hora', 'fecha', 'razon_inasis', 'user_id'];
 
     protected $dates = ['deleted_at'];
 
@@ -19,10 +17,10 @@ class HoraAgendada extends Model
         return $this->hasOne(User::class);
     }
 
-    public function beneficiario()
-    {
-        return $this->hasOne(Beneficiario::class);
-    }
+    //public function beneficiario()
+    //{
+    //    return $this->hasOne(Beneficiario::class);
+    //}
 
     public function setAsisteSNAttribute($valor)
     {
