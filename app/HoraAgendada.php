@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class HoraAgendada extends Model
 {
+    use SoftDeletes;
 
     protected $fillable = ['tipo','asist_sn', 'hora', 'fecha', 'razon_inasis', 'user_id'];
 
