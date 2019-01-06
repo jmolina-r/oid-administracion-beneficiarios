@@ -594,7 +594,7 @@ class BeneficiarioController extends Controller
         // TelefonoTutor Update
         if ($request->input('nombre_tutor') || $request->input('apellido_tutor')) {
             if ($request->input('telefono_tutor')) {
-                if($beneficiario->tutor->telefonos->first() != null) {
+                if($beneficiario->tutor->telefonos->first()!= null) {
                     $beneficiario->tutor->telefonos->first()->update([
                         'numero' => $request->input('telefono_tutor'),
                     ]);

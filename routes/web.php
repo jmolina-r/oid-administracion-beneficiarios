@@ -247,9 +247,9 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
         'as' => 'reportabilidad.showEstadistica'
     ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
 
-    Route::get('/menuReportabilidad', [
+    Route::get('/menu', [
         'uses' => 'ReportabilidadController@index',
-        'as' => 'reportabilidad.menu'
+        'as' => 'reportabilidad.menuReportabilidad'
     ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
 
     Route::get('/reporteGeneralOID.pdf', [

@@ -32,10 +32,10 @@ use PhpParser\Node\Expr\Isset_;
 class ReportabilidadController extends Controller
 {
     public function index() {
-        $kines = Funcionario::where('tipo_funcionario_id','=',2)->get();
+        $kines = Funcionario::where('tipo_funcionario_id','=',1)->get();
+        $psicologos = Funcionario::where('tipo_funcionario_id','=',2)->get();
         $terapeutas = Funcionario::where('tipo_funcionario_id','=',4)->get();
-        $psicologos = Funcionario::where('tipo_funcionario_id','=',1)->get();
-        $fonoaudiologos = Funcionario::where('tipo_funcionario_id','=',5)->get();
+        $fonoaudiologos = Funcionario::where('tipo_funcionario_id','=',3)->get();
         return view('reportabilidad.menuReportabilidad', compact('kines','terapeutas','psicologos', 'fonoaudiologos'));
 
     }
@@ -201,6 +201,7 @@ class ReportabilidadController extends Controller
         return $pdf->stream('invoice');
 
     }
+
     public function showResultKine(Request $request){
         //KINE
         $user_rut=$request->kinesiologos;
@@ -587,6 +588,7 @@ class ReportabilidadController extends Controller
 
 
     }
+
     public function showResultHistoricaEntreMes(Request $request)
     {
 
@@ -676,6 +678,7 @@ class ReportabilidadController extends Controller
 
 
     }
+
     public function showResultHistorica(Request $request)
     {
         $anio = $request->anio;
