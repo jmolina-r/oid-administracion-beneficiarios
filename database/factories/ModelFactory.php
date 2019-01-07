@@ -527,6 +527,6 @@ $factory->define(App\Funcionario::class, function (Faker\Generator $faker) {
         'fecha_nacimiento' => $faker->dateTimeBetween($startDate = '-60 years', $endDate = '-4 years', $timezone = date_default_timezone_get()),
         'direccion' => $faker->address,
         'email' => $faker->email,
-        'tipo_funcionario_id' => $faker->regexify('[1-5]')
+        'tipo_funcionario_id' => $faker->regexify('[1-1]')
     ];
 });
