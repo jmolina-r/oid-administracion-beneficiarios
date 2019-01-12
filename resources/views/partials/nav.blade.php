@@ -96,16 +96,27 @@
                 </a>
 
                 <ul class='nav nav-stacked'>
-                    @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional']))
+                    @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
                     <li class=''>
-                        <a href='{{route('malla.show')}}'>
+                        <a href='{{route('malla.show2')}}'>
                             <div class='icon'>
                                 <i class='fa fa-caret-right'></i>
                             </div>
-                            <span>Mostrar malla</span>
+                            <span>Seleccionar malla</span>
                         </a>
                     </li>
                     @endif
+
+                    @if(Auth::user()->hasAnyRole(['kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional']))
+                            <li class=''>
+                                <a href='{{route('malla.showMalla',Auth::user()->id)}}'>
+                                    <div class='icon'>
+                                        <i class='fa fa-caret-right'></i>
+                                    </div>
+                                    <span>Mostar malla</span>
+                                </a>
+                            </li>
+                        @endif
                     @if(Auth::user()->hasAnyRole(['admin', 'jefatura']))
                     <li class=''>
                         <a href='{{route('malla.listaPrestaciones')}}'>

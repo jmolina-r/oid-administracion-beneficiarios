@@ -398,6 +398,16 @@ Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
         'as' => 'malla.show'
     ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
 
+    Route::get('/show2', [
+        'uses' => 'MallaController@show2',
+        'as' => 'malla.show2'
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+
+    Route::get('/show2/{id}', [
+        'uses' => 'MallaController@showMalla',
+        'as' => 'malla.showMalla'
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+
     Route::post('/validarusuario', [
         'uses' => 'MallaController@validarUsuario',
     ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');

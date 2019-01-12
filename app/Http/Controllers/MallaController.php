@@ -51,21 +51,24 @@ class MallaController extends Controller
      */
     public function store(Request $request)
     {
-        $fecha = $request->input('fecha');
-        $hora = $request->input('hora');
-        $rut_beneficiario = $request->input('rut');
-        $id = $request->input('id');
+        //$fecha = $request->input('fecha');
+        //$hora = $request->input('hora');
+        $fecha = '2018-01-10';
+        $hora = '8:00';
+        //$rut_beneficiario = $request->input('rut');
+        //$id = $request->input('id');
 
-        $beneficiario = Beneficiario::where('rut', $rut_beneficiario)->first();
+        //$beneficiario = Beneficiario::where('rut', $rut_beneficiario)->first();
         $id_beneficiario = $beneficiario->id;
 
         $hora_agendada = new HoraAgendada([
-            'beneficiario_id' => $id_beneficiario,
+            //'beneficiario_id' => 1,
+            'tipo'  =>  'individual',
             'asist_sn' => '-',
             'hora' => $hora,
             'fecha' => $fecha,
             'razon_inasis' => '-',
-            'user_id' => $id
+            'user_id' => 2 //corregir, debe ser id del user seleccionado, no dle user autentidicado
         ]);
 
         $hora_agendada->save();
@@ -86,13 +89,14 @@ class MallaController extends Controller
      *
      * @return view
      */
-    public function show()
+    public function show2()
     {
-        $id = Auth::user()->id;
-
+        //id del usuario que inicio sesión
+        //$id = Auth::user()->id;
         $usuarios = null;
-
+        //obtener usuarios para el select
         if(Auth::user()->hasAnyRole(['admin', 'secretaria'])){
+            //obtener los usuarios a los que se les puede agendar una hora.
             $usuarios = DB::table('users')
                 ->join('funcionarios', 'users.funcionario_id', '=', 'funcionarios.id')
                 ->join('tipo_funcionarios', 'funcionarios.tipo_funcionario_id', '=', 'tipo_funcionarios.id')
@@ -101,22 +105,75 @@ class MallaController extends Controller
                 ->where('tipo_funcionarios.nombre', '!=', 'asistente social')
                 ->where('tipo_funcionarios.nombre', '!=', 'otro')
                 ->get();
+
         }
 
-        $contentHeight = 286;
+        return view('malla.show2')
+            ->with(compact('usuarios'))
+            ->with(compact('id')); //id del usuario con inicio de sesión
+    }
+
+    public function showMalla($id)
+    {
+        //configuracion  calendario
+        $contentHeight = 223;
         $minTime = '08:00:00';
         $maxTime = '17:00:00';
-        $slotDuration = '00:45:00';
+        $slotDuration = '00:60:00';
         $slotLabelInterval = 1;
 
-        return view('malla.show')
-            ->with(compact('usuarios'))
-            ->with(compact('id'))
+        //id del usuario que inicio sesión
+        //$id = Auth::user()->id;
+
+        return view('malla.showMalla')
+            ->with(compact('id')) //id del usuario con inicio de sesión
             ->with(compact('contentHeight'))
             ->with(compact('minTime'))
             ->with(compact('maxTime'))
             ->with(compact('slotDuration'))
             ->with(compact('slotLabelInterval'));
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @return view
+     */
+    public function show()
+    {
+        //configuracion  calendario
+        $contentHeight = 223;
+        $minTime = '08:00:00';
+        $maxTime = '17:00:00';
+        $slotDuration = '00:60:00';
+        $slotLabelInterval = 1;
+
+        //id del usuario que inicio sesión
+        $id = Auth::user()->id;
+
+        $usuarios = null;
+
+        if(Auth::user()->hasAnyRole(['admin', 'secretaria'])){
+            //obtener los usuarios a los que se les puede agendar una hora.
+            $usuarios = DB::table('users')
+                ->join('funcionarios', 'users.funcionario_id', '=', 'funcionarios.id')
+                ->join('tipo_funcionarios', 'funcionarios.tipo_funcionario_id', '=', 'tipo_funcionarios.id')
+                ->select('users.id', 'users.username', 'tipo_funcionarios.nombre')
+                ->where('tipo_funcionarios.nombre', '!=', 'secretaria')
+                ->where('tipo_funcionarios.nombre', '!=', 'asistente social')
+                ->where('tipo_funcionarios.nombre', '!=', 'otro')
+                ->get();
+
+        }
+
+        return view('malla.show')
+            ->with(compact('usuarios'))
+            ->with(compact('id')) //id del usuario con inicio de sesión
+            ->with(compact('contentHeight'))
+            ->with(compact('minTime'))
+            ->with(compact('maxTime'))
+            ->with(compact('slotDuration'))
+            ->with(compact('slotLabelInterval'));
+
     }
 
     /**
@@ -162,44 +219,54 @@ class MallaController extends Controller
     {
         // Returning array
         $eventos = array();
+        $idFuncionario = $request->input('id');
+
 
         if (Auth::check())
         {
             $id = Auth::user()->id;
         }
-
-        $horasAgendadas = HoraAgendada::where('user_id', $request->input('id'))->get();
+        //se obtienen las horas agendadas del usuario seleccionado
+        $horasAgendadas = HoraAgendada::where('user_id', $idFuncionario)->get();
 
 
         foreach ($horasAgendadas as $horaAgendada) {
 
-            $beneficiario = Beneficiario::where('id', $horaAgendada->beneficiario_id)->first();
+            //$beneficiario = Beneficiario::where('id', $horaAgendada->beneficiario_id)->first();
 
+            //calculo de hora finalización
             $horaSeparada = explode(':',$horaAgendada->hora);
 
-            $hora = $horaSeparada[0];
-            $minutos = (int)$horaSeparada[1] + 45;
+            //$hora = $horaSeparada[0]+1;
+            //$minutos = (int)$horaSeparada[1] + 45;
 
-            if($minutos >= 60){
-                $hora = ((int)$horaSeparada[0] + 1);
-                $minutos = $minutos - 60;
+            //if($minutos >= 60){
+            //    $hora = ((int)$horaSeparada[0] + 1);
+            //    $minutos = $minutos - 60;
 
-                if($hora < 10){
-                    $hora = '0'.$hora;
-                }
+            //    if($hora < 10){
+            //        $hora = '0'.$hora;
+            //    }
 
-                if($minutos < 10){
-                    $minutos = '0'.$minutos;
-                }
+            //    if($minutos < 10){
+            //        $minutos = '0'.$minutos;
+            //    }
+            //}
+
+            //Obtención de la hora de termino
+            if($horaSeparada[0]<10){
+                $horaEnd ='0'.($horaSeparada[0]+1).':'.$horaSeparada[1];
+            }else{
+                $horaEnd = ($horaSeparada[0]+1).':'.$horaSeparada[1];
             }
 
-            $horaEnd = $hora.':'.$minutos;
 
             $e = array();
             $e['id'] = $horaAgendada->id;
-            $e['title'] = $beneficiario->nombre . " " . $beneficiario->apellido;
-            $e['start'] = $horaAgendada->fecha.'T'.$horaAgendada->hora;
-            $e['end'] = $horaAgendada->fecha.'T'.$horaEnd;
+            $e['title'] = 'Hora Test';
+            //$e['title'] = $beneficiario->nombre . " " . $beneficiario->apellido;
+            $e['start'] = $horaAgendada->fecha.' '.$horaAgendada->hora;
+            $e['end'] = $horaAgendada->fecha.' '.$horaEnd;
             $e['allDay'] = false;
 
             // Merge the event array into the return array
@@ -210,7 +277,7 @@ class MallaController extends Controller
 
         foreach ($horasAgendadasSoftdeleted as $horaDeleted) {
 
-            $beneficiario = Beneficiario::where('id', $horaDeleted->beneficiario_id)->first();
+            //$beneficiario = Beneficiario::where('id', $horaDeleted->beneficiario_id)->first();
 
             $horaSeparada = explode(':',$horaDeleted->hora);
 
@@ -234,7 +301,8 @@ class MallaController extends Controller
 
             $f = array();
             $f['id'] = $horaDeleted->id;
-            $f['title'] = $beneficiario->nombre . " " . $beneficiario->apellido . " (REALIZADO)";
+            $f['title'] = " (REALIZADO)";
+            //$f['title'] = $beneficiario->nombre . " " . $beneficiario->apellido . " (REALIZADO)";
             $f['start'] = $horaDeleted->fecha.'T'.$horaDeleted->hora;
             $f['end'] = $horaDeleted->fecha.'T'.$horaEnd;
             $f['allDay'] = false;
@@ -243,7 +311,7 @@ class MallaController extends Controller
 
 
             // Merge the event array into the return array
-            array_push($eventos, $f);
+            //array_push($eventos, $f);
         }
 
         $horasAgendadasInasistencia = HoraAgendada::onlyTrashed()->where('user_id', $request->input('id'))
@@ -251,7 +319,7 @@ class MallaController extends Controller
 
         foreach ($horasAgendadasInasistencia as $horaDeleted) {
 
-            $beneficiario = Beneficiario::where('id', $horaDeleted->beneficiario_id)->first();
+            //$beneficiario = Beneficiario::where('id', $horaDeleted->beneficiario_id)->first();
 
             $horaSeparada = explode(':',$horaDeleted->hora);
 
@@ -275,7 +343,8 @@ class MallaController extends Controller
 
             $f = array();
             $f['id'] = $horaDeleted->id;
-            $f['title'] = $beneficiario->nombre . " " . $beneficiario->apellido . " (INASISTENTE)";
+            $f['title'] = " (INASISTENTE)";
+            //$f['title'] = $beneficiario->nombre . " " . $beneficiario->apellido . " (INASISTENTE)";
             $f['start'] = $horaDeleted->fecha.'T'.$horaDeleted->hora;
             $f['end'] = $horaDeleted->fecha.'T'.$horaEnd;
             $f['allDay'] = false;
@@ -284,7 +353,7 @@ class MallaController extends Controller
 
 
             // Merge the event array into the return array
-            array_push($eventos, $f);
+            //array_push($eventos, $f);
         }
         return json_encode($eventos);
     }

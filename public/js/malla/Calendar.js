@@ -1,8 +1,8 @@
-(function() {
+(function () {
 
     var cal, calendarDate, d, m, y;
-    this.setDraggableEvents = function() {
-        return $("#events .external-event").each(function() {
+    this.setDraggableEvents = function () {
+        return $("#events .external-event").each(function () {
             var eventObject;
             eventObject = {
                 title: $.trim($(this).text())
@@ -26,7 +26,9 @@
 
     y = calendarDate.getFullYear();
 
+
     cal = $(".full-calendar").fullCalendar({
+        //inizializando opciones
         header: {
             center: "title",
             left: "month,agendaWeek,agendaDay,listWeek",
@@ -43,7 +45,7 @@
             month: "Mes",
             listWeek: "Lista"
         },
-        firstDay: Monday=1,
+        firstDay: Monday = 1,
         droppable: true,
         editable: false,
         selectable: true,
@@ -58,43 +60,72 @@
         slotLabelFormat: 'H:mm',
         timeFormat: 'H:mm',
 
+        //paramentros enviados desde la vista malla/show
         contentHeight: parseInt(document.getElementById("contentHeight").value),
         minTime: document.getElementById("minTime").value,
         maxTime: document.getElementById("maxTime").value,
         slotDuration: document.getElementById("slotDuration").value,
         slotLabelInterval: parseInt(document.getElementById("slotLabelInterval").value),
 
+        //llama a evento poblar
         eventSources: [
             {
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url: 'poblar/',
-                data : {id : $('#id').val()}
+                url: '/malla/poblar',
+                data: {id: $('#id').val()},
+                success: function (events) {
+                    console.log("id fullcalendar id " + $('#id').val());
+                    console.log(events);
+                }
             }
         ],
 
-        select: function(start, end) {
+        //Handlers Se dispara cuando se realiza una selección de fecha/hora disponible en el calendario. https://fullcalendar.io/docs/select-callback
+        select: function (start, end) {
 
-            if(puedeAsignarHora() == "false"){
-                alert("No tiene los permisos para agendar horas.");
+            var fechaInicio = moment(start).format('YYYY-MM-DD');
+            //var hora = moment(start).format('HH:mm');
+            //var date = new Date(start);
+            var fechaActual =moment(calendarDate).format('YYYY-MM-DD');
+            var horaActual=moment(calendarDate).format('HH:mm');
+            var horaInicio = moment(start).format('HH:mm');
+            moment.locale('es');
+
+            console.log("inicio evento: " + fechaInicio);
+            //console.log('calendardate '+calendarDate);
+            console.log('ahora '+fechaActual);
+            //validar que el rol tiene permiso para agendar
+            if (puedeAsignarHora() == "false") {
+                alert("No tiene los permisos para agendar horas .");
                 return;
             }
 
-            var date = new Date(start);
-            var ahora = new Date();
+            //validar no agendar en hora/dia en el pasado
 
-            var date1 = date.toLocaleDateString();
-            var date2 = ahora.toLocaleDateString();
+            if(fechaInicio <= fechaActual) {
+                if (horaInicio<=horaActual){
 
-            if(date1 < date2){
-                alert("No se puede agendar hora en un día pasado");
-                return;
+                    alert("No se puede agendar hora en un día pasado");
+                    return;
+
+                }
+
             }
 
-            return bootbox.prompt({
+
+            document.getElementById("fecha").value = fechaInicio;
+            document.getElementById("fecha").placeholder = fechaInicio;
+            document.getElementById("hora").value = horaInicio;
+            document.getElementById("hora").placeholder = horaInicio;
+
+            //desplagar modal para agendar hora
+            $('#exampleModal').modal('show');
+            //
+            return; /*bootbox.prompt({
                 title: 'Ingrese rut de beneficiario',
-                placeholder: 'El RUT debe tener el formato 12345678-9',
+                placeholder: 'El RUT debe tener el formato 12345678-9 xxxxxx',
                 buttons: {
                     confirm: {
                         label: 'Ingresar'
@@ -103,53 +134,65 @@
                         label: 'Cancelar'
                     }
                 },
-                callback: function(value) {
-
-                    if(value == null){
+                callback: function (value) {
+                    var valido = true;
+                    //verificar si sirve
+                    if (value == null) {
                         return;
                     }
+                    //validar campo en blando
+                    if (value == "") {
+                        bootbox.alert("Your message here…")
+                        valido = false;
+                    }
+                    //validar rut
+                    var expreg = new RegExp("\d{3,8}-[\d|kK]{1}");
 
-                    if(value == ""){
-                        alert("El rut no puede quedar en blanco");
+                    if (expreg.test(value) == false) {
+                        alert("El formato del rut es incorrecto");
                         return;
                     }
-
+                    /*
                     var formato = /.[.]./g;
 
-                    if(formato.test(value)){
+                    /*if (formato.test(value)) {
                         alert("El formato del rut es incorrecto");
                         return;
                     }
 
                     var Fn = {
                         // Valida el rut con su cadena completa "XXXXXXXX-X"
-                        validaRut : function (rutCompleto) {
-                            if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test( rutCompleto ))
+                        validaRut: function (rutCompleto) {
+                            if (!/^[0-9]+[-|‐]{1}[0-9kK]{1}$/.test(rutCompleto))
                                 return false;
-                            var tmp 	= rutCompleto.split('-');
-                            var digv	= tmp[1];
-                            var rut 	= tmp[0];
-                            if ( digv == 'K' ) digv = 'k' ;
-                            return (Fn.dv(rut) == digv );
+                            var tmp = rutCompleto.split('-');
+                            var digv = tmp[1];
+                            var rut = tmp[0];
+                            if (digv == 'K') digv = 'k';
+                            return (Fn.dv(rut) == digv);
                         },
-                        dv : function(T){
-                            var M=0,S=1;
-                            for(;T;T=Math.floor(T/10))
-                                S=(S+T%10*(9-M++%6))%11;
-                            return S?S-1:'k';
+                        dv: function (T) {
+                            var M = 0, S = 1;
+                            for (; T; T = Math.floor(T / 10))
+                                S = (S + T % 10 * (9 - M++ % 6)) % 11;
+                            return S ? S - 1 : 'k';
                         }
                     }
 
-                    if(Fn.validaRut(value) == false){
+                    if (Fn.validaRut(value) == false) {
                         alert('Debe ingresar un rut válido');
                         return;
                     }
 
-                    var nombre = encontrarNombre(value, start);
-                    if(nombre == null){
+
+                    //obtener nombre
+                    //var nombre = encontrarNombre(value, start);
+                    var nombre = "nombre prueba";
+                    if (nombre == null) {
                         alert('El beneficiario no se encuentra en la base de datos');
                         return;
                     }
+                    //render calendario
                     cal.fullCalendar("renderEvent", {
                         title: nombre,
                         start: start,
@@ -159,9 +202,12 @@
                     return cal.fullCalendar('unselect');
 
                 }
-            });
+
+
+            })*/
         },
-        eventClick: function(calEvent, jsEvent, view) {
+        //Handlers Se dispara cuando se realiza una selección de un evento agendado https://fullcalendar.io/docs/eventClick
+        eventClick: function (calEvent, jsEvent, view) {
 
             var idHoraAgendada = calEvent.id;
 
@@ -177,43 +223,42 @@
                     idHora: idHoraAgendada
                 },
                 async: false,
-                success: function(data, textStatus, jqXHR) {
+                success: function (data, textStatus, jqXHR) {
                     existeFicha = data;
                 },
-                error: function(jqXHR, textStatus, errorThrown) {
+                error: function (jqXHR, textStatus, errorThrown) {
                     return;
                 }
             });
 
-            if(puedeAsignarHora()=="false"){
-                if(existeFicha == "false"){
-                    if(confirm("El beneficiario no tiene ficha inicial activa. Presione Cancelar para marcar la inasistencia.")){
+            if (puedeAsignarHora() == "false") {
+                if (existeFicha == "false") {
+                    if (confirm("El beneficiario no tiene ficha inicial activa. Presione Cancelar para marcar la inasistencia.")) {
                         return;
-                    }else{
+                    } else {
                         calEvent.url = '/registro_prestacion/inasistencia/' + calEvent.id;
                         window.open(calEvent.url, '_self');
                     }
-
 
 
                 }
             }
 
 
-            if(calEvent.realizado) {
+            if (calEvent.realizado) {
                 alert("Ya se han asignado prestaciones a esa hora agendada");
                 return;
-            }else{
+            } else {
 
-                if(puedeAsignarHora()=="true"){
-                    if(confirm('¿Desea eliminar la hora?')){
+                if (puedeAsignarHora() == "true") {
+                    if (confirm('¿Desea eliminar la hora?')) {
                         eliminarHora(calEvent.id);
-                    }else{
-                        if(puedeAtenderHora()=="true"){
-                            if(confirm("¿El beneficiario registra asistencia? o presione Cancelar para marcar la inasistencia.")){
+                    } else {
+                        if (puedeAtenderHora() == "true") {
+                            if (confirm("¿El beneficiario registra asistencia? o presione Cancelar para marcar la inasistencia.")) {
                                 calEvent.url = '/registro_prestacion/' + calEvent.id;
                                 window.open(calEvent.url, '_self');
-                            }else{
+                            } else {
                                 calEvent.url = '/registro_prestacion/inasistencia/' + calEvent.id;
                                 window.open(calEvent.url, '_self');
                             }
@@ -222,10 +267,10 @@
                     return;
                 }
 
-                if(confirm("¿El beneficiario registra asistencia?")){
+                if (confirm("¿El beneficiario registra asistencia?")) {
                     calEvent.url = '/registro_prestacion/' + calEvent.id;
                     window.open(calEvent.url, '_self');
-                }else{
+                } else {
                     calEvent.url = '/registro_prestacion/inasistencia/' + calEvent.id;
                     window.open(calEvent.url, '_self');
                 }
@@ -233,7 +278,8 @@
             }
             return false;
         },
-        drop: function(date, allDay) {
+        //Handlers
+        drop: function (date, allDay) {
             var copiedEventObject, eventClass, originalEventObject;
             originalEventObject = $(this).data("eventObject");
             originalEventObject.id = Math.floor(Math.random() * 99999);
@@ -252,6 +298,8 @@
         }
     });
 
+
+    //no usado hasta ahora
     function guardarHora(event) {
         var fecha = moment(event).format('DD/MM/YYYY');
         var hora = moment(event).format('hh:mm');
@@ -267,7 +315,7 @@
                 fecha: fecha,
                 hora: hora
             },
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
 
             }
         });
@@ -286,17 +334,19 @@
             data: {
                 rutBuscado: rut
             },
-            success: function(data, textStatus, jqXHR) {
+            success: function (data, textStatus, jqXHR) {
                 var beneficiario_encontrado = $.parseJSON(data);
                 nombre_encontrado = beneficiario_encontrado.nombre;
             },
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
 
             }
         });
 
+        //Agendar hora
         var fecha = moment(start).format('YYYY-MM-DD');
         var hora = moment(start).format('HH:mm');
+        /*
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -310,19 +360,15 @@
                 rut: rut,
                 id: $('#id').val()
             },
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
 
             }
         });
-
+        */
         return nombre_encontrado;
     }
 
-    $("#id").change(function() {
-        location.reload();
-    });
-
-    function puedeAsignarHora(){
+    function puedeAsignarHora() {
 
         var respuesta = "";
         $.ajax({
@@ -333,17 +379,18 @@
             url: "/malla/validarusuario",
             type: "POST",
 
-            success: function(data, textStatus, jqXHR) {
+            success: function (data, textStatus, jqXHR) {
                 respuesta = data;
             },
 
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
             }
         });
         return respuesta;
     }
 
-    function puedeAtenderHora(){
+    //
+    function puedeAtenderHora() {
         var respuesta = "";
         $.ajax({
             headers: {
@@ -353,17 +400,17 @@
             url: "/malla/puedeatender",
             type: "POST",
 
-            success: function(data, textStatus, jqXHR) {
+            success: function (data, textStatus, jqXHR) {
                 respuesta = data;
             },
 
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
             }
         });
         return respuesta;
     }
 
-    function eliminarHora(id){
+    function eliminarHora(id) {
 
         $.ajax({
             headers: {
@@ -375,17 +422,15 @@
             data: {
                 idHora: id
             },
-            success: function(data, textStatus, jqXHR) {
+            success: function (data, textStatus, jqXHR) {
                 alert('La hora se ha eliminado correctamente.');
                 location.reload();
             },
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
                 alert('Hubo un error al eliminar la hora. Reintente.');
             }
         });
 
     }
-
-
 
 })();
