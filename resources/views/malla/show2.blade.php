@@ -143,8 +143,8 @@
                     @endif
                     <div class="row">
                         <div class='col-sm-12'>
-                            <td><a id='consultar_malla' class="btn btn-primary btn-block" href="{{route('malla.showMalla',1)}}">Agregar
-                                    Nueva Prestación</a></td>
+                            <td><a id='consultar_malla' class="btn btn-primary btn-block" href="{{route('malla.showMalla',1)}}">
+                                    Agregar Nueva Prestación</a></td>
                         </div>
                     </div>
 

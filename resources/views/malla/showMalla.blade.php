@@ -112,6 +112,7 @@
                     <div class='col-xs-12'>
                         <div class='group-header'>
                         </div>
+                        {{ csrf_field() }}
                         @include('malla.showAgregarHora')
                         <div class='row'>
                             <div class='col-sm-12'>

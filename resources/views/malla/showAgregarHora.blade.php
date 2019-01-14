@@ -2,7 +2,8 @@
     Agendar Hora
 </button>
 <form role="form" id="formulario-agendar-hora" action="{{route('malla.store')}}" accept-charset="UTF-8"
-      style="margin-bottom: 0;" method="post">
+      method="post">
+    {{ csrf_field() }}
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -11,28 +12,27 @@
                     <h3>Agendar Hora</h3>
                 </div>
                 <div class="modal-body">
-                    <form role="form" method="POST" id="formulario-agendar-hora" action="{{route('malla.store')}}">
-                        {{ csrf_field() }}
                         <div class="form-inline form-group">
                             <div class="form-group">
+                                <input id="id_funcionario" name="id_funcionario" type="text" >
                                 <label for="fecha" class="col-form-label">Fecha: </label>
-                                <input type="text" class="form-control" id="fecha" placeholder="" value="12" readonly>
+                                <input type="text" name="fecha" class="form-control" id="fecha" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="hora" class="col-form-label">Hora:</label>
-                                <input type="text" class="form-control" id="hora" placeholder="" value="12" readonly>
+                                <input type="text" name="hora" class="form-control" id="hora" readonly>
 
                             </div>
                             <div class="form-group">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                <label class="form-check-label" for="defaultCheck1">
+                                <label class="form-check-label" for="defaultCheck1" >
                                     Repetir semanalmente
                                 </label>
+                                <input class="form-check-input" type="checkbox" value="" id="repetir">
                             </div>
                         </div>
                         <div class="form-inline form-group">
                             <label for="sesiones" class="col-form-label">Cantidad de sesiones:</label>
-                            <input type="text" class="form-control" id="seseiones" value="">
+                            <input type="text" id="cantSesiones" class="form-control" value="">
 
                         </div>
                         <!--
@@ -46,10 +46,9 @@
                         <div class="form-check form-inline">
                             <h4>Tipo de sesión</h4>
                             <label class="form-check-label" for="individual">Individual</label>
-                            <input class="form-check-input" type="radio" name="tipo" id="tipo" value="individual"
-                                   checked>
+                            <input class="form-check-input" type="radio" name="tipo" id="tipo" value="individual" required>
                             <label class="form-check-label" for="exampleRadios1">Grupal</label>
-                            <input class="form-check-input" type="radio" name="tipo" id="tipo" value="grupal">
+                            <input class="form-check-input" type="radio" name="tipo" id="tipo" value="grupal" required>
 
                         </div>
 
@@ -58,7 +57,6 @@
                         <div class="form-inline form-group">
                             <label for="addBenefiario" class="col-form-label">Ingresar Rut Beneficiario:</label>
                             <input type="text" class="form-control" id="addBenefiario" value="">
-
                             <button type="button" class="btn btn-primary">Agregar</button>
                         </div>
 
@@ -66,14 +64,10 @@
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
-
-
-                    </form>
                 </div>
             </div>
         </div>
     </div>
-    {{ csrf_field() }}
 </form>
 
 

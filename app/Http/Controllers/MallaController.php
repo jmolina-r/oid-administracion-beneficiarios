@@ -51,24 +51,17 @@ class MallaController extends Controller
      */
     public function store(Request $request)
     {
-        //$fecha = $request->input('fecha');
-        //$hora = $request->input('hora');
-        $fecha = '2018-01-10';
-        $hora = '8:00';
-        //$rut_beneficiario = $request->input('rut');
-        //$id = $request->input('id');
-
         //$beneficiario = Beneficiario::where('rut', $rut_beneficiario)->first();
-        $id_beneficiario = $beneficiario->id;
+        //$id_beneficiario = $beneficiario->id;
 
         $hora_agendada = new HoraAgendada([
             //'beneficiario_id' => 1,
             'tipo'  =>  'individual',
             'asist_sn' => '-',
-            'hora' => $hora,
-            'fecha' => $fecha,
+            'hora' => $request->input('hora'),
+            'fecha' => $request->input('fecha'),
             'razon_inasis' => '-',
-            'user_id' => 2 //corregir, debe ser id del user seleccionado, no dle user autentidicado
+            'user_id' => $request->input('id_funcionario')//corregir, debe ser id del user seleccionado, no dle user autentidicado
         ]);
 
         $hora_agendada->save();

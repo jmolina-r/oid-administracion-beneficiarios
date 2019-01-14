@@ -97,32 +97,37 @@
             //console.log('calendardate '+calendarDate);
             console.log('ahora '+fechaActual);
             //validar que el rol tiene permiso para agendar
-            if (puedeAsignarHora() == "false") {
-                alert("No tiene los permisos para agendar horas .");
-                return;
-            }
+
+            //if (puedeAsignarHora() == "false") {
+            //    alert("No tiene los permisos para agendar horas .");
+            //    return;
+            //}
 
             //validar no agendar en hora/dia en el pasado
 
-            if(fechaInicio <= fechaActual) {
-                if (horaInicio<=horaActual){
-
+            if(fechaInicio < fechaActual) {
                     alert("No se puede agendar hora en un día pasado");
                     return;
+            }
 
+            if(fechaInicio == fechaActual) {
+                if (horaInicio<=horaActual){
+                    alert("No se puede agendar hora en un día pasado");
+                    return;
                 }
-
             }
 
 
-            document.getElementById("fecha").value = fechaInicio;
-            document.getElementById("fecha").placeholder = fechaInicio;
-            document.getElementById("hora").value = horaInicio;
-            document.getElementById("hora").placeholder = horaInicio;
+
+            //
+            //$('input[name="fecha"]').val("23");
+            //$('input[name=fecha]').val(fechaInicio);
 
             //desplagar modal para agendar hora
             $('#exampleModal').modal('show');
-            //
+            document.getElementById("hora").value = horaInicio;
+            document.getElementById("fecha").value = fechaInicio;
+            document.getElementById("id_funcionario").value=document.getElementById("id").value;
             return; /*bootbox.prompt({
                 title: 'Ingrese rut de beneficiario',
                 placeholder: 'El RUT debe tener el formato 12345678-9 xxxxxx',
@@ -207,11 +212,13 @@
             })*/
         },
         //Handlers Se dispara cuando se realiza una selección de un evento agendado https://fullcalendar.io/docs/eventClick
+        /*
         eventClick: function (calEvent, jsEvent, view) {
 
             var idHoraAgendada = calEvent.id;
 
             var existeFicha = "";
+
 
             $.ajax({
                 headers: {
@@ -230,6 +237,7 @@
                     return;
                 }
             });
+
 
             if (puedeAsignarHora() == "false") {
                 if (existeFicha == "false") {
@@ -278,6 +286,8 @@
             }
             return false;
         },
+         */
+
         //Handlers
         drop: function (date, allDay) {
             var copiedEventObject, eventClass, originalEventObject;
@@ -300,6 +310,7 @@
 
 
     //no usado hasta ahora
+    /*
     function guardarHora(event) {
         var fecha = moment(event).format('DD/MM/YYYY');
         var hora = moment(event).format('hh:mm');
@@ -320,10 +331,13 @@
             }
         });
     }
+    */
+
 
     function encontrarNombre(rut, start) {
         var nombre_encontrado;
 
+        /*
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -342,6 +356,7 @@
 
             }
         });
+        */
 
         //Agendar hora
         var fecha = moment(start).format('YYYY-MM-DD');
@@ -368,6 +383,7 @@
         return nombre_encontrado;
     }
 
+    /*
     function puedeAsignarHora() {
 
         var respuesta = "";
@@ -388,8 +404,8 @@
         });
         return respuesta;
     }
-
-    //
+    */
+    /*
     function puedeAtenderHora() {
         var respuesta = "";
         $.ajax({
@@ -409,7 +425,8 @@
         });
         return respuesta;
     }
-
+    */
+    /*
     function eliminarHora(id) {
 
         $.ajax({
@@ -432,5 +449,5 @@
         });
 
     }
-
+    */
 })();
