@@ -29,7 +29,10 @@ Route::get('/users/{id}/roles', 'Auth\FindController@userInfoRolesJson');
 Route::get('/users/{id}/funcionario', 'Auth\FindController@userInfoFuncionarioJson');
 
 
-
+Route::get('/construcción', [
+    'uses' => 'ReportabilidadController@index',
+    'as' => 'reportabilidad.menuReportabilidad'
+])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -398,6 +401,21 @@ Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
         'as' => 'malla.show'
     ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
 
+    Route::get('/show2', [
+        'uses' => 'MallaController@show2',
+        'as' => 'malla.show2'
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+
+    Route::get('/show2/{id}', [
+        'uses' => 'MallaController@showMalla',
+        'as' => 'malla.showMalla'
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+
+    Route::get('/create/{id}', [
+        'uses' => 'MallaController@create',
+        'as' => 'malla.CreateAgendarHora'
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+
     Route::post('/validarusuario', [
         'uses' => 'MallaController@validarUsuario',
     ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
@@ -528,6 +546,5 @@ Route::group(['prefix' => 'funcionario', 'middleware' => 'auth'], function () {
         'uses' => 'FuncionarioController@funcionarioInfoJson',
         'as' => 'funcionario.funcionarioInfoJson'
     ])->middleware('roles:admin|coordinador_oficina');
-
 
 });

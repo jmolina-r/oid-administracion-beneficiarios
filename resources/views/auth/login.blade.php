@@ -69,7 +69,7 @@
 
                       <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
                         <div class='controls with-icon-over-input'>
-                            <input id="username"  placeholder="Rut" class="form-control" name="username" value="{{ old('username') }}" data-rule-required="true" autofocus>
+                            <input id="username"  placeholder="Usuario" class="form-control" name="username" value="{{ old('username') }}" data-rule-required="true" autofocus>
 
                           <i class='fa fa-user text-muted'></i>
                         </div>
