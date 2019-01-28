@@ -108,7 +108,7 @@ class BeneficiarioController extends Controller
     {
         //$this->validate($request, [
         //    'rut' => 'required|unique:beneficiarios,rut'
-        //], $this->messages($request));
+        //], $this->messagesmessages($request));
 
         $validar =Validator::make($request->all(),[
             'rut'   => 'unique:beneficiarios',

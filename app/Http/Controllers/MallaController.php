@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use function MongoDB\BSON\toJSON;
 use Psy\Util\Json;
+use \Validator;
 
 class MallaController extends Controller
 {
@@ -38,9 +39,11 @@ class MallaController extends Controller
      * @param $id
      * @return view
      */
-    public function create($id)
+    public function create($idFuncionario)
     {
-        //
+        //redireccionar a vista createAgendaHora
+        return view('malla.CreateAgendarHora')
+            ->with(compact('id'));
     }
 
     /**
@@ -54,8 +57,11 @@ class MallaController extends Controller
         //$beneficiario = Beneficiario::where('rut', $rut_beneficiario)->first();
         //$id_beneficiario = $beneficiario->id;
 
+        // Validate Fields
+
+        //almacenar hora
         $hora_agendada = new HoraAgendada([
-            //'beneficiario_id' => 1,
+            'beneficiario_id' => 'rut',
             'tipo'  =>  'individual',
             'asist_sn' => '-',
             'hora' => $request->input('hora'),
@@ -656,6 +662,14 @@ class MallaController extends Controller
         $rules = [
             'nombre' => 'required|max:200',
             'area' => 'required|max:200'
+        ];
+        return $rules;
+    }
+
+    private function rulesAgendarHora(Request $request)
+    {
+        $rules = [
+            'rut' => 'required|exists:beneficiarios,rut'
         ];
         return $rules;
     }

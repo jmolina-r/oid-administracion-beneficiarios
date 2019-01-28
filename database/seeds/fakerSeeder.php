@@ -12,9 +12,9 @@ class fakerSeeder extends Seeder
     public function run()
     {
         // creación de beneficiarios
-        for ($i = 0; $i < 4; $i++) {
-            $beneficiario = factory(App\Beneficiario::class)->create();
-        }
+        //for ($i = 0; $i < 4; $i++) {
+        //    $beneficiario = factory(App\Beneficiario::class)->create();
+        //}
 
         //creación de funcionarios
         //for ($i = 0; $i < 4; $i++) {

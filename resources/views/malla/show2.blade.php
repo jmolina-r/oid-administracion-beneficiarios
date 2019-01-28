@@ -92,7 +92,7 @@
         $('#consultar_malla').click(function () {
             console.log('El texto seleccionado es:',
                 $('select[name="id_funcionario"] option:selected').val());
-            var id = $('select[name="id_funcionario"] option:selected').val();
+            var id_funcionario = $('select[name="id_funcionario"] option:selected').val();
 
 
             var href = $("#consultar_malla").attr("href");
@@ -100,7 +100,7 @@
 
             href = href.substring(0, href.length - 1);
             console.log('El texto :', href)
-            href2 = $("#consultar_malla").attr("href", href + id);
+            href2 = $("#consultar_malla").attr("href", href + id_funcionario);
             console.log('El texto :', href2);
 
         });
@@ -141,12 +141,13 @@
                     @else
                         <input id="id" name="id" type="hidden" value="{{$id}}">
                     @endif
-                    <div class="row">
+
                         <div class='col-sm-12'>
                             <td><a id='consultar_malla' class="btn btn-primary btn-block" href="{{route('malla.showMalla',1)}}">
-                                    Agregar Nueva Prestación</a></td>
+                                    Ver Malla</a>
+                            </td>
                         </div>
-                    </div>
+
 
                 </div>
                 @include('partials.footer')

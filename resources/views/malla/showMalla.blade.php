@@ -5,17 +5,23 @@
 @endsection
 
 @section("styles_before")
-    <link href="{{ asset("/assets/stylesheets/plugins/fullcalendar/fullcalendar.css") }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset("/assets/stylesheets/plugins/fullcalendar/fullcalendar.css") }}" rel="stylesheet"
+          type="text/css" media="all"/>
 @endsection
 
 @section("styles")
-    <link href="{{ asset("/assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css") }}" rel="stylesheet" type="text/css" media="all" />
-    <link href="{{ asset("/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css") }}" rel="stylesheet" type="text/css" media="all" />
-    <link href="{{ asset('/assets/stylesheets/plugins/select2/select2.css') }}" rel="stylesheet" type="text/css" media="all" />
-    <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset("/assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css") }}"
+          rel="stylesheet" type="text/css" media="all"/>
+    <link href="{{ asset("/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css") }}"
+          rel="stylesheet" type="text/css" media="all"/>
+    <link href="{{ asset('/assets/stylesheets/plugins/select2/select2.css') }}" rel="stylesheet" type="text/css"
+          media="all"/>
+    <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all"/>
 
-    <link href="{{ asset("assets/stylesheets/plugins/fullcalendar/fullcalendar.css") }}" rel="stylesheet" type="text/css" media="all" />
-    <link href="{{ asset("assets/stylesheets/plugins/wysihtml/wysihtml.css") }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset("assets/stylesheets/plugins/fullcalendar/fullcalendar.css") }}" rel="stylesheet"
+          type="text/css" media="all"/>
+    <link href="{{ asset("assets/stylesheets/plugins/wysihtml/wysihtml.css") }}" rel="stylesheet" type="text/css"
+          media="all"/>
 
 @endsection
 
@@ -31,7 +37,8 @@
     <!-- / jquery ui -->
     <script src="{{ asset("/assets/javascripts/jquery/jquery-ui.min.js") }}" type="text/javascript"></script>
     <!-- / jQuery UI Touch Punch -->
-    <script src="{{ asset("/assets/javascripts/jquery/jquery.ui.touch-punch.min.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("/assets/javascripts/jquery/jquery.ui.touch-punch.min.js") }}"
+            type="text/javascript"></script>
     <!-- / bootstrap [required] -->
     <script src="{{ asset("/assets/javascripts/bootstrap/bootstrap.js") }}" type="text/javascript"></script>
     <!-- / modernizr -->
@@ -47,13 +54,16 @@
     <!-- / END - moments-->
 
     <!-- / START - datepicker-->
-    <script src="{{ asset("/assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("/assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js") }}"
+            type="text/javascript"></script>
     <!-- / END - datepicker-->
 
     <!-- / START - Validaciones-->
-    <script src="{{ asset("/assets/javascripts/plugins/validate/jquery.validate.min.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("/assets/javascripts/plugins/validate/jquery.validate.min.js") }}"
+            type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
-    <script src="{{ asset("/assets/javascripts/plugins/validate/additional-methods.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("/assets/javascripts/plugins/validate/additional-methods.js") }}"
+            type="text/javascript"></script>
 
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
 
@@ -61,12 +71,13 @@
 
     <!-- / START - page related files and scripts [optional] -->
     <script src="{{ asset("assets/javascripts/plugins/common/moment.min.js") }}" type="text/javascript"></script>
-    <script src="{{ asset("assets/javascripts/plugins/fullcalendar/fullcalendar.min.js") }}" type="text/javascript"></script>
+    <script src="{{ asset("assets/javascripts/plugins/fullcalendar/fullcalendar.min.js") }}"
+            type="text/javascript"></script>
     <script src="{{ asset("assets/javascripts/plugins/bootbox/bootbox.min.js") }}" type="text/javascript"></script>
 
     <script src="{{ asset('/js/malla/Calendar.js') }}" type="text/javascript"></script>
     <script>
-        $("#new-event").on('submit', function(e) {
+        $("#new-event").on('submit', function (e) {
             var value;
             e.preventDefault();
             value = $("#new-event-input").val();
@@ -90,6 +101,32 @@
         })
     </script>
 
+    <script>
+
+        function encontrarNombre(rut, start) {
+            var nombre_encontrado;
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                async: false,
+                url: "/malla/getnombre",
+                type: "GET",
+                data: {
+                    rutBuscado: rut
+                },
+                success: function (data, textStatus, jqXHR) {
+                    var beneficiario_encontrado = $.parseJSON(data);
+                    nombre_encontrado = beneficiario_encontrado.nombre;
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert('El beneficiario no se encuentra en la base de datos');
+                    return;
+                }
+            });
+        }
+    </script>
+
     <!-- / END - page related files and scripts [optional] -->
 @endsection
 
@@ -107,13 +144,26 @@
                     <input id="maxTime" name="maxTime" type="hidden" value="{{$maxTime}}">
                     <input id="slotDuration" name="slotDuration" type="hidden" value="{{$slotDuration}}">
                     <input id="slotLabelInterval" name="slotLabelInterval" type="hidden" value="{{$slotLabelInterval}}">
-                    <input id="id" name="id" type="hidden" value="{{$id}}">
+                    <input id="id" name="id_funcionario" type="hidden" value="{{$id}}">
 
                     <div class='col-xs-12'>
                         <div class='group-header'>
                         </div>
-                        {{ csrf_field() }}
-                        @include('malla.showAgregarHora')
+                        <div class="col-xs-12">
+                            <div class='box'>
+                                <div class='box-content box-padding'>
+                                    <div class="form-group">
+                                        <h3 class='control-label' for='inputText'>Profesional:</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!--
+                        <a type="button" class="btn btn-primary" href='{{route('malla.CreateAgendarHora')}}'>
+                            Agendar Hora
+                        </a>-->
                         <div class='row'>
                             <div class='col-sm-12'>
                                 <div class='row'>

@@ -1,6 +1,4 @@
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-    Agendar Hora
-</button>
+
 <form role="form" id="formulario-agendar-hora" action="{{route('malla.store')}}" accept-charset="UTF-8"
       method="post">
     {{ csrf_field() }}
@@ -55,8 +53,8 @@
                         <h4>Seleccionar beneficiarios</h4>
 
                         <div class="form-inline form-group">
-                            <label for="addBenefiario" class="col-form-label">Ingresar Rut Beneficiario:</label>
-                            <input type="text" class="form-control" id="addBenefiario" value="">
+                            <label for="rut" class="col-form-label">Ingresar Rut Beneficiario:</label>
+                            <input type="text" class="form-control" id="rut" value="">
                             <button type="button" class="btn btn-primary">Agregar</button>
                         </div>
 
