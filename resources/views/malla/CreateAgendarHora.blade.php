@@ -85,8 +85,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="row">
                             <div class='col-sm-12'>
                                 <div class='box'>
@@ -94,17 +92,17 @@
                                         <form role="form" id="formulario-agendar-hora" action="{{route('malla.store')}}"
                                               accept-charset="UTF-8" method="post">
                                             {{ csrf_field() }}
+                                            <input id="id" name="id_funcionario" type="hidden" value="{{$id}}">
                                             <div class="form-inline form-group">
                                                 <div class="form-group">
-                                                    <input id="id_funcionario" name="id_funcionario" type="text">
                                                     <label for="fecha" class="col-form-label">Fecha: </label>
                                                     <input type="text" name="fecha" class="form-control" id="fecha"
-                                                           readonly>
+                                                           value="{{$fecha}}" readonly>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="hora" class="col-form-label">Hora:</label>
                                                     <input type="text" name="hora" class="form-control" id="hora"
-                                                           readonly>
+                                                           value="{{$hora}}" readonly>
 
                                                 </div>
                                                 <div class="form-group">
@@ -118,7 +116,7 @@
                                             <div class="form-inline form-group">
                                                 <label for="sesiones" class="col-form-label">Cantidad de
                                                     sesiones:</label>
-                                                <input type="text" id="cantSesiones" class="form-control" value="">
+                                                <input type="text" id="cantSesiones" name="cantSesiones" class="form-control" value="1">
 
                                             </div>
                                             <!--
@@ -133,12 +131,10 @@
                                                 <h4>Tipo de sesión</h4>
                                                 <label class="form-check-label" for="individual">Individual</label>
                                                 <input class="form-check-input" type="radio" name="tipo" id="tipo"
-                                                       value="individual"
-                                                       required>
+                                                       value="Individual" checked required>
                                                 <label class="form-check-label" for="exampleRadios1">Grupal</label>
                                                 <input class="form-check-input" type="radio" name="tipo" id="tipo"
-                                                       value="grupal"
-                                                       required>
+                                                       value="Grupal" required>
 
                                             </div>
 
@@ -147,8 +143,7 @@
                                             <div class="form-inline form-group">
                                                 <label for="rut" class="col-form-label">Ingresar Rut
                                                     Beneficiario:</label>
-                                                <input type="text" class="form-control" id="rut" value="">
-                                                <button type="button" class="btn btn-primary">Agregar</button>
+                                                <input type="text" class="form-control" id="rut" name="rut" value="">
                                             </div>
 
                                             <div class="modal-footer">

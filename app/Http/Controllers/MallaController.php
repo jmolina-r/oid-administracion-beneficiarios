@@ -19,10 +19,19 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use function MongoDB\BSON\toJSON;
 use Psy\Util\Json;
+use Symfony\Component\VarDumper\Caster\DateCaster;
 use \Validator;
+use App\Malla;
 
 class MallaController extends Controller
 {
+
+    private $contentHeight = 223;
+    private $minTime = '08:00:00';
+    private $maxTime = '17:00:00';
+    private $slotDuration = '00:60:00';
+    private $slotLabelInterval = 1;
+
     /**
      * Display a listing of the resource.
      *
@@ -39,39 +48,73 @@ class MallaController extends Controller
      * @param $id
      * @return view
      */
-    public function create($idFuncionario)
+    public function create($id, $fecha, $hora)
     {
         //redireccionar a vista createAgendaHora
         return view('malla.CreateAgendarHora')
-            ->with(compact('id'));
+            ->with(compact('id'))
+            ->with(compact('fecha'))
+            ->with(compact('hora'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Almacena una nueva hora en la agenda del usuario seleccionado.
      *
      * @param Request $request
      * @return view
      */
     public function store(Request $request)
     {
-        //$beneficiario = Beneficiario::where('rut', $rut_beneficiario)->first();
+        $rut = $request->input('rut');
+        //validar rut
+        //$beneficiario = Beneficiario::where('rut', $rut)->first();
         //$id_beneficiario = $beneficiario->id;
 
-        // Validate Fields
+        //id del usuario-funcionario
+        $id = $request->input('id_funcionario');
 
-        //almacenar hora
-        $hora_agendada = new HoraAgendada([
-            'beneficiario_id' => 'rut',
-            'tipo'  =>  'individual',
-            'asist_sn' => '-',
-            'hora' => $request->input('hora'),
-            'fecha' => $request->input('fecha'),
-            'razon_inasis' => '-',
-            'user_id' => $request->input('id_funcionario')//corregir, debe ser id del user seleccionado, no dle user autentidicado
+        $fecha = $request->input('fecha');
+        $cantSesiones = $request->input('cantSesiones');
+
+        //Agenda horas segun cantidad de repeticiones
+        for ($i = 0; $i < $cantSesiones; $i++) {
+            //almacenar hora
+            $hora_agendada = new HoraAgendada([
+                'tipo' => $request->input('tipo'),
+                'asist_sn' => '-',
+                'hora' => $request->input('hora'),
+                'fecha' => $fecha,
+                'razon_inasis' => '-',
+                'user_id' => $id //id del usuario-funcionario
+            ]);
+
+            //almacenar hora
+            $hora_agendada->save();
+
+            $id_hora = $hora_agendada->id;
+            $malla = new Malla([
+                'beneficiario_id' => 2,
+                'hora_agendada_id' => $id_hora
+            ]);
+            //almacenar relacion con beneficiario
+            $malla->save();
+
+            //aumentar fecha + 7dias
+            $fecha = new \DateTime($fecha);
+            $fecha->modify('+7 days');
+            $fecha = $fecha->format('Y-m-d');
+        }
+
+        return redirect()->route('malla.showMalla', [
+            'id' => $id,
+            'contentHeight' => $this->contentHeight,
+            'minTime' => $this->minTime,
+            'maxTime' => $this->maxTime,
+            'slotDuration' => $this->slotDuration,
+            'slotLabelInterval' => $this->slotLabelInterval
         ]);
-
-        $hora_agendada->save();
     }
+
 
     /**
      * Show the form for finding a resourse
@@ -84,7 +127,7 @@ class MallaController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Selección de usuario especifico al que se desea consultar su malla.
      *
      * @return view
      */
@@ -92,9 +135,25 @@ class MallaController extends Controller
     {
         //id del usuario que inicio sesión
         //$id = Auth::user()->id;
+
+        //obtener listado de usuarios
+        $usuarios = $this->getUsuarios();
+
+        return view('malla.show2')
+            ->with(compact('usuarios'))
+            ->with(compact('id')); //id del usuario con inicio de sesión
+    }
+
+    /**
+     * Obtener usuarios del de rol: Kinesiologia, Terapia ocupacional, Psicologia, Fonoaudiologia.
+     *
+     * @return usuarios
+     */
+    public function getUsuarios()
+    {
         $usuarios = null;
         //obtener usuarios para el select
-        if(Auth::user()->hasAnyRole(['admin', 'secretaria'])){
+        if (Auth::user()->hasAnyRole(['admin', 'secretaria'])) {
             //obtener los usuarios a los que se les puede agendar una hora.
             $usuarios = DB::table('users')
                 ->join('funcionarios', 'users.funcionario_id', '=', 'funcionarios.id')
@@ -104,34 +163,36 @@ class MallaController extends Controller
                 ->where('tipo_funcionarios.nombre', '!=', 'asistente social')
                 ->where('tipo_funcionarios.nombre', '!=', 'otro')
                 ->get();
-
         }
-
-        return view('malla.show2')
-            ->with(compact('usuarios'))
-            ->with(compact('id')); //id del usuario con inicio de sesión
+        return $usuarios;
     }
 
+    /**
+     * Muestra la malla de atención para el usuario especificado.
+     *
+     * @return view
+     */
     public function showMalla($id)
     {
         //configuracion  calendario
-        $contentHeight = 223;
-        $minTime = '08:00:00';
-        $maxTime = '17:00:00';
-        $slotDuration = '00:60:00';
-        $slotLabelInterval = 1;
+        $contentHeight = $this->contentHeight;
+        $minTime = $this->minTime;
+        $maxTime = $this->maxTime;
+        $slotDuration = $this->slotDuration;
+        $slotLabelInterval = $this->slotLabelInterval;
 
         //id del usuario que inicio sesión
         //$id = Auth::user()->id;
 
         return view('malla.showMalla')
-            ->with(compact('id')) //id del usuario con inicio de sesión
+            ->with(compact('id'))//id del usuario con inicio de sesión
             ->with(compact('contentHeight'))
             ->with(compact('minTime'))
             ->with(compact('maxTime'))
             ->with(compact('slotDuration'))
             ->with(compact('slotLabelInterval'));
     }
+
     /**
      * Display the specified resource.
      *
@@ -140,18 +201,18 @@ class MallaController extends Controller
     public function show()
     {
         //configuracion  calendario
-        $contentHeight = 223;
-        $minTime = '08:00:00';
-        $maxTime = '17:00:00';
-        $slotDuration = '00:60:00';
-        $slotLabelInterval = 1;
+        $contentHeight = $this->contentHeight;
+        $minTime = $this->minTime;
+        $maxTime = $this->maxTime;
+        $slotDuration = $this->slotDuration;
+        $slotLabelInterval = $this->slotLabelInterval;
 
         //id del usuario que inicio sesión
         $id = Auth::user()->id;
 
         $usuarios = null;
 
-        if(Auth::user()->hasAnyRole(['admin', 'secretaria'])){
+        if (Auth::user()->hasAnyRole(['admin', 'secretaria'])) {
             //obtener los usuarios a los que se les puede agendar una hora.
             $usuarios = DB::table('users')
                 ->join('funcionarios', 'users.funcionario_id', '=', 'funcionarios.id')
@@ -166,7 +227,7 @@ class MallaController extends Controller
 
         return view('malla.show')
             ->with(compact('usuarios'))
-            ->with(compact('id')) //id del usuario con inicio de sesión
+            ->with(compact('id'))//id del usuario con inicio de sesión
             ->with(compact('contentHeight'))
             ->with(compact('minTime'))
             ->with(compact('maxTime'))
@@ -178,7 +239,7 @@ class MallaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function edit($id)
@@ -189,7 +250,7 @@ class MallaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function update($id)
@@ -200,7 +261,7 @@ class MallaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function destroy($id)
@@ -221,8 +282,7 @@ class MallaController extends Controller
         $idFuncionario = $request->input('id');
 
 
-        if (Auth::check())
-        {
+        if (Auth::check()) {
             $id = Auth::user()->id;
         }
         //se obtienen las horas agendadas del usuario seleccionado
@@ -231,10 +291,11 @@ class MallaController extends Controller
 
         foreach ($horasAgendadas as $horaAgendada) {
 
+
             //$beneficiario = Beneficiario::where('id', $horaAgendada->beneficiario_id)->first();
 
             //calculo de hora finalización
-            $horaSeparada = explode(':',$horaAgendada->hora);
+            $horaSeparada = explode(':', $horaAgendada->hora);
 
             //$hora = $horaSeparada[0]+1;
             //$minutos = (int)$horaSeparada[1] + 45;
@@ -253,19 +314,19 @@ class MallaController extends Controller
             //}
 
             //Obtención de la hora de termino
-            if($horaSeparada[0]<10){
-                $horaEnd ='0'.($horaSeparada[0]+1).':'.$horaSeparada[1];
-            }else{
-                $horaEnd = ($horaSeparada[0]+1).':'.$horaSeparada[1];
+            if ($horaSeparada[0] < 9) {
+                $horaEnd = '0' . ($horaSeparada[0] + 1) . ':' . $horaSeparada[1];
+            } else {
+                $horaEnd = ($horaSeparada[0] + 1) . ':' . $horaSeparada[1];
             }
 
 
             $e = array();
             $e['id'] = $horaAgendada->id;
-            $e['title'] = 'Hora Test';
-            //$e['title'] = $beneficiario->nombre . " " . $beneficiario->apellido;
-            $e['start'] = $horaAgendada->fecha.' '.$horaAgendada->hora;
-            $e['end'] = $horaAgendada->fecha.' '.$horaEnd;
+            $e['title'] = $horaAgendada->tipo;
+            ///$e['title'] = $beneficiario->nombre . " " . $beneficiario->apellido;
+            $e['start'] = $horaAgendada->fecha . ' ' . $horaAgendada->hora;
+            $e['end'] = $horaAgendada->fecha . ' ' . $horaEnd;
             $e['allDay'] = false;
 
             // Merge the event array into the return array
@@ -278,32 +339,32 @@ class MallaController extends Controller
 
             //$beneficiario = Beneficiario::where('id', $horaDeleted->beneficiario_id)->first();
 
-            $horaSeparada = explode(':',$horaDeleted->hora);
+            $horaSeparada = explode(':', $horaDeleted->hora);
 
             $hora = $horaSeparada[0];
             $minutos = (int)$horaSeparada[1] + 45;
 
-            if($minutos >= 60){
+            if ($minutos >= 60) {
                 $hora = ((int)$horaSeparada[0] + 1);
                 $minutos = $minutos - 60;
 
-                if($hora < 10){
-                    $hora = '0'.$hora;
+                if ($hora < 10) {
+                    $hora = '0' . $hora;
                 }
 
-                if($minutos < 10){
-                    $minutos = '0'.$minutos;
+                if ($minutos < 10) {
+                    $minutos = '0' . $minutos;
                 }
             }
 
-            $horaEnd = $hora.':'.$minutos;
+            $horaEnd = $hora . ':' . $minutos;
 
             $f = array();
             $f['id'] = $horaDeleted->id;
             $f['title'] = " (REALIZADO)";
             //$f['title'] = $beneficiario->nombre . " " . $beneficiario->apellido . " (REALIZADO)";
-            $f['start'] = $horaDeleted->fecha.'T'.$horaDeleted->hora;
-            $f['end'] = $horaDeleted->fecha.'T'.$horaEnd;
+            $f['start'] = $horaDeleted->fecha . 'T' . $horaDeleted->hora;
+            $f['end'] = $horaDeleted->fecha . 'T' . $horaEnd;
             $f['allDay'] = false;
             $f['color'] = "green";
             $f['realizado'] = true;
@@ -320,32 +381,32 @@ class MallaController extends Controller
 
             //$beneficiario = Beneficiario::where('id', $horaDeleted->beneficiario_id)->first();
 
-            $horaSeparada = explode(':',$horaDeleted->hora);
+            $horaSeparada = explode(':', $horaDeleted->hora);
 
             $hora = $horaSeparada[0];
             $minutos = (int)$horaSeparada[1] + 45;
 
-            if($minutos >= 60){
+            if ($minutos >= 60) {
                 $hora = ((int)$horaSeparada[0] + 1);
                 $minutos = $minutos - 60;
 
-                if($hora < 10){
-                    $hora = '0'.$hora;
+                if ($hora < 10) {
+                    $hora = '0' . $hora;
                 }
 
-                if($minutos < 10){
-                    $minutos = '0'.$minutos;
+                if ($minutos < 10) {
+                    $minutos = '0' . $minutos;
                 }
             }
 
-            $horaEnd = $hora.':'.$minutos;
+            $horaEnd = $hora . ':' . $minutos;
 
             $f = array();
             $f['id'] = $horaDeleted->id;
             $f['title'] = " (INASISTENTE)";
             //$f['title'] = $beneficiario->nombre . " " . $beneficiario->apellido . " (INASISTENTE)";
-            $f['start'] = $horaDeleted->fecha.'T'.$horaDeleted->hora;
-            $f['end'] = $horaDeleted->fecha.'T'.$horaEnd;
+            $f['start'] = $horaDeleted->fecha . 'T' . $horaDeleted->hora;
+            $f['end'] = $horaDeleted->fecha . 'T' . $horaEnd;
             $f['allDay'] = false;
             $f['color'] = "red";
             $f['realizado'] = true;
@@ -357,17 +418,20 @@ class MallaController extends Controller
         return json_encode($eventos);
     }
 
-    public function registroPrestacion($id){
+    public function registroPrestacion($id)
+    {
 
         return view('malla.showIngresoPrestacion')->with(compact('id'));
 
     }
 
-    public function registroInasistencia($id){
+    public function registroInasistencia($id)
+    {
         return view('malla.showIngresoInasistencia')->with(compact('id'));
     }
 
-    public function storeInasistencia(Request $request){
+    public function storeInasistencia(Request $request)
+    {
 
         $idHora = $request->input('id');
         $coment = $request->input('comentario');
@@ -383,10 +447,10 @@ class MallaController extends Controller
 
     }
 
-    public function getPrestacionesProfesional(Request $request){
+    public function getPrestacionesProfesional(Request $request)
+    {
 
-        if (Auth::check())
-        {
+        if (Auth::check()) {
             $id = Auth::user()->id;
         }
 
@@ -396,20 +460,21 @@ class MallaController extends Controller
         $funcionario = $user->funcionario()->get()->first();
         $tipo = $funcionario->tipo_funcionario()->get()->first();
 
-        if($tipo->nombre == 'secretaria'){
+        if ($tipo->nombre == 'secretaria') {
             return "";
         }
 
         $prestacionSegunTipo = Prestacion::where('area', $tipo->nombre)->get();
 
-        foreach ($prestacionSegunTipo as $prestacionTipo){
+        foreach ($prestacionSegunTipo as $prestacionTipo) {
             array_push($prestacionesConsolidadas, $prestacionTipo);
         }
 
         return json_encode($prestacionesConsolidadas);
     }
 
-    public function getNombreCompleto(Request $request){
+    public function getNombreCompleto(Request $request)
+    {
 
         $idHora = $request->input('id');
         $hora = HoraAgendada::where('id', $idHora)->first();
@@ -420,7 +485,8 @@ class MallaController extends Controller
 
     }
 
-    public function storePrestaciones(Request $request){
+    public function storePrestaciones(Request $request)
+    {
 
         //necesito el id para borrar la hora
         $idHora = $request->input('idHoraAgendada');
@@ -428,8 +494,7 @@ class MallaController extends Controller
 
         $horaAgendada = HoraAgendada::where('id', $idHora)->first();
 
-        if (Auth::check())
-        {
+        if (Auth::check()) {
             $id = Auth::user()->id;
         }
 
@@ -437,7 +502,7 @@ class MallaController extends Controller
         $funcionario = $user->funcionario()->get()->first();
         $idFuncionario = $funcionario->id;
 
-        foreach ($jsonPrestaciones as $prestacionRegistro){
+        foreach ($jsonPrestaciones as $prestacionRegistro) {
 
             $prestacionRealizada = new PrestacionRealizada([
                 'funcionario_id' => $idFuncionario,
@@ -480,8 +545,6 @@ class MallaController extends Controller
 
     /**
      *
-     *
-     *
      * @param Request $request
      * @return Response
      */
@@ -489,14 +552,13 @@ class MallaController extends Controller
     {
         $this->validate($request, $this->rules($request));
 
-        try{
+        try {
             $prestacion = new Prestacion([
                 'nombre' => $request->input('nombre'),
                 'area' => $request->input('area')
             ]);
             $prestacion->save();
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
 
             //procedimiento en caso de reportar errores
 
@@ -517,52 +579,52 @@ class MallaController extends Controller
 
         $nombreTipo = $tipo->nombre;
 
-        if($nombreTipo == "kinesiologo"){
+        if ($nombreTipo == "kinesiologo") {
 
             $fichasKine = FichaKinesiologia::where('beneficiario_id', $idBeneficiario)
                 ->where('funcionario_id', $funcionario->id)
                 ->where('estado', "abierto")->get();
 
-            if(count($fichasKine) == 0){
+            if (count($fichasKine) == 0) {
                 return "false";
-            }else{
+            } else {
                 return "true";
             }
 
         }
 
-        if($nombreTipo == "psicologo"){
+        if ($nombreTipo == "psicologo") {
             $fichasPsico = FichaPsicologia::where('beneficiario_id', $idBeneficiario)
                 ->where('funcionario_id', $funcionario->id)
                 ->where('estado', "abierto")->get();
 
-            if(count($fichasPsico) == 0){
+            if (count($fichasPsico) == 0) {
                 return "false";
-            }else{
+            } else {
                 return "true";
             }
         }
 
-        if($nombreTipo == "fonoaudiologo"){
+        if ($nombreTipo == "fonoaudiologo") {
             $fichasFono = FichaFonoaudiologia::where('beneficiario_id', $idBeneficiario)
                 ->where('funcionario_id', $funcionario->id)
                 ->where('estado', "abierto")->get();
 
-            if(count($fichasFono) == 0){
+            if (count($fichasFono) == 0) {
                 return "false";
-            }else{
+            } else {
                 return "true";
             }
         }
 
-        if($nombreTipo == "terapeuta ocupacional"){
+        if ($nombreTipo == "terapeuta ocupacional") {
             $fichasTo = FichaTerapiaOcupacional::where('beneficiario_id', $idBeneficiario)
                 ->where('funcionario_id', $funcionario->id)
                 ->where('estado', "abierto")->get();
 
-            if(count($fichasTo) == 0){
+            if (count($fichasTo) == 0) {
                 return "false";
-            }else{
+            } else {
                 return "true";
             }
         }
@@ -573,8 +635,7 @@ class MallaController extends Controller
 
     public function validarUsuario(Request $request)
     {
-        if (Auth::check())
-        {
+        if (Auth::check()) {
             $id = Auth::user()->id;
         }
 
@@ -583,11 +644,9 @@ class MallaController extends Controller
         $rol = $usuario->role;
 
 
-
-        if($rol->nombre == 'secretaria' || $rol->nombre == 'admin'){
+        if ($rol->nombre == 'secretaria' || $rol->nombre == 'admin') {
             return "true";
         }
-
 
 
         return "false";
@@ -595,8 +654,7 @@ class MallaController extends Controller
 
     public function puedeAtender(Request $request)
     {
-        if (Auth::check())
-        {
+        if (Auth::check()) {
             $id = Auth::user()->id;
         }
 
@@ -605,12 +663,11 @@ class MallaController extends Controller
         $rol = $usuario->role;
 
 
-
-        if($rol->nombre == 'psicologia'
+        if ($rol->nombre == 'psicologia'
             || $rol->nombre == 'kinesiologia'
             || $rol->nombre == 'trabajo_social'
             || $rol->nombre == 'terapia_ocupacional'
-            || $rol->nombre == 'fonoaudiologia'){
+            || $rol->nombre == 'fonoaudiologia') {
             return "true";
         }
 
@@ -620,8 +677,7 @@ class MallaController extends Controller
 
     /**
      *
-     *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function confirmarEliminarPrestacion($id)
@@ -674,10 +730,10 @@ class MallaController extends Controller
         return $rules;
     }
 
-    public function getArea(Request $request){
+    public function getArea(Request $request)
+    {
 
-        if (Auth::check())
-        {
+        if (Auth::check()) {
             $id = Auth::user()->id;
         }
 

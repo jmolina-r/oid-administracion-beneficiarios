@@ -90,18 +90,16 @@
     <script>
         //href="{{route("malla.showMalla",1)}}"
         $('#consultar_malla').click(function () {
-            console.log('El texto seleccionado es:',
-                $('select[name="id_funcionario"] option:selected').val());
+            //console.log('El texto seleccionado es:',$('select[name="id_funcionario"] option:selected').val());
             var id_funcionario = $('select[name="id_funcionario"] option:selected').val();
 
-
             var href = $("#consultar_malla").attr("href");
-            console.log('El texto :', href);
+            //console.log('El texto :', href);
 
             href = href.substring(0, href.length - 1);
-            console.log('El texto :', href)
+            //console.log('El texto :', href)
             href2 = $("#consultar_malla").attr("href", href + id_funcionario);
-            console.log('El texto :', href2);
+            //console.log('El texto :', href2);
 
         });
     </script>

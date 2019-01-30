@@ -411,7 +411,7 @@ Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
         'as' => 'malla.showMalla'
     ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
 
-    Route::get('/create/{id}', [
+    Route::get('/create/{id}/{fecha}/{hora}', [
         'uses' => 'MallaController@create',
         'as' => 'malla.CreateAgendarHora'
     ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');

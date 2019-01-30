@@ -93,9 +93,9 @@
             var horaInicio = moment(start).format('HH:mm');
             moment.locale('es');
 
-            console.log("inicio evento: " + fechaInicio);
+            //console.log("inicio evento: " + fechaInicio);
             //console.log('calendardate '+calendarDate);
-            console.log('ahora '+fechaActual);
+            //console.log('ahora '+fechaActual);
             //validar que el rol tiene permiso para agendar
 
             //if (puedeAsignarHora() == "false") {
@@ -123,11 +123,11 @@
             //$('input[name="fecha"]').val("23");
             //$('input[name=fecha]').val(fechaInicio);
 
-            //desplagar modal para agendar hora
-            $('#exampleModal').modal('show');
             document.getElementById("hora").value = horaInicio;
             document.getElementById("fecha").value = fechaInicio;
-            document.getElementById("id_funcionario").value=document.getElementById("id").value;
+
+
+            //document.getElementById("id_funcionario").value=document.getElementById("id").value;
             return; /*bootbox.prompt({
                 title: 'Ingrese rut de beneficiario',
                 placeholder: 'El RUT debe tener el formato 12345678-9 xxxxxx',
