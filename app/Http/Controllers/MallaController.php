@@ -158,7 +158,7 @@ class MallaController extends Controller
             $usuarios = DB::table('users')
                 ->join('funcionarios', 'users.funcionario_id', '=', 'funcionarios.id')
                 ->join('tipo_funcionarios', 'funcionarios.tipo_funcionario_id', '=', 'tipo_funcionarios.id')
-                ->select('users.id', 'users.username', 'tipo_funcionarios.nombre')
+                ->select('users.id', 'users.username','funcionario_id', 'tipo_funcionarios.nombre')
                 ->where('tipo_funcionarios.nombre', '!=', 'secretaria')
                 ->where('tipo_funcionarios.nombre', '!=', 'asistente social')
                 ->where('tipo_funcionarios.nombre', '!=', 'otro')

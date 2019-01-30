@@ -126,6 +126,8 @@
             document.getElementById("hora").value = horaInicio;
             document.getElementById("fecha").value = fechaInicio;
 
+            //llamar a la vista createAgendarHora
+            guardarHora(fechaInicio,horaInicio);
 
             //document.getElementById("id_funcionario").value=document.getElementById("id").value;
             return; /*bootbox.prompt({
@@ -309,29 +311,13 @@
     });
 
 
-    //no usado hasta ahora
-    /*
-    function guardarHora(event) {
-        var fecha = moment(event).format('DD/MM/YYYY');
-        var hora = moment(event).format('hh:mm');
+    function guardarHora(fechaInicio,horaInicio) {
 
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            async: true,
-            url: "/malla/store",
-            type: "POST",
-            data: {
-                fecha: fecha,
-                hora: hora
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-
-            }
-        });
+        $url='/malla/create/';
+        $url=$url+$('#id').val()+'/'+fechaInicio+'/'+horaInicio;
+        location.replace($url);
     }
-    */
+
 
 
     function encontrarNombre(rut, start) {

@@ -118,6 +118,7 @@
                 <div class="row" id="content-wrapper">
                     @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
                         <div class="col-xs-12">
+                            <div class='group-header'>
                             <div class='box'>
                                 <div class='box-content box-padding'>
                                     <div class="form-group">
@@ -126,9 +127,10 @@
                                                 class='form-control capitalize select-tag'>
                                             @foreach($usuarios as $usuario)
                                                 @if($usuario->nombre == "Kinesiologo" || $usuario->nombre == "Psicologo" || $usuario->nombre == "Terapeuta ocupacional" || $usuario->nombre == "Fonoaudiologo")
-                                                    <option value="{{ $usuario->id }}">{{ $usuario->username }}
+                                                    <option value="{{ $usuario->id }}">{{ App\Funcionario::where('id',$usuario->funcionario_id)->first()->getNombreCompleto() }}
                                                         ({{ $usuario->nombre }})
                                                     </option>
+                                                    {{$usuario->funcionario_id}}
                                                 @endif
                                             @endforeach
                                         </select>
@@ -147,6 +149,7 @@
                         </div>
 
 
+                </div>
                 </div>
                 @include('partials.footer')
             </div>

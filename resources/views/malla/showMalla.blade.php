@@ -146,7 +146,6 @@
         <section id="content">
             <div class="container">
                 <div class="row" id="content-wrapper">
-
                     <input id="contentHeight" name="contentHeight" type="hidden" value="{{$contentHeight}}">
                     <input id="minTime" name="minTime" type="hidden" value="{{$minTime}}">
                     <input id="maxTime" name="maxTime" type="hidden" value="{{$maxTime}}">
@@ -160,12 +159,13 @@
 
                     <div class='col-xs-12'>
                         <div class='group-header'>
-                        </div>
-                        <div class="col-xs-12">
-                            <div class='box'>
-                                <div class='box-content box-padding'>
-                                    <div class="form-group">
-                                        <h3 class='control-label' for='inputText'>Profesional:</h3>
+                            <div class="col-xs-12">
+                                <div class='box'>
+                                    <div class='box-content box-padding'>
+                                        <div class="form-group">
+                                            <h3 class='control-label' for='inputText'>Profesional: {{ App\User::where('id',$id)->first()->getNombreFuncionario()}} ({{ App\User::where('id',$id)->first()->getTipoFuncionario()}})</h3>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
