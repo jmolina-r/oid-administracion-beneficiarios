@@ -65,19 +65,6 @@ class MallaController extends Controller
      */
     public function store(Request $request)
     {
-        //validar rut
-        $v = \Validator::make($request->all(), [
-            'rut' => 'exists:beneficiarios,rut',
-        ]);
-
-        if ($v->fails()) {
-            return redirect()->back()->withInput()->withErrors($v->errors());
-        }
-
-        //obtener id del beneficiario
-        $beneficiario = Beneficiario::where('rut', $rut)->first();
-        $id_beneficiario = $beneficiario->id;
-
         //id del usuario-funcionario
         $id = $request->input('id_funcionario');
 
@@ -86,6 +73,8 @@ class MallaController extends Controller
         if ($cantSesiones == 0) {
             $cantSesiones = 1;
         }
+
+        $jsonBeneficiariosSeleccionados = $request->input('jsonBeneficiariosSeleccionados');
 
         //Agenda horas segun cantidad de repeticiones
         for ($i = 0; $i < $cantSesiones; $i++) {
@@ -101,15 +90,16 @@ class MallaController extends Controller
 
             //almacenar hora
             $hora_agendada->save();
-
             $id_hora = $hora_agendada->id;
-            $malla = new Malla([
-                'beneficiario_id' => $id_beneficiario,
-                'hora_agendada_id' => $id_hora
-            ]);
-            //almacenar relacion con beneficiario
-            $malla->save();
 
+            foreach ($jsonBeneficiariosSeleccionados as $BeneficiarioRegistro) {
+                $malla = new Malla([
+                    'beneficiario_id' => $BeneficiarioRegistro['beneficiario_id'],
+                    'hora_agendada_id' => $id_hora
+                ]);
+                //almacenar relacion con beneficiario
+                $malla->save();
+            }
             //aumentar fecha + 7dias
             $fecha = new \DateTime($fecha);
             $fecha->modify('+7 days');

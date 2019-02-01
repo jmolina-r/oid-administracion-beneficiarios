@@ -73,6 +73,9 @@
             document.getElementById('cantSesiones').value = 1;
         };
     </script>
+    <script>
+
+    </script>
 @endsection
 
 @section("content")
@@ -201,12 +204,13 @@
                                                                 <table class="table" id="tabla-beneficiarios">
                                                                     <thead>
                                                                     <tr>
+                                                                        <th style="display:none;"></th>
                                                                         <th>Nombre</th>
                                                                         <th>Rut</th>
                                                                         <th></th>
                                                                     </tr>
                                                                     </thead>
-                                                                    <tbody>
+                                                                    <tbody id="tbody">
                                                                     </tbody>
                                                                 </table>
                                                                 </div>
@@ -221,7 +225,8 @@
                                                         href="{{route('malla.showMalla',$id)}}">
                                                     Atras
                                                 </button>
-                                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                                <button type="button" id="btn-guardar" class="btn btn-primary">Guardar</button>
+
                                             </div>
                                         </form>
                                         </div>
