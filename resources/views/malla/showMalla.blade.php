@@ -159,7 +159,7 @@
 
                     <div class='col-xs-12'>
                         <div class='group-header'>
-                            <div class="col-xs-12">
+
                                 <div class='box'>
                                     <div class='box-content box-padding'>
                                         <div class="form-group">
@@ -168,13 +168,14 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
                         </div>
 
-
+                        <!--
                         <a type="button" id="crearHoraAgenda" class="btn btn-primary" href='{{route('malla.CreateAgendarHora',[$id,0,0])}}'>
                             Agendar Hora
                         </a>
+                        -->
                         <div class='row'>
                             <div class='col-sm-12'>
                                 <div class='row'>

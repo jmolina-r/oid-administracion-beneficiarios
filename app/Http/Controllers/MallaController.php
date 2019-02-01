@@ -65,16 +65,27 @@ class MallaController extends Controller
      */
     public function store(Request $request)
     {
-        $rut = $request->input('rut');
         //validar rut
-        //$beneficiario = Beneficiario::where('rut', $rut)->first();
-        //$id_beneficiario = $beneficiario->id;
+        $v = \Validator::make($request->all(), [
+            'rut' => 'exists:beneficiarios,rut',
+        ]);
+
+        if ($v->fails()) {
+            return redirect()->back()->withInput()->withErrors($v->errors());
+        }
+
+        //obtener id del beneficiario
+        $beneficiario = Beneficiario::where('rut', $rut)->first();
+        $id_beneficiario = $beneficiario->id;
 
         //id del usuario-funcionario
         $id = $request->input('id_funcionario');
 
         $fecha = $request->input('fecha');
         $cantSesiones = $request->input('cantSesiones');
+        if ($cantSesiones == 0) {
+            $cantSesiones = 1;
+        }
 
         //Agenda horas segun cantidad de repeticiones
         for ($i = 0; $i < $cantSesiones; $i++) {
@@ -93,7 +104,7 @@ class MallaController extends Controller
 
             $id_hora = $hora_agendada->id;
             $malla = new Malla([
-                'beneficiario_id' => 2,
+                'beneficiario_id' => $id_beneficiario,
                 'hora_agendada_id' => $id_hora
             ]);
             //almacenar relacion con beneficiario
@@ -158,7 +169,7 @@ class MallaController extends Controller
             $usuarios = DB::table('users')
                 ->join('funcionarios', 'users.funcionario_id', '=', 'funcionarios.id')
                 ->join('tipo_funcionarios', 'funcionarios.tipo_funcionario_id', '=', 'tipo_funcionarios.id')
-                ->select('users.id', 'users.username','funcionario_id', 'tipo_funcionarios.nombre')
+                ->select('users.id', 'users.username', 'funcionario_id', 'tipo_funcionarios.nombre')
                 ->where('tipo_funcionarios.nombre', '!=', 'secretaria')
                 ->where('tipo_funcionarios.nombre', '!=', 'asistente social')
                 ->where('tipo_funcionarios.nombre', '!=', 'otro')
@@ -741,5 +752,13 @@ class MallaController extends Controller
 
         return $user->role->nombre;
 
+    }
+
+
+    public function messages()
+    {
+        return [
+            'rut.unique' => 'El Rut del beneficiario no se encuentra registrado en el Sistema.',
+        ];
     }
 }

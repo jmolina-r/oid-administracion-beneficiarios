@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use function MongoDB\BSON\toJSON;
 use \PDF;
 
 use App\Beneficiario;
@@ -110,11 +111,11 @@ class BeneficiarioController extends Controller
         //    'rut' => 'required|unique:beneficiarios,rut'
         //], $this->messagesmessages($request));
 
-        $validar =Validator::make($request->all(),[
-            'rut'   => 'unique:beneficiarios',
+        $validar = Validator::make($request->all(), [
+            'rut' => 'unique:beneficiarios',
         ]);
 
-        if($validar ->fails()){
+        if ($validar->fails()) {
             return redirect()->back()->withInput()->withErrors($validar->errors());
         }
         // Validate Fields
@@ -144,7 +145,7 @@ class BeneficiarioController extends Controller
             ]);
             $telefonoFijo->save();
         }
-         // TelefonoBeneficiario Save (Movil)
+        // TelefonoBeneficiario Save (Movil)
         if ($request->input('tel_movil')) {
             $telefonoMovil = new TelefonoBeneficiario([
                 'numero' => $request->input('tel_movil'),
@@ -206,7 +207,7 @@ class BeneficiarioController extends Controller
         }
 
         // Tutor Save
-        if($request->input('nombre_tutor') || $request->input('apellido_tutor')) {
+        if ($request->input('nombre_tutor') || $request->input('apellido_tutor')) {
             $tutor = new Tutor([
                 'nombre' => $request->input('nombre_tutor'),
                 'apellido' => $request->input('apellido_tutor'),
@@ -310,16 +311,16 @@ class BeneficiarioController extends Controller
             }
         }
 
-        $planDeRehabilitacionTratamientoControl= $request->input('p_reha_trat_ctrl');
+        $planDeRehabilitacionTratamientoControl = $request->input('p_reha_trat_ctrl');
 
         return redirect()->route('beneficiario.show', ['id' => $beneficiario->id]);
     }
 
     /**
-    * Show the form for finding a resourse
-    *
-    * @return Response
-    */
+     * Show the form for finding a resourse
+     *
+     * @return Response
+     */
     public function find()
     {
         return view('beneficiario.find');
@@ -328,7 +329,7 @@ class BeneficiarioController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function show($id)
@@ -342,7 +343,7 @@ class BeneficiarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function edit($id)
@@ -384,7 +385,6 @@ class BeneficiarioController extends Controller
         //carga datos de la tabla datos_sociales para beneficiario a editar.
 
 
-
         return view('beneficiario.edit')
             ->with(compact('paises'))
             ->with(compact('estados_civiles'))
@@ -406,7 +406,7 @@ class BeneficiarioController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function update(Request $request)
@@ -436,7 +436,7 @@ class BeneficiarioController extends Controller
 
         // TelefonoBeneficiario Update
         if ($request->input('tel_fijo')) {
-            if($beneficiario->telefonos->where('tipo', 'fijo')->first()) {
+            if ($beneficiario->telefonos->where('tipo', 'fijo')->first()) {
                 $beneficiario->telefonos->where('tipo', 'fijo')->first()->update([
                     'numero' => $request->input('tel_fijo'),
                     'tipo' => 'fijo',
@@ -449,13 +449,13 @@ class BeneficiarioController extends Controller
                 ]);
                 $telefonoFijo->save();
             }
-        } elseif($beneficiario->telefonos->where('tipo', 'fijo')->first() != null){
+        } elseif ($beneficiario->telefonos->where('tipo', 'fijo')->first() != null) {
             $beneficiario->telefonos->where('tipo', 'fijo')->first()->delete();
         }
 
-         // TelefonoBeneficiario Update (Movil)
+        // TelefonoBeneficiario Update (Movil)
         if ($request->input('tel_movil')) {
-            if($beneficiario->telefonos->where('tipo', 'movil')->first()) {
+            if ($beneficiario->telefonos->where('tipo', 'movil')->first()) {
                 $beneficiario->telefonos->where('tipo', 'movil')->first()->update([
                     'numero' => $request->input('tel_movil'),
                     'tipo' => 'movil',
@@ -468,7 +468,7 @@ class BeneficiarioController extends Controller
                 ]);
                 $telefonoMovil->save();
             }
-        } elseif($beneficiario->telefonos->where('tipo', 'movil')->first() != null){
+        } elseif ($beneficiario->telefonos->where('tipo', 'movil')->first() != null) {
             $beneficiario->telefonos->where('tipo', 'movil')->first()->delete();
         }
 
@@ -503,7 +503,7 @@ class BeneficiarioController extends Controller
                     $credeDic->save();
                 }
             }
-        } elseif($request->input('credencial_discapacidad') == 0 && $beneficiario->credencial_discapacidad != null) {
+        } elseif ($request->input('credencial_discapacidad') == 0 && $beneficiario->credencial_discapacidad != null) {
             $beneficiario->credencial_discapacidad->delete();
         }
 
@@ -538,7 +538,7 @@ class BeneficiarioController extends Controller
                     $regSocHog->save();
                 }
             }
-        } elseif($request->input('registro_social_hogares') == 0 && $beneficiario->registro_social_hogar != null) {
+        } elseif ($request->input('registro_social_hogares') == 0 && $beneficiario->registro_social_hogar != null) {
             $beneficiario->registro_social_hogar->delete();
         }
 
@@ -594,7 +594,7 @@ class BeneficiarioController extends Controller
         // TelefonoTutor Update
         if ($request->input('nombre_tutor') || $request->input('apellido_tutor')) {
             if ($request->input('telefono_tutor')) {
-                if($beneficiario->tutor->telefonos->first()!= null) {
+                if ($beneficiario->tutor->telefonos->first() != null) {
                     $beneficiario->tutor->telefonos->first()->update([
                         'numero' => $request->input('telefono_tutor'),
                     ]);
@@ -605,7 +605,7 @@ class BeneficiarioController extends Controller
                     ]);
                     $telefonoTutor->save();
                 }
-            } elseif($beneficiario->tutor->telefonos->first() != null) {
+            } elseif ($beneficiario->tutor->telefonos->first() != null) {
                 $beneficiario->tutor->telefonos->first()->delete();
             }
         }
@@ -630,7 +630,6 @@ class BeneficiarioController extends Controller
             $arrDatoSocial['isapre_id'] = $request->input('isapre');
             $arrDatoSocial['fonasa_id'] = null;
         }
-
 
 
         $beneficiario->ficha_beneficiario->dato_social->update($arrDatoSocial);
@@ -711,7 +710,7 @@ class BeneficiarioController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function destroy($id)
@@ -755,7 +754,7 @@ class BeneficiarioController extends Controller
         ];
 
         foreach ($request->input('tipo_discapacidad') as $key => $val) {
-            $rules['tipo_discapacidad.'.$key] = 'required|numeric|between:0,100';
+            $rules['tipo_discapacidad.' . $key] = 'required|numeric|between:0,100';
         }
         return $rules;
     }
@@ -763,14 +762,14 @@ class BeneficiarioController extends Controller
     private function messages(Request $request)
     {
         foreach ($request->input('tipo_discapacidad') as $key => $val) {
-            $messages['tipo_discapacidad.'.$key.'.between'] = 'Discapacidad '.$key.' debe tener un porcentaje menor a :min y mayor que :max.';
+            $messages['tipo_discapacidad.' . $key . '.between'] = 'Discapacidad ' . $key . ' debe tener un porcentaje menor a :min y mayor que :max.';
         }
         return $messages;
     }
 
     public function findLikeNombreApellidoRutJson(Request $request)
     {
-        $queryLike = $request->input('query').'%';
+        $queryLike = $request->input('query') . '%';
         $beneficiarios = Beneficiario::where('rut', 'like', $queryLike)
             ->orWhere('nombre', 'like', $queryLike)
             ->orWhere('apellido', 'like', $queryLike)
@@ -780,11 +779,13 @@ class BeneficiarioController extends Controller
         return response()->json(['beneficiarios' => $beneficiarios]);
     }
 
-    public function findNombrePorRut(Request $request){
+    public function findNombrePorRut(Request $request)
+    {
         $rutBuscado = $request->input('rutBuscado');
         $beneficiarioEncontrado = Beneficiario::where('rut', $rutBuscado)->first();
 
         return $beneficiarioEncontrado->toJson();
+
     }
 
     /*
@@ -793,9 +794,11 @@ class BeneficiarioController extends Controller
     *
     */
 
-    public function generatePDF(Request $request, $id) {
+    public function generatePDF(Request $request, $id)
+    {
         $beneficiario = Beneficiario::find($id);
         $pdf = PDF::loadView('beneficiario.pdf', array('beneficiario' => $beneficiario));
         return $pdf->download('beneficiario.pdf');
     }
+
 }

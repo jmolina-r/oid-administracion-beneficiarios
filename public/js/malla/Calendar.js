@@ -118,11 +118,6 @@
             }
 
 
-
-            //
-            //$('input[name="fecha"]').val("23");
-            //$('input[name=fecha]').val(fechaInicio);
-
             document.getElementById("hora").value = horaInicio;
             document.getElementById("fecha").value = fechaInicio;
 
@@ -214,7 +209,7 @@
             })*/
         },
         //Handlers Se dispara cuando se realiza una selección de un evento agendado https://fullcalendar.io/docs/eventClick
-        /*
+
         eventClick: function (calEvent, jsEvent, view) {
 
             var idHoraAgendada = calEvent.id;
@@ -241,8 +236,8 @@
             });
 
 
-            if (puedeAsignarHora() == "false") {
-                if (existeFicha == "false") {
+           // if (puedeAsignarHora() == "false") {
+           //     if (existeFicha == "false") {
                     if (confirm("El beneficiario no tiene ficha inicial activa. Presione Cancelar para marcar la inasistencia.")) {
                         return;
                     } else {
@@ -251,8 +246,8 @@
                     }
 
 
-                }
-            }
+           //     }
+           // }
 
 
             if (calEvent.realizado) {
@@ -260,7 +255,7 @@
                 return;
             } else {
 
-                if (puedeAsignarHora() == "true") {
+                //if (puedeAsignarHora() == "true") {
                     if (confirm('¿Desea eliminar la hora?')) {
                         eliminarHora(calEvent.id);
                     } else {
@@ -275,7 +270,7 @@
                         }
                     }
                     return;
-                }
+                //}
 
                 if (confirm("¿El beneficiario registra asistencia?")) {
                     calEvent.url = '/registro_prestacion/' + calEvent.id;
@@ -288,7 +283,7 @@
             }
             return false;
         },
-         */
+
 
         //Handlers
         drop: function (date, allDay) {
