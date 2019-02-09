@@ -69,9 +69,14 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                         <div class="col-lg-12">
                             <div class="col-md-4 col-lg-4">
                                 <h4>
+                                    @php($date = new DateTime($persona->created_at))
+                                    <i class='fa fa-calendar'></i>
+                                    Fecha de ingreso: {{$date->format('Y-m-d')}}
+                                <h4>
                                     <i class='fa fa-user'></i>
                                     Datos Personales
                                 </h4>
+
                                 <div class="arrow-down"></div>
                                 @include('partials.profile.personal')
                             </div>

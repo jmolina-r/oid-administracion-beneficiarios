@@ -216,7 +216,8 @@
 
             var existeFicha = "";
 
-
+            actualizarHora(idHoraAgendada);
+            /**
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -282,6 +283,8 @@
 
             }
             return false;
+             **/
+             return
         },
 
 
@@ -310,6 +313,13 @@
 
         $url='/malla/create/';
         $url=$url+$('#id').val()+'/'+fechaInicio+'/'+horaInicio;
+        location.replace($url);
+    }
+
+    function actualizarHora(id) {
+
+        $url='/malla/edit/';
+        $url=$url+id;
         location.replace($url);
     }
 

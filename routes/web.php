@@ -411,9 +411,32 @@ Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
         'as' => 'malla.showMalla'
     ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
 
+    Route::get('/edit/{id}', [
+        'uses' => 'MallaController@edit',
+        'as' => 'malla.editAgendaHora'
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+
+    Route::post('/update', [
+        'uses' => 'MallaController@update',
+        'as' => 'malla.updateAgendarHora'
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+
     Route::get('/create/{id}/{fecha}/{hora}', [
         'uses' => 'MallaController@create',
         'as' => 'malla.CreateAgendarHora'
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+
+    Route::post('/store', [
+        'uses' => 'MallaController@store',
+        'as' => 'malla.store'
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    Route::post('/store', [
+        'uses' => 'MallaController@store',
+        'as' => 'malla.store'
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+
+    Route::post('/destroy', [
+        'uses' => 'MallaController@destroy',
     ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
 
     Route::post('/validarusuario', [
@@ -428,10 +451,6 @@ Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
         'uses' => 'MallaController@puedeAtender',
     ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
 
-    Route::post('/store', [
-        'uses' => 'MallaController@store',
-        'as' => 'malla.store'
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
 
     Route::get('/poblar', [
         'uses' => 'MallaController@poblar',

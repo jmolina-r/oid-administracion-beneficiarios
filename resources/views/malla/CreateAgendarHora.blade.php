@@ -110,7 +110,7 @@
                                             </div>
                                         @endif
                                         <form role="form" id="formulario-agendar-hora"
-                                              action="{{route('malla.store')}}"
+                                              action=""
                                               accept-charset="UTF-8" method="post" data-toggle="validator">
                                             {{ csrf_field() }}
                                             <div class="row">
@@ -152,7 +152,7 @@
                                                                 <div class="form-inline">
                                                                     <label for="sesiones" class="col-form-label">Cantidad de
                                                                         sesiones:</label>
-                                                                    <input type="number" in="1" max="8" style="width:25%;" id="cantSesiones"
+                                                                    <input type="number" min="1" max="12" style="width:25%;" id="cantSesiones"
                                                                            name="cantSesiones" class="form-control " required value="1"
                                                                            disabled>
                                                                     <div class="help-block with-errors"></div>
@@ -221,8 +221,7 @@
                                             </div>
 
                                             <div class="modal-footer">
-                                                <button type="submit" class="btn btn-secondary"
-                                                        href="{{route('malla.showMalla',$id)}}">
+                                                <button type="button" id="btn-atras" class="btn btn-secondary">
                                                     Atras
                                                 </button>
                                                 <button type="button" id="btn-guardar" class="btn btn-primary">Guardar</button>

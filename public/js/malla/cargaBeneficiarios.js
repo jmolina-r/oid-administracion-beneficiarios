@@ -2,6 +2,8 @@ $(document).ready(function () {
 
     var beneficiario;
     var listaId = [];
+
+
     $('#btn-agregar-beneficiario').click(function () {
 
         var rut = $('#rut').val();
@@ -67,6 +69,7 @@ $(document).ready(function () {
 
     });
 
+
     //reset table al cambiar de grupal a individual
     document.getElementById('Individual').onchange = function () {
         var nodes = document.getElementById('tbody');
@@ -75,7 +78,6 @@ $(document).ready(function () {
     };
 
     $('#btn-guardar').click(function () {
-
 
         //validar inscripcion grupal tenga 2 o mas beneficiarios seleccionados
         if (document.getElementById("Grupal").checked && listaId.length > 1 || document.getElementById("Individual").checked) {
@@ -114,18 +116,101 @@ $(document).ready(function () {
                 type: "POST",
                 success: function (data, textStatus, jqXHR) {
                     alert("Hora agendada correctamente. Volviendo a la malla.");
-                    //window.location.replace("/malla/show");
+                    window.location.replace("/malla/show2/" + $('#id').val());
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     alert("Hubo un error, reintente");
                 }
             });
-        }else{
+        } else {
             alert("Las sesiones grupales deben tener 2 o más beneficiarios.");
         }
 
+    });
+
+    $('#btn-update').click(function () {
+
+        var respuesta = confirm("¿Seguro que desea guardar el registro en la agenda?");
+
+        if (respuesta == false) {
+            return;
+        }
+
+        var jsonBeneficiarios = [];
+
+        $('#tabla-beneficiarios').find('tbody tr').each(function () {
+            var obj = {},
+                $td = $(this).find('td'),
+                beneficiario_id = $td.eq(0).text(),
+
+                asistencia = $td.find('option:selected').eq(0).val();
+                if (asistencia =="Presente"){
+                    prestacion = $td.find('option:selected').eq(1).val();
+                }else{
+                    prestacion = null;
+                }
+
+            //console.log('prestacion : ' + prestacion);
+            obj['beneficiario_id'] = beneficiario_id;
+            obj['asistencia'] = asistencia;
+            obj['prestacion'] = prestacion;
+            jsonBeneficiarios.push(obj);
+            console.log(jsonBeneficiarios);
+        });
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: "/malla/update",
+            data: {
+                id_hora_agendada: $('#id').val(),
+                jsonBeneficiarios: jsonBeneficiarios,
+            },
+            type: "POST",
+            success: function (data, textStatus, jqXHR) {
+                alert("Datos registrados correctamente. Volviendo a la malla.");
+                window.location.replace("/malla/show2/" + $('#user_id').val()); //arreglar
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("Hubo un error, reintente");
+            }
+        });
 
     });
+
+    document.getElementById("btn-delete").onclick = function () {
+        var respuesta = confirm("¿Seguro que desea eliminar el registro de la malla?");
+
+        if (respuesta == false) {
+            return;
+        }
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            async: false,
+            url: "/malla/destroy",
+            type: "POST",
+            data: {
+                idHora: $('#id').val()
+            },
+            success: function (data, textStatus, jqXHR) {
+                alert('La hora agendada se ha eliminado correctamente.');
+                window.location.replace("/malla/show2/" + $('#user_id').val());
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('Hubo un error al eliminar la hora. Reintente.');
+            }
+        });
+
+    }
+
+    document.getElementById("btn-atras").onclick = function () {
+        window.location.replace("/malla/show2/" + $('#user_id').val());
+    }
+
+
 
 
 });

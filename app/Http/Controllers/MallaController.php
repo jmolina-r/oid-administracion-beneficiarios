@@ -81,10 +81,8 @@ class MallaController extends Controller
             //almacenar hora
             $hora_agendada = new HoraAgendada([
                 'tipo' => $request->input('tipo'),
-                'asist_sn' => '-',
                 'hora' => $request->input('hora'),
                 'fecha' => $fecha,
-                'razon_inasis' => '-',
                 'user_id' => $id //id del usuario-funcionario
             ]);
 
@@ -245,7 +243,28 @@ class MallaController extends Controller
      */
     public function edit($id)
     {
-        //
+        //datos basicos de la hora agendada
+        $hora_agendada = HoraAgendada::where('id', $id)->first();
+        $fecha = $hora_agendada->fecha;
+        $hora = $hora_agendada->hora;
+        $tipo = $hora_agendada->tipo;
+        $user_id = $hora_agendada->user_id;
+        // se obtienen los beneficiarios asociados
+        $horas_agendadas = Malla::where('hora_agendada_id', $hora_agendada->id)->get();
+
+        //obetener las prestaciones asociadas al area del usuario
+        $area = User::where('id', $hora_agendada->user_id)->first()->getTipoFuncionario();
+        $prestaciones = Prestacion::where('area', $area)->get();
+
+
+        return view('malla.editAgendarHora')
+            ->with(compact('user_id'))//id hora agendada
+            ->with(compact('id'))
+            ->with(compact('fecha'))
+            ->with(compact('hora'))
+            ->with(compact('tipo'))
+            ->with(compact('prestaciones'))
+            ->with(compact('horas_agendadas'));
     }
 
     /**
@@ -254,9 +273,30 @@ class MallaController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request)
     {
-        //
+
+        $jsonBeneficiarios = $request->input('jsonBeneficiarios');
+        $id = $request->input('id_hora_agendada'); //id hora agendada
+        //$idUser =HoraAgendada::where('id',$id)->first()->user_id;
+        //$area = User::where('id',$idUser)->first()->getTipoFuncionario();
+
+        foreach ($jsonBeneficiarios as $BeneficiarioRegistro) {
+            //obtener malla
+            $idBeneficiario = $BeneficiarioRegistro['beneficiario_id'];
+            $malla = Malla::where('hora_agendada_id', $id)->where('beneficiario_id',$idBeneficiario)->first();
+            //registrar asistencia
+            $malla->asist_sn = $BeneficiarioRegistro['asistencia'];
+            //registrar prestacion
+
+                $malla->prestacion_id = $BeneficiarioRegistro['prestacion'];
+
+            $malla->save();
+
+        }
+
+
+
     }
 
     /**
@@ -265,9 +305,12 @@ class MallaController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $idHora = $request->input('idHora');
+        $malla = Malla::where('hora_agendada_id', $idHora)->delete();
+        $hora =HoraAgendada::where('id',$idHora)->delete();
+
     }
 
     /**
@@ -324,7 +367,15 @@ class MallaController extends Controller
 
             $e = array();
             $e['id'] = $horaAgendada->id;
-            $e['title'] = $horaAgendada->tipo;
+            if ($horaAgendada->tipo == 'Grupal') {
+                $e['title'] = $horaAgendada->tipo;
+            } else {
+                $idBeneficiario = Malla::where('hora_agendada_id', $horaAgendada->id)->first()->beneficiario_id;
+                $beneficiario = Beneficiario::where('id', $idBeneficiario)->first();
+                $e['title'] = $beneficiario->nombre . " " . $beneficiario->apellido;
+                //$e['title'] = $horaAgendada->id;
+            }
+
             ///$e['title'] = $beneficiario->nombre . " " . $beneficiario->apellido;
             $e['start'] = $horaAgendada->fecha . ' ' . $horaAgendada->hora;
             $e['end'] = $horaAgendada->fecha . ' ' . $horaEnd;
@@ -334,88 +385,92 @@ class MallaController extends Controller
             array_push($eventos, $e);
         }
 
-        $horasAgendadasSoftdeleted = HoraAgendada::onlyTrashed()->where('user_id', $request->input('id'))->where('asist_sn', 'si')->get();
+        // se eliminanan las horas realizadas
+        //$horasAgendadasSoftdeleted = HoraAgendada::onlyTrashed()->where('user_id', $request->input('id'))->where('asist_sn', 'si')->get();
 
-        foreach ($horasAgendadasSoftdeleted as $horaDeleted) {
-
-            //$beneficiario = Beneficiario::where('id', $horaDeleted->beneficiario_id)->first();
-
-            $horaSeparada = explode(':', $horaDeleted->hora);
-
-            $hora = $horaSeparada[0];
-            $minutos = (int)$horaSeparada[1] + 45;
-
-            if ($minutos >= 60) {
-                $hora = ((int)$horaSeparada[0] + 1);
-                $minutos = $minutos - 60;
-
-                if ($hora < 10) {
-                    $hora = '0' . $hora;
-                }
-
-                if ($minutos < 10) {
-                    $minutos = '0' . $minutos;
-                }
-            }
-
-            $horaEnd = $hora . ':' . $minutos;
-
-            $f = array();
-            $f['id'] = $horaDeleted->id;
-            $f['title'] = " (REALIZADO)";
-            //$f['title'] = $beneficiario->nombre . " " . $beneficiario->apellido . " (REALIZADO)";
-            $f['start'] = $horaDeleted->fecha . 'T' . $horaDeleted->hora;
-            $f['end'] = $horaDeleted->fecha . 'T' . $horaEnd;
-            $f['allDay'] = false;
-            $f['color'] = "green";
-            $f['realizado'] = true;
-
-
-            // Merge the event array into the return array
-            //array_push($eventos, $f);
-        }
-
-        $horasAgendadasInasistencia = HoraAgendada::onlyTrashed()->where('user_id', $request->input('id'))
-            ->where('asist_sn', 'no')->get();
-
-        foreach ($horasAgendadasInasistencia as $horaDeleted) {
-
-            //$beneficiario = Beneficiario::where('id', $horaDeleted->beneficiario_id)->first();
-
-            $horaSeparada = explode(':', $horaDeleted->hora);
-
-            $hora = $horaSeparada[0];
-            $minutos = (int)$horaSeparada[1] + 45;
-
-            if ($minutos >= 60) {
-                $hora = ((int)$horaSeparada[0] + 1);
-                $minutos = $minutos - 60;
-
-                if ($hora < 10) {
-                    $hora = '0' . $hora;
-                }
-
-                if ($minutos < 10) {
-                    $minutos = '0' . $minutos;
-                }
-            }
-
-            $horaEnd = $hora . ':' . $minutos;
-
-            $f = array();
-            $f['id'] = $horaDeleted->id;
-            $f['title'] = " (INASISTENTE)";
-            //$f['title'] = $beneficiario->nombre . " " . $beneficiario->apellido . " (INASISTENTE)";
-            $f['start'] = $horaDeleted->fecha . 'T' . $horaDeleted->hora;
-            $f['end'] = $horaDeleted->fecha . 'T' . $horaEnd;
-            $f['allDay'] = false;
-            $f['color'] = "red";
-            $f['realizado'] = true;
-
-
-            // Merge the event array into the return array
-            //array_push($eventos, $f);
-        }
+        //se agregan las horas realizadas con nuevo formato
+        /**
+         * foreach ($horasAgendadasSoftdeleted as $horaDeleted) {
+         *
+         * //$beneficiario = Beneficiario::where('id', $horaDeleted->beneficiario_id)->first();
+         *
+         * $horaSeparada = explode(':', $horaDeleted->hora);
+         *
+         * $hora = $horaSeparada[0];
+         * $minutos = (int)$horaSeparada[1] + 45;
+         *
+         * if ($minutos >= 60) {
+         * $hora = ((int)$horaSeparada[0] + 1);
+         * $minutos = $minutos - 60;
+         *
+         * if ($hora < 10) {
+         * $hora = '0' . $hora;
+         * }
+         *
+         * if ($minutos < 10) {
+         * $minutos = '0' . $minutos;
+         * }
+         * }
+         *
+         * $horaEnd = $hora . ':' . $minutos;
+         *
+         * $f = array();
+         * $f['id'] = $horaDeleted->id;
+         * $f['title'] = " (REALIZADO)";
+         * //$f['title'] = $beneficiario->nombre . " " . $beneficiario->apellido . " (REALIZADO)";
+         * $f['start'] = $horaDeleted->fecha . 'T' . $horaDeleted->hora;
+         * $f['end'] = $horaDeleted->fecha . 'T' . $horaEnd;
+         * $f['allDay'] = false;
+         * $f['color'] = "green";
+         * $f['realizado'] = true;
+         *
+         *
+         * // Merge the event array into the return array
+         * //array_push($eventos, $f);
+         * }
+         *
+         * $horasAgendadasInasistencia = HoraAgendada::onlyTrashed()->where('user_id', $request->input('id'))
+         * ->where('asist_sn', 'no')->get();
+         *
+         * foreach ($horasAgendadasInasistencia as $horaDeleted) {
+         *
+         * //$beneficiario = Beneficiario::where('id', $horaDeleted->beneficiario_id)->first();
+         *
+         * $horaSeparada = explode(':', $horaDeleted->hora);
+         *
+         * $hora = $horaSeparada[0];
+         * $minutos = (int)$horaSeparada[1] + 45;
+         *
+         * if ($minutos >= 60) {
+         * $hora = ((int)$horaSeparada[0] + 1);
+         * $minutos = $minutos - 60;
+         *
+         * if ($hora < 10) {
+         * $hora = '0' . $hora;
+         * }
+         *
+         * if ($minutos < 10) {
+         * $minutos = '0' . $minutos;
+         * }
+         * }
+         *
+         * $horaEnd = $hora . ':' . $minutos;
+         *
+         * $f = array();
+         * $f['id'] = $horaDeleted->id;
+         * $f['title'] = " (INASISTENTE)";
+         * //$f['title'] = $beneficiario->nombre . " " . $beneficiario->apellido . " (INASISTENTE)";
+         * $f['start'] = $horaDeleted->fecha . 'T' . $horaDeleted->hora;
+         * $f['end'] = $horaDeleted->fecha . 'T' . $horaEnd;
+         * $f['allDay'] = false;
+         * $f['color'] = "red";
+         * $f['realizado'] = true;
+         *
+         *
+         * // Merge the event array into the return array
+         * //array_push($eventos, $f);
+         * }
+         **/
         return json_encode($eventos);
     }
 

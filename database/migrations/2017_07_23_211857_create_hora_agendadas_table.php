@@ -18,10 +18,9 @@ class CreateHoraAgendadasTable extends Migration
             $table->timestamps();
             //$table->integer('beneficiario_id')->unsigned();
             $table->string('tipo');
-            $table->string('asist_sn');
             $table->string('hora');
             $table->string('fecha');
-            $table->string('razon_inasis');
+            //$table->string('razon_inasis');
             $table->integer('user_id')->unsigned();
             $table->softDeletes();
         });
