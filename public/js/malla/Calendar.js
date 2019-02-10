@@ -93,9 +93,9 @@
             var horaInicio = moment(start).format('HH:mm');
             moment.locale('es');
 
-            console.log("inicio evento: " + fechaInicio);
+            //console.log("inicio evento: " + fechaInicio);
             //console.log('calendardate '+calendarDate);
-            console.log('ahora '+fechaActual);
+            //console.log('ahora '+fechaActual);
             //validar que el rol tiene permiso para agendar
 
             //if (puedeAsignarHora() == "false") {
@@ -118,16 +118,13 @@
             }
 
 
-
-            //
-            //$('input[name="fecha"]').val("23");
-            //$('input[name=fecha]').val(fechaInicio);
-
-            //desplagar modal para agendar hora
-            $('#exampleModal').modal('show');
             document.getElementById("hora").value = horaInicio;
             document.getElementById("fecha").value = fechaInicio;
-            document.getElementById("id_funcionario").value=document.getElementById("id").value;
+
+            //llamar a la vista createAgendarHora
+            guardarHora(fechaInicio,horaInicio);
+
+            //document.getElementById("id_funcionario").value=document.getElementById("id").value;
             return; /*bootbox.prompt({
                 title: 'Ingrese rut de beneficiario',
                 placeholder: 'El RUT debe tener el formato 12345678-9 xxxxxx',
@@ -212,14 +209,15 @@
             })*/
         },
         //Handlers Se dispara cuando se realiza una selección de un evento agendado https://fullcalendar.io/docs/eventClick
-        /*
+
         eventClick: function (calEvent, jsEvent, view) {
 
             var idHoraAgendada = calEvent.id;
 
             var existeFicha = "";
 
-
+            actualizarHora(idHoraAgendada);
+            /**
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -239,8 +237,8 @@
             });
 
 
-            if (puedeAsignarHora() == "false") {
-                if (existeFicha == "false") {
+           // if (puedeAsignarHora() == "false") {
+           //     if (existeFicha == "false") {
                     if (confirm("El beneficiario no tiene ficha inicial activa. Presione Cancelar para marcar la inasistencia.")) {
                         return;
                     } else {
@@ -249,8 +247,8 @@
                     }
 
 
-                }
-            }
+           //     }
+           // }
 
 
             if (calEvent.realizado) {
@@ -258,7 +256,7 @@
                 return;
             } else {
 
-                if (puedeAsignarHora() == "true") {
+                //if (puedeAsignarHora() == "true") {
                     if (confirm('¿Desea eliminar la hora?')) {
                         eliminarHora(calEvent.id);
                     } else {
@@ -273,7 +271,7 @@
                         }
                     }
                     return;
-                }
+                //}
 
                 if (confirm("¿El beneficiario registra asistencia?")) {
                     calEvent.url = '/registro_prestacion/' + calEvent.id;
@@ -285,8 +283,10 @@
 
             }
             return false;
+             **/
+             return
         },
-         */
+
 
         //Handlers
         drop: function (date, allDay) {
@@ -309,29 +309,20 @@
     });
 
 
-    //no usado hasta ahora
-    /*
-    function guardarHora(event) {
-        var fecha = moment(event).format('DD/MM/YYYY');
-        var hora = moment(event).format('hh:mm');
+    function guardarHora(fechaInicio,horaInicio) {
 
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            async: true,
-            url: "/malla/store",
-            type: "POST",
-            data: {
-                fecha: fecha,
-                hora: hora
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-
-            }
-        });
+        $url='/malla/create/';
+        $url=$url+$('#id').val()+'/'+fechaInicio+'/'+horaInicio;
+        location.replace($url);
     }
-    */
+
+    function actualizarHora(id) {
+
+        $url='/malla/edit/';
+        $url=$url+id;
+        location.replace($url);
+    }
+
 
 
     function encontrarNombre(rut, start) {

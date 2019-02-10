@@ -47,7 +47,7 @@ $(document).ready(function() {
                     "<td>" +
                         "<div class='text-right'>" +
                             "<a class='btn btn-warning btn-xs' href='/area-medica/ficha-evaluacion-inicial/fichas/listaFichas/" + element.id + "'>" +
-                                "<i class='fa fa-heart'></i>" +
+                                "<i class='fa fa-files-o'></i>" +
                             "</a>" +
                             "<a class='btn btn-primary btn-xs' href='/beneficiario/informacion/" + element.id + "'>" +
                                 "<i class='fa fa-user'></i>" +

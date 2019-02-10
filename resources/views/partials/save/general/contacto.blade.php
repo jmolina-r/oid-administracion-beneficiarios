@@ -45,7 +45,7 @@
                     @else
                         ""
                     @endif
-                class='form-control' placeholder='E-mail' type='email' pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                class='form-control' placeholder='E-mail' type='email' pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$">
                 <div class="help-block with-errors">
                 </div>
             </div>

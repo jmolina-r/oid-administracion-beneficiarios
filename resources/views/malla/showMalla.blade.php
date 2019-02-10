@@ -90,16 +90,23 @@
     </script>
 
     <script>
-        $('#exampleModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget) // Button that triggered the modal
-            var recipient = button.data('whatever') // Extract info from data-* attributes
-            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-            var modal = $(this)
-            modal.find('.modal-title').text('New message to ' + recipient)
-            modal.find('.modal-body input').val(recipient)
-        })
+        //href="{{route("malla.showMalla",1)}}"
+        $('#crearHoraAgenda').click(function () {
+            //console.log('LA FECHA SELECCIONADA ES:', document.getElementById("fecha").value);
+            var fecha = document.getElementById("fecha").value;
+            var hora = document.getElementById("hora").value;
+
+            var href = $('#crearHoraAgenda').attr("href");
+            //console.log('LA URL ES :', href);
+
+            href = href.substring(0, href.length - 3);
+            //console.log('El texto :', href)
+            href2 = $('#crearHoraAgenda').attr("href", href + fecha+'/'+hora);
+            console.log('LA URL2 :', href2);
+        });
     </script>
+
+
 
     <script>
 
@@ -143,27 +150,32 @@
                     <input id="minTime" name="minTime" type="hidden" value="{{$minTime}}">
                     <input id="maxTime" name="maxTime" type="hidden" value="{{$maxTime}}">
                     <input id="slotDuration" name="slotDuration" type="hidden" value="{{$slotDuration}}">
-                    <input id="slotLabelInterval" name="slotLabelInterval" type="hidden" value="{{$slotLabelInterval}}">
+                    <input id="slotLabelInterval" name="slotLabelInterval" type="hidden"
+                           value="{{$slotLabelInterval}}">
                     <input id="id" name="id_funcionario" type="hidden" value="{{$id}}">
+                    <input id="fecha" name="fecha" type="hidden" value="">
+                    <input id="hora" name="hora" type="hidden" value="">
+
 
                     <div class='col-xs-12'>
                         <div class='group-header'>
-                        </div>
-                        <div class="col-xs-12">
-                            <div class='box'>
-                                <div class='box-content box-padding'>
-                                    <div class="form-group">
-                                        <h3 class='control-label' for='inputText'>Profesional:</h3>
+
+                                <div class='box'>
+                                    <div class='box-content box-padding'>
+                                        <div class="form-group">
+                                            <h3 class='control-label' for='inputText'>Profesional: {{ App\User::where('id',$id)->first()->getNombreFuncionario()}} ({{ App\User::where('id',$id)->first()->getTipoFuncionario()}})</h3>
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+
                         </div>
 
-
                         <!--
-                        <a type="button" class="btn btn-primary" href='{{route('malla.CreateAgendarHora')}}'>
+                        <a type="button" id="crearHoraAgenda" class="btn btn-primary" href='{{route('malla.CreateAgendarHora',[$id,0,0])}}'>
                             Agendar Hora
-                        </a>-->
+                        </a>
+                        -->
                         <div class='row'>
                             <div class='col-sm-12'>
                                 <div class='row'>

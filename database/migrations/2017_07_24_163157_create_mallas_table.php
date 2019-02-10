@@ -19,6 +19,9 @@ class CreateMallasTable extends Migration
 
             $table->unsignedInteger('beneficiario_id')->nullable();
             $table->unsignedInteger('hora_agendada_id')->nullable();
+            $table->unsignedInteger('prestacion_id')->nullable();
+            $table->string('asist_sn')->nullable();
+
             $table->softDeletes();
         });
 
@@ -28,6 +31,10 @@ class CreateMallasTable extends Migration
 
         Schema::table('mallas', function($table) {
             $table->foreign('beneficiario_id')->references('id')->on('beneficiarios');
+        });
+
+        Schema::table('mallas', function ($table){
+            $table->foreign('prestacion_id')->references('id')->on('prestacions');
         });
     }
 

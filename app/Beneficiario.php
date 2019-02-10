@@ -67,4 +67,8 @@ class Beneficiario extends Model
         return $this->hasMany(FichaAtencionSocial::class);
 
     }
+
+    public function nombreCompleto(){
+        return $this->nombre." ".$this->apellido;
+    }
 }

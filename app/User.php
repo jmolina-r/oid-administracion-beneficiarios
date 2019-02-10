@@ -60,4 +60,14 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function getNombreFuncionario()
+    {
+        return $this->funcionario()->first()->getNombreCompleto();
+    }
+
+    public function getTipoFuncionario()
+    {
+        return $this->funcionario()->first()->tipo_funcionario()->first()->nombre;
+    }
 }
