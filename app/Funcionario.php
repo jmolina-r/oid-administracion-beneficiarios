@@ -20,4 +20,15 @@ class Funcionario extends Model
         return $this->belongsTo(TipoFuncionario::class);
     }
 
+    public function getNombreCompleto()
+    {
+        return $this->nombre." ".$this->apellido;
+    }
+
+    public function getTipoFuncionario()
+    {
+        $tipo = $this->tipo_funcionario()->first();
+       return $tipo->nombre;
+    }
+
 }

@@ -14,4 +14,10 @@ class Prestacion extends Model
 
     protected $dates = ['deleted_at'];
 
+    //public function prestacion(){
+
+     //   return $this->belongsTo(Prestacion::class);
+
+    //}
+
 }

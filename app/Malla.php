@@ -9,7 +9,7 @@ class Malla extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['hora_agendada_id','beneficiario_id'];
+    protected $fillable = ['hora_agendada_id','beneficiario_id','prestacions_id'];
 
     public function beneficiario()
     {
@@ -19,5 +19,10 @@ class Malla extends Model
     public function hora_agendada()
     {
         return $this->hasOne(HoraAgendada::class);
+    }
+
+    public function prestacion()
+    {
+        return $this->hasOne(Prestacion::class);
     }
 }
