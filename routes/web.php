@@ -430,9 +430,10 @@ Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
         'uses' => 'MallaController@store',
         'as' => 'malla.store'
     ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
-    Route::post('/store', [
-        'uses' => 'MallaController@store',
-        'as' => 'malla.store'
+
+    Route::post('/listaEspera/show', [
+        'uses' => 'MallaController@listaEspera',
+        'as' => 'malla.listaEspera'
     ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
 
     Route::post('/destroy', [
