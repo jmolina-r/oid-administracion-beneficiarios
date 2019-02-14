@@ -43,7 +43,16 @@
                                 </a>
                             </li>
                             @endif
-
+                            @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
+                                <li class=''>
+                                    <a href='{{route('malla.listaEspera')}}'>
+                                        <div class='icon'>
+                                            <i class='fa fa-caret-right'></i>
+                                        </div>
+                                        <span>Lista de espera</span>
+                                    </a>
+                                </li>
+                            @endif
                     </ul>
                 </li>
             @endif
