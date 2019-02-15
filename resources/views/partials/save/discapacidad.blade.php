@@ -23,4 +23,9 @@
     <div class='col-md-12 col-lg-5'>
         @include('partials.save.discapacidad.plan-rehabilitacion')
     </div>
+
+    <div class='col-md-12 col-lg-5'>
+        @include('partials.save.discapacidad.lista-espera')
+    </div>
+
 </div>

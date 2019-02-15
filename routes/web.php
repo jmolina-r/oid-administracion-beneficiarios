@@ -237,6 +237,11 @@ Route::group(['prefix' => 'beneficiario', 'middleware' => 'auth'], function () {
         'uses' => 'BeneficiarioController@generatePDF',
         'as' => 'beneficiario.generatePDF'
     ])->middleware('roles:admin|secretaria');
+
+    Route::get('/listaEspera/show', [
+        'uses' => 'BeneficiarioController@listaEspera',
+        'as' => 'beneficiario.listaEspera'
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
 });
 
 Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
@@ -431,10 +436,7 @@ Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
         'as' => 'malla.store'
     ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
 
-    Route::post('/listaEspera/show', [
-        'uses' => 'MallaController@listaEspera',
-        'as' => 'malla.listaEspera'
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+
 
     Route::post('/destroy', [
         'uses' => 'MallaController@destroy',

@@ -16,8 +16,8 @@ class CreateDemandaBeneficiariosTable extends Migration
         Schema::create('demanda_beneficiarios', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->unsignedInteger('demanda_id')->nullable;
-            $table->unsignedInteger('beneficiario_id')->nullable;
+            $table->unsignedInteger('demanda_id')->nullable();
+            $table->unsignedInteger('beneficiario_id')->nullable();
 
         });
 

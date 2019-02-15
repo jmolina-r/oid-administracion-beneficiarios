@@ -16,9 +16,9 @@ class CreateHistorialDemandasTable extends Migration
         Schema::create('historial_demandas', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->unsignedInteger('demanda_beneficiario_id')->nullable;
-            $table->unsignedInteger('estado_id')->nullable;
-            $table->unsignedInteger('descripcion_id')->nullable;
+            $table->unsignedInteger('demanda_beneficiario_id')->nullable();
+            $table->unsignedInteger('estado_id')->nullable();
+            $table->unsignedInteger('descripcion_id')->nullable();
 
         });
 

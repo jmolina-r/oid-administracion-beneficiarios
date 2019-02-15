@@ -313,16 +313,7 @@ class MallaController extends Controller
 
     }
 
-    /**
-     * Muestra una lista de pacientes en espera.
-     *
-     */
-    public function listaEspera(Request $request){
 
-        return redirect()->route('lista-espera.show', [
-            'beneficiarios' => $beneficiarios
-        ]);
-    }
 
     /**
      * Poblar malla.

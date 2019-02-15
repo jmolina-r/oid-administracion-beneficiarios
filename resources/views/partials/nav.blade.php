@@ -45,7 +45,7 @@
                             @endif
                             @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
                                 <li class=''>
-                                    <a href='{{route('malla.listaEspera')}}'>
+                                    <a href='{{route('beneficiario.listaEspera')}}'>
                                         <div class='icon'>
                                             <i class='fa fa-caret-right'></i>
                                         </div>

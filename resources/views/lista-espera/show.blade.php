@@ -3,13 +3,20 @@
 
 <!-- meta atributo title -->
 @section('title')
-    Perfil de Usuario - OID
+    Lista Espera - OID
 @endsection
 
 <!-- inyeccion de estilos -->
+@section('styles_before')
+    <link href="{{ asset('/assets/stylesheets/plugins/fuelux/wizard.css') }}" rel="stylesheet" type="text/css" media="all" />
+@endsection
+
 @section('styles')
+    <link href="{{ asset('/assets/stylesheets/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('/assets/stylesheets/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link href='{{ asset('/assets/images/meta_icons/apple-touch-icon-precomposed.png') }}' rel='apple-touch-icon-precomposed'>
     <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('/assets/stylesheets/plugins/select2/select2.css') }}" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
 <!-- Atributos del body -->
@@ -27,7 +34,8 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
     <!-- / jquery ui -->
     <script src="{{ asset('/assets/javascripts/jquery/jquery-ui.min.js') }}" type="text/javascript"></script>
     <!-- / jQuery UI Touch Punch -->
-    <script src="{{ asset('/assets/javascripts/jquery/jquery.ui.touch-punch.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/assets/javascripts/jquery/jquery.ui.touch-punch.min.js') }}"
+            type="text/javascript"></script>
     <!-- / bootstrap [required] -->
     <script src="{{ asset('/assets/javascripts/bootstrap/bootstrap.js') }}" type="text/javascript"></script>
     <!-- / modernizr -->
@@ -43,7 +51,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
 <!-- Contenido del body -->
 @section('content')
     @include('partials.header')
-    <div id='wrapper' class="profile">
+    <div id='wrapper'>
         <div id='main-nav-bg'></div>
         @include('partials.nav')
         <section id='content'>
@@ -54,10 +62,88 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                             <div class='col-sm-12'>
                                 <div class='page-header'>
                                     <h1 class='pull-left'>
-                                        <i class='fa fa-user'></i>
-                                        <span>Información de<span class="capitalize">{{$persona->nombre}} {{$persona->apellido}}
-                                        <a href="{{route('beneficiario.edit', $persona->id)}}"><i class="fa fa-pencil-square-o"></i></a>
+                                        <i class='fa fa-pencil-square-o'></i>
+                                        <span>Buscador de Beneficiario</span>
                                     </h1>
+                                    <div class='pull-right'>
+                                        <ul class='breadcrumb'>
+                                            <li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-sm-12'>
+                                <div class='box'>
+                                    <div class='box-content box-padding'>
+                                        <div class="container">
+                                            <div class='col-md-12 form-group'>
+                                                <label class='control-label' for='demanda'>Demanda: </label>
+                                                <div class='controls'>
+                                                    <select class="form-control">
+                                                        @foreach($demandas as $demanda)
+                                                            <option value="{{$demanda->id}}">{{$demanda->nombre}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class='col-md-12 form-group'>
+                                                <label class='control-label' for='estado'>Estado: </label>
+                                                <div class='controls'>
+                                                    <select class="form-control">
+                                                        @foreach($estados as $estado)
+                                                            <option value="{{$estado->id}}">{{$estado->nombre}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <div class='box bordered-box green-border' style='margin-bottom:0;'>
+                                                    <div class='box-content box-no-padding'>
+                                                        <div class='responsive-table'>
+                                                            <table class='table table-bordered table-hover table-striped' style='margin-bottom:0;'>
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>
+                                                                        Fecha
+                                                                    </th>
+                                                                    <th>
+                                                                        Nombre
+                                                                    </th>
+                                                                    <th>
+                                                                        Rut
+                                                                    </th>
+                                                                    <th>
+                                                                        Demanda
+                                                                    </th>
+                                                                    <th>
+                                                                        Estado
+                                                                    </th>
+                                                                    <th>Acciones</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody id="listaBeneficiario">
+                                                                @foreach($demanda_beneficiarios as $demandasB)
+                                                                    @php($beneficiario = App\Beneficiario::where('id',$demandasB->beneficiario_id)->first())
+
+                                                                    <tr>
+                                                                        <td>{{$demandasB->created_at}}</td>
+                                                                        <td>{{$beneficiario->nombre." ".$beneficiario->apellido}}</td>
+                                                                        <td>{{$beneficiario->rut}}</td>
+                                                                        <td>{{$demandasB->demanda()->first()->nombre}}</td>
+                                                                        <td>{{$demandasB->historial_demanda()->orderBy('created_at', 'desc')->first()->estado()->first()->nombre}}</td>
+                                                                        <td></td>
+                                                                    </tr>
+                                                                @endforeach
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

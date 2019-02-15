@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Demanda;
+use App\Estado;
 use function MongoDB\BSON\toJSON;
 use \PDF;
 
@@ -28,6 +30,8 @@ use App\TelefonoTutor;
 use App\TipoDependencia;
 use App\TipoDiscapacidad;
 use App\Tutor;
+use App\DemandaBeneficiario;
+use App\HistorialDemanda;
 use \Validator;
 
 use Illuminate\Http\Request;
@@ -84,6 +88,7 @@ class BeneficiarioController extends Controller
         $organizaciones_sociales = OrganizacionSocial::get();
 
         $beneficios = Beneficio::get();
+        $demandas = Demanda::get();
 
         return view('beneficiario.create')
             ->with(compact('paises'))
@@ -97,7 +102,8 @@ class BeneficiarioController extends Controller
             ->with(compact('isapre'))
             ->with(compact('datos_sociales'))
             ->with(compact('organizaciones_sociales'))
-            ->with(compact('beneficios'));
+            ->with(compact('beneficios'))
+            ->with(compact('demandas'));
     }
 
     /**
@@ -312,6 +318,24 @@ class BeneficiarioController extends Controller
         }
 
         $planDeRehabilitacionTratamientoControl = $request->input('p_reha_trat_ctrl');
+
+        $demandas = $request->input('demandaCheckbox');
+
+        foreach ($demandas as $demanda) {
+
+            $demandaBeneficiario = new DemandaBeneficiario([
+                'demanda_id' => $demanda,
+                'beneficiario_id'=> $beneficiario->id
+            ]);
+            $demandaBeneficiario->save();
+
+            $historialDemanda = new HistorialDemanda([
+                'demanda_beneficiario_id' => $demandaBeneficiario->id,
+                'estado_id' =>2, //pendiente
+                'descripcion_id' =>null
+            ]);
+            $historialDemanda->save();
+        }
 
         return redirect()->route('beneficiario.show', ['id' => $beneficiario->id]);
     }
@@ -799,6 +823,22 @@ class BeneficiarioController extends Controller
         $beneficiario = Beneficiario::find($id);
         $pdf = PDF::loadView('beneficiario.pdf', array('beneficiario' => $beneficiario));
         return $pdf->download('beneficiario.pdf');
+    }
+
+    /**
+     * Muestra una lista de pacientes en espera.
+     *
+     */
+    public function listaEspera()
+    {
+        $demandas = Demanda::get();
+        $estados = Estado::get();
+        $demanda_beneficiarios = DemandaBeneficiario::orderBy('created_at','asc')->get();
+
+        return view('lista-espera.show')
+            ->with(compact('demandas'))
+            ->with(compact('estados'))
+            ->with(compact('demanda_beneficiarios'));
     }
 
 }
