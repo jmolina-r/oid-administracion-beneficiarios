@@ -20,19 +20,26 @@ class DemandaTableSeeder extends Seeder
         ]);
 
         Demanda::create([
-            'nombre' => 'PSICOLOGIA 1',
+            'nombre' => 'PSICOLOGIA CLINICA',
         ]);
 
         Demanda::create([
-            'nombre' => 'PSICOLOGIA 2',
+            'nombre' => 'PSICOLOGIA LABORAL',
         ]);
 
         Demanda::create([
-            'nombre' => 'EDUCADOR DIFERENCIAL',
+            'nombre' => 'FONOAUDIOLOGIA',
         ]);
 
         Demanda::create([
             'nombre' => 'ATENCION SOCIAL',
+        ]);
+
+        Demanda::create([
+            'nombre' => 'EDUCADOR',
+        ]);
+        Demanda::create([
+            'nombre' => 'TALLERES',
         ]);
     }
 }

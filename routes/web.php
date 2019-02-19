@@ -238,9 +238,14 @@ Route::group(['prefix' => 'beneficiario', 'middleware' => 'auth'], function () {
         'as' => 'beneficiario.generatePDF'
     ])->middleware('roles:admin|secretaria');
 
-    Route::get('/listaEspera/show', [
+    Route::get('/listaEspera/show/{id}', [
         'uses' => 'BeneficiarioController@listaEspera',
         'as' => 'beneficiario.listaEspera'
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+
+    Route::get('/gethistorialdemanda', [
+        'uses' => 'BeneficiarioController@gethistorialdemanda',
+        'as' => 'beneficiario.gethistorialdemanda'
     ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
 });
 
