@@ -54,82 +54,28 @@
                         <span>Lista de Espera</span>
                         <i class='fa fa-angle-down angle-down'></i>
                     </a>
+
                     <ul class='nav nav-stacked'>
-                        @if(Auth::user()->hasAnyRole(['admin', 'secretaria','kinesiologia' ]))
-                            <li class=''>
-                                <a href='{{route('beneficiario.listaEspera',1)}}'>
-                                    <div class='icon'>
-                                        <i class='fa fa-caret-right'></i>
-                                    </div>
-                                    <span>Kinesiología</span>
-                                </a>
-                            </li>
-                        @endif
-                        @if(Auth::user()->hasAnyRole(['admin', 'secretaria','terapia_ocupacional']))
-                            <li class=''>
-                                <a href='{{route('beneficiario.listaEspera',2)}}'>
-                                    <div class='icon'>
-                                        <i class='fa fa-caret-right'></i>
-                                    </div>
-                                    <span>Terapia Ocupacional</span>
-                                </a>
-                            </li>
-                        @endif
+                    @php($demandas= \App\Demanda::get())
 
-                        @if(Auth::user()->hasAnyRole(['admin', 'secretaria','psicologia']))
-                            <li class=''>
-                                <a href='{{route('beneficiario.listaEspera',3)}}'>
-                                    <div class='icon'>
-                                        <i class='fa fa-caret-right'></i>
-                                    </div>
-                                    <span>Pscicología Clínica</span>
-                                </a>
-                            </li>
-                        @endif
+                    @foreach($demandas as $demanda)
+                            <!--@if(Auth::user()->hasAnyRole(['admin', 'secretaria','kinesiologia' ]))-->
+                                <li class=''>
+                                    <a href='{{route('beneficiario.listaEspera',$demanda->id)}}'>
+                                        <div class='icon'>
+                                            <i class='fa fa-caret-right'></i>
+                                        </div>
+                                        <span>{{ucwords(strtolower($demanda->nombre))}}</span>
+                                    </a>
+                                </li>
+                            <!--@endif-->
+                        @endforeach
 
-                        @if(Auth::user()->hasAnyRole(['admin', 'secretaria','psicologia']))
-                            <li class=''>
-                                <a href='{{route('beneficiario.listaEspera',4)}}'>
-                                    <div class='icon'>
-                                        <i class='fa fa-caret-right'></i>
-                                    </div>
-                                    <span>Pscicología Laboral</span>
-                                </a>
-                            </li>
-                        @endif
-
-                        @if(Auth::user()->hasAnyRole(['admin', 'secretaria','fonoaudiologia']))
-                            <li class=''>
-                                <a href='{{route('beneficiario.listaEspera',5)}}'>
-                                    <div class='icon'>
-                                        <i class='fa fa-caret-right'></i>
-                                    </div>
-                                    <span>Fonoaudilogía</span>
-                                </a>
-                            </li>
-                        @endif
-
-                        @if(Auth::user()->hasAnyRole(['admin', 'secretaria','trabajo_social']))
-                            <li class=''>
-                                <a href='{{route('beneficiario.listaEspera',6)}}'>
-                                    <div class='icon'>
-                                        <i class='fa fa-caret-right'></i>
-                                    </div>
-                                    <span>Atención Social</span>
-                                </a>
-                            </li>
-                        @endif
                     </ul>
+
+
                 </li>
             @endif
-
-
-
-
-
-
-
-
 
             @if(Auth::user()->hasAnyRole(['admin', 'trabajo_social']))
                 <li class=''>
@@ -146,7 +92,6 @@
                                 <span>Asistente Social</span>
                             </a>
                         </li>
-
                     </ul>
                 </li>
             @endif
