@@ -71,6 +71,9 @@ class DatabaseSeeder extends Seeder
         $this->call(DesarrolloEvolutivoTableSeeder::class);
         $this->call(HabilidadesSocialesTableSeeder::class);
         $this->call(FichaTerapiaOcupacionalTableSeeder::class);
+        $this->call(DescripcionTableSeeder::class);
+        $this->call(EstadoTableSeeder::class);
+        $this->call(DemandaTableSeeder::class);
         //$this->call(fakerSeeder::class);
 
 

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Demanda;
+use App\Descripcion;
+use App\Estado;
 use function MongoDB\BSON\toJSON;
 use \PDF;
 
@@ -28,10 +31,13 @@ use App\TelefonoTutor;
 use App\TipoDependencia;
 use App\TipoDiscapacidad;
 use App\Tutor;
+use App\DemandaBeneficiario;
+use App\HistorialDemanda;
 use \Validator;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+
 
 class BeneficiarioController extends Controller
 {
@@ -84,6 +90,7 @@ class BeneficiarioController extends Controller
         $organizaciones_sociales = OrganizacionSocial::get();
 
         $beneficios = Beneficio::get();
+        $demandas = Demanda::get();
 
         return view('beneficiario.create')
             ->with(compact('paises'))
@@ -97,7 +104,8 @@ class BeneficiarioController extends Controller
             ->with(compact('isapre'))
             ->with(compact('datos_sociales'))
             ->with(compact('organizaciones_sociales'))
-            ->with(compact('beneficios'));
+            ->with(compact('beneficios'))
+            ->with(compact('demandas'));
     }
 
     /**
@@ -312,6 +320,24 @@ class BeneficiarioController extends Controller
         }
 
         $planDeRehabilitacionTratamientoControl = $request->input('p_reha_trat_ctrl');
+
+        $demandas = $request->input('demandaCheckbox');
+
+        foreach ($demandas as $demanda) {
+
+            $demandaBeneficiario = new DemandaBeneficiario([
+                'demanda_id' => $demanda,
+                'beneficiario_id' => $beneficiario->id
+            ]);
+            $demandaBeneficiario->save();
+
+            $historialDemanda = new HistorialDemanda([
+                'demanda_beneficiario_id' => $demandaBeneficiario->id,
+                'estado_id' => 2, //pendiente
+                'descripcion_id' => null
+            ]);
+            $historialDemanda->save();
+        }
 
         return redirect()->route('beneficiario.show', ['id' => $beneficiario->id]);
     }
@@ -799,6 +825,69 @@ class BeneficiarioController extends Controller
         $beneficiario = Beneficiario::find($id);
         $pdf = PDF::loadView('beneficiario.pdf', array('beneficiario' => $beneficiario));
         return $pdf->download('beneficiario.pdf');
+    }
+
+    /**
+     * Muestra una lista de pacientes en espera.
+     *
+     */
+    public function listaEspera($id)
+    {
+        $id_demanda = $id;
+        $demandas = Demanda::get();
+        $estados = Estado::get();
+        $descripciones = Descripcion::get();
+        $demanda_beneficiarios = DemandaBeneficiario::where('demanda_id', $id_demanda)->orderBy('created_at', 'asc')->get();
+
+        return view('lista-espera.show')
+            ->with(compact('id_demanda'))
+            ->with(compact('estados'))
+            ->with(compact('descripciones'))
+            ->with(compact('demanda_beneficiarios'));
+    }
+
+    public function gethistorialdemanda(Request $request)
+    {
+        $id = $request->input('demanda_beneficiario_id');
+        $eventos = array();
+
+        $historial_demanda = HistorialDemanda::where('demanda_beneficiario_id', $id)->orderBy('created_at', 'desc')->get();
+
+        foreach ($historial_demanda as $registro) {
+            $e = array();
+            $e['id'] = $registro->id;
+            $e['demanda_beneficiario_id'] = $registro->demanda_beneficiario_id;
+
+            $fecha = new \DateTime($registro->created_at);
+            $e['fecha'] = $fecha->format('Y-m-d H:i');
+            $e['descripcion'] = "Registro Inicial";
+
+            if ($registro->descripcion()->first() == null) {
+                $e['descripcion'] = "Registro Inicial";
+            } else {
+                $descripcion = $registro->descripcion()->first()->nombre;
+                $e['descripcion'] = $descripcion;
+            }
+            $estado = $registro->estado()->first()->nombre;
+            $e['estado'] = $estado;
+            array_push($eventos, $e);
+        }
+
+        return json_encode($eventos);
+    }
+
+    public function guardarHistorialDemanda(Request $request){
+        $demanda_beneficiari_id = $request->input('demanda_beneficiario_id');
+        $estado_id = $request->input('estado_id');
+        $descripcion_id = $request->input('descripcion_id');
+
+        $historial_demanda = new HistorialDemanda([
+            'demanda_beneficiario_id' => $demanda_beneficiari_id,
+            'estado_id' => $estado_id,
+            'descripcion_id' => $descripcion_id
+        ]);
+        $historial_demanda->save();
+
     }
 
 }

@@ -71,4 +71,9 @@ class Beneficiario extends Model
     public function nombreCompleto(){
         return $this->nombre." ".$this->apellido;
     }
+
+    public function demanda_beneficiario()
+    {
+        return $this->hasMany(DemandaBeneficiario::class);
+    }
 }
