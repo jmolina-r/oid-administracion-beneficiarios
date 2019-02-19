@@ -22,5 +22,8 @@ class DescripcionTableSeeder extends Seeder
         \App\Descripcion::create([
             'nombre' => 'Rechaza atención',
         ]);
+        \App\Descripcion::create([
+            'nombre' => 'Otro',
+        ]);
     }
 }

@@ -50,7 +50,7 @@
 
             @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional']))
                 <li class=''>
-                    <a class="dropdown-collapse" href="#">
+                    <a class="dropdown-collapse" href="#"><i class='fa fa-list-ol'></i>
                         <span>Lista de Espera</span>
                         <i class='fa fa-angle-down angle-down'></i>
                     </a>

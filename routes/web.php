@@ -247,6 +247,11 @@ Route::group(['prefix' => 'beneficiario', 'middleware' => 'auth'], function () {
         'uses' => 'BeneficiarioController@gethistorialdemanda',
         'as' => 'beneficiario.gethistorialdemanda'
     ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+
+    Route::post('/guardarHistorialDemanda', [
+        'uses' => 'BeneficiarioController@guardarHistorialDemanda',
+        'as' => 'beneficiario.guardarHistorialDemanda'
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
 });
 
 Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){

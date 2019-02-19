@@ -836,20 +836,22 @@ class BeneficiarioController extends Controller
         $id_demanda = $id;
         $demandas = Demanda::get();
         $estados = Estado::get();
+        $descripciones = Descripcion::get();
         $demanda_beneficiarios = DemandaBeneficiario::where('demanda_id', $id_demanda)->orderBy('created_at', 'asc')->get();
 
         return view('lista-espera.show')
             ->with(compact('id_demanda'))
             ->with(compact('estados'))
+            ->with(compact('descripciones'))
             ->with(compact('demanda_beneficiarios'));
     }
 
     public function gethistorialdemanda(Request $request)
     {
-        $id = $request->input('demanda_beneficiario_id');;
+        $id = $request->input('demanda_beneficiario_id');
         $eventos = array();
 
-        $historial_demanda = HistorialDemanda::where('demanda_beneficiario_id', $id)->get();
+        $historial_demanda = HistorialDemanda::where('demanda_beneficiario_id', $id)->orderBy('created_at', 'desc')->get();
 
         foreach ($historial_demanda as $registro) {
             $e = array();
@@ -872,6 +874,20 @@ class BeneficiarioController extends Controller
         }
 
         return json_encode($eventos);
+    }
+
+    public function guardarHistorialDemanda(Request $request){
+        $demanda_beneficiari_id = $request->input('demanda_beneficiario_id');
+        $estado_id = $request->input('estado_id');
+        $descripcion_id = $request->input('descripcion_id');
+
+        $historial_demanda = new HistorialDemanda([
+            'demanda_beneficiario_id' => $demanda_beneficiari_id,
+            'estado_id' => $estado_id,
+            'descripcion_id' => $descripcion_id
+        ]);
+        $historial_demanda->save();
+
     }
 
 }
