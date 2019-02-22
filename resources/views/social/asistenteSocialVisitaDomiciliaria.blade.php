@@ -156,7 +156,7 @@
                                                                                         <label class='control-label' for='inputText'>Ayuda Técnica</label>
                                                                                         <div class="funkyradio">
                                                                                         @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
-                                                                                            @if ($tipoAyuda->tipo=='tecnico')
+                                                                                            @if ($tipoAyuda->tipo=='Tecnico')
                                                                                                     <div class="box-content" style="margin-top:10px;">
                                                                                                         <input value="{{ucfirst($tipoAyuda->nombre)}}" name="tipoAyudaSocialVer[]" id="{{$tipoAyuda->id}}.t" type="hidden">
                                                                                                         <input class='make-switch checkStyle' value="{{$tipoAyuda->id}}" name="tipoAyudaSocial[]" id="{{$tipoAyuda->id}}.t"
@@ -173,7 +173,7 @@
                                                                                         <label class='control-label' for='inputText'>Ayuda Social</label>
                                                                                         <div class="funkyradio">
                                                                                         @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
-                                                                                            @if ($tipoAyuda->tipo=='social')
+                                                                                            @if ($tipoAyuda->tipo=='Social')
                                                                                                     <div class="box-content" style="margin-top:10px;">
                                                                                                         <input value="{{ucfirst($tipoAyuda->nombre)}}" name="tipoAyudaSocialVer[]" id="{{$tipoAyuda->id}}.t" type="hidden">
                                                                                                         <input class='make-switch' value="{{$tipoAyuda->id}}" name="tipoAyudaSocial[]" id="{{$tipoAyuda->id}}.t"
