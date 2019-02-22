@@ -65,16 +65,16 @@ class FichasController extends Controller
             $tipoFuncionario = TipoFuncionario::find($funcionario->tipo_funcionario_id)->nombre;
 
             $estado = 'cerrado';
-            if($tipoFuncionario == 'kinesiologo' && count($fichasKinesiologia) > 0){
+            if($tipoFuncionario == 'Kinesiologo' && count($fichasKinesiologia) > 0){
                 $estado = $fichasKinesiologia->first()->estado;
             }
-            if($tipoFuncionario == 'psicologo' && count($fichasPsicologia) > 0){
+            if($tipoFuncionario == 'Psicologo' && count($fichasPsicologia) > 0){
                 $estado = $fichasPsicologia->first()->estado;
             }
-            if($tipoFuncionario == 'fonoaudiologo' && count($fichasFonoaudiologia) > 0){
+            if($tipoFuncionario == 'Fonoaudiologo' && count($fichasFonoaudiologia) > 0){
                 $estado = $fichasFonoaudiologia->first()->estado;
             }
-            if($tipoFuncionario == 'terapeuta ocupacional' && count($fichasTerapiaOcuacional) > 0){
+            if($tipoFuncionario == 'Terapeuta ocupacional' && count($fichasTerapiaOcuacional) > 0){
                 $estado = $fichasTerapiaOcuacional->first()->estado;
             }
         }

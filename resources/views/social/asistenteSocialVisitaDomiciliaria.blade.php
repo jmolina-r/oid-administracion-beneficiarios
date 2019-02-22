@@ -133,6 +133,7 @@
                                                 <?php $a = 1; ?>
                                                 <div class="tabbable tabs-left">
                                                     <ul class="nav nav-tabs">
+                                                        //
                                                         @foreach($tipoMotivoSocial as $tMotivos)
                                                             @if($i == 1)
                                                                 <li class="active"><a href=<?php echo "#".$tMotivos->id ?> data-toggle="tab">{{ucfirst($tMotivos->nombre)}}</a></li>
