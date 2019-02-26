@@ -231,7 +231,8 @@
                                                                                             @elseif($tMotivos->id == '2')
                                                                                                 <div class="box-content" style="margin-top:10px;">
                                                                                                     <input value="{{ucfirst($sMotivo->nombre)}}" name="inputSubMotivoVer[]" id="inputSubMotivoVer" type="hidden">
-                                                                                                    <input class='make-switch' value="{{$sMotivo->id}}" id="inputSubMotivo" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}')"  name="inputSubMotivo[]"><p id="hverificacion">{{ucfirst($sMotivo->nombre)}}</p>
+                                                                                                    <input class='make-switch' value="{{$sMotivo->id}}" id="inputSubMotivo" data-off-text='<i class="fa fa-circle-o"></i>' data-on-text='<i class="fa fa-check"></i>' type='checkbox' onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}')"  name="inputSubMotivo[]">
+                                                                                                    <p id="hverificacion">{{ucfirst($sMotivo->nombre)}}</p>
                                                                                                 </div>
                                                                                                 @if($sMotivo->id == '6')
 

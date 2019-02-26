@@ -98,7 +98,7 @@
                                                         </div>
                                                     @endif
                                                         <div class="col-xs-12">
-                                                            <td><a class="btn btn-primary btn-block btn-xs" href="">Ver como PDF</a></td>
+                                                            <!--<td><a class="btn btn-primary btn-block btn-xs" href="">Ver como PDF</a></td>-->
                                                             <hr>
                                                             <div class="row">
                                                                 </h2>
