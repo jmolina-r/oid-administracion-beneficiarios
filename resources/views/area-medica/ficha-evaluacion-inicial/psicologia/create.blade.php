@@ -14,6 +14,8 @@
     <link href="{{ asset("/assets/images/meta_icons/apple-touch-icon-precomposed.png") }}" rel="apple-touch-icon-precomposed">
     <link href="{{ asset('/assets/stylesheets/plugins/select2/select2.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.standalone.css" rel="stylesheet" type="text/css" media="all" />
 @endsection
 
 @section("body-attr")
@@ -44,6 +46,7 @@
 
     <!-- / START - moments-->
     <script src="{{ asset("/assets/javascripts/plugins/common/moment.min.js") }}" type="text/javascript"></script>
+    <script src="{{ asset('/assets/javascripts/plugins/common/locale/es.js') }}" type="text/javascript"></script>
     <!-- / END - moments-->
 
     <!-- / START - datepicker-->
@@ -57,6 +60,16 @@
 
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/area-medica/FormularioPsicologia.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js') }}" type="text/javascript"></script>
+    <script>
+        $('.datepicker').datepicker({
+            format: "dd/mm/yyyy",
+            language: "es",
+            autoclose: true,
+            endDate: new Date()
+        });
+
+    </script>
     <!-- / END - validaciones-->
 @endsection
 
@@ -91,6 +104,14 @@
                                     <div class='box-content box-padding'>
                                         <div class='fuelux'>
                                             <div class='wizard' data-initialize='wizard' id='myWizard'>
+                                                @if(count($errors) > 0)
+                                                    <hr class='hr-normal'>
+                                                    <div class="alert alert-danger">
+                                                        @foreach($errors->all() as $error)
+                                                            <p>{{ $error }}</p>
+                                                        @endforeach
+                                                    </div>
+                                                @endif
                                                 <div class='steps-container'>
                                                     <ul class='steps'>
                                                         <li class='active' data-step='1'>
@@ -134,7 +155,7 @@
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="motivo_consulta">Motivo consulta</label>
                                                                 <div class="controls">
-                                                                    <textarea name="motivo_consulta" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Motivo Consulta' rows='3' style='margin-bottom:10px;' value="{{ old('motivo_consulta') }}" id="inputDiagnostico" maxlength="200"></textarea>
+                                                                    <textarea required name="motivo_consulta" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Motivo Consulta' rows='3' style='margin-bottom:10px;' value="{{ old('motivo_consulta') }}" id="inputDiagnostico" maxlength="200"></textarea>
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
@@ -245,14 +266,14 @@
                                                             <div class="col-md-8 form-group">
                                                                 <label class="control-label" for="rut_madre">RUT</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control onlyrut" name="rut_madre" value="{{ old('rut_madre') }}"  placeholder="RUT" type="text" maxlength="15" >
+                                                                    <input class="form-control" pattern="\d{3,8}-[\d|kK]{1}" name="rut_madre" value="{{ old('rut_madre') }}"  placeholder="RUT" type="text" maxlength="15" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <label class="control-label" for="fecha_nacimiento_madre">Fecha de Nacimiento</label>
                                                                 <div class='input-group' id='fecha_nacimiento'>
-                                                                    <input class="form-control" data-format='DD/MM/YYYY' name="fecha_nacimiento_madre" value="{{ old('fecha_nacimiento_madre') }}"  placeholder="Fecha de Nacimiento" type="text" maxlength="50" >
+                                                                    <input class="form-control datepicker" data-format='DD/MM/YYYY' name="fecha_nacimiento_madre" value="{{ old('fecha_nacimiento_madre') }}"  placeholder="Fecha de Nacimiento" type="text" maxlength="50" >
                                                                     <span class='input-group-addon'>
                                                                         <span class='fa fa-calendar'></span>
                                                                     </span>
@@ -311,14 +332,14 @@
                                                             <div class="col-md-8 form-group">
                                                                 <label class="control-label" for="rut_padre">RUT</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control onlyrut" name="rut_padre" value="{{ old('rut_padre') }}"  placeholder="RUT" type="text" maxlength="15" >
+                                                                    <input class="form-control" required pattern="\d{3,8}-[\d|kK]{1}" name="rut_padre" value="{{ old('rut_padre') }}"  placeholder="RUT" type="text" maxlength="15" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <label class="control-label" for="fecha_nacimiento_padre">Fecha de Nacimiento</label>
                                                                 <div class='input-group' id='fecha_nacimiento2'>
-                                                                    <input class="form-control" data-format='DD/MM/YYYY' name="fecha_nacimiento_padre" value="{{ old('fecha_nacimiento_padre') }}"  placeholder="Fecha de Nacimiento" type="text" maxlength="50" >
+                                                                    <input class="form-control datepicker" data-format='DD/MM/YYYY' name="fecha_nacimiento_padre" value="{{ old('fecha_nacimiento_padre') }}"  placeholder="Fecha de Nacimiento" type="text" maxlength="50" >
                                                                     <span class='input-group-addon'>
                                                                         <span class='fa fa-calendar'></span>
                                                                     </span>

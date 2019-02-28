@@ -95,7 +95,7 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                             <thead>
                               <tr>
                                 <th>
-                                  Id 
+                                  #
                                 </th>
                                 <th>
                                   Fecha
@@ -110,6 +110,9 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                               </tr>
                             </thead>
                             <tbody>
+
+                            @if ($ficha != null)
+
                              @for ($i = 0; $i < count($ficha); $i++)
                               <tr>
                                 <td>{{$ficha[$i]->id}}</td>
@@ -124,7 +127,16 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                   </div>
                                 </td>
                               </tr>
-                            @endfor
+                              @endfor
+                            @else
+                                <tr>
+                                    <th>No hay datos para mostrar.</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            @endif
                             </tbody>
                           </table>
                         </div>

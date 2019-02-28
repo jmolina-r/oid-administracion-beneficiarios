@@ -73,16 +73,16 @@
                         @if( $estado == 'cerrado')
                             <div class="row">
                                 <div class='col-sm-12'>
-                                    @if($tipoFuncionario == 'kinesiologo')
+                                    @if($tipoFuncionario == 'Kinesiologo')
                                         <td><a class="btn btn-primary btn-block" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.create', $idBeneficiario)}}">Agregar Nueva Ficha de Evaluación Inicial de Kinesiología</a></td>
                                     @endif
-                                    @if($tipoFuncionario == 'fonoaudiologo')
+                                    @if($tipoFuncionario == 'Fonoaudiologo')
                                         <td><a class="btn btn-primary btn-block" href="{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.create', $idBeneficiario)}}">Agregar Nueva Ficha de Evaluación Inicial de Fonoaudiología</a></td>
                                     @endif
-                                    @if($tipoFuncionario == 'psicologo')
+                                    @if($tipoFuncionario == 'Psicologo')
                                         <td><a class="btn btn-primary btn-block" href="{{route('area-medica.ficha-evaluacion-inicial.psicologia.create', $idBeneficiario)}}">Agregar Nueva Ficha de Evaluación Inicial de Psicología</a></td>
                                     @endif
-                                    @if($tipoFuncionario == 'terapeuta ocupacional')
+                                    @if($tipoFuncionario == 'Terapeuta ocupacional')
                                         <td><a class="btn btn-primary btn-block" href="{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.ingresar', $idBeneficiario)}}">Agregar Nueva Ficha de Evaluación Inicial de Terapia Ocupacional</a></td>
                                     @endif
                                 </div>
@@ -117,7 +117,7 @@
                                                     <td>Kinesiología</td>
                                                     <td class="capitalize">{{$ficha->estado}}</td>
                                                     <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', $ficha->id)}}">Detalles</a></td>
-                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', $ficha->id)}}">Ver como PDF</a></td>
+                                                    <!--<td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.kinesiologia.show', $ficha->id)}}">Ver como PDF</a></td>-->
                                                     @if($ficha->estado == 'abierto')
                                                         <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.informe-cierre.create', ['p1' => $ficha->funcionario_id, 'p2' => $idBeneficiario, 'p3' => $ficha->id])}}">Agregar Ficha de Cierre</a></td>
                                                     @else
@@ -133,7 +133,7 @@
                                                     <td>Psicología</td>
                                                     <td class="capitalize">{{$ficha->estado}}</td>
                                                     <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.psicologia.show', $ficha->id)}}">Detalles</a></td>
-                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.psicologia.show', $ficha->id)}}">Ver como PDF</a></td>
+                                                    <!--<td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.psicologia.show', $ficha->id)}}">Ver como PDF</a></td>-->
                                                     @if($ficha->estado == 'abierto')
                                                         <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.informe-cierre.create', ['p1' => $ficha->funcionario_id, 'p2' => $idBeneficiario, 'p3' => $ficha->id])}}">Agregar Ficha de Cierre</a></td>
                                                     @else
@@ -149,7 +149,7 @@
                                                     <td>Fonoaudiología</td>
                                                     <td class="capitalize">{{$ficha->estado}}</td>
                                                     <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.show', $ficha->id)}}">Detalles</a></td>
-                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.show', $ficha->id)}}">Ver como PDF</a></td>
+                                                    <!--<td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.fonoaudiologia.show', $ficha->id)}}">Ver como PDF</a></td>-->
                                                     @if($ficha->estado == 'abierto')
                                                         <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.informe-cierre.create', ['p1' => $ficha->funcionario_id, 'p2' => $idBeneficiario, 'p3' => $ficha->id])}}">Agregar Ficha de Cierre</a></td>
                                                     @else
@@ -165,7 +165,7 @@
                                                     <td>Terapia Ocupacional</td>
                                                     <td class="capitalize">{{$ficha->estado}}</td>
                                                     <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.show', $ficha->id)}}">Detalles</a></td>
-                                                    <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.show', $ficha->id)}}">Ver como PDF</a></td>
+                                                    <!--<td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.terapia-ocupacional.show', $ficha->id)}}">Ver como PDF</a></td>-->
                                                     @if($ficha->estado == 'abierto')
                                                         <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.informe-cierre.create', ['p1' => $ficha->funcionario_id, 'p2' => $idBeneficiario, 'p3' => $ficha->id])}}">Agregar Ficha de Cierre</a></td>
                                                     @else

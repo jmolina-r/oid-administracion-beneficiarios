@@ -21,7 +21,6 @@ class FichaSocialController extends Controller
 
 
         $beneficiario = Beneficiario::where('id',$id)->first();
-
         $tipoMotivoSocial = TipoMotivoSocial::get();
         $tipoSubmotivoSocial = TipoSubmotivoSocial::get();
         $tipoAyudaTecnicoSocial = TipoAyudaTecnicoSocial::get();
@@ -89,6 +88,7 @@ class FichaSocialController extends Controller
 
         $fichasSociales= FichaAtencionSocial::where('beneficiario_id','=',$id)
             ->orderBy('created_at', 'desc')->get();
+
         $fichaTipo=null;
         $ficha=null;
         $i=0;
@@ -187,7 +187,7 @@ class FichaSocialController extends Controller
             }
             return back()->with('info','Se ha ingresado con éxito la visita');
 
-        } elseif(isset($_POST["ayudas_btn"])) {
+        }elseif(isset($_POST["ayudas_btn"])) {
             //En caso de que se ingrese una ayuda
 
             $this->validate($request, ['tipoAyudaSocial' => 'required_without_all:tipoAyudaTecnica',
@@ -199,7 +199,6 @@ class FichaSocialController extends Controller
             }
 
             $ficha_atencion_socials = new \App\FichaAtencionSocial([
-
                 'numero' => '0',
                 'descripcion' => 'N/A',
                 'beneficiario_id' => $request -> input('ben_id')
@@ -238,7 +237,7 @@ class FichaSocialController extends Controller
 
             return back()->with('info','Se ha ingresado con éxito la visita');
 
-        } elseif(isset($_POST["becas_btn"])){
+        }elseif(isset($_POST["becas_btn"])){
             //En caso de que se ingrese beca como motivo
 
             $subMotivos = $request -> input('inputSubMotivo');
@@ -285,10 +284,10 @@ class FichaSocialController extends Controller
             ]);
             $motivoSocial->save();
             return back()->with('info','Se ha ingresado con éxito la visita');
-        } else{
+        }else{
 
             //Orientacion
-            $this->validate($request, ['inputSubMotivo' => 'required']);
+            //$this->validate($request, ['inputSubMotivo' => 'required']);
             $obsVisita = $request -> input('observacion2');
             $subMotivos = $request -> input('inputSubMotivo');
 
@@ -305,7 +304,7 @@ class FichaSocialController extends Controller
             ]);
             $ficha_atencion_socials->save();
 
-            for($i=0;$i<count($subMotivos);$i++){
+            foreach($subMotivos as $subMotiv){
 
                 $motivoSocial = new \App\MotivoAtencionSocial([
 
@@ -313,7 +312,7 @@ class FichaSocialController extends Controller
                     'fecha_visita' => $now->format('Y-m-d H:i:s'),
                     'ficha_atencion_social_id' => $ficha_atencion_socials->id,
                     'tipo_motivo_social_id' => '2',
-                    'tipo_submotivo_id' => $subMotivos[$i],
+                    'tipo_submotivo_id' => $subMotiv,
                     'tipo_ayuda_id' => NULL
                 ]);
                 $motivoSocial->save();

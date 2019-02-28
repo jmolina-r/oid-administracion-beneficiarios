@@ -3,7 +3,7 @@ $(document).ready(function() {
      * Acciones al cambiar al step siguiente o al anterior
      */
 
-    $('#formulario-registro').validator();
+    $('#formulario_registro').validator();
 
     $('#myWizard').wizard().on('actionclicked.fu.wizard', function(e, data) {
         var hasErrors = $('#formulario_registro').validator('validate').has('.has-error').length;

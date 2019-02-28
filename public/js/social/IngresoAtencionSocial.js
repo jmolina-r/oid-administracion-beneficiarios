@@ -229,8 +229,8 @@ $(document).ready(function() {
 
 function enviarFormulario(){
     //alert($('#formularioAsistenciaSocial').attr('id'));
-    //$("#formularioAsistenciaSocial").submit();
-    document.formularioAsistenciaSocial.submit();
+    $("#formularioAsistenciaSocial").submit();
+    //document.formularioAsistenciaSocial.submit();
 }
 function enviarFormulario2(){
     $("#formularioAsistenciaSocial2").submit();

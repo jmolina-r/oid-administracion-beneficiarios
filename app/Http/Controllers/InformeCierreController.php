@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\DB;
 
 class InformeCierreController extends Controller
 {
-    public function create($idFuncionario, $idBeneficiario, $idFicha) {
+    public function create($idFuncionario, $idBeneficiario, $idFicha)
+    {
 
         $beneficiario = Beneficiario::find($idBeneficiario);
 
@@ -28,20 +29,20 @@ class InformeCierreController extends Controller
 
         $tipoFuncionario = TipoFuncionario::find($funcionario->tipo_funcionario_id);
 
-        if($tipoFuncionario->nombre == "kinesiologo"){
+        if ($tipoFuncionario->nombre == "Kinesiologo") {
             $ficha = FichaKinesiologia::find($idFicha);
         }
-        if($tipoFuncionario->nombre == "psicologo"){
+        if ($tipoFuncionario->nombre == "Psicologo") {
             $ficha = FichaPsicologia::find($idFicha);
         }
-        if($tipoFuncionario->nombre == "fonoaudiologo"){
+        if ($tipoFuncionario->nombre == "Fonoaudiologo") {
             $ficha = FichaFonoaudiologia::find($idFicha);
         }
-        if($tipoFuncionario->nombre == "terapeuta ocupacional"){
+        if ($tipoFuncionario->nombre == "Terapeuta ocupacional") {
             $ficha = FichaTerapiaOcupacional::find($idFicha);
         }
 
-        if($ficha->estado == 'cerrado'){
+        if ($ficha->estado == 'cerrado') {
             return view('home');
         }
 
@@ -49,14 +50,26 @@ class InformeCierreController extends Controller
         $fechaInicio = $ficha->created_at->format('d-m-Y');
         $fechaTermino = date('d-m-Y');
 
-        $prestacionesRealizadas = DB::table('prestacion_realizadas')
-            ->where('funcionario_id', $idFuncionario)
+        $prestacionesRealizadas = DB::table('mallas')
             ->where('beneficiario_id', $idBeneficiario)
-            ->where('prestacion_realizadas.created_at', '>=', $ficha->created_at)
-            ->where('prestacion_realizadas.created_at', '<=', date("Y-m-d H:i:s"))
-            ->join('prestacions', 'prestacions.id', '=', 'prestacion_realizadas.prestacions_id')
+            ->where('mallas.deleted_at','=',null)
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->where('hora_agendadas.user_id', $funcionario->user()->first()->id)
+            ->where('hora_agendadas.fecha', '>=', $ficha->created_at->format('Y-m-d'))
+            ->where('hora_agendadas.fecha', '<=', date('Y-m-d'))
+            ->join('prestacions', 'prestacions.id', '=', 'mallas.prestacion_id')
             ->select('prestacions.nombre')
             ->get();
+
+
+        //$prestacionesRealizadas = DB::table('prestacion_realizadas')
+        //    ->where('funcionario_id', $idFuncionario)
+        //    ->where('beneficiario_id', $idBeneficiario)
+        //    ->where('prestacion_realizadas.created_at', '>=', $ficha->created_at)
+        //    ->where('prestacion_realizadas.created_at', '<=', date("Y-m-d H:i:s"))
+        //    ->join('prestacions', 'prestacions.id', '=', 'prestacion_realizadas.prestacions_id')
+        //    ->select('prestacions.nombre')
+        //    ->get();
 
         $ficha = $idFicha;
         $area = $tipoFuncionario->nombre;
@@ -72,24 +85,25 @@ class InformeCierreController extends Controller
             ->with(compact('prestacionesRealizadas'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
-        $this->validate($request, ['desercion' => 'required' ,'culminar_proceso' => 'required']);
+        $this->validate($request, ['desercion' => 'required', 'culminar_proceso' => 'required']);
 
-        if($request->input('area') == "kinesiologo"){
+        if ($request->input('area') == "Kinesiologo") {
             $ficha = FichaKinesiologia::find($request->input('ficha'));
         }
-        if($request->input('area') == "psicologo"){
+        if ($request->input('area') == "Psicologo") {
             $ficha = FichaPsicologia::find($request->input('ficha'));
         }
-        if($request->input('area') == "fonoaudiologo"){
+        if ($request->input('area') == "Fonoaudiologo") {
             $ficha = FichaFonoaudiologia::find($request->input('ficha'));
         }
-        if($request->input('area') == "terapeuta ocupacional"){
+        if ($request->input('area') == "Terapeuta ocupacional") {
             $ficha = FichaTerapiaOcupacional::find($request->input('ficha'));
         }
 
-        try{
+        try {
             $informe_cierre = new InformeCierre([
                 'desercion' => $request->input('desercion'),
                 'culmino_proceso' => $request->input('culminar_proceso'),
@@ -102,8 +116,7 @@ class InformeCierreController extends Controller
 
             $ficha->estado = 'cerrado';
             $ficha->save();
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
 
             //procedimiento en caso de reportar errores
 
@@ -111,7 +124,8 @@ class InformeCierreController extends Controller
         return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('idBeneficiario')));
     }
 
-    public function show($idFuncionario, $idBeneficiario, $idFicha) {
+    public function show($idFuncionario, $idBeneficiario, $idFicha)
+    {
         $beneficiario = Beneficiario::find($idBeneficiario);
 
         $timestamp = strtotime($beneficiario->fecha_nacimiento);
@@ -122,16 +136,16 @@ class InformeCierreController extends Controller
 
         $tipoFuncionario = TipoFuncionario::find($funcionario->tipo_funcionario_id);
 
-        if($tipoFuncionario->nombre == "kinesiologo"){
+        if ($tipoFuncionario->nombre == "Kinesiologo") {
             $fichaInicial = FichaKinesiologia::find($idFicha);
         }
-        if($tipoFuncionario->nombre == "psicologo"){
+        if ($tipoFuncionario->nombre == "Psicologo") {
             $fichaInicial = FichaPsicologia::find($idFicha);
         }
-        if($tipoFuncionario->nombre == "fonoaudiologo"){
+        if ($tipoFuncionario->nombre == "Fonoaudiologo") {
             $fichaInicial = FichaFonoaudiologia::find($idFicha);
         }
-        if($tipoFuncionario->nombre == "terapeuta ocupacional"){
+        if ($tipoFuncionario->nombre == "Terapeuta ocupacional") {
             $fichaInicial = FichaTerapiaOcupacional::find($idFicha);
         }
 

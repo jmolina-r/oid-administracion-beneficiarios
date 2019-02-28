@@ -240,14 +240,14 @@ class ReportabilidadController extends Controller
             ->where('funcionarios.rut','=',$user_rut)
             ->count();
 
-        $prestaciones = Prestacion::where('prestacions.area','=','kinesiologo')->get();
+        $prestaciones = Prestacion::where('prestacions.area','=','Kinesiologo')->get();
         $porcentajePrest=null;
         $nombrePrest=null;
         $i=0;
         foreach ($prestaciones as $p){
         $nombrePrest[$i]=$p->nombre;
         $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
-            ->where('prestacions.area','=','kinesiologo')
+            ->where('prestacions.area','=','Kinesiologo')
         ->join('prestacion_realizadas','prestacions.id','=','prestacion_realizadas.prestacions_id')
         ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
         ->where('funcionarios.rut','=',$user_rut)
@@ -322,14 +322,14 @@ class ReportabilidadController extends Controller
             ->where('funcionarios.rut','=',$user_rut)
             ->count();
 
-        $prestaciones = Prestacion::where('prestacions.area','=','fonoaudiologo')->get();
+        $prestaciones = Prestacion::where('prestacions.area','=','Fonoaudiologo')->get();
         $porcentajePrest=null;
         $nombrePrest=null;
         $i=0;
         foreach ($prestaciones as $p){
             $nombrePrest[$i]=$p->nombre;
             $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
-                ->where('prestacions.area','=','fonoaudiologo')
+                ->where('prestacions.area','=','Fonoaudiologo')
                 ->join('prestacion_realizadas','prestacions.id','=','prestacion_realizadas.prestacions_id')
                 ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
                 ->where('funcionarios.rut','=',$user_rut)
@@ -399,14 +399,14 @@ class ReportabilidadController extends Controller
             ->count();
 
 
-        $prestaciones = Prestacion::where('prestacions.area','=','psicologo')->get();
+        $prestaciones = Prestacion::where('prestacions.area','=','Psicologo')->get();
         $porcentajePrest=null;
         $nombrePrest=null;
         $i=0;
         foreach ($prestaciones as $p){
             $nombrePrest[$i]=$p->nombre;
             $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
-                ->where('prestacions.area','=','psicologo')
+                ->where('prestacions.area','=','Psicologo')
                 ->join('prestacion_realizadas','prestacions.id','=','prestacion_realizadas.prestacions_id')
                 ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
                 ->where('funcionarios.rut','=',$user_rut)
@@ -478,14 +478,14 @@ class ReportabilidadController extends Controller
             ->where('funcionarios.rut','=',$user_rut)
             ->count();
 
-        $prestaciones = Prestacion::where('prestacions.area','=','terapeuta ocupacional')->get();
+        $prestaciones = Prestacion::where('prestacions.area','=','Terapeuta ocupacional')->get();
         $porcentajePrest=null;
         $nombrePrest=null;
         $i=0;
         foreach ($prestaciones as $p){
             $nombrePrest[$i]=$p->nombre;
             $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
-                ->where('prestacions.area','=','terapeuta ocupacional')
+                ->where('prestacions.area','=','Terapeuta ocupacional')
                 ->join('prestacion_realizadas','prestacions.id','=','prestacion_realizadas.prestacions_id')
                 ->join('funcionarios','prestacion_realizadas.funcionario_id','=','funcionarios.id')
                 ->where('funcionarios.rut','=',$user_rut)
