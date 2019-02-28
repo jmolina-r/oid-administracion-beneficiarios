@@ -21,7 +21,6 @@ class FichaSocialController extends Controller
 
 
         $beneficiario = Beneficiario::where('id',$id)->first();
-
         $tipoMotivoSocial = TipoMotivoSocial::get();
         $tipoSubmotivoSocial = TipoSubmotivoSocial::get();
         $tipoAyudaTecnicoSocial = TipoAyudaTecnicoSocial::get();
