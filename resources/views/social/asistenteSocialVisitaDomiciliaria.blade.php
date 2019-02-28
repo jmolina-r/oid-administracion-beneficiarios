@@ -144,7 +144,6 @@
                                                 <?php $a = 1; ?>
                                                 <div class="tabbable tabs-left">
                                                     <ul class="nav nav-tabs">
-                                                        //
                                                         @foreach($tipoMotivoSocial as $tMotivos)
                                                             @if($i == 1)
                                                                 <li class="active"><a
@@ -183,12 +182,12 @@
                                                                                             <div class="box-content"
                                                                                                  style="margin-top:10px;">
                                                                                                 <input value="{{ucfirst($tipoAyuda->nombre)}}"
-                                                                                                       name="tipoAyudaSocialVer[]"
+                                                                                                       name="tipoAyudaTecnicaVer[]"
                                                                                                        id="{{$tipoAyuda->id}}.t"
                                                                                                        type="hidden">
                                                                                                 <input class='make-switch checkStyle'
                                                                                                        value="{{$tipoAyuda->id}}"
-                                                                                                       name="tipoAyudaSocial[]"
+                                                                                                       name="tipoAyudaTecnica[]"
                                                                                                        id="{{$tipoAyuda->id}}.t"
                                                                                                        data-off-text='<i class="fa fa-circle-o"></i>'
                                                                                                        data-on-text='<i class="fa fa-check"></i>'
