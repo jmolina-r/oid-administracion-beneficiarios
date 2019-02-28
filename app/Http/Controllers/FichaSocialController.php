@@ -124,7 +124,7 @@ class FichaSocialController extends Controller
         $now = new \DateTime();
         $obsIt = 'N/A';
 
-        if (isset($_POST["visita_domiciliaria_btn"])) {
+        if (isset($_POST["Visita_domiciliaria_btn"])) {
             //En caso de que se ingrese una visita domiciliaria
 
             $this->validate($request, ['vd' => 'required']);
@@ -187,11 +187,10 @@ class FichaSocialController extends Controller
             }
             return back()->with('info','Se ha ingresado con éxito la visita');
 
-        }elseif(isset($_POST["ayudas_btn"])) {
+        }elseif(isset($_POST["Ayudas_btn"])) {
             //En caso de que se ingrese una ayuda
 
-            $this->validate($request, ['tipoAyudaSocial' => 'required_without_all:tipoAyudaTecnica',
-                'tipoAyudaTecnica' => 'required_without_all:tipoAyudaSocial',]);
+            //$this->validate($request, ['tipoAyudaSocial' => 'required_without_all:tipoAyudaTecnica', 'tipoAyudaTecnica' => 'required_without_all:tipoAyudaSocial',]);
             $motivoAyudaTecnica = $request -> input('tipoAyudaTecnica');
             $motivoAyudaSocial = $request -> input('tipoAyudaSocial');
             if($request -> input('observacionAyuda') != ''){
@@ -205,39 +204,43 @@ class FichaSocialController extends Controller
             ]);
             $ficha_atencion_socials->save();
 
-            for($i=0;$i<count($motivoAyudaTecnica);$i++){
+            if(isset($motivoAyudaTecnica)){
+                foreach($motivoAyudaTecnica as $motivoAyudaTec ){
 
-                $motivoSocial = new \App\MotivoAtencionSocial([
+                    $motivoSocial = new \App\MotivoAtencionSocial([
 
-                    'observacion' => $obsIt,
-                    'fecha_visita' => $now->format('Y-m-d H:i:s'),
-                    'ficha_atencion_social_id' => $ficha_atencion_socials->id,
-                    'tipo_motivo_social_id' => '1',
-                    'tipo_submotivo_id' => NULL,
-                    'tipo_ayuda_id' => $motivoAyudaTecnica[$i]
-                ]);
-                $motivoSocial->save();
+                        'observacion' => $obsIt,
+                        'fecha_visita' => $now->format('Y-m-d H:i:s'),
+                        'ficha_atencion_social_id' => $ficha_atencion_socials->id,
+                        'tipo_motivo_social_id' => '1',
+                        'tipo_submotivo_id' => NULL,
+                        'tipo_ayuda_id' => $motivoAyudaTec
+                    ]);
+                    $motivoSocial->save();
 
+                }
             }
 
-            for($i=0;$i<count($motivoAyudaSocial);$i++){
+            if(isset($motivoAyudaSocial)){
+                foreach($motivoAyudaSocial as $motivoAyudaSoc){
 
-                $motivoSocial = new \App\MotivoAtencionSocial([
+                    $motivoSocial = new \App\MotivoAtencionSocial([
 
-                    'observacion' => $obsIt,
-                    'fecha_visita' => $now->format('Y-m-d H:i:s'),
-                    'ficha_atencion_social_id' => $ficha_atencion_socials->id,
-                    'tipo_motivo_social_id' => '1',
-                    'tipo_submotivo_id' => NULL,
-                    'tipo_ayuda_id' => $motivoAyudaSocial[$i]
-                ]);
-                $motivoSocial->save();
+                        'observacion' => $obsIt,
+                        'fecha_visita' => $now->format('Y-m-d H:i:s'),
+                        'ficha_atencion_social_id' => $ficha_atencion_socials->id,
+                        'tipo_motivo_social_id' => '1',
+                        'tipo_submotivo_id' => NULL,
+                        'tipo_ayuda_id' => $motivoAyudaSoc
+                    ]);
+                    $motivoSocial->save();
 
+                }
             }
 
             return back()->with('info','Se ha ingresado con éxito la visita');
 
-        }elseif(isset($_POST["becas_btn"])){
+        }elseif(isset($_POST["Becas_btn"])){
             //En caso de que se ingrese beca como motivo
 
             $subMotivos = $request -> input('inputSubMotivo');
