@@ -76,17 +76,17 @@
                                     <div class="col-md-4">
                                         <h3>Ayudas Técnicas</h3>
                                         @if(count($ayudas)==0)
-                                            <p class="capitalize">El usuario no ha pedido ayuda técnica</p>
+                                            <p>El usuario no ha pedido ayuda técnica</p>
                                         @else
                                             <?php $countTecn = 0; ?>
                                              @foreach($ayudas as $ayuda)
-                                                @if($ayuda->tipo == 'tecnico')
+                                                @if($ayuda->tipo == 'Tecnico')
                                                 <p class="capitalize">{{$ayuda->nombre}}</p>
                                                         <?php $countTecn++; ?>
                                                 @endif
                                              @endforeach
                                                 @if($countTecn==0)
-                                                    <p class="capitalize">El usuario no ha pedido ayuda técnica</p>
+                                                    <p>El usuario no ha pedido ayuda técnica</p>
                                                 @endif
                                         @endif
                                        
@@ -94,17 +94,17 @@
                                     <div class="col-md-4">
                                         <h3>Ayudas Sociales</h3>
                                         @if(count($ayudas)==0)
-                                            <p class="capitalize">El usuario no ha pedido ayuda social</p>
+                                            <p>El usuario no ha pedido ayuda social</p>
                                         @else
                                             <?php $countSocial = 0; ?>
                                              @foreach($ayudas as $ayuda)
-                                                @if($ayuda->tipo == 'social')
+                                                @if($ayuda->tipo == 'Social')
                                                 <p class="capitalize">{{$ayuda->nombre}}</p>
                                                     <?php $countSocial++; ?>
                                                 @endif
                                              @endforeach
                                             @if($countSocial==0)
-                                                    <p class="capitalize">El usuario no ha pedido ayuda social</p>
+                                                    <p>El usuario no ha pedido ayuda social</p>
                                                 @endif
                                         @endif
                                     </div>
