@@ -130,7 +130,7 @@ class FichaSocialController extends Controller
         if (isset($_POST["Visita_domiciliaria_btn"])) {
             //En caso de que se ingrese una visita domiciliaria
 
-            $this->validate($request, ['vd' => 'required']);
+            //$this->validate($request, ['vd' => 'required']);
             $motivoVisita = $request -> input('vd');
             $obsVisita = $request -> input('observacion3');
 

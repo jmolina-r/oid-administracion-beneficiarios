@@ -19,6 +19,14 @@
     <link href="{{ asset('assets/stylesheets/plugins/fileinput/bootstrap-fileinput.css') }}" rel="stylesheet"
           type="text/css" media="all"/>
     <link href="{{ asset('/css/custom.css') }}" rel="stylesheet" type="text/css" media="all"/>
+    <style type="text/css" media="all">
+        .btn span.fa {
+            opacity: 0;
+        }
+        .btn.active span.fa {
+            opacity: 1;
+        }
+    </style>
 
 @endsection
 
@@ -71,7 +79,46 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.10.2/validator.min.js"></script>
     <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
     <!--<script src="{{ asset('/js/social/IngresoAtencionSocial.js') }}" type="text/javascript"></script>-->
+    <script>
+        function validarfor1(){
+            var checkedCount1 = $('input[name="tipoAyudaTecnica[]"]:checked').length;
+            var checkedCount2 = $('input[name="tipoAyudaSocial[]"]:checked').length;
 
+            //console.log(checkedCount1);
+            //console.log(checkedCount2);
+
+
+            if (checkedCount1 == 0 && checkedCount2==0) {  //COMPRUEBA CAMPOS VACIOS
+                alert("No es posible guardar un registro vacío");
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <script>
+        function validarfor2(){
+            var checkedCount3 = $('input[name="vd[]"]:checked').length;
+            var checkedCount4 = $('input[name="inputSubMotivo[]"]:checked').length;
+            var activa =$('.nav-tabs .active').text()
+            activa = activa.replace(/\s/g, "");
+
+            if(activa=="Visitadomiciliaria"){
+                console.log(activa);
+                if (checkedCount3 == 0) {  //COMPRUEBA CAMPOS VACIOS
+                    alert("No es posible guardar un registro vacío visita");
+                    return false;
+                }
+            }
+            if(activa=="Orientación"){
+                if (checkedCount4 == 0) {  //COMPRUEBA CAMPOS VACIOS
+                    alert("No es posible guardar un registro vacío orientacion");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    </script>
 
 @endsection
 
@@ -166,7 +213,7 @@
                                                                           action="{{route('social.asistentesocial')}}"
                                                                           id="formularioAsistenciaSocial" class="form"
                                                                           style="margin-bottom: 0;" method="post"
-                                                                          enctype="multipart/form-data">
+                                                                          enctype="multipart/form-data" onSubmit="return validarfor1();">
                                                                         {!!csrf_field()!!}
                                                                         <input type="hidden" class="form-control"
                                                                                id="ben_id" name="ben_id"
@@ -179,19 +226,21 @@
                                                                                 <div class="funkyradio">
                                                                                     @foreach($tipoAyudaTecnicoSocial as $tipoAyuda)
                                                                                         @if ($tipoAyuda->tipo=='Tecnico')
-                                                                                            <div class="box-content"
+                                                                                            <div class="box-content custom-control custom-checkbox"
                                                                                                  style="margin-top:10px;">
                                                                                                 <input value="{{ucfirst($tipoAyuda->nombre)}}"
                                                                                                        name="tipoAyudaTecnicaVer[]"
                                                                                                        id="{{$tipoAyuda->id}}.t"
                                                                                                        type="hidden">
-                                                                                                <input class='make-switch checkStyle'
-                                                                                                       value="{{$tipoAyuda->id}}"
-                                                                                                       name="tipoAyudaTecnica[]"
-                                                                                                       id="{{$tipoAyuda->id}}.t"
-                                                                                                       data-off-text='<i class="fa fa-circle-o"></i>'
-                                                                                                       data-on-text='<i class="fa fa-check"></i>'
-                                                                                                       type='checkbox'>
+                                                                                                <div class="btn-group " data-toggle="buttons">
+                                                                                                <label class="btn btn-default">
+                                                                                                    <input type="checkbox" value="{{$tipoAyuda->id}}"
+                                                                                                           name="tipoAyudaTecnica[]"
+                                                                                                           id="{{$tipoAyuda->id}}.t"
+                                                                                                           type='checkbox' autocomplete="off">
+                                                                                                    <span class="fa fa-check"></span>
+                                                                                                </label>
+                                                                                                </div>
                                                                                                 <p id="hverificacion"> {{ucfirst($tipoAyuda->nombre)}} </p>
                                                                                             </div>
                                                                                         @endif
@@ -212,13 +261,16 @@
                                                                                                        name="tipoAyudaSocialVer[]"
                                                                                                        id="{{$tipoAyuda->id}}.t"
                                                                                                        type="hidden">
-                                                                                                <input class='make-switch'
-                                                                                                       value="{{$tipoAyuda->id}}"
-                                                                                                       name="tipoAyudaSocial[]"
-                                                                                                       id="{{$tipoAyuda->id}}.t"
-                                                                                                       data-off-text='<i class="fa fa-circle-o"></i>'
-                                                                                                       data-on-text='<i class="fa fa-check"></i>'
-                                                                                                       type='checkbox'>
+                                                                                                <div class="btn-group" data-toggle="buttons">
+                                                                                                <label class="btn btn-default">
+                                                                                                    <input value="{{$tipoAyuda->id}}"
+                                                                                                    name="tipoAyudaSocial[]"
+                                                                                                    id="{{$tipoAyuda->id}}.t"
+                                                                                                    type='checkbox' autocomplete="off">
+                                                                                                    <span class="fa fa-check"></span>
+                                                                                                </label>
+                                                                                                </div>
+
                                                                                                 <p id="hverificacion"> {{ucfirst($tipoAyuda->nombre)}} </p>
                                                                                             </div>
                                                                                         @endif
@@ -259,7 +311,7 @@
                                                                               class="form" style="margin-bottom: 0;"
                                                                               method="post"
                                                                               enctype="multipart/form-data"
-                                                                              data-toggle="validator" role="form">
+                                                                              data-toggle="validator" role="form" onSubmit="return validarfor2();">
                                                                             {!!csrf_field()!!}
                                                                             <input type="hidden" class="form-control"
                                                                                    id="ben_id" name="ben_id"
@@ -273,13 +325,16 @@
                                                                                                    name="vdVer[]"
                                                                                                    id="vdVer"
                                                                                                    type="hidden">
-                                                                                            <input class='make-switch'
-                                                                                                   value="{{$sMotivo->id}}"
-                                                                                                   name="vd[]"
-                                                                                                   id="{{$sMotivo->id}}.vd"
-                                                                                                   data-off-text='<i class="fa fa-circle-o"></i>'
-                                                                                                   data-on-text='<i class="fa fa-check"></i>'
-                                                                                                   type='checkbox'>
+                                                                                            <div class="btn-group" data-toggle="buttons">
+                                                                                                <label class="btn btn-default">
+                                                                                                    <input value="{{$sMotivo->id}}"
+                                                                                                           name="vd[]"
+                                                                                                           id="{{$sMotivo->id}}.vd"
+                                                                                                           type='checkbox' autocomplete="off">
+                                                                                                    <span class="fa fa-check"></span>
+                                                                                                </label>
+                                                                                            </div>
+
                                                                                             <p id="hverificacion"> {{ucfirst($sMotivo->nombre)}} </p>
                                                                                         </div>
                                                                                         <div class="help-block with-errors"></div>
@@ -312,14 +367,15 @@
                                                                                                    name="inputSubMotivoVer[]"
                                                                                                    id="inputSubMotivoVer"
                                                                                                    type="hidden">
-                                                                                            <input class='make-switch'
-                                                                                                   value="{{$sMotivo->id}}"
+                                                                                            <div class="btn-group" data-toggle="buttons">
+                                                                                                <label class="btn btn-default">
+                                                                                            <input value="{{$sMotivo->id}}"
                                                                                                    id="inputSubMotivo"
-                                                                                                   data-off-text='<i class="fa fa-circle-o"></i>'
-                                                                                                   data-on-text='<i class="fa fa-check"></i>'
                                                                                                    type='checkbox'
-                                                                                                   onchange="javascript:showContent('{{$sMotivo->nombre}}','{{$sMotivo->id}}')"
                                                                                                    name="inputSubMotivo[]">
+                                                                                                    <span class="fa fa-check"></span>
+                                                                                                </label>
+                                                                                            </div>
                                                                                             <p id="hverificacion">{{ucfirst($sMotivo->nombre)}}</p>
                                                                                         </div>
                                                                                         @if($sMotivo->id == '6')

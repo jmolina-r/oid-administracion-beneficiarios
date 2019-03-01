@@ -175,7 +175,7 @@
                                                                     <label class="col-md-5 control-label" for="fuma_sn">¿Fuma?</label>
                                                                     <div class='col-md-7'>
                                                                         <label style="margin-top: 0px;" class='radio radio-inline'>
-                                                                            <input name='fuma_sn' id="fuma_sn" type='radio' value='Si'>
+                                                                            <input checked name='fuma_sn' id="fuma_sn" type='radio' value='Si'>
                                                                             Si
                                                                         </label>
                                                                         <label class='radio radio-inline'>
@@ -190,7 +190,7 @@
                                                                     <label class="col-md-5 control-label" for="alcohol_sn">¿Bebe OH?</label>
                                                                     <div class='col-md-7'>
                                                                         <label style="margin-top: 0px;" class='radio radio-inline'>
-                                                                            <input name='alcohol_sn' id="alcohol_sn" type='radio' value='Si'>
+                                                                            <input checked name='alcohol_sn' id="alcohol_sn" type='radio' value='Si'>
                                                                             Si
                                                                         </label>
                                                                         <label class='radio radio-inline'>
@@ -205,7 +205,7 @@
                                                                     <label class="col-md-5 control-label" for="act_fisica_sn">Act. física</label>
                                                                     <div class='col-md-7'>
                                                                         <label style="margin-top: 0px;" class='radio radio-inline'>
-                                                                            <input name='act_fisica_sn' id="act_fisica_sn" type='radio' value='Si'>
+                                                                            <input checked name='act_fisica_sn' id="act_fisica_sn" type='radio' value='Si'>
                                                                             Si
                                                                         </label>
                                                                         <label class='radio radio-inline'>

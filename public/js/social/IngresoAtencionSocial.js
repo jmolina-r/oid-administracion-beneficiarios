@@ -241,3 +241,30 @@ function enviarFormulario3(){
 function enviarFormulario4(){
     $("#formularioAsistenciaSocial4").submit();
 }
+
+
+function validaVacio(valor) {
+    valor = valor.replace("&nbsp;", "");
+    valor = valor == undefined ? "" : valor;
+    if (!valor || 0 === valor.trim().length) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function validarfor(){
+
+    var checkedCount1 = $('input[name="tipoAyudaTecnica"]:checked').length;
+    var checkedCount2 = $('input[name="tipoAyudaSocial"]:checked').length;
+
+    console.log(checkedCount1);
+    console.log(checkedCount2);
+
+    if (checkedCount == 0) {  //COMPRUEBA CAMPOS VACIOS
+        alert("Los campos no pueden quedar vacios");
+        return false;
+    }
+    return true;
+}
