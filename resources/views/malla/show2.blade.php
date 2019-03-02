@@ -116,6 +116,7 @@
         <section id="content">
             <div class="container">
                 <div class="row" id="content-wrapper">
+                    @if(count($usuarios)>0)
                     @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
                         <div class="col-xs-12">
                             <div class='group-header'>
@@ -138,18 +139,28 @@
                                 </div>
                             </div>
                         </div>
-                    @else
-                        <input id="id" name="id" type="hidden" value="{{$id}}">
-                    @endif
 
                         <div class='col-sm-12'>
                             <td><a id='consultar_malla' class="btn btn-primary btn-block" href="{{route('malla.showMalla',1)}}">
                                     Ver Malla</a>
                             </td>
                         </div>
+                        </div>
+                    @endif
+                        @else
+                        <div class="col-xs-12">
+                        <div class='group-header'>
+                            <div class='box'>
+                                <div class='box-content box-padding'>
+                                    <div class="form-group">
+                                        <p class='control-label'>No se encuentran mallas disponibles. Por favor, verificar que existan cuentas de usuario para los funcionarios registrados en el sistema</p>
 
-
-                </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    @endif
                 </div>
                 @include('partials.footer')
             </div>
