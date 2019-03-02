@@ -323,20 +323,22 @@ class BeneficiarioController extends Controller
 
         $demandas = $request->input('demandaCheckbox');
 
-        foreach ($demandas as $demanda) {
+        if($demandas!=null){
+            foreach ($demandas as $demanda) {
 
-            $demandaBeneficiario = new DemandaBeneficiario([
-                'demanda_id' => $demanda,
-                'beneficiario_id' => $beneficiario->id
-            ]);
-            $demandaBeneficiario->save();
+                $demandaBeneficiario = new DemandaBeneficiario([
+                    'demanda_id' => $demanda,
+                    'beneficiario_id' => $beneficiario->id
+                ]);
+                $demandaBeneficiario->save();
 
-            $historialDemanda = new HistorialDemanda([
-                'demanda_beneficiario_id' => $demandaBeneficiario->id,
-                'estado_id' => 2, //pendiente
-                'descripcion_id' => null
-            ]);
-            $historialDemanda->save();
+                $historialDemanda = new HistorialDemanda([
+                    'demanda_beneficiario_id' => $demandaBeneficiario->id,
+                    'estado_id' => 2, //pendiente
+                    'descripcion_id' => null
+                ]);
+                $historialDemanda->save();
+            }
         }
 
         return redirect()->route('beneficiario.show', ['id' => $beneficiario->id]);
