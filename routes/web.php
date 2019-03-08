@@ -238,10 +238,28 @@ Route::group(['prefix' => 'beneficiario', 'middleware' => 'auth'], function () {
         'as' => 'beneficiario.generatePDF'
     ])->middleware('roles:admin|secretaria');
 
-    Route::get('/listaEspera/show/{id}', [
-        'uses' => 'BeneficiarioController@listaEspera',
-        'as' => 'beneficiario.listaEspera'
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    Route::group(['prefix' => '/listaEspera'], function (){
+        //muestra lista de espera por área
+        Route::get('/show/{id}', [
+            'uses' => 'BeneficiarioController@listaEspera',
+            'as' => 'beneficiario.listaEspera'
+        ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+        //muestra demandas existentes para su gestión
+        Route::get('/', [
+            'uses' => 'BeneficiarioController@demandas',
+            'as' => 'beneficiario.demandas'
+        ])->middleware('roles:admin|secretaria');
+
+        Route::get('/create', [
+            'uses' => 'BeneficiarioController@createDemanda',
+            'as' => 'beneficiario.createDemanda'
+        ])->middleware('roles:admin|secretaria');
+
+        Route::get('/edit/{id}', [
+            'uses' => 'BeneficiarioController@editDemanda',
+            'as' => 'beneficiario.editDemanda'
+        ])->middleware('roles:admin|secretaria');
+    });
 
     Route::get('/gethistorialdemanda', [
         'uses' => 'BeneficiarioController@gethistorialdemanda',

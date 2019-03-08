@@ -836,7 +836,6 @@ class BeneficiarioController extends Controller
     public function listaEspera($id)
     {
         $id_demanda = $id;
-        $demandas = Demanda::get();
         $estados = Estado::get();
         $descripciones = Descripcion::get();
         $demanda_beneficiarios = DemandaBeneficiario::where('demanda_id', $id_demanda)->orderBy('created_at', 'asc')->get();
@@ -891,5 +890,56 @@ class BeneficiarioController extends Controller
         $historial_demanda->save();
 
     }
+
+    public function demandas()
+    {
+        $demandas = Demanda::get();
+
+        return view('lista-espera.showTipoDemandas')
+            ->with(compact('demandas'));
+    }
+
+    public function createDemanda()
+    {
+        return view('lista-espera.create');
+    }
+    public function storageDemanda(Request $request)
+    {
+        $nombre = $request->input('nombre');
+        $demanda = new Demanda([
+            'nombre'=> strtoupper($nombre)
+        ]);
+
+        $demanda->save();
+    }
+
+    public function editDemanda($id)
+    {
+        $nombre =Demanda::where('id',$id)->first()->nombre;
+
+        return view('lista-espera.edit')
+            ->with(compact('id'))
+            ->with(compact('nombre'));
+    }
+
+    public function updateDemanda(Request $request)
+    {
+        $nombre = $request->input('nombre');
+        $id = $request->input('id');
+
+        $demanda = Demanda::where('id',$id)->first();
+
+        $demanda->update([
+            'nombre' =>  $nombre
+        ]);
+
+        $demanda->save();
+    }
+
+    public function deleteDemanda($id)
+    {
+
+    }
+
 
 }

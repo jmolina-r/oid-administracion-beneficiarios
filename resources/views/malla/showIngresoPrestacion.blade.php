@@ -97,7 +97,7 @@
                     <select class="col-md-3 control-label" id="combo-prestacion" name="combo-prestacion"></select>
                     <button id="boton-agregar-prestacion" type="button" class="btn btn-primary enabled">
                         Agregar
-                    </button>
+                    </button>edit/1
                     <button id="boton-finalizar" type="button" class="btn btn-primary enabled">
                         Finalizar
                     </button>
