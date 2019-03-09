@@ -57,8 +57,17 @@
     <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/user/reguser.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/charCount/charCount.js') }}" type="text/javascript"></script>
+    <script>
+        $('#btn-guardar').click(function () {
+
+            var respuesta = confirm("¿Seguro que desea guardar el registro?");
+
+            if (respuesta == false) {
+                return;
+            }
+        });
+    </script>
 @endsection
 
 <!-- Contenido del body -->
@@ -93,19 +102,19 @@
                             <div class='col-sm-12'>
                                 <div class='box'>
                                     <div class='box-content box-padding'>
-                                        <form class='validate-form' method="POST" action="{{ route('malla.guardarPrestacion') }}">
+                                        <form class='validate-form' method="POST" action="{{ route('beneficiario.storeDemanda') }}" >
                                             <div class="row">
                                                 <div class="form-group">
                                                     <label class='control-label' for='inputText'>Nombre de la Demanda</label>
-                                                    <input id="nombre" type="text" class="form-control" name="nombre" placeholder="Nombre de la Prestación" required maxlength="191">
+                                                    <input id="nombre" type="text" class="form-control" name="nombre" placeholder="Nombre de la Demanda" required maxlength="191">
                                                 </div>
                                             </div>
                                             <hr>
                                             <div class="col-md-6">
-                                                <a class="btn btn-primary btn-block" href="{{route('malla.listaPrestaciones')}}">Volver</a>
+                                                <a class="btn btn-primary btn-block" href="{{route('beneficiario.demandas')}}">Volver</a>
                                             </div>
                                             <div class="col-md-6">
-                                                <button class='btn btn-block btn-success' type="submit">Guardar</button>
+                                                <button id='btn-guardar' class='btn btn-block btn-success' type="submit">Guardar</button>
                                             </div>
                                             {{ csrf_field() }}
                                         </form>

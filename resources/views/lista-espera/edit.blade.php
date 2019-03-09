@@ -59,6 +59,16 @@
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/user/reguser.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/charCount/charCount.js') }}" type="text/javascript"></script>
+    <script>
+        $('#btn-guardar').click(function () {
+
+            var respuesta = confirm("¿Seguro que desea actualizar el registro?");
+
+            if (respuesta == false) {
+                return;
+            }
+        });
+    </script>
 @endsection
 
 <!-- Contenido del body -->
@@ -93,11 +103,12 @@
                             <div class='col-sm-12'>
                                 <div class='box'>
                                     <div class='box-content box-padding'>
-                                        <form class='validate-form' method="POST" action="{{ route('beneficiario.editDemanda',$id) }}">
+                                        <form class='validate-form' method="POST" action="{{ route('beneficiario.updateDemanda') }}">
                                             <div class="row">
+                                                <input id="id" name="id" type="hidden" value="{{$id}}">
                                                 <div class="form-group">
                                                     <label class='control-label' for='inputText'>Nombre de la Demanda</label>
-                                                    <input id="nombre" type="text" class="form-control" name="nombre" placeholder="Nombre de la Demanda" required maxlength="191">
+                                                    <input id="nombre" type="text" class="form-control" name="nombre" placeholder="Nombre de la Demanda" value="{{$nombre}}" required maxlength="191">
                                                 </div>
                                             </div>
                                             <hr>
@@ -105,7 +116,7 @@
                                                 <a class="btn btn-primary btn-block" href="{{route('beneficiario.demandas')}}">Volver</a>
                                             </div>
                                             <div class="col-md-6">
-                                                <button class='btn btn-block btn-success' type="submit">Guardar</button>
+                                                <button id='btn-guardar' class='btn btn-block btn-success' type="submit">Guardar</button>
                                             </div>
                                             {{ csrf_field() }}
                                         </form>

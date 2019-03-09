@@ -903,7 +903,8 @@ class BeneficiarioController extends Controller
     {
         return view('lista-espera.create');
     }
-    public function storageDemanda(Request $request)
+
+    public function storeDemanda(Request $request)
     {
         $nombre = $request->input('nombre');
         $demanda = new Demanda([
@@ -911,6 +912,10 @@ class BeneficiarioController extends Controller
         ]);
 
         $demanda->save();
+
+        $demandas = Demanda::get();
+        return view('lista-espera.showTipoDemandas')
+            ->with(compact('demandas'));
     }
 
     public function editDemanda($id)
@@ -930,15 +935,26 @@ class BeneficiarioController extends Controller
         $demanda = Demanda::where('id',$id)->first();
 
         $demanda->update([
-            'nombre' =>  $nombre
+            'nombre' =>  strtoupper($nombre)
         ]);
 
         $demanda->save();
+
+        $demandas = Demanda::get();
+
+        return Redirect::to('lista-espera.showTipoDemandas')
+            ->with('success', 'You message here.')
+            ->with(compact('demandas')
+            );
     }
 
     public function deleteDemanda($id)
     {
 
+
+        $demandas = Demanda::get();
+        return view('lista-espera.showTipoDemandas')
+            ->with(compact('demandas'));
     }
 
 

@@ -239,7 +239,7 @@ Route::group(['prefix' => 'beneficiario', 'middleware' => 'auth'], function () {
     ])->middleware('roles:admin|secretaria');
 
     Route::group(['prefix' => '/listaEspera'], function (){
-        //muestra lista de espera por área
+        //muestra lista de beneficiarios en espera por demanda
         Route::get('/show/{id}', [
             'uses' => 'BeneficiarioController@listaEspera',
             'as' => 'beneficiario.listaEspera'
@@ -255,9 +255,19 @@ Route::group(['prefix' => 'beneficiario', 'middleware' => 'auth'], function () {
             'as' => 'beneficiario.createDemanda'
         ])->middleware('roles:admin|secretaria');
 
+        Route::post('/store', [
+            'uses' => 'BeneficiarioController@storeDemanda',
+            'as' => 'beneficiario.storeDemanda'
+        ])->middleware('roles:admin|secretaria');
+
         Route::get('/edit/{id}', [
             'uses' => 'BeneficiarioController@editDemanda',
             'as' => 'beneficiario.editDemanda'
+        ])->middleware('roles:admin|secretaria');
+
+        Route::post('/update', [
+            'uses' => 'BeneficiarioController@updateDemanda',
+            'as' => 'beneficiario.updateDemanda'
         ])->middleware('roles:admin|secretaria');
     });
 
