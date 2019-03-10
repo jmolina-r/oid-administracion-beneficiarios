@@ -269,6 +269,11 @@ Route::group(['prefix' => 'beneficiario', 'middleware' => 'auth'], function () {
             'uses' => 'BeneficiarioController@updateDemanda',
             'as' => 'beneficiario.updateDemanda'
         ])->middleware('roles:admin|secretaria');
+
+        Route::get('/delete/{id}', [
+            'uses' => 'BeneficiarioController@deleteDemanda',
+            'as' => 'beneficiario.deleteDemanda'
+        ])->middleware('roles:admin|secretaria');
     });
 
     Route::get('/gethistorialdemanda', [

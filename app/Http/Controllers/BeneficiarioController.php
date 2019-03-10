@@ -894,9 +894,10 @@ class BeneficiarioController extends Controller
     public function demandas()
     {
         $demandas = Demanda::get();
-
+        $success =null;
         return view('lista-espera.showTipoDemandas')
-            ->with(compact('demandas'));
+            ->with(compact('demandas'))
+            ->with(compact('success'));
     }
 
     public function createDemanda()
@@ -906,16 +907,21 @@ class BeneficiarioController extends Controller
 
     public function storeDemanda(Request $request)
     {
+        $v = Validator::make($request->all(), [
+            'nombre' => 'required|unique:demandas'
+        ]);
+
+        if($v->fails()){
+            return redirect()->back()->withInput()->withErrors($v->errors());
+        }
+
         $nombre = $request->input('nombre');
         $demanda = new Demanda([
             'nombre'=> strtoupper($nombre)
         ]);
 
         $demanda->save();
-
-        $demandas = Demanda::get();
-        return view('lista-espera.showTipoDemandas')
-            ->with(compact('demandas'));
+        return redirect()->back()->with('message', 'Registro almacenado con éxito!');
     }
 
     public function editDemanda($id)
@@ -929,6 +935,17 @@ class BeneficiarioController extends Controller
 
     public function updateDemanda(Request $request)
     {
+
+
+        $v = Validator::make($request->all(), [
+            'nombre' => 'required|unique:demandas'
+        ]);
+
+        if($v->fails()){
+            return redirect()->back()->withInput()->withErrors($v->errors());
+        }
+
+
         $nombre = $request->input('nombre');
         $id = $request->input('id');
 
@@ -940,21 +957,15 @@ class BeneficiarioController extends Controller
 
         $demanda->save();
 
-        $demandas = Demanda::get();
-
-        return Redirect::to('lista-espera.showTipoDemandas')
-            ->with('success', 'You message here.')
-            ->with(compact('demandas')
-            );
+        return redirect()->back()->with('message', 'Registro actualizado con éxito!');
     }
 
     public function deleteDemanda($id)
     {
+        $demanda = Demanda::find($id);
+        $demanda->delete();
 
-
-        $demandas = Demanda::get();
-        return view('lista-espera.showTipoDemandas')
-            ->with(compact('demandas'));
+        return redirect()->back()->with('message', 'Registro eliminado con éxito!');
     }
 
 

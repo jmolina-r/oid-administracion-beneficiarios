@@ -98,6 +98,20 @@
                                 </div>
                             </div>
                         </div>
+                        @if(count($errors) > 0)
+                            <hr class='hr-normal'>
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                    <p>{{ $error }}</p>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        @if(session()->has('message'))
+                            <div class="alert alert-success">
+                                {{ session()->get('message') }}
+                            </div>
+                        @endif
                         <div class='row'>
                             <div class='col-sm-12'>
                                 <div class='box'>

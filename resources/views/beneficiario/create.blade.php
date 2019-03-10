@@ -129,7 +129,7 @@ class='contrast-red'
                                             </div>
                                             @if(count($errors) > 0)
                                                 <hr class='hr-normal'>
-                                                <div class="alert alert-danger">
+                                                <div class="success alert-success">
                                                     @foreach($errors->all() as $error)
                                                         <p>{{ $error }}</p>
                                                     @endforeach

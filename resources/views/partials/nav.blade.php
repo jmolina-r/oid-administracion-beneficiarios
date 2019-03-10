@@ -56,6 +56,15 @@
                     </a>
 
                     <ul class='nav nav-stacked'>
+
+                        <li class=''>
+                            <a href='{{route('beneficiario.demandas')}}'>
+                                <div class='icon'>
+                                    <i class='fa fa-caret-right'></i>
+                                </div>
+                                <span>Gestión Lista Espera</span>
+                            </a>
+                        </li>
                     @php($demandas= \App\Demanda::get())
 
                     @foreach($demandas as $demanda)

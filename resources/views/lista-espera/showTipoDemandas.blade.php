@@ -43,7 +43,19 @@
     <!-- / START - Validaciones-->
     <script src="assets/javascripts/plugins/datatables/datatables.min.js" type="text/javascript"></script>
     <!-- / END - validaciones-->
+
+    <script>
+        $('#btn-eliminar').click(function () {
+
+            var respuesta = confirm("¿Seguro que desea eliminar el registro?");
+
+            if (respuesta == false) {
+                return;
+            }
+        });
+    </script>
 @endsection
+
 
 @section("content")
     @include('partials.header')
@@ -76,10 +88,9 @@
                             </div>
                         </div>
                         <hr>
-                        @if (isset($success))
-                            <div class="alert alert-success alert-dismissible" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                {!! $success !!}.
+                        @if(session()->has('message'))
+                            <div class="alert alert-success">
+                                {{ session()->get('message') }}
                             </div>
                         @endif
                         <div class='row'>
@@ -102,7 +113,7 @@
                                             <tr>
                                                 <td class="capitalize">{{$demanda->nombre}}</td>
                                                 <td><a class="btn btn-primary btn-block btn-xs" href="{{route('beneficiario.editDemanda',$demanda->id)}}">Editar</a></td>
-                                                <td><a class="btn btn-primary btn-block btn-xs" href="{{}}">Eliminar</a></td>
+                                                <td><a id= 'btn-eliminar' class="btn btn-primary btn-block btn-xs" href="{{route('beneficiario.deleteDemanda',$demanda->id)}}">Eliminar</a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>

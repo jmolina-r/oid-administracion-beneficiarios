@@ -17,7 +17,7 @@ class CreateDemandasTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('nombre');
-
+            $table->softDeletes();
         });
     }
 

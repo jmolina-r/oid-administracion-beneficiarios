@@ -252,7 +252,7 @@ class MallaController extends Controller
         // se obtienen los beneficiarios asociados
         $horas_agendadas = Malla::where('hora_agendada_id', $hora_agendada->id)->get();
 
-        //obetener las prestaciones asociadas al area del usuario
+        //obtener las prestaciones asociadas al area del usuario
         $area = User::where('id', $hora_agendada->user_id)->first()->getTipoFuncionario();
         $prestaciones = Prestacion::where('area', $area)->get();
 
