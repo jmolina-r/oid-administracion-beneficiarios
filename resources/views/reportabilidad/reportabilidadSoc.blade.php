@@ -102,12 +102,12 @@
   
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-error'><?php echo $atencionAnualSocial ?></h3>
-                          <small>ATENCIONES ANUALES</small>
+                          <small>ATENCIONES ANUALES - {{date('Y')}}</small>
                           <div class='text-error fa fa-users align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-warning'><?php echo $atencionMensualSocial ?></h3>
-                          <small>ATENCIONES MENSUALES</small>
+                          <small>ATENCIONES MENSUALES - {{date('F')}}</small>
                           <div class='text-warning fa fa-users align-left'></div>
                         </div>
                         

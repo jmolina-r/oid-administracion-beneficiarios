@@ -200,7 +200,7 @@
                     <div class='page-header'>
                       <h1 class='pull-left'>
                         <i class='fa fa-pencil-square-o'></i>
-                        <span>Asistente Social</span>
+                        <span>Reportabilidad General</span>
                       </h1>
                       <div class='pull-right'>
                         <ul class='breadcrumb'>
@@ -287,12 +287,12 @@
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-warning'><?php echo $ingresoMensual ?></h3>
-                          <small>CANTIDAD INGRESOS MENSUALES</small>
+                          <small>CANTIDAD INGRESOS MENSUALES - {{date('F')}}</small>
                           <div class='text-warning fa fa-book align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-primary'><?php echo $ingresoAnual ?></h3>
-                          <small>CANTIDAD INGRESOS ANUALES</small>
+                          <small>CANTIDAD INGRESOS ANUALES - {{date('Y')}}</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>
               </div>

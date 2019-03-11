@@ -42,16 +42,24 @@ class RoleTableSeeder extends Seeder
         ]);
         $role->save();
 
+        //$role = new \App\Role([
+        //    'nombre' => 'coordinador_oficina'
+        //]);
+        //$role->save();
+
+        //$role = new \App\Role([
+        //    'nombre' => 'jefatura'
+        //]);
+        //$role->save();
         $role = new \App\Role([
-            'nombre' => 'coordinador_oficina'
+            'nombre' => 'tallerista'
         ]);
         $role->save();
 
         $role = new \App\Role([
-            'nombre' => 'jefatura'
+            'nombre' => 'educador'
         ]);
         $role->save();
-
 
         $role = new \App\Role([
             'nombre' => 'admin'

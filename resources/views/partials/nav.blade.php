@@ -48,7 +48,7 @@
                 </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional']))
+            @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional', 'tallerista','educador']))
                 <li class=''>
                     <a class="dropdown-collapse" href="#"><i class='fa fa-list-ol'></i>
                         <span>Lista de Espera</span>
@@ -56,7 +56,7 @@
                     </a>
 
                     <ul class='nav nav-stacked'>
-
+                     @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
                         <li class=''>
                             <a href='{{route('beneficiario.demandas')}}'>
                                 <div class='icon'>
@@ -65,10 +65,12 @@
                                 <span>Gestión Lista Espera</span>
                             </a>
                         </li>
+
+                        @endif
                     @php($demandas= \App\Demanda::get())
 
                     @foreach($demandas as $demanda)
-                            <!--@if(Auth::user()->hasAnyRole(['admin', 'secretaria','kinesiologia' ]))-->
+
                                 <li class=''>
                                     <a href='{{route('beneficiario.listaEspera',$demanda->id)}}'>
                                         <div class='icon'>
@@ -77,7 +79,7 @@
                                         <span>{{ucwords(strtolower($demanda->nombre))}}</span>
                                     </a>
                                 </li>
-                            <!--@endif-->
+
                         @endforeach
 
                     </ul>

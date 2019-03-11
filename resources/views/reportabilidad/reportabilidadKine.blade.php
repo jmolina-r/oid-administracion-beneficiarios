@@ -128,14 +128,15 @@
                                                 <a class="btn box-collapse btn-xs btn-link" href="#"><i></i></a>
                                             </div>
                                         </div>
+
                                         <div class='box-content box-statistic text-right'>
                                             <h3 class='title text-error'>{{$atencionAnualKine}}</h3>
-                                            <small>ATENCIONES ANUALES</small>
+                                            <small>ATENCIONES ANUALES - {{date('Y')}}</small>
                                             <div class='text-error fa fa-users align-left'></div>
                                         </div>
                                         <div class='box-content box-statistic text-right'>
                                             <h3 class='title text-warning'>{{$atencionMensualKine}}</h3>
-                                            <small>ATENCIONES MENSUALES</small>
+                                            <small>ATENCIONES MENSUALES - {{date('F')}}</small>
                                             <div class='text-warning fa fa-users align-left'></div>
                                         </div>
                                         <div class='box-content'>
@@ -143,22 +144,22 @@
                                         </div>
                                         <div class='box-content box-statistic text-right'>
                                             <h3 class='title text-primary'>{{$asistenciaKineAnual}}</h3>
-                                            <small>CANTIDAD DE USUARIOS ASISTENTES EN EL AÑO</small>
+                                            <small>CANTIDAD DE USUARIOS ASISTENTES EN EL AÑO - {{date('Y')}}</small>
                                             <div class='text-primary fa fa-book align-left'></div>
                                         </div>
                                         <div class='box-content box-statistic text-right'>
                                             <h3 class='title text-primary'>{{$asistenciaKineMensual}}</h3>
-                                            <small>CANTIDAD DE USUARIOS ASISTENTES EN EL MES</small>
+                                            <small>CANTIDAD DE USUARIOS ASISTENTES EN EL MES - {{date('F')}}</small>
                                             <div class='text-primary fa fa-book align-left'></div>
                                         </div>
                                         <div class='box-content box-statistic text-right'>
                                             <h3 class='title text-primary'>{{$inasistenciaKineAnual}}</h3>
-                                            <small>CANTIDAD DE USUARIOS INASISTENTES EN EL AÑO</small>
+                                            <small>CANTIDAD DE USUARIOS INASISTENTES EN EL AÑO {{date('Y')}}</small>
                                             <div class='text-primary fa fa-book align-left'></div>
                                         </div>
                                         <div class='box-content box-statistic text-right'>
                                             <h3 class='title text-primary'>{{$inasistenciaKineMensual}}</h3>
-                                            <small>CANTIDAD DE USUARIOS INASISTENTES EN EL MES</small>
+                                            <small>CANTIDAD DE USUARIOS INASISTENTES EN EL MES - {{date('F')}}</small>
                                             <div class='text-primary fa fa-book align-left'></div>
                                         </div>
                                         <div class='box-content'>

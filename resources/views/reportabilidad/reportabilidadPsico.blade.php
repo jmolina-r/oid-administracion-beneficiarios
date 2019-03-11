@@ -133,12 +133,12 @@
   
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-error'><?php echo $atencionAnualPsico ?></h3>
-                          <small>ATENCIONES ANUALES</small>
+                          <small>ATENCIONES ANUALES - {{date('Y')}}</small>
                           <div class='text-error fa fa-users align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-warning'><?php echo $atencionMensualPsico ?></h3>
-                          <small>ATENCIONES MENSUALES</small>
+                          <small>ATENCIONES MENSUALES - {{date('F')}}</small>
                           <div class='text-warning fa fa-users align-left'></div>
                         </div>
                          <div class='box-content'>
@@ -146,22 +146,22 @@
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-primary'>{{$asistenciaPsicoAnual}}</h3>
-                          <small>CANTIDAD DE USUARIOS ASISTENTES EN EL AÑO</small>
+                          <small>CANTIDAD DE USUARIOS ASISTENTES EN EL AÑO - {{date('Y')}}</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-primary'>{{$asistenciaPsicoMensual}}</h3>
-                          <small>CANTIDAD DE USUARIOS ASISTENTES EN EL MES</small>
+                          <small>CANTIDAD DE USUARIOS ASISTENTES EN EL MES - {{date('F')}}</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-primary'>{{$inasistenciaPsicoAnual}}</h3>
-                          <small>CANTIDAD DE USUARIOS INASISTENTES EN EL AÑO</small>
+                          <small>CANTIDAD DE USUARIOS INASISTENTES EN EL AÑO - {{date('Y')}}</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-primary'>{{$inasistenciaPsicoMensual}}</h3>
-                          <small>CANTIDAD DE USUARIOS INASISTENTES EN EL MES</small>
+                          <small>CANTIDAD DE USUARIOS INASISTENTES EN EL MES - {{date('Y')}}</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>
                         <div class='box-content'>

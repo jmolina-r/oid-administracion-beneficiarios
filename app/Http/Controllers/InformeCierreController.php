@@ -155,14 +155,17 @@ class InformeCierreController extends Controller
         $fechaInicio = $fichaInicial->created_at->format('d-m-Y');
         $fechaTermino = $fichaCierre->created_at->format('d-m-Y');
 
-        $prestacionesRealizadas = DB::table('prestacion_realizadas')
-            ->where('funcionario_id', $idFuncionario)
+        $prestacionesRealizadas = DB::table('mallas')
             ->where('beneficiario_id', $idBeneficiario)
-            ->where('prestacion_realizadas.created_at', '>=', $fichaInicial->created_at)
-            ->where('prestacion_realizadas.created_at', '<=', $fichaCierre->created_at)
-            ->join('prestacions', 'prestacions.id', '=', 'prestacion_realizadas.prestacions_id')
+            ->where('mallas.deleted_at','=',null)
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->where('hora_agendadas.user_id', $funcionario->user()->first()->id)
+            ->where('hora_agendadas.fecha', '>=', $fichaInicial->created_at->format('Y-m-d'))
+            ->where('hora_agendadas.fecha', '<=', date('Y-m-d'))
+            ->join('prestacions', 'prestacions.id', '=', 'mallas.prestacion_id')
             ->select('prestacions.nombre')
             ->get();
+
 
         $ficha = $idFicha;
         $area = $tipoFuncionario->nombre;
