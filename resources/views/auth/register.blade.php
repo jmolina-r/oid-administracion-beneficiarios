@@ -112,7 +112,7 @@
 
                             <div class='accordion accordion-blue panel-group' id='accordion1' style='margin-bottom:0;'>
 
-                                <div class='panel panel-default'>
+                                <!--<div class='panel panel-default'>
                                   <div class='panel-heading'>
                                     <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseSix-accordion1'>
                                       Coordinador oficina
@@ -125,7 +125,7 @@
                                         </ul>
                                     </div>
                                   </div>
-                                </div>
+                                </div>-->
 
                                 {{-- <div class='panel panel-default'>
                                   <div class='panel-heading'>
@@ -154,8 +154,8 @@
                                           <li>Administrar malla de Kinesiología</li>
                                           <li>Ver datos de beneficiarios</li>
                                           <li>Ver fichas de beneficiarios</li>
-                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de Kinesiología</li>
-                                          <li>Estadisticas de Kinesiología</li>
+                                          <li>Ingresar y ver fichas inicial y de alta de Kinesiología</li>
+                                          <li>Estadísticas de Kinesiología</li>
                                       </ul>
                                   </div>
                                 </div>
@@ -173,8 +173,8 @@
                                           <li>Administrar malla de Psicología</li>
                                           <li>Ver datos de beneficiarios</li>
                                           <li>Ver fichas de beneficiarios</li>
-                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de Psicología</li>
-                                          <li>Estadisticas de Psicología</li>
+                                          <li>Ingresar y ver fichas inicial y de alta de Psicología</li>
+                                          <li>Estadísticas de Psicología</li>
                                       </ul>
                                   </div>
                                 </div>
@@ -191,8 +191,8 @@
                                           <li>Administrar malla de Fonoaudiología</li>
                                           <li>Ver datos de beneficiarios</li>
                                           <li>Ver fichas de beneficiarios</li>
-                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de Fonoaudiología</li>
-                                          <li>Estadisticas de Fonoaudiología</li>
+                                          <li>Ingresar y ver fichas inicial y de alta de Fonoaudiología</li>
+                                          <li>Estadísticas de Fonoaudiología</li>
                                       </ul>
                                   </div>
                                 </div>
@@ -200,7 +200,7 @@
                               <div class='panel panel-default'>
                                 <div class='panel-heading'>
                                   <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseFour-accordion1'>
-                                    Teraia Ocupacional
+                                    Terapia Ocupacional
                                   </a>
                                 </div>
                                 <div class='panel-collapse collapse' id='collapseFour-accordion1'>
@@ -209,8 +209,8 @@
                                           <li>Administrar malla de Teraia Ocupacional</li>
                                           <li>Ver datos de beneficiarios</li>
                                           <li>Ver fichas de beneficiarios</li>
-                                          <li>Ingresar, ver e imprimir fichas inicial y de alta de Teraia Ocupacional</li>
-                                          <li>Estadisticas de Teraia Ocupacional</li>
+                                          <li>Ingresar y ver fichas inicial y de alta de Teraia Ocupacional</li>
+                                          <li>Estadísticas de Teraia Ocupacional</li>
                                       </ul>
                                   </div>
                                 </div>
@@ -250,7 +250,35 @@
                                   </div>
                                 </div>
                               </div>
-                              <div class='panel panel-default'>
+                                <div class='panel panel-default'>
+                                    <div class='panel-heading'>
+                                        <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseFour-accordion1'>
+                                            Tallerista
+                                        </a>
+                                    </div>
+                                    <div class='panel-collapse collapse' id='collapseFour-accordion1'>
+                                        <div class='panel-body'>
+                                            <ul>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='panel panel-default'>
+                                    <div class='panel-heading'>
+                                        <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseFour-accordion1'>
+                                            Educador
+                                        </a>
+                                    </div>
+                                    <div class='panel-collapse collapse' id='collapseFour-accordion1'>
+                                        <div class='panel-body'>
+                                            <ul>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                              <!--<div class='panel panel-default'>
                                 <div class='panel-heading'>
                                   <a class='accordion-toggle' data-parent='#accordion1' data-toggle='collapse' href='#collapseEight-accordion1'>
                                     Jefatura
@@ -264,7 +292,7 @@
                                       </ul>
                                   </div>
                                 </div>
-                              </div>
+                              </div>-->
                             </div>
 
                         </div>

@@ -102,7 +102,7 @@
                   <div class='box bordered-box blue-border' style='margin-bottom:0;'>
                     <div class='box-header blue-background'>
                       <div class='title'>Reportabilidad Histórica</div>
-                      <div class='text-right'><span>Periodo: {{$mesuno}}-{{$aniouno}} / {{$mesdos}}-{{$aniodos}}</span></div>
+                      <div class='text-right'><span>Período: {{$mesuno}}-{{$aniouno}} / {{$mesdos}}-{{$aniodos}}</span></div>
                     </div>
                          <div class='box-content box-statistic text-right'>
                           <h3 class='title text-info'>{{$cantIngresadosAño2}}</h3>
@@ -111,7 +111,7 @@
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-error'>{{$cantAtencionAño2}}</h3>
-                          <small>USUARIOS ATENDIDOS EN EL PERIODO</small>
+                          <small>ATENCIONES DEL PERIODO</small>
                           <div class='text-error fa fa-users align-left'></div>
                         </div>
                         <div class='box-content'>
@@ -119,22 +119,22 @@
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-warning'>{{$atencionPsico}}</h3>
-                          <small>PSICOLOGÍA - USUARIOS ATENDIDOS EN EL PERIODO</small>
+                          <small>PSICOLOGÍA - ATENCIONES EN EL PERIODO</small>
                           <div class='text-warning fa fa-smile-o align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-warning'>{{$atencionKines}}</h3>
-                          <small>KINESIOLOGÍA - USUARIOS ATENDIDOS EN EL PERIODO</small>
+                          <small>KINESIOLOGÍA - ATENCIONES EN EL PERIODO</small>
                           <div class='text-warning fa fa-wheelchair align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-warning'>{{$atencionFono}}</h3>
-                          <small>FONOAUDIOLOGÍA - USUARIOS ATENDIDOS EN EL PERIODO</small>
+                          <small>FONOAUDIOLOGÍA - ATENCIONES EN EL PERIODO</small>
                           <div class='text-warning fa fa-deaf align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-warning'>{{$atencionTers}}</h3>
-                          <small>TERAPIA OCUPACIONAL - USUARIOS ATENDIDOS EN EL PERIODO</small>
+                          <small>TERAPIA OCUPACIONAL - ATENCIONES EN EL PERIODO</small>
                           <div class='text-warning fa fa-hand-rock-o align-left'></div>
                         </div>
                         

@@ -104,32 +104,33 @@
                       <input id="atencionFonoMes" name="atencionFonoMes" type="hidden" value="{{$atencionFonoMes}}">
                       <input id="atencionTersMes" name="atencionTersMes" type="hidden" value="{{$atencionTersMes}}">
 
-
+@php($date = DateTime::createFromFormat('!m',$mes))
+@php($m = $date->format('F'))
                 <div class='row'>
                 <div class='col-sm-12'>
                   <div class='box bordered-box blue-border' style='margin-bottom:0;'>
                     <div class='box-header blue-background'>
                       <div class='title'>Reportabilidad Histórica</div>
-                      <div class='text-right'><span>Fecha: {{$mes}}/{{$anio}}</span></div>
+                      <div class='text-right'><span>Fecha: {{$m}}/{{$anio}}</span></div>
                     </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-error'><?php echo $cantIngresadosAño ?></h3>
-                          <small>USUARIOS INGRESADOS EN EL AÑO</small>
+                          <small>USUARIOS INGRESADOS EN EL AÑO - {{$anio}}</small>
                           <div class='text-error fa fa-users align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-warning'><?php echo $cantIngresadosMes ?></h3>
-                          <small>USUARIOS INGRESADOS EN EL MES</small>
+                          <small>USUARIOS INGRESADOS EN EL MES - {{$m}}</small>
                           <div class='text-warning fa fa-users align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-primary'><?php echo $atencionAnual ?></h3>
-                          <small>ATENCIONES DEL AÑO</small>
+                          <small>ATENCIONES DEL AÑO - {{$anio}}</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-primary'><?php echo $atencionMensual ?></h3>
-                          <small>ATENCIONES DEL MES</small>
+                          <small>ATENCIONES DEL MES - {{$m}}</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>
                         <div class='box-content'>
@@ -137,42 +138,42 @@
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-warning'>{{$atencionPsico}}</h3>
-                          <small>PSICOLOGÍA - USUARIOS ATENDIDOS EN EL AÑO</small>
+                          <small>PSICOLOGÍA - ATENCIONES EN EL AÑO - {{$anio}}</small>
                           <div class='text-warning fa fa-smile-o align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-warning'>{{$atencionKines}}</h3>
-                          <small>KINESIOLOGÍA - USUARIOS ATENDIDOS EN EL AÑO</small>
+                          <small>KINESIOLOGÍA - ATENCIONES EN EL AÑO - {{$anio}}</small>
                           <div class='text-warning fa fa-wheelchair align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-warning'>{{$atencionFono}}</h3>
-                          <small>FONOAUDIOLOGÍA - USUARIOS ATENDIDOS EN EL AÑO</small>
+                          <small>FONOAUDIOLOGÍA - ATENCIONES EN EL AÑO - {{$anio}}</small>
                           <div class='text-warning fa fa-deaf align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-warning'>{{$atencionTers}}</h3>
-                          <small>TERAPIA OCUPACIONAL - USUARIOS ATENDIDOS EN EL AÑO</small>
+                          <small>TERAPIA OCUPACIONAL - ATENCIONES EN EL AÑO - {{$anio}}</small>
                           <div class='text-warning fa fa-hand-rock-o align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-info'>{{$atencionPsicoMes}}</h3>
-                          <small>PSICOLOGÍA - USUARIOS ATENDIDOS EN EL MES</small>
+                          <small>PSICOLOGÍA - ATENCIONES EN EL MES - {{$m}}</small>
                           <div class='text-info fa fa-smile-o align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-info'>{{$atencionKinesMes}}</h3>
-                          <small>KINESIOLOGÍA - USUARIOS ATENDIDOS EN EL MES</small>
+                          <small>KINESIOLOGÍA - ATENCIONES EN EL MES - {{$m}}</small>
                           <div class='text-info fa fa-wheelchair align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-info'>{{$atencionFonoMes}}</h3>
-                          <small>FONOAUDIOLOGÍA - USUARIOS ATENDIDOS EN EL MES</small>
+                          <small>FONOAUDIOLOGÍA - ATENCIONES EN EL MES - {{$m}}</small>
                           <div class='text-info fa fa-deaf align-left'></div>
                         </div>
                         <div class='box-content box-statistic text-right'>
                           <h3 class='title text-info'>{{$atencionTersMes}}</h3>
-                          <small>TERAPIA OCUPACIONAL - USUARIOS ATENDIDOS EN EL MES</small>
+                          <small>TERAPIA OCUPACIONAL - ATENCIONES EN EL MES - {{$m}}</small>
                           <div class='text-info fa fa-hand-rock-o align-left'></div>
                         </div>
               </div>
