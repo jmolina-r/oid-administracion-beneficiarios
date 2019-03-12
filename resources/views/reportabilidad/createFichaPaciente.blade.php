@@ -336,7 +336,7 @@
                      </div>
                      <div class='box-content box-statistic text-right'>
                           <h3 class='title text-info'><?php echo intval($porcentajeRSTramite); echo '%'?></h3>
-                          <small>REGISTRO SOCIAL DE HOGARES EN TÁMITE</small>
+                          <small>REGISTRO SOCIAL DE HOGARES EN TRÁMITE</small>
                           <div class='text-info fa fa-home align-left'></div>
                      </div>
                      <div class='box-content box-statistic text-right'>

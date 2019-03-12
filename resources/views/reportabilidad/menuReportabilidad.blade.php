@@ -111,7 +111,7 @@
                             <form action="{{route('reportabilidad.reportabilidadGru')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
                             <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">
-                                <h4>Reportabilidad Grupal</h4>
+                                <h4>Reportabilidad por Área</h4>
                             </div>
                             <div class="boton pull-right" style="display:inline-block">
                                 <!--<a href='{{route('reportabilidad.reportabilidadGru')}}'><input type="button" value="Visualizar" class="btn btn-success" style="margin-bottom:5px" /></a>
@@ -135,7 +135,7 @@
                             <span>Seleccionar Profesional:</span>
                             <select name="kinesiologos">
                                  @foreach($kines as $kine)
-                            <option value="{{$kine->rut}}">{{$kine->nombre}} {{$kine->apellido}}</option>
+                            <option value="{{$kine->id}}">{{$kine->nombre}} {{$kine->apellido}}</option>
                                  @endforeach
                                 </select>
                                 <div class="boton pull-right" style="display:inline-block">
@@ -157,7 +157,7 @@
                             <span>Seleccionar Profesional:</span>
                              <select name="psicologos">
                                  @foreach($psicologos as $psicologo)
-                                    <option value="{{$psicologo->rut}}">{{$psicologo->nombre}} {{$psicologo->apellido}}</option>
+                                    <option value="{{$psicologo->id}}">{{$psicologo->nombre}} {{$psicologo->apellido}}</option>
                                  @endforeach
                             </select>
                             <div class="boton pull-right" style="display:inline-block">
@@ -178,7 +178,7 @@
                             <span>Seleccionar Profesional:</span>
                             <select name="terapeutas">
                                  @foreach($terapeutas as $terapeuta)
-                                    <option value="{{$terapeuta->rut}}">{{$terapeuta->nombre}} {{$terapeuta->apellido}}</option>
+                                    <option value="{{$terapeuta->id}}">{{$terapeuta->nombre}} {{$terapeuta->apellido}}</option>
                                  @endforeach
                             </select>
                             <div class="boton pull-right" style="display:inline-block">
@@ -199,7 +199,7 @@
                                     <span>Seleccionar Profesional:</span>
                                     <select name="fonoaudiologo">
                                         @foreach($fonoaudiologos as $fonoaudiologo)
-                                            <option value="{{$fonoaudiologo->rut}}">{{$fonoaudiologo->nombre}} {{$fonoaudiologo->apellido}}</option>
+                                            <option value="{{$fonoaudiologo->id}}">{{$fonoaudiologo->nombre}} {{$fonoaudiologo->apellido}}</option>
                                         @endforeach
                                     </select>
                                     <div class="boton pull-right" style="display:inline-block">

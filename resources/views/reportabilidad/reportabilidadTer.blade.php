@@ -4,7 +4,7 @@
 
 <!-- meta atributo title -->
 @section('title')
-    Área Social - OID
+    Reportabilidad - OID
 @endsection
 
 <!-- inyeccion de estilos -->
@@ -88,6 +88,7 @@
                 </div>
                   <form action="{{route('reportabilidad.reporteTer')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
                       <input id="nombres" name="nombres" type="hidden" value="{{$terapeuta->nombre}}">
+                      <input id="funcionario_id" name="funcionario_id" type="hidden" value="{{$terapeuta->id}}">
                       <input id="apellidos" name="apellidos" type="hidden" value="{{$terapeuta->apellido}}">
                       <input id="rut" name="rut" type="hidden" value="{{$terapeuta->rut}}">
                       <input id="telefono" name="telefono" type="hidden" value="{{$terapeuta->telefono}}">

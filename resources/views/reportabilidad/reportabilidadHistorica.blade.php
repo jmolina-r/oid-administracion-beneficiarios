@@ -4,7 +4,7 @@
 
 <!-- meta atributo title -->
 @section('title')
-    Área Social - OID
+    Reportabilidad - OID
 @endsection
 
 <!-- inyeccion de estilos -->

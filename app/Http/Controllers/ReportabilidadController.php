@@ -27,6 +27,7 @@ use App\TipoMotivoSocial;
 use App\Kinesiologo;
 use App\TerapeutaOcupacional;
 use App\Psicologo;
+use App\User;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\Isset_;
 
@@ -205,19 +206,18 @@ class ReportabilidadController extends Controller
 
     public function showResultKine(Request $request){
         //KINE
-        $user_rut=$request->kinesiologos;
-        $kinesiologo = Funcionario::where('rut',$request->kinesiologos)->first();
-
+        $kinesiologo = Funcionario::where('id',$request->kinesiologos)->first();
+        $user=User::where('funcionario_id',$request->input('kinesiologos'))->first();
 
         $atencionAnualKine=HoraAgendada::whereYear('hora_agendadas.fecha', '=', date('Y'))
-            ->where('hora_agendadas.user_id', $kinesiologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->join('mallas','hora_agendadas.id','=','mallas.hora_agendada_id')
             ->whereNotNull('mallas.prestacion_id')
             ->count();
 
         $atencionMensualKine=HoraAgendada::whereYear('hora_agendadas.fecha', '=', date('Y'))
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
-            ->where('hora_agendadas.user_id', $kinesiologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->join('mallas','hora_agendadas.id','=','mallas.hora_agendada_id') //join malla
             ->whereNotNull('mallas.prestacion_id')
             ->count();
@@ -225,26 +225,26 @@ class ReportabilidadController extends Controller
         $asistenciaKineAnual =Malla::where('mallas.asist_sn','=','Presente')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
-            ->where('hora_agendadas.user_id', $kinesiologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->count();
 
         $asistenciaKineMensual=Malla::where('mallas.asist_sn','=','Presente')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
-            ->where('hora_agendadas.user_id', $kinesiologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->count();
 
         $inasistenciaKineAnual =Malla::where('mallas.asist_sn','=','No Justifica')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
-            ->where('hora_agendadas.user_id', $kinesiologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->count();
         $inasistenciaKineMensual=Malla::where('mallas.asist_sn','=','No Justifica')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
-            ->where('hora_agendadas.user_id', $kinesiologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->count();
 
         $prestaciones = Prestacion::where('prestacions.area','=','Kinesiologo')->get();
@@ -257,7 +257,7 @@ class ReportabilidadController extends Controller
             ->where('prestacions.area','=','Kinesiologo')
             ->join('mallas','prestacions.id','=','mallas.prestacion_id')
             ->join('hora_agendadas','mallas.hora_agendada_id','hora_agendadas.id')
-            ->where('hora_agendadas.user_id', $kinesiologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->whereYear('hora_agendadas.fecha','=',date('Y'))
             ->whereMonth('hora_agendadas.fecha','=',date('m'))
             ->count();
@@ -294,18 +294,18 @@ class ReportabilidadController extends Controller
 
     public function showResultFono(Request $request){
         //FONO
-        $user_rut=$request->fonoaudiologo;
-        $fonoaudiologo = Funcionario::where('rut',$request->fonoaudiologo)->first();
+        $fonoaudiologo = Funcionario::where('id',$request->fonoaudiologo)->first();
+        $user=User::where('funcionario_id',$request->input('fonoaudiologo'))->first();
 
         $atencionAnualFono=HoraAgendada::whereYear('hora_agendadas.fecha', '=', date('Y'))
-            ->where('hora_agendadas.user_id', $fonoaudiologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->join('mallas','hora_agendadas.id','=','mallas.hora_agendada_id')
             ->whereNotNull('mallas.prestacion_id')
             ->count();
 
         $atencionMensualFono=HoraAgendada::whereYear('hora_agendadas.fecha', '=', date('Y'))
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
-            ->where('hora_agendadas.user_id', $fonoaudiologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->join('mallas','hora_agendadas.id','=','mallas.hora_agendada_id') //join malla
             ->whereNotNull('mallas.prestacion_id')
             ->count();
@@ -313,24 +313,24 @@ class ReportabilidadController extends Controller
         $asistenciaFonoAnual =Malla::where('mallas.asist_sn','=','Presente')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
-            ->where('hora_agendadas.user_id', $fonoaudiologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->count();
         $asistenciaFonoMensual =Malla::where('mallas.asist_sn','=','Presente')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
-            ->where('hora_agendadas.user_id', $fonoaudiologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->count();
         $inasistenciaFonoAnual =Malla::where('mallas.asist_sn','=','No Justifica')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
-            ->where('hora_agendadas.user_id', $fonoaudiologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->count();
         $inasistenciaFonoMensual =Malla::where('mallas.asist_sn','=','No Justifica')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
-            ->where('hora_agendadas.user_id', $fonoaudiologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->count();
 
         $prestaciones = Prestacion::where('prestacions.area','=','Fonoaudiologo')->get();
@@ -340,10 +340,10 @@ class ReportabilidadController extends Controller
         foreach ($prestaciones as $p){
             $nombrePrest[$i]=$p->nombre;
             $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
-                ->where('prestacions.area','=','Kinesiologo')
+                ->where('prestacions.area','=','Fonoaudiologo')
                 ->join('mallas','prestacions.id','=','mallas.prestacion_id')
                 ->join('hora_agendadas','mallas.hora_agendada_id','hora_agendadas.id')
-                ->where('hora_agendadas.user_id', $fonoaudiologo->user()->first()->id)
+                ->where('hora_agendadas.user_id', $user->id)
                 ->whereYear('hora_agendadas.fecha','=',date('Y'))
                 ->whereMonth('hora_agendadas.fecha','=',date('m'))
                 ->count();
@@ -374,40 +374,40 @@ class ReportabilidadController extends Controller
 
     public function showResultPsico(Request $request){
         //Psico
-        $user_rut=$request->psicologos;
-        $psicologo = Funcionario::where('rut',$request->psicologos)->first();
+        $psicologo = Funcionario::where('id',$request->input('psicologos'))->first();
+        $user=User::where('funcionario_id',$request->input('psicologos'))->first();
         $atencionAnualPsico=HoraAgendada::whereYear('hora_agendadas.fecha', '=', date('Y'))
-            ->where('hora_agendadas.user_id', $psicologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->join('mallas','hora_agendadas.id','=','mallas.hora_agendada_id')
             ->whereNotNull('mallas.prestacion_id')
             ->count();
         $atencionMensualPsico=HoraAgendada::whereYear('hora_agendadas.fecha', '=', date('Y'))
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
-            ->where('hora_agendadas.user_id', $psicologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->join('mallas','hora_agendadas.id','=','mallas.hora_agendada_id') //join malla
             ->whereNotNull('mallas.prestacion_id')
             ->count();
         $asistenciaPsicoAnual =Malla::where('mallas.asist_sn','=','Presente')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
-            ->where('hora_agendadas.user_id', $psicologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->count();
         $asistenciaPsicoMensual=Malla::where('mallas.asist_sn','=','Presente')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
-            ->where('hora_agendadas.user_id', $psicologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->count();
         $inasistenciaPsicoAnual =Malla::where('mallas.asist_sn','=','No Justifica')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
-            ->where('hora_agendadas.user_id', $psicologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->count();
         $inasistenciaPsicoMensual =Malla::where('mallas.asist_sn','=','No Justifica')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
-            ->where('hora_agendadas.user_id', $psicologo->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->count();
 
 
@@ -418,10 +418,10 @@ class ReportabilidadController extends Controller
         foreach ($prestaciones as $p){
             $nombrePrest[$i]=$p->nombre;
             $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
-                ->where('prestacions.area','=','Kinesiologo')
+                ->where('prestacions.area','=','Psicologo')
                 ->join('mallas','prestacions.id','=','mallas.prestacion_id')
                 ->join('hora_agendadas','mallas.hora_agendada_id','hora_agendadas.id')
-                ->where('hora_agendadas.user_id',  $psicologo->user()->first()->id)
+                ->where('hora_agendadas.user_id',  $user->id)
                 ->whereYear('hora_agendadas.fecha','=',date('Y'))
                 ->whereMonth('hora_agendadas.fecha','=',date('m'))
                 ->count();
@@ -455,16 +455,16 @@ class ReportabilidadController extends Controller
     public function showResultTer(Request $request){
 
         //terapiaocupacional
-        $user_rut=$request->terapeutas;
-        $terapeuta = Funcionario::where('rut',$request->terapeutas)->first();
+        $terapeuta = Funcionario::where('id',$request->terapeutas)->first();
+        $user=\App\User::where('funcionario_id',$request->input('terapeutas'))->first();
         $atencionAnualTer=HoraAgendada::whereYear('hora_agendadas.fecha', '=', date('Y'))
-            ->where('hora_agendadas.user_id', $terapeuta->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->join('mallas','hora_agendadas.id','=','mallas.hora_agendada_id')
             ->whereNotNull('mallas.prestacion_id')
             ->count();
         $atencionMensualTer=HoraAgendada::whereYear('hora_agendadas.fecha', '=', date('Y'))
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
-            ->where('hora_agendadas.user_id', $terapeuta->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->join('mallas','hora_agendadas.id','=','mallas.hora_agendada_id') //join malla
             ->whereNotNull('mallas.prestacion_id')
             ->count();
@@ -472,24 +472,24 @@ class ReportabilidadController extends Controller
         $asistenciaTerAnual =Malla::where('mallas.asist_sn','=','Presente')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
-            ->where('hora_agendadas.user_id', $terapeuta->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->count();
         $asistenciaTerMensual=Malla::where('mallas.asist_sn','=','Presente')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
-            ->where('hora_agendadas.user_id', $terapeuta->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->count();
         $inasistenciaTerAnual =Malla::where('mallas.asist_sn','=','No Justifica')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
-            ->where('hora_agendadas.user_id', $terapeuta->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->count();
         $inasistenciaTerMensual =Malla::where('mallas.asist_sn','=','No Justifica')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
-            ->where('hora_agendadas.user_id', $terapeuta->user()->first()->id)
+            ->where('hora_agendadas.user_id', $user->id)
             ->count();
 
         $prestaciones = Prestacion::where('prestacions.area','=','Terapeuta ocupacional')->get();
@@ -499,10 +499,10 @@ class ReportabilidadController extends Controller
         foreach ($prestaciones as $p){
             $nombrePrest[$i]=$p->nombre;
             $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
-                ->where('prestacions.area','=','Kinesiologo')
+                ->where('prestacions.area','=','Terapeuta ocupacional')
                 ->join('mallas','prestacions.id','=','mallas.prestacion_id')
                 ->join('hora_agendadas','mallas.hora_agendada_id','hora_agendadas.id')
-                ->where('hora_agendadas.user_id',  $terapeuta->user()->first()->id)
+                ->where('hora_agendadas.user_id',  $user->id)
                 ->whereYear('hora_agendadas.fecha','=',date('Y'))
                 ->whereMonth('hora_agendadas.fecha','=',date('m'))
                 ->count();
