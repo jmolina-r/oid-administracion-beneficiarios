@@ -77,6 +77,10 @@
         })
     </script>
 
+    <script>
+
+    </script>
+
 @endsection
 
 @section("content")
@@ -115,8 +119,8 @@
                                               accept-charset="UTF-8" method="post" data-toggle="validator">
                                             {{ csrf_field() }}
                                             <div class="row">
-                                                <input id="id" name="id_hora_agendada" type="hidden" value="{{$id}}">
-                                                <input id="user_id" name="user_id" type="hidden" value="{{$user_id}}">
+                                                <input id="id_hora_agendada" name="id_hora_agendada" type="hidden" value="{{$id_hora}}">
+                                                <input id="id" name="id" type="hidden" value="{{$id}}">
 
                                                 <div class="form-group">
                                                     <div class="col-xs-12 col-sm-12 col-lg-12 ">

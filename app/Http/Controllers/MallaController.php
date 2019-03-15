@@ -241,14 +241,14 @@ class MallaController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($id_hora)
     {
         //datos basicos de la hora agendada
-        $hora_agendada = HoraAgendada::where('id', $id)->first();
+        $hora_agendada = HoraAgendada::where('id', $id_hora)->first();
         $fecha = $hora_agendada->fecha;
         $hora = $hora_agendada->hora;
         $tipo = $hora_agendada->tipo;
-        $user_id = $hora_agendada->user_id;
+        $id = $hora_agendada->user_id;
         // se obtienen los beneficiarios asociados
         $horas_agendadas = Malla::where('hora_agendada_id', $hora_agendada->id)->get();
 
@@ -258,8 +258,8 @@ class MallaController extends Controller
 
 
         return view('malla.editAgendarHora')
-            ->with(compact('user_id'))//id hora agendada
-            ->with(compact('id'))
+            ->with(compact('id'))//id user
+            ->with(compact('id_hora'))//id hora agendada
             ->with(compact('fecha'))
             ->with(compact('hora'))
             ->with(compact('tipo'))

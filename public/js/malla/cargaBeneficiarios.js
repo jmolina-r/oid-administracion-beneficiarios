@@ -164,13 +164,13 @@ $(document).ready(function () {
             },
             url: "/malla/update",
             data: {
-                id_hora_agendada: $('#id').val(),
+                id_hora_agendada: $('#id_hora_agendada').val(),
                 jsonBeneficiarios: jsonBeneficiarios,
             },
             type: "POST",
             success: function (data, textStatus, jqXHR) {
                 alert("Datos registrados correctamente. Volviendo a la malla.");
-                window.location.replace("/malla/show2/" + $('#user_id').val()); //arreglar
+                window.location.replace("/malla/show2/" + $('#id').val()); //arreglar
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 alert("Hubo un error, reintente");
@@ -178,6 +178,11 @@ $(document).ready(function () {
         });
 
     });
+
+    document.getElementById("btn-atras").onclick = function () {
+        console.log($('#id').val());
+        window.location.replace("/malla/show2/" + $('#id').val());
+    }
 
     document.getElementById("btn-delete").onclick = function () {
         var respuesta = confirm("¿Seguro que desea eliminar el registro de la malla?");
@@ -197,7 +202,7 @@ $(document).ready(function () {
             },
             success: function (data, textStatus, jqXHR) {
                 alert('La hora agendada se ha eliminado correctamente.');
-                window.location.replace("/malla/show2/" + $('#user_id').val());
+                window.location.replace("/malla/show2/" + $('#id').val());
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 alert('Hubo un error al eliminar la hora. Reintente.');
@@ -206,9 +211,9 @@ $(document).ready(function () {
 
     }
 
-    document.getElementById("btn-atras").onclick = function () {
-        window.location.replace("/malla/show2/" + $('#user_id').val());
-    }
+
+
+
 
 
 

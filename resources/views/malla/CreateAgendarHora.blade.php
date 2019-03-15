@@ -74,7 +74,12 @@
         };
     </script>
     <script>
+        function otractividad() {
+            //if (radio.checked && radio.id === "radio-restaurant") {
 
+            document.getElementById("cuerpo").innerHTML = "<a'>Submit</a>";
+
+        }
     </script>
 @endsection
 
@@ -175,11 +180,16 @@
                                                                 <input class="form-check-input" type="radio" name="tipo"
                                                                        id="Grupal"
                                                                        value="Grupal" required>
+                                                                <label class="form-check-label"
+                                                                       for="exampleRadios1">Otra Actividad</label>
+                                                                <input class="form-check-input" type="radio" name="tipo"
+                                                                       id="otraActividad"
+                                                                       value="Otra Actividad" required onchange="otractividad()">
                                                             </div>
                                                         </div>
 
                                                     </div>
-
+                                                <div id='cuerpo'>
                                                     <div class="col-xs-12 col-sm-12 col-lg-12 ">
                                                         <div class="form-group">
                                                             <div class="col-md-12 controls">
@@ -195,7 +205,6 @@
 
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                     <div class="col-xs-12 col-sm-12 col-lg-12">
                                                         <div class="form-group">
@@ -218,11 +227,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                </div>
                                             </div>
 
                                             <div class="modal-footer">
                                                 <button type="button" id="btn-atras" class="btn btn-secondary">
-                                                    Atras
+                                                    Atrás
                                                 </button>
                                                 <button type="button" id="btn-guardar" class="btn btn-primary">Guardar</button>
 
