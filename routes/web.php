@@ -32,7 +32,7 @@ Route::get('/users/{id}/funcionario', 'Auth\FindController@userInfoFuncionarioJs
 Route::get('/construcción', [
     'uses' => 'ReportabilidadController@index',
     'as' => 'reportabilidad.menuReportabilidad'
-])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -63,27 +63,27 @@ Route::group(['prefix' => 'areasocial', 'middleware' => 'auth'], function(){
     Route::get('/asistentesocial/showAyuda/{id}', [
     'uses' => 'FichaSocialController@showFicha',
     'as' => 'social.showAyuda'
-    ])->middleware('roles:secretaria|admin|trabajo_social');
+    ])->middleware('roles:secretaria|admin|trabajo_social|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::get('/asistentesocial/showVisita/{id}', [
     'uses' => 'FichaSocialController@showFicha',
     'as' => 'social.showVisita'
-    ])->middleware('roles:secretaria|admin|trabajo_social');
+    ])->middleware('roles:secretaria|admin|trabajo_social|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::get('/asistentesocial/showBecas/{id}', [
     'uses' => 'FichaSocialController@showFicha',
     'as' => 'social.showBecas'
-    ])->middleware('roles:secretaria|admin|trabajo_social');
+    ])->middleware('roles:secretaria|admin|trabajo_social|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::get('/asistentesocial/showOrientacion/{id}', [
     'uses' => 'FichaSocialController@showFicha',
     'as' => 'social.showOrientacion'
-    ])->middleware('roles:secretaria|admin|trabajo_social');
+    ])->middleware('roles:secretaria|admin|trabajo_social|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::get('/asistentesocial/showFichas/{id}', [
     'uses' => 'FichaSocialController@showFichas',
     'as' => 'social.showFichas'
-    ])->middleware('roles:secretaria|admin|trabajo_social');
+    ])->middleware('roles:secretaria|admin|trabajo_social|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 });
 
 Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){

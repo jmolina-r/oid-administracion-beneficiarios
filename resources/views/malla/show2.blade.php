@@ -127,7 +127,7 @@
                                         <select style="width:100%;" id='id_funcionario' name='id_funcionario'
                                                 class='form-control capitalize select-tag'>
                                             @foreach($usuarios as $usuario)
-                                                @if($usuario->nombre == "Kinesiologo" || $usuario->nombre == "Psicologo" || $usuario->nombre == "Terapeuta ocupacional" || $usuario->nombre == "Fonoaudiologo")
+                                                @if($usuario->nombre == "Kinesiologo" || $usuario->nombre == "Psicologo" || $usuario->nombre == "Terapeuta ocupacional" || $usuario->nombre == "Fonoaudiologo" || $usuario->nombre == "Tallerista" || $usuario->nombre == "Educador")
                                                     <option value="{{ $usuario->id }}">{{ App\Funcionario::where('id',$usuario->funcionario_id)->first()->getNombreCompleto() }}
                                                         ({{ $usuario->nombre }})
                                                     </option>

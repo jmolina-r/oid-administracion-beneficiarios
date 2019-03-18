@@ -45,11 +45,11 @@ $(document).ready(function() {
                     "<td>" + element.created_at + "</td>" +
                     "<td>" +
                         "<div class='text-right'>" +
-                            "<a class='btn btn-primary btn-xs' href='/areasocial/asistentesocial/showFichas/" + element.id + "'>" +
-                                "<i class='fa fa-user'></i>" +
-                            "</a></button>" +
-                            "<a class='btn btn-warning btn-xs' href='/areasocial/asistentesocial/ingresar/" + element.id +"'>" +
-                                "<i class='fa fa-pencil-square-o'></i>" +
+                            "<a href='/areasocial/asistentesocial/showFichas/" + element.id + "'>" +
+                                "<span class='badge badge-success'>Ver Ficha</span>" +
+                            "</a>" +
+                            "<a href='/areasocial/asistentesocial/ingresar/" + element.id +"'>" +
+                                "<span class='badge badge-info'>Agregar Ficha</span>" +
                             "</a>" +
                         "</div>" +
                     "</td>" +
