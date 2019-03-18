@@ -20,7 +20,6 @@ class CreateMallasTable extends Migration
             $table->unsignedInteger('beneficiario_id')->nullable();
             $table->unsignedInteger('hora_agendada_id')->nullable();
             $table->unsignedInteger('prestacion_id')->nullable();
-            $table->string('descripcion')->nullable();
             $table->string('asist_sn')->nullable();
 
             $table->softDeletes();

@@ -79,6 +79,32 @@
 
     <script>
 
+        document.getElementById("btn-delete").onclick = function () {
+            var respuesta = confirm("¿Seguro que desea eliminar el registro de la malla?");
+
+            if (respuesta == false) {
+                return;
+            }
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                async: false,
+                url: "/malla/destroy",
+                type: "POST",
+                data: {
+                    idHora: $('#id').val()
+                },
+                success: function (data, textStatus, jqXHR) {
+                    alert('La hora agendada se ha eliminado correctamente.');
+                    window.location.replace("/malla/show2/" + $('#id').val());
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert('Hubo un error al eliminar la hora. Reintente.');
+                }
+            });
+
+        }
     </script>
 
 @endsection

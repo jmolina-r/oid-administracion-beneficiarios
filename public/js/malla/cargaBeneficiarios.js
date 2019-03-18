@@ -21,12 +21,13 @@ $(document).ready(function () {
             },
             success: function (data, textStatus, jqXHR) {
                 beneficiario = $.parseJSON(data);
-                //console.log(beneficiario);
+                console.log(beneficiario);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 entontrado = false;
             }
         });
+
 
         //validar tipo individual (solo un beneficiario)
         if (document.getElementById("Individual").checked && listaId.length < 1 || document.getElementById("Grupal").checked) {
@@ -43,7 +44,7 @@ $(document).ready(function () {
                         '<td>' + '<button id ="eliminar-beneficiario" class="delbtn btn btn-danger" type="button"><span class="fa fa-remove"></span></button>' + '</td>' +
                         '</tr>');
 
-                    console.log(listaId);
+                    console.log("largo lista bene "+listaId.length);
 
                 } else {
                     alert('El Beneficiario ya se encuentra agregado.');
@@ -64,6 +65,7 @@ $(document).ready(function () {
             listaId.splice(listaId.indexOf(idSeleccionado), 1);
             //eliminar fila de la tabla
             $(this).parent().parents("tr").remove();
+            console.log("largo lista bene -1 "+listaId.length);
 
         });
 
@@ -78,6 +80,7 @@ $(document).ready(function () {
     };
 
     $('#btn-guardar').click(function () {
+
 
         //validar inscripcion grupal tenga 2 o mas beneficiarios seleccionados
         if (document.getElementById("Grupal").checked && listaId.length > 1 || document.getElementById("Individual").checked) {
@@ -184,32 +187,7 @@ $(document).ready(function () {
         window.location.replace("/malla/show2/" + $('#id').val());
     }
 
-    document.getElementById("btn-delete").onclick = function () {
-        var respuesta = confirm("¿Seguro que desea eliminar el registro de la malla?");
 
-        if (respuesta == false) {
-            return;
-        }
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            async: false,
-            url: "/malla/destroy",
-            type: "POST",
-            data: {
-                idHora: $('#id').val()
-            },
-            success: function (data, textStatus, jqXHR) {
-                alert('La hora agendada se ha eliminado correctamente.');
-                window.location.replace("/malla/show2/" + $('#id').val());
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                alert('Hubo un error al eliminar la hora. Reintente.');
-            }
-        });
-
-    }
 
 
 

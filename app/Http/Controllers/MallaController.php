@@ -67,42 +67,62 @@ class MallaController extends Controller
     {
         //id del usuario-funcionario
         $id = $request->input('id_funcionario');
-
         $fecha = $request->input('fecha');
-        $cantSesiones = $request->input('cantSesiones');
-        if ($cantSesiones == 0) {
-            $cantSesiones = 1;
-        }
 
-        $jsonBeneficiariosSeleccionados = $request->input('jsonBeneficiariosSeleccionados');
-
-        //Agenda horas segun cantidad de repeticiones
-        for ($i = 0; $i < $cantSesiones; $i++) {
-            //almacenar hora
+        $descripcion = $request->input('descripcion');
+        if ($descripcion != null) {
             $hora_agendada = new HoraAgendada([
-                'tipo' => $request->input('tipo'),
+                'tipo' => $descripcion,
                 'hora' => $request->input('hora'),
                 'fecha' => $fecha,
                 'user_id' => $id //id del usuario-funcionario
             ]);
-
-            //almacenar hora
             $hora_agendada->save();
             $id_hora = $hora_agendada->id;
 
-            foreach ($jsonBeneficiariosSeleccionados as $BeneficiarioRegistro) {
-                $malla = new Malla([
-                    'beneficiario_id' => $BeneficiarioRegistro['beneficiario_id'],
-                    'hora_agendada_id' => $id_hora
-                ]);
-                //almacenar relacion con beneficiario
-                $malla->save();
+            $malla = new Malla([
+                'hora_agendada_id' => $id_hora,
+            ]);
+            $malla->save();
+        } else {
+
+            $cantSesiones = $request->input('cantSesiones');
+            if ($cantSesiones == 0) {
+                $cantSesiones = 1;
             }
-            //aumentar fecha + 7dias
-            $fecha = new \DateTime($fecha);
-            $fecha->modify('+7 days');
-            $fecha = $fecha->format('Y-m-d');
+
+            $jsonBeneficiariosSeleccionados = $request->input('jsonBeneficiariosSeleccionados');
+
+            //Agenda horas segun cantidad de repeticiones
+            for ($i = 0; $i < $cantSesiones; $i++) {
+                //almacenar hora
+                $hora_agendada = new HoraAgendada([
+                    'tipo' => $request->input('tipo'),
+                    'hora' => $request->input('hora'),
+                    'fecha' => $fecha,
+                    'user_id' => $id //id del usuario-funcionario
+                ]);
+
+                //almacenar hora
+                $hora_agendada->save();
+                $id_hora = $hora_agendada->id;
+
+                foreach ($jsonBeneficiariosSeleccionados as $BeneficiarioRegistro) {
+                    $malla = new Malla([
+                        'beneficiario_id' => $BeneficiarioRegistro['beneficiario_id'],
+                        'hora_agendada_id' => $id_hora
+                    ]);
+                    //almacenar relacion con beneficiario
+                    $malla->save();
+                }
+                //aumentar fecha + 7dias
+                $fecha = new \DateTime($fecha);
+                $fecha->modify('+7 days');
+                $fecha = $fecha->format('Y-m-d');
+            }
+
         }
+
 
         return redirect()->route('malla.showMalla', [
             'id' => $id,
@@ -249,22 +269,34 @@ class MallaController extends Controller
         $hora = $hora_agendada->hora;
         $tipo = $hora_agendada->tipo;
         $id = $hora_agendada->user_id;
-        // se obtienen los beneficiarios asociados
-        $horas_agendadas = Malla::where('hora_agendada_id', $hora_agendada->id)->get();
+        if ($tipo != 'Grupal' && $tipo != 'Individual') {
 
-        //obtener las prestaciones asociadas al area del usuario
-        $area = User::where('id', $hora_agendada->user_id)->first()->getTipoFuncionario();
-        $prestaciones = Prestacion::where('area', $area)->get();
+            return view('malla.editActividad')
+                ->with(compact('id'))//id user
+                ->with(compact('id_hora'))//id hora agendada
+                ->with(compact('fecha'))
+                ->with(compact('hora'))
+                ->with(compact('tipo'));
+
+        } else {
+
+            // se obtienen los beneficiarios asociados
+            $horas_agendadas = Malla::where('hora_agendada_id', $hora_agendada->id)->get();
+
+            //obtener las prestaciones asociadas al area del usuario
+            $area = User::where('id', $hora_agendada->user_id)->first()->getTipoFuncionario();
+            $prestaciones = Prestacion::where('area', $area)->get();
 
 
-        return view('malla.editAgendarHora')
-            ->with(compact('id'))//id user
-            ->with(compact('id_hora'))//id hora agendada
-            ->with(compact('fecha'))
-            ->with(compact('hora'))
-            ->with(compact('tipo'))
-            ->with(compact('prestaciones'))
-            ->with(compact('horas_agendadas'));
+            return view('malla.editAgendarHora')
+                ->with(compact('id'))//id user
+                ->with(compact('id_hora'))//id hora agendada
+                ->with(compact('fecha'))
+                ->with(compact('hora'))
+                ->with(compact('tipo'))
+                ->with(compact('prestaciones'))
+                ->with(compact('horas_agendadas'));
+        }
     }
 
     /**
@@ -280,23 +312,30 @@ class MallaController extends Controller
         $id = $request->input('id_hora_agendada'); //id hora agendada
         //$idUser =HoraAgendada::where('id',$id)->first()->user_id;
         //$area = User::where('id',$idUser)->first()->getTipoFuncionario();
+        $tipo = $request->input('descripcion');
 
-        foreach ($jsonBeneficiarios as $BeneficiarioRegistro) {
-            //obtener malla
-            $idBeneficiario = $BeneficiarioRegistro['beneficiario_id'];
-            $malla = Malla::where('hora_agendada_id', $id)->where('beneficiario_id',$idBeneficiario)->first();
-            //registrar asistencia
-            $malla->asist_sn = $BeneficiarioRegistro['asistencia'];
-            //registrar prestacion
+        if ($tipo != null) {
+            //actualizar actividad
+            $hora_agendada = HoraAgendada::where('id', $id)->first();
+            $hora_agendada->tipo=$tipo;
+            $hora_agendada->save();
+
+        }
+        if ($tipo == null) {
+            //actualizar prestaciones y asistencia beneficiario
+            foreach ($jsonBeneficiarios as $BeneficiarioRegistro) {
+                //obtener malla
+                $idBeneficiario = $BeneficiarioRegistro['beneficiario_id'];
+                $malla = Malla::where('hora_agendada_id', $id)->where('beneficiario_id', $idBeneficiario)->first();
+                //registrar asistencia
+                $malla->asist_sn = $BeneficiarioRegistro['asistencia'];
+                //registrar prestacion
 
                 $malla->prestacion_id = $BeneficiarioRegistro['prestacion'];
 
-            $malla->save();
-
+                $malla->save();
+            }
         }
-
-
-
     }
 
     /**
@@ -309,10 +348,9 @@ class MallaController extends Controller
     {
         $idHora = $request->input('idHora');
         $malla = Malla::where('hora_agendada_id', $idHora)->delete();
-        $hora =HoraAgendada::where('id',$idHora)->delete();
+        $hora = HoraAgendada::where('id', $idHora)->delete();
 
     }
-
 
 
     /**
@@ -369,7 +407,7 @@ class MallaController extends Controller
 
             $e = array();
             $e['id'] = $horaAgendada->id;
-            if ($horaAgendada->tipo == 'Grupal') {
+            if ($horaAgendada->tipo != 'Individual') {
                 $e['title'] = $horaAgendada->tipo;
             } else {
                 $idBeneficiario = Malla::where('hora_agendada_id', $horaAgendada->id)->first()->beneficiario_id;

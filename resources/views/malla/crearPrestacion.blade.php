@@ -3,7 +3,7 @@
 
 <!-- meta atributo title -->
 @section('title')
-    Prestaciones - OID
+    Actividad - OID
 @endsection
 
 <!-- inyeccion de estilos -->
@@ -79,7 +79,7 @@
                                 <div class='page-header'>
                                     <h1 class='pull-left'>
                                         <i class='fa fa-pencil-square-o'></i>
-                                        <span>Agregar Prestación</span>
+                                        <span>Agregar otra actividad</span>
                                     </h1>
                                     <div class='pull-right'>
                                         <ul class='breadcrumb'>

@@ -86,32 +86,20 @@
         select: function (start, end) {
 
             var fechaInicio = moment(start).format('YYYY-MM-DD');
-            //var hora = moment(start).format('HH:mm');
-            //var date = new Date(start);
-            var fechaActual =moment(calendarDate).format('YYYY-MM-DD');
-            var horaActual=moment(calendarDate).format('HH:mm');
+            var fechaActual = moment(calendarDate).format('YYYY-MM-DD');
+            var horaActual = moment(calendarDate).format('HH:mm');
             var horaInicio = moment(start).format('HH:mm');
             moment.locale('es');
 
-            //console.log("inicio evento: " + fechaInicio);
-            //console.log('calendardate '+calendarDate);
-            //console.log('ahora '+fechaActual);
-            //validar que el rol tiene permiso para agendar
-
-            //if (puedeAsignarHora() == "false") {
-            //    alert("No tiene los permisos para agendar horas .");
-            //    return;
-            //}
-
             //validar no agendar en hora/dia en el pasado
 
-            if(fechaInicio < fechaActual) {
-                    alert("No se puede agendar hora en un día pasado");
-                    return;
+            if (fechaInicio < fechaActual) {
+                alert("No se puede agendar hora en un día pasado");
+                return;
             }
 
-            if(fechaInicio == fechaActual) {
-                if (horaInicio<=horaActual){
+            if (fechaInicio == fechaActual) {
+                if (horaInicio <= horaActual) {
                     alert("No se puede agendar hora en un día pasado");
                     return;
                 }
@@ -122,7 +110,36 @@
             document.getElementById("fecha").value = fechaInicio;
 
             //llamar a la vista createAgendarHora
-            guardarHora(fechaInicio,horaInicio);
+            var dialog = bootbox.dialog({
+                title: '¿Qué desea realizar?',
+                message: "Por favor seleccione el tipo de actividad que desea agendar",
+                size: 'large',
+                buttons: {
+                    sesion: {
+                        label: "Agendar sesión con beneficiario",
+                        className: 'btn-info',
+                        callback: function () {
+                            guardarHora(fechaInicio, horaInicio);
+                        }
+                    },
+                    otraActividad: {
+                        label: "Agendar otras actividades",
+                        className: 'btn-primary',
+                        callback: function () {
+                            Actividad(fechaInicio, horaInicio);
+                        }
+                    },
+                    cancelar: {
+                        label: "Cancelar",
+                        className: 'btn-danger',
+                        callback: function () {
+
+                        }
+                    },
+
+                }
+            });
+
 
             //document.getElementById("id_funcionario").value=document.getElementById("id").value;
             return; /*bootbox.prompt({
@@ -218,7 +235,7 @@
 
             actualizarHora(idHoraAgendada);
             /**
-            $.ajax({
+             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
@@ -237,7 +254,7 @@
             });
 
 
-           // if (puedeAsignarHora() == "false") {
+             // if (puedeAsignarHora() == "false") {
            //     if (existeFicha == "false") {
                     if (confirm("El beneficiario no tiene ficha inicial activa. Presione Cancelar para marcar la inasistencia.")) {
                         return;
@@ -251,7 +268,7 @@
            // }
 
 
-            if (calEvent.realizado) {
+             if (calEvent.realizado) {
                 alert("Ya se han asignado prestaciones a esa hora agendada");
                 return;
             } else {
@@ -282,9 +299,9 @@
                 }
 
             }
-            return false;
+             return false;
              **/
-             return
+            return
         },
 
 
@@ -309,20 +326,50 @@
     });
 
 
-    function guardarHora(fechaInicio,horaInicio) {
+    function guardarHora(fechaInicio, horaInicio) {
 
-        $url='/malla/create/';
-        $url=$url+$('#id').val()+'/'+fechaInicio+'/'+horaInicio;
+        $url = '/malla/create/';
+        $url = $url + $('#id').val() + '/' + fechaInicio + '/' + horaInicio;
         location.replace($url);
     }
 
+    function Actividad(fechaInicio, horaInicio) {
+
+        bootbox.prompt("Ingresar título de la actividad", function (result) {
+            almacenarActividad(result,fechaInicio,horaInicio);
+        });
+    }
+
+    function almacenarActividad(result,fechaInicio,horaInicio) {
+        console.log("result: "+result);
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            async: true,
+            url: "/malla/store",
+            type: "POST",
+            data: {
+                fecha: fechaInicio,
+                hora: horaInicio,
+                descripcion: result,
+                id_funcionario:$('#id').val(),
+            },
+            success: function (data, textStatus, jqXHR) {
+                alert("Datos registrados correctamente.");
+                window.location.replace("/malla/show2/" + $('#id').val());
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("No se ha registrado actividad.");
+            }
+        });
+    }
     function actualizarHora(id) {
 
-        $url='/malla/edit/';
-        $url=$url+id;
+        $url = '/malla/edit/';
+        $url = $url + id;
         location.replace($url);
     }
-
 
 
     function encontrarNombre(rut, start) {

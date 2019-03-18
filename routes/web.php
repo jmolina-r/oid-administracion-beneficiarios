@@ -464,6 +464,11 @@ Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
         'as' => 'malla.editAgendaHora'
     ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
 
+    Route::get('/editactividad/{id}', [
+        'uses' => 'MallaController@edit',
+        'as' => 'malla.editActividad'
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+
     Route::post('/update', [
         'uses' => 'MallaController@update',
         'as' => 'malla.updateAgendarHora'

@@ -64,16 +64,15 @@
     <script src="{{ asset('/assets/javascripts/plugins/1000hz-bootstrap-validator/validator.min.js') }}"></script>
     <script src="{{ asset('/assets/javascripts/plugins/charCount/charCount.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/InputValidation.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('/js/malla/cargaBeneficiarios.js') }}" type="text/javascript"></script>
-
-
-    <!-- / END - validaciones-->
+    <script src="{{ asset('/js/malla/Actividades.js') }}" type="text/javascript"></script>
 
     <script>
-        document.getElementById('repetir').onchange = function () {
-            document.getElementById('cantSesiones').disabled = !this.checked;
-            document.getElementById('cantSesiones').value = 1;
-        };
+
+    </script>
+
+    <script>
+
+
     </script>
 
 @endsection
@@ -92,7 +91,7 @@
                                 <div class='page-header'>
                                     <h1 class='pull-left'>
                                         <i class='fa fa-pencil-square-o'></i>
-                                        <span>Agendar Hora</span>
+                                        <span>Registro otras actividades</span>
                                     </h1>
                                 </div>
                             </div>
@@ -114,7 +113,9 @@
                                               accept-charset="UTF-8" method="post" data-toggle="validator">
                                             {{ csrf_field() }}
                                             <div class="row">
-                                                <input id="id" name="id_funcionario" type="hidden" value="{{$id}}">
+                                                <input id="id_hora_agendada" name="id_hora_agendada" type="hidden"
+                                                       value="{{$id_hora}}">
+                                                <input id="id" name="id" type="hidden" value="{{$id}}">
 
                                                 <div class="form-group">
                                                     <div class="col-xs-12 col-sm-12 col-lg-12 ">
@@ -138,105 +139,43 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4 controls">
-                                                            <div class="form-group">
-                                                                <div class="form-check form-check-inline">
-                                                                    <input type="checkbox" id="repetir"
-                                                                           class="form-check-input" value="">
-                                                                    <label class="form-check-label" id="repetir"
-                                                                           name="repetir">Repetir semanalmente</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="col-xs-12 col-sm-12 col-lg-12 ">
-                                                        <div class="form-group">
-                                                            <div class="col-md-5 controls">
-                                                                <div class="form-inline">
-                                                                    <label for="sesiones" class="col-form-label">Cantidad
-                                                                        de
-                                                                        sesiones:</label>
-                                                                    <input type="number" min="1" max="12"
-                                                                           style="width:25%;" id="cantSesiones"
-                                                                           name="cantSesiones" class="form-control "
-                                                                           required value="1"
-                                                                           disabled>
-                                                                    <div class="help-block with-errors"></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-xs-12 col-sm-12 col-lg-12 ">
-                                                        <div class="form-group">
-                                                            <div class="col-md-12 controls">
-                                                                <h4>Tipo de sesión</h4>
-                                                                <label class="form-check-label"
-                                                                       for="individual">Individual</label>
-                                                                <input class="form-check-input" type="radio" name="tipo"
-                                                                       id="Individual"
-                                                                       value="Individual" checked required>
-                                                                <label class="form-check-label"
-                                                                       for="exampleRadios1">Grupal</label>
-                                                                <input class="form-check-input" type="radio" name="tipo"
-                                                                       id="Grupal"
-                                                                       value="Grupal" required>
-                                                            </div>
-                                                        </div>
 
                                                     </div>
 
                                                     <div class="col-xs-12 col-sm-12 col-lg-12 ">
                                                         <div class="form-group">
                                                             <div class="col-md-12 controls">
-                                                                <h4>Seleccionar beneficiarios</h4>
+
+                                                                <h4>Título de la actividad</h4>
                                                                 <div class="form-inline form-group">
-                                                                    <label for="rut" class="col-form-label">Ingresar
-                                                                        Rut:</label>
-                                                                    <input type="text" class="form-control" id="rut"
-                                                                           name="rut"
-                                                                           placeholder='Ej. 12345678-8' type='text'
-                                                                           pattern="\d{3,8}-[\d|kK]{1}" value="">
-                                                                    <button type="button" id="btn-agregar-beneficiario"
-                                                                            class="btn btn-success">Agregar
-                                                                    </button>
+                                                                     <label class="col-form-label">Actividad:</label>
+                                                                    <input type="text" class="form-control" id="actividad"
+                                                                           name="actividad"
+                                                                            type='text'
+                                                                            value="{{$tipo}}">
+
                                                                     <div class="help-block with-errors"></div>
 
+
                                                                 </div>
 
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-xs-12 col-sm-12 col-lg-12">
-                                                        <div class="form-group">
-                                                            <div class="col-md-12 controls">
-                                                                <div class="table-responsive-sm">
-                                                                    <table class="table" id="tabla-beneficiarios">
-                                                                        <thead>
-                                                                        <tr>
-                                                                            <th style="display:none;"></th>
-                                                                            <th>Nombre</th>
-                                                                            <th>Rut</th>
-                                                                            <th></th>
-                                                                        </tr>
-                                                                        </thead>
-                                                                        <tbody id="tbody">
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="modal-footer">
-                                                <button type="button" id="btn-atras" class="btn btn-secondary">
-                                                    Atrás
+
+                                                <button type="button" id="btn-delete" class="btn btn-danger">
+                                                    Eliminar
                                                 </button>
-                                                <button type="button" id="btn-guardar" class="btn btn-primary">Guardar
+                                                <button type="button" id="btn-atras" class="btn btn-secondary">
+                                                    Atras
+                                                </button>
+                                                <button type="button" id="btn-update" class="btn btn-primary">
+                                                    Actualizar
                                                 </button>
 
                                             </div>
@@ -253,8 +192,3 @@
     </section>
     </div>
 @endsection
-
-
-
-
-
