@@ -291,7 +291,65 @@ class PrestacionTableSeeder extends Seeder
         ]);
         $prestacion->save();
 
+        //////////////////////////////////Tallerista/////////////////////////////////
+        $prestacion = new \App\Prestacion([
+            'nombre' => 'EVALUACION',
+            'area' => 'Tallerista',
+        ]);
+        $prestacion->save();
 
+        $prestacion = new \App\Prestacion([
+            'nombre' => 'TRATAMIENTO',
+            'area' => 'Tallerista',
+        ]);
+        $prestacion->save();
+
+        $prestacion = new \App\Prestacion([
+            'nombre' => 'DERIVACION',
+            'area' => 'Tallerista',
+        ]);
+        $prestacion->save();
+
+        $prestacion = new \App\Prestacion([
+            'nombre' => 'ORIENTACION',
+            'area' => 'Tallerista',
+        ]);
+        $prestacion->save();
+
+        //////////////////////////////////Educador/////////////////////////////////
+        $prestacion = new \App\Prestacion([
+            'nombre' => 'DEPORTIVO',
+            'area' => 'Educador',
+        ]);
+        $prestacion->save();
+
+        $prestacion = new \App\Prestacion([
+            'nombre' => 'ARTISTICO VISUAL',
+            'area' => 'Educador',
+        ]);
+        $prestacion->save();
+
+        $prestacion = new \App\Prestacion([
+            'nombre' => 'ARTISTICO ESCENICO',
+            'area' => 'Educador',
+        ]);
+        $prestacion->save();
+
+        $prestacion = new \App\Prestacion([
+            'nombre' => 'ARTISTICO MANUAL',
+            'area' => 'Educador',
+        ]);
+        $prestacion->save();
+        $prestacion = new \App\Prestacion([
+            'nombre' => 'OFICIOS',
+            'area' => 'Educador',
+        ]);
+        $prestacion->save();
+        $prestacion = new \App\Prestacion([
+            'nombre' => 'ACADEMICA',
+            'area' => 'Educador',
+        ]);
+        $prestacion->save();
     }
 }
 
