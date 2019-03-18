@@ -295,6 +295,8 @@
                           <small>CANTIDAD INGRESOS ANUALES - {{date('Y')}}</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>
+
+
               </div>
               <div class='row'>
                 <div class='col-sm-12'>

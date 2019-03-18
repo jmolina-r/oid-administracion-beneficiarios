@@ -294,60 +294,60 @@ class PrestacionTableSeeder extends Seeder
         //////////////////////////////////Tallerista/////////////////////////////////
         $prestacion = new \App\Prestacion([
             'nombre' => 'EVALUACION',
-            'area' => 'Tallerista',
+            'area' => 'Educador',
         ]);
         $prestacion->save();
 
         $prestacion = new \App\Prestacion([
             'nombre' => 'TRATAMIENTO',
-            'area' => 'Tallerista',
+            'area' => 'Educador',
         ]);
         $prestacion->save();
 
         $prestacion = new \App\Prestacion([
             'nombre' => 'DERIVACION',
-            'area' => 'Tallerista',
+            'area' => 'Educador',
         ]);
         $prestacion->save();
 
         $prestacion = new \App\Prestacion([
             'nombre' => 'ORIENTACION',
-            'area' => 'Tallerista',
+            'area' => 'Educador',
         ]);
         $prestacion->save();
 
         //////////////////////////////////Educador/////////////////////////////////
         $prestacion = new \App\Prestacion([
             'nombre' => 'DEPORTIVO',
-            'area' => 'Educador',
+            'area' => 'Tallerista',
         ]);
         $prestacion->save();
 
         $prestacion = new \App\Prestacion([
             'nombre' => 'ARTISTICO VISUAL',
-            'area' => 'Educador',
+            'area' => 'Tallerista',
         ]);
         $prestacion->save();
 
         $prestacion = new \App\Prestacion([
             'nombre' => 'ARTISTICO ESCENICO',
-            'area' => 'Educador',
+            'area' => 'Tallerista',
         ]);
         $prestacion->save();
 
         $prestacion = new \App\Prestacion([
             'nombre' => 'ARTISTICO MANUAL',
-            'area' => 'Educador',
+            'area' => 'Tallerista',
         ]);
         $prestacion->save();
         $prestacion = new \App\Prestacion([
             'nombre' => 'OFICIOS',
-            'area' => 'Educador',
+            'area' => 'Tallerista',
         ]);
         $prestacion->save();
         $prestacion = new \App\Prestacion([
             'nombre' => 'ACADEMICA',
-            'area' => 'Educador',
+            'area' => 'Tallerista',
         ]);
         $prestacion->save();
     }

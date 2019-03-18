@@ -38,7 +38,7 @@
     <script src="{{ asset('/assets/javascripts/plugins/retina/retina.js') }}" type="text/javascript"></script>
     <!-- / theme file [required] -->
     <script src="{{ asset('/assets/javascripts/theme.js') }}" type="text/javascript"></script>
-    
+
     <!-- / START - page related files and scripts [optional] -->
     <script src="{{ asset('/assets/javascripts/plugins/validate/jquery.validate.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/assets/javascripts/plugins/validate/additional-methods.js') }}" type="text/javascript"></script>
@@ -49,17 +49,19 @@
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-        
+
           ['Task', 'Hours per Day'],
           ['Kinesiologos',<?php echo $atencionAnualKines ?>],
           ['Fonoaudiologos',<?php echo $atencionAnualFonos ?>],
           ['Psicologos',<?php echo $atencionAnualPsicos ?>],
-          ['Terapeuticos',<?php echo $atencionAnualTers ?>]
+          ['Terapeuticos',<?php echo $atencionAnualTers ?>],
+          ['Talleristas',<?php echo $atencionAnualTalls ?>],
+          ['Educadores',<?php echo $atencionAnualEduc ?>]
         ]);
 
         var options = {
           title: 'Atenciones Anuales',
-         
+
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('pieschart'));
@@ -71,17 +73,19 @@
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-        
+
           ['Task', 'Hours per Day'],
           ['Kinesiologos',<?php echo $atencionMensualKines ?>],
           ['Fonoaudiologos',<?php echo $atencionMensualFonos ?>],
           ['Psicologos',<?php echo $atencionMensualPsicos ?>],
-          ['Terapeuticos',<?php echo $atencionMensualTers ?>]
+          ['Terapeuticos',<?php echo $atencionMensualTers ?>],
+            ['Talleristas',<?php echo $atencionMensualTalls ?>],
+            ['Educadores',<?php echo $atencionMensualEduc ?>]
         ]);
 
         var options = {
           title: 'Atenciones Mensuales',
-         
+
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piesschart'));
@@ -105,7 +109,7 @@
                     <div class='page-header'>
                       <h1 class='pull-left'>
                         <i class='fa fa-pencil-square-o'></i>
-                        <span>Reportabilidad Grupal</span>
+                        <span>Reportabilidad por Área</span>
                       </h1>
                       <div class='pull-right'>
                         <ul class='breadcrumb'>
@@ -168,7 +172,7 @@
               </div>
               </div>
             </div>
-                      <button type="submit" class="btn btn-success col-md-12" style="margin-bottom:5px" />Vista previa a imprimir</button>
+                      <!--<button type="submit" class="btn btn-success col-md-12" style="margin-bottom:5px" />Vista previa a imprimir</button>-->
                   </form>
             @include('partials.footer')
           </div>
