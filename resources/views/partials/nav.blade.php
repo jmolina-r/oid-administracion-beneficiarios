@@ -17,14 +17,14 @@
                 </a>
             </li>
 
-            @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional']))
+            @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional', 'tallerista', 'educador']))
                 <li class=''>
                     <a class="dropdown-collapse" href="#"><i class='fa fa-male'></i>
                         <span>Beneficiarios</span>
                         <i class='fa fa-angle-down angle-down'></i>
                     </a>
                     <ul class='nav nav-stacked'>
-                        @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional']))
+                        @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional','tallerista', 'educador']))
                             <li class=''>
                                 <a href='{{route('beneficiario.find')}}'>
                                     <div class='icon'>
@@ -34,7 +34,7 @@
                                 </a>
                             </li>
                         @endif
-                        @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
+                        @if(Auth::user()->hasAnyRole(['admin', 'secretaria','kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional','tallerista', 'educador']))
                             <li class=''>
                                 <a href='{{route('beneficiario.create')}}'>
                                     <div class='icon'>
@@ -56,7 +56,7 @@
                     </a>
 
                     <ul class='nav nav-stacked'>
-                     @if(Auth::user()->hasAnyRole(['admin', 'secretaria']))
+                     @if(Auth::user()->hasAnyRole(['admin']))
                         <li class=''>
                             <a href='{{route('beneficiario.demandas')}}'>
                                 <div class='icon'>
@@ -107,7 +107,7 @@
                 </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin', 'jefatura', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional', 'trabajo_social']))
+            @if(Auth::user()->hasAnyRole(['admin', 'jefatura', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional', 'trabajo_social','tallerista','educador']))
                 <li class=''>
                     <a class="dropdown-collapse" href="#"><i class='fa fa-bar-chart'></i>
                         <span>Reportabilidad</span>
@@ -127,7 +127,7 @@
                 </li>
             @endif
 
-            @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional', 'jefatura']))
+            @if(Auth::user()->hasAnyRole(['admin', 'secretaria', 'kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional', 'jefatura','tallerista','educador']))
                 <li class=''>
                     <a class="dropdown-collapse" href="#"><i class='fa fa-calendar'></i>
                         <span>Malla</span>
@@ -146,7 +146,7 @@
                             </li>
                         @endif
 
-                        @if(Auth::user()->hasAnyRole(['kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional']))
+                        @if(Auth::user()->hasAnyRole(['kinesiologia', 'psicologia', 'fonoaudiologia', 'terapia_ocupacional','tallerista','educador']))
                             <li class=''>
                                 <a href='{{route('malla.showMalla',Auth::user()->id)}}'>
                                     <div class='icon'>

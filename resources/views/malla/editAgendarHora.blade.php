@@ -93,7 +93,7 @@
                 url: "/malla/destroy",
                 type: "POST",
                 data: {
-                    idHora: $('#id').val()
+                    idHora: $('#id_hora_agendada').val()
                 },
                 success: function (data, textStatus, jqXHR) {
                     alert('La hora agendada se ha eliminado correctamente.');

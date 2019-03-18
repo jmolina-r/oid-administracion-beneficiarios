@@ -200,38 +200,38 @@ Route::group(['prefix' => 'beneficiario', 'middleware' => 'auth'], function () {
     Route::get('/registrar', [
         'uses' => 'BeneficiarioController@create',
         'as' => 'beneficiario.create',
-    ])->middleware('roles:admin');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::post('/registrar', [
         'uses' => 'BeneficiarioController@store',
         'as' => 'beneficiario.store'
-    ])->middleware('roles:admin|secretaria');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/editar/{id}', [
         'uses' => 'BeneficiarioController@edit',
         'as' => 'beneficiario.edit'
-    ])->middleware('roles:admin|secretaria');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::post('/editar', [
         'uses' => 'BeneficiarioController@update',
         'as' => 'beneficiario.update'
-    ])->middleware('roles:admin|secretaria');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/informacion/{id}', [
         'uses' => 'BeneficiarioController@show',
         'as' => 'beneficiario.show'
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     // El buscador de beneficiarios no tiene restriccion de roles
     Route::get('/buscar', [
         'uses' => 'BeneficiarioController@find',
         'as' => 'beneficiario.find'
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/buscar-json', [
         'uses' => 'BeneficiarioController@findLikeNombreApellidoRutJson',
         'as' => 'beneficiario.findLikeNombreApellidoRutJson'
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/pdf/{id}', [
         'uses' => 'BeneficiarioController@generatePDF',
@@ -243,7 +243,7 @@ Route::group(['prefix' => 'beneficiario', 'middleware' => 'auth'], function () {
         Route::get('/show/{id}', [
             'uses' => 'BeneficiarioController@listaEspera',
             'as' => 'beneficiario.listaEspera'
-        ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+        ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
         //muestra demandas existentes para su gestión
         Route::get('/', [
             'uses' => 'BeneficiarioController@demandas',
@@ -253,263 +253,263 @@ Route::group(['prefix' => 'beneficiario', 'middleware' => 'auth'], function () {
         Route::get('/create', [
             'uses' => 'BeneficiarioController@createDemanda',
             'as' => 'beneficiario.createDemanda'
-        ])->middleware('roles:admin|secretaria');
+        ])->middleware('roles:admin');
 
         Route::post('/store', [
             'uses' => 'BeneficiarioController@storeDemanda',
             'as' => 'beneficiario.storeDemanda'
-        ])->middleware('roles:admin|secretaria');
+        ])->middleware('roles:admin');
 
         Route::get('/edit/{id}', [
             'uses' => 'BeneficiarioController@editDemanda',
             'as' => 'beneficiario.editDemanda'
-        ])->middleware('roles:admin|secretaria');
+        ])->middleware('roles:admin');
 
         Route::post('/update', [
             'uses' => 'BeneficiarioController@updateDemanda',
             'as' => 'beneficiario.updateDemanda'
-        ])->middleware('roles:admin|secretaria');
+        ])->middleware('roles:admin');
 
         Route::get('/delete/{id}', [
             'uses' => 'BeneficiarioController@deleteDemanda',
             'as' => 'beneficiario.deleteDemanda'
-        ])->middleware('roles:admin|secretaria');
+        ])->middleware('roles:admin');
     });
 
     Route::get('/gethistorialdemanda', [
         'uses' => 'BeneficiarioController@gethistorialdemanda',
         'as' => 'beneficiario.gethistorialdemanda'
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::post('/guardarHistorialDemanda', [
         'uses' => 'BeneficiarioController@guardarHistorialDemanda',
         'as' => 'beneficiario.guardarHistorialDemanda'
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 });
 
 Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
     Route::get('/createFichaPaciente', [
         'uses' => 'ReportabilidadController@show',
         'as' => 'reportabilidad.createFichaPaciente'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/showEstadistica', [
         'uses' => 'ReportabilidadController@showResults',
         'as' => 'reportabilidad.showEstadistica'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/menu', [
         'uses' => 'ReportabilidadController@index',
         'as' => 'reportabilidad.menuReportabilidad'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reporteGeneralOID.pdf', [
         'uses' => 'PdfController@invoice',
         'as' => 'reportabilidad.reporteGeneral'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reporteKinesiologia.pdf', [
         'uses' => 'PdfController@invoice1',
         'as' => 'reportabilidad.reporteKine'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportePsicologia.pdf', [
         'uses' => 'PdfController@invoice2',
         'as' => 'reportabilidad.reportePsico'
 
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reporteFonoaudiologia.pdf', [
         'uses' => 'PdfController@invoiceFono',
         'as' => 'reportabilidad.reporteFono'
 
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reporteTerapOcupacional.pdf', [
         'uses' => 'PdfController@invoice3',
         'as' => 'reportabilidad.reporteTer'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reporteSocial.pdf', [
         'uses' => 'PdfController@invoice4',
         'as' => 'reportabilidad.reporteSoc'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reporteGrupal.pdf', [
         'uses' => 'PdfController@invoice5',
         'as' => 'reportabilidad.reporteGru'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reporteHistorico.pdf', [
         'uses' => 'PdfController@invoiceHistoricReport',
         'as' => 'reportabilidad.reporteHist'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/menu', [
         'uses' => 'ReportabilidadController@index',
         'as' => 'reportabilidad.menuReportabilidad'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/profesional',[
         'uses'=>'ReportabilidadController@porProfesional',
         'as' => 'reportabilidad.reportabilidadPorProfesional'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportabilidadGeneral',[
         'uses'=>'ReportabilidadController@showResults',
         'as' => 'reportabilidad.reportabilidadGene'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportabilidadKinesiologia',[
         'uses'=>'ReportabilidadController@showResultKine',
         'as' => 'reportabilidad.reportabilidadKine'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportabilidadPsicologia',[
         'uses'=>'ReportabilidadController@showResultPsico',
         'as' => 'reportabilidad.reportabilidadPsico'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportabilidadTerapiaOcupacional',[
         'uses'=>'ReportabilidadController@showResultTer',
         'as' => 'reportabilidad.reportabilidadTer'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportabilidadFonoaudilogia',[
         'uses'=>'ReportabilidadController@showResultFono',
         'as' => 'reportabilidad.reportabilidadFono'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportabilidadAtencionSocial',[
         'uses'=>'ReportabilidadController@showResultSoc',
         'as' => 'reportabilidad.reportabilidadSoc'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportabilidadGrupal',[
 
     'uses'=>'ReportabilidadController@showResultGrupal',
     'as' => 'reportabilidad.reportabilidadGru'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportabilidadHistorica',[
     'uses'=>'ReportabilidadController@showResultHistorica',
     'as' => 'reportabilidad.reportabilidadHistorica'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportabilidadHistoricaEntreMes',[
     'uses'=>'ReportabilidadController@showResultHistoricaEntreMes',
     'as' => 'reportabilidad.reportabilidadHistEntreMes'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportabilidadGene',[
         'uses'=>'ReportabilidadController@showResults',
         'as' => 'reportabilidad.reporteGene'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportabilidadKine',[
         'uses'=>'ReportabilidadController@showResultKine',
         'as' => 'reportabilidad.reporteKine'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportabilidadPsico',[
         'uses'=>'ReportabilidadController@showResultPsico',
         'as' => 'reportabilidad.reportePsico'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportabilidadTer',[
         'uses'=>'ReportabilidadController@showResultTer',
         'as' => 'reportabilidad.reporteTer'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportabilidadFono',[
         'uses'=>'ReportabilidadController@showResultFono',
         'as' => 'reportabilidad.reporteFono'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportabilidadSoc',[
         'uses'=>'ReportabilidadController@showResultSoc',
         'as' => 'reportabilidad.reporteSoc'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportabilidadHist',[
         'uses'=>'ReportabilidadController@showResultHistorica',
         'as' => 'reportabilidad.reporteHistorica'
 
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
     Route::get('/reportabilidadHistoricaEntreMeses',[
         'uses'=>'ReportabilidadController@showResultHistoricaEntreMes',
         'as' => 'reportabilidad.reporteHistEntreMes'
-    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social');
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 });
 
 Route::group(['prefix' => '/malla', 'middleware' => 'auth'], function (){
     Route::get('/show', [
         'uses' => 'MallaController@show',
         'as' => 'malla.show'
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::get('/show2', [
         'uses' => 'MallaController@show2',
         'as' => 'malla.show2'
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::get('/show2/{id}', [
         'uses' => 'MallaController@showMalla',
         'as' => 'malla.showMalla'
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::get('/edit/{id}', [
         'uses' => 'MallaController@edit',
         'as' => 'malla.editAgendaHora'
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::get('/editactividad/{id}', [
         'uses' => 'MallaController@edit',
         'as' => 'malla.editActividad'
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::post('/update', [
         'uses' => 'MallaController@update',
         'as' => 'malla.updateAgendarHora'
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::get('/create/{id}/{fecha}/{hora}', [
         'uses' => 'MallaController@create',
         'as' => 'malla.CreateAgendarHora'
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::post('/store', [
         'uses' => 'MallaController@store',
         'as' => 'malla.store'
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
 
 
     Route::post('/destroy', [
         'uses' => 'MallaController@destroy',
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::post('/validarusuario', [
         'uses' => 'MallaController@validarUsuario',
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::post('/eliminarhora', [
         'uses' => 'MallaController@eliminarHora',
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::post('/puedeatender', [
         'uses' => 'MallaController@puedeAtender',
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
 
     Route::get('/poblar', [
         'uses' => 'MallaController@poblar',
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::get('/getnombre', [
         'uses' => 'BeneficiarioController@findNombrePorRut'
-    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::get('/listaPrestaciones', [
         'uses' => 'MallaController@listaPrestaciones',
@@ -549,36 +549,36 @@ Route::group(['prefix' => '/registro_prestacion', 'middleware' => 'auth'], funct
     Route::get('/{id}', [
         'uses' => 'MallaController@registroPrestacion',
         'as' => 'malla.showIngresoPrestacion'
-    ])->middleware('roles:kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::get('/inasistencia/{id}', [
         'uses' => 'MallaController@registroInasistencia',
         'as' => 'malla.showIngresoInasistencia'
-    ])->middleware('roles:kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::post('/storeinasistencia', [
         'uses' => 'MallaController@storeInasistencia'
-    ])->middleware('roles:kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::post('/getprestacionesprofesional', [
         'uses' => 'MallaController@getPrestacionesProfesional'
-    ])->middleware('roles:kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::post('/getnombrecompleto', [
         'uses' => 'MallaController@getNombreCompleto'
-    ])->middleware('roles:kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::post('/checkfichaactiva', [
         'uses' => 'MallaController@checkFicha'
-    ])->middleware('roles:kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::post('/getarea', [
         'uses' => 'MallaController@getArea'
-    ])->middleware('roles:kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 
     Route::post('/storeprestaciones', [
         'uses' => 'MallaController@storePrestaciones'
-    ])->middleware('roles:kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional');
+    ])->middleware('roles:kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
 });
 
 Route::group(['prefix' => 'funcionario', 'middleware' => 'auth'], function () {

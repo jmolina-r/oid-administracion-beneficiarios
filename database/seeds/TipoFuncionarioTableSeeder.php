@@ -46,5 +46,15 @@ class TipoFuncionarioTableSeeder extends Seeder
             'nombre' => 'Otro'
         ]);
         $tipoFuncionario->save();
+
+        $tipoFuncionario = new \App\TipoFuncionario([
+            'nombre' => 'Tallerista'
+        ]);
+        $tipoFuncionario->save();
+
+        $tipoFuncionario = new \App\TipoFuncionario([
+            'nombre' => 'Educador'
+        ]);
+        $tipoFuncionario->save();
     }
 }

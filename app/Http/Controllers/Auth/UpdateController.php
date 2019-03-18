@@ -37,7 +37,8 @@ class UpdateController extends Controller
     {
         $rules = [
             /*'name' => 'required|string|max:255', */
-            'username' => 'required|string|max:255|exists:users,username',
+            //'username' => 'required|string|max:255|exists:users,username',
+            'username' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'password' => 'nullable|string|min:6|confirmed',
             'roles' => 'required|exists:roles,id',
@@ -58,6 +59,7 @@ class UpdateController extends Controller
     {
         $this->validate($request, $this->rules($request));
         $updateArray = [
+            'username' =>$request['username'],
             'email' => $request['email'],
             'status' => $request['status'],
             'role_id' => $request['roles']

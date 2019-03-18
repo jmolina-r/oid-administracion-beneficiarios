@@ -24,8 +24,12 @@
         @include('partials.save.discapacidad.plan-rehabilitacion')
     </div>
 
+    @if(!isset($persona))
     <div class='col-md-12'>
         @include('partials.save.discapacidad.lista-espera')
     </div>
+    @endif
+
+
 
 </div>

@@ -11,9 +11,7 @@
             ""
         @endif
          autofocus
-        @if(isset($user))
-            readonly
-        @endif
+
         >
 
         @if ($errors->has('username'))
