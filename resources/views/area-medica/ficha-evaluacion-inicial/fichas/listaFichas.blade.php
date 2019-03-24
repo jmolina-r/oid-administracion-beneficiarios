@@ -200,7 +200,7 @@
                                             @foreach($fichasEducacion as $ficha)
                                                 <tr>
                                                     <td>{{$ficha->created_at->format('d-m-Y')}}</td>
-                                                    <td>Taller</td>
+                                                    <td>Educación</td>
                                                     <td class="capitalize">{{$ficha->estado}}</td>
                                                     <td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.educacion.show', $ficha->id)}}">Detalles</a></td>
                                                 <!--<td><a class="btn btn-primary btn-block btn-xs" href="{{route('area-medica.ficha-evaluacion-inicial.educacion.show', $ficha->id)}}">Ver como PDF</a></td>-->

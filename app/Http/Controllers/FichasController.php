@@ -36,7 +36,7 @@ class FichasController extends Controller
             $fichasFonoaudiologia = FichaFonoaudiologia::where('beneficiario_id', $idBeneficiario)->orderBy('created_at', $direction = 'des')->get();
             $fichasTerapiaOcuacional = FichaTerapiaOcupacional::where('beneficiario_id', $idBeneficiario)->orderBy('created_at', $direction = 'des')->get();
             $fichasTaller = FichaTaller::where('beneficiario_id', $idBeneficiario)->orderBy('created_at', $direction = 'des')->get();
-            $fichasEducacion = FichaTaller::where('beneficiario_id', $idBeneficiario)->orderBy('created_at', $direction = 'des')->get();
+            $fichasEducacion = FichaEducacion::where('beneficiario_id', $idBeneficiario)->orderBy('created_at', $direction = 'des')->get();
         }
         else{
             $fichasKinesiologia = array();

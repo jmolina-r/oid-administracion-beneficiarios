@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Beneficiario;
+use App\FichaEducacion;
 use App\FichaFonoaudiologia;
 use App\FichaKinesiologia;
 use App\FichaPsicologia;
+use App\FichaTaller;
 use App\FichaTerapiaOcupacional;
 use App\Funcionario;
 use App\InformeCierre;
@@ -41,12 +43,26 @@ class InformeCierreController extends Controller
         if ($tipoFuncionario->nombre == "Terapeuta ocupacional") {
             $ficha = FichaTerapiaOcupacional::find($idFicha);
         }
+        if ($tipoFuncionario->nombre == "Tallerista") {
+            $ficha = FichaTaller::find($idFicha);
+        }
+        if ($tipoFuncionario->nombre == "Educador") {
+            $ficha = FichaEducacion::find($idFicha);
+        }
 
         if ($ficha->estado == 'cerrado') {
             return view('home');
         }
 
+
         $motivoAtencion = $ficha->motivo_consulta;
+
+        if ($tipoFuncionario->nombre == "Tallerista") {
+            $motivoAtencion = $ficha->nombre_taller;
+        }
+        if ($tipoFuncionario->nombre == "Educador") {
+            $motivoAtencion = "Test Educador";
+        }
         $fechaInicio = $ficha->created_at->format('d-m-Y');
         $fechaTermino = date('d-m-Y');
 
@@ -55,8 +71,8 @@ class InformeCierreController extends Controller
             ->where('mallas.deleted_at','=',null)
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->where('hora_agendadas.user_id', $funcionario->user()->first()->id)
-            ->where('hora_agendadas.fecha', '>=', $ficha->created_at->format('Y-m-d'))
-            ->where('hora_agendadas.fecha', '<=', date('Y-m-d'))
+            ->where('hora_agendadas.created_at', '>=', $ficha->created_at)
+            ->where('hora_agendadas.created_at', '<=', date('Y-m-d H:i:s'))
             ->join('prestacions', 'prestacions.id', '=', 'mallas.prestacion_id')
             ->select('prestacions.nombre')
             ->get();
@@ -101,6 +117,12 @@ class InformeCierreController extends Controller
         }
         if ($request->input('area') == "Terapeuta ocupacional") {
             $ficha = FichaTerapiaOcupacional::find($request->input('ficha'));
+        }
+        if ($request->input('area') == "Tallerista") {
+            $ficha =FichaTaller::find($request->input('ficha'));
+        }
+        if ($request->input('area') == "Educador") {
+            $ficha = FichaEducacion::find($request->input('ficha'));
         }
 
         try {
@@ -148,10 +170,22 @@ class InformeCierreController extends Controller
         if ($tipoFuncionario->nombre == "Terapeuta ocupacional") {
             $fichaInicial = FichaTerapiaOcupacional::find($idFicha);
         }
+        if ($tipoFuncionario->nombre == "Tallerista") {
+            $fichaInicial = FichaTaller::find($idFicha);
+        }
+        if ($tipoFuncionario->nombre == "Educador") {
+            $fichaInicial = FichaEducacion::find($idFicha);
+        }
 
         $fichaCierre = InformeCierre::where('area', $tipoFuncionario->nombre)->where('ficha', $idFicha)->where('beneficiario_id', $idBeneficiario)->first();
 
         $motivoAtencion = $fichaInicial->motivo_consulta;
+        if ($tipoFuncionario->nombre == "Tallerista") {
+            $motivoAtencion = $fichaInicial->nombre_taller;
+        }
+        if ($tipoFuncionario->nombre == "Educador") {
+            $motivoAtencion = "Test Educador";
+        }
         $fechaInicio = $fichaInicial->created_at->format('d-m-Y');
         $fechaTermino = $fichaCierre->created_at->format('d-m-Y');
 
@@ -160,8 +194,8 @@ class InformeCierreController extends Controller
             ->where('mallas.deleted_at','=',null)
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->where('hora_agendadas.user_id', $funcionario->user()->first()->id)
-            ->where('hora_agendadas.fecha', '>=', $fichaInicial->created_at->format('Y-m-d'))
-            ->where('hora_agendadas.fecha', '<=', date('Y-m-d'))
+            ->where('hora_agendadas.created_at', '>=', $fichaInicial->created_at)
+            ->where('hora_agendadas.created_at', '<=', date('Y-m-d H:i:s'))
             ->join('prestacions', 'prestacions.id', '=', 'mallas.prestacion_id')
             ->select('prestacions.nombre')
             ->get();
