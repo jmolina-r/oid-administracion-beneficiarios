@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\FichaEducacion;
 use App\FichaFonoaudiologia;
 use App\FichaKinesiologia;
 use App\FichaPsicologia;
+use App\FichaTaller;
+use App\Educacion;
 use App\FichaTerapiaOcupacional;
 use App\Funcionario;
 use App\PrestacionRealizada;
@@ -32,6 +35,8 @@ class FichasController extends Controller
             $fichasPsicologia= FichaPsicologia::where('beneficiario_id', $idBeneficiario)->orderBy('created_at', $direction = 'des')->get();
             $fichasFonoaudiologia = FichaFonoaudiologia::where('beneficiario_id', $idBeneficiario)->orderBy('created_at', $direction = 'des')->get();
             $fichasTerapiaOcuacional = FichaTerapiaOcupacional::where('beneficiario_id', $idBeneficiario)->orderBy('created_at', $direction = 'des')->get();
+            $fichasTaller = FichaTaller::where('beneficiario_id', $idBeneficiario)->orderBy('created_at', $direction = 'des')->get();
+            $fichasEducacion = FichaTaller::where('beneficiario_id', $idBeneficiario)->orderBy('created_at', $direction = 'des')->get();
         }
         else{
             $fichasKinesiologia = array();
@@ -52,6 +57,14 @@ class FichasController extends Controller
             $fichasTerapiaOcuacional = array();
             if(Auth::user()->hasRole('terapia_ocupacional')){
                 $fichasTerapiaOcuacional = FichaTerapiaOcupacional::where('beneficiario_id', $idBeneficiario)->where('funcionario_id', $idFuncionario)->orderBy('created_at', $direction = 'des')->get();
+            }
+            $fichasTaller = array();
+            if(Auth::user()->hasRole('tallerista')){
+                $fichasTaller = FichaTaller::where('beneficiario_id', $idBeneficiario)->where('funcionario_id', $idFuncionario)->orderBy('created_at', $direction = 'des')->get();
+            }
+            $fichasEducacion = array();
+            if(Auth::user()->hasRole('educador')){
+                $fichasEducacion = FichaEducacion::where('beneficiario_id', $idBeneficiario)->where('funcionario_id', $idFuncionario)->orderBy('created_at', $direction = 'des')->get();
             }
         }
 
@@ -77,6 +90,12 @@ class FichasController extends Controller
             if($tipoFuncionario == 'Terapeuta ocupacional' && count($fichasTerapiaOcuacional) > 0){
                 $estado = $fichasTerapiaOcuacional->first()->estado;
             }
+            if($tipoFuncionario == 'Tallerista' && count($fichasTaller) > 0){
+                $estado = $fichasTaller->first()->estado;
+            }
+            if($tipoFuncionario == 'Educador' && count($fichasEducacion) > 0){
+                $estado = $fichasEducacion->first()->estado;
+            }
         }
 
         return view('area-medica.ficha-evaluacion-inicial.fichas.listaFichas')
@@ -85,6 +104,8 @@ class FichasController extends Controller
             ->with(compact('fichasPsicologia'))
             ->with(compact('fichasFonoaudiologia'))
             ->with(compact('fichasTerapiaOcuacional'))
+            ->with(compact('fichasEducacion'))
+            ->with(compact('fichasTaller'))
             ->with(compact('idBeneficiario'))
             ->with(compact('idUsuario'))
             ->with(compact('tipoFuncionario'));

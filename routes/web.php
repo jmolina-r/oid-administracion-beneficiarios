@@ -90,6 +90,44 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
 
     Route::group(['prefix' => '/ficha-evaluacion-inicial'], function (){
 
+        Route::group(['prefix' => '/taller'], function (){
+
+            Route::get('/create/{id}', [
+                'uses' => 'FichaTallerController@create',
+                'as' => 'area-medica.ficha-evaluacion-inicial.tallerista.create'
+            ])->middleware('roles:admin|tallerista');
+
+            Route::get('/show/{id}', [
+                'uses' => 'FichaTallerController@show',
+                'as' => 'area-medica.ficha-evaluacion-inicial.tallerista.show'
+            ])->middleware('roles:admin|tallerista');
+
+            Route::post('/store', [
+                'uses' => 'FichaTallerController@store',
+                'as' => 'area-medica.ficha-evaluacion-inicial.tallerista.store'
+            ])->middleware('roles:admin|tallerista');
+        });
+
+
+        Route::group(['prefix' => '/educacion'], function (){
+
+            Route::get('/create/{id}', [
+                'uses' => 'FichaEducacionController@create',
+                'as' => 'area-medica.ficha-evaluacion-inicial.educacion.create'
+            ])->middleware('roles:admin|educador');
+
+            Route::get('/show/{id}', [
+                'uses' => 'FichaEducacionController@show',
+                'as' => 'area-medica.ficha-evaluacion-inicial.educacion.show'
+            ])->middleware('roles:admin|educador');
+
+            Route::post('/store', [
+                'uses' => 'FichaEducacionController@store',
+                'as' => 'area-medica.ficha-evaluacion-inicial.educacion.store'
+            ])->middleware('roles:admin|educador');
+        });
+
+
         Route::group(['prefix' => '/kinesiologia'], function (){
 
             Route::get('/create/{id}', [
@@ -171,7 +209,7 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
             Route::get('/listaFichas/{id}', [
                 'uses' => 'FichasController@listaFichas',
                 'as' => 'area-medica.ficha-evaluacion-inicial.fichas.listaFichas'
-            ])->middleware('roles:admin|psicologia|terapia_ocupacional|fonoaudiologia|kinesiologia');
+            ])->middleware('roles:admin|psicologia|terapia_ocupacional|fonoaudiologia|kinesiologia|tallerista|educador');
         });
     });
 
@@ -180,17 +218,17 @@ Route::group(['prefix' => '/area-medica', 'middleware' => 'auth'], function (){
         Route::get('/create/{idFuncionario}/{idBeneficiario}/{idFicha}', [
             'uses' => 'InformeCierreController@create',
             'as' => 'area-medica.informe-cierre.create'
-        ])->middleware('roles:admin|psicologia|terapia_ocupacional|fonoaudiologia|kinesiologia');
+        ])->middleware('roles:admin|psicologia|terapia_ocupacional|fonoaudiologia|kinesiologia|tallerista|educador');
 
         Route::post('/store',[
             'uses' => 'InformeCierreController@store',
             'as' => 'area-medica.informe-cierre.store'
-        ])->middleware('roles:admin|psicologia|terapia_ocupacional|fonoaudiologia|kinesiologia');
+        ])->middleware('roles:admin|psicologia|terapia_ocupacional|fonoaudiologia|kinesiologia|tallerista|educador');
 
         Route::get('/show/{idFuncionario}/{idBeneficiario}/{idFicha}', [
             'uses' => 'InformeCierreController@show',
             'as' => 'area-medica.informe-cierre.show'
-        ])->middleware('roles:admin|psicologia|terapia_ocupacional|fonoaudiologia|kinesiologia');
+        ])->middleware('roles:admin|psicologia|terapia_ocupacional|fonoaudiologia|kinesiologia|tallerista|educador');
     });
 });
 
