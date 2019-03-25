@@ -62,7 +62,7 @@
                                 <div class='page-header'>
                                     <h1 class='pull-left'>
                                         <i class='fa fa-pencil-square-o'></i>
-                                        <span>Reportabilidad Kinesiología</span>
+                                        <span>Reportabilidad Taller</span>
                                     </h1>
                                     <div class='pull-right'>
                                         <ul class='breadcrumb'>
@@ -86,26 +86,25 @@
                                 </div>
                             </div>
                         </div>
-                        <form action="{{route('reportabilidad.reporteKine')}}" accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="GET">
-                            <input id="nombres" name="nombres" type="hidden" value="{{$kinesiologo->nombre}}">
-                            <input id="funcionario_id" name="funcionario_id" type="hidden" value="{{$kinesiologo->id}}">
-                            <input id="apellidos" name="apellidos" type="hidden" value="{{$kinesiologo->apellido}}">
-                            <input id="rut" name="rut" type="hidden" value="{{$kinesiologo->rut}}">
-                            <input id="telefono" name="telefono" type="hidden" value="{{$kinesiologo->telefono}}">
-                            <input id="direccion" name="direccion" type="hidden" value="{{$kinesiologo->direccion}}">
-                            <input id="atencionAnualKine" name="atencionAnualKine" type="hidden" value="{{$atencionAnualKine}}">
-                            <input id="atencionMensualKine" name="atencionMensualKine" type="hidden" value="{{$atencionMensualKine}}">
-                            <input id="asistenciaKineAnual" name="asistenciaKineAnual" type="hidden" value="{{$asistenciaKineAnual}}">
-                            <input id="asistenciaKineMensual" name="asistenciaKineMensual" type="hidden" value="{{$asistenciaKineMensual}}">
-                            <input id="inasistenciaKineAnual" name="inasistenciaKineAnual" type="hidden" value="{{$inasistenciaKineAnual}}">
-                            <input id="inasistenciaKineMensual" name="inasistenciaKineMensual" type="hidden" value="{{$inasistenciaKineMensual}}">
-                            <input id="justificaKineAnual" name="justificaKineAnual" type="hidden" value="{{$justificaKineAnual}}">
-                            <input id="justificaKineMensual" name="justificaKineMensual" type="hidden" value="{{$justificaKineMensual}}">
-                            <input id="suspendeOIDKineAnual" name="suspendeOIDKineAnual" type="hidden" value="{{$suspendeOIDKineAnual}}">
-                            <input id="suspendeOIDKineMensual" name="suspendeOIDKineMensual" type="hidden" value="{{$suspendeOIDKineMensual}}">
-                            <input id="desertaKineAnual" name="desertaKineAnual" type="hidden" value="{{$desertaKineAnual}}">
-                            <input id="desertaKineMensual" name="desertaKineMensual" type="hidden" value="{{$desertaKineMensual}}">
 
+                            <input id="nombres" name="nombres" type="hidden" value="{{$tallerista->nombre}}">
+                            <input id="funcionario_id" name="funcionario_id" type="hidden" value="{{$tallerista->id}}">
+                            <input id="apellidos" name="apellidos" type="hidden" value="{{$tallerista->apellido}}">
+                            <input id="rut" name="rut" type="hidden" value="{{$tallerista->rut}}">
+                            <input id="telefono" name="telefono" type="hidden" value="{{$tallerista->telefono}}">
+                            <input id="direccion" name="direccion" type="hidden" value="{{$tallerista->direccion}}">
+                            <input id="atencionAnualTaller" name="atencionAnualTaller" type="hidden" value="{{$atencionAnualTaller}}">
+                            <input id="atencionMensualTaller" name="atencionMensualTaller" type="hidden" value="{{$atencionMensualTaller}}">
+                            <input id="asistenciaTallerAnual" name="asistenciaTallerAnual" type="hidden" value="{{$asistenciaTallerAnual}}">
+                            <input id="asistenciaTallerMensual" name="asistenciaTallerMensual" type="hidden" value="{{$asistenciaTallerMensual}}">
+                            <input id="inasistenciaTallerAnual" name="inasistenciaTallerAnual" type="hidden" value="{{$inasistenciaTallerAnual}}">
+                            <input id="inasistenciaTallerMensual" name="inasistenciaTallerMensual" type="hidden" value="{{$inasistenciaTallerMensual}}">
+                        <input id="justificaTallerAnual" name="justificaTallerAnual" type="hidden" value="{{$justificaTallerAnual}}">
+                        <input id="justificaTallerMensual" name="justificaTallerMensual" type="hidden" value="{{$justificaTallerMensual}}">
+                        <input id="suspendeOIDTallerAnual" name="suspendeOIDTallerAnual" type="hidden" value="{{$suspendeOIDTallerAnual}}">
+                        <input id="suspendeOIDTallerMensual" name="suspendeOIDTallerMensual" type="hidden" value="{{$suspendeOIDTallerMensual}}">
+                        <input id="desertaTallerAnual" name="desertaTallerAnual" type="hidden" value="{{$desertaTallerAnual}}">
+                        <input id="desertaTallerMensual" name="desertaTallerMensual" type="hidden" value="{{$desertaTallerMensual}}
 
                             @for ($i = 0; $i < count($nombrePrest); $i++)
                                 <input id="nombrePrest" name="nombrePrest[]" type="hidden" value="{{$nombrePrest[$i]}}">
@@ -118,12 +117,12 @@
                                             <div class='title'>Datos personales</div>
                                         </div>
                                         <div class="col-sm-6">
-                                            <p class="capitalize"><span class="tit">Nombre Completo</span><br>{{ $kinesiologo->nombre }} {{ $kinesiologo->apellido }}</p>
-                                            <p class="capitalize"><span class="tit">Rut</span><br>{{ $kinesiologo->rut }}</p>
+                                            <p class="capitalize"><span class="tit">Nombre Completo</span><br>{{ $tallerista->nombre }} {{ $tallerista->apellido }}</p>
+                                            <p class="capitalize"><span class="tit">Rut</span><br>{{ $tallerista->rut }}</p>
                                         </div>
                                         <div class="col-sm-6">
-                                            <p class="capitalize"><span class="tit">Telefono</span><br>{{ $kinesiologo->telefono }}</p>
-                                            <p class="capitalize"><span class="tit">Dirección</span><br>{{ $kinesiologo->direccion }}</p>
+                                            <p class="capitalize"><span class="tit">Telefono</span><br>{{ $tallerista->telefono }}</p>
+                                            <p class="capitalize"><span class="tit">Dirección</span><br>{{ $tallerista->direccion }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -132,19 +131,19 @@
                                 <div class='col-sm-12'>
                                     <div class='box bordered-box blue-border' style='margin-bottom:0;'>
                                         <div class='box-header blue-background'>
-                                            <div class='title'>Kinesiología</div>
+                                                <div class='title'>Taller</div>
                                             <div class='actions'>
                                                 <a class="btn box-collapse btn-xs btn-link" href="#"><i></i></a>
                                             </div>
                                         </div>
 
                                         <div class='box-content box-statistic text-right'>
-                                            <h3 class='title text-error'>{{$atencionAnualKine}}</h3>
+                                            <h3 class='title text-error'>{{$atencionAnualTaller}}</h3>
                                             <small>ATENCIONES ANUALES - {{date('Y')}}</small>
                                             <div class='text-error fa fa-users align-left'></div>
                                         </div>
                                         <div class='box-content box-statistic text-right'>
-                                            <h3 class='title text-warning'>{{$atencionMensualKine}}</h3>
+                                            <h3 class='title text-warning'>{{$atencionMensualTaller}}</h3>
                                             <small>ATENCIONES MENSUALES - {{date('F')}}</small>
                                             <div class='text-warning fa fa-users align-left'></div>
                                         </div>
@@ -152,52 +151,52 @@
                                             <h3 class='title text-inside text-center'>ASISTENCIA E INASISTENCIA</h3>
                                         </div>
                                         <div class='box-content box-statistic text-right'>
-                                            <h3 class='title text-primary'>{{$asistenciaKineAnual}}</h3>
+                                            <h3 class='title text-primary'>{{$asistenciaTallerAnual}}</h3>
                                             <small>CANTIDAD DE USUARIOS ASISTENTES EN EL AÑO - {{date('Y')}}</small>
                                             <div class='text-primary fa fa-book align-left'></div>
                                         </div>
                                         <div class='box-content box-statistic text-right'>
-                                            <h3 class='title text-primary'>{{$asistenciaKineMensual}}</h3>
+                                            <h3 class='title text-primary'>{{$asistenciaTallerMensual}}</h3>
                                             <small>CANTIDAD DE USUARIOS ASISTENTES EN EL MES - {{date('F')}}</small>
                                             <div class='text-primary fa fa-book align-left'></div>
                                         </div>
                                         <div class='box-content box-statistic text-right'>
-                                            <h3 class='title text-primary'>{{$inasistenciaKineAnual}}</h3>
+                                            <h3 class='title text-primary'>{{$inasistenciaTallerAnual}}</h3>
                                             <small>CANTIDAD DE USUARIOS INASISTENTES EN EL AÑO {{date('Y')}}</small>
                                             <div class='text-primary fa fa-book align-left'></div>
                                         </div>
                                         <div class='box-content box-statistic text-right'>
-                                            <h3 class='title text-primary'>{{$inasistenciaKineMensual}}</h3>
+                                            <h3 class='title text-primary'>{{$inasistenciaTallerMensual}}</h3>
                                             <small>CANTIDAD DE USUARIOS INASISTENTES EN EL MES - {{date('F')}}</small>
                                             <div class='text-primary fa fa-book align-left'></div>
                                         </div>
                                         <div class='box-content box-statistic text-right'>
-                                            <h3 class='title text-primary'>{{$justificaKineMensual}}</h3>
+                                            <h3 class='title text-primary'>{{$justificaTallerMensual}}</h3>
                                             <small>CANTIDAD DE USUARIOS JUSTIFICADOS EN EL MES - {{date('F')}}</small>
                                             <div class='text-primary fa fa-book align-left'></div>
                                         </div>
                                         <div class='box-content box-statistic text-right'>
-                                            <h3 class='title text-primary'>{{$justificaKineAnual}}</h3>
+                                            <h3 class='title text-primary'>{{$justificaTallerAnual}}</h3>
                                             <small>CANTIDAD DE USUARIOS JUSTIFICADOS EN EL AÑO- {{date('F')}}</small>
                                             <div class='text-primary fa fa-book align-left'></div>
                                         </div>
                                         <div class='box-content box-statistic text-right'>
-                                            <h3 class='title text-primary'>{{$suspendeOIDKineMensual}}</h3>
+                                            <h3 class='title text-primary'>{{$suspendeOIDTallerMensual}}</h3>
                                             <small>CANTIDAD DE USUARIOS SUSPENCIÓN OID EN EL MES - {{date('F')}}</small>
                                             <div class='text-primary fa fa-book align-left'></div>
                                         </div>
                                         <div class='box-content box-statistic text-right'>
-                                            <h3 class='title text-primary'>{{$suspendeOIDKineAnual}}</h3>
+                                            <h3 class='title text-primary'>{{$suspendeOIDTallerAnual}}</h3>
                                             <small>CANTIDAD DE USUARIOS SUSPENCIÓN OID EN EL AÑO- {{date('F')}}</small>
                                             <div class='text-primary fa fa-book align-left'></div>
                                         </div>
                                         <div class='box-content box-statistic text-right'>
-                                            <h3 class='title text-primary'>{{$desertaKineMensual}}</h3>
+                                            <h3 class='title text-primary'>{{$desertaTallerMensual}}</h3>
                                             <small>CANTIDAD DE USUARIOS DESERTORES EN EL MES - {{date('F')}}</small>
                                             <div class='text-primary fa fa-book align-left'></div>
                                         </div>
                                         <div class='box-content box-statistic text-right'>
-                                            <h3 class='title text-primary'>{{$desertaKineAnual}}</h3>
+                                            <h3 class='title text-primary'>{{$desertaTallerAnual}}</h3>
                                             <small>CANTIDAD DE USUARIOS DESERTORES EN EL AÑO- {{date('F')}}</small>
                                             <div class='text-primary fa fa-book align-left'></div>
                                         </div>
@@ -216,8 +215,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success col-md-12" style="margin-bottom:5px" />Vista previa a imprimir</button>
-                        </form>
+
                         @include('partials.footer')
                     </div>
                 </div>

@@ -99,6 +99,13 @@
                       <input id="asistenciaFonoMensual" name="asistenciaFonoMensual" type="hidden" value="{{$asistenciaFonoMensual}}">
                       <input id="inasistenciaFonoAnual" name="inasistenciaFonoAnual" type="hidden" value="{{$inasistenciaFonoAnual}}">
                       <input id="inasistenciaFonoMensual" name="inasistenciaFonoMensual" type="hidden" value="{{$inasistenciaFonoMensual}}">
+                      <input id="justificaFonoAnual" name="justificaFonoAnual" type="hidden" value="{{$justificaFonoAnual}}">
+                      <input id="justificaFonoMensual" name="justificaFonoMensual" type="hidden" value="{{$justificaFonoMensual}}">
+                      <input id="suspendeOIDFonoAnual" name="suspendeOIDFonoAnual" type="hidden" value="{{$suspendeOIDFonoAnual}}">
+                      <input id="suspendeOIDFonoMensual" name="suspendeOIDFonoMensual" type="hidden" value="{{$suspendeOIDFonoMensual}}">
+                      <input id="desertaFonoAnual" name="desertaFonoAnual" type="hidden" value="{{$desertaFonoAnual}}">
+                      <input id="desertaFonoMensual" name="desertaFonoMensual" type="hidden" value="{{$desertaFonoMensual}}">
+
                       @for ($i = 0; $i < count($nombrePrest); $i++)
                           <input id="nombrePrest" name="nombrePrest[]" type="hidden" value="{{$nombrePrest[$i]}}">
                           <input id="porcentajePrest" name="porcentajePrest[]" type="hidden" value="{{$porcentajePrest[$i]}}">
@@ -165,6 +172,36 @@
                           <small>CANTIDAD DE USUARIOS INASISTENTES EN EL MES - {{date('F')}}</small>
                           <div class='text-primary fa fa-book align-left'></div>
                         </div>
+                      <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-primary'>{{$justificaFonoMensual}}</h3>
+                          <small>CANTIDAD DE USUARIOS JUSTIFICADOS EN EL MES - {{date('F')}}</small>
+                          <div class='text-primary fa fa-book align-left'></div>
+                      </div>
+                      <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-primary'>{{$justificaFonoAnual}}</h3>
+                          <small>CANTIDAD DE USUARIOS JUSTIFICADOS EN EL AÑO- {{date('F')}}</small>
+                          <div class='text-primary fa fa-book align-left'></div>
+                      </div>
+                      <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-primary'>{{$suspendeOIDFonoMensual}}</h3>
+                          <small>CANTIDAD DE USUARIOS SUSPENCIÓN OID EN EL MES - {{date('F')}}</small>
+                          <div class='text-primary fa fa-book align-left'></div>
+                      </div>
+                      <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-primary'>{{$suspendeOIDFonoAnual}}</h3>
+                          <small>CANTIDAD DE USUARIOS SUSPENCIÓN OID EN EL AÑO- {{date('F')}}</small>
+                          <div class='text-primary fa fa-book align-left'></div>
+                      </div>
+                      <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-primary'>{{$desertaFonoMensual}}</h3>
+                          <small>CANTIDAD DE USUARIOS DESERTORES EN EL MES - {{date('F')}}</small>
+                          <div class='text-primary fa fa-book align-left'></div>
+                      </div>
+                      <div class='box-content box-statistic text-right'>
+                          <h3 class='title text-primary'>{{$desertaFonoAnual}}</h3>
+                          <small>CANTIDAD DE USUARIOS DESERTORES EN EL AÑO- {{date('F')}}</small>
+                          <div class='text-primary fa fa-book align-left'></div>
+                      </div>
                         <div class='box-content'>
                                         <h3 class='title text-inside text-center'>PRESTACIONES</h3>                                    
                                     </div>

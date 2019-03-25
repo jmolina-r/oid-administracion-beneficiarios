@@ -292,8 +292,8 @@
                                                                                         @endif
                                                                                         @if($hora->asist_sn=='No Justifica')
                                                                                             <option value="No Justifica"
-                                                                                                    selected>No
-                                                                                                Justifica
+                                                                                                    selected>
+                                                                                                No Justifica
                                                                                             </option>
                                                                                         @else
                                                                                             <option value="No Justifica">
@@ -302,7 +302,7 @@
                                                                                         @endif
                                                                                         @if($hora->asist_sn=='Deserta')
                                                                                             <option value="Deserta"
-                                                                                                    selected>No
+                                                                                                    selected>
                                                                                                 Deserta
                                                                                             </option>
                                                                                         @else
@@ -311,8 +311,7 @@
                                                                                             </option>
                                                                                         @endif
                                                                                         @if($hora->asist_sn=='Suspende OID')
-                                                                                            <option value="Suspende OID"
-                                                                                                    selected>No
+                                                                                            <option value="Suspende OID" selected>
                                                                                                 Suspende OID
                                                                                             </option>
                                                                                         @else

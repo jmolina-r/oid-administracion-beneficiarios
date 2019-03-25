@@ -211,6 +211,27 @@
                                     @endif
                                 </div>
                             </form>
+                            <form action="{{route('reportabilidad.reportabilidadTaller')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
+                                <div class='box-content box-statistic' >
+                                    <div class="nombre" style="display:inline-block">
+                                        <h4>Reportabilidad Tallerista</h4>
+                                    </div>
+                                    @if($talleristas->count()>0)
+                                        <span>Seleccionar Profesional:</span>
+                                        <select name="tallerista">
+                                            @foreach($talleristas as $tallerista)
+                                                <option value="{{$tallerista->id}}">{{$tallerista->nombre}} {{$tallerista->apellido}}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="boton pull-right" style="display:inline-block">
+                                            <button type="submit" id="visualTaller" name="visualTaller" class="btn btn-success" style="margin-bottom:5px" />Visualizar</button>
+                                            <!--<button type="submit" id="imprimirReporTerap" name="imprimirReporTerap" class="btn btn-primary" style="margin-bottom:5px" />Vista previa a imprimir</button>-->
+                                        </div>
+                                    @else
+                                        <span>Actualmente no se encuentran trabajando talleristas</span>
+                                    @endif
+                                </div>
+                            </form>
                             <form action="{{route('reportabilidad.reportabilidadSoc')}}"accept-charset="UTF-8" class="form" style="margin-bottom: 0;" method="get">
                         <div class='box-content box-statistic' >
                             <div class="nombre" style="display:inline-block">

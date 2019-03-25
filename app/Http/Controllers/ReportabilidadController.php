@@ -246,7 +246,7 @@ class ReportabilidadController extends Controller
             ->where('hora_agendadas.user_id', $user->id)
             ->count();
 
-        $justificaKineMensual=Malla::where('mallas.asist_sn','=','Presente')
+        $justificaKineMensual=Malla::where('mallas.asist_sn','=','Justifica')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
@@ -259,6 +259,17 @@ class ReportabilidadController extends Controller
             ->where('hora_agendadas.user_id', $user->id)
             ->count();
         $inasistenciaKineMensual=Malla::where('mallas.asist_sn','=','No Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $desertaKineAnual =Malla::where('mallas.asist_sn','=','Deserta')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $desertaKineMensual=Malla::where('mallas.asist_sn','=','Deserta')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
@@ -295,7 +306,7 @@ class ReportabilidadController extends Controller
 
         if(isset($_GET['visualKine'])) {
 
-            return view('reportabilidad.reportabilidadKine', compact('kinesiologo','atencionAnualKine','atencionMensualKine','asistenciaKineAnual','inasistenciaKineAnual','asistenciaKineMensual','inasistenciaKineMensual','porcentajePrest','nombrePrest'));
+            return view('reportabilidad.reportabilidadKine', compact('kinesiologo','atencionAnualKine','atencionMensualKine','asistenciaKineAnual','inasistenciaKineAnual','asistenciaKineMensual','inasistenciaKineMensual','justificaKineAnual','justificaKineMensual','suspendeOIDKineAnual','suspendeOIDKineMensual','porcentajePrest','desertaKineAnual','desertaKineMensual','nombrePrest'));
 
         }
 
@@ -350,12 +361,48 @@ class ReportabilidadController extends Controller
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
             ->where('hora_agendadas.user_id', $user->id)
             ->count();
+
+        $justificaFonoAnual =Malla::where('mallas.asist_sn','=','Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+
+        $justificaFonoMensual=Malla::where('mallas.asist_sn','=','Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+
         $inasistenciaFonoAnual =Malla::where('mallas.asist_sn','=','No Justifica')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
             ->where('hora_agendadas.user_id', $user->id)
             ->count();
-        $inasistenciaFonoMensual =Malla::where('mallas.asist_sn','=','No Justifica')
+        $inasistenciaFonoMensual=Malla::where('mallas.asist_sn','=','No Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $desertaFonoAnual =Malla::where('mallas.asist_sn','=','Deserta')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $desertaFonoMensual=Malla::where('mallas.asist_sn','=','Deserta')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $suspendeOIDFonoAnual =Malla::where('mallas.asist_sn','=','Suspende OID')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $suspendeOIDFonoMensual=Malla::where('mallas.asist_sn','=','Suspende OID')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
@@ -379,7 +426,7 @@ class ReportabilidadController extends Controller
                 $i++;
         }
      if(isset($_GET['visualFono'])) {
-            return view('reportabilidad.reportabilidadFono', compact('fonoaudiologo', 'atencionAnualFono', 'atencionMensualFono', 'asistenciaFonoAnual', 'asistenciaFonoMensual', 'inasistenciaFonoAnual', 'inasistenciaFonoMensual', 'porcentajePrest', 'nombrePrest'));
+            return view('reportabilidad.reportabilidadFono', compact('fonoaudiologo', 'suspendeOIDFonoMensual','suspendeOIDFonoAnual','desertaFonoMensual','desertaFonoAnual','justificaFonoMensual','justificaFonoAnual','atencionAnualFono', 'atencionMensualFono', 'asistenciaFonoAnual', 'asistenciaFonoMensual', 'inasistenciaFonoAnual', 'inasistenciaFonoMensual', 'porcentajePrest', 'nombrePrest'));
      }
         $nombres = $_GET["nombres"];
         $apellidos = $_GET["apellidos"];
@@ -427,12 +474,47 @@ class ReportabilidadController extends Controller
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
             ->where('hora_agendadas.user_id', $user->id)
             ->count();
+        $justificaPsicoAnual =Malla::where('mallas.asist_sn','=','Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+
+        $justificaPsicoMensual=Malla::where('mallas.asist_sn','=','Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+
         $inasistenciaPsicoAnual =Malla::where('mallas.asist_sn','=','No Justifica')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
             ->where('hora_agendadas.user_id', $user->id)
             ->count();
-        $inasistenciaPsicoMensual =Malla::where('mallas.asist_sn','=','No Justifica')
+        $inasistenciaPsicoMensual=Malla::where('mallas.asist_sn','=','No Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $desertaPsicoAnual =Malla::where('mallas.asist_sn','=','Deserta')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $desertaPsicoMensual=Malla::where('mallas.asist_sn','=','Deserta')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $suspendeOIDPsicoAnual =Malla::where('mallas.asist_sn','=','Suspende OID')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $suspendeOIDPsicoMensual=Malla::where('mallas.asist_sn','=','Suspende OID')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
@@ -458,7 +540,7 @@ class ReportabilidadController extends Controller
         }
 
         if(isset($_GET['visualSico'])) {
-            return view('reportabilidad.reportabilidadPsico', compact('psicologo','atencionAnualPsico','atencionMensualPsico','asistenciaPsicoAnual','asistenciaPsicoMensual','inasistenciaPsicoAnual','inasistenciaPsicoMensual','porcentajePrest','nombrePrest'));
+            return view('reportabilidad.reportabilidadPsico', compact('psicologo','suspendeOIDPsicoMensual','suspendeOIDPsicoAnual','desertaPsicoMensual','desertaPsicoAnual','justificaPsicoMensual','justificaPsicoAnual','atencionAnualPsico','atencionMensualPsico','asistenciaPsicoAnual','asistenciaPsicoMensual','inasistenciaPsicoAnual','inasistenciaPsicoMensual','porcentajePrest','nombrePrest'));
         }
 
         $nombres = $_GET["nombres"];
@@ -509,12 +591,48 @@ class ReportabilidadController extends Controller
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
             ->where('hora_agendadas.user_id', $user->id)
             ->count();
+
+        $justificaTeraAnual =Malla::where('mallas.asist_sn','=','Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+
+        $justificaTerMensual=Malla::where('mallas.asist_sn','=','Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+
         $inasistenciaTerAnual =Malla::where('mallas.asist_sn','=','No Justifica')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
             ->where('hora_agendadas.user_id', $user->id)
             ->count();
-        $inasistenciaTerMensual =Malla::where('mallas.asist_sn','=','No Justifica')
+        $inasistenciaTerMensual=Malla::where('mallas.asist_sn','=','No Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $desertaTerAnual =Malla::where('mallas.asist_sn','=','Deserta')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $desertaTerMensual=Malla::where('mallas.asist_sn','=','Deserta')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $suspendeOIDTerAnual =Malla::where('mallas.asist_sn','=','Suspende OID')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $suspendeOIDTerMensual=Malla::where('mallas.asist_sn','=','Suspende OID')
             ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
             ->whereYear('hora_agendadas.fecha','=', date('Y'))
             ->whereMonth('hora_agendadas.fecha', '=', date('m'))
@@ -540,7 +658,7 @@ class ReportabilidadController extends Controller
 
 
         if(isset($_GET['visualTerap'])) {
-            return view('reportabilidad.reportabilidadTer', compact('terapeuta','atencionAnualTer','atencionMensualTer','asistenciaTerAnual','asistenciaTerMensual','inasistenciaTerAnual','inasistenciaTerMensual','porcentajePrest','nombrePrest'));
+            return view('reportabilidad.reportabilidadTer', compact('terapeuta','suspendeOIDTerMensual','suspendeOIDTerAnual','desertaTerMensual','desertaTerAnual','justificaTerMensual','justificaTeraAnual','atencionAnualTer','atencionMensualTer','asistenciaTerAnual','asistenciaTerMensual','inasistenciaTerAnual','inasistenciaTerMensual','porcentajePrest','nombrePrest'));
         }
         $nombres = $_GET["nombres"];
         $apellidos = $_GET["apellidos"];
@@ -561,6 +679,122 @@ class ReportabilidadController extends Controller
 
     }
 
+    public function showResultTaller(Request $request){
+
+        //taller
+
+        $tallerista = Funcionario::where('id',$request->tallerista)->first();
+        $user=User::where('funcionario_id',$request->input('tallerista'))->first();
+        $atencionAnualTaller=HoraAgendada::whereYear('hora_agendadas.fecha', '=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->join('mallas','hora_agendadas.id','=','mallas.hora_agendada_id')
+            ->whereNotNull('mallas.prestacion_id')
+            ->count();
+        $atencionMensualTaller=HoraAgendada::whereYear('hora_agendadas.fecha', '=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->join('mallas','hora_agendadas.id','=','mallas.hora_agendada_id') //join malla
+            ->whereNotNull('mallas.prestacion_id')
+            ->count();
+
+        $asistenciaTallerAnual =Malla::where('mallas.asist_sn','=','Presente')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $asistenciaTallerMensual=Malla::where('mallas.asist_sn','=','Presente')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+
+        $justificaTallerAnual =Malla::where('mallas.asist_sn','=','Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+
+        $justificaTallerMensual=Malla::where('mallas.asist_sn','=','Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+
+        $inasistenciaTallerAnual =Malla::where('mallas.asist_sn','=','No Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $inasistenciaTallerMensual=Malla::where('mallas.asist_sn','=','No Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $desertaTallerAnual =Malla::where('mallas.asist_sn','=','Deserta')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $desertaTallerMensual=Malla::where('mallas.asist_sn','=','Deserta')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $suspendeOIDTallerAnual =Malla::where('mallas.asist_sn','=','Suspende OID')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $suspendeOIDTallerMensual=Malla::where('mallas.asist_sn','=','Suspende OID')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+
+        $prestaciones = Prestacion::where('prestacions.area','=','Tallerista')->get();
+        $porcentajePrest=null;
+        $nombrePrest=null;
+        $i=0;
+        foreach ($prestaciones as $p){
+            $nombrePrest[$i]=$p->nombre;
+            $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
+                ->where('prestacions.area','=','Tallerista')
+                ->join('mallas','prestacions.id','=','mallas.prestacion_id')
+                ->join('hora_agendadas','mallas.hora_agendada_id','hora_agendadas.id')
+                ->where('hora_agendadas.user_id',  $user->id)
+                ->whereYear('hora_agendadas.fecha','=',date('Y'))
+                ->whereMonth('hora_agendadas.fecha','=',date('m'))
+                ->count();
+            $i++;
+        }
+
+
+        //if(isset($_GET['visualTaller'])) {
+            return view('reportabilidad.reportabilidadTaller', compact('tallerista','suspendeOIDTallerMensual','suspendeOIDTallerAnual','desertaTallerMensual','desertaTallerAnual','justificaTallerMensual','justificaTallerAnual','atencionAnualTaller','atencionMensualTaller','asistenciaTallerAnual','asistenciaTallerMensual','inasistenciaTallerAnual','inasistenciaTallerMensual','porcentajePrest','nombrePrest'));
+        //}
+        //$nombres = $_GET["nombres"];
+        //$apellidos = $_GET["apellidos"];
+        //$rut = $_GET["rut"];
+        //$telefono = $_GET["telefono"];
+        //$direccion = $_GET["direccion"];
+        //$atencionAnualTer = $_GET["atencionAnualTer"];
+        //$atencionMensualTer = $_GET["atencionMensualTer"];
+        //$asistenciaTerAnual = $_GET["asistenciaTerAnual"];
+        //$asistenciaTerMensual = $_GET["asistenciaTerMensual"];
+        //$inasistenciaTerAnual = $_GET["inasistenciaTerAnual"];
+        //$inasistenciaTerMensual = $_GET["inasistenciaTerMensual"];
+
+        //$pdf = \App::make('dompdf.wrapper');
+        //$pdf->loadHTML($view);
+        //return $pdf->stream('invoice3');
+
+    }
+
     public function showResultSoc(Request $request)
     {
         //SOcial
@@ -569,6 +803,7 @@ class ReportabilidadController extends Controller
         $atencionMensualSocial = FichaAtencionSocial::whereYear('created_at', '=', date('Y'))
             ->whereMonth('created_at', '=', date('m'))
             ->count();
+
 
         if(isset($_GET['visualSoc'])) {
             return view('reportabilidad.reportabilidadSoc', compact('atencionAnualSocial','atencionMensualSocial'));

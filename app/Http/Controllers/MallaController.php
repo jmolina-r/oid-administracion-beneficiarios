@@ -26,9 +26,9 @@ use App\Malla;
 class MallaController extends Controller
 {
 
-    private $contentHeight = 223;
+    private $contentHeight = 243;
     private $minTime = '08:00:00';
-    private $maxTime = '17:00:00';
+    private $maxTime = '18:00:00';
     private $slotDuration = '00:60:00';
     private $slotLabelInterval = 1;
 
