@@ -795,6 +795,121 @@ class ReportabilidadController extends Controller
 
     }
 
+    public function showResultEdu(Request $request){
+
+        //taller
+
+        $educador = Funcionario::where('id',$request->educador)->first();
+        $user=User::where('funcionario_id',$request->input('educador'))->first();
+        $atencionAnualEdu=HoraAgendada::whereYear('hora_agendadas.fecha', '=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->join('mallas','hora_agendadas.id','=','mallas.hora_agendada_id')
+            ->whereNotNull('mallas.prestacion_id')
+            ->count();
+        $atencionMensualEdu=HoraAgendada::whereYear('hora_agendadas.fecha', '=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->join('mallas','hora_agendadas.id','=','mallas.hora_agendada_id') //join malla
+            ->whereNotNull('mallas.prestacion_id')
+            ->count();
+
+        $asistenciaEduAnual =Malla::where('mallas.asist_sn','=','Presente')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $asistenciaEduMensual=Malla::where('mallas.asist_sn','=','Presente')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+
+        $justificaEduAnual =Malla::where('mallas.asist_sn','=','Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+
+        $justificaEduMensual=Malla::where('mallas.asist_sn','=','Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+
+        $inasistenciaEduAnual =Malla::where('mallas.asist_sn','=','No Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $inasistenciaEduMensual=Malla::where('mallas.asist_sn','=','No Justifica')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $desertaEduAnual =Malla::where('mallas.asist_sn','=','Deserta')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $desertaEduMensual=Malla::where('mallas.asist_sn','=','Deserta')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $suspendeOIDEduAnual =Malla::where('mallas.asist_sn','=','Suspende OID')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+        $suspendeOIDEduMensual=Malla::where('mallas.asist_sn','=','Suspende OID')
+            ->join('hora_agendadas', 'mallas.hora_agendada_id', '=', 'hora_agendadas.id')
+            ->whereYear('hora_agendadas.fecha','=', date('Y'))
+            ->whereMonth('hora_agendadas.fecha', '=', date('m'))
+            ->where('hora_agendadas.user_id', $user->id)
+            ->count();
+
+        $prestaciones = Prestacion::where('prestacions.area','=','Educador')->get();
+        $porcentajePrest=null;
+        $nombrePrest=null;
+        $i=0;
+        foreach ($prestaciones as $p){
+            $nombrePrest[$i]=$p->nombre;
+            $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
+                ->where('prestacions.area','=','Educador')
+                ->join('mallas','prestacions.id','=','mallas.prestacion_id')
+                ->join('hora_agendadas','mallas.hora_agendada_id','hora_agendadas.id')
+                ->where('hora_agendadas.user_id',  $user->id)
+                ->whereYear('hora_agendadas.fecha','=',date('Y'))
+                ->whereMonth('hora_agendadas.fecha','=',date('m'))
+                ->count();
+            $i++;
+        }
+
+
+        //if(isset($_GET['visualTaller'])) {
+        return view('reportabilidad.reportabilidadEdu', compact('educador','suspendeOIDEduMensual','suspendeOIDEduAnual','desertaEduMensual','desertaEduAnual','justificaEduMensual','justificaEduAnual','atencionAnualEdu','atencionMensualEdu','asistenciaEduAnual','asistenciaEduMensual','inasistenciaEduAnual','inasistenciaEduMensual','porcentajePrest','nombrePrest'));
+        //}
+        //$nombres = $_GET["nombres"];
+        //$apellidos = $_GET["apellidos"];
+        //$rut = $_GET["rut"];
+        //$telefono = $_GET["telefono"];
+        //$direccion = $_GET["direccion"];
+        //$atencionAnualTer = $_GET["atencionAnualTer"];
+        //$atencionMensualTer = $_GET["atencionMensualTer"];
+        //$asistenciaTerAnual = $_GET["asistenciaTerAnual"];
+        //$asistenciaTerMensual = $_GET["asistenciaTerMensual"];
+        //$inasistenciaTerAnual = $_GET["inasistenciaTerAnual"];
+        //$inasistenciaTerMensual = $_GET["inasistenciaTerMensual"];
+
+        //$pdf = \App::make('dompdf.wrapper');
+        //$pdf->loadHTML($view);
+        //return $pdf->stream('invoice3');
+
+    }
     public function showResultSoc(Request $request)
     {
         //SOcial

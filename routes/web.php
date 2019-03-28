@@ -423,6 +423,12 @@ Route::group(['prefix' => 'reportabilidad', 'middleware' => 'auth'], function(){
         'as' => 'reportabilidad.reportabilidadTaller'
     ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
 
+    Route::get('/reportabilidadEdu',[
+        'uses'=>'ReportabilidadController@showResultEdu',
+        'as' => 'reportabilidad.reportabilidadEdu'
+    ])->middleware('roles:admin|jefatura|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|trabajo_social|tallerista|educador');
+
+
     Route::get('/reportabilidadAtencionSocial',[
         'uses'=>'ReportabilidadController@showResultSoc',
         'as' => 'reportabilidad.reportabilidadSoc'
