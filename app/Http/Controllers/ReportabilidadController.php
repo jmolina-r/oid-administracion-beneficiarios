@@ -919,6 +919,22 @@ class ReportabilidadController extends Controller
             ->whereMonth('created_at', '=', date('m'))
             ->count();
 
+        $prestaciones = Prestacion::where('prestacions.area','=','Educador')->get();
+        $porcentajePrest=null;
+        $nombrePrest=null;
+        $i=0;
+        foreach ($prestaciones as $p){
+            $nombrePrest[$i]=$p->nombre;
+            $porcentajePrest[$i]=Prestacion::where('prestacions.id','=',$p->id)
+                ->where('prestacions.area','=','Educador')
+                ->join('mallas','prestacions.id','=','mallas.prestacion_id')
+                ->join('hora_agendadas','mallas.hora_agendada_id','hora_agendadas.id')
+                ->where('hora_agendadas.user_id',  $user->id)
+                ->whereYear('hora_agendadas.fecha','=',date('Y'))
+                ->whereMonth('hora_agendadas.fecha','=',date('m'))
+                ->count();
+            $i++;
+        }
 
         if(isset($_GET['visualSoc'])) {
             return view('reportabilidad.reportabilidadSoc', compact('atencionAnualSocial','atencionMensualSocial'));

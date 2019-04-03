@@ -323,7 +323,7 @@ class BeneficiarioController extends Controller
 
         $demandas = $request->input('demandaCheckbox');
 
-        if($demandas!=null){
+        if ($demandas != null) {
             foreach ($demandas as $demanda) {
 
                 $demandaBeneficiario = new DemandaBeneficiario([
@@ -877,10 +877,15 @@ class BeneficiarioController extends Controller
         return json_encode($eventos);
     }
 
-    public function guardarHistorialDemanda(Request $request){
+    public function guardarHistorialDemanda(Request $request)
+    {
         $demanda_beneficiari_id = $request->input('demanda_beneficiario_id');
         $estado_id = $request->input('estado_id');
         $descripcion_id = $request->input('descripcion_id');
+
+        if($estado_id ==1){
+            $descripcion_id =4;
+        }
 
         $historial_demanda = new HistorialDemanda([
             'demanda_beneficiario_id' => $demanda_beneficiari_id,
@@ -894,7 +899,7 @@ class BeneficiarioController extends Controller
     public function demandas()
     {
         $demandas = Demanda::get();
-        $success =null;
+        $success = null;
         return view('lista-espera.showTipoDemandas')
             ->with(compact('demandas'))
             ->with(compact('success'));
@@ -911,13 +916,13 @@ class BeneficiarioController extends Controller
             'nombre' => 'required|unique:demandas'
         ]);
 
-        if($v->fails()){
+        if ($v->fails()) {
             return redirect()->back()->withInput()->withErrors($v->errors());
         }
 
         $nombre = $request->input('nombre');
         $demanda = new Demanda([
-            'nombre'=> strtoupper($nombre)
+            'nombre' => strtoupper($nombre)
         ]);
 
         $demanda->save();
@@ -926,7 +931,7 @@ class BeneficiarioController extends Controller
 
     public function editDemanda($id)
     {
-        $nombre =Demanda::where('id',$id)->first()->nombre;
+        $nombre = Demanda::where('id', $id)->first()->nombre;
 
         return view('lista-espera.edit')
             ->with(compact('id'))
@@ -941,7 +946,7 @@ class BeneficiarioController extends Controller
             'nombre' => 'required|unique:demandas'
         ]);
 
-        if($v->fails()){
+        if ($v->fails()) {
             return redirect()->back()->withInput()->withErrors($v->errors());
         }
 
@@ -949,10 +954,10 @@ class BeneficiarioController extends Controller
         $nombre = $request->input('nombre');
         $id = $request->input('id');
 
-        $demanda = Demanda::where('id',$id)->first();
+        $demanda = Demanda::where('id', $id)->first();
 
         $demanda->update([
-            'nombre' =>  strtoupper($nombre)
+            'nombre' => strtoupper($nombre)
         ]);
 
         $demanda->save();
@@ -968,5 +973,22 @@ class BeneficiarioController extends Controller
         return redirect()->back()->with('message', 'Registro eliminado con éxito!');
     }
 
+    public function createRegistro($id)
+    {
+        $demanda_beneficiario_id=$id;
+        $demaBene=DemandaBeneficiario::where('id',$id)->first();
+        $beneficiario = Beneficiario::where('id',$demaBene->beneficiario_id)->first();
+        $demanda = Demanda::where('id',$demaBene->demanda_id)->first();
+        $descripciones = Descripcion::get();
+        $estados = Estado::get();
+
+        return view('lista-espera.createRegistroEstado')
+            ->with(compact('demanda_beneficiario_id'))
+            ->with(compact('demanda'))
+            ->with(compact('estados'))
+            ->with(compact('beneficiario'))
+            ->with(compact('descripciones'));
+
+    }
 
 }

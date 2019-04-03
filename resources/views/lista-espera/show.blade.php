@@ -323,11 +323,11 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                         <div class='responsive-table'>
                                                             <table id="tabla-lista-espera"
                                                                    name="tabla-lista-espera"
-                                                                   class='display nowrap'
+                                                                   class=''
                                                                    style='margin-bottom:0;'>
                                                                 <thead>
                                                                 <tr>
-                                                                    <th class="sorting_disabled"
+                                                                    <th class=""
                                                                         style="display:none;"></th>
                                                                     <th>Fecha Inscripcion</th>
                                                                     <th>Nombre</th>
@@ -352,9 +352,9 @@ No importa que vayan antes del body, en el master layout se estan insertando alf
                                                                                     type="button"><a data-toggle="tooltip" data-placement="right" title="Historial Demanda"><span
                                                                                             class="fa fa-history"></span></a>
                                                                             </button>
-                                                                            <button id="btnRegistro"
-                                                                                    class='btnRegistro btn btn-success btn-xs'
-                                                                                    type="button"><a data-toggle="tooltip" data-placement="right" title="Nuevo Registro"><span
+
+                                                                            <button class='btn btn-success btn-xs'
+                                                                                    type="button"><a href="{{route('beneficiario.createRegistroEstado',$demandasB->id)}}" data-toggle="tooltip" data-placement="right" title="Nuevo Registro"><span
                                                                                             class='fa fa-plus-square'></span></a>
                                                                             </button>
                                                                         </td>

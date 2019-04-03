@@ -312,6 +312,11 @@ Route::group(['prefix' => 'beneficiario', 'middleware' => 'auth'], function () {
             'uses' => 'BeneficiarioController@deleteDemanda',
             'as' => 'beneficiario.deleteDemanda'
         ])->middleware('roles:admin');
+
+        Route::get('/createRegistro/{id}', [
+                'uses' => 'BeneficiarioController@createRegistro',
+            'as' => 'beneficiario.createRegistroEstado'
+        ])->middleware('roles:admin|secretaria|kinesiologia|psicologia|fonoaudiologia|terapia_ocupacional|tallerista|educador');
     });
 
     Route::get('/gethistorialdemanda', [
