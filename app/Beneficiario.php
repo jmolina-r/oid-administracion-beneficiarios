@@ -69,7 +69,8 @@ class Beneficiario extends Model
     }
 
     public function nombreCompleto(){
-        return $this->nombre." ".$this->apellido;
+        $nombreCompleto=$this->nombre." ".$this->apellido;
+        return ucwords($nombreCompleto);
     }
 
     public function demanda_beneficiario()

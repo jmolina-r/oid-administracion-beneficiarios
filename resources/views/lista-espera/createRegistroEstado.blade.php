@@ -123,6 +123,7 @@
                         estado_id: estado_id,
                     },
                     type: "POST",
+
                     success: function (data, textStatus, jqXHR) {
                         alert("Nuevo estado registrado correctamente.");
                         window.location.replace("/beneficiario/listaEspera/show/" + $('#id_demanda').val());
