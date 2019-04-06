@@ -429,7 +429,7 @@ class FichaKinesiologiaController extends Controller
             //procedimiento en caso de reportar errores
             return view('area-medica.ficha-evaluacion-inicial.Error');
         }
-        return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('id')));
+        return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('beneficiario_id')));
 
     }
 
