@@ -144,6 +144,7 @@
                                                         <!-- STEP 1 -->
                                                         <div class='step-pane active' data-step='1'>
                                                             <input id="id" name="id" type="hidden" value="{{$id}}">
+                                                            <input id="beneficiario_id" name="beneficiario_id" type="hidden" value="{{$persona->id}}">
                                                             <div class="col-md-12">
                                                                 <h3>Antecedentes Morbidos</h3>
                                                                 <hr/>

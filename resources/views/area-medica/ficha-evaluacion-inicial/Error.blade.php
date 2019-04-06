@@ -50,6 +50,8 @@
                     <br>
                     - Existe una ficha Inicial que no se ha cerrado y se está intentano crear una nueva. <br>
                     <br>
+                    - Se intento editar una ficha de evaluación inicial que se encuentra cerrada. <br>
+                    <br>
                     - Se intentó asignar una ficha inicial a un funcionario incorrecto. <br>
                     <br>
                     - Alguna ficha que desea ver no existe en la base de datos.<br>

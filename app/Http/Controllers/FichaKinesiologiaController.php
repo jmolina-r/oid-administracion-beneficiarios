@@ -265,7 +265,17 @@ class FichaKinesiologiaController extends Controller
             return view('area-medica.ficha-evaluacion-inicial.Error');
         }
 
+
+        //Validar que no se puedan editar fichas cerradas.
+        if ($fichaKinesiologia != null) {
+            if ($fichaKinesiologia->estado == 'cerrado') {
+                return view('area-medica.ficha-evaluacion-inicial.Error');
+            }
+        }
+
         $persona = Beneficiario::find($fichaKinesiologia->beneficiario_id);
+
+
         $funcionario = Funcionario::find($fichaKinesiologia->funcionario_id);
 
         $valSocial = ValSocial::find($fichaKinesiologia->val_social_id);
@@ -304,13 +314,7 @@ class FichaKinesiologiaController extends Controller
      */
     public function update(Request $request)
     {
-        $ultimaFicha = FichaKinesiologia::where('beneficiario_id', $request->input('id'))->orderBy('created_at', $direction = 'des')->first();
 
-        if ($ultimaFicha != null) {
-            if ($ultimaFicha->estado == 'abierto') {
-                return view('area-medica.ficha-evaluacion-inicial.Error');
-            }
-        }
 
         // Validate Fields
         $this->validate($request, $this->rules($request));
@@ -323,6 +327,7 @@ class FichaKinesiologiaController extends Controller
             }
         }
 
+        try {
         $fichaKinesiologia = FichaKinesiologia::find($request->input('id'));
         $valSocial = ValSocial::find($fichaKinesiologia->val_social_id);
         $valSensorial = ValSensorial::find($fichaKinesiologia->val_sensorial_id);
@@ -418,6 +423,13 @@ class FichaKinesiologiaController extends Controller
         $valSocial->puntaje_memoria = $request->input('puntaje_memoria');
         $valSocial->coment_memoria = $request->input('coment_memoria');
         $valSocial->save();
+
+        } catch (Exception $e) {
+
+            //procedimiento en caso de reportar errores
+            return view('area-medica.ficha-evaluacion-inicial.Error');
+        }
+        return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('id')));
 
     }
 
