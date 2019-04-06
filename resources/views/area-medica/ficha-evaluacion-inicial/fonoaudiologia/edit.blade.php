@@ -78,7 +78,7 @@
                                 <div class="page-header">
                                     <h1 class="pull-left">
                                         <i class="fa fa-pencil-square-o"></i>
-                                        <span>Evaluación Inicial Fonoaudiologia</span>
+                                        <span>Evaluación Inicial Fonoaudiologia: {{$persona->nombreCompleto()}}</span>
                                     </h1>
                                     <div class="pull-right">
                                         <ul class="breadcrumb">

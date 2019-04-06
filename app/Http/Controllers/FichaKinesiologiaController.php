@@ -259,7 +259,10 @@ class FichaKinesiologiaController extends Controller
      */
     public function edit($id)
     {
-        $fichaKinesiologia = FichaKinesiologia::find($id);
+        $fichaId=$id;
+        $fichaKinesiologia = FichaKinesiologia::find($fichaId);
+
+        $id=$fichaKinesiologia->beneficiario_id;
 
         if($fichaKinesiologia == null){
             return view('area-medica.ficha-evaluacion-inicial.Error');
@@ -328,7 +331,7 @@ class FichaKinesiologiaController extends Controller
         }
 
         try {
-        $fichaKinesiologia = FichaKinesiologia::find($request->input('id'));
+        $fichaKinesiologia = FichaKinesiologia::find($request->input('fichaId'));
         $valSocial = ValSocial::find($fichaKinesiologia->val_social_id);
         $valSensorial = ValSensorial::find($fichaKinesiologia->val_sensorial_id);
         $valMovilidad = ValMovilidad::find($fichaKinesiologia->val_movilidad_id);
@@ -429,7 +432,7 @@ class FichaKinesiologiaController extends Controller
             //procedimiento en caso de reportar errores
             return view('area-medica.ficha-evaluacion-inicial.Error');
         }
-        return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('beneficiario_id')));
+        return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('id')));
 
     }
 
