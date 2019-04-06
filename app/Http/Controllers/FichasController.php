@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Beneficiario;
 use App\FichaEducacion;
 use App\FichaFonoaudiologia;
 use App\FichaKinesiologia;
@@ -97,6 +98,7 @@ class FichasController extends Controller
                 $estado = $fichasEducacion->first()->estado;
             }
         }
+        $persona = Beneficiario::find($idBeneficiario);
 
         return view('area-medica.ficha-evaluacion-inicial.fichas.listaFichas')
             ->with(compact('estado'))
@@ -108,6 +110,7 @@ class FichasController extends Controller
             ->with(compact('fichasTaller'))
             ->with(compact('idBeneficiario'))
             ->with(compact('idUsuario'))
-            ->with(compact('tipoFuncionario'));
+            ->with(compact('tipoFuncionario'))
+            ->with(compact('persona'));
     }
 }

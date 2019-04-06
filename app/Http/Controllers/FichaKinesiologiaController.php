@@ -257,14 +257,11 @@ class FichaKinesiologiaController extends Controller
      * @param int $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($fichaId)
     {
-        $fichaId=$id;
         $fichaKinesiologia = FichaKinesiologia::find($fichaId);
 
-        $id=$fichaKinesiologia->beneficiario_id;
-
-        if($fichaKinesiologia == null){
+        if ($fichaKinesiologia == null) {
             return view('area-medica.ficha-evaluacion-inicial.Error');
         }
 
@@ -277,8 +274,6 @@ class FichaKinesiologiaController extends Controller
         }
 
         $persona = Beneficiario::find($fichaKinesiologia->beneficiario_id);
-
-
         $funcionario = Funcionario::find($fichaKinesiologia->funcionario_id);
 
         $valSocial = ValSocial::find($fichaKinesiologia->val_social_id);
@@ -294,7 +289,6 @@ class FichaKinesiologiaController extends Controller
 
         return view('area-medica.ficha-evaluacion-inicial.kinesiologia.edit')
             ->with(compact('fichaKinesiologia'))
-            ->with(compact('id'))
             ->with(compact('persona'))
             ->with(compact('valSocial'))
             ->with(compact('valSensorial'))
@@ -312,12 +306,11 @@ class FichaKinesiologiaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param int $id
+     * @param int $request
      * @return Response
      */
     public function update(Request $request)
     {
-
 
         // Validate Fields
         $this->validate($request, $this->rules($request));
@@ -331,101 +324,101 @@ class FichaKinesiologiaController extends Controller
         }
 
         try {
-        $fichaKinesiologia = FichaKinesiologia::find($request->input('fichaId'));
-        $valSocial = ValSocial::find($fichaKinesiologia->val_social_id);
-        $valSensorial = ValSensorial::find($fichaKinesiologia->val_sensorial_id);
-        $valMovilidad = ValMovilidad::find($fichaKinesiologia->val_movilidad_id);
-        $valMotora = ValMotora::find($fichaKinesiologia->val_motora_id);
-        $valEvaluacion = ValEvaluacion::find($fichaKinesiologia->val_evaluacion_id);
-        $valDeambulacion = ValDeambulacion::find($fichaKinesiologia->val_deambulacion_id);
-        $valControlEsfinter = ValControlEsfinter::find($fichaKinesiologia->val_control_esfinter_id);
-        $valComCog = ValComCog::find($fichaKinesiologia->val_com_cog_id);
-        $valAutocuidado = ValAutocuidado::find($fichaKinesiologia->val_autocuidado_id);
-        $antecedentesMorbidos = AntecedentesMorbidos::find($fichaKinesiologia->antecedentes_morbidos_id);
+            $fichaKinesiologia = FichaKinesiologia::find($request->input('fichaId'));
+            $valSocial = ValSocial::find($fichaKinesiologia->val_social_id);
+            $valSensorial = ValSensorial::find($fichaKinesiologia->val_sensorial_id);
+            $valMovilidad = ValMovilidad::find($fichaKinesiologia->val_movilidad_id);
+            $valMotora = ValMotora::find($fichaKinesiologia->val_motora_id);
+            $valEvaluacion = ValEvaluacion::find($fichaKinesiologia->val_evaluacion_id);
+            $valDeambulacion = ValDeambulacion::find($fichaKinesiologia->val_deambulacion_id);
+            $valControlEsfinter = ValControlEsfinter::find($fichaKinesiologia->val_control_esfinter_id);
+            $valComCog = ValComCog::find($fichaKinesiologia->val_com_cog_id);
+            $valAutocuidado = ValAutocuidado::find($fichaKinesiologia->val_autocuidado_id);
+            $antecedentesMorbidos = AntecedentesMorbidos::find($fichaKinesiologia->antecedentes_morbidos_id);
 
-        $fichaKinesiologia->motivo_consulta = $request->input('motivo_consulta');
-        $fichaKinesiologia->situacion_laboral = $request->input('situacion_laboral');
-        $fichaKinesiologia->situacion_familiar = $request->input('situacion_familiar');
-        $fichaKinesiologia->asiste_centro_rhb = $request->input('asiste_centro_rhb');
-        $fichaKinesiologia->save();
+            $fichaKinesiologia->motivo_consulta = $request->input('motivo_consulta');
+            $fichaKinesiologia->situacion_laboral = $request->input('situacion_laboral');
+            $fichaKinesiologia->situacion_familiar = $request->input('situacion_familiar');
+            $fichaKinesiologia->asiste_centro_rhb = $request->input('asiste_centro_rhb');
+            $fichaKinesiologia->save();
 
-        $antecedentesMorbidos->pat_concom = $request->input('pat_concom');
-        $antecedentesMorbidos->alergias = $request->input('alergias');
-        $antecedentesMorbidos->medicamentos = $request->input('medicamentos');
-        $antecedentesMorbidos->ant_quir = $request->input('ant_quir');
-        $antecedentesMorbidos->aparatos = $request->input('aparatos');
-        $antecedentesMorbidos->fuma_sn = $request->input('fuma_sn');
-        $antecedentesMorbidos->alcohol_sn = $request->input('alcohol_sn');
-        $antecedentesMorbidos->act_fisica_sn = $request->input('act_fisica_sn');
-        $antecedentesMorbidos->save();
+            $antecedentesMorbidos->pat_concom = $request->input('pat_concom');
+            $antecedentesMorbidos->alergias = $request->input('alergias');
+            $antecedentesMorbidos->medicamentos = $request->input('medicamentos');
+            $antecedentesMorbidos->ant_quir = $request->input('ant_quir');
+            $antecedentesMorbidos->aparatos = $request->input('aparatos');
+            $antecedentesMorbidos->fuma_sn = $request->input('fuma_sn');
+            $antecedentesMorbidos->alcohol_sn = $request->input('alcohol_sn');
+            $antecedentesMorbidos->act_fisica_sn = $request->input('act_fisica_sn');
+            $antecedentesMorbidos->save();
 
-        $valAutocuidado->puntaje_alimentacion = $request->input('puntaje_alimentacion');
-        $valAutocuidado->coment_alimentacion = $request->input('coment_alimentacion');
-        $valAutocuidado->puntaje_arreglo_pers = $request->input('puntaje_arreglo_pers');
-        $valAutocuidado->coment_arreglo_pers = $request->input('coment_arreglo_pers');
-        $valAutocuidado->puntaje_bano = $request->input('puntaje_bano');
-        $valAutocuidado->coment_bano = $request->input('coment_bano');
-        $valAutocuidado->puntaje_vest_sup = $request->input('puntaje_vest_sup');
-        $valAutocuidado->coment_vest_sup = $request->input('coment_vest_sup');
-        $valAutocuidado->puntaje_vest_inf = $request->input('puntaje_vest_inf');
-        $valAutocuidado->coment_vest_inf = $request->input('coment_vest_inf');
-        $valAutocuidado->puntaje_aseo_pers = $request->input('puntaje_aseo_pers');
-        $valAutocuidado->coment_aseo_pers = $request->input('coment_aseo_pers');
-        $valAutocuidado->save();
+            $valAutocuidado->puntaje_alimentacion = $request->input('puntaje_alimentacion');
+            $valAutocuidado->coment_alimentacion = $request->input('coment_alimentacion');
+            $valAutocuidado->puntaje_arreglo_pers = $request->input('puntaje_arreglo_pers');
+            $valAutocuidado->coment_arreglo_pers = $request->input('coment_arreglo_pers');
+            $valAutocuidado->puntaje_bano = $request->input('puntaje_bano');
+            $valAutocuidado->coment_bano = $request->input('coment_bano');
+            $valAutocuidado->puntaje_vest_sup = $request->input('puntaje_vest_sup');
+            $valAutocuidado->coment_vest_sup = $request->input('coment_vest_sup');
+            $valAutocuidado->puntaje_vest_inf = $request->input('puntaje_vest_inf');
+            $valAutocuidado->coment_vest_inf = $request->input('coment_vest_inf');
+            $valAutocuidado->puntaje_aseo_pers = $request->input('puntaje_aseo_pers');
+            $valAutocuidado->coment_aseo_pers = $request->input('coment_aseo_pers');
+            $valAutocuidado->save();
 
-        $valComCog->puntaje_expresion = $request->input('puntaje_expresion');
-        $valComCog->coment_expresion = $request->input('coment_expresion');
-        $valComCog->puntaje_comprension = $request->input('puntaje_comprension');
-        $valComCog->coment_comprension = $request->input('coment_comprension');
-        $valComCog->save();
+            $valComCog->puntaje_expresion = $request->input('puntaje_expresion');
+            $valComCog->coment_expresion = $request->input('coment_expresion');
+            $valComCog->puntaje_comprension = $request->input('puntaje_comprension');
+            $valComCog->coment_comprension = $request->input('coment_comprension');
+            $valComCog->save();
 
-        $valControlEsfinter->puntaje_control_vejiga = $request->input('puntaje_control_vejiga');
-        $valControlEsfinter->coment_control_vejiga = $request->input('coment_control_vejiga');
-        $valControlEsfinter->puntaje_control_intestino = $request->input('puntaje_control_intestino');
-        $valControlEsfinter->coment_control_intestino = $request->input('coment_control_intestino');
-        $valControlEsfinter->save();
+            $valControlEsfinter->puntaje_control_vejiga = $request->input('puntaje_control_vejiga');
+            $valControlEsfinter->coment_control_vejiga = $request->input('coment_control_vejiga');
+            $valControlEsfinter->puntaje_control_intestino = $request->input('puntaje_control_intestino');
+            $valControlEsfinter->coment_control_intestino = $request->input('coment_control_intestino');
+            $valControlEsfinter->save();
 
-        $valDeambulacion->puntaje_desp_caminando = $request->input('puntaje_desp_caminando');
-        $valDeambulacion->coment_desp_caminando = $request->input('coment_desp_caminando');
-        $valDeambulacion->puntaje_escaleras = $request->input('puntaje_escaleras');
-        $valDeambulacion->coment_escaleras = $request->input('coment_escaleras');
-        $valDeambulacion->save();
+            $valDeambulacion->puntaje_desp_caminando = $request->input('puntaje_desp_caminando');
+            $valDeambulacion->coment_desp_caminando = $request->input('coment_desp_caminando');
+            $valDeambulacion->puntaje_escaleras = $request->input('puntaje_escaleras');
+            $valDeambulacion->coment_escaleras = $request->input('coment_escaleras');
+            $valDeambulacion->save();
 
-        $valEvaluacion->conexion_medio = $request->input('conexion_medio');
-        $valEvaluacion->nivel_cognitivo_apar = $request->input('nivel_cognitivo_apar');
-        $valEvaluacion->save();
+            $valEvaluacion->conexion_medio = $request->input('conexion_medio');
+            $valEvaluacion->nivel_cognitivo_apar = $request->input('nivel_cognitivo_apar');
+            $valEvaluacion->save();
 
-        $valMotora->rom = $request->input('rom');
-        $valMotora->fm = $request->input('fm');
-        $valMotora->tono = $request->input('tono');
-        $valMotora->dolor = $request->input('dolor');
-        $valMotora->hab_motrices = $request->input('hab_motrices');
-        $valMotora->equilibrio = $request->input('equilibrio');
-        $valMotora->coordinacion = $request->input('coordinacion');
-        $valMotora->save();
+            $valMotora->rom = $request->input('rom');
+            $valMotora->fm = $request->input('fm');
+            $valMotora->tono = $request->input('tono');
+            $valMotora->dolor = $request->input('dolor');
+            $valMotora->hab_motrices = $request->input('hab_motrices');
+            $valMotora->equilibrio = $request->input('equilibrio');
+            $valMotora->coordinacion = $request->input('coordinacion');
+            $valMotora->save();
 
-        $valMovilidad->puntaje_trans_cama_silla = $request->input('puntaje_trans_cama_silla');
-        $valMovilidad->coment_trans_cama_silla = $request->input('coment_trans_cama_silla');
-        $valMovilidad->puntaje_traslado_bano = $request->input('puntaje_traslado_bano');
-        $valMovilidad->coment_traslado_bano = $request->input('coment_traslado_bano');
-        $valMovilidad->puntaje_traslado_ducha = $request->input('puntaje_traslado_ducha');
-        $valMovilidad->coment_traslado_ducha = $request->input('coment_traslado_ducha');
-        $valMovilidad->save();
+            $valMovilidad->puntaje_trans_cama_silla = $request->input('puntaje_trans_cama_silla');
+            $valMovilidad->coment_trans_cama_silla = $request->input('coment_trans_cama_silla');
+            $valMovilidad->puntaje_traslado_bano = $request->input('puntaje_traslado_bano');
+            $valMovilidad->coment_traslado_bano = $request->input('coment_traslado_bano');
+            $valMovilidad->puntaje_traslado_ducha = $request->input('puntaje_traslado_ducha');
+            $valMovilidad->coment_traslado_ducha = $request->input('coment_traslado_ducha');
+            $valMovilidad->save();
 
-        $valSensorial->visual = $request->input('visual');
-        $valSensorial->auditivo = $request->input('auditivo');
-        $valSensorial->tactil = $request->input('tactil');
-        $valSensorial->propioceptivo = $request->input('propioceptivo');
-        $valSensorial->vestibular = $request->input('vestibular');
-        $valSensorial->save();
+            $valSensorial->visual = $request->input('visual');
+            $valSensorial->auditivo = $request->input('auditivo');
+            $valSensorial->tactil = $request->input('tactil');
+            $valSensorial->propioceptivo = $request->input('propioceptivo');
+            $valSensorial->vestibular = $request->input('vestibular');
+            $valSensorial->save();
 
-        $valSocial->puntaje_int_social = $request->input('puntaje_int_social');
-        $valSocial->coment_int_social = $request->input('coment_int_social');
-        $valSocial->puntaje_sol_problemas = $request->input('puntaje_sol_problemas');
-        $valSocial->coment_sol_problemas = $request->input('coment_sol_problemas');
-        $valSocial->puntaje_memoria = $request->input('puntaje_memoria');
-        $valSocial->coment_memoria = $request->input('coment_memoria');
-        $valSocial->save();
+            $valSocial->puntaje_int_social = $request->input('puntaje_int_social');
+            $valSocial->coment_int_social = $request->input('coment_int_social');
+            $valSocial->puntaje_sol_problemas = $request->input('puntaje_sol_problemas');
+            $valSocial->coment_sol_problemas = $request->input('coment_sol_problemas');
+            $valSocial->puntaje_memoria = $request->input('puntaje_memoria');
+            $valSocial->coment_memoria = $request->input('coment_memoria');
+            $valSocial->save();
 
         } catch (Exception $e) {
 

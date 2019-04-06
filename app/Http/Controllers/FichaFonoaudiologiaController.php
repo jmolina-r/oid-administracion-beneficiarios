@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Funcionario;
 use Illuminate\Support\Facades\Auth;
 use App\AntecedentesMorbidosFamiliaresSiNoFono;
@@ -35,8 +36,8 @@ class FichaFonoaudiologiaController extends Controller
     {
         $ultimaFicha = FichaFonoaudiologia::where('beneficiario_id', $request->input('id'))->orderBy('created_at', $direction = 'des');
 
-        if($ultimaFicha->first() != null){
-            if($ultimaFicha->first()->estado == 'abierto'){
+        if ($ultimaFicha->first() != null) {
+            if ($ultimaFicha->first()->estado == 'abierto') {
                 return view('area-medica.ficha-evaluacion-inicial.Error');
             }
         }
@@ -44,17 +45,15 @@ class FichaFonoaudiologiaController extends Controller
         //dd($request->all());
         $this->validate($request, $this->rules($request));
 
-        if (Auth::check())
-        {
+        if (Auth::check()) {
             $idUsuario = Auth::user()->id;
-            $idFuncionario=Auth::user()->funcionario_id;
-            if($idFuncionario==null)
-            {
+            $idFuncionario = Auth::user()->funcionario_id;
+            if ($idFuncionario == null) {
                 return view('area-medica.ficha-evaluacion-inicial.Error');
             }
         }
 
-        try{
+        try {
             $habitosSiNoFono = new HabitosSiNoFono([
                 'mamadera' => $request->input('mamadera'),
                 'chupete' => $request->input('chupete'),
@@ -227,7 +226,7 @@ class FichaFonoaudiologiaController extends Controller
 
             $fichaFonoaudiologia = new FichaFonoaudiologia([
                 'motivo_consulta' => $request->input('motivo_consulta'),
-                'estado'=>'abierto',
+                'estado' => 'abierto',
                 'habitos_si_no_id' => $habitosSiNoFono->id,
                 'desarrollo_le_ed_id' => $desarrolloLenguajeEdades->id,
                 'antecedentes_peri_fono_id' => $antecedentesPerinatalesFono->id,
@@ -242,8 +241,7 @@ class FichaFonoaudiologiaController extends Controller
                 'beneficiario_id' => $request->input('id'),
             ]);
             $fichaFonoaudiologia->save();
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
 
             //procedimiento en caso de reportar errores
             return view('area-medica.ficha-evaluacion-inicial.Error');
@@ -273,12 +271,12 @@ class FichaFonoaudiologiaController extends Controller
     {
         $fichaFonoaudiologia = FichaFonoaudiologia::find($id);
 
-        if($fichaFonoaudiologia == null){
+        if ($fichaFonoaudiologia == null) {
             return view('area-medica.ficha-evaluacion-inicial.Error');
         }
 
         $persona = Beneficiario::find($fichaFonoaudiologia->beneficiario_id);
-        $funcionario=Funcionario::find($fichaFonoaudiologia->funcionario_id);
+        $funcionario = Funcionario::find($fichaFonoaudiologia->funcionario_id);
 
         $habitosSiNoFono = HabitosSiNoFono::find($fichaFonoaudiologia->habitos_si_no_id);
         $desarrolloLenguajeEdades = DesarrolloLenguajeEdades::find($fichaFonoaudiologia->desarrollo_le_ed_id);
@@ -303,11 +301,272 @@ class FichaFonoaudiologiaController extends Controller
             ->with(compact('parienteHogarFono'))
             ->with(compact('antecedentesPostnatalesFono'))
             ->with(compact('desarrolloSocialFono'))
-            ->with(compact('funcionario'))
-            ;
+            ->with(compact('funcionario'));
     }
 
-    private function rules(Request $request) {
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $fichaId
+     * @return Response
+     */
+    public function edit($fichaId)
+    {
+
+        $fichaFonoaudiologia = FichaFonoaudiologia::find($fichaId);
+
+        if ($fichaFonoaudiologia == null) {
+            return view('area-medica.ficha-evaluacion-inicial.Error');
+        }
+
+        //Validar que no se puedan editar fichas cerradas.
+        if ($fichaFonoaudiologia != null) {
+            if ($fichaFonoaudiologia->estado == 'cerrado') {
+                return view('area-medica.ficha-evaluacion-inicial.Error');
+            }
+        }
+
+        $persona = Beneficiario::find($fichaFonoaudiologia->beneficiario_id);
+        $funcionario = Funcionario::find($fichaFonoaudiologia->funcionario_id);
+
+        $habitosSiNoFono = HabitosSiNoFono::find($fichaFonoaudiologia->habitos_si_no_id);
+        $desarrolloLenguajeEdades = DesarrolloLenguajeEdades::find($fichaFonoaudiologia->desarrollo_le_ed_id);
+        $antecedentesPerinatalesFono = AntecedentesPerinatalesFono::find($fichaFonoaudiologia->antecedentes_peri_fono_id);
+        $antecedentesPrenatalesFono = AntecedentesPrenatalesFono::find($fichaFonoaudiologia->antecedentes_pre_fono_id);
+        $desarrolloPsicomotorEdades = DesarrolloPsicomotorEdades::find($fichaFonoaudiologia->desarrollo_psi_ed_id);
+        $desarrolloSocialFono = DesarrolloSocialFono::find($fichaFonoaudiologia->desarrollo_social_fono_id);
+        $antecedentesMorbidosSiNoFono = AntecedentesMorbidosSiNoFono::find($fichaFonoaudiologia->antecedentes_mor_fono_id);
+        $antecedentesMorbidosFamiliaresSiNoFono = AntecedentesMorbidosFamiliaresSiNoFono::find($fichaFonoaudiologia->antecedentes_mor_fa_fono_id);
+        $parienteHogarFono = ParienteHogarFono::find($fichaFonoaudiologia->parientes_hogar_fono_id);
+        $antecedentesPostnatalesFono = AntecedentesPostnatalesFono::find($fichaFonoaudiologia->antecedentes_pos_fono_id);
+
+        return view('area-medica.ficha-evaluacion-inicial.fonoaudiologia.edit')
+            ->with(compact('fichaFonoaudiologia'))
+            ->with(compact('persona'))
+            ->with(compact('habitosSiNoFono'))
+            ->with(compact('desarrolloLenguajeEdades'))
+            ->with(compact('antecedentesPerinatalesFono'))
+            ->with(compact('antecedentesPrenatalesFono'))
+            ->with(compact('desarrolloPsicomotorEdades'))
+            ->with(compact('antecedentesMorbidosSiNoFono'))
+            ->with(compact('antecedentesMorbidosFamiliaresSiNoFono'))
+            ->with(compact('parienteHogarFono'))
+            ->with(compact('antecedentesPostnatalesFono'))
+            ->with(compact('desarrolloSocialFono'))
+            ->with(compact('funcionario'));
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param int $request
+     * @return Response
+     */
+    public function update(Request $request)
+    {
+
+        //dd($request->all());
+        $this->validate($request, $this->rules($request));
+
+        if (Auth::check()) {
+            $idFuncionario = Auth::user()->funcionario_id;
+            if ($idFuncionario == null) {
+                return view('area-medica.ficha-evaluacion-inicial.Error');
+            }
+        }
+
+        try {
+            $fichaFonoaudiologia = FichaFonoaudiologia::find($request->input('fichaId'));
+            $habitosSiNoFono = HabitosSiNoFono::find($fichaFonoaudiologia->habitos_si_no_id);
+            $desarrolloLenguajeEdades = DesarrolloLenguajeEdades::find($fichaFonoaudiologia->desarrollo_le_ed_id);
+            $antecedentesPerinatalesFono = AntecedentesPerinatalesFono::find($fichaFonoaudiologia->antecedentes_peri_fono_id);
+            $antecedentesPrenatalesFono = AntecedentesPrenatalesFono::find($fichaFonoaudiologia->antecedentes_pre_fono_id);
+            $desarrolloPsicomotorEdades = DesarrolloPsicomotorEdades::find($fichaFonoaudiologia->desarrollo_psi_ed_id);
+            $desarrolloSocialFono = DesarrolloSocialFono::find($fichaFonoaudiologia->desarrollo_social_fono_id);
+            $antecedentesMorbidosSiNoFono = AntecedentesMorbidosSiNoFono::find($fichaFonoaudiologia->antecedentes_mor_fono_id);
+            $antecedentesMorbidosFamiliaresSiNoFono = AntecedentesMorbidosFamiliaresSiNoFono::find($fichaFonoaudiologia->antecedentes_mor_fa_fono_id);
+            $parienteHogarFono = ParienteHogarFono::find($fichaFonoaudiologia->parientes_hogar_fono_id);
+            $antecedentesPostnatalesFono = AntecedentesPostnatalesFono::find($fichaFonoaudiologia->antecedentes_pos_fono_id);
+
+
+            $fichaFonoaudiologia->motivo_consulta = $request->input('motivo_consulta');
+
+            $fichaFonoaudiologia->save();
+
+
+            $habitosSiNoFono->mamadera = $request->input('mamadera');
+            $habitosSiNoFono->chupete = $request->input('chupete');
+            $habitosSiNoFono->chupa_dedo = $request->input('chupa_dedo');
+            $habitosSiNoFono->come_solo_tipo = $request->input('come_solo_tipo');
+            $habitosSiNoFono->viste_solo = $request->input('viste_solo');
+            $habitosSiNoFono->boca_abierta_dia = $request->input('boca_abierta_dia');
+            $habitosSiNoFono->boca_abierta_noche = $request->input('boca_abierta_noche');
+            $habitosSiNoFono->save();
+
+
+            $desarrolloLenguajeEdades->balbuceo = $request->input('balbuceo');
+            $desarrolloLenguajeEdades->sonrio = $request->input('sonrio');
+            $desarrolloLenguajeEdades->primeras_palabras = $request->input('primeras_palabras');
+            $desarrolloLenguajeEdades->frases_dos_palabras = $request->input('frases_dos_palabras');
+            $desarrolloLenguajeEdades->oraciones = $request->input('oraciones');
+            $desarrolloLenguajeEdades->hablo_espo = $request->input('hablo_espo');
+            $desarrolloLenguajeEdades->siguio_inst = $request->input('siguio_inst');
+            $desarrolloLenguajeEdades->mira_ojos = $request->input('mira_ojos');
+            $desarrolloLenguajeEdades->mira_labios = $request->input('mira_labios');
+            $desarrolloLenguajeEdades->comunica_palabras = $request->input('comunica_palabras');
+            $desarrolloLenguajeEdades->comunica_jergas = $request->input('comunica_jergas');
+            $desarrolloLenguajeEdades->comunica_palabras_sueltas = $request->input('comunica_palabras_sueltas');
+            $desarrolloLenguajeEdades->comunica_gestos = $request->input('comunica_gestos');
+            $desarrolloLenguajeEdades->entiende_dice = $request->input('entiende_dice');
+            $desarrolloLenguajeEdades->desconocidos_entienden = $request->input('desconocidos_entienden');
+
+            $desarrolloLenguajeEdades->save();
+
+
+            $antecedentesPerinatalesFono->tipo_parto = $request->input('tipo_parto');
+            $antecedentesPerinatalesFono->suf_fetal = $request->input('suf_fetal');
+            $antecedentesPerinatalesFono->edad_gest = $request->input('edad_gest');
+            $antecedentesPerinatalesFono->lugar_naci = $request->input('lugar_naci');
+            $antecedentesPerinatalesFono->peso = $request->input('peso');
+            $antecedentesPerinatalesFono->talla = $request->input('talla');
+            $antecedentesPerinatalesFono->apgar = $request->input('apgar');
+            $antecedentesPerinatalesFono->comp_parto = $request->input('comp_parto');
+            $antecedentesPerinatalesFono->hospitalizaciones = $request->input('hospitalizaciones');
+            $antecedentesPerinatalesFono->otros_perinatales = $request->input('otros_perinatales');
+            $antecedentesPerinatalesFono->save();
+
+
+            $antecedentesPrenatalesFono->plan_embarazo = $request->input('plan_embarazo');
+            $antecedentesPrenatalesFono->acept_embarazo = $request->input('acept_embarazo');
+            $antecedentesPrenatalesFono->control_embarazo = $request->input('control_embarazo');
+            $antecedentesPrenatalesFono->ingesta_med = $request->input('ingesta_med');
+            $antecedentesPrenatalesFono->ingesta_oh_drogas = $request->input('ingesta_oh_drogas');
+            $antecedentesPrenatalesFono->consumo_cigarrillo = $request->input('consumo_cigarrillo');
+            $antecedentesPrenatalesFono->estado_emocional = $request->input('estado_emocional');
+            $antecedentesPrenatalesFono->enfermedades_embarazo = $request->input('enfermedades_embarazo');
+            $antecedentesPrenatalesFono->otros_prenatales = $request->input('otros_prenatales');
+            $antecedentesPrenatalesFono->save();
+
+
+            $desarrolloPsicomotorEdades->control_cabeza = $request->input('control_cabeza');
+            $desarrolloPsicomotorEdades->sento = $request->input('sento');
+            $desarrolloPsicomotorEdades->gateo = $request->input('gateo');
+            $desarrolloPsicomotorEdades->paro = $request->input('paro');
+            $desarrolloPsicomotorEdades->camino = $request->input('camino');
+            $desarrolloPsicomotorEdades->control_esf_diurno = $request->input('control_esf_diurno');
+            $desarrolloPsicomotorEdades->control_esf_nocturno = $request->input('control_esf_nocturno');
+            $desarrolloPsicomotorEdades->save();
+
+
+            $desarrolloSocialFono->respeta_normas = $request->input('respeta_normas');
+            $desarrolloSocialFono->comparte_juguetes = $request->input('comparte_juguetes');
+            $desarrolloSocialFono->juega_otros = $request->input('juega_otros');
+            $desarrolloSocialFono->carinoso = $request->input('carinoso');
+            $desarrolloSocialFono->berrinches = $request->input('berrinches');
+            $desarrolloSocialFono->frustra_facil = $request->input('frustra_facil');
+            $desarrolloSocialFono->irritable = $request->input('irritable');
+            $desarrolloSocialFono->agresivo = $request->input('agresivo');
+            $desarrolloSocialFono->peleador = $request->input('peleador');
+            $desarrolloSocialFono->intereses = $request->input('intereses');
+            $desarrolloSocialFono->observaciones_social = $request->input('observaciones_social');
+            $desarrolloSocialFono->save();
+
+
+            $antecedentesMorbidosSiNoFono->alergias_sn = $request->input('alergias_sn');
+            $antecedentesMorbidosSiNoFono->alergias_desc = $request->input('alergias_desc');
+            $antecedentesMorbidosSiNoFono->otitis_sn = $request->input('otitis_sn');
+            $antecedentesMorbidosSiNoFono->otitis_desc = $request->input('otitis_desc');
+            $antecedentesMorbidosSiNoFono->obesidad_sn = $request->input('obesidad_sn');
+            $antecedentesMorbidosSiNoFono->obesidad_desc = $request->input('obesidad_desc');
+            $antecedentesMorbidosSiNoFono->diabetes_sn = $request->input('diabetes_sn');
+            $antecedentesMorbidosSiNoFono->diabetes_desc = $request->input('diabetes_desc');
+            $antecedentesMorbidosSiNoFono->cirugias_sn = $request->input('cirugias_sn');
+            $antecedentesMorbidosSiNoFono->cirugias_desc = $request->input('cirugias_desc');
+            $antecedentesMorbidosSiNoFono->traumatis_sn = $request->input('traumatis_sn');
+            $antecedentesMorbidosSiNoFono->traumatis_desc = $request->input('traumatis_desc');
+            $antecedentesMorbidosSiNoFono->epilepsia_sn = $request->input('epilepsia_sn');
+            $antecedentesMorbidosSiNoFono->epilepsia_desc = $request->input('epilepsia_desc');
+            $antecedentesMorbidosSiNoFono->deficit_visual_sn = $request->input('deficit_visual_sn');
+            $antecedentesMorbidosSiNoFono->deficit_visual_desc = $request->input('deficit_visual_desc');
+            $antecedentesMorbidosSiNoFono->deficit_auditivo_sn = $request->input('deficit_auditivo_sn');
+            $antecedentesMorbidosSiNoFono->deficit_auditivo_desc = $request->input('deficit_auditivo_desc');
+            $antecedentesMorbidosSiNoFono->paralisis_cerebral_sn = $request->input('paralisis_cerebral_sn');
+            $antecedentesMorbidosSiNoFono->paralisis_cerebral_desc = $request->input('paralisis_cerebral_desc');
+            $antecedentesMorbidosSiNoFono->otros_morbidos = $request->input('otros_morbidos');
+            $antecedentesMorbidosSiNoFono->save();
+
+
+            $antecedentesMorbidosFamiliaresSiNoFono->diabetes_sn_mor_fa = $request->input('diabetes_sn_mor_fa');
+            $antecedentesMorbidosFamiliaresSiNoFono->hipertension_sn = $request->input('hipertension_sn');
+            $antecedentesMorbidosFamiliaresSiNoFono->epilepsia_sn_mor_fa = $request->input('epilepsia_sn_mor_fa');
+            $antecedentesMorbidosFamiliaresSiNoFono->deficiencia_mental_sn = $request->input('deficiencia_mental_sn');
+            $antecedentesMorbidosFamiliaresSiNoFono->autismo_sn = $request->input('autismo_sn');
+            $antecedentesMorbidosFamiliaresSiNoFono->trast_lenguaje_sn = $request->input('trast_lenguaje_sn');
+            $antecedentesMorbidosFamiliaresSiNoFono->trast_aprendizaje_sn = $request->input('trast_aprendizaje_sn');
+            $antecedentesMorbidosFamiliaresSiNoFono->trast_visuales_sn = $request->input('trast_visuales_sn');
+            $antecedentesMorbidosFamiliaresSiNoFono->trast_auditivos_sn = $request->input('trast_auditivos_sn');
+            $antecedentesMorbidosFamiliaresSiNoFono->trast_psiquiatricos_sn = $request->input('trast_psiquiatricos_sn');
+            $antecedentesMorbidosFamiliaresSiNoFono->save();
+
+
+            $parienteHogarFono->observaciones_parientes = $request->input('observaciones_parientes');
+            $parienteHogarFono->nombre1 = $request->input('nombre1');
+            $parienteHogarFono->parentesco1 = $request->input('parentesco1');
+            $parienteHogarFono->edad1 = $request->input('edad1');
+            $parienteHogarFono->escolaridad1 = $request->input('escolaridad1');
+            $parienteHogarFono->ocupacion1 = $request->input('ocupacion1');
+            $parienteHogarFono->nombre2 = $request->input('nombre2');
+            $parienteHogarFono->parentesco2 = $request->input('parentesco2');
+            $parienteHogarFono->edad2 = $request->input('edad2');
+            $parienteHogarFono->escolaridad2 = $request->input('escolaridad2');
+            $parienteHogarFono->ocupacion2 = $request->input('ocupacion2');
+            $parienteHogarFono->nombre3 = $request->input('nombre3');
+            $parienteHogarFono->parentesco3 = $request->input('parentesco3');
+            $parienteHogarFono->edad3 = $request->input('edad3');
+            $parienteHogarFono->escolaridad3 = $request->input('escolaridad3');
+            $parienteHogarFono->ocupacion3 = $request->input('ocupacion3');
+            $parienteHogarFono->nombre4 = $request->input('nombre4');
+            $parienteHogarFono->parentesco4 = $request->input('parentesco4');
+            $parienteHogarFono->edad4 = $request->input('edad4');
+            $parienteHogarFono->escolaridad4 = $request->input('escolaridad4');
+            $parienteHogarFono->ocupacion4 = $request->input('ocupacion4');
+            $parienteHogarFono->nombre5 = $request->input('nombre5');
+            $parienteHogarFono->parentesco5 = $request->input('parentesco5');
+            $parienteHogarFono->edad5 = $request->input('edad5');
+            $parienteHogarFono->escolaridad5 = $request->input('escolaridad5');
+            $parienteHogarFono->ocupacion5 = $request->input('ocupacion5');
+            $parienteHogarFono->nombre6 = $request->input('nombre6');
+            $parienteHogarFono->parentesco6 = $request->input('parentesco6');
+            $parienteHogarFono->edad6 = $request->input('edad6');
+            $parienteHogarFono->escolaridad6 = $request->input('escolaridad6');
+            $parienteHogarFono->ocupacion6 = $request->input('ocupacion6');
+
+            $parienteHogarFono->save();
+
+
+            $antecedentesPostnatalesFono->trat_post_parto = $request->input('trat_post_parto');
+            $antecedentesPostnatalesFono->tipo_alimenta = $request->input('tipo_alimenta');
+            $antecedentesPostnatalesFono->limite_edad_alimenta = $request->input('limite_edad_alimenta');
+            $antecedentesPostnatalesFono->operaciones_edad = $request->input('operaciones_edad');
+            $antecedentesPostnatalesFono->hospitalizaciones_edad = $request->input('hospitalizaciones_edad');
+            $antecedentesPostnatalesFono->observaciones_postnatales = $request->input('observaciones_postnatales');
+            $antecedentesPostnatalesFono->save();
+
+
+        } catch (Exception $e) {
+
+            //procedimiento en caso de reportar errores
+            return view('area-medica.ficha-evaluacion-inicial.Error');
+
+        }
+        return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('id')));
+
+
+    }
+
+    private function rules(Request $request)
+    {
         $rules = [
             'id' => 'required|exists:beneficiarios',
             'motivo_consulta' => 'nullable|max:200',
@@ -441,7 +700,6 @@ class FichaFonoaudiologiaController extends Controller
         ];
         return $rules;
     }
-
 
 
 }

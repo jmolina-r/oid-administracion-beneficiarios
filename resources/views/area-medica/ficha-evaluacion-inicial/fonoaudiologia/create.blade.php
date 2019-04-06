@@ -470,9 +470,9 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="edad_lactancia">¿Hasta qué edad duró la lactancia?</label>
+                                                                <label class="col-md-3 control-label" for="limite_edad_alimenta">¿Hasta qué edad duró la lactancia?</label>
                                                                 <div class="col-md-9">
-                                                                    <input class="form-control" id="edad_lactancia" name="edad_lactancia" value="{{ old('edad_lactancia') }}"  placeholder="">
+                                                                    <input class="form-control" id="limite_edad_alimenta" name="edad_lactancia" value="{{ old('limite_edad_alimenta') }}"  placeholder="">
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12 form-group">

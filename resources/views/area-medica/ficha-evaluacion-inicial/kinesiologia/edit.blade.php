@@ -143,7 +143,7 @@
                                                     <div class='step-content'>
                                                         <!-- STEP 1 -->
                                                         <div class='step-pane active' data-step='1'>
-                                                            <input id="id" name="id" type="hidden" value="{{$id}}">
+                                                            <input id="id" name="id" type="hidden" value="{{$persona->id}}">
                                                             <input id="fichaId" name="fichaId" type="hidden" value="{{$fichaKinesiologia->id}}">
                                                             <div class="col-md-12">
                                                                 <h3>Antecedentes Morbidos</h3>

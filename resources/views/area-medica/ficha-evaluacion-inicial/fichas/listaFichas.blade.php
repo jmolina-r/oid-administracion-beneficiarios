@@ -60,7 +60,7 @@
                                 <div class='page-header'>
                                     <h1 class='pull-left'>
                                         <i class='fa fa-pencil-square-o'></i>
-                                        <span>Lista de Fichas de Evaluación Inicial</span>
+                                        <span>Lista de Fichas de Evaluación Inicial: {{$persona->nombreCompleto()}}</span>
                                     </h1>
                                     <div class='pull-right'>
                                         <ul class='breadcrumb'>
