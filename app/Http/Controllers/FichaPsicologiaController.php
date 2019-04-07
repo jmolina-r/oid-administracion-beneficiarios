@@ -230,7 +230,9 @@ class FichaPsicologiaController extends Controller
         try {
 
             $fichaPsicologia->motivo_consulta = $request->input('motivo_consulta');
-            $fichaPsicologia->genograma = $hashName;
+            if($hashName!=null) {
+                $fichaPsicologia->genograma = $hashName;
+            }
             $fichaPsicologia->save();
 
             $antecedentesMedicos->enfermedades_familiares = $request->input('enfermedades_familiares');
