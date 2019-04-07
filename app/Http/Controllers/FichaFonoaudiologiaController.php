@@ -28,8 +28,10 @@ class FichaFonoaudiologiaController extends Controller
      */
     public function create($id)
     {
+        $persona = Beneficiario::find($id);
         return view('area-medica.ficha-evaluacion-inicial.fonoaudiologia.create')
-            ->with(compact('id'));
+            ->with(compact('id'))
+            ->with(compact('persona'));
     }
 
     public function postFono(Request $request)
@@ -569,7 +571,7 @@ class FichaFonoaudiologiaController extends Controller
     {
         $rules = [
             'id' => 'required|exists:beneficiarios',
-            'motivo_consulta' => 'nullable|max:200',
+            'motivo_consulta' => 'nullable|max:20000',
             'mamadera' => 'nullable|max:200',
             'chupete' => 'nullable|max:200',
             'chupa_dedo' => 'nullable|max:200',
@@ -628,7 +630,7 @@ class FichaFonoaudiologiaController extends Controller
             'agresivo' => 'nullable|max:200',
             'peleador' => 'nullable|max:200',
             'intereses' => 'nullable|max:200',
-            'observaciones_social' => 'nullable|max:200',
+            'observaciones_social' => 'nullable|max:20000',
             'alergias_sn' => 'nullable|max:200',
             'alergias_desc' => 'nullable|max:200',
             'obesidad_sn' => 'nullable|max:200',
@@ -660,7 +662,7 @@ class FichaFonoaudiologiaController extends Controller
             'trast_visuales_sn' => 'nullable|max:200',
             'trast_auditivos_sn' => 'nullable|max:200',
             'trast_psiquiatricos_sn' => 'nullable|max:200',
-            'observaciones_parientes' => 'nullable|max:200',
+            'observaciones_parientes' => 'nullable|max:20000',
             'nombre1' => 'nullable|max:200',
             'parentesco1' => 'nullable|max:200',
             'edad1' => 'nullable|max:200',
@@ -695,7 +697,7 @@ class FichaFonoaudiologiaController extends Controller
             'tipo_alimenta' => 'nullable|max:200',
             'limite_edad_alimenta' => 'nullable|max:200',
             'operaciones_edad' => 'nullable|max:200',
-            'observaciones_postnatales' => 'nullable|max:200',
+            'observaciones_postnatales' => 'nullable|max:20000',
             'hospitalizaciones_edad' => 'nullable|max:200',
         ];
         return $rules;

@@ -40,8 +40,11 @@ class FichaKinesiologiaController extends Controller
      */
     public function create($id)
     {
+        $persona = Beneficiario::find($id);
+
         return view('area-medica.ficha-evaluacion-inicial.kinesiologia.create')
-            ->with(compact('id'));
+            ->with(compact('id'))
+            ->with(compact('persona'));
     }
 
     /**
@@ -502,7 +505,7 @@ class FichaKinesiologiaController extends Controller
             'coment_sol_problemas' => 'nullable|max:200',
             'puntaje_memoria' => 'nullable|numeric|between:1,7',
             'coment_memoria' => 'nullable|max:200',
-            'motivo_consulta' => 'nullable|max:200',
+            'motivo_consulta' => 'nullable|max:20000',
             'situacion_laboral' => 'nullable|max:200',
             'situacion_familiar' => 'nullable|max:200',
             'asiste_centro_rhb' => 'nullable|max:200',

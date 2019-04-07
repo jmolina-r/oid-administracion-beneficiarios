@@ -88,7 +88,7 @@
                                 <div class="page-header">
                                     <h1 class="pull-left">
                                         <i class="fa fa-pencil-square-o"></i>
-                                        <span>Evaluación Inicial Psicología</span>
+                                        <span>Evaluación Inicial Psicología: {{$persona->nombreCompleto()}}</span>
                                     </h1>
                                     <div class="pull-right">
                                         <ul class="breadcrumb">
@@ -147,15 +147,16 @@
                                                     </div>
                                                 @endif
                                                 <hr class='hr-normal'>
-                                                <form role="form" id="formulario_registro" enctype="multipart/form-data" action="{{route('area-medica.ficha-evaluacion-inicial.psicologia.store')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
+                                                <form role="form" id="formulario_registro" enctype="multipart/form-data" action="{{route('area-medica.ficha-evaluacion-inicial.psicologia.update')}}" accept-charset="UTF-8" style="margin-bottom: 0;" method="post">
                                                     <div class='step-content'>
                                                         <!-- STEP 1 -->
                                                         <div class='step-pane active' data-step='1'>
-                                                            <input id="id" name="id" type="hidden" value="{{$id}}">
+                                                            <input id="id" name="id" type="hidden" value="{{$persona->id}}">
+                                                            <input id="fichaId" name="fichaId" type="hidden" value="{{$fichaPsicologia->id}}">
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="motivo_consulta">Motivo consulta</label>
                                                                 <div class="controls">
-                                                                    <textarea required name="motivo_consulta" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Motivo Consulta' rows='3' style='margin-bottom:10px;' value="{{ old('motivo_consulta') }}" id="inputDiagnostico" maxlength="200"></textarea>
+                                                                    <textarea required name="motivo_consulta" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Motivo Consulta' rows='3' style='margin-bottom:10px;' value="{{ $fichaPsicologia->motivo_consulta}}" id="inputDiagnostico" maxlength="200">{{$fichaPsicologia->motivo_consulta}}</textarea>
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
@@ -166,14 +167,14 @@
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="enfermedades_familiares">Enfermedades Familiares (Psiquiátricas, neurológicas, cognitivas, físicas, etc.)</label>
                                                                 <div class="controls">
-                                                                    <textarea name="enfermedades_familiares" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Enfermedades Familiares (Psiquiátricas, neurológicas, cognitivas, físicas, etc.)' rows='3' style='margin-bottom:10px;' value="{{ old('enfermedades_familiares') }}" id="inputDiagnostico" maxlength="200"></textarea>
+                                                                    <textarea name="enfermedades_familiares" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Enfermedades Familiares (Psiquiátricas, neurológicas, cognitivas, físicas, etc.)' rows='3' style='margin-bottom:10px;' value="{{ $antecedentesMedicos->enfermedades_familiares}}" id="inputDiagnostico" maxlength="200">{{$antecedentesMedicos->enfermedades_familiares}}</textarea>
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="medicamentos">Medicamentos</label>
                                                                 <div class="controls">
-                                                                    <textarea name="medicamentos" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Medicamentos' rows='3' style='margin-bottom:10px;' value="{{ old('medicamentos') }}" id="inputDiagnostico" maxlength="200"></textarea>
+                                                                    <textarea name="medicamentos" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='Medicamentos' rows='3' style='margin-bottom:10px;' value="{{ $antecedentesMedicos->medicamentos  }}" id="inputDiagnostico" maxlength="200">{{$antecedentesMedicos->medicamentos }}</textarea>
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
@@ -190,55 +191,55 @@
                                                                 <div class="col-md-12">
                                                                     <label class="col-md-3 control-label" for="tratamientos_neurologo_nombre">Neurólogo</label>
                                                                     <div class="col-md-3 controls">
-                                                                        <input class="form-control onlyletters" id="nombre" name="tratamientos_neurologo_nombre" value="{{ old('tratamientos_neurologo_nombre') }}"  placeholder="Nombre" type="text" maxlength="200">
+                                                                        <input class="form-control onlyletters" id="nombre" name="tratamientos_neurologo_nombre" value="{{$antecedentesMedicos->tratamientos_neurologo_nombre }}"  placeholder="Nombre" type="text" maxlength="200">
                                                                     </div>
                                                                     <div class="col-md-6 controls">
-                                                                        <input class="form-control" id="sesiones" name="tratamientos_neurologo_sesiones" value="{{ old('tratamientos_neurologo_sesiones') }}"  placeholder="Sesiones" type="text" maxlength="200">
+                                                                        <input class="form-control" id="sesiones" name="tratamientos_neurologo_sesiones" value="{{$antecedentesMedicos->tratamientos_neurologo_sesiones }}"  placeholder="Sesiones" type="text" maxlength="200">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-12">
                                                                     <label class="col-md-3 control-label" for="tratamientos_psiquiatra_nombre">Psiquiatra</label>
                                                                     <div class="col-md-3 controls">
-                                                                        <input class="form-control onlyletters" id="nombre" name="tratamientos_psiquiatra_nombre" value="{{ old('tratamientos_psiquiatra_nombre') }}"  placeholder="Nombre" type="text" maxlength="200">
+                                                                        <input class="form-control onlyletters" id="nombre" name="tratamientos_psiquiatra_nombre" value="{{$antecedentesMedicos->tratamientos_psiquiatra_nombre }}"  placeholder="Nombre" type="text" maxlength="200">
                                                                     </div>
                                                                     <div class="col-md-6 controls">
-                                                                        <input class="form-control" id="sesiones" name="tratamientos_psiquiatra_sesiones" value="{{ old('tratamientos_psiquiatra_sesiones') }}"  placeholder="Sesiones" type="text" maxlength="200">
+                                                                        <input class="form-control" id="sesiones" name="tratamientos_psiquiatra_sesiones" value="{{$antecedentesMedicos->tratamientos_psiquiatra_sesiones }}"  placeholder="Sesiones" type="text" maxlength="200">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-12">
                                                                     <label class="col-md-3 control-label" for="tratamientos_fonoaudiologo_nombre">Fonoaudiólogo</label>
                                                                     <div class="col-md-3 controls">
-                                                                        <input class="form-control onlyletters" id="nombre" name="tratamientos_fonoaudiologo_nombre" value="{{ old('tratamientos_fonoaudiologo_nombre') }}"  placeholder="Nombre" type="text" maxlength="200">
+                                                                        <input class="form-control onlyletters" id="nombre" name="tratamientos_fonoaudiologo_nombre" value="{{$antecedentesMedicos->tratamientos_fonoaudiologo_nombre }}"  placeholder="Nombre" type="text" maxlength="200">
                                                                     </div>
                                                                     <div class="col-md-6 controls">
-                                                                        <input class="form-control" id="sesiones" name="tratamientos_fonoaudiologo_sesiones" value="{{ old('tratamientos_fonoaudiologo_sesiones') }}"  placeholder="Sesiones" type="text" maxlength="200">
+                                                                        <input class="form-control" id="sesiones" name="tratamientos_fonoaudiologo_sesiones" value="{{$antecedentesMedicos->tratamientos_fonoaudiologo_sesiones }}"  placeholder="Sesiones" type="text" maxlength="200">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-12">
                                                                     <label class="col-md-3 control-label" for="tratamientos_ocupacional_nombre">Terapeuta Ocupacional</label>
                                                                     <div class="col-md-3 controls">
-                                                                        <input class="form-control onlyletters" id="nombre" name="tratamientos_ocupacional_nombre" value="{{ old('tratamientos_ocupacional_nombre') }}"  placeholder="Nombre" type="text" maxlength="200">
+                                                                        <input class="form-control onlyletters" id="nombre" name="tratamientos_ocupacional_nombre" value="{{$antecedentesMedicos->tratamientos_ocupacional_nombre }}"  placeholder="Nombre" type="text" maxlength="200">
                                                                     </div>
                                                                     <div class="col-md-6 controls">
-                                                                        <input class="form-control" id="sesiones" name="tratamientos_ocupacional_sesiones" value="{{ old('tratamientos_ocupacional_sesiones') }}"  placeholder="Sesiones" type="text" maxlength="200">
+                                                                        <input class="form-control" id="sesiones" name="tratamientos_ocupacional_sesiones" value="{{$antecedentesMedicos->tratamientos_ocupacional_sesiones }}"  placeholder="Sesiones" type="text" maxlength="200">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-12">
                                                                     <label class="col-md-3 control-label" for="tratamientos_neurologo_nombre">Kinesiólogo</label>
                                                                     <div class="col-md-3 controls">
-                                                                        <input class="form-control onlyletters" id="nombre" name="tratamientos_kinesiologo_nombre" value="{{ old('tratamientos_kinesiologo_nombre') }}"  placeholder="Nombre" type="text" maxlength="200">
+                                                                        <input class="form-control onlyletters" id="nombre" name="tratamientos_kinesiologo_nombre" value="{{$antecedentesMedicos->tratamientos_kinesiologo_nombre }}"  placeholder="Nombre" type="text" maxlength="200">
                                                                     </div>
                                                                     <div class="col-md-6 controls">
-                                                                        <input class="form-control" id="sesiones" name="tratamientos_kinesiologo_sesiones" value="{{ old('tratamientos_kinesiologo_sesiones') }}"  placeholder="Sesiones" type="text" maxlength="200">
+                                                                        <input class="form-control" id="sesiones" name="tratamientos_kinesiologo_sesiones" value="{{$antecedentesMedicos->tratamientos_kinesiologo_sesiones }}"  placeholder="Sesiones" type="text" maxlength="200">
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-12">
                                                                     <label class="col-md-3 control-label" for="tratamientos_psicologo_nombre">Psicólogo</label>
                                                                     <div class="col-md-3 controls">
-                                                                        <input class="form-control onlyletters" id="nombre" name="tratamientos_psicologo_nombre" value="{{ old('tratamientos_psicologo_nombre') }}"  placeholder="Nombre" type="text" maxlength="200">
+                                                                        <input class="form-control onlyletters" id="nombre" name="tratamientos_psicologo_nombre" value="{{$antecedentesMedicos->tratamientos_psicologo_nombre }}"  placeholder="Nombre" type="text" maxlength="200">
                                                                     </div>
                                                                     <div class="col-md-6 controls">
-                                                                        <input class="form-control" id="sesiones" name="tratamientos_psicologo_sesiones" value="{{ old('tratamientos_psicologo_sesiones') }}"  placeholder="Sesiones" type="text" maxlength="200">
+                                                                        <input class="form-control" id="sesiones" name="tratamientos_psicologo_sesiones" value="{{$antecedentesMedicos->tratamientos_psicologo_sesiones }}"  placeholder="Sesiones" type="text" maxlength="200">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -252,28 +253,28 @@
                                                             <div class="col-md-8 form-group">
                                                                 <label class="control-label" for="nombre_madre">Nombre</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control onlyletters" name="nombre_madre" value="{{ old('nombre_madre') }}"  placeholder="Nombre" type="text" maxlength="200" >
+                                                                    <input class="form-control onlyletters" name="nombre_madre" value="{{$antecedentesFamiliares->nombre_madre}}"  placeholder="Nombre" type="text" maxlength="200" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <label class="control-label" for="edad_madre">Edad</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control onlynumbers" name="edad_madre" value="{{ old('edad_madre') }}"  placeholder="Edad" type="text" maxlength="3" >
+                                                                    <input class="form-control onlynumbers" name="edad_madre" value="{{$antecedentesFamiliares->edad_madre}}"  placeholder="Edad" type="text" maxlength="3" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-8 form-group">
                                                                 <label class="control-label" for="rut_madre">RUT</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" pattern="\d{3,8}-[\d|kK]{1}" name="rut_madre" value="{{ old('rut_madre') }}"  placeholder="RUT" type="text" maxlength="15" >
+                                                                    <input class="form-control" pattern="\d{3,8}-[\d|kK]{1}" name="rut_madre" value="{{$antecedentesFamiliares->rut_madre}}"  placeholder="RUT" type="text" maxlength="15" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <label class="control-label" for="fecha_nacimiento_madre">Fecha de Nacimiento</label>
                                                                 <div class='input-group' id='fecha_nacimiento'>
-                                                                    <input class="form-control datepicker" data-format='DD/MM/YYYY' name="fecha_nacimiento_madre" value="{{ old('fecha_nacimiento_madre') }}"  placeholder="Fecha de Nacimiento" type="text" maxlength="50" >
+                                                                    <input class="form-control datepicker" data-format='DD/MM/YYYY' name="fecha_nacimiento_madre" value="{{$antecedentesFamiliares->fecha_nacimiento_madre}}"  placeholder="Fecha de Nacimiento" type="text" maxlength="50" >
                                                                     <span class='input-group-addon'>
                                                                         <span class='fa fa-calendar'></span>
                                                                     </span>
@@ -283,28 +284,28 @@
                                                             <div class="col-md-8 form-group">
                                                                 <label class="control-label" for="escolaridad_madre">Escolaridad</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" name="escolaridad_madre" value="{{ old('escolaridad_madre') }}"  placeholder="Escolaridad" type="text" maxlength="200" >
+                                                                    <input class="form-control" name="escolaridad_madre" value="{{$antecedentesFamiliares->escolaridad_madre}}"  placeholder="Escolaridad" type="text" maxlength="200" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <label class="control-label" for="telefono_madre">Telefono</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control onlynumbers" name="telefono_madre" value="{{ old('telefono_madre') }}"  placeholder="Telefono" type="text" maxlength="12" >
+                                                                    <input class="form-control onlynumbers" name="telefono_madre" value="{{$antecedentesFamiliares->telefono_madre}}"  placeholder="Telefono" type="text" maxlength="12" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="ocupacion_madre">Ocupación</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" name="ocupacion_madre" value="{{ old('ocupacion_madre') }}"  placeholder="Ocupación" type="text" maxlength="200" >
+                                                                    <input class="form-control" name="ocupacion_madre" value="{{$antecedentesFamiliares->ocupacion_madre}}"  placeholder="Ocupación" type="text" maxlength="200" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="observaciones_madre">Observaciones</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" name="observaciones_madre" value="{{ old('observaciones_madre') }}"  placeholder="Observaciones" type="text" maxlength="200" >
+                                                                    <input class="form-control" name="observaciones_madre" value="{{$antecedentesFamiliares->observaciones_madre}}"  placeholder="Observaciones" type="text" maxlength="200" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
@@ -318,28 +319,28 @@
                                                             <div class="col-md-8 form-group">
                                                                 <label class="control-label" for="nombre_padre">Nombre</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control onlyletters" name="nombre_padre" value="{{ old('nombre_padre') }}"  placeholder="Nombre" type="text" maxlength="200" >
+                                                                    <input class="form-control onlyletters" name="nombre_padre" value="{{$antecedentesFamiliares->nombre_padre}}"  placeholder="Nombre" type="text" maxlength="200" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <label class="control-label" for="edad_padre">Edad</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control onlynumbers" name="edad_padre" value="{{ old('edad_padre') }}"  placeholder="Edad" type="text" maxlength="3" >
+                                                                    <input class="form-control onlynumbers" name="edad_padre" value="{{$antecedentesFamiliares->edad_padre}}"  placeholder="Edad" type="text" maxlength="3" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-8 form-group">
                                                                 <label class="control-label" for="rut_padre">RUT</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" required pattern="\d{3,8}-[\d|kK]{1}" name="rut_padre" value="{{ old('rut_padre') }}"  placeholder="RUT" type="text" maxlength="15" >
+                                                                    <input class="form-control" required pattern="\d{3,8}-[\d|kK]{1}" name="rut_padre" value="{{$antecedentesFamiliares->rut_padre}}"  placeholder="RUT" type="text" maxlength="15" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <label class="control-label" for="fecha_nacimiento_padre">Fecha de Nacimiento</label>
                                                                 <div class='input-group' id='fecha_nacimiento2'>
-                                                                    <input class="form-control datepicker" data-format='DD/MM/YYYY' name="fecha_nacimiento_padre" value="{{ old('fecha_nacimiento_padre') }}"  placeholder="Fecha de Nacimiento" type="text" maxlength="50" >
+                                                                    <input class="form-control datepicker" data-format='DD/MM/YYYY' name="fecha_nacimiento_padre" value="{{$antecedentesFamiliares->fecha_nacimiento_padre}}"  placeholder="Fecha de Nacimiento" type="text" maxlength="50" >
                                                                     <span class='input-group-addon'>
                                                                         <span class='fa fa-calendar'></span>
                                                                     </span>
@@ -349,28 +350,28 @@
                                                             <div class="col-md-8 form-group">
                                                                 <label class="control-label" for="escolaridad_padre">Escolaridad</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" name="escolaridad_padre" value="{{ old('escolaridad_padre') }}"  placeholder="Escolaridad" type="text" maxlength="200" >
+                                                                    <input class="form-control" name="escolaridad_padre" value="{{$antecedentesFamiliares->escolaridad_padre}}"  placeholder="Escolaridad" type="text" maxlength="200" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-4 form-group">
                                                                 <label class="control-label" for="telefono_padre">Telefono</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control onlynumbers" name="telefono_padre" value="{{ old('telefono_padre') }}"  placeholder="Telefono" type="text" maxlength="12" >
+                                                                    <input class="form-control onlynumbers" name="telefono_padre" value="{{$antecedentesFamiliares->telefono_padre}}"  placeholder="Telefono" type="text" maxlength="12" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="ocupacion_padre">Ocupación</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" name="ocupacion_padre" value="{{ old('ocupacion_padre') }}"  placeholder="Ocupación" type="text" maxlength="200" >
+                                                                    <input class="form-control" name="ocupacion_padre" value="{{$antecedentesFamiliares->ocupacion_padre}}"  placeholder="Ocupación" type="text" maxlength="200" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="observaciones_padre">Observaciones</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" name="observaciones_padre" value="{{ old('observaciones_padre') }}"  placeholder="Observaciones" type="text" maxlength="200" >
+                                                                    <input class="form-control" name="observaciones_padre" value="{{$antecedentesFamiliares->observaciones_padre}}"  placeholder="Observaciones" type="text" maxlength="200" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
