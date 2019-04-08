@@ -21,8 +21,10 @@ class FichaEducacionController extends Controller
      */
     public function create($id)
     {
+        $persona = Beneficiario::find($id);
         return view('area-medica.ficha-evaluacion-inicial.educacion.create')
-            ->with(compact('id'));
+            ->with(compact('id'))
+            ->with(compact('persona'));
     }
 
     /**
@@ -56,8 +58,8 @@ class FichaEducacionController extends Controller
 
             $test_coordinacion = new TestCoordinacion([
                 'traslada' => $request->input('traslada'),
-                'construye_puente' => $request->input('construye_puenue'),
-                'construye_torre' => $request->input('construye_torrllable'),
+                'construye_puente' => $request->input('construye_puente'),
+                'construye_torre' => $request->input('construye_torre'),
                 'desabotona' => $request->input('desabotona'),
                 'abotona' => $request->input('abotona'),
                 'enhebra' => $request->input('enhebra'),
@@ -329,6 +331,7 @@ class FichaEducacionController extends Controller
             return view('area-medica.ficha-evaluacion-inicial.Error');
         }
 
+
         $persona = Beneficiario::find($fichaEducacion->beneficiario_id);
         $funcionario = Funcionario::find($fichaEducacion->funcionario_id);
         $test_coordinacion = TestCoordinacion::find($fichaEducacion->test_coordinacion_id);
@@ -347,29 +350,221 @@ class FichaEducacionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($fichaId)
     {
-        //
+        $fichaEducacion = FichaEducacion::find($fichaId);
+
+        if ($fichaEducacion == null) {
+            return view('area-medica.ficha-evaluacion-inicial.Error');
+        }
+        //Validar que no se puedan editar fichas cerradas.
+        if ($fichaEducacion != null) {
+            if ($fichaEducacion->estado == 'cerrado') {
+                return view('area-medica.ficha-evaluacion-inicial.Error');
+            }
+        }
+
+        $persona = Beneficiario::find($fichaEducacion->beneficiario_id);
+        $funcionario = Funcionario::find($fichaEducacion->funcionario_id);
+        $test_coordinacion = TestCoordinacion::find($fichaEducacion->test_coordinacion_id);
+        $test_lenguaje = TestLenguaje::find($fichaEducacion->test_lenguaje_id);
+        $test_motricidad = TestMotricidad::find($fichaEducacion->test_motricidad_id);
+
+
+        return view('area-medica.ficha-evaluacion-inicial.educacion.edit', compact('fichaEducacion'))
+            ->with(compact('persona'))
+            ->with(compact('test_coordinacion'))
+            ->with(compact('test_lenguaje'))
+            ->with(compact('funcionario'))
+            ->with(compact('test_motricidad'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request)
     {
-        //
+        // Validate Fields
+        $this->validate($request, $this->rules($request));
+
+        if (Auth::check()) {
+            $idFuncionario = Auth::user()->funcionario_id;
+            if ($idFuncionario == null) {
+                return view('area-medica.ficha-evaluacion-inicial.Error');
+            }
+        }
+
+        try {
+
+            $fichaEducacion = FichaEducacion::find($request->input('fichaId'));
+            $test_coordinacion = TestCoordinacion::find($fichaEducacion->test_coordinacion_id);
+            $test_lenguaje = TestLenguaje::find($fichaEducacion->test_lenguaje_id);
+            $test_motricidad = TestMotricidad::find($fichaEducacion->test_motricidad_id);
+
+
+            $fichaEducacion->categ_coordinacion = $request->input('categ_coordinacion');
+            $fichaEducacion->categ_lenguaje = $request->input('categ_lenguaje');
+            $fichaEducacion->categ_motricidad = $request->input('categ_motricidad');
+            $fichaEducacion->categ = $request->input('categ');
+            $fichaEducacion->total_coordinacion = $request->input('total_coordinacion');
+            $fichaEducacion->total_lenguaje = $request->input('total_lenguaje');
+            $fichaEducacion->total_motricidad = $request->input('total_motricidad');
+            $fichaEducacion->total = $request->input('total');
+            $fichaEducacion->pt_coordinacion = $request->input('pt_coordinacion');
+            $fichaEducacion->pt_lenguaje = $request->input('pt_lenguaje');
+            $fichaEducacion->pt_motricidad = $request->input('pt_motricidad');
+            $fichaEducacion->pt = $request->input('pt');
+            $fichaEducacion->observacion = $request->input('observacion');
+            $fichaEducacion->save();
+
+
+            $test_coordinacion->traslada = $request->input('traslada');
+            $test_coordinacion->construye_puente = $request->input('construye_puente');
+            $test_coordinacion->construye_torre = $request->input('construye_torre');
+            $test_coordinacion->desabotona = $request->input('desabotona');
+            $test_coordinacion->abotona = $request->input('abotona');
+            $test_coordinacion->enhebra = $request->input('enhebra');
+            $test_coordinacion->desata = $request->input('desata');
+            $test_coordinacion->copia_recta = $request->input('copia_recta');
+            $test_coordinacion->copia_circulo = $request->input('copia_circulo');
+            $test_coordinacion->copia_cruz = $request->input('copia_cruz');
+            $test_coordinacion->copia_triang = $request->input('copia_triang');
+            $test_coordinacion->copia_cuadra = $request->input('copia_cuadra');
+            $test_coordinacion->dibuja_9 = $request->input('dibuja_9');
+            $test_coordinacion->dibuja_6 = $request->input('dibuja_6');
+            $test_coordinacion->dibuja_3 = $request->input('dibuja_3');
+            $test_coordinacion->ordena = $request->input('ordena');
+            $test_coordinacion->save();
+
+            $test_lenguaje->p1 = $request->input('p1');
+            $test_lenguaje->p1_grande = $request->input('p1_grande');
+            $test_lenguaje->p1_chico = $request->input('p1_chico');
+            $test_lenguaje->p2 = $request->input('p2');
+            $test_lenguaje->p2_menos = $request->input('p2_menos');
+            $test_lenguaje->p2_mas = $request->input('p2_mas');
+            $test_lenguaje->p3 = $request->input('p3');
+            $test_lenguaje->p3_gato = $request->input('p3_gato');
+            $test_lenguaje->p3_perro = $request->input('p3_perro');
+            $test_lenguaje->p3_chancho = $request->input('p3_chancho');
+            $test_lenguaje->p3_pato = $request->input('p3_pato');
+            $test_lenguaje->p3_paloma = $request->input('p3_paloma');
+            $test_lenguaje->p3_oveja = $request->input('p3_oveja');
+            $test_lenguaje->p3_tortuga = $request->input('p3_tortuga');
+            $test_lenguaje->p3_gallina = $request->input('p3_gallina');
+            $test_lenguaje->p4 = $request->input('p4');
+            $test_lenguaje->p4_paraguas = $request->input('p4_paraguas');
+            $test_lenguaje->p4_vela = $request->input('p4_vela');
+            $test_lenguaje->p4_escoba = $request->input('p4_escoba');
+            $test_lenguaje->p4_tetera = $request->input('p4_tetera');
+            $test_lenguaje->p4_zapatos = $request->input('p4_zapatos');
+            $test_lenguaje->p4_reloj = $request->input('p4_reloj');
+            $test_lenguaje->p4_serrucho = $request->input('p4_serrucho');
+            $test_lenguaje->p4_taza = $request->input('p4_taza');
+            $test_lenguaje->p5 = $request->input('p5');
+            $test_lenguaje->p5_largo = $request->input('p5_largo');
+            $test_lenguaje->p5_corto = $request->input('p5_corto');
+            $test_lenguaje->p6 = $request->input('p6');
+            $test_lenguaje->p6_cortando = $request->input('p6_cortando');
+            $test_lenguaje->p6_saltando = $request->input('p6_saltando');
+            $test_lenguaje->p6_planchando = $request->input('p6_planchando');
+            $test_lenguaje->p6_comiendo = $request->input('p6_comiendo');
+            $test_lenguaje->p7 = $request->input('p7');
+            $test_lenguaje->p7_cuchara = $request->input('p7_cuchara');
+            $test_lenguaje->p7_lapiz = $request->input('p7_lapiz');
+            $test_lenguaje->p7_jabon = $request->input('p7_jabon');
+            $test_lenguaje->p7_escoba = $request->input('p7_escoba');
+            $test_lenguaje->p7_cama = $request->input('p7_cama');
+            $test_lenguaje->p7_tijera = $request->input('p7_tijera');
+            $test_lenguaje->p8 = $request->input('p8');
+            $test_lenguaje->p8_pesado = $request->input('p8_pesado');
+            $test_lenguaje->p8_liviano = $request->input('p8_liviano');
+            $test_lenguaje->p9 = $request->input('p9');
+            $test_lenguaje->p9_nombre = $request->input('p9_nombre');
+            $test_lenguaje->p9_apellido = $request->input('p9_apellido');
+            $test_lenguaje->p10 = $request->input('p10');
+            $test_lenguaje->p11 = $request->input('p11');
+            $test_lenguaje->p11_papa = $request->input('p11_papa');
+            $test_lenguaje->p11_mama = $request->input('p11_mama');
+            $test_lenguaje->p12 = $request->input('p12');
+            $test_lenguaje->p12_hambre = $request->input('p12_hambre');
+            $test_lenguaje->p12_cansado = $request->input('p12_cansado');
+            $test_lenguaje->p12_frio = $request->input('p12_frio');
+            $test_lenguaje->p13 = $request->input('p13');
+            $test_lenguaje->p13_detras = $request->input('p13_detras');
+            $test_lenguaje->p13_sobre = $request->input('p13_sobre');
+            $test_lenguaje->p13_bajo = $request->input('p13_bajo');
+            $test_lenguaje->p14 = $request->input('p14');
+            $test_lenguaje->p14_hielo = $request->input('p14_hielo');
+            $test_lenguaje->p14_raton = $request->input('p14_raton');
+            $test_lenguaje->p14_mama = $request->input('p14_mama');
+            $test_lenguaje->p15 = $request->input('p15');
+            $test_lenguaje->p15_azul = $request->input('p15_azul');
+            $test_lenguaje->p15_amarillo = $request->input('p15_amarillo');
+            $test_lenguaje->p15_rojo = $request->input('p15_rojo');
+            $test_lenguaje->p16 = $request->input('p16');
+            $test_lenguaje->p16_azul = $request->input('p16_azul');
+            $test_lenguaje->p16_amarillo = $request->input('p16_amarillo');
+            $test_lenguaje->p16_rojo = $request->input('p16_rojo');
+            $test_lenguaje->p17 = $request->input('p17');
+            $test_lenguaje->p17_circulo = $request->input('p17_circulo');
+            $test_lenguaje->p17_cuadrado = $request->input('p17_cuadrado');
+            $test_lenguaje->p17_tringulo = $request->input('p17_tringulo');
+            $test_lenguaje->p18 = $request->input('p18');
+            $test_lenguaje->p18_circulo = $request->input('p18_circulo');
+            $test_lenguaje->p18_cuadrado = $request->input('p18_cuadrado');
+            $test_lenguaje->p18_triangulo = $request->input('p18_triangulo');
+            $test_lenguaje->p19 = $request->input('p19');
+            $test_lenguaje->p19_13 = $request->input('p19_13');
+            $test_lenguaje->p19_14 = $request->input('p19_14');
+            $test_lenguaje->p20 = $request->input('p20');
+            $test_lenguaje->p21 = $request->input('p21');
+            $test_lenguaje->p22 = $request->input('p22');
+            $test_lenguaje->p22_antes = $request->input('p22_antes');
+            $test_lenguaje->p22_despues = $request->input('p22_despues');
+            $test_lenguaje->p23 = $request->input('p23');
+            $test_lenguaje->p23_manzana = $request->input('p23_manzana');
+            $test_lenguaje->p23_pelota = $request->input('p23_pelota');
+            $test_lenguaje->p23_zapato = $request->input('p23_zapato');
+            $test_lenguaje->p23_abrigo = $request->input('p23_abrigo');
+            $test_lenguaje->p24 = $request->input('p24');
+            $test_lenguaje->p24_pelota = $request->input('p24_pelota');
+            $test_lenguaje->p24_globo = $request->input('p24_globo');
+            $test_lenguaje->p24_bolsa = $request->input('p24_bolsa');
+            $test_lenguaje->save();
+
+            $test_motricidad->salta = $request->input('salta');
+            $test_motricidad->camina = $request->input('camina');
+            $test_motricidad->lanza = $request->input('lanza');
+            $test_motricidad->para_10 = $request->input('para_10');
+            $test_motricidad->para_5 = $request->input('para_5');
+            $test_motricidad->para_1 = $request->input('para_1');
+            $test_motricidad->camina_punta = $request->input('camina_punta');
+            $test_motricidad->salta_20 = $request->input('salta_20');
+            $test_motricidad->salta_3 = $request->input('salta_3');
+            $test_motricidad->coge = $request->input('coge');
+            $test_motricidad->camina_adelante = $request->input('camina_adelante');
+            $test_motricidad->camina_atras = $request->input('camina_atras');
+            $test_motricidad->save();
+
+
+        } catch (Exception $e) {
+
+            //procedimiento en caso de reportar errores
+            return view('area-medica.ficha-evaluacion-inicial.Error');
+        }
+        return redirect(route('area-medica.ficha-evaluacion-inicial.fichas.listaFichas', $request->input('id')));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return Response
      */
     public function destroy($id)
@@ -518,7 +713,7 @@ class FichaEducacionController extends Controller
             'pt_lenguaje' => 'nullable',
             'pt_motricidad' => 'nullable',
             'pt' => 'nullable',
-            'observacion' => 'nullable|max:600',
+            'observacion' => 'nullable|max:20000',
 
             'funcionario_id' => 'nullable',
             'beneficiario_id' => 'nullable',
