@@ -534,6 +534,10 @@
                                     <p>{{ $antecedentesMorbidosFamiliaresSiNoFono->trast_psiquiatricos_sn }}</p>
                                 </div>
                             </div>
+                            <div class="col-lg-12">
+                                <h3>Observaciones</h3>
+                                <b>{{$fichaFonoaudiologia->observaciones}}
+                            </div>
                         </div>
                     </div>
                 </div>

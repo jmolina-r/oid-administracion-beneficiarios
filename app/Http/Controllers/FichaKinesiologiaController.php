@@ -191,6 +191,7 @@ class FichaKinesiologiaController extends Controller
                 'val_control_esfinter_id' => $valControlEsfinter->id,
                 'funcionario_id' => $idFuncionario,
                 'beneficiario_id' => $request->input('id'),
+                'observaciones'=> $request->input('observaciones')
             ]);
             $fichaKinesiologia->save();
         } catch (Exception $e) {
@@ -343,6 +344,7 @@ class FichaKinesiologiaController extends Controller
             $fichaKinesiologia->situacion_laboral = $request->input('situacion_laboral');
             $fichaKinesiologia->situacion_familiar = $request->input('situacion_familiar');
             $fichaKinesiologia->asiste_centro_rhb = $request->input('asiste_centro_rhb');
+            $fichaKinesiologia->observaciones = $request->input('observaciones');
             $fichaKinesiologia->save();
 
             $antecedentesMorbidos->pat_concom = $request->input('pat_concom');

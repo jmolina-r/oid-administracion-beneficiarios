@@ -30,6 +30,7 @@ class CreateFichaFonoaudiologiaTable extends Migration
             $table->integer('parientes_hogar_fono_id')->unsigned();
             $table->integer('funcionario_id')->unsigned();
             $table->integer('beneficiario_id')->unsigned();
+            $table->text('observacion',6500)->nullable();
         });
 
 

@@ -938,6 +938,18 @@
                                                                     <input class="form-control" id="trast_psiquiatricos_sn" name="trast_psiquiatricos_sn" value="{{$antecedentesMorbidosFamiliaresSiNoFono->trast_psiquiatricos_sn}}"  placeholder="Si/No">
                                                                 </div>
                                                             </div>
+                                                             <div class="controls">
+                                                                <label>Observaciones</label>
+                                                                <textarea name="observaciones"
+                                                                          class='form-control'
+                                                                          data-char-allowed='200'
+                                                                          data-char-warning='10'
+                                                                          rows='15'
+                                                                          style='margin-bottom:10px;'
+                                                                          value="{{ $fichaFonoaudiologia->observaciones }}"
+                                                                          id="observaciones"
+                                                                          maxlength="10000">{{ $fichaFonoaudiologia->observaciones }}</textarea>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     {{ csrf_field() }}

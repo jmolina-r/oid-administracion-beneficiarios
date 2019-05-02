@@ -48,7 +48,7 @@ Route::group(['prefix' => 'areasocial', 'middleware' => 'auth'], function(){
     'uses' => 'FichaSocialController@store',
     'as' => 'social.asistenteSocialBeneficiar   io'
     ])->middleware('roles:admin|trabajo_social');
-
+Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/asistentesocial/ingresar/{id}', [
     'uses' => 'FichaSocialController@show',
     'as' => 'social.asistenteSocial'

@@ -1,6 +1,5 @@
 <?php
 namespace Deployer;
-
 require 'recipe/laravel.php';
 
 // Project name
@@ -21,7 +20,6 @@ add('writable_dirs', []);
 
 
 // Hosts
-
 host('46.101.153.219')
     ->user('deployer')
     ->identityFile('~/.ssh/deployerkey')
@@ -41,6 +39,5 @@ task('build', function () {
 after('deploy:failed', 'deploy:unlock');
 
 // Migrate database before symlink new release.
-
 before('deploy:symlink', 'artisan:migrate');
 

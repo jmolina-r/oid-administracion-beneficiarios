@@ -356,6 +356,10 @@
                                         <p class="capitalize"><span class="tit">12. Equilibrio</span><br>{{ $valMotora->equilibrio }}</p>
                                     </div>
                                 </div>
+                                <div class="col-sm-12 col-lg-12">
+                                    <h3>Observaciones: </h3>
+                                    <br>{{$fichaKinesiologia->observaciones}}
+                                </div>
                             </div>
                         </div>
                     </div>

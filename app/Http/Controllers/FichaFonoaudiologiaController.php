@@ -241,6 +241,7 @@ class FichaFonoaudiologiaController extends Controller
                 'antecedentes_pos_fono_id' => $antecedentesPostnatalesFono->id,
                 'funcionario_id' => $idFuncionario,
                 'beneficiario_id' => $request->input('id'),
+                'observaciones' => $request->input('observaciones')
             ]);
             $fichaFonoaudiologia->save();
         } catch (Exception $e) {
@@ -393,7 +394,7 @@ class FichaFonoaudiologiaController extends Controller
 
 
             $fichaFonoaudiologia->motivo_consulta = $request->input('motivo_consulta');
-
+            $fichaFonoaudiologia->observaciones = $request->input('observaciones');
             $fichaFonoaudiologia->save();
 
 
