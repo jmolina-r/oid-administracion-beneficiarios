@@ -479,9 +479,9 @@
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
                                                             <div class="col-md-12 form-group">
-                                                                <label class="col-md-3 control-label" for="observaciones">Observaciones</label>
+                                                                <label class="col-md-3 control-label" for="observaciones_desarrollo">Observaciones Desarrollo</label>
                                                                 <div class="col-md-9 controls">
-                                                                    <input class="form-control" id="observaciones" name="observaciones" value="{{$desarrolloEvolutivo->observaciones}}"  placeholder="Observaciones" type="text">
+                                                                    <input class="form-control" id="observaciones_desarrollo" name="observaciones_desarrollo" value="{{$desarrolloEvolutivo->observaciones}}"  placeholder="Observaciones" type="text">
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
@@ -1111,7 +1111,18 @@
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
-
+                                                            <div class="controls">
+                                                                <label>Observaciones</label>
+                                                                <textarea name="observaciones"
+                                                                          class='form-control'
+                                                                          data-char-allowed='200'
+                                                                          data-char-warning='10'
+                                                                          rows='15'
+                                                                          style='margin-bottom:10px;'
+                                                                          value="{{ $fichaTerapiaOcupacional->observaciones }}"
+                                                                          id="observaciones"
+                                                                          maxlength="10000">{{ $fichaTerapiaOcupacional->observaciones }}</textarea>
+                                                            </div>
 
                                                         </div>
                                                     </div>

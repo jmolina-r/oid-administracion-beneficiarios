@@ -145,7 +145,7 @@ class FichaTerapiaOcupacionalController extends Controller
                 'vesical_nocturno' => $request->input('vesical_nocturno'),
                 'anal_diurno' => $request->input('anal_diurno'),
                 'anal_nocturno' => $request->input('anal_nocturno'),
-                'observaciones' => $request->input('observaciones'),
+                'observaciones' => $request->input('observaciones_desarrollo'),
                 'estabilidad_caminar_sna' => $request->input('estabilidad_caminar_sna'),
                 'caidas_frecuentes_sna' => $request->input('caidas_frecuentes_sna'),
                 'dominancia_lateral_sna' => $request->input('dominancia_lateral_sna'),
@@ -234,6 +234,7 @@ class FichaTerapiaOcupacionalController extends Controller
                 'historial_clinico_id' => $historialClinico->id,
                 'funcionario_id' => $idFuncionario,
                 'beneficiario_id' => $request->input('id'),
+                'observaciones' => $request->input('observaciones'),
             ]);
             $fichaTerapiaOcupacional->save();
         } catch (Exception $e) {
@@ -366,6 +367,7 @@ class FichaTerapiaOcupacionalController extends Controller
             $fichaTerapiaOcupacional->derivado_por = $request->input('derivado_por');
             $fichaTerapiaOcupacional->relacion_paciente = $request->input('relacion_paciente');
             $fichaTerapiaOcupacional->observaciones_generales = $request->input('observaciones_generales');
+            $fichaTerapiaOcupacional->observaciones = $request->input('observaciones');
             $fichaTerapiaOcupacional->save();
 
             $actividadesVidaDiaria->alimentacion = $request->input('alimentacion');
@@ -446,7 +448,7 @@ class FichaTerapiaOcupacionalController extends Controller
             $desarrolloEvolutivo->edad_control_anal = $request->input('edad_control_anal');
             $desarrolloEvolutivo->anal_diurno = $request->input('anal_diurno');
             $desarrolloEvolutivo->anal_nocturno = $request->input('anal_nocturno');
-            $desarrolloEvolutivo->observaciones = $request->input('observaciones');
+            $desarrolloEvolutivo->observaciones = $request->input('observaciones_desarrollo');
             $desarrolloEvolutivo->estabilidad_caminar_sna = $request->input('estabilidad_caminar_sna');
             $desarrolloEvolutivo->caidas_frecuentes_sna = $request->input('caidas_frecuentes_sna');
             $desarrolloEvolutivo->dominancia_lateral_sna = $request->input('dominancia_lateral_sna');
@@ -568,7 +570,7 @@ class FichaTerapiaOcupacionalController extends Controller
             'vesical_nocturno' => 'nullable|max:200',
             'anal_diurno' => 'nullable|max:200',
             'anal_nocturno' => 'nullable|max:200',
-            'observaciones' => 'nullable|max:200',
+            'observaciones_desarrollo' => 'nullable|max:200',
             'estabilidad_caminar_sna' => 'nullable|max:200',
             'caidas_frecuentes_sna' => 'nullable|max:200',
             'dominancia_lateral_sna' => 'nullable|max:200',

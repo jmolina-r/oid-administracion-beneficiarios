@@ -567,7 +567,7 @@
                                                                           style='margin-bottom:10px;'
                                                                           value="{{ old('observaciones') }}"
                                                                           id="observaciones"
-                                                                          maxlength="10000">{{old('observaciones')}}</textarea>
+                                                                          maxlength="10000"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>

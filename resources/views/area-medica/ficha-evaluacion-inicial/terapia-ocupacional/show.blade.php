@@ -177,7 +177,7 @@
                                     <p>{{ $desarrolloEvolutivo->anal_diurno }}</p>
                                     <p class="tit">Control Anal Nocturno</p>
                                     <p>{{ $desarrolloEvolutivo->anal_nocturno }}</p>
-                                    <p class="tit">Observaciones</p>
+                                    <p class="tit">Observaciones Desarrollo</p>
                                     <p>{{ $desarrolloEvolutivo->observaciones }}</p>
                                 </div>
                                 <h5>En relación con su motricidad gruesa se aprecia:</h5>
@@ -547,6 +547,10 @@
                                     <p>{{ $habilidadesSociales->cosas_no_gustan }}</p>
                                     <p class="tit">¿A qué juega?</p>
                                     <p>{{ $habilidadesSociales->juegos }}</p>
+                                </div>
+                                <div class="col-lg-12">
+                                    <h3>Observaciones</h3>
+                                    <b>{{$fichaTerapiaOcupacional->observaciones}}
                                 </div>
                             </div>
 
