@@ -217,7 +217,7 @@ class FichaPsicologiaController extends Controller
             }
         }
 
-        $fichaPsicologia = FichaPsicologia::find($request->input('id'));
+        $fichaPsicologia = FichaPsicologia::find($request->input('fichaId'));
         $antecedentesMedicos = AntecedentesMedicos::find($fichaPsicologia->antecedentes_medicos_id);
         $antecedentesFamiliares = AntecedentesFamiliares::find($fichaPsicologia->antecedentes_familiares_id);
 

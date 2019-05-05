@@ -12,7 +12,8 @@
         "filp/whoops": "^2.1",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "malahierba-lab/chile-rut": "^5.1"
+        "malahierba-lab/chile-rut": "^5.1",
+        "doctrine/dbal": ">=2.9.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

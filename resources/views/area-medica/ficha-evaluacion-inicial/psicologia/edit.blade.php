@@ -305,7 +305,7 @@
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="observaciones_madre">Observaciones</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" name="observaciones_madre" value="{{$antecedentesFamiliares->observaciones_madre}}"  placeholder="Observaciones" type="text" maxlength="200" >
+                                                                    <textarea name="observaciones_madre" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='' rows='3' style='margin-bottom:10px;' value="{{$antecedentesFamiliares->observaciones_madre}}" id="observaciones_madre" maxlength="10000">{{$antecedentesFamiliares->observaciones_madre}}</textarea>
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
@@ -333,7 +333,7 @@
                                                             <div class="col-md-8 form-group">
                                                                 <label class="control-label" for="rut_padre">RUT</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" required pattern="\d{3,8}-[\d|kK]{1}" name="rut_padre" value="{{$antecedentesFamiliares->rut_padre}}"  placeholder="RUT" type="text" maxlength="15" >
+                                                                    <input class="form-control" pattern="\d{3,8}-[\d|kK]{1}" name="rut_padre" value="{{$antecedentesFamiliares->rut_padre}}"  placeholder="RUT" type="text" maxlength="15" >
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
@@ -371,7 +371,7 @@
                                                             <div class="col-md-12 form-group">
                                                                 <label class="control-label" for="observaciones_padre">Observaciones</label>
                                                                 <div class="controls">
-                                                                    <input class="form-control" name="observaciones_padre" value="{{$antecedentesFamiliares->observaciones_padre}}"  placeholder="Observaciones" type="text" maxlength="200" >
+                                                                    <textarea name="observaciones_padre" class='form-control' data-char-allowed='200' data-char-warning='10' placeholder='' rows='3' style='margin-bottom:10px;' value="{{$antecedentesFamiliares->observaciones_padre}}" id="observaciones_padre" maxlength="10000">{{$antecedentesFamiliares->observaciones_padre}}</textarea>
                                                                 </div>
                                                                 <div class="help-block with-errors"></div>
                                                             </div>
