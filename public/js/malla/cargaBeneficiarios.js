@@ -83,7 +83,7 @@ $(document).ready(function () {
 
 
         //validar inscripcion grupal tenga 2 o mas beneficiarios seleccionados
-        if (document.getElementById("Grupal").checked && listaId.length > 1 || document.getElementById("Individual").checked) {
+        if (document.getElementById("Grupal").checked && listaId.length > 1 || document.getElementById("Individual").checked && listaId.length == 1 ) {
             var respuesta = confirm("¿Seguro que desea guardar el registro en la agenda?");
 
             if (respuesta == false) {
@@ -126,7 +126,7 @@ $(document).ready(function () {
                 }
             });
         } else {
-            alert("Las sesiones grupales deben tener 2 o más beneficiarios.");
+            alert("Las sesiones grupales deben tener 2 o más beneficiarios. Las sesiones individuales deben tener 1 beneficiario.");
         }
 
     });
